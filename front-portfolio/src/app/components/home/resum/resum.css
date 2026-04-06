@@ -417,3 +417,244 @@
 .contact-row:hover::after {
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+  .resum {
+    padding: 1rem;
+  }
+
+  .panel {
+    padding: 1.25rem 1rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .title {
+    font-size: 1.55rem;
+  }
+
+  .section-title {
+    font-size: 1.05rem;
+  }
+
+  .row {
+    min-height: 40px;
+    font-size: 0.95rem;
+  }
+
+  .contact-row {
+    min-height: 50px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .contact-label {
+    font-size: 1rem;
+  }
+
+  .rune {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resum {
+    padding: 0.75rem;
+  }
+
+  .panel {
+    width: 100%;
+    padding: 1rem 0.75rem 0.9rem;
+    gap: 1rem;
+  }
+
+  .panel-frame {
+    inset: 6px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    padding-bottom: 0.55rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.6rem;
+    min-height: 38px;
+    font-size: 0.88rem;
+  }
+
+  .label {
+    gap: 0.45rem;
+    min-width: 0;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .label app-responsive-picture,
+  .label picture,
+  .label img,
+  .project-item app-responsive-picture,
+  .project-item picture,
+  .project-item img,
+  .contact-label app-responsive-picture,
+  .contact-label picture,
+  .contact-label img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .value,
+  .row .value,
+  .row a.value {
+    font-size: 0.85rem;
+  }
+
+  .runes {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .rune {
+    width: 40px;
+    height: 40px;
+  }
+
+  .passives li,
+  .project-list li {
+    min-height: 34px;
+    font-size: 0.88rem;
+  }
+
+  .project-item .label {
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .contact-row {
+    min-height: 46px;
+    padding: 0.45rem 0.5rem;
+  }
+
+  .contact-label {
+    gap: 0.55rem;
+    font-size: 0.95rem;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .contact-row::before {
+    inset: 50% 6%;
+  }
+}
+
+@media (max-width: 360px) {
+  .resum {
+    padding: 0.5rem;
+  }
+
+  .panel {
+    padding: 0.85rem 0.6rem 0.8rem;
+  }
+
+  .title {
+    font-size: 1.15rem;
+  }
+
+  .section-title {
+    font-size: 0.92rem;
+  }
+
+  .row {
+    gap: 0.45rem;
+    min-height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .label,
+  .project-item .label,
+  .contact-label {
+    gap: 0.4rem;
+    font-size: 0.82rem;
+  }
+
+  .label app-responsive-picture,
+  .label picture,
+  .label img,
+  .project-item app-responsive-picture,
+  .project-item picture,
+  .project-item img,
+  .contact-label app-responsive-picture,
+  .contact-label picture,
+  .contact-label img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .value,
+  .row .value,
+  .row a.value {
+    font-size: 0.78rem;
+  }
+
+  .rune {
+    width: 36px;
+    height: 36px;
+  }
+
+  .passives li,
+  .project-list li {
+    min-height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .contact-row {
+    min-height: 42px;
+  }
+
+  .contact-label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .panel {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+
+  .section-title {
+    font-size: 0.88rem;
+  }
+
+  .row {
+    font-size: 0.76rem;
+  }
+
+  .label,
+  .project-item .label,
+  .contact-label {
+    font-size: 0.78rem;
+  }
+
+  .value,
+  .row .value,
+  .row a.value {
+    font-size: 0.72rem;
+  }
+
+  .rune {
+    width: 34px;
+    height: 34px;
+  }
+}
