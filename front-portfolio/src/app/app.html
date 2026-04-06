@@ -1,3 +1,25 @@
-<h1 class="text-3xl font-bold underline bg-red-400">
-  Hello world!
-</h1>
+<div class="app-root">
+
+  <!-- Background -->
+  <div class="bg-gradient"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-noise"></div>
+
+  <!-- Main content -->
+  <div class="app-layer">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Loading overlay -->
+  <div class="app-layer overlay">
+    <app-loading></app-loading>
+  </div>
+
+  <!-- Sound UI -->
+  @if (audio.isAnythingPlaying()) {
+    <div class="app-layer ui-overlay">
+      <app-stop-all-sound></app-stop-all-sound>
+    </div>
+  }
+
+</div>

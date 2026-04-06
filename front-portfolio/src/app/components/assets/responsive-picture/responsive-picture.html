@@ -1,0 +1,16 @@
+<picture>
+  @for (source of sortedSources; track source.src) {
+    <source
+      [srcset]="source.src"
+      [media]="buildMedia(source.maxWidth)"
+      [type]="source.type ?? null"
+    />
+  }
+
+  <img
+    [src]="fallbackSrc"
+    [alt]="alt"
+    [loading]="loading"
+    [decoding]="decoding"
+  />
+</picture>

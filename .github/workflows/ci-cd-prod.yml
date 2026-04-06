@@ -1,0 +1,127 @@
+name: CI/CD - Production - Angular
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+env:
+  FRONT_DIR: front-portfolio
+  VPS_DIR: /var/www/portfolio
+  FRONT_PROCESS: angular-portfolio.service
+
+concurrency:
+  group: deploy-prod-angular
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            ${{ env.FRONT_DIR }}
+          sparse-checkout-cone-mode: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ${{ env.FRONT_DIR }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ${{ env.FRONT_DIR }}
+        run: npm ci
+
+      - name: Run linter
+        working-directory: ${{ env.FRONT_DIR }}
+        run: npm run lint --if-present
+
+      - name: Build Angular app
+        working-directory: ${{ env.FRONT_DIR }}
+        run: npm run build
+
+      - name: Upload Angular dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: angular-dist
+          path: ${{ env.FRONT_DIR }}/dist
+          if-no-files-found: error
+
+  merge-test:
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Merge dev into test
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git fetch origin dev test
+          git checkout test
+          git merge origin/dev --no-ff -m "CI: merge dev into test"
+          git push origin test
+
+  deploy-test:
+    needs: [ci, merge-test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Angular dist artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: angular-dist
+          path: ./dist
+
+      - name: Ensure remote folders exist
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            mkdir -p ${{ env.VPS_DIR }}
+
+      - name: Clean remote folder except persistent dirs
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            find ${{ env.VPS_DIR }} -mindepth 1 -maxdepth 1 \
+              ! -name uploads \
+              ! -name logs-app \
+              -exec rm -rf {} +
+
+      - name: Copy Angular build to VPS
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "dist/*"
+          target: ${{ env.VPS_DIR }}
+
+      - name: Restart Angular service
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart ${{ env.FRONT_PROCESS }}
+            sudo systemctl status ${{ env.FRONT_PROCESS }} --no-pager

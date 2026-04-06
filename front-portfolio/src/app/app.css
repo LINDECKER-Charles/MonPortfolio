@@ -1,0 +1,115 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: #25282D;
+  color: #BDC1C7;
+  font-family: Inter, sans-serif;
+}
+
+/* ---------- ROOT ---------- */
+
+.app-root {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+/* ---------- BACKGROUND ---------- */
+
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      #30353B 0%,
+      #25282D 60%
+    );
+}
+
+.bg-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(226, 164, 17, 0.05),
+      transparent 60%
+    );
+
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- LAYERS ---------- */
+
+.app-layer {
+  position: relative;
+  z-index: 10;
+}
+
+/* overlay (loading / opening / modal) */
+.app-layer.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+}
+
+/* ---------- ANIMATION ---------- */
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ---------- UX ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-glow {
+    animation: none;
+  }
+}
+
+.bg-gradient,
+.bg-glow,
+.bg-noise {
+  pointer-events: none;
+}
+
+.app-layer.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.app-layer.ui-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
