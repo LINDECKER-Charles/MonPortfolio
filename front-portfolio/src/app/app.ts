@@ -3,7 +3,9 @@ import {Loading} from './components/assets/loading/loading';
 import {Home} from './components/home/home';
 import {AudioService} from './services/audio-service';
 import {StopAllSound} from './components/assets/stop-all-sound/stop-all-sound';
-import {RouterOutlet} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {MetaService} from './services/meta-service';
+import {filter, map, mergeMap} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -38,5 +40,37 @@ export class App {
     });
   }
 
-  protected readonly AudioService = AudioService;
+  private readonly metaService = inject(MetaService);
+  private readonly router = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
+
+  async ngOnInit() {
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(() => this.activatedRoute),
+      map((route) => {
+        while (route.firstChild) route = route.firstChild;
+        return route;
+      }),
+      filter((route) => route.outlet === 'primary'),
+      mergeMap((route) => route.data)
+    )
+      .subscribe((event) => {
+        this.metaService.updateDescription(event['description']);
+        this.metaService.updateCanonical(event['canonical']);
+        this.metaService.updateRobots(event['robots']);
+
+        this.metaService.updateOgTitle(event['ogTitle']);
+        this.metaService.updateOgDescription(event['ogDescription']);
+        this.metaService.updateOgImage(event['ogImage']);
+        this.metaService.updateOgUrl(event['ogUrl']);
+        this.metaService.updateOgType(event['ogType']);
+
+        this.metaService.updateTwitterTitle(event['twitterTitle']);
+        this.metaService.updateTwitterDescription(event['twitterDescription']);
+        this.metaService.updateTwitterCard(event['twitterCard']);
+        this.metaService.updateTwitterImage(event['twitterImage']);
+      });
+
+  }
 }
