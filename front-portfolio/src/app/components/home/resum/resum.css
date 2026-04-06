@@ -287,3 +287,31 @@
   gap: 0.5rem;
   white-space: nowrap;
 }
+
+.project-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-list li {
+  border-bottom: 1px solid rgba(215, 215, 215, 0.09);
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.project-item .label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+}
+
+.project-item app-responsive-picture,
+.project-item picture,
+.project-item img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
