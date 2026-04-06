@@ -1,5 +1,25 @@
-<app-loading></app-loading>
+<div class="app-root">
 
+  <!-- Background -->
+  <div class="bg-gradient"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-noise"></div>
 
-<router-outlet></router-outlet>
+  <!-- Main content -->
+  <div class="app-layer">
+    <app-home></app-home>
+  </div>
 
+  <!-- Loading overlay -->
+  <div class="app-layer overlay">
+    <app-loading></app-loading>
+  </div>
+
+  <!-- Sound UI -->
+  @if (audio.isAnythingPlaying()) {
+    <div class="app-layer ui-overlay">
+      <app-stop-all-sound></app-stop-all-sound>
+    </div>
+  }
+
+</div>

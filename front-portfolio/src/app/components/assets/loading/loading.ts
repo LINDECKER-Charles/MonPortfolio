@@ -10,5 +10,5 @@ import {
   styleUrl: './loading.css',
 })
 export class Loading {
-  isLoading = true;
+  public isLoading: boolean = false;
 }
