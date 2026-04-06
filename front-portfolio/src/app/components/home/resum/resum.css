@@ -34,7 +34,8 @@
   gap: 2rem;
 }
 
-/* cadre intérieur */
+/* décor */
+
 .panel-frame {
   position: absolute;
   inset: 10px;
@@ -43,7 +44,6 @@
   z-index: 0;
 }
 
-/* scanlines */
 .panel-scanlines {
   position: absolute;
   inset: 0;
@@ -60,7 +60,6 @@
     );
 }
 
-/* grain */
 .panel-noise {
   position: absolute;
   inset: 0;
@@ -72,7 +71,6 @@
   background-size: 220px 220px;
 }
 
-/* vignette */
 .panel::after {
   content: "";
   position: absolute;
@@ -83,7 +81,8 @@
     radial-gradient(circle at center, transparent 55%, rgba(0, 0, 0, 0.38) 100%);
 }
 
-/* contenu au-dessus */
+/* contenu */
+
 .col,
 .bottom {
   position: relative;
@@ -125,20 +124,20 @@
 
 .row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 1rem;
-
   min-height: 42px;
-  padding: 0.15rem 0;
-
+  padding: 0.2rem 0;
   border-bottom: 1px solid rgba(215, 215, 215, 0.09);
   font-size: 1rem;
   color: #c9c3b8;
 }
 
-.row span:last-child {
+.row .value,
+.row a.value {
   color: #ddd6cb;
+  text-align: right;
 }
 
 .row a {
@@ -167,6 +166,56 @@
   transform: translateY(-50%);
 }
 
+/* labels */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.value {
+  text-align: right;
+}
+
+/* icônes de lignes */
+
+.label app-responsive-picture,
+.label picture,
+.label img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.label img {
+  object-fit: cover;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+/* rounded seulement pour stack + réseaux */
+.center .label app-responsive-picture,
+.center .label picture,
+.center .label img,
+.right .row .label app-responsive-picture,
+.right .row .label picture,
+.right .row .label img {
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* colonne gauche garde les icônes plus "jeu" */
+.left .label app-responsive-picture,
+.left .label picture,
+.left .label img {
+  border-radius: 0;
+}
+
+/* runes */
+
 .runes {
   display: flex;
   gap: 0.55rem;
@@ -186,6 +235,20 @@
   font-size: 1.2rem;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
+
+.rune app-responsive-picture,
+.rune picture,
+.rune img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rune img {
+  object-fit: contain;
+}
+
+/* listes */
 
 .passives,
 .project-list {
@@ -210,6 +273,20 @@
   border-top: 1px solid rgba(215, 215, 215, 0.14);
 }
 
+.project-item {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-item .label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  white-space: nowrap;
+}
+
 .project-list a {
   color: #c9c3b8;
   text-decoration: none;
@@ -219,6 +296,17 @@
 .project-list a:hover {
   color: #f3eee3;
 }
+
+.project-item app-responsive-picture,
+.project-item picture,
+.project-item img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* responsive */
 
 @media (max-width: 1100px) {
   .panel {
@@ -232,86 +320,11 @@
     padding-right: 0;
   }
 
+  .right {
+    padding-left: 0;
+  }
+
   .bottom {
     grid-column: auto;
   }
-}
-
-.label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  white-space: nowrap;
-}
-
-.icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  opacity: 0.85;
-}
-
-.value {
-  text-align: right;
-}
-
-.icon {
-  width: 18px;
-  height: 18px;
-  filter: brightness(0.9) contrast(1.1);
-}
-
-.rune app-responsive-picture,
-.rune picture,
-.rune img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.rune img {
-  object-fit: contain;
-}
-
-.label app-responsive-picture,
-.label picture,
-.label img {
-  width: 18px;
-  height: 18px;
-  display: block;
-}
-
-.label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  white-space: nowrap;
-}
-
-.project-item {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.project-list li {
-  border-bottom: 1px solid rgba(215, 215, 215, 0.09);
-  min-height: 42px;
-  display: flex;
-  align-items: center;
-}
-
-.project-item .label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  white-space: nowrap;
-}
-
-.project-item app-responsive-picture,
-.project-item picture,
-.project-item img {
-  width: 18px;
-  height: 18px;
-  display: block;
 }
