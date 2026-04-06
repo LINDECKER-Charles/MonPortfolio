@@ -658,3 +658,22 @@
     height: 34px;
   }
 }
+
+.panel {
+  will-change: transform, opacity, filter;
+}
+
+.panel-noise,
+.panel-scanlines,
+.panel-frame {
+  will-change: transform, opacity, background-position;
+}
+
+.panel,
+.col,
+.bottom,
+.panel-frame,
+.panel-noise,
+.panel-scanlines {
+  will-change: transform, opacity, filter, background-position, box-shadow;
+}
