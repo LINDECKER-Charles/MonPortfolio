@@ -2,14 +2,17 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   OnDestroy,
+  Output,
+  PLATFORM_ID,
   ViewChild,
   inject,
-  PLATFORM_ID
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
-import { AudioService } from '../../services/audio-service';
+import {AudioService} from '../../../services/audio-service';
+
 
 @Component({
   selector: 'app-opening',
@@ -19,19 +22,21 @@ import { AudioService } from '../../services/audio-service';
 })
 export class Opening implements AfterViewInit, OnDestroy {
 
+  private readonly audioService = inject(AudioService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
-  private readonly audioService = inject(AudioService);
 
-  @ViewChild('audioState', { static: true }) audioStateRef!: ElementRef<HTMLDivElement>;
-  @ViewChild('openingState', { static: true }) openingStateRef!: ElementRef<HTMLDivElement>;
+  @Output() finished = new EventEmitter<void>();
 
-  @ViewChild('soundButton', { static: true }) soundButtonRef!: ElementRef<HTMLButtonElement>;
-  @ViewChild('soundIcon', { static: true }) soundIconRef!: ElementRef<SVGElement>;
-  @ViewChild('soundLabel', { static: true }) soundLabelRef!: ElementRef<HTMLParagraphElement>;
+  @ViewChild('audioState') audioStateRef!: ElementRef<HTMLDivElement>;
+  @ViewChild('openingState') openingStateRef!: ElementRef<HTMLDivElement>;
 
-  @ViewChild('openingButton', { static: true }) openingButtonRef!: ElementRef<HTMLButtonElement>;
-  @ViewChild('openingFigure', { static: true }) openingFigureRef!: ElementRef<HTMLElement>;
+  @ViewChild('soundButton') soundButtonRef!: ElementRef<HTMLButtonElement>;
+  @ViewChild('soundIcon') soundIconRef!: ElementRef<SVGElement>;
+  @ViewChild('soundLabel') soundLabelRef!: ElementRef<HTMLParagraphElement>;
+
+  @ViewChild('openingButton') openingButtonRef!: ElementRef<HTMLButtonElement>;
+  @ViewChild('openingFigure') openingFigureRef!: ElementRef<HTMLElement>;
 
   public currentState: 1 | 2 | 3 = 1;
   public voiceHaveBeenPlayed = false;
@@ -43,16 +48,18 @@ export class Opening implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
+
     this.prepareInitialState();
     this.enterSoundState();
   }
 
   ngOnDestroy(): void {
+    if (!this.isBrowser) return;
     this.stopAllTweens();
   }
 
   public launchBgMusic(): void {
-    if (this.currentState !== 1) return;
+    if (!this.isBrowser || this.currentState !== 1) return;
 
     this.audioService.play('bgMusic');
     this.stopSoundIdle();
@@ -68,6 +75,7 @@ export class Opening implements AfterViewInit, OnDestroy {
       scale: 0.9,
       duration: 0.12,
       ease: 'power2.out',
+      overwrite: 'auto',
     }).to(
       [this.audioStateRef.nativeElement, this.soundLabelRef.nativeElement],
       {
@@ -76,27 +84,34 @@ export class Opening implements AfterViewInit, OnDestroy {
         filter: 'blur(10px)',
         duration: 0.6,
         ease: 'power3.inOut',
+        overwrite: 'auto',
       },
       0
     );
   }
 
   public playVoice(): void {
-    if (this.voiceHaveBeenPlayed || this.currentState !== 2) return;
+    if (!this.isBrowser || this.voiceHaveBeenPlayed || this.currentState !== 2) return;
 
     this.voiceHaveBeenPlayed = true;
     this.isOpeningLeaving = true;
     this.audioService.play('pouperVoice');
     this.stopOpeningIdle();
 
+    gsap.killTweensOf(this.openingButtonRef.nativeElement);
+    gsap.killTweensOf(this.openingStateRef.nativeElement);
+
     const tl = gsap.timeline({
       onComplete: () => {
         this.isOpeningLeaving = false;
         this.currentState = 3;
+
         gsap.set(this.openingStateRef.nativeElement, {
           autoAlpha: 0,
           clearProps: 'transform,filter',
         });
+
+        this.finished.emit();
       },
     });
 
@@ -104,17 +119,28 @@ export class Opening implements AfterViewInit, OnDestroy {
       scale: 0.965,
       duration: 0.12,
       ease: 'power2.out',
+      overwrite: 'auto',
     }).to(this.openingStateRef.nativeElement, {
       autoAlpha: 0,
       scale: 0.92,
       filter: 'blur(10px)',
       duration: 8,
       ease: 'power1.out',
+      overwrite: 'auto',
     });
   }
 
+  public skipOpening(): void {
+    if (!this.isBrowser) return;
+
+    this.stopAllTweens();
+    this.isOpeningLeaving = false;
+    this.currentState = 3;
+    this.finished.emit();
+  }
+
   public onSoundHoverEnter(): void {
-    if (this.currentState !== 1) return;
+    if (!this.isBrowser || this.currentState !== 1) return;
 
     gsap.to(this.soundButtonRef.nativeElement, {
       scale: 1.06,
@@ -132,7 +158,7 @@ export class Opening implements AfterViewInit, OnDestroy {
   }
 
   public onSoundHoverLeave(): void {
-    if (this.currentState !== 1) return;
+    if (!this.isBrowser || this.currentState !== 1) return;
 
     gsap.to(this.soundButtonRef.nativeElement, {
       scale: 1,
@@ -150,7 +176,7 @@ export class Opening implements AfterViewInit, OnDestroy {
   }
 
   public onSoundPress(): void {
-    if (this.currentState !== 1) return;
+    if (!this.isBrowser || this.currentState !== 1) return;
 
     gsap.fromTo(
       this.soundButtonRef.nativeElement,
@@ -167,7 +193,7 @@ export class Opening implements AfterViewInit, OnDestroy {
   }
 
   public onOpeningHoverEnter(): void {
-    if (this.currentState !== 2 || this.isOpeningLeaving) return;
+    if (!this.isBrowser || this.currentState !== 2 || this.isOpeningLeaving) return;
 
     gsap.to(this.openingButtonRef.nativeElement, {
       scale: 1.025,
@@ -178,7 +204,7 @@ export class Opening implements AfterViewInit, OnDestroy {
   }
 
   public onOpeningHoverLeave(): void {
-    if (this.currentState !== 2 || this.isOpeningLeaving) return;
+    if (!this.isBrowser || this.currentState !== 2 || this.isOpeningLeaving) return;
 
     gsap.to(this.openingButtonRef.nativeElement, {
       scale: 1,
@@ -189,7 +215,7 @@ export class Opening implements AfterViewInit, OnDestroy {
   }
 
   public onOpeningPress(): void {
-    if (this.currentState !== 2 || this.isOpeningLeaving) return;
+    if (!this.isBrowser || this.currentState !== 2 || this.isOpeningLeaving) return;
 
     gsap.fromTo(
       this.openingButtonRef.nativeElement,
@@ -206,8 +232,19 @@ export class Opening implements AfterViewInit, OnDestroy {
   }
 
   private prepareInitialState(): void {
-    gsap.set(this.audioStateRef.nativeElement, { autoAlpha: 1 });
-    gsap.set(this.openingStateRef.nativeElement, { autoAlpha: 0 });
+    gsap.set(this.audioStateRef.nativeElement, {
+      autoAlpha: 1,
+      y: 0,
+      scale: 1,
+      filter: 'blur(0px)',
+    });
+
+    gsap.set(this.openingStateRef.nativeElement, {
+      autoAlpha: 0,
+      y: 0,
+      scale: 1,
+      filter: 'blur(0px)',
+    });
 
     gsap.set(this.soundButtonRef.nativeElement, {
       autoAlpha: 0,
@@ -231,16 +268,16 @@ export class Opening implements AfterViewInit, OnDestroy {
       scale: 0.88,
       y: 0,
     });
-
-    gsap.set(this.openingStateRef.nativeElement, {
-      y: 0,
-      scale: 1,
-      filter: 'blur(0px)',
-    });
   }
 
   private enterSoundState(): void {
     this.stopSoundIdle();
+
+    gsap.killTweensOf([
+      this.audioStateRef.nativeElement,
+      this.soundButtonRef.nativeElement,
+      this.soundLabelRef.nativeElement,
+    ]);
 
     const tl = gsap.timeline();
 
@@ -289,6 +326,11 @@ export class Opening implements AfterViewInit, OnDestroy {
   private enterOpeningState(): void {
     this.stopOpeningIdle();
 
+    gsap.killTweensOf([
+      this.openingStateRef.nativeElement,
+      this.openingButtonRef.nativeElement,
+    ]);
+
     gsap.set(this.openingStateRef.nativeElement, {
       autoAlpha: 1,
       y: 0,
@@ -318,6 +360,7 @@ export class Opening implements AfterViewInit, OnDestroy {
         filter: 'blur(0px)',
         duration: 1.05,
         ease: 'power3.out',
+        clearProps: 'filter',
       }
     )
       .to(

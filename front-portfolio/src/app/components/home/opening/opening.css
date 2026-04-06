@@ -9,6 +9,7 @@
   width: 100%;
   min-height: 100dvh;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .state-layer {
@@ -18,17 +19,21 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-
-  opacity: 0;
-  visibility: hidden;
   pointer-events: none;
 }
 
-.state-layer.is-active {
-  opacity: 1;
-  visibility: visible;
+.audio-gate,
+.opening-trigger,
+.opening-figure {
+  pointer-events: none;
+}
+
+.sound-trigger,
+.opening-btn,
+.skip-btn {
   pointer-events: auto;
 }
+
 
 .audio-state {
   z-index: 2;
@@ -47,25 +52,31 @@
 }
 
 .sound-trigger,
+.opening-btn,
+.skip-btn {
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sound-trigger,
 .opening-btn {
   border: none;
   background: transparent;
   padding: 0;
   margin: 0;
   cursor: pointer;
-  appearance: none;
-  -webkit-tap-highlight-color: transparent;
   transform-origin: center center;
   will-change: transform, opacity, filter;
 }
 
 .sound-trigger:focus-visible,
-.opening-btn:focus-visible {
+.opening-btn:focus-visible,
+.skip-btn:focus-visible {
   outline: 2px solid #f3f6f7;
   outline-offset: 8px;
 }
 
-/* Button son */
+/* state 1 */
 
 .sound-trigger {
   width: clamp(84px, 10vw, 120px);
@@ -93,7 +104,26 @@
   will-change: transform, opacity;
 }
 
-/* Button opening */
+.skip-btn {
+  margin-top: 0.65rem;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888c96;
+  opacity: 0.72;
+  transition: opacity 180ms ease, color 180ms ease;
+}
+
+.skip-btn:hover {
+  opacity: 1;
+  color: #bdc1c7;
+}
+
+/* state 2 */
 
 .opening-btn {
   position: relative;
@@ -129,7 +159,8 @@
   .opening-btn,
   .sound-trigger svg,
   .opening-figure,
-  .sound-label {
+  .sound-label,
+  .skip-btn {
     transition: none !important;
     animation: none !important;
   }

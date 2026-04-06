@@ -1,1 +1,7 @@
-<app-opening></app-opening>
+@if (!showResume) {
+  <app-opening (finished)="onOpeningFinished()"></app-opening>
+}
+
+@if (showResume) {
+  <app-resum></app-resum>
+}
