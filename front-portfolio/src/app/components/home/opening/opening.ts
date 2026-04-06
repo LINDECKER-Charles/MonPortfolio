@@ -92,6 +92,7 @@ export class Opening implements AfterViewInit, OnDestroy {
   public launchBgMusic(): void {
     if (!this.isBrowser || this.currentState !== 1) return;
 
+    this.audioService.play('getItem');
     this.audioService.play('bgMusic');
     this.stopSoundIdle();
 
@@ -124,6 +125,7 @@ export class Opening implements AfterViewInit, OnDestroy {
   public playVoice(): void {
     if (!this.isBrowser || this.voiceHaveBeenPlayed || this.currentState !== 2) return;
 
+    this.audioService.play('getItem');
     this.voiceHaveBeenPlayed = true;
     this.isOpeningLeaving = true;
     this.audioService.play('pouperVoice');

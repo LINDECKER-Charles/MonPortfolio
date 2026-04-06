@@ -28,6 +28,12 @@ export class App {
         loop: false,
         volume: 0.5,
         preload: 'auto'
+      },
+      getItem: {
+        src: './opening/song/get_item.mp3',
+        loop: false,
+        volume: 0.07,
+        preload: 'auto'
       }
     });
   }
