@@ -46,7 +46,7 @@ jobs:
 
       - name: Build Angular app
         working-directory: ${{ env.FRONT_DIR }}
-        run: npm run build -- --configuration=test
+        run: npm run build
 
       - name: Upload Angular dist artifact
         uses: actions/upload-artifact@v4
