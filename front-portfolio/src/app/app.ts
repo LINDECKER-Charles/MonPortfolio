@@ -3,10 +3,11 @@ import {Loading} from './components/assets/loading/loading';
 import {Home} from './components/home/home';
 import {AudioService} from './services/audio-service';
 import {StopAllSound} from './components/assets/stop-all-sound/stop-all-sound';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Loading, Home, StopAllSound],
+  imports: [Loading, StopAllSound, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
