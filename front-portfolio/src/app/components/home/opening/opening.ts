@@ -12,11 +12,19 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import {AudioService} from '../../../services/audio-service';
+import {ResponsivePicture} from '../../assets/responsive-picture/responsive-picture';
 
+export interface ResponsiveSource {
+  src: string;
+  maxWidth?: number;
+  type?: string;
+}
 
 @Component({
   selector: 'app-opening',
-  imports: [],
+  imports: [
+    ResponsivePicture
+  ],
   templateUrl: './opening.html',
   styleUrl: './opening.css',
 })
@@ -45,6 +53,29 @@ export class Opening implements AfterViewInit, OnDestroy {
   private soundIdleTween?: gsap.core.Tween;
   private soundLabelIdleTween?: gsap.core.Tween;
   private openingIdleTween?: gsap.core.Tween;
+
+
+  public openingSources = [
+    {
+      src: './opening/320x320_opening_base.webp',
+      maxWidth: 320,
+      type: 'image/webp',
+    },
+    {
+      src: './opening/640x640_opening_base.webp',
+      maxWidth: 640,
+      type: 'image/webp',
+    },
+    {
+      src: './opening/768x768_opening_base.webp',
+      maxWidth: 768,
+      type: 'image/webp',
+    },
+    {
+      src: './opening/opening_base.webp',
+      type: 'image/webp',
+    },
+  ];
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;

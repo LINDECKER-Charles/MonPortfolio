@@ -64,37 +64,13 @@
         (mousedown)="onOpeningPress()"
       >
         <figure #openingFigure class="opening-figure">
-          <picture>
-            <source
-              srcset="./opening/320x320_opening_base.webp"
-              media="(max-width: 320px)"
-              type="image/webp"
-            />
-            <source
-              srcset="./opening/640x640_opening_base.webp"
-              media="(max-width: 640px)"
-              type="image/webp"
-            />
-            <source
-              srcset="./opening/768x768_opening_base.webp"
-              media="(max-width: 768px)"
-              type="image/webp"
-            />
-
-            <!-- Desktop -->
-            <source
-              srcset="./opening/opening_base.webp"
-              type="image/webp"
-            />
-
-            <!-- Fallback -->
-            <img
-              src="./opening/opening_base.webp"
-              alt=""
-              loading="eager"
-              decoding="async"
-            />
-          </picture>
+          <app-responsive-picture
+            [sources]="openingSources"
+            fallbackSrc="./opening/opening_base.webp"
+            alt=""
+            loading="eager"
+            decoding="async"
+          />
         </figure>
       </button>
     </div>
