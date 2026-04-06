@@ -328,3 +328,92 @@
     grid-column: auto;
   }
 }
+
+.contact-block {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(215, 215, 215, 0.16);
+  border-bottom: 1px solid rgba(215, 215, 215, 0.16);
+}
+
+.contact-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 56px;
+  padding: 0.6rem 1rem;
+
+  text-decoration: none;
+  color: #d8d1c4;
+
+  border-bottom: 1px solid rgba(215, 215, 215, 0.08);
+
+  transition:
+    color 180ms ease,
+    text-shadow 180ms ease;
+}
+
+.contact-row:last-child {
+  border-bottom: none;
+}
+
+/* label centré avec icône */
+.contact-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+/* icônes arrondies */
+.contact-label app-responsive-picture,
+.contact-label picture,
+.contact-label img {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* ligne fine centrale */
+.contact-row::before {
+  content: "";
+  position: absolute;
+  inset: 50% 10%;
+  height: 1px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* glow Bloodborne */
+.contact-row::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(188, 132, 43, 0.22) 0%,
+      rgba(188, 132, 43, 0.08) 40%,
+      transparent 70%
+    );
+
+  transition: opacity 180ms ease;
+}
+
+/* hover */
+.contact-row:hover {
+  color: #f3ede0;
+  text-shadow:
+    0 0 10px rgba(220, 188, 120, 0.25),
+    0 0 20px rgba(188, 132, 43, 0.15);
+}
+
+.contact-row:hover::after {
+  opacity: 1;
+}
