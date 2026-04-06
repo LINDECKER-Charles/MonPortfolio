@@ -10,7 +10,7 @@ permissions:
 
 env:
   FRONT_DIR: front-portfolio
-  VPS_DIR: /var/www/test-portfolio
+  VPS_DIR: /var/www/portfolio-test
   FRONT_PROCESS: angular-portfolio-test.service
 
 concurrency:
