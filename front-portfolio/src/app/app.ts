@@ -1,6 +1,5 @@
 import {Component, inject, signal} from '@angular/core';
 import {Loading} from './components/assets/loading/loading';
-import {Home} from './components/home/home';
 import {AudioService} from './services/audio-service';
 import {StopAllSound} from './components/assets/stop-all-sound/stop-all-sound';
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
