@@ -43,10 +43,13 @@ export class Resum implements AfterViewInit, OnDestroy {
       const frame = panel.querySelector('.panel-frame');
       const noise = panel.querySelector('.panel-noise');
       const scanlines = panel.querySelector('.panel-scanlines');
+      const sheen = panel.querySelector('.panel-sheen');
 
       const leftItems = left.querySelectorAll('.title, .row, .separator');
       const centerItems = center.querySelectorAll('.row');
-      const rightItems = right.querySelectorAll('.runes, .section-title, .passives li, .separator, .contact-block');
+      const rightItems = right.querySelectorAll(
+        '.runes, .section-title, .passives li, .separator, .contact-block'
+      );
       const bottomItems = bottom.querySelectorAll('.section-title, .project-list li');
 
       gsap.set(panel, {
@@ -66,9 +69,16 @@ export class Resum implements AfterViewInit, OnDestroy {
         y: 12,
       });
 
-      gsap.set([frame, noise, scanlines], {
+      gsap.set([frame, noise, scanlines, sheen], {
         opacity: 0,
       });
+
+      if (sheen) {
+        gsap.set(sheen, {
+          x: '-120%',
+          rotate: 8,
+        });
+      }
 
       const tl = gsap.timeline({
         defaults: { ease: 'power3.out' },
@@ -155,7 +165,11 @@ export class Resum implements AfterViewInit, OnDestroy {
           },
           '-=0.2'
         )
-        .add(() => this.startIdleAnimations(panel, left, center, right, bottom, noise, scanlines));
+        .add(() => {
+          gsap.delayedCall(0.25, () => {
+            this.startIdleAnimations(panel, left, center, right, bottom, noise, scanlines, sheen);
+          });
+        });
     }, this.panelRef.nativeElement);
   }
 
@@ -166,7 +180,8 @@ export class Resum implements AfterViewInit, OnDestroy {
     right: HTMLElement,
     bottom: HTMLElement,
     noise: Element | null,
-    scanlines: Element | null
+    scanlines: Element | null,
+    sheen: Element | null
   ): void {
     this.killIdleTweens();
 
@@ -177,10 +192,10 @@ export class Resum implements AfterViewInit, OnDestroy {
 
     this.idleTweens.push(
       gsap.to(left, {
-        y: -4,
-        x: -1,
-        rotation: -0.15,
-        duration: 4.8,
+        y: -2,
+        x: -0.5,
+        rotation: -0.08,
+        duration: 5.2,
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
@@ -189,10 +204,10 @@ export class Resum implements AfterViewInit, OnDestroy {
 
     this.idleTweens.push(
       gsap.to(center, {
-        y: -2,
-        x: 1,
-        rotation: 0.12,
-        duration: 5.6,
+        y: -1.5,
+        x: 0.5,
+        rotation: 0.06,
+        duration: 6.1,
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
@@ -201,10 +216,10 @@ export class Resum implements AfterViewInit, OnDestroy {
 
     this.idleTweens.push(
       gsap.to(right, {
-        y: -5,
-        x: 1.5,
-        rotation: 0.18,
-        duration: 5.1,
+        y: -2.5,
+        x: 0.8,
+        rotation: 0.08,
+        duration: 5.6,
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
@@ -213,9 +228,9 @@ export class Resum implements AfterViewInit, OnDestroy {
 
     this.idleTweens.push(
       gsap.to(bottom, {
-        y: -3,
-        x: 0.5,
-        duration: 6.2,
+        y: -1.5,
+        x: 0.3,
+        duration: 6.8,
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
@@ -226,7 +241,7 @@ export class Resum implements AfterViewInit, OnDestroy {
       gsap.to(panel, {
         boxShadow:
           'inset 0 0 0 1px rgba(255,255,255,0.05), 0 22px 90px rgba(0,0,0,0.5)',
-        duration: 3.8,
+        duration: 4.5,
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
@@ -254,6 +269,26 @@ export class Resum implements AfterViewInit, OnDestroy {
           ease: 'none',
           repeat: -1,
         })
+      );
+    }
+
+    if (sheen) {
+      this.idleTweens.push(
+        gsap.fromTo(
+          sheen,
+          {
+            x: '-120%',
+            opacity: 0,
+          },
+          {
+            x: '220%',
+            opacity: 0.28,
+            duration: 5.5,
+            ease: 'power2.inOut',
+            repeat: -1,
+            repeatDelay: 1.5,
+          }
+        )
       );
     }
   }

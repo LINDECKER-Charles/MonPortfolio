@@ -677,3 +677,46 @@
 .panel-scanlines {
   will-change: transform, opacity, filter, background-position, box-shadow;
 }
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.06) 48%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.06) 52%,
+    transparent 60%
+  );
+
+  transform: translateX(-120%) rotate(8deg);
+  pointer-events: none;
+  z-index: 2;
+
+  opacity: 0; /* contrôlé par GSAP */
+  will-change: transform, opacity;
+}
+
+.panel-sheen {
+  position: absolute;
+  inset: -50%;
+
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.05) 48%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.05) 52%,
+    transparent 60%
+  );
+
+  transform: translateX(-120%) rotate(8deg);
+  pointer-events: none;
+  z-index: 2;
+
+  opacity: 0;
+  will-change: transform, opacity;
+}
