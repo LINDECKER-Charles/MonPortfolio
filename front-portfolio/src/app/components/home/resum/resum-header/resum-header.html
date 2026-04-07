@@ -1,6 +1,6 @@
 <h2 class="title">Charles LINDECKER</h2>
 
-<div class="row">
+<div class="row" (mouseenter)="onRowHoverEnter($event)" (mouseleave)="onRowHoverLeave($event)">
   <span class="label">
     <app-responsive-picture
       [sources]="images.stats.level.sources"
@@ -12,7 +12,7 @@
   <span class="value">22</span>
 </div>
 
-<div class="row">
+<div class="row" (mouseenter)="onRowHoverEnter($event)" (mouseleave)="onRowHoverLeave($event)">
   <span class="label">
     <app-responsive-picture
       [sources]="images.stats.bloodEcho.sources"

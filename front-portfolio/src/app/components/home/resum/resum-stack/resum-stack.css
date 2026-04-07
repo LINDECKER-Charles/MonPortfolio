@@ -12,6 +12,8 @@
   border-bottom: 1px solid rgba(215, 215, 215, 0.09);
   font-size: 1rem;
   color: #c9c3b8;
+  transform-origin: 0 50%;
+  will-change: transform;
 }
 
 .label {
@@ -20,11 +22,13 @@
   gap: 0.6rem;
   min-width: 0;
   white-space: nowrap;
+  will-change: transform;
 }
 
 .value {
   color: #ddd6cb;
   text-align: right;
+  will-change: transform, color;
 }
 
 .label app-responsive-picture,
@@ -36,6 +40,7 @@
   flex-shrink: 0;
   border-radius: 999px;
   overflow: hidden;
+  will-change: transform;
 }
 
 .label img {
