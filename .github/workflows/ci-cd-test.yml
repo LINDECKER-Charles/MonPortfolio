@@ -50,7 +50,7 @@ jobs:
         run: npm run build
 
       - name: Upload Angular dist artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: angular-dist
           path: ${{ env.FRONT_DIR }}/dist
@@ -77,12 +77,12 @@ jobs:
           git push origin test
 
   deploy-test:
-    needs: [ci, merge-test]
+    needs: ci
     runs-on: ubuntu-latest
 
     steps:
       - name: Download Angular dist artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: angular-dist
           path: ./dist
@@ -126,3 +126,4 @@ jobs:
           script: |
             sudo systemctl restart ${{ env.FRONT_PROCESS }}
             sudo systemctl status ${{ env.FRONT_PROCESS }} --no-pager
+

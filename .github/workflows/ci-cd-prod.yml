@@ -50,39 +50,19 @@ jobs:
         run: npm run build
 
       - name: Upload Angular dist artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: angular-dist
           path: ${{ env.FRONT_DIR }}/dist
           if-no-files-found: error
 
-  merge-test:
+  deploy-prod:
     needs: ci
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - name: Merge dev into test
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-
-          git fetch origin dev test
-          git checkout test
-          git merge origin/dev --no-ff -m "CI: merge dev into test"
-          git push origin test
-
-  deploy-test:
-    needs: [ci, merge-test]
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Download Angular dist artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: angular-dist
           path: ./dist
@@ -126,3 +106,5 @@ jobs:
           script: |
             sudo systemctl restart ${{ env.FRONT_PROCESS }}
             sudo systemctl status ${{ env.FRONT_PROCESS }} --no-pager
+
+
