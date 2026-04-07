@@ -10,6 +10,7 @@ import { PlaySoundOnClickDirective } from './play-sound-on-click.directive';
     <button
       [appPlaySoundOnClick]="soundKey"
       [appPlaySoundMode]="mode"
+      [appPlaySoundTrigger]="trigger"
       [appPlaySoundDisabled]="disabled"
       type="button"
     >
@@ -20,6 +21,7 @@ import { PlaySoundOnClickDirective } from './play-sound-on-click.directive';
 class TestHostComponent {
   soundKey = 'getItem';
   mode: 'once' | 'persistent' = 'once';
+  trigger: 'click' | 'hover' = 'click';
   disabled = false;
 }
 
@@ -53,6 +55,28 @@ describe('PlaySoundOnClickDirective', () => {
     fixture.debugElement.query(By.css('button')).triggerEventHandler('click');
 
     expect(audioService.play).toHaveBeenCalledWith('getItem');
+    expect(audioService.playOnce).not.toHaveBeenCalled();
+  });
+
+  it('plays on hover when requested', () => {
+    const fixture = TestBed.createComponent(TestHostComponent);
+    fixture.componentInstance.trigger = 'hover';
+    fixture.detectChanges();
+
+    fixture.debugElement.query(By.css('button')).triggerEventHandler('mouseenter');
+
+    expect(audioService.playOnce).toHaveBeenCalledWith('getItem');
+    expect(audioService.play).not.toHaveBeenCalled();
+  });
+
+  it('does not play on click when trigger is hover', () => {
+    const fixture = TestBed.createComponent(TestHostComponent);
+    fixture.componentInstance.trigger = 'hover';
+    fixture.detectChanges();
+
+    fixture.debugElement.query(By.css('button')).triggerEventHandler('click');
+
+    expect(audioService.play).not.toHaveBeenCalled();
     expect(audioService.playOnce).not.toHaveBeenCalled();
   });
 

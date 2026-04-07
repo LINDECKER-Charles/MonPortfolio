@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ResponsivePicture } from '../../../assets/responsive-picture/responsive-picture';
+import { PlaySoundOnClickDirective } from '../../../../directives/play-sound-on-click.directive';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 
 @Component({
   selector: 'app-resum-active-projects',
-  imports: [ResponsivePicture],
+  imports: [ResponsivePicture, PlaySoundOnClickDirective],
   templateUrl: './resum-active-projects.html',
   styleUrl: './resum-active-projects.css',
 })
