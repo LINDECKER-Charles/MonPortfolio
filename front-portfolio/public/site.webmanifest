@@ -1,6 +1,6 @@
 {
   "name": "BloodSouls",
-  "short_name": "BloodSouls",
+  "short_name": "MySite",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#000000",
+  "theme_color": "#111111",
   "background_color": "#000000",
   "display": "standalone"
 }
