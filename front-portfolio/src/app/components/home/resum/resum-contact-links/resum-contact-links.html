@@ -1,5 +1,15 @@
 <div class="contact-block">
-  <a href="https://github.com/LINDECKER-Charles" target="_blank" class="contact-row">
+  <a
+    href="https://github.com/LINDECKER-Charles"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="contact-row"
+    (mouseenter)="onHoverEnter($event)"
+    (mouseleave)="onHoverLeave($event)"
+    (mousedown)="onPress($event)"
+    (mouseup)="onRelease($event)"
+    (blur)="onHoverLeave($event)"
+  >
     <span class="contact-label">
       <app-responsive-picture
         [sources]="images.stack.github.sources"
@@ -10,7 +20,17 @@
     </span>
   </a>
 
-  <a href="https://www.linkedin.com/in/charles-lindecker/" target="_blank" class="contact-row">
+  <a
+    href="https://www.linkedin.com/in/charles-lindecker/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="contact-row"
+    (mouseenter)="onHoverEnter($event)"
+    (mouseleave)="onHoverLeave($event)"
+    (mousedown)="onPress($event)"
+    (mouseup)="onRelease($event)"
+    (blur)="onHoverLeave($event)"
+  >
     <span class="contact-label">
       <app-responsive-picture
         [sources]="images.stack.linkedin.sources"
@@ -21,7 +41,15 @@
     </span>
   </a>
 
-  <a href="mailto:charles.lindecker@outlook.fr" class="contact-row">
+  <a
+    href="mailto:charles.lindecker@outlook.fr"
+    class="contact-row"
+    (mouseenter)="onHoverEnter($event)"
+    (mouseleave)="onHoverLeave($event)"
+    (mousedown)="onPress($event)"
+    (mouseup)="onRelease($event)"
+    (blur)="onHoverLeave($event)"
+  >
     <span class="contact-label">
       <app-responsive-picture
         [sources]="images.stack.mail.sources"
