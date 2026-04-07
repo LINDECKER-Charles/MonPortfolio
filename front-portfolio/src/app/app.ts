@@ -36,6 +36,30 @@ export class App {
         volume: 0.07,
         preload: 'auto'
       },
+      bloodVial: {
+        src: './song/blood_vial.mp3',
+        loop: false,
+        volume: 0.06,
+        preload: 'auto'
+      },
+      getEcho: {
+        src: './song/get_echo.mp3',
+        loop: false,
+        volume: 0.06,
+        preload: 'auto'
+      },
+      getbackEcho: {
+        src: './song/getback_echo.mp3',
+        loop: false,
+        volume: 0.06,
+        preload: 'auto'
+      },
+      messagerLaught: {
+        src: './song/messager_laught.mp3',
+        loop: false,
+        volume: 0.06,
+        preload: 'auto'
+      },
       newLocation: {
         src: './song/new_location.mp3',
         loop: false,

@@ -1,33 +1,73 @@
 <div class="runes">
-  <div class="rune">
+  <button
+    type="button"
+    class="rune"
+    [appPlaySoundOnClick]="'getbackEcho'"
+    (mouseenter)="onHoverEnter($event)"
+    (mouseleave)="onHoverLeave($event)"
+    (mousedown)="onPress($event)"
+    (mouseup)="onRelease($event)"
+    (blur)="onHoverLeave($event)"
+    aria-label="Bloodtinge"
+  >
     <app-responsive-picture
       [sources]="images.runes.gear.sources"
       [fallbackSrc]="images.runes.gear.fallbackSrc"
       alt=""
     />
-  </div>
+  </button>
 
-  <div class="rune">
+  <button
+    type="button"
+    class="rune"
+    [appPlaySoundOnClick]="'messagerLaught'"
+    (mouseenter)="onHoverEnter($event)"
+    (mouseleave)="onHoverLeave($event)"
+    (mousedown)="onPress($event)"
+    (mouseup)="onRelease($event)"
+    (blur)="onHoverLeave($event)"
+    aria-label="Eso"
+  >
     <app-responsive-picture
       [sources]="images.runes.brain.sources"
       [fallbackSrc]="images.runes.brain.fallbackSrc"
       alt=""
     />
-  </div>
+  </button>
 
-  <div class="rune">
+  <button
+    type="button"
+    class="rune"
+    [appPlaySoundOnClick]="'bloodVial'"
+    (mouseenter)="onHoverEnter($event)"
+    (mouseleave)="onHoverLeave($event)"
+    (mousedown)="onPress($event)"
+    (mouseup)="onRelease($event)"
+    (blur)="onHoverLeave($event)"
+    aria-label="Heart"
+  >
     <app-responsive-picture
       [sources]="images.runes.fire.sources"
       [fallbackSrc]="images.runes.fire.fallbackSrc"
       alt=""
     />
-  </div>
+  </button>
 
-  <div class="rune">
+  <button
+    type="button"
+    class="rune"
+    [appPlaySoundOnClick]="'getEcho'"
+    (mouseenter)="onHoverEnter($event)"
+    (mouseleave)="onHoverLeave($event)"
+    (mousedown)="onPress($event)"
+    (mouseup)="onRelease($event)"
+    (blur)="onHoverLeave($event)"
+    aria-label="Endurance"
+  >
     <app-responsive-picture
       [sources]="images.runes.moon.sources"
       [fallbackSrc]="images.runes.moon.fallbackSrc"
       alt=""
     />
-  </div>
+  </button>
 </div>
