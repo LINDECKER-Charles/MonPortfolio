@@ -2,7 +2,7 @@
   <div
     #audioState
     class="state-layer audio-state"
-    [class.is-active]="currentState === 1"
+    [class.is-active]="isSoundGateVisible"
   >
     <div class="audio-gate">
       <button
@@ -50,7 +50,7 @@
   <div
     #openingState
     class="state-layer opening-state"
-    [class.is-active]="currentState === 2 || isOpeningLeaving"
+    [class.is-active]="isOpeningVisible"
   >
     <div class="opening-trigger">
       <button
@@ -66,7 +66,7 @@
         <figure #openingFigure class="opening-figure">
           <app-responsive-picture
             [sources]="openingSources"
-            fallbackSrc="./opening/opening_base.webp"
+            [fallbackSrc]="openingFallbackSrc"
             alt=""
             loading="eager"
             decoding="async"
