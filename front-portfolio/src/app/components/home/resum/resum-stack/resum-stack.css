@@ -1,0 +1,119 @@
+:host {
+  display: contents;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 42px;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid rgba(215, 215, 215, 0.09);
+  font-size: 1rem;
+  color: #c9c3b8;
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.value {
+  color: #ddd6cb;
+  text-align: right;
+  will-change: transform, color;
+}
+
+.label app-responsive-picture,
+.label picture,
+.label img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.label img {
+  object-fit: cover;
+  filter: brightness(0.95) contrast(1.05);
+}
+
+@media (max-width: 768px) {
+  .row {
+    min-height: 40px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    gap: 0.6rem;
+    min-height: 38px;
+    font-size: 0.88rem;
+  }
+
+  .label {
+    gap: 0.45rem;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .label app-responsive-picture,
+  .label picture,
+  .label img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .value {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .row {
+    gap: 0.45rem;
+    min-height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .label {
+    gap: 0.4rem;
+    font-size: 0.82rem;
+  }
+
+  .label app-responsive-picture,
+  .label picture,
+  .label img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .value {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .row {
+    font-size: 0.76rem;
+  }
+
+  .label {
+    font-size: 0.78rem;
+  }
+
+  .value {
+    font-size: 0.72rem;
+  }
+}

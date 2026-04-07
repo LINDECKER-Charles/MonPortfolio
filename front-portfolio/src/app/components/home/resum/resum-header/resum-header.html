@@ -1,0 +1,40 @@
+<h2 class="title">
+  <a
+    href="https://github.com/LINDECKER-Charles"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="title-link"
+    [appPlaySoundOnClick]="'smallBell'"
+    (mouseenter)="onTitleHoverEnter($event)"
+    (mouseleave)="onTitleHoverLeave($event)"
+    (mousedown)="onTitlePress($event)"
+    (mouseup)="onTitleRelease($event)"
+    (blur)="onTitleHoverLeave($event)"
+  >
+    Charles LINDECKER
+  </a>
+</h2>
+
+<div class="row" (mouseenter)="onRowHoverEnter($event)" (mouseleave)="onRowHoverLeave($event)">
+  <span class="label">
+    <app-responsive-picture
+      [sources]="images.stats.level.sources"
+      [fallbackSrc]="images.stats.level.fallbackSrc"
+      alt=""
+    />
+    Niveau
+  </span>
+  <span class="value">22</span>
+</div>
+
+<div class="row" (mouseenter)="onRowHoverEnter($event)" (mouseleave)="onRowHoverLeave($event)">
+  <span class="label">
+    <app-responsive-picture
+      [sources]="images.stats.bloodEcho.sources"
+      [fallbackSrc]="images.stats.bloodEcho.fallbackSrc"
+      alt=""
+    />
+    Classe
+  </span>
+  <span class="value">Formateur Dev Web</span>
+</div>

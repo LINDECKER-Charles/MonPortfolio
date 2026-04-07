@@ -19,21 +19,57 @@ export class App {
   constructor() {
     this.audio.registerMany({
       bgMusic: {
-        src: './opening/song/hunters_dream.mp3',
+        src: './song/hunters_dream.mp3',
         loop: true,
         volume: 0.35,
         preload: 'auto'
       },
       pouperVoice: {
-        src: './opening/song/pouper_welcome.mp3',
+        src: './song/pouper_welcome.mp3',
         loop: false,
         volume: 0.5,
         preload: 'auto'
       },
       getItem: {
-        src: './opening/song/get_item.mp3',
+        src: './song/get_item.mp3',
         loop: false,
         volume: 0.07,
+        preload: 'auto'
+      },
+      bloodVial: {
+        src: './song/blood_vial.mp3',
+        loop: false,
+        volume: 0.06,
+        preload: 'auto'
+      },
+      getEcho: {
+        src: './song/get_echo.mp3',
+        loop: false,
+        volume: 0.06,
+        preload: 'auto'
+      },
+      getbackEcho: {
+        src: './song/getback_echo.mp3',
+        loop: false,
+        volume: 0.06,
+        preload: 'auto'
+      },
+      messagerLaught: {
+        src: './song/messager_laught.mp3',
+        loop: false,
+        volume: 0.06,
+        preload: 'auto'
+      },
+      smallBell: {
+        src: './song/small_bell.mp3',
+        loop: false,
+        volume: 0.04,
+        preload: 'auto'
+      },
+      newLocation: {
+        src: './song/new_location.mp3',
+        loop: false,
+        volume: 0.04,
         preload: 'auto'
       }
     });

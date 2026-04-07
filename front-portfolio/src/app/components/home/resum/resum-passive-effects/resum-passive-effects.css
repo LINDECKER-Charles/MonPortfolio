@@ -1,0 +1,62 @@
+:host {
+  display: contents;
+}
+
+.section-title {
+  margin: 0 0 0.85rem;
+  padding-bottom: 0.55rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #cbb996;
+  border-bottom: 1px solid rgba(215, 215, 215, 0.16);
+}
+
+.passives {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.passives li {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(215, 215, 215, 0.09);
+  color: #c9c3b8;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1rem;
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .passives li {
+    min-height: 34px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .section-title {
+    font-size: 0.92rem;
+  }
+
+  .passives li {
+    min-height: 32px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .section-title {
+    font-size: 0.88rem;
+  }
+}

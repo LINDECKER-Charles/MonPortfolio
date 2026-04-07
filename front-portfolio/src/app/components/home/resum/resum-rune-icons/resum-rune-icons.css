@@ -1,0 +1,79 @@
+:host {
+  display: contents;
+}
+
+.runes {
+  display: flex;
+  gap: 0.55rem;
+  margin-bottom: 1.2rem;
+}
+
+.rune {
+  appearance: none;
+  padding: 0;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(215, 215, 215, 0.22);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.22));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4cdc1;
+  font-size: 1.2rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.rune:focus-visible {
+  outline: 1px solid rgba(215, 192, 154, 0.85);
+  outline-offset: 2px;
+}
+
+.rune app-responsive-picture,
+.rune picture,
+.rune img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rune img {
+  object-fit: contain;
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .rune {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (max-width: 480px) {
+  .runes {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .rune {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .rune {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 320px) {
+  .rune {
+    width: 34px;
+    height: 34px;
+  }
+}
