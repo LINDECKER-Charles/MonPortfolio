@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import gsap from 'gsap';
 import { ResponsivePicture } from '../../assets/responsive-picture/responsive-picture';
+import { RESUM_IMAGES } from '../../../imgSources/resum.sources';
 
 @Component({
   selector: 'app-resum',
@@ -26,6 +27,8 @@ export class Resum implements AfterViewInit, OnDestroy {
   @ViewChild('centerCol', { static: true }) centerColRef!: ElementRef<HTMLElement>;
   @ViewChild('rightCol', { static: true }) rightColRef!: ElementRef<HTMLElement>;
   @ViewChild('bottomBlock', { static: true }) bottomBlockRef!: ElementRef<HTMLElement>;
+
+  public readonly images = RESUM_IMAGES;
 
   private ctx?: gsap.Context;
   private idleTweens: gsap.core.Tween[] = [];

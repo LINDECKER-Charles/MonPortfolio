@@ -1,25 +1,18 @@
 <section class="resum">
   <div #panel class="panel">
-
     <div class="panel-sheen"></div>
     <div class="panel-frame"></div>
     <div class="panel-noise"></div>
     <div class="panel-scanlines"></div>
 
-
-    <!-- LEFT -->
     <div #leftCol class="col left">
       <h2 class="title">Charles LINDECKER</h2>
 
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/40x40_level.webp', maxWidth: 480 },
-              { src: './icon/80x80_level.webp', maxWidth: 1024 },
-              { src: './icon/160x160_level.webp' }
-            ]"
-            fallbackSrc="./icon/160x160_level.webp"
+            [sources]="images.stats.level.sources"
+            [fallbackSrc]="images.stats.level.fallbackSrc"
             alt=""
           />
           Niveau
@@ -30,12 +23,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/40x40_blood_echo.webp', maxWidth: 480 },
-              { src: './icon/80x80_blood_echo.webp', maxWidth: 1024 },
-              { src: './icon/160x160_blood_echo.webp' }
-            ]"
-            fallbackSrc="./icon/160x160_blood_echo.webp"
+            [sources]="images.stats.bloodEcho.sources"
+            [fallbackSrc]="images.stats.bloodEcho.fallbackSrc"
             alt=""
           />
           Classe
@@ -48,12 +37,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/strenght-32.webp', maxWidth: 480 },
-              { src: './icon/strenght-64.webp', maxWidth: 1024 },
-              { src: './icon/strenght.webp' }
-            ]"
-            fallbackSrc="./icon/strenght.png"
+            [sources]="images.stats.strength.sources"
+            [fallbackSrc]="images.stats.strength.fallbackSrc"
             alt=""
           />
           Backend
@@ -64,12 +49,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/40x40_dex.webp', maxWidth: 480 },
-              { src: './icon/80x80_dex.webp', maxWidth: 1024 },
-              { src: './icon/160x160_dex.webp' }
-            ]"
-            fallbackSrc="./icon/160x160_dex.webp"
+            [sources]="images.stats.dex.sources"
+            [fallbackSrc]="images.stats.dex.fallbackSrc"
             alt=""
           />
           Frontend
@@ -80,12 +61,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/40x40_discover.webp', maxWidth: 480 },
-              { src: './icon/80x80_discover.webp', maxWidth: 1024 },
-              { src: './icon/160x160_discover.webp' }
-            ]"
-            fallbackSrc="./icon/160x160_discover.webp"
+            [sources]="images.stats.discover.sources"
+            [fallbackSrc]="images.stats.discover.fallbackSrc"
             alt=""
           />
           Architecture
@@ -96,12 +73,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/40x40_bloodtig.webp', maxWidth: 480 },
-              { src: './icon/80x80_bloodtig.webp', maxWidth: 1024 },
-              { src: './icon/160x160_bloodtig.webp' }
-            ]"
-            fallbackSrc="./icon/160x160_bloodtig.webp"
+            [sources]="images.stats.bloodtinge.sources"
+            [fallbackSrc]="images.stats.bloodtinge.fallbackSrc"
             alt=""
           />
           Sécurité
@@ -112,12 +85,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/40x40_eso.webp', maxWidth: 480 },
-              { src: './icon/80x80_eso.webp', maxWidth: 1024 },
-              { src: './icon/160x160_eso.webp' }
-            ]"
-            fallbackSrc="./icon/160x160_eso.webp"
+            [sources]="images.stats.eso.sources"
+            [fallbackSrc]="images.stats.eso.fallbackSrc"
             alt=""
           />
           DevOps
@@ -126,35 +95,24 @@
       </div>
     </div>
 
-    <!-- CENTER -->
     <div #centerCol class="col center">
       <div class="row">
-          <span class="label">
-            <app-responsive-picture
-              [sources]="[
-                { src: './icon/stack/24x24_dotnet.webp', maxWidth: 340 },
-                { src: './icon/stack/40x40_dotnet.webp', maxWidth: 480 },
-                { src: './icon/stack/80x80_dotnet.webp', maxWidth: 1024 },
-                { src: './icon/stack/160x160_dotnet.webp' }
-              ]"
-              fallbackSrc="./icon/stack/160x160_dotnet.webp"
-              alt=""
-            />
-            .NET
-          </span>
+        <span class="label">
+          <app-responsive-picture
+            [sources]="images.stack.dotnet.sources"
+            [fallbackSrc]="images.stack.dotnet.fallbackSrc"
+            alt=""
+          />
+          .NET
+        </span>
         <span class="value">95</span>
       </div>
 
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/stack/24x24_angular.webp', maxWidth: 340 },
-              { src: './icon/stack/40x40_angular.webp', maxWidth: 480 },
-              { src: './icon/stack/80x80_angular.webp', maxWidth: 1024 },
-              { src: './icon/stack/160x160_angular.webp' }
-            ]"
-            fallbackSrc="./icon/stack/160x160_angular.webp"
+            [sources]="images.stack.angular.sources"
+            [fallbackSrc]="images.stack.angular.fallbackSrc"
             alt=""
           />
           Angular
@@ -165,13 +123,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/stack/24x24_symfony.webp', maxWidth: 340 },
-              { src: './icon/stack/40x40_symfony.webp', maxWidth: 480 },
-              { src: './icon/stack/80x80_symfony.webp', maxWidth: 1024 },
-              { src: './icon/stack/160x160_symfony.webp' }
-            ]"
-            fallbackSrc="./icon/stack/160x160_symfony.webp"
+            [sources]="images.stack.symfony.sources"
+            [fallbackSrc]="images.stack.symfony.fallbackSrc"
             alt=""
           />
           Symfony
@@ -182,13 +135,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/stack/24x24_postgre.webp', maxWidth: 340 },
-              { src: './icon/stack/40x40_postgre.webp', maxWidth: 480 },
-              { src: './icon/stack/80x80_postgre.webp', maxWidth: 1024 },
-              { src: './icon/stack/160x160_postgre.webp' }
-            ]"
-            fallbackSrc="./icon/stack/160x160_postgre.webp"
+            [sources]="images.stack.postgre.sources"
+            [fallbackSrc]="images.stack.postgre.fallbackSrc"
             alt=""
           />
           PostgreSQL
@@ -199,13 +147,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/stack/24x24_action.webp', maxWidth: 340 },
-              { src: './icon/stack/40x40_action.webp', maxWidth: 480 },
-              { src: './icon/stack/80x80_action.webp', maxWidth: 1024 },
-              { src: './icon/stack/160x160_action.webp' }
-            ]"
-            fallbackSrc="./icon/stack/160x160_action.webp"
+            [sources]="images.stack.action.sources"
+            [fallbackSrc]="images.stack.action.fallbackSrc"
             alt=""
           />
           GitHub Actions
@@ -216,13 +159,8 @@
       <div class="row">
         <span class="label">
           <app-responsive-picture
-            [sources]="[
-            { src: './icon/stack/24x24_python.webp', maxWidth: 340 },
-              { src: './icon/stack/40x40_python.webp', maxWidth: 480 },
-              { src: './icon/stack/80x80_python.webp', maxWidth: 1024 },
-              { src: './icon/stack/160x160_python.webp' }
-            ]"
-            fallbackSrc="./icon/stack/160x160_python.webp"
+            [sources]="images.stack.python.sources"
+            [fallbackSrc]="images.stack.python.fallbackSrc"
             alt=""
           />
           Python
@@ -231,53 +169,36 @@
       </div>
     </div>
 
-    <!-- RIGHT -->
     <div #rightCol class="col right">
       <div class="runes">
         <div class="rune">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/gear-32.webp', maxWidth: 480 },
-              { src: './icon/gear-64.webp', maxWidth: 1024 },
-              { src: './icon/gear.webp' }
-            ]"
-            fallbackSrc="./icon/blood_res.png"
+            [sources]="images.runes.gear.sources"
+            [fallbackSrc]="images.runes.gear.fallbackSrc"
             alt=""
           />
         </div>
 
         <div class="rune">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/brain-32.webp', maxWidth: 480 },
-              { src: './icon/brain-64.webp', maxWidth: 1024 },
-              { src: './icon/brain.webp' }
-            ]"
-            fallbackSrc="./icon/eso_resist.png"
+            [sources]="images.runes.brain.sources"
+            [fallbackSrc]="images.runes.brain.fallbackSrc"
             alt=""
           />
         </div>
 
         <div class="rune">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/fire-32.webp', maxWidth: 480 },
-              { src: './icon/fire-64.webp', maxWidth: 1024 },
-              { src: './icon/fire.webp' }
-            ]"
-            fallbackSrc="./icon/hearth.png"
+            [sources]="images.runes.fire.sources"
+            [fallbackSrc]="images.runes.fire.fallbackSrc"
             alt=""
           />
         </div>
 
         <div class="rune">
           <app-responsive-picture
-            [sources]="[
-              { src: './icon/moon-32.webp', maxWidth: 480 },
-              { src: './icon/moon-64.webp', maxWidth: 1024 },
-              { src: './icon/moon.webp' }
-            ]"
-            fallbackSrc="./icon/endurance.png"
+            [sources]="images.runes.moon.sources"
+            [fallbackSrc]="images.runes.moon.fallbackSrc"
             alt=""
           />
         </div>
@@ -296,17 +217,11 @@
       <div class="separator"></div>
 
       <div class="contact-block">
-
         <a href="https://github.com/LINDECKER-Charles" target="_blank" class="contact-row">
           <span class="contact-label">
             <app-responsive-picture
-              [sources]="[
-                { src: './icon/stack/24x24_github.webp', maxWidth: 340 },
-                { src: './icon/stack/40x40_github.webp', maxWidth: 480 },
-                { src: './icon/stack/80x80_github.webp', maxWidth: 1024 },
-                { src: './icon/stack/160x160_github.webp' }
-              ]"
-              fallbackSrc="./icon/stack/160x160_github.webp"
+              [sources]="images.stack.github.sources"
+              [fallbackSrc]="images.stack.github.fallbackSrc"
               alt=""
             />
             GitHub
@@ -316,13 +231,8 @@
         <a href="https://www.linkedin.com/in/charles-lindecker/" target="_blank" class="contact-row">
           <span class="contact-label">
             <app-responsive-picture
-              [sources]="[
-                { src: './icon/stack/24x24_linkedin.webp', maxWidth: 340 },
-                { src: './icon/stack/40x40_linkedin.webp', maxWidth: 480 },
-                { src: './icon/stack/80x80_linkedin.webp', maxWidth: 1024 },
-                { src: './icon/stack/160x160_linkedin.webp' }
-              ]"
-              fallbackSrc="./icon/stack/160x160_linkedin.webp"
+              [sources]="images.stack.linkedin.sources"
+              [fallbackSrc]="images.stack.linkedin.fallbackSrc"
               alt=""
             />
             LinkedIn
@@ -332,23 +242,16 @@
         <a href="mailto:charles.lindecker@outlook.fr" class="contact-row">
           <span class="contact-label">
             <app-responsive-picture
-              [sources]="[
-                { src: './icon/stack/24x24_mail.webp', maxWidth: 340 },
-                { src: './icon/stack/40x40_mail.webp', maxWidth: 480 },
-                { src: './icon/stack/80x80_mail.webp', maxWidth: 1024 },
-                { src: './icon/stack/160x160_mail.webp' }
-              ]"
-              fallbackSrc="./icon/stack/160x160_mail.webp"
+              [sources]="images.stack.mail.sources"
+              [fallbackSrc]="images.stack.mail.fallbackSrc"
               alt=""
             />
             Email
           </span>
         </a>
-
       </div>
     </div>
 
-    <!-- BOTTOM -->
     <div #bottomBlock class="bottom">
       <h3 class="section-title">Projets actifs</h3>
 
@@ -357,12 +260,8 @@
           <a href="https://elan-formation.fr/accueil" target="_blank" class="project-item">
             <span class="label">
               <app-responsive-picture
-                [sources]="[
-                  { src: './icon/project/40x40_main_w_1.webp', maxWidth: 480 },
-                  { src: './icon/project/80x80_main_w_1.webp', maxWidth: 1024 },
-                  { src: './icon/project/160x160_main_w_1.webp' }
-                ]"
-                fallbackSrc="./icon/project/160x160_main_w_1.webp"
+                [sources]="images.projects.mainW1.sources"
+                [fallbackSrc]="images.projects.mainW1.fallbackSrc"
                 alt=""
               />
               Formateur Développement Web — Elan Formation
@@ -374,12 +273,8 @@
           <a href="https://test.omnicard.fr" target="_blank" class="project-item">
             <span class="label">
               <app-responsive-picture
-                [sources]="[
-                  { src: './icon/project/40x40_main_w_2.webp', maxWidth: 480 },
-                  { src: './icon/project/80x80_main_w_2.webp', maxWidth: 1024 },
-                  { src: './icon/project/160x160_main_w_2.webp' }
-                ]"
-                fallbackSrc="./icon/project/160x160_main_w_2.webp"
+                [sources]="images.projects.mainW2.sources"
+                [fallbackSrc]="images.projects.mainW2.fallbackSrc"
                 alt=""
               />
               Projet Omnicard
@@ -391,12 +286,8 @@
           <a href="https://github.com/Teyliu/PVZF-Translation" target="_blank" class="project-item">
             <span class="label">
               <app-responsive-picture
-                [sources]="[
-                  { src: './icon/project/40x40_second_w_1.webp', maxWidth: 480 },
-                  { src: './icon/project/80x80_second_w_1.webp', maxWidth: 1024 },
-                  { src: './icon/project/160x160_second_w_1.webp' }
-                ]"
-                fallbackSrc="./icon/project/160x160_second_w_1.webp"
+                [sources]="images.projects.secondW1.sources"
+                [fallbackSrc]="images.projects.secondW1.fallbackSrc"
                 alt=""
               />
               Lead du pôle francophone — PVZ Fusion
@@ -408,12 +299,8 @@
           <a href="https://ml-sa.fr" target="_blank" class="project-item">
             <span class="label">
               <app-responsive-picture
-                [sources]="[
-                  { src: './icon/project/40x40_second_w_2.webp', maxWidth: 480 },
-                  { src: './icon/project/80x80_second_w_2.webp', maxWidth: 1024 },
-                  { src: './icon/project/160x160_second_w_2.webp' }
-                ]"
-                fallbackSrc="./icon/project/160x160_second_w_2.webp"
+                [sources]="images.projects.secondW2.sources"
+                [fallbackSrc]="images.projects.secondW2.fallbackSrc"
                 alt=""
               />
               Intervenant — Mission Locale
