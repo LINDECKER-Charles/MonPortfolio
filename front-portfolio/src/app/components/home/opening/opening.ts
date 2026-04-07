@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AudioService } from '../../../services/audio-service';
-import { ResponsivePicture, ResponsiveSource } from '../../assets/responsive-picture/responsive-picture';
+import { ResponsivePicture } from '../../assets/responsive-picture/responsive-picture';
 import {
   canEnableSound,
   canSkipOpening,
@@ -25,6 +25,7 @@ import {
   OpeningAnimationRefs,
   OpeningAnimationService,
 } from './opening-animation.service';
+import { OPENING_FALLBACK_SRC, OPENING_SOURCES } from '../../../imgSources/opening.sources';
 
 @Component({
   selector: 'app-opening',
@@ -50,27 +51,8 @@ export class Opening implements AfterViewInit, OnDestroy {
 
   public state: OpeningState = 'sound-gate';
 
-  public readonly openingSources: ResponsiveSource[] = [
-    {
-      src: './opening/320x320_opening_base.webp',
-      maxWidth: 320,
-      type: 'image/webp',
-    },
-    {
-      src: './opening/640x640_opening_base.webp',
-      maxWidth: 640,
-      type: 'image/webp',
-    },
-    {
-      src: './opening/768x768_opening_base.webp',
-      maxWidth: 768,
-      type: 'image/webp',
-    },
-    {
-      src: './opening/opening_base.webp',
-      type: 'image/webp',
-    },
-  ];
+  public readonly openingSources = OPENING_SOURCES;
+  public readonly openingFallbackSrc = OPENING_FALLBACK_SRC;
 
   get isSoundGateVisible(): boolean {
     return this.state === 'sound-gate';
