@@ -9,6 +9,7 @@ permissions:
   contents: write
 
 env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   FRONT_DIR: front-portfolio
   VPS_DIR: /var/www/portfolio-test
   FRONT_PROCESS: angular-portfolio-test.service
@@ -32,7 +33,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: ${{ env.FRONT_DIR }}/package-lock.json
 
