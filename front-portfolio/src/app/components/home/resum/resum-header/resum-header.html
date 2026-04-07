@@ -1,4 +1,19 @@
-<h2 class="title">Charles LINDECKER</h2>
+<h2 class="title">
+  <a
+    href="https://github.com/LINDECKER-Charles"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="title-link"
+    [appPlaySoundOnClick]="'smallBell'"
+    (mouseenter)="onTitleHoverEnter($event)"
+    (mouseleave)="onTitleHoverLeave($event)"
+    (mousedown)="onTitlePress($event)"
+    (mouseup)="onTitleRelease($event)"
+    (blur)="onTitleHoverLeave($event)"
+  >
+    Charles LINDECKER
+  </a>
+</h2>
 
 <div class="row" (mouseenter)="onRowHoverEnter($event)" (mouseleave)="onRowHoverLeave($event)">
   <span class="label">

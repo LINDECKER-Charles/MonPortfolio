@@ -60,6 +60,12 @@ export class App {
         volume: 0.06,
         preload: 'auto'
       },
+      smallBell: {
+        src: './song/small_bell.mp3',
+        loop: false,
+        volume: 0.04,
+        preload: 'auto'
+      },
       newLocation: {
         src: './song/new_location.mp3',
         loop: false,
