@@ -12,6 +12,15 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+app.get('/robots.txt', (_req, res) => {
+  res.sendFile(join(browserDistFolder, 'robots.txt'));
+});
+
+app.get('/sitemap.xml', (_req, res) => {
+  res.type('application/xml');
+  res.sendFile(join(browserDistFolder, 'sitemap.xml'));
+});
+
 /**
  * Example Express Rest API endpoints can be defined here.
  * Uncomment and define endpoints as necessary.
