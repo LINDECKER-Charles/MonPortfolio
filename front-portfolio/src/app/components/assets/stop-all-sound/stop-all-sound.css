@@ -7,6 +7,13 @@
   display: block;
 }
 
+.sound-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 button {
   width: 56px;
   height: 56px;
@@ -84,6 +91,38 @@ button.is-playing {
   animation: soundPulse 2.4s ease-in-out infinite;
 }
 
+.volume-control {
+  width: 120px;
+  padding: 10px 12px;
+  border: 1px solid rgba(189, 193, 199, 0.12);
+  border-radius: 14px;
+  background: rgba(37, 40, 45, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.volume-slider {
+  width: 100%;
+  margin: 0;
+  accent-color: #A60A0A;
+  cursor: pointer;
+}
+
+.volume-value {
+  font-size: 12px;
+  line-height: 1;
+  color: #BDC1C7;
+  text-align: center;
+  user-select: none;
+}
+
 @keyframes soundPulse {
   0%,
   100% {
@@ -112,6 +151,11 @@ button.is-playing {
   button svg {
     width: 22px;
     height: 22px;
+  }
+
+  .volume-control {
+    width: 108px;
+    padding: 8px 10px;
   }
 }
 

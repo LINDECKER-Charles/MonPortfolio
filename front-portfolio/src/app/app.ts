@@ -21,55 +21,55 @@ export class App {
       bgMusic: {
         src: './song/hunters_dream.mp3',
         loop: true,
-        volume: 0.35,
+        volume: 0.7,
         preload: 'auto'
       },
       pouperVoice: {
         src: './song/pouper_welcome.mp3',
         loop: false,
-        volume: 0.5,
+        volume: 0.9,
         preload: 'auto'
       },
       getItem: {
         src: './song/get_item.mp3',
         loop: false,
-        volume: 0.07,
+        volume: 0.4,
         preload: 'auto'
       },
       bloodVial: {
         src: './song/blood_vial.mp3',
         loop: false,
-        volume: 0.06,
+        volume: 0.15,
         preload: 'auto'
       },
       getEcho: {
         src: './song/get_echo.mp3',
         loop: false,
-        volume: 0.06,
+        volume: 0.15,
         preload: 'auto'
       },
       getbackEcho: {
         src: './song/getback_echo.mp3',
         loop: false,
-        volume: 0.06,
+        volume: 0.15,
         preload: 'auto'
       },
       messagerLaught: {
         src: './song/messager_laught.mp3',
         loop: false,
-        volume: 0.06,
+        volume: 0.15,
         preload: 'auto'
       },
       smallBell: {
         src: './song/small_bell.mp3',
         loop: false,
-        volume: 0.04,
+        volume: 0.15,
         preload: 'auto'
       },
       newLocation: {
         src: './song/new_location.mp3',
         loop: false,
-        volume: 0.04,
+        volume: 0.5,
         preload: 'auto'
       }
     });

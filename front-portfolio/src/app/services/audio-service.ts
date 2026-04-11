@@ -1,4 +1,5 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 type AudioKey = string;
 
@@ -19,6 +20,12 @@ interface PlayingInstance {
   providedIn: 'root'
 })
 export class AudioService {
+  private readonly STORAGE_VOLUME_KEY = 'audio.masterVolume';
+  private readonly STORAGE_MUTED_KEY = 'audio.muted';
+
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
+
   private registry = new Map<AudioKey, RegisteredSound>();
   private persistentPlayers = new Map<AudioKey, HTMLAudioElement>();
   private playingInstances = new Map<string, PlayingInstance>();
@@ -32,6 +39,10 @@ export class AudioService {
   readonly masterVolume = this._masterVolume.asReadonly();
   readonly isAnythingPlaying = computed(() => this._playingCount() > 0);
 
+  constructor() {
+    this.restorePreferences();
+  }
+
   register(key: AudioKey, config: RegisteredSound): void {
     this.registry.set(key, config);
   }
@@ -43,6 +54,8 @@ export class AudioService {
   }
 
   play(key: AudioKey): HTMLAudioElement | null {
+    if (!this.isBrowser) return null;
+
     const config = this.registry.get(key);
     if (!config) {
       console.warn(`[AudioService] Son non enregistré: ${key}`);
@@ -70,6 +83,8 @@ export class AudioService {
   }
 
   playOnce(key: AudioKey): string | null {
+    if (!this.isBrowser) return null;
+
     const config = this.registry.get(key);
     if (!config) {
       console.warn(`[AudioService] Son non enregistré: ${key}`);
@@ -86,7 +101,6 @@ export class AudioService {
     };
 
     audio.addEventListener('ended', cleanup);
-
     this.playingInstances.set(id, { id, key, audio });
 
     audio.play().catch(err => {
@@ -99,8 +113,7 @@ export class AudioService {
   }
 
   pause(key: AudioKey): void {
-    const audio = this.persistentPlayers.get(key);
-    audio?.pause();
+    this.persistentPlayers.get(key)?.pause();
     this.refreshPlayingCount();
   }
 
@@ -114,6 +127,8 @@ export class AudioService {
   }
 
   resume(key: AudioKey): void {
+    if (!this.isBrowser) return;
+
     const audio = this.persistentPlayers.get(key);
     if (!audio) return;
 
@@ -151,10 +166,9 @@ export class AudioService {
 
   muteAll(): void {
     this._muted.set(true);
+    this.saveMutedPreference(true);
 
-    for (const [key, audio] of this.persistentPlayers.entries()) {
-      const config = this.registry.get(key);
-      if (!config) continue;
+    for (const audio of this.persistentPlayers.values()) {
       audio.muted = true;
     }
 
@@ -165,10 +179,12 @@ export class AudioService {
 
   unmuteAll(): void {
     this._muted.set(false);
+    this.saveMutedPreference(false);
 
     for (const [key, audio] of this.persistentPlayers.entries()) {
       const config = this.registry.get(key);
       if (!config) continue;
+
       audio.muted = false;
       audio.volume = this.computeVolume(config.volume);
     }
@@ -176,6 +192,7 @@ export class AudioService {
     for (const instance of this.playingInstances.values()) {
       const config = this.registry.get(instance.key);
       if (!config) continue;
+
       instance.audio.muted = false;
       instance.audio.volume = this.computeVolume(config.volume);
     }
@@ -184,16 +201,19 @@ export class AudioService {
   setMasterVolume(volume: number): void {
     const clamped = Math.max(0, Math.min(1, volume));
     this._masterVolume.set(clamped);
+    this.saveVolumePreference(clamped);
 
     for (const [key, audio] of this.persistentPlayers.entries()) {
       const config = this.registry.get(key);
       if (!config) continue;
+
       audio.volume = this.computeVolume(config.volume);
     }
 
     for (const instance of this.playingInstances.values()) {
       const config = this.registry.get(instance.key);
       if (!config) continue;
+
       instance.audio.volume = this.computeVolume(config.volume);
     }
   }
@@ -223,5 +243,32 @@ export class AudioService {
     }
 
     this._playingCount.set(count);
+  }
+
+  private restorePreferences(): void {
+    if (!this.isBrowser) return;
+
+    const storedVolume = localStorage.getItem(this.STORAGE_VOLUME_KEY);
+    if (storedVolume !== null) {
+      const parsedVolume = Number(storedVolume);
+      if (!Number.isNaN(parsedVolume)) {
+        this._masterVolume.set(Math.max(0, Math.min(1, parsedVolume)));
+      }
+    }
+
+    const storedMuted = localStorage.getItem(this.STORAGE_MUTED_KEY);
+    if (storedMuted !== null) {
+      this._muted.set(storedMuted === 'true');
+    }
+  }
+
+  private saveVolumePreference(volume: number): void {
+    if (!this.isBrowser) return;
+    localStorage.setItem(this.STORAGE_VOLUME_KEY, String(volume));
+  }
+
+  private saveMutedPreference(muted: boolean): void {
+    if (!this.isBrowser) return;
+    localStorage.setItem(this.STORAGE_MUTED_KEY, String(muted));
   }
 }
