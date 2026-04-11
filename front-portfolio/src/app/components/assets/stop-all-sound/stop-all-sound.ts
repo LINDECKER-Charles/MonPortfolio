@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef, inject} from '@angular/core';
-import {AudioService} from '../../../services/audio-service';
+import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
+import { AudioService } from '../../../services/audio-service';
 import gsap from 'gsap';
 
 @Component({
@@ -11,6 +11,10 @@ import gsap from 'gsap';
 export class StopAllSound implements AfterViewInit {
   public readonly audioService: AudioService = inject(AudioService);
   private host = inject(ElementRef<HTMLElement>);
+
+  public get volumePercent(): number {
+    return Math.round(this.audioService.masterVolume() * 100);
+  }
 
   ngAfterViewInit(): void {
     gsap.fromTo(
@@ -39,5 +43,14 @@ export class StopAllSound implements AfterViewInit {
     }
 
     this.audioService.muteAll();
+  }
+
+  public onVolumeInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const value = Number(input.value);
+
+    if (Number.isNaN(value)) return;
+
+    this.audioService.setMasterVolume(value / 100);
   }
 }
