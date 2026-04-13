@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import {OpeningResume} from './components/misc/opening-resume/opening-resume';
 import {Resum} from './components/misc/opening-resume/resum/resum';
+import {Home} from './components/page/home/home';
 
 export const routes: Routes = [
   {
@@ -50,4 +51,8 @@ export const routes: Routes = [
       twitterImage: 'https://charles-lindecker.com/meta/logo1.webp',
     },
   },
+  {
+    path: 'home',
+    component: Home,
+  }
 ];
