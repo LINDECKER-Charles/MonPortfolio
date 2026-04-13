@@ -69,7 +69,7 @@ export class App {
       newLocation: {
         src: './song/new_location.mp3',
         loop: false,
-        volume: 0.5,
+        volume: 0.3,
         preload: 'auto'
       }
     });

@@ -8,13 +8,89 @@
 }
 
 .sound-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 56px;
+}
+
+.sound-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+
+  overflow: hidden;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transform-origin: top right;
+  max-height: 180px;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    max-height 220ms ease;
 }
 
-button {
+.sound-content.is-hidden {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.96);
+  max-height: 0;
+  pointer-events: none;
+}
+
+.collapse-toggle {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 2;
+
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid rgba(189, 193, 199, 0.16);
+  border-radius: 999px;
+  background: rgba(27, 28, 28, 0.92);
+  color: #BDC1C7;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.32);
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
+}
+
+.collapse-toggle:hover {
+  background: rgba(48, 53, 59, 0.98);
+  border-color: rgba(166, 10, 10, 0.38);
+  transform: scale(1.08);
+}
+
+.collapse-toggle:focus-visible {
+  outline: 2px solid #A60A0A;
+  outline-offset: 3px;
+}
+
+.collapse-toggle svg {
+  width: 10px;
+  height: 10px;
+  transition: transform 220ms ease;
+}
+
+.collapse-toggle.is-collapsed svg {
+  transform: rotate(90deg);
+}
+
+.sound-button {
   width: 56px;
   height: 56px;
   padding: 0;
@@ -43,7 +119,7 @@ button {
     opacity 220ms ease;
 }
 
-button:hover {
+.sound-button:hover {
   transform: translateY(-1px) scale(1.03);
   background: rgba(48, 53, 59, 0.88);
   border-color: rgba(166, 10, 10, 0.38);
@@ -53,16 +129,16 @@ button:hover {
     0 0 12px rgba(166, 10, 10, 0.16);
 }
 
-button:active {
+.sound-button:active {
   transform: scale(0.96);
 }
 
-button:focus-visible {
+.sound-button:focus-visible {
   outline: 2px solid #A60A0A;
   outline-offset: 4px;
 }
 
-button svg {
+.sound-button > svg {
   width: 24px;
   height: 24px;
   display: block;
@@ -72,22 +148,22 @@ button svg {
     filter 220ms ease;
 }
 
-button:hover svg {
+.sound-button:hover > svg {
   transform: scale(1.04);
   filter: drop-shadow(0 0 6px rgba(166, 10, 10, 0.28));
 }
 
-button svg path,
-button svg g,
-button svg circle,
-button svg rect {
+.sound-button svg path,
+.sound-button svg g,
+.sound-button svg circle,
+.sound-button svg rect {
   transition:
     stroke 220ms ease,
     fill 220ms ease,
     opacity 220ms ease;
 }
 
-button.is-playing {
+.sound-button.is-playing {
   animation: soundPulse 2.4s ease-in-out infinite;
 }
 
@@ -143,14 +219,26 @@ button.is-playing {
     right: 14px;
   }
 
-  button {
+  .sound-button {
     width: 48px;
     height: 48px;
   }
 
-  button svg {
+  .sound-button > svg {
     width: 22px;
     height: 22px;
+  }
+
+  .collapse-toggle {
+    width: 18px;
+    height: 18px;
+    top: -5px;
+    right: -5px;
+  }
+
+  .collapse-toggle svg {
+    width: 9px;
+    height: 9px;
   }
 
   .volume-control {
@@ -160,12 +248,14 @@ button.is-playing {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  button,
-  button svg,
-  button svg path,
-  button svg g,
-  button svg circle,
-  button svg rect {
+  .sound-button,
+  .sound-button svg,
+  .sound-button svg path,
+  .sound-button svg g,
+  .sound-button svg circle,
+  .sound-button svg rect,
+  .collapse-toggle,
+  .sound-content {
     transition: none !important;
     animation: none !important;
   }
