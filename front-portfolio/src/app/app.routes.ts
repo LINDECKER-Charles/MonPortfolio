@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import {OpeningResume} from './components/misc/opening-resume/opening-resume';
 import {Resum} from './components/misc/opening-resume/resum/resum';
 import {Home} from './components/page/home/home';
+import {Projects} from './components/page/projects/projects';
 
 export const routes: Routes = [
   {
@@ -56,6 +57,13 @@ export const routes: Routes = [
   {
     path: 'home',
     component: Home,
+    data: {
+      showFooter: true,
+    }
+  },
+  {
+    path: 'projects',
+    component: Projects,
     data: {
       showFooter: true,
     }

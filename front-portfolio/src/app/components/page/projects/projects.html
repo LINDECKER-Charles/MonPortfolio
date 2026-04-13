@@ -1,1 +1,130 @@
-<p>projects works!</p>
+<main class="projects-page">
+  <header class="projects-hero">
+    <span class="projects-hero__eyebrow">Portfolio</span>
+
+    <h1>Projets</h1>
+
+    <p>
+      Une sélection de travaux personnels, d’expérimentations techniques et de
+      contributions open source, présentés dans l’ordre et enrichis de contexte.
+    </p>
+  </header>
+
+  <section class="projects-filters" aria-label="Filtres de projets">
+    @for (filter of filters; track trackByFilterId($index, filter)) {
+      <button
+        type="button"
+        class="projects-filters__button"
+        [class.is-active]="selectedFilter === filter.id"
+        (click)="selectFilter(filter.id)">
+        {{ filter.label }}
+      </button>
+    }
+  </section>
+
+  <section class="projects-timeline" aria-label="Timeline des projets">
+    @for (project of filteredProjects; track trackByProjectId($index, project)) {
+      <article
+        class="projects-timeline__item"
+        [class.is-open]="project.isOpen"
+        #timelineItem>
+        <div class="projects-timeline__line">
+          <span class="projects-timeline__dot"></span>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card__top">
+            <div class="project-card__meta">
+              <span class="project-card__period">{{ project.period }}</span>
+              <span class="project-card__badge">{{ getCategoryLabel(project.category) }}</span>
+              <span class="project-card__badge project-card__badge--status">
+                {{ getStatusLabel(project.status) }}
+              </span>
+            </div>
+
+            @if (project.featured) {
+              <span class="project-card__featured">Projet clé</span>
+            }
+          </div>
+
+          <div class="project-card__head">
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.shortDescription }}</p>
+          </div>
+
+          <div class="project-card__stack">
+            @for (item of project.stack; track item) {
+              <span>{{ item }}</span>
+            }
+          </div>
+
+          <div class="project-card__tags">
+            @for (tag of project.tags; track tag) {
+              <span>{{ tag }}</span>
+            }
+          </div>
+
+          <div class="project-card__actions">
+            <button
+              type="button"
+              class="project-card__toggle"
+              [attr.aria-expanded]="project.isOpen"
+              [attr.aria-controls]="'project-content-' + project.id"
+              (click)="toggleProject(project.id)">
+              {{ project.isOpen ? 'Réduire' : 'Voir plus' }}
+            </button>
+          </div>
+
+          <div
+            class="project-card__content-wrapper"
+            [id]="'project-content-' + project.id"
+            #projectContent>
+            <div class="project-card__content">
+              <p class="project-card__long-text">
+                {{ project.longDescription }}
+              </p>
+
+              <div class="project-card__details">
+                <div class="project-card__details-block">
+                  <h3>Points clés</h3>
+
+                  <ul>
+                    @for (highlight of project.highlights; track highlight) {
+                      <li>{{ highlight }}</li>
+                    }
+                  </ul>
+                </div>
+
+                @if (project.links.github || project.links.demo) {
+                  <div class="project-card__details-block">
+                    <h3>Liens</h3>
+
+                    <div class="project-card__links">
+                      @if (project.links.github) {
+                        <a
+                          [href]="project.links.github"
+                          target="_blank"
+                          rel="noreferrer noopener">
+                          GitHub
+                        </a>
+                      }
+
+                      @if (project.links.demo) {
+                        <a
+                          [href]="project.links.demo"
+                          target="_blank"
+                          rel="noreferrer noopener">
+                          Démo
+                        </a>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    }
+  </section>
+</main>
