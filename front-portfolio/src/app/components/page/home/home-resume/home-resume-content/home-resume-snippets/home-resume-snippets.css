@@ -14,6 +14,22 @@
     0 16px 36px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.02);
   overflow: hidden;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+.about-snippet:hover {
+  transform: translateY(-2px);
+  border-color: rgba(166, 10, 10, 0.14);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(166, 10, 10, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  background:
+    linear-gradient(180deg, rgba(52, 58, 65, 0.2), rgba(27, 28, 28, 0.56));
 }
 
 .about-snippet.is-open {
@@ -38,6 +54,7 @@
   text-align: left;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
+  transition: background-color 180ms ease;
 }
 
 .about-snippet__trigger:hover {
@@ -61,6 +78,16 @@
   height: 22px;
   flex: 0 0 auto;
   opacity: 0.92;
+  transition:
+    transform 220ms ease,
+    opacity 220ms ease,
+    filter 220ms ease;
+}
+
+.about-snippet:hover .about-snippet__icon-media {
+  transform: scale(1.05);
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(166, 10, 10, 0.14));
 }
 
 .about-snippet__icon-media app-responsive-picture,
@@ -77,6 +104,15 @@
   height: 1px;
   background: rgba(166, 10, 10, 0.45);
   flex: 0 0 auto;
+  transition:
+    width 220ms ease,
+    background-color 220ms ease,
+    opacity 220ms ease;
+}
+
+.about-snippet:hover .about-snippet__mark {
+  width: 30px;
+  background: rgba(166, 10, 10, 0.62);
 }
 
 .about-snippet h3,
@@ -89,6 +125,16 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #f3f6f7;
+  transition:
+    color 220ms ease,
+    transform 220ms ease,
+    text-shadow 220ms ease;
+}
+
+.about-snippet:hover h3 {
+  color: #fff5ea;
+  transform: translateX(1px);
+  text-shadow: 0 0 10px rgba(166, 10, 10, 0.08);
 }
 
 .about-snippet__icon {
@@ -105,7 +151,15 @@
     transform 220ms ease,
     border-color 220ms ease,
     color 220ms ease,
-    background-color 220ms ease;
+    background-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.about-snippet:hover .about-snippet__icon {
+  border-color: rgba(166, 10, 10, 0.14);
+  color: #c6b9a2;
+  background: rgba(166, 10, 10, 0.04);
+  box-shadow: 0 0 0 1px rgba(166, 10, 10, 0.04);
 }
 
 .about-snippet__icon svg {
@@ -161,6 +215,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .about-snippet,
+  .about-snippet__trigger,
+  .about-snippet__icon-media,
+  .about-snippet__mark,
+  .about-snippet h3,
   .about-snippet__icon {
     transition: none !important;
   }
