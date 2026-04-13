@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { ResponsivePicture } from '../../../assets/responsive-picture/responsive-picture';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateResumRowHoverIn,
   animateResumRowHoverOut,
 } from '../resum-row-hover.animations';
+import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
 
 @Component({
   selector: 'app-resum-stack',

@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/opening-resume';
-import { Resum } from './components/home/resum/resum';
+import {OpeningResume} from './components/misc/opening-resume/opening-resume';
+import {Resum} from './components/misc/opening-resume/resum/resum';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Home,
+    component: OpeningResume,
     title: 'Charles Lindecker - Développeur Web & Solutions sur mesure',
     data: {
       description:

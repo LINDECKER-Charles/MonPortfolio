@@ -10,8 +10,6 @@ import {
   inject,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { AudioService } from '../../../services/audio-service';
-import { ResponsivePicture } from '../../assets/responsive-picture/responsive-picture';
 import {
   canEnableSound,
   canSkipOpening,
@@ -25,7 +23,9 @@ import {
   OpeningAnimationRefs,
   OpeningAnimationService,
 } from './opening-animation.service';
-import { OPENING_FALLBACK_SRC, OPENING_SOURCES } from '../../../imgSources/opening.sources';
+import {AudioService} from '../../../../services/audio-service';
+import {ResponsivePicture} from '../../../assets/responsive-picture/responsive-picture';
+import {OPENING_FALLBACK_SRC, OPENING_SOURCES} from '../../../../imgSources/opening.sources';
 
 @Component({
   selector: 'app-opening',

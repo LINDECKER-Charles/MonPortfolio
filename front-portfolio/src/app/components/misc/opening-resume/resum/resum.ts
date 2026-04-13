@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RESUM_IMAGES } from '../../../imgSources/resum.sources';
 import { ResumActiveProjects } from './resum-active-projects/resum-active-projects';
 import { ResumContactLinks } from './resum-contact-links/resum-contact-links';
 import { ResumHeader } from './resum-header/resum-header';
@@ -7,6 +6,7 @@ import { ResumPassiveEffects } from './resum-passive-effects/resum-passive-effec
 import { ResumRuneIcons } from './resum-rune-icons/resum-rune-icons';
 import { ResumStack } from './resum-stack/resum-stack';
 import { ResumStats } from './resum-stats/resum-stats';
+import {RESUM_IMAGES} from '../../../../imgSources/resum.sources';
 
 @Component({
   selector: 'app-resum',
