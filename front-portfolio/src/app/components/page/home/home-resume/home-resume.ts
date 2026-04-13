@@ -1,28 +1,7 @@
+import { Component } from '@angular/core';
 import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Inject,
-  PLATFORM_ID,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-} from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import gsap from 'gsap';
-import { CSSPlugin } from 'gsap/CSSPlugin';
-
-import { ResponsivePicture } from '../../../assets/responsive-picture/responsive-picture';
-import {
-  HOME_RESUME_DEX_FALLBACK,
-  HOME_RESUME_DEX_SOURCES,
-  HOME_RESUME_DISCOVER_FALLBACK,
-  HOME_RESUME_DISCOVER_SOURCES,
-  HOME_RESUME_ESO_FALLBACK,
   HOME_RESUME_ESO_RESIST_FALLBACK,
   HOME_RESUME_ESO_RESIST_SOURCES,
-  HOME_RESUME_ESO_SOURCES,
   HOME_RESUME_FIRE_FALLBACK,
   HOME_RESUME_FIRE_SOURCES,
   HOME_RESUME_LEVEL_FALLBACK,
@@ -36,25 +15,43 @@ import {
   HOME_RESUME_POUSSE_RES_FALLBACK,
   HOME_RESUME_POUSSE_RES_SOURCES,
   HOME_RESUME_SNIPPETS,
-  HomeResumeSnippetState,
 } from './home-resume.state';
+import { HomeResumeBanner } from './home-resume-banner/home-resume-banner';
+import { HomeResumeHeader } from './home-resume-header/home-resume-header';
+import { HomeResumeContent } from './home-resume-content/home-resume-content';
 
 @Component({
   selector: 'app-home-resume',
-  imports: [RouterLink, ResponsivePicture],
+  imports: [HomeResumeBanner, HomeResumeHeader, HomeResumeContent],
   templateUrl: './home-resume.html',
   styleUrl: './home-resume.css',
 })
-export class HomeResume implements AfterViewInit {
-  @ViewChild('banner') private bannerRef?: ElementRef<HTMLElement>;
-  @ViewChild('hero') private heroRef?: ElementRef<HTMLElement>;
-  @ViewChild('portraitBlock') private portraitBlockRef?: ElementRef<HTMLElement>;
+export class HomeResume {
+  protected readonly bannerIconsLeft = [
+    {
+      sources: HOME_RESUME_ESO_RESIST_SOURCES,
+      fallbackSrc: HOME_RESUME_ESO_RESIST_FALLBACK,
+      alt: 'Résistance ésotérique',
+    },
+    {
+      sources: HOME_RESUME_FIRE_SOURCES,
+      fallbackSrc: HOME_RESUME_FIRE_FALLBACK,
+      alt: 'Feu',
+    },
+  ];
 
-  @ViewChildren('snippetCard')
-  private snippetCardRefs!: QueryList<ElementRef<HTMLElement>>;
-
-  @ViewChildren('snippetContent')
-  private snippetContentRefs!: QueryList<ElementRef<HTMLElement>>;
+  protected readonly bannerIconsRight = [
+    {
+      sources: HOME_RESUME_PHYSIQUE_SOURCES,
+      fallbackSrc: HOME_RESUME_PHYSIQUE_FALLBACK,
+      alt: 'Physique',
+    },
+    {
+      sources: HOME_RESUME_POUSSE_RES_SOURCES,
+      fallbackSrc: HOME_RESUME_POUSSE_RES_FALLBACK,
+      alt: 'Résistance',
+    },
+  ];
 
   protected readonly photoSources = HOME_RESUME_PHOTO_SOURCES;
   protected readonly photoFallback = HOME_RESUME_PHOTO_FALLBACK;
@@ -65,152 +62,5 @@ export class HomeResume implements AfterViewInit {
   protected readonly levelSources = HOME_RESUME_LEVEL_SOURCES;
   protected readonly levelFallback = HOME_RESUME_LEVEL_FALLBACK;
 
-  protected readonly esoResistSources = HOME_RESUME_ESO_RESIST_SOURCES;
-  protected readonly esoResistFallback = HOME_RESUME_ESO_RESIST_FALLBACK;
-
-  protected readonly fireSources = HOME_RESUME_FIRE_SOURCES;
-  protected readonly fireFallback = HOME_RESUME_FIRE_FALLBACK;
-
-  protected readonly physiqueSources = HOME_RESUME_PHYSIQUE_SOURCES;
-  protected readonly physiqueFallback = HOME_RESUME_PHYSIQUE_FALLBACK;
-
-  protected readonly pousseResSources = HOME_RESUME_POUSSE_RES_SOURCES;
-  protected readonly pousseResFallback = HOME_RESUME_POUSSE_RES_FALLBACK;
-
-  protected snippets: HomeResumeSnippetState[] = HOME_RESUME_SNIPPETS.map((snippet) => ({
-    ...snippet,
-  }));
-
-  private readonly isBrowser: boolean;
-
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
-    this.isBrowser = isPlatformBrowser(platformId);
-
-    if (this.isBrowser) {
-      gsap.registerPlugin(CSSPlugin);
-    }
-  }
-
-  ngAfterViewInit(): void {
-    if (!this.isBrowser) return;
-
-    this.initializeAccordionState();
-    this.animateIntro();
-  }
-
-  protected toggleSnippet(id: string): void {
-    if (!this.isBrowser) return;
-
-    const targetIndex = this.snippets.findIndex((snippet) => snippet.id === id);
-    if (targetIndex === -1) return;
-
-    this.snippets.forEach((snippet, index) => {
-      const contentEl = this.snippetContentRefs.get(index)?.nativeElement;
-      if (!contentEl) return;
-
-      const isTarget = snippet.id === id;
-
-      if (isTarget && !snippet.isOpen) {
-        snippet.isOpen = true;
-
-        gsap.killTweensOf(contentEl);
-        gsap.set(contentEl, {
-          overflow: 'hidden',
-          display: 'block',
-        });
-
-        gsap.fromTo(
-          contentEl,
-          {
-            height: 0,
-            autoAlpha: 0,
-            y: -8,
-            filter: 'blur(6px)',
-          },
-          {
-            height: contentEl.scrollHeight,
-            autoAlpha: 1,
-            y: 0,
-            filter: 'blur(0px)',
-            duration: 0.42,
-            ease: 'power3.out',
-            onComplete: () => {
-              gsap.set(contentEl, {
-                height: 'auto',
-                overflow: 'visible',
-              });
-            },
-          }
-        );
-
-        return;
-      }
-
-      if ((!isTarget && snippet.isOpen) || (isTarget && snippet.isOpen)) {
-        snippet.isOpen = false;
-
-        gsap.killTweensOf(contentEl);
-        gsap.set(contentEl, {
-          overflow: 'hidden',
-        });
-
-        gsap.to(contentEl, {
-          height: 0,
-          autoAlpha: 0,
-          y: -8,
-          filter: 'blur(6px)',
-          duration: 0.34,
-          ease: 'power2.inOut',
-        });
-      }
-    });
-  }
-
-  private initializeAccordionState(): void {
-    this.snippetContentRefs.forEach((ref) => {
-      gsap.set(ref.nativeElement, {
-        height: 0,
-        autoAlpha: 0,
-        overflow: 'hidden',
-        y: -8,
-        filter: 'blur(6px)',
-      });
-    });
-  }
-
-  private animateIntro(): void {
-    const introTargets: HTMLElement[] = [];
-
-    if (this.bannerRef?.nativeElement) {
-      introTargets.push(this.bannerRef.nativeElement);
-    }
-
-    if (this.heroRef?.nativeElement) {
-      introTargets.push(this.heroRef.nativeElement);
-    }
-
-    if (this.portraitBlockRef?.nativeElement) {
-      introTargets.push(this.portraitBlockRef.nativeElement);
-    }
-
-    this.snippetCardRefs.forEach((ref) => {
-      introTargets.push(ref.nativeElement);
-    });
-
-    gsap.set(introTargets, {
-      autoAlpha: 0,
-      y: 24,
-      filter: 'blur(10px)',
-    });
-
-    gsap.to(introTargets, {
-      autoAlpha: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      duration: 0.75,
-      ease: 'power3.out',
-      stagger: 0.1,
-      clearProps: 'filter',
-    });
-  }
+  protected readonly snippets = HOME_RESUME_SNIPPETS.map((snippet) => ({ ...snippet }));
 }
