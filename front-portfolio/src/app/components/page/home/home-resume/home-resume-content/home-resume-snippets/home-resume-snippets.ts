@@ -11,8 +11,18 @@ import {
 } from '@angular/core';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
-import {ResponsivePicture} from '../../../../../assets/responsive-picture/responsive-picture';
-import {HomeResumeSnippetState} from '../../home-resume.state';
+import {ResponsivePicture, ResponsiveSource} from '../../../../../assets/responsive-picture/responsive-picture';
+
+
+interface HomeResumeSnippetState {
+  id: string;
+  title: string;
+  content: string;
+  isOpen: boolean;
+  iconAlt: string;
+  iconSources: ResponsiveSource[];
+  iconFallback: string;
+}
 
 @Component({
   selector: 'app-home-resume-snippets',
@@ -21,7 +31,58 @@ import {HomeResumeSnippetState} from '../../home-resume.state';
   styleUrl: './home-resume-snippets.css',
 })
 export class HomeResumeSnippets implements AfterViewInit {
-  @Input({ required: true }) snippets: HomeResumeSnippetState[] = [];
+  snippets: HomeResumeSnippetState[] = [
+    {
+      id: 'transmission',
+      title: 'Transmission & Enseignement',
+      content:
+        'Il n’existe pas de meilleur exercice que le partage de connaissance : il permet d’éprouver nos raisonnements, de clarifier notre conception des choses et d’élever notre niveau d’exigence. Développeur depuis 9 ans, j’accorde une grande importance à la transmission auprès des futurs développeurs.',
+      isOpen: false,
+      iconAlt: 'Transmission et enseignement',
+      iconSources: this.buildMainIconSet('pousse_res'),
+      iconFallback: '/icon/pousse_res.webp',
+    },
+    {
+      id: 'stack',
+      title: 'Stack & Excellence Technique',
+      content:
+        'Mes choix technologiques sont en accord avec mes ambitions. Angular et .NET représentent aujourd’hui des solutions modernes, robustes et scalables. Mon objectif reste constant : concevoir pour mes clients des applications maintenables, solides et pérennes.',
+      isOpen: false,
+      iconAlt: 'Stack et excellence technique',
+      iconSources: this.buildMainIconSet('physique'),
+      iconFallback: '/icon/physique.webp',
+    },
+    {
+      id: 'architecture',
+      title: 'Sécurité Applicative & Architecture',
+      content:
+        'Monolithe, microservices, architecture hexagonale ou serverless : chaque projet possède des contraintes et des besoins spécifiques. Mon rôle n’est pas seulement de proposer une solution, mais d’identifier la solution la plus adaptée, la plus cohérente et la plus fiable.',
+      isOpen: false,
+      iconAlt: 'Sécurité applicative et architecture',
+      iconSources: this.buildMainIconSet('eso_resist'),
+      iconFallback: '/icon/eso_resist.webp',
+    },
+    {
+      id: 'opensource',
+      title: 'Open Source & Bénévolat',
+      content:
+        'Plus qu’un métier, le développement est une passion que j’exprime à travers mes contributions open source ainsi que par l’accompagnement de jeunes dans le cadre de missions bénévoles. J’y vois une manière concrète de rendre la technique utile et accessible.',
+      isOpen: false,
+      iconAlt: 'Open source et bénévolat',
+      iconSources: this.buildMainIconSet('fire'),
+      iconFallback: '/icon/fire.webp',
+    },
+    {
+      id: 'quality',
+      title: 'Qualité & Responsabilité',
+      content:
+        'Je m’appuie sur des standards de code rigoureux, une veille technique active et une exigence constante sur la qualité. Cette discipline me permet de rester à jour, de prendre de meilleures décisions techniques et de produire un code propre, fiable et responsable.',
+      isOpen: false,
+      iconAlt: 'Qualité et responsabilité',
+      iconSources: this.buildMainIconSet('lucidity'),
+      iconFallback: '/icon/lucidity.webp',
+    },
+  ];
 
   @ViewChildren('snippetCard')
   private snippetCardRefs!: QueryList<ElementRef<HTMLElement>>;
@@ -33,6 +94,7 @@ export class HomeResumeSnippets implements AfterViewInit {
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
+
     if (this.isBrowser) {
       gsap.registerPlugin(CSSPlugin);
     }
@@ -140,8 +202,18 @@ export class HomeResumeSnippets implements AfterViewInit {
       filter: 'blur(0px)',
       duration: 0.75,
       ease: 'power3.out',
-      stagger: 0.1,
+      stagger: 0.08,
       clearProps: 'filter',
     });
+  }
+
+  private buildMainIconSet(name: string): ResponsiveSource[] {
+    return [
+      { src: `/icon/24x24_${name}.webp`, maxWidth: 320, type: 'image/webp' },
+      { src: `/icon/40x40_${name}.webp`, maxWidth: 480, type: 'image/webp' },
+      { src: `/icon/80x80_${name}.webp`, maxWidth: 768, type: 'image/webp' },
+      { src: `/icon/160x160_${name}.webp`, maxWidth: 1200, type: 'image/webp' },
+      { src: `/icon/${name}.webp`, type: 'image/webp' },
+    ];
   }
 }

@@ -1,0 +1,74 @@
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__identity">
+      <span class="footer__eyebrow">Charles Lindecker</span>
+      <p>
+        Développeur / Formateur ASP.NET & Angular.
+      </p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Navigation du footer">
+      <a routerLink="/" href="/">Accueil</a>
+      <a routerLink="/resume" href="/resume">Résumé</a>
+      <a routerLink="/projects" href="/projects">Projets</a>
+      <a routerLink="/work" href="/work">Parcours</a>
+    </nav>
+
+    <div class="footer__socials" aria-label="Liens externes">
+      <a
+        class="footer__social"
+        href="https://github.com/LINDECKER-Charles"
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label="GitHub">
+        <span class="footer__social-icon">
+          <app-responsive-picture
+            [sources]="githubIcon.sources"
+            [fallbackSrc]="githubIcon.fallback"
+            [alt]="githubIcon.alt"
+            loading="lazy"
+            decoding="async">
+          </app-responsive-picture>
+        </span>
+      </a>
+
+      <a
+        class="footer__social"
+        href="https://www.linkedin.com/in/charles-lindecker/"
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label="LinkedIn">
+        <span class="footer__social-icon">
+          <app-responsive-picture
+            [sources]="linkedinIcon.sources"
+            [fallbackSrc]="linkedinIcon.fallback"
+            [alt]="linkedinIcon.alt"
+            loading="lazy"
+            decoding="async">
+          </app-responsive-picture>
+        </span>
+      </a>
+
+      <a
+        class="footer__social"
+        href="mailto:charles.lindecker@outlook.fr"
+        aria-label="Email">
+        <span class="footer__social-icon">
+          <app-responsive-picture
+            [sources]="mailIcon.sources"
+            [fallbackSrc]="mailIcon.fallback"
+            [alt]="mailIcon.alt"
+            loading="lazy"
+            decoding="async">
+          </app-responsive-picture>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span>© 2026 Charles Lindecker</span>
+    <span class="footer__divider"></span>
+    <span>Conçu avec Angular</span>
+  </div>
+</footer>

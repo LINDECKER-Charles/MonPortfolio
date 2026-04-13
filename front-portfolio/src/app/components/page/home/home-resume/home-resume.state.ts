@@ -11,12 +11,9 @@ export interface HomeResumeSnippetState {
 }
 
 export const HOME_RESUME_PHOTO_SOURCES: ResponsiveSource[] = [
-  { src: '/photos/160x213_me.webp', maxWidth: 480, type: 'image/webp' },
-  { src: '/photos/320x426_me.webp', maxWidth: 768, type: 'image/webp' },
-  { src: '/photos/640x853_me.webp', type: 'image/webp' },
-  { src: '/photos/160x213_me.jpg', maxWidth: 480, type: 'image/jpeg' },
-  { src: '/photos/320x426_me.jpg', maxWidth: 768, type: 'image/jpeg' },
-  { src: '/photos/640x853_me.jpg', type: 'image/jpeg' },
+  { src: '/photos/640x853_me.webp' +
+      '', maxWidth: 730, type: 'image/webp' },
+  { src: '/photos/me.webp', type: 'image/webp' },
 ];
 
 export const HOME_RESUME_PHOTO_FALLBACK = '/photos/me.webp';

@@ -14,5 +14,4 @@ import {HomeResumeSnippets} from './home-resume-snippets/home-resume-snippets';
 export class HomeResumeContent {
   @Input({ required: true }) photoSources: ResponsiveSource[] = [];
   @Input({ required: true }) photoFallback = '';
-  @Input({ required: true }) snippets: HomeResumeSnippetState[] = [];
 }

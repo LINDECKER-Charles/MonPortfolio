@@ -26,6 +26,7 @@ export const routes: Routes = [
       twitterDescription:
         'Webapps performantes et solutions sur mesure avec .NET, Angular et Symfony.',
       twitterImage: 'https://charles-lindecker.com/meta/logo1.webp',
+      showFooter: false,
     },
   },
   {
@@ -49,10 +50,14 @@ export const routes: Routes = [
       twitterTitle: 'CV - Charles Lindecker',
       twitterDescription: 'Parcours, compétences et stack technique.',
       twitterImage: 'https://charles-lindecker.com/meta/logo1.webp',
+      showFooter: false,
     },
   },
   {
     path: 'home',
     component: Home,
+    data: {
+      showFooter: true,
+    }
   }
 ];
