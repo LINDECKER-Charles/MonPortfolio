@@ -1,0 +1,44 @@
+<header class="hero" #hero>
+  <div class="hero__veil"></div>
+
+  <div class="hero__content">
+    <div class="hero__identity">
+      <div class="hero__icon-frame">
+        <div class="hero__icon">
+          <app-responsive-picture
+            [sources]="luciditySources"
+            [fallbackSrc]="lucidityFallback"
+            alt="Icône Lucidity"
+            loading="eager"
+            decoding="async">
+          </app-responsive-picture>
+        </div>
+      </div>
+
+      <div class="hero__titles">
+        <span class="hero__eyebrow">Profil</span>
+        <h1>Charles LINDECKER</h1>
+        <h2>Développeur / Formateur ASP.NET & Angular</h2>
+      </div>
+    </div>
+
+    <a class="hero__cta" routerLink="/resume" href="/resume">
+      <span class="hero__cta-icon-frame">
+        <span class="hero__cta-icon">
+          <app-responsive-picture
+            [sources]="levelSources"
+            [fallbackSrc]="levelFallback"
+            alt="Icône niveau"
+            loading="eager"
+            decoding="async">
+          </app-responsive-picture>
+        </span>
+      </span>
+
+      <span class="hero__cta-label">
+        <span class="hero__cta-label-top">Consulter</span>
+        <span class="hero__cta-label-bottom">Mon résumé</span>
+      </span>
+    </a>
+  </div>
+</header>

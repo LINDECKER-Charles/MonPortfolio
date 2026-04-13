@@ -1,54 +1,27 @@
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
   ElementRef,
   Inject,
+  Input,
   PLATFORM_ID,
   QueryList,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
-
-import { ResponsivePicture } from '../../../assets/responsive-picture/responsive-picture';
-import {
-  HOME_RESUME_DEX_FALLBACK,
-  HOME_RESUME_DEX_SOURCES,
-  HOME_RESUME_DISCOVER_FALLBACK,
-  HOME_RESUME_DISCOVER_SOURCES,
-  HOME_RESUME_ESO_FALLBACK,
-  HOME_RESUME_ESO_RESIST_FALLBACK,
-  HOME_RESUME_ESO_RESIST_SOURCES,
-  HOME_RESUME_ESO_SOURCES,
-  HOME_RESUME_FIRE_FALLBACK,
-  HOME_RESUME_FIRE_SOURCES,
-  HOME_RESUME_LEVEL_FALLBACK,
-  HOME_RESUME_LEVEL_SOURCES,
-  HOME_RESUME_LUCIDITY_FALLBACK,
-  HOME_RESUME_LUCIDITY_SOURCES,
-  HOME_RESUME_PHOTO_FALLBACK,
-  HOME_RESUME_PHOTO_SOURCES,
-  HOME_RESUME_PHYSIQUE_FALLBACK,
-  HOME_RESUME_PHYSIQUE_SOURCES,
-  HOME_RESUME_POUSSE_RES_FALLBACK,
-  HOME_RESUME_POUSSE_RES_SOURCES,
-  HOME_RESUME_SNIPPETS,
-  HomeResumeSnippetState,
-} from './home-resume.state';
+import {ResponsivePicture} from '../../../../../assets/responsive-picture/responsive-picture';
+import {HomeResumeSnippetState} from '../../home-resume.state';
 
 @Component({
-  selector: 'app-home-resume',
-  imports: [RouterLink, ResponsivePicture],
-  templateUrl: './home-resume.html',
-  styleUrl: './home-resume.css',
+  selector: 'app-home-resume-snippets',
+  imports: [CommonModule, ResponsivePicture],
+  templateUrl: './home-resume-snippets.html',
+  styleUrl: './home-resume-snippets.css',
 })
-export class HomeResume implements AfterViewInit {
-  @ViewChild('banner') private bannerRef?: ElementRef<HTMLElement>;
-  @ViewChild('hero') private heroRef?: ElementRef<HTMLElement>;
-  @ViewChild('portraitBlock') private portraitBlockRef?: ElementRef<HTMLElement>;
+export class HomeResumeSnippets implements AfterViewInit {
+  @Input({ required: true }) snippets: HomeResumeSnippetState[] = [];
 
   @ViewChildren('snippetCard')
   private snippetCardRefs!: QueryList<ElementRef<HTMLElement>>;
@@ -56,36 +29,10 @@ export class HomeResume implements AfterViewInit {
   @ViewChildren('snippetContent')
   private snippetContentRefs!: QueryList<ElementRef<HTMLElement>>;
 
-  protected readonly photoSources = HOME_RESUME_PHOTO_SOURCES;
-  protected readonly photoFallback = HOME_RESUME_PHOTO_FALLBACK;
-
-  protected readonly luciditySources = HOME_RESUME_LUCIDITY_SOURCES;
-  protected readonly lucidityFallback = HOME_RESUME_LUCIDITY_FALLBACK;
-
-  protected readonly levelSources = HOME_RESUME_LEVEL_SOURCES;
-  protected readonly levelFallback = HOME_RESUME_LEVEL_FALLBACK;
-
-  protected readonly esoResistSources = HOME_RESUME_ESO_RESIST_SOURCES;
-  protected readonly esoResistFallback = HOME_RESUME_ESO_RESIST_FALLBACK;
-
-  protected readonly fireSources = HOME_RESUME_FIRE_SOURCES;
-  protected readonly fireFallback = HOME_RESUME_FIRE_FALLBACK;
-
-  protected readonly physiqueSources = HOME_RESUME_PHYSIQUE_SOURCES;
-  protected readonly physiqueFallback = HOME_RESUME_PHYSIQUE_FALLBACK;
-
-  protected readonly pousseResSources = HOME_RESUME_POUSSE_RES_SOURCES;
-  protected readonly pousseResFallback = HOME_RESUME_POUSSE_RES_FALLBACK;
-
-  protected snippets: HomeResumeSnippetState[] = HOME_RESUME_SNIPPETS.map((snippet) => ({
-    ...snippet,
-  }));
-
   private readonly isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
-
     if (this.isBrowser) {
       gsap.registerPlugin(CSSPlugin);
     }
@@ -179,31 +126,15 @@ export class HomeResume implements AfterViewInit {
   }
 
   private animateIntro(): void {
-    const introTargets: HTMLElement[] = [];
+    const cards = this.snippetCardRefs.map((ref) => ref.nativeElement);
 
-    if (this.bannerRef?.nativeElement) {
-      introTargets.push(this.bannerRef.nativeElement);
-    }
-
-    if (this.heroRef?.nativeElement) {
-      introTargets.push(this.heroRef.nativeElement);
-    }
-
-    if (this.portraitBlockRef?.nativeElement) {
-      introTargets.push(this.portraitBlockRef.nativeElement);
-    }
-
-    this.snippetCardRefs.forEach((ref) => {
-      introTargets.push(ref.nativeElement);
-    });
-
-    gsap.set(introTargets, {
+    gsap.set(cards, {
       autoAlpha: 0,
       y: 24,
       filter: 'blur(10px)',
     });
 
-    gsap.to(introTargets, {
+    gsap.to(cards, {
       autoAlpha: 1,
       y: 0,
       filter: 'blur(0px)',

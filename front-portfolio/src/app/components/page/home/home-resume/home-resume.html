@@ -1,18 +1,174 @@
-<section>
-  <header>
-    <!-- <app-responsive-picture></app-responsive-picture> -->
-    <h1>Charles LINDECKER</h1>
-    <h2>Développeur/Formateur ASP.NET/Angular</h2>
+<section class="home-resume">
+  <div class="home-resume__banner" #banner>
+    <div class="home-resume__banner-group">
+      <span class="home-resume__banner-icon">
+        <app-responsive-picture
+          [sources]="esoResistSources"
+          [fallbackSrc]="esoResistFallback"
+          alt="Résistance ésotérique"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
 
-    <a routerLink="/resume" href="/resume">Mon résumer</a>
+      <span class="home-resume__banner-icon">
+        <app-responsive-picture
+          [sources]="fireSources"
+          [fallbackSrc]="fireFallback"
+          alt="Feu"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
+    </div>
+
+    <span class="home-resume__banner-line"></span>
+
+    <p>Hunter’s Record · Architecture · Transmission · Precision</p>
+
+    <span class="home-resume__banner-line"></span>
+
+    <div class="home-resume__banner-group">
+      <span class="home-resume__banner-icon">
+        <app-responsive-picture
+          [sources]="physiqueSources"
+          [fallbackSrc]="physiqueFallback"
+          alt="Physique"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
+
+      <span class="home-resume__banner-icon">
+        <app-responsive-picture
+          [sources]="pousseResSources"
+          [fallbackSrc]="pousseResFallback"
+          alt="Résistance"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
+    </div>
+  </div>
+
+  <header class="hero" #hero>
+    <div class="hero__veil"></div>
+
+    <div class="hero__content">
+      <div class="hero__identity">
+        <div class="hero__icon-frame">
+          <div class="hero__icon">
+            <app-responsive-picture
+              [sources]="luciditySources"
+              [fallbackSrc]="lucidityFallback"
+              alt="Icône Lucidity"
+              loading="eager"
+              decoding="async">
+            </app-responsive-picture>
+          </div>
+        </div>
+
+        <div class="hero__titles">
+          <span class="hero__eyebrow">Profil</span>
+          <h1>Charles LINDECKER</h1>
+          <h2>Développeur / Formateur ASP.NET & Angular</h2>
+        </div>
+      </div>
+
+      <a class="hero__cta" routerLink="/resume" href="/resume">
+        <span class="hero__cta-icon-frame">
+          <span class="hero__cta-icon">
+            <app-responsive-picture
+              [sources]="levelSources"
+              [fallbackSrc]="levelFallback"
+              alt="Icône niveau"
+              loading="eager"
+              decoding="async">
+            </app-responsive-picture>
+          </span>
+        </span>
+
+        <span class="hero__cta-label">
+          <span class="hero__cta-label-top">Consulter</span>
+          <span class="hero__cta-label-bottom">Mon résumé</span>
+        </span>
+      </a>
+    </div>
   </header>
-  <article>
-    <!-- <app-responsive-picture></app-responsive-picture> -->
-    <div>
-<!--      Ici écrit moi un text sur moi en 3 paragraphes -->
-      <p></p>
-      <p></p>
-      <p></p>
+
+  <article class="about">
+    <div class="about__media" #portraitBlock>
+      <div class="portrait-card">
+        <div class="portrait-card__frame">
+          <div class="portrait-card__inner">
+            <app-responsive-picture
+              [sources]="photoSources"
+              [fallbackSrc]="photoFallback"
+              alt="Portrait de Charles Lindecker"
+              loading="lazy"
+              decoding="async">
+            </app-responsive-picture>
+          </div>
+        </div>
+
+        <div class="portrait-card__plate">
+          <span>Développeur</span>
+          <span class="portrait-card__divider"></span>
+          <span>Formateur</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__content">
+      @for (snippet of snippets; track snippet.id) {
+        <article
+          class="about-snippet"
+          [class.is-open]="snippet.isOpen"
+          #snippetCard>
+          <button
+            type="button"
+            class="about-snippet__trigger"
+            [attr.aria-expanded]="snippet.isOpen"
+            [attr.aria-controls]="'snippet-content-' + snippet.id"
+            (click)="toggleSnippet(snippet.id)">
+            <span class="about-snippet__heading">
+              <span class="about-snippet__icon-media">
+                <app-responsive-picture
+                  [sources]="snippet.iconSources"
+                  [fallbackSrc]="snippet.iconFallback"
+                  [alt]="snippet.iconAlt"
+                  loading="lazy"
+                  decoding="async">
+                </app-responsive-picture>
+              </span>
+
+              <span class="about-snippet__mark"></span>
+              <h3>{{ snippet.title }}</h3>
+            </span>
+
+            <span class="about-snippet__icon" [class.is-open]="snippet.isOpen">
+              <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M4 6L8 10L12 6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
+
+          <div
+            class="about-snippet__content-wrapper"
+            [id]="'snippet-content-' + snippet.id"
+            #snippetContent>
+            <div class="about-snippet__content">
+              <p>{{ snippet.content }}</p>
+            </div>
+          </div>
+        </article>
+      }
     </div>
   </article>
 </section>

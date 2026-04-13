@@ -1,0 +1,35 @@
+<div class="home-resume__banner" #banner>
+  <div class="home-resume__banner-group">
+    @for (icon of leftIcons; track icon.fallbackSrc) {
+      <span class="home-resume__banner-icon">
+        <app-responsive-picture
+          [sources]="icon.sources"
+          [fallbackSrc]="icon.fallbackSrc"
+          [alt]="icon.alt"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
+    }
+  </div>
+
+  <span class="home-resume__banner-line"></span>
+
+  <p>{{ label }}</p>
+
+  <span class="home-resume__banner-line"></span>
+
+  <div class="home-resume__banner-group">
+    @for (icon of rightIcons; track icon.fallbackSrc) {
+      <span class="home-resume__banner-icon">
+        <app-responsive-picture
+          [sources]="icon.sources"
+          [fallbackSrc]="icon.fallbackSrc"
+          [alt]="icon.alt"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
+    }
+  </div>
+</div>
