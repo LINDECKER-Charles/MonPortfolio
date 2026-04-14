@@ -25,7 +25,7 @@ export class ResumHeader extends ResumEntryAnimation {
   protected override animationDelay = 0.05;
 
   onRowHoverEnter(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const row = event.currentTarget as HTMLElement | null;
     if (!row) return;
@@ -34,7 +34,7 @@ export class ResumHeader extends ResumEntryAnimation {
   }
 
   onRowHoverLeave(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const row = event.currentTarget as HTMLElement | null;
     if (!row) return;
@@ -43,7 +43,7 @@ export class ResumHeader extends ResumEntryAnimation {
   }
 
   onTitleHoverEnter(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const link = event.currentTarget as HTMLElement | null;
     if (!link) return;
@@ -52,7 +52,7 @@ export class ResumHeader extends ResumEntryAnimation {
   }
 
   onTitleHoverLeave(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const link = event.currentTarget as HTMLElement | null;
     if (!link) return;
@@ -61,7 +61,7 @@ export class ResumHeader extends ResumEntryAnimation {
   }
 
   onTitlePress(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const link = event.currentTarget as HTMLElement | null;
     if (!link) return;
@@ -70,7 +70,7 @@ export class ResumHeader extends ResumEntryAnimation {
   }
 
   onTitleRelease(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const link = event.currentTarget as HTMLElement | null;
     if (!link) return;

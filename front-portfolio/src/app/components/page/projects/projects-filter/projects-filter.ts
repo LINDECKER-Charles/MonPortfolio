@@ -16,7 +16,7 @@ import {
   ProjectCategory,
   ProjectFilterItem,
   ProjectFiltersState,
-} from '../../../page/projects/projects.state';
+} from '../projects.state';
 
 @Component({
   selector: 'app-projects-filter',

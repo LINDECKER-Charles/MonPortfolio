@@ -7,8 +7,8 @@ import {
   ResponsiveSource,
 } from '../../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../../imgSources/shared.sources';
-import { ProjectItem } from '../../../page/projects/projects.state';
-import { formatProjectPeriod } from '../../../page/projects/projects.utils';
+import { ProjectItem } from '../projects.state';
+import { formatProjectPeriod } from '../projects.utils';
 
 interface ProjectIconSet {
   sources: ResponsiveSource[];

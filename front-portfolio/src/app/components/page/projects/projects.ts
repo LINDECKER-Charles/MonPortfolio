@@ -1,9 +1,9 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
-import { ProjectsFilter } from '../../home/projects/projects-filter/projects-filter';
-import { ProjectsHeader } from '../../home/projects/projects-header/projects-header';
-import { ProjectsModal } from '../../home/projects/projects-modal/projects-modal';
-import { ProjectsTimeline } from '../../home/projects/projects-timeline/projects-timeline';
+import { ProjectsFilter } from './projects-filter/projects-filter';
+import { ProjectsHeader } from './projects-header/projects-header';
+import { ProjectsModal } from './projects-modal/projects-modal';
+import { ProjectsTimeline } from './projects-timeline/projects-timeline';
 import {
   PROJECT_FILTERS,
   PROJECTS_DATA,
