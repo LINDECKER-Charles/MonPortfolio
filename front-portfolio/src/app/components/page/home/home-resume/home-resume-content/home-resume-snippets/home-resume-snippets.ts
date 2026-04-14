@@ -121,6 +121,11 @@ export class HomeResumeSnippets implements AfterViewInit {
       if (isTarget && !snippet.isOpen) {
         snippet.isOpen = true;
 
+        if (this.shouldUseSimpleMotion()) {
+          this.setExpandedState(contentEl, true);
+          return;
+        }
+
         gsap.killTweensOf(contentEl);
         gsap.set(contentEl, {
           display: 'block',
@@ -155,6 +160,11 @@ export class HomeResumeSnippets implements AfterViewInit {
       if ((!isTarget && snippet.isOpen) || (isTarget && snippet.isOpen)) {
         snippet.isOpen = false;
 
+        if (this.shouldUseSimpleMotion()) {
+          this.setExpandedState(contentEl, false);
+          return;
+        }
+
         gsap.killTweensOf(contentEl);
         gsap.set(contentEl, {
           overflow: 'hidden',
@@ -184,6 +194,14 @@ export class HomeResumeSnippets implements AfterViewInit {
   private animateIntro(): void {
     const cards = this.snippetCardRefs.map((ref) => ref.nativeElement);
 
+    if (this.shouldUseSimpleMotion()) {
+      gsap.set(cards, {
+        autoAlpha: 1,
+        clearProps: 'opacity',
+      });
+      return;
+    }
+
     gsap.set(cards, {
       autoAlpha: 0,
     });
@@ -195,5 +213,32 @@ export class HomeResumeSnippets implements AfterViewInit {
       overwrite: 'auto',
       clearProps: 'opacity',
     });
+  }
+
+  private setExpandedState(
+    contentEl: HTMLElement,
+    isExpanded: boolean
+  ): void {
+    gsap.killTweensOf(contentEl);
+    const state = isExpanded
+      ? {
+          height: 'auto',
+          autoAlpha: 1,
+          overflow: 'visible',
+          clearProps: 'display',
+        }
+      : {
+          height: 0,
+          autoAlpha: 0,
+          overflow: 'hidden',
+        };
+
+    gsap.set(contentEl, state);
+  }
+
+  private shouldUseSimpleMotion(): boolean {
+    return window.matchMedia(
+      '(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse), (max-width: 767px)'
+    ).matches;
   }
 }
