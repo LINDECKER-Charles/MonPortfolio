@@ -71,6 +71,10 @@
   padding-top: 3.4rem;
 }
 
+.projects-modal__layout--single-column {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .projects-modal__media-column {
   display: flex;
   flex-direction: column;
@@ -84,11 +88,19 @@
 }
 
 .projects-modal__carousel-image {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: zoom-in;
   border-radius: 18px;
   overflow: hidden;
   aspect-ratio: 16 / 10;
   background: #1b1c1c;
   border: 1px solid rgba(189, 193, 199, 0.06);
+}
+
+.projects-modal__carousel-image:hover {
+  border-color: rgba(236, 231, 219, 0.2);
 }
 
 .projects-modal__carousel-image app-responsive-picture {

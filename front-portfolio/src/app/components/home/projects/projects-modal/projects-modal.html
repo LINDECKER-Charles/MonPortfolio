@@ -13,61 +13,67 @@
       &times;
     </button>
 
-    <div class="projects-modal__layout">
-      <div class="projects-modal__media-column">
-        @if (project.detail?.images?.length) {
-          <div class="projects-modal__media">
-            <div class="projects-modal__carousel">
-              @if (currentImage; as image) {
-                <div class="projects-modal__carousel-image">
-                  <app-responsive-picture
-                    [sources]="image.sources"
-                    [fallbackSrc]="image.fallbackSrc"
-                    [alt]="image.alt"
-                    loading="eager"
-                    decoding="async"
-                    objectFit="cover">
-                  </app-responsive-picture>
-                </div>
-              }
-
-              @if ((project.detail?.images?.length ?? 0) > 1) {
-                <div class="projects-modal__carousel-controls">
+    <div class="projects-modal__layout" [class.projects-modal__layout--single-column]="!hasMedia">
+      @if (hasMedia) {
+        <div class="projects-modal__media-column">
+          @if (project.detail?.images?.length) {
+            <div class="projects-modal__media">
+              <div class="projects-modal__carousel">
+                @if (currentImage; as image) {
                   <button
                     type="button"
-                    class="projects-modal__carousel-button"
-                    (click)="previousImage.emit()">
-                    Precedente
+                    class="projects-modal__carousel-image"
+                    (click)="openImageLightbox()"
+                    aria-label="Afficher l'image en plein ecran">
+                    <app-responsive-picture
+                      [sources]="image.sources"
+                      [fallbackSrc]="image.fallbackSrc"
+                      [alt]="image.alt"
+                      loading="eager"
+                      decoding="async"
+                      objectFit="cover">
+                    </app-responsive-picture>
                   </button>
+                }
 
-                  <span class="projects-modal__carousel-index">
-                    {{ currentImageIndex + 1 }} / {{ project.detail?.images?.length }}
-                  </span>
+                @if ((project.detail?.images?.length ?? 0) > 1) {
+                  <div class="projects-modal__carousel-controls">
+                    <button
+                      type="button"
+                      class="projects-modal__carousel-button"
+                      (click)="previousImage.emit()">
+                      Precedente
+                    </button>
 
-                  <button
-                    type="button"
-                    class="projects-modal__carousel-button"
-                    (click)="nextImage.emit()">
-                    Suivante
-                  </button>
-                </div>
-              }
+                    <span class="projects-modal__carousel-index">
+                      {{ currentImageIndex + 1 }} / {{ project.detail?.images?.length }}
+                    </span>
+
+                    <button
+                      type="button"
+                      class="projects-modal__carousel-button"
+                      (click)="nextImage.emit()">
+                      Suivante
+                    </button>
+                  </div>
+                }
+              </div>
             </div>
-          </div>
-        }
+          }
 
-        @if (safeVideoUrl; as videoUrl) {
-          <div class="projects-modal__video">
-            <iframe
-              [src]="videoUrl"
-              title="Video du projet"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-        }
-      </div>
+          @if (safeVideoUrl; as videoUrl) {
+            <div class="projects-modal__video">
+              <iframe
+                [src]="videoUrl"
+                title="Video du projet"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          }
+        </div>
+      }
 
       <div class="projects-modal__content">
         <div class="projects-modal__header">
@@ -168,3 +174,12 @@
     </div>
   </div>
 </div>
+
+@if (isImageLightboxOpen && currentImage; as image) {
+  <app-image-lightbox
+    [sources]="image.sources"
+    [fallbackSrc]="image.fallbackSrc"
+    [alt]="image.alt"
+    (close)="closeImageLightbox()">
+  </app-image-lightbox>
+}

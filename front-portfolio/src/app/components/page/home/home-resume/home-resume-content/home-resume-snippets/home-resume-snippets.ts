@@ -12,6 +12,7 @@ import {
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import {ResponsivePicture, ResponsiveSource} from '../../../../../assets/responsive-picture/responsive-picture';
+import { SHARED_IMAGES } from '../../../../../../imgSources/shared.sources';
 
 
 interface HomeResumeSnippetState {
@@ -39,8 +40,8 @@ export class HomeResumeSnippets implements AfterViewInit {
         'Il n’existe pas de meilleur exercice que le partage de connaissance : il permet d’éprouver nos raisonnements, de clarifier notre conception des choses et d’élever notre niveau d’exigence. Développeur depuis 9 ans, j’accorde une grande importance à la transmission auprès des futurs développeurs.',
       isOpen: false,
       iconAlt: 'Transmission et enseignement',
-      iconSources: this.buildMainIconSet('pousse_res'),
-      iconFallback: '/icon/pousse_res.webp',
+      iconSources: SHARED_IMAGES.icon.pousseRes.sources,
+      iconFallback: SHARED_IMAGES.icon.pousseRes.fallbackSrc,
     },
     {
       id: 'stack',
@@ -49,8 +50,8 @@ export class HomeResumeSnippets implements AfterViewInit {
         'Mes choix technologiques sont en accord avec mes ambitions. Angular et .NET représentent aujourd’hui des solutions modernes, robustes et scalables. Mon objectif reste constant : concevoir pour mes clients des applications maintenables, solides et pérennes.',
       isOpen: false,
       iconAlt: 'Stack et excellence technique',
-      iconSources: this.buildMainIconSet('physique'),
-      iconFallback: '/icon/physique.webp',
+      iconSources: SHARED_IMAGES.icon.physique.sources,
+      iconFallback: SHARED_IMAGES.icon.physique.fallbackSrc,
     },
     {
       id: 'architecture',
@@ -59,8 +60,8 @@ export class HomeResumeSnippets implements AfterViewInit {
         'Monolithe, microservices, architecture hexagonale ou serverless : chaque projet possède des contraintes et des besoins spécifiques. Mon rôle n’est pas seulement de proposer une solution, mais d’identifier la solution la plus adaptée, la plus cohérente et la plus fiable.',
       isOpen: false,
       iconAlt: 'Sécurité applicative et architecture',
-      iconSources: this.buildMainIconSet('eso_resist'),
-      iconFallback: '/icon/eso_resist.webp',
+      iconSources: SHARED_IMAGES.icon.esoResist.sources,
+      iconFallback: SHARED_IMAGES.icon.esoResist.fallbackSrc,
     },
     {
       id: 'opensource',
@@ -69,8 +70,8 @@ export class HomeResumeSnippets implements AfterViewInit {
         'Plus qu’un métier, le développement est une passion que j’exprime à travers mes contributions open source ainsi que par l’accompagnement de jeunes dans le cadre de missions bénévoles. J’y vois une manière concrète de rendre la technique utile et accessible.',
       isOpen: false,
       iconAlt: 'Open source et bénévolat',
-      iconSources: this.buildMainIconSet('fire'),
-      iconFallback: '/icon/fire.webp',
+      iconSources: SHARED_IMAGES.icon.fire.sources,
+      iconFallback: SHARED_IMAGES.icon.fire.fallbackSrc,
     },
     {
       id: 'quality',
@@ -79,8 +80,8 @@ export class HomeResumeSnippets implements AfterViewInit {
         'Je m’appuie sur des standards de code rigoureux, une veille technique active et une exigence constante sur la qualité. Cette discipline me permet de rester à jour, de prendre de meilleures décisions techniques et de produire un code propre, fiable et responsable.',
       isOpen: false,
       iconAlt: 'Qualité et responsabilité',
-      iconSources: this.buildMainIconSet('lucidity'),
-      iconFallback: '/icon/lucidity.webp',
+      iconSources: SHARED_IMAGES.icon.lucidity.sources,
+      iconFallback: SHARED_IMAGES.icon.lucidity.fallbackSrc,
     },
   ];
 
@@ -205,15 +206,5 @@ export class HomeResumeSnippets implements AfterViewInit {
       stagger: 0.08,
       clearProps: 'filter',
     });
-  }
-
-  private buildMainIconSet(name: string): ResponsiveSource[] {
-    return [
-      { src: `/icon/24x24_${name}.webp`, maxWidth: 320, type: 'image/webp' },
-      { src: `/icon/40x40_${name}.webp`, maxWidth: 480, type: 'image/webp' },
-      { src: `/icon/80x80_${name}.webp`, maxWidth: 768, type: 'image/webp' },
-      { src: `/icon/160x160_${name}.webp`, maxWidth: 1200, type: 'image/webp' },
-      { src: `/icon/${name}.webp`, type: 'image/webp' },
-    ];
   }
 }

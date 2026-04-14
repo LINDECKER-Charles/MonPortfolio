@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import {OpeningResume} from './components/misc/opening-resume/opening-resume';
+import {OpeningHome} from './components/misc/opening-home/opening-home';
 import {Resum} from './components/misc/opening-resume/resum/resum';
 import {Home} from './components/page/home/home';
 import {Projects} from './components/page/projects/projects';
@@ -32,6 +33,13 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'opening-home',
+    component: OpeningHome,
+    data: {
+      showFooter: false,
+    },
+  },
+  {
     path: 'resume',
     component: Resum,
     title: 'Charles Lindecker - CV & Parcours Développeur Web',
@@ -52,7 +60,7 @@ export const routes: Routes = [
       twitterTitle: 'CV - Charles Lindecker',
       twitterDescription: 'Parcours, compétences et stack technique.',
       twitterImage: 'https://charles-lindecker.com/meta/logo1.webp',
-      showFooter: false,
+      showFooter: true,
     },
   },
   {

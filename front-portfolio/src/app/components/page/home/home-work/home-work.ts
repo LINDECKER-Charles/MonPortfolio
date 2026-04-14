@@ -14,6 +14,7 @@ import {
   ResponsivePicture,
   ResponsiveSource,
 } from '../../../assets/responsive-picture/responsive-picture';
+import { SHARED_IMAGES } from '../../../../imgSources/shared.sources';
 
 interface WorkIconSet {
   sources: ResponsiveSource[];
@@ -32,29 +33,23 @@ export class HomeWork implements AfterViewInit {
 
   private readonly isBrowser: boolean;
 
-  protected readonly workIcon = this.buildMainIconSet('strenght', 'Parcours professionnel');
-  protected readonly linkedinIcon = this.buildStackIconSet('linkedin', 'LinkedIn');
+  protected readonly workIcon: WorkIconSet = {
+    alt: 'Parcours professionnel',
+    sources: SHARED_IMAGES.icon.strenght.sources,
+    fallback: SHARED_IMAGES.icon.strenght.fallbackSrc,
+  };
+  protected readonly linkedinIcon: WorkIconSet = {
+    alt: 'LinkedIn',
+    sources: SHARED_IMAGES.stack.linkedin.sources,
+    fallback: SHARED_IMAGES.stack.linkedin.fallbackSrc,
+  };
 
   protected readonly railIcons: WorkIconSet[] = [
-    this.buildStackIconSet('symfony', 'Symfony'),
-    this.buildStackIconSet('postgre', 'PostgreSQL'),
-    this.buildStackIconSet('python', 'Python'),
-    this.buildStackIconSet('github', 'GitHub'),
+    { alt: 'Symfony', sources: SHARED_IMAGES.stack.symfony.sources, fallback: SHARED_IMAGES.stack.symfony.fallbackSrc },
+    { alt: 'PostgreSQL', sources: SHARED_IMAGES.stack.postgre.sources, fallback: SHARED_IMAGES.stack.postgre.fallbackSrc },
+    { alt: 'Python', sources: SHARED_IMAGES.stack.python.sources, fallback: SHARED_IMAGES.stack.python.fallbackSrc },
+    { alt: 'GitHub', sources: SHARED_IMAGES.stack.github.sources, fallback: SHARED_IMAGES.stack.github.fallbackSrc },
   ];
-
-  private buildMainIconSet(name: string, alt: string): WorkIconSet {
-    return {
-      alt,
-      sources: [
-        { src: `/icon/24x24_${name}.webp`, maxWidth: 320, type: 'image/webp' },
-        { src: `/icon/40x40_${name}.webp`, maxWidth: 480, type: 'image/webp' },
-        { src: `/icon/80x80_${name}.webp`, maxWidth: 768, type: 'image/webp' },
-        { src: `/icon/160x160_${name}.webp`, maxWidth: 1200, type: 'image/webp' },
-        { src: `/icon/${name}.webp`, type: 'image/webp' },
-      ],
-      fallback: `/icon/${name}.webp`,
-    };
-  }
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -87,19 +82,5 @@ export class HomeWork implements AfterViewInit {
       stagger: 0.08,
       clearProps: 'filter',
     });
-  }
-
-  private buildStackIconSet(name: string, alt: string): WorkIconSet {
-    return {
-      alt,
-      sources: [
-        { src: `/icon/stack/24x24_${name}.webp`, maxWidth: 320, type: 'image/webp' },
-        { src: `/icon/stack/40x40_${name}.webp`, maxWidth: 480, type: 'image/webp' },
-        { src: `/icon/stack/80x80_${name}.webp`, maxWidth: 768, type: 'image/webp' },
-        { src: `/icon/stack/160x160_${name}.webp`, maxWidth: 1200, type: 'image/webp' },
-        { src: `/icon/stack/${name}.webp`, type: 'image/webp' },
-      ],
-      fallback: `/icon/stack/${name}.webp`,
-    };
   }
 }

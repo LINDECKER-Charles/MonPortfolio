@@ -1,0 +1,110 @@
+<section class="construction">
+  <div class="construction__backdrop" aria-hidden="true">
+    <span class="construction__orb construction__orb--one"></span>
+    <span class="construction__orb construction__orb--two"></span>
+    <span class="construction__grid"></span>
+  </div>
+
+  <div class="construction__panel">
+    <div class="construction__hero">
+      <div class="construction__badge">
+        <span class="construction__badge-dot"></span>
+        <span>Parcours en preparation</span>
+      </div>
+
+      <div class="construction__icon-cluster" aria-hidden="true">
+        <span class="construction__icon construction__icon--primary">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 18L10 12L13.5 15.5L20 9" />
+            <path d="M15 9H20V14" />
+          </svg>
+        </span>
+
+        <span class="construction__icon construction__icon--secondary">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 4L19 8V16L12 20L5 16V8L12 4Z" />
+            <path d="M12 12L19 8" />
+            <path d="M12 12L5 8" />
+            <path d="M12 12V20" />
+          </svg>
+        </span>
+
+        <span class="construction__icon construction__icon--accent">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8 16L16 8" />
+            <path d="M9.5 7.5H16.5V14.5" />
+            <path d="M5 19H19" />
+          </svg>
+        </span>
+      </div>
+
+      <div class="construction__copy">
+        <p class="construction__eyebrow">Section temporaire</p>
+        <h1>Cette page est en cours de construction.</h1>
+        <p class="construction__lead">
+          Je prepare une version plus riche de mon parcours professionnel, avec une vraie lecture
+          chronologique, des moments cles et une presentation plus soignee.
+        </p>
+      </div>
+
+      <div class="construction__actions">
+        <a class="construction__cta construction__cta--primary" routerLink="/projects" href="/projects">
+          Voir mes projets
+        </a>
+
+        <a class="construction__cta construction__cta--secondary" routerLink="/" href="/">
+          Revenir a l'accueil
+        </a>
+      </div>
+    </div>
+
+    <div class="construction__pillars">
+      @for (pillar of pillars; track pillar.title) {
+        <article class="construction__card">
+          <div class="construction__card-icon" aria-hidden="true">
+            @switch (pillar.icon) {
+              @case ('roadmap') {
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6 6C6 4.9 6.9 4 8 4H12C13.1 4 14 4.9 14 6C14 7.1 13.1 8 12 8H10C8.9 8 8 8.9 8 10C8 11.1 8.9 12 10 12H14C15.1 12 16 12.9 16 14C16 15.1 15.1 16 14 16H12C10.9 16 10 16.9 10 18C10 19.1 10.9 20 12 20H18" />
+                </svg>
+              }
+              @case ('craft') {
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M14.5 5.5L18.5 9.5" />
+                  <path d="M7 17L4 20L7.5 20.5L10 18L18.5 9.5C19.3 8.7 19.3 7.3 18.5 6.5L17.5 5.5C16.7 4.7 15.3 4.7 14.5 5.5L6 14L7 17Z" />
+                </svg>
+              }
+              @case ('launch') {
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3L14.8 8.7L21 9.6L16.5 13.9L17.6 20L12 17.1L6.4 20L7.5 13.9L3 9.6L9.2 8.7L12 3Z" />
+                </svg>
+              }
+            }
+          </div>
+
+          <div class="construction__card-copy">
+            <h2>{{ pillar.title }}</h2>
+            <p>{{ pillar.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+
+    <div class="construction__status" aria-label="Etat du chantier">
+      <div class="construction__status-head">
+        <span class="construction__status-title">Etat d'avancement</span>
+        <span class="construction__status-value">Design en cours</span>
+      </div>
+
+      <div class="construction__progress">
+        <span class="construction__progress-bar"></span>
+      </div>
+
+      <div class="construction__status-notes">
+        <span>Structure</span>
+        <span>Direction visuelle</span>
+        <span>Contenu en affinage</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,10 +1,20 @@
 <picture>
-  @for (source of sortedSources; track source.src) {
-    <source
-      [srcset]="source.src"
-      [media]="buildMedia(source.maxWidth)"
-      [type]="source.type ?? null"
-    />
+  @if (usesWidthDescriptors) {
+    @for (type of sourceTypes; track type) {
+      <source
+        [attr.srcset]="buildSrcSet(type)"
+        [attr.sizes]="sizes ?? null"
+        [type]="type"
+      />
+    }
+  } @else {
+    @for (source of sortedSources; track source.src) {
+      <source
+        [srcset]="source.src"
+        [media]="buildMedia(source.maxWidth)"
+        [type]="source.type ?? null"
+      />
+    }
   }
 
   <img
@@ -12,6 +22,8 @@
     [alt]="alt"
     [loading]="loading"
     [decoding]="decoding"
+    [attr.fetchpriority]="fetchPriority"
+    [attr.sizes]="sizes ?? null"
     [style.object-fit]="objectFit"
     [style.object-position]="objectPosition"
   />

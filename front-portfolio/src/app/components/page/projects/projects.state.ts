@@ -1,4 +1,11 @@
 import { ResponsiveSource } from '../../assets/responsive-picture/responsive-picture';
+import { SHARED_IMAGES } from '../../../imgSources/shared.sources';
+import {OMNICARD_IMAGES} from '../../../imgSources/projects/omnicard.sources';
+import {LIS_WEB_IMAGES} from '../../../imgSources/projects/lis.source';
+import {DEV_MATES_IMAGES} from '../../../imgSources/projects/devmates.source';
+import {SHREK_IMAGES} from '../../../imgSources/projects/shrek.source';
+import {LODB_IMAGES} from '../../../imgSources/projects/lodb.source';
+import {BLENDER_COLLECTION_IMAGES} from '../../../imgSources/projects/blendercollection.source';
 
 export interface Period {
   dateStart: Date;
@@ -21,8 +28,7 @@ export interface ProjectDetail {
 export type ProjectCategory =
   | 'personal'
   | 'open_source'
-  | 'client'
-  | 'training';
+  | 'client';
 
 export type ProjectStatus =
   | 'done'
@@ -67,39 +73,26 @@ export const PROJECT_FILTERS: ProjectFilterItem[] = [
   { id: 'personal', label: 'Personnel' },
   { id: 'open_source', label: 'Open Source' },
   { id: 'client', label: 'Client' },
-  { id: 'training', label: 'Formation' },
 ];
 
 const omnicardImages: ProjectMediaImage[] = [
   {
     alt: 'Aperçu Omnicard 1',
-    fallbackSrc: '/photos/me.webp',
-    sources: [
-      { src: '/photos/160x213_me.webp', maxWidth: 480, type: 'image/webp' },
-      { src: '/photos/320x426_me.webp', maxWidth: 768, type: 'image/webp' },
-      { src: '/photos/640x853_me.webp', type: 'image/webp' },
-    ],
+    fallbackSrc: SHARED_IMAGES.photo.me.fallbackSrc,
+    sources: SHARED_IMAGES.photo.me.sources,
   },
   {
     alt: 'Aperçu Omnicard 2',
-    fallbackSrc: '/photos/me.webp',
-    sources: [
-      { src: '/photos/160x213_me.webp', maxWidth: 480, type: 'image/webp' },
-      { src: '/photos/320x426_me.webp', maxWidth: 768, type: 'image/webp' },
-      { src: '/photos/640x853_me.webp', type: 'image/webp' },
-    ],
+    fallbackSrc: SHARED_IMAGES.photo.me.fallbackSrc,
+    sources: SHARED_IMAGES.photo.me.sources,
   },
 ];
 
 const portfolioImages: ProjectMediaImage[] = [
   {
     alt: 'Aperçu Portfolio 1',
-    fallbackSrc: '/photos/me.webp',
-    sources: [
-      { src: '/photos/160x213_me.webp', maxWidth: 480, type: 'image/webp' },
-      { src: '/photos/320x426_me.webp', maxWidth: 768, type: 'image/webp' },
-      { src: '/photos/640x853_me.webp', type: 'image/webp' },
-    ],
+    fallbackSrc: SHARED_IMAGES.photo.me.fallbackSrc,
+    sources: SHARED_IMAGES.photo.me.sources,
   },
 ];
 
@@ -109,7 +102,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'omnicard',
     title: 'Omnicard',
     period: {
-      dateStart: new Date('2025-01-01'),
+      dateStart: new Date('2026-03-01'),
       isEnd: false,
     },
     shortDescription:
@@ -125,6 +118,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'SignalR',
       'PostgreSQL',
       'TypeScript',
+      'XUnit'
     ],
     tags: [
       'Architecture',
@@ -135,8 +129,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Full Stack',
     ],
     links: {
-      github: '#',
-      demo: '#',
+      demo: 'https://test.omnicard.fr',
     },
     highlights: [
       'Conception d’un moteur métier modulaire et orienté règles',
@@ -144,7 +137,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Communication temps réel entre joueurs et synchronisation des parties',
     ],
     detail: {
-      images: [],
+      images: OMNICARD_IMAGES,
       lessonsLearned: [
         'Structurer une logique métier complexe sans perdre en lisibilité',
         'Faire évoluer un moteur de jeu de manière propre et testable',
@@ -157,7 +150,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'pvzf-translation-fr',
     title: 'PVZF Translation FR',
     period: {
-      dateStart: new Date('2025-01-01'),
+      dateStart: new Date('2025-09-01'),
       isEnd: false,
     },
     shortDescription:
@@ -194,44 +187,69 @@ export const PROJECTS_DATA: ProjectItem[] = [
     featured: true,
   },
   {
-    id: 'project-to-complete',
-    title: 'Nom du projet à compléter',
+    id: 'portfolio',
+    title: 'Ce Portfolio',
     period: {
-      dateStart: new Date('2026-01-01'),
+      dateStart: new Date('2026-03-01'),
       isEnd: false,
     },
     shortDescription:
-      'Description courte à compléter.',
+      'Portfolio nouvelle génération pensé comme une expérience immersive, alliant branding personnel, animation avancée et architecture front moderne.',
     longDescription:
-      'Description longue à compléter.',
+      'Ce portfolio a été conçu comme bien plus qu’un simple site vitrine : il s’agit d’une démonstration technique complète de mon approche du développement front-end moderne. L’objectif était de créer une expérience immersive et hautement qualitative, capable de refléter mon niveau technique, ma sensibilité produit ainsi que mon attention au détail. L’ensemble de l’interface repose sur une architecture Angular moderne avec SSR, animations avancées, composants responsives réutilisables et optimisation poussée des performances.',
     category: 'personal',
     status: 'in_progress',
-    stack: [],
-    tags: [],
+    stack: [
+      'Angular',
+      'TypeScript',
+      'GSAP',
+      'SSR',
+      'CSS',
+      'Zoneless'
+    ],
+    tags: [
+      'Frontend',
+      'Animation',
+      'UX',
+      'Architecture UI',
+      'Branding',
+      'Performance',
+    ],
     links: {
-      github: '#',
-      demo: '#',
-      website: '#',
+      github: 'https://github.com/LINDECKER-Charles/MonPortfolio',
+      website: 'https://charles-lindecker.com',
     },
-    highlights: [],
+    highlights: [
+      'Architecture Angular moderne avec SSR et hydration',
+      'Système de composants responsive réutilisables et fortement typés',
+      'Animations avancées avec GSAP et reveal dynamique au scroll',
+      'Optimisation Lighthouse / Core Web Vitals orientée performance réelle',
+      'Design system custom cohérent avec identité visuelle forte',
+    ],
     detail: {
       images: [],
-      lessonsLearned: [],
+      lessonsLearned: [
+        'Construire une architecture front scalable pour un site fortement animé',
+        'Concilier animations riches et performances élevées sur mobile',
+        'Travailler l’UX comme vecteur de branding technique',
+        'Industrialiser la gestion des médias responsives dans Angular',
+      ],
     },
   },
   {
     id: 'lis-web',
     title: 'LIS Web',
     period: {
-      dateStart: new Date('2024-01-01'),
-      isEnd: false,
+      dateStart: new Date('2025-10-01'),
+      dateEnd: new Date('2025-11-01'),
+      isEnd: true,
     },
     shortDescription:
       'Projet professionnel orienté présence web, vitrine et prestation réelle.',
     longDescription:
       'LIS Web représente un projet professionnel concret, pensé comme une solution web réelle et exploitable. Ce type de projet me permet de confronter les exigences techniques à des attentes de communication, de lisibilité, de clarté de contenu et de crédibilité de présence en ligne. Au-delà du développement pur, il s’agit aussi de produire une interface cohérente avec une identité et des besoins métier précis.',
     category: 'client',
-    status: 'in_progress',
+    status: 'done',
     stack: ['Web', 'Front-end', 'Back-end'],
     tags: [
       'Professionnel',
@@ -249,7 +267,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Projet ancré dans une logique professionnelle réelle',
     ],
     detail: {
-      images: [],
+      images: LIS_WEB_IMAGES,
       lessonsLearned: [
         'Traduire des besoins métier en interface claire et structurée',
         'Travailler une présence web avec une vraie exigence de crédibilité',
@@ -261,15 +279,16 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'dev-mates',
     title: 'Dev-Mates',
     period: {
-      dateStart: new Date('2024-01-01'),
-      isEnd: false,
+      dateStart: new Date('2025-09-01'),
+      dateEnd: new Date('2026-12-01'),
+      isEnd: true,
     },
     shortDescription:
       'Site vitrine de société, centré sur l’identité, la présentation de service et la crédibilité.',
     longDescription:
       'Dev-Mates est aujourd’hui le site vitrine de ma société. Le projet s’inscrit dans une logique de présence professionnelle, d’identité claire et de mise en valeur d’une offre de service. Il s’agit d’un support de communication autant qu’un projet technique, ce qui implique de trouver un équilibre entre image, structure, clarté du message et exécution propre.',
     category: 'client',
-    status: 'in_progress',
+    status: 'done',
     stack: ['Web', 'Front-end', 'Branding'],
     tags: [
       'Société',
@@ -287,7 +306,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Projet centré sur la crédibilité et la lisibilité',
     ],
     detail: {
-      images: [],
+      images: DEV_MATES_IMAGES,
       lessonsLearned: [
         'Construire un site qui sert autant la communication que la technique',
         'Mieux penser l’identité d’une structure à travers le web',
@@ -308,7 +327,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'PVZ Fuzion Console Manager est un outil développé pour assister le suivi et la validation des traductions. Son rôle est de détecter les traductions manquantes sur une version précise et de simplifier le contrôle qualité autour du projet. C’est un utilitaire technique orienté productivité, pensé pour réduire les oublis, gagner du temps et fiabiliser le travail communautaire.',
     category: 'open_source',
     status: 'in_progress',
-    stack: ['C#', '.NET', 'Console', 'GitHub'],
+    stack: ['Console', 'Python', 'GitHub'],
     tags: [
       'Open Source',
       'Outil',
@@ -348,7 +367,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Shreksophone est un projet volontairement absurde, techniquement simple mais totalement assumé dans sa direction. Le principe est direct : un clic, et toute l’interface abandonne sa dignité pour laisser la place à une vidéo plein écran de Shrek sur un solo de saxophone. Derrière le ton volontairement troll, le projet m’a servi de terrain de jeu pour expérimenter un concept ultra-court, mémorable et poussé jusqu’au bout dans son identité.',
     category: 'personal',
     status: 'done',
-    stack: ['Angular', 'TypeScript', 'CSS', 'JavaScript'],
+    stack: ['HTML', 'Tailwind', 'CSS', 'JavaScript'],
     tags: [
       'Troll',
       'Expérimentation',
@@ -366,7 +385,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Direction créative entièrement assumée',
     ],
     detail: {
-      images: [],
+      images: SHREK_IMAGES,
       lessonsLearned: [
         'Aller au bout d’un concept même lorsqu’il est volontairement absurde',
         'Créer un projet mémorable avec très peu de complexité technique',
@@ -378,7 +397,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'glossairequest',
     title: 'GlossaireQuest',
     period: {
-      dateStart: new Date('2025-11-01'),
+      dateStart: new Date('2025-09-01'),
       dateEnd: new Date('2025-11-30'),
       isEnd: true,
     },
@@ -422,13 +441,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
         'Concevoir une application pédagogique avec logique métier et suivi utilisateur',
       ],
     },
-    featured: true,
+    featured: false,
   },
   {
     id: 'league-of-data-base',
     title: 'League of Data Base',
     period: {
-      dateStart: new Date('2025-08-01'),
+      dateStart: new Date('2025-06-01'),
       dateEnd: new Date('2025-10-31'),
       isEnd: true,
     },
@@ -436,7 +455,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Application web de centralisation des données de League of Legends, multilingue et multi-version.',
     longDescription:
       'League of Data Base est une application web conçue pour centraliser, stocker et afficher les données de League of Legends via une interface claire, responsive et rapide. Le projet répond à un besoin concret : accéder facilement aux informations du jeu, dans la langue et la version souhaitées, sans dépendre d’outils dispersés ou incomplets. L’application a été pensée comme une base extensible, capable de gérer champions, objets, runes et autres ressources tout en restant maintenable dans le temps.',
-    category: 'training',
+    category: 'personal',
     status: 'done',
     stack: [
       'Symfony 7',
@@ -466,7 +485,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Interface responsive claire et rapide avec Twig et Tailwind CSS',
     ],
     detail: {
-      images: [],
+      images: LODB_IMAGES,
       lessonsLearned: [
         'Concevoir une architecture extensible autour d’une API évolutive',
         'Optimiser le stockage et le rendu d’un grand volume de médias',
@@ -479,15 +498,15 @@ export const PROJECTS_DATA: ProjectItem[] = [
     id: 'blender-collection',
     title: 'Blender Collection',
     period: {
-      dateStart: new Date('2025-05-01'),
-      dateEnd: new Date('2025-08-31'),
+      dateStart: new Date('2025-07-01'),
+      dateEnd: new Date('2025-09-31'),
       isEnd: true,
     },
     shortDescription:
       'Plateforme web de gestion et de partage de collections d’add-ons Blender.',
     longDescription:
       'Blender Collection est une application web pensée pour centraliser, organiser et partager des add-ons Blender. L’objectif est de permettre aux utilisateurs de créer leurs propres collections, de les rendre publiques ou privées, puis de télécharger leurs extensions en un seul fichier. Le projet met l’accent sur la gestion communautaire, les rôles, la supervision administrative et une expérience fluide malgré la manipulation de fichiers potentiellement volumineux.',
-    category: 'training',
+    category: 'personal',
     status: 'done',
     stack: [
       'Symfony 7',
@@ -519,7 +538,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Workers asynchrones et cache pour améliorer l’expérience utilisateur',
     ],
     detail: {
-      images: [],
+      images: BLENDER_COLLECTION_IMAGES,
       lessonsLearned: [
         'Structurer une application communautaire avec plusieurs niveaux de rôles',
         'Traiter des opérations lourdes sans bloquer l’interface',
@@ -540,7 +559,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Application Symfony complète orientée gestion de sessions, sécurité web et administration.',
     longDescription:
       'SymfonySession est une application web développée pour illustrer des cas concrets de gestion de sessions, de sécurité applicative et d’administration. Le projet sert de base solide pour des outils de back-office ou des plateformes de formation, avec un accent fort sur la sécurité, la maintenabilité et l’expérience utilisateur. Il intègre à la fois des fonctionnalités métier complètes et plusieurs mécanismes de protection contre les abus.',
-    category: 'training',
+    category: 'personal',
     status: 'done',
     stack: [
       'Symfony 6',

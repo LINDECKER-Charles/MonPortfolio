@@ -5,8 +5,10 @@
         <app-responsive-picture
           [sources]="photoSources"
           [fallbackSrc]="photoFallback"
+          sizes="(max-width: 980px) 100vw, 330px"
           alt="Portrait de Charles Lindecker"
-          loading="lazy"
+          fetchPriority="high"
+          loading="eager"
           decoding="async">
         </app-responsive-picture>
       </div>

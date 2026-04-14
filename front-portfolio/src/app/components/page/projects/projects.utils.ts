@@ -37,8 +37,6 @@ export function getProjectCategoryLabel(category: ProjectCategory): string {
       return 'Open Source';
     case 'client':
       return 'Client';
-    case 'training':
-      return 'Formation';
     default:
       return category;
   }
