@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, SecurityContext } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SecurityContext, inject } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ImageLightbox } from '../../../assets/image-lightbox/image-lightbox';
 import {
@@ -9,6 +9,8 @@ import {
 import { SHARED_IMAGES } from '../../../../imgSources/shared.sources';
 import { ProjectItem } from '../projects.state';
 import { formatProjectPeriod } from '../projects.utils';
+import { TranslatePipe } from '../../../../pipes/translate.pipe';
+import { LanguageService } from '../../../../services/language-service';
 
 interface ProjectIconSet {
   sources: ResponsiveSource[];
@@ -18,7 +20,7 @@ interface ProjectIconSet {
 
 @Component({
   selector: 'app-projects-modal',
-  imports: [CommonModule, ResponsivePicture, ImageLightbox],
+  imports: [CommonModule, ResponsivePicture, ImageLightbox, TranslatePipe],
   templateUrl: './projects-modal.html',
   styleUrl: './projects-modal.css',
 })
@@ -35,6 +37,8 @@ export class ProjectsModal {
     sources: SHARED_IMAGES.stack.github.sources,
     fallback: SHARED_IMAGES.stack.github.fallbackSrc,
   };
+
+  private readonly languageService = inject(LanguageService);
 
   constructor(private readonly sanitizer: DomSanitizer) {}
 
@@ -59,7 +63,7 @@ export class ProjectsModal {
   }
 
   protected formatPeriod(): string {
-    return formatProjectPeriod(this.project);
+    return formatProjectPeriod(this.project, this.languageService.currentLanguage().code, this.languageService.t('projects.period.today'));
   }
 
   protected openImageLightbox(): void {

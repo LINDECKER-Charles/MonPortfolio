@@ -17,10 +17,11 @@ import {
   ProjectFilterItem,
   ProjectFiltersState,
 } from '../projects.state';
+import { TranslatePipe } from '../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-projects-filter',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './projects-filter.html',
   styleUrl: './projects-filter.css',
 })

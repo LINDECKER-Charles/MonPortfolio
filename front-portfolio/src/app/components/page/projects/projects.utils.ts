@@ -1,7 +1,11 @@
 import { ProjectCategory, ProjectItem, ProjectStatus } from './projects.state';
 
-export function formatProjectPeriod(project: ProjectItem): string {
-  const formatter = new Intl.DateTimeFormat('fr-FR', {
+export function formatProjectPeriod(
+  project: ProjectItem,
+  locale: string,
+  todayLabel: string
+): string {
+  const formatter = new Intl.DateTimeFormat(locale, {
     year: 'numeric',
     month: 'short',
   });
@@ -9,34 +13,34 @@ export function formatProjectPeriod(project: ProjectItem): string {
   const start = formatter.format(project.period.dateStart);
 
   if (!project.period.isEnd || !project.period.dateEnd) {
-    return `${start} - Aujourd'hui`;
+    return `${start} - ${todayLabel}`;
   }
 
   const end = formatter.format(project.period.dateEnd);
   return `${start} - ${end}`;
 }
 
-export function getProjectStatusLabel(status: ProjectStatus): string {
+export function getProjectStatusKey(status: ProjectStatus): string {
   switch (status) {
     case 'done':
-      return 'Termine';
+      return 'projects.status.done';
     case 'in_progress':
-      return 'En cours';
+      return 'projects.status.inProgress';
     case 'archived':
-      return 'Archive';
+      return 'projects.status.archived';
     default:
       return status;
   }
 }
 
-export function getProjectCategoryLabel(category: ProjectCategory): string {
+export function getProjectCategoryKey(category: ProjectCategory): string {
   switch (category) {
     case 'personal':
-      return 'Personnel';
+      return 'projects.category.personal';
     case 'open_source':
-      return 'Open Source';
+      return 'projects.category.openSource';
     case 'client':
-      return 'Client';
+      return 'projects.category.client';
     default:
       return category;
   }

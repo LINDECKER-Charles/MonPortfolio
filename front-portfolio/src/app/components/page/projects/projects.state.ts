@@ -69,10 +69,10 @@ export interface ProjectFiltersState {
 }
 
 export const PROJECT_FILTERS: ProjectFilterItem[] = [
-  { id: 'all', label: 'Tous' },
-  { id: 'personal', label: 'Personnel' },
-  { id: 'open_source', label: 'Open Source' },
-  { id: 'client', label: 'Client' },
+  { id: 'all', label: 'projects.filter.all' },
+  { id: 'personal', label: 'projects.category.personal' },
+  { id: 'open_source', label: 'projects.category.openSource' },
+  { id: 'client', label: 'projects.category.client' },
 ];
 
 const omnicardImages: ProjectMediaImage[] = [

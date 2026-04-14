@@ -14,9 +14,6 @@
         [class.is-active]="isCurrentLanguage(language.code)"
         (click)="selectLanguage(language)">
         <span>{{ language.label }}</span>
-        @if (language.troll) {
-          <small>{{ 'language.trollBadge' | translate }}</small>
-        }
       </button>
     }
   </div>

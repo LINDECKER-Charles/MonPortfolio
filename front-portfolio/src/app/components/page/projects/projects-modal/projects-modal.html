@@ -9,7 +9,7 @@
       type="button"
       class="projects-modal__close"
       (click)="close.emit()"
-      aria-label="Fermer le detail du projet">
+      [attr.aria-label]="'projects.modal.closeAria' | translate">
       &times;
     </button>
 
@@ -24,11 +24,11 @@
                     type="button"
                     class="projects-modal__carousel-image"
                     (click)="openImageLightbox()"
-                    aria-label="Afficher l'image en plein ecran">
+                    [attr.aria-label]="'projects.modal.openImage' | translate">
                     <app-responsive-picture
                       [sources]="image.sources"
                       [fallbackSrc]="image.fallbackSrc"
-                      [alt]="image.alt"
+                      [alt]="image.alt | translate"
                       loading="eager"
                       decoding="async"
                       objectFit="cover">
@@ -42,7 +42,7 @@
                       type="button"
                       class="projects-modal__carousel-button"
                       (click)="previousImage.emit()">
-                      Precedente
+                      {{ 'projects.previous' | translate }}
                     </button>
 
                     <span class="projects-modal__carousel-index">
@@ -53,7 +53,7 @@
                       type="button"
                       class="projects-modal__carousel-button"
                       (click)="nextImage.emit()">
-                      Suivante
+                      {{ 'projects.next' | translate }}
                     </button>
                   </div>
                 }
@@ -65,7 +65,7 @@
             <div class="projects-modal__video">
               <iframe
                 [src]="videoUrl"
-                title="Video du projet"
+                [title]="'projects.modal.videoTitle' | translate"
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
@@ -78,41 +78,41 @@
       <div class="projects-modal__content">
         <div class="projects-modal__header">
           <span class="projects-modal__period">{{ formatPeriod() }}</span>
-          <h2 id="project-modal-title">{{ project.title }}</h2>
+          <h2 id="project-modal-title">{{ project.title | translate }}</h2>
         </div>
 
         <div class="projects-modal__group">
-          <h3>Tags</h3>
+          <h3>{{ 'projects.tags' | translate }}</h3>
 
           <div class="projects-modal__chips">
             @for (tag of project.tags; track tag) {
-              <span class="projects-modal__chip projects-modal__chip--tag">{{ tag }}</span>
+              <span class="projects-modal__chip projects-modal__chip--tag">{{ tag | translate }}</span>
             }
           </div>
         </div>
 
         <div class="projects-modal__group">
-          <h3>Stack</h3>
+          <h3>{{ 'projects.stack' | translate }}</h3>
 
           <div class="projects-modal__chips">
             @for (item of project.stack; track item) {
-              <span class="projects-modal__chip projects-modal__chip--stack">{{ item }}</span>
+              <span class="projects-modal__chip projects-modal__chip--stack">{{ item | translate }}</span>
             }
           </div>
         </div>
 
         <div class="projects-modal__group">
-          <h3>Description</h3>
-          <p>{{ project.longDescription }}</p>
+          <h3>{{ 'projects.description' | translate }}</h3>
+          <p>{{ project.longDescription | translate }}</p>
         </div>
 
         @if (project.detail?.lessonsLearned?.length) {
           <div class="projects-modal__group">
-            <h3>Ce que j'ai appris</h3>
+            <h3>{{ 'projects.lessons' | translate }}</h3>
 
             <ul class="projects-modal__list">
               @for (lesson of project.detail?.lessonsLearned ?? []; track lesson) {
-                <li>{{ lesson }}</li>
+                <li>{{ lesson | translate }}</li>
               }
             </ul>
           </div>
@@ -120,11 +120,11 @@
 
         @if (project.highlights.length) {
           <div class="projects-modal__group">
-            <h3>Points cles</h3>
+            <h3>{{ 'projects.highlights' | translate }}</h3>
 
             <ul class="projects-modal__list">
               @for (highlight of project.highlights; track highlight) {
-                <li>{{ highlight }}</li>
+                <li>{{ highlight | translate }}</li>
               }
             </ul>
           </div>
@@ -132,7 +132,7 @@
 
         @if (project.links.github || project.links.demo || project.links.website) {
           <div class="projects-modal__group">
-            <h3>Liens</h3>
+            <h3>{{ 'projects.links' | translate }}</h3>
 
             <div class="projects-modal__links">
               @if (project.links.github) {
@@ -152,19 +152,19 @@
                     </app-responsive-picture>
                   </span>
 
-                  <span>GitHub</span>
+                  <span>{{ 'projects.link.github' | translate }}</span>
                 </a>
               }
 
               @if (project.links.demo) {
                 <a [href]="project.links.demo" target="_blank" rel="noreferrer noopener">
-                  Demo
+                  {{ 'projects.link.demo' | translate }}
                 </a>
               }
 
               @if (project.links.website) {
                 <a [href]="project.links.website" target="_blank" rel="noreferrer noopener">
-                  Site
+                  {{ 'projects.link.website' | translate }}
                 </a>
               }
             </div>
@@ -179,7 +179,7 @@
   <app-image-lightbox
     [sources]="image.sources"
     [fallbackSrc]="image.fallbackSrc"
-    [alt]="image.alt"
+    [alt]="image.alt | translate"
     [currentIndex]="currentImageIndex"
     [total]="project.detail?.images?.length ?? 1"
     (previous)="previousImage.emit()"

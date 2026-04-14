@@ -9,10 +9,11 @@ import {
 } from '@angular/core';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
+import { TranslatePipe } from '../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-projects-header',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './projects-header.html',
   styleUrl: './projects-header.css',
 })

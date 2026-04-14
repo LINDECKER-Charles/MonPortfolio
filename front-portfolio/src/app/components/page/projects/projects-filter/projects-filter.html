@@ -1,6 +1,6 @@
 <section class="projects-filters">
   <div class="projects-filters__group">
-    <span class="projects-filters__label">Categorie</span>
+    <span class="projects-filters__label">{{ 'projects.filter.category' | translate }}</span>
 
     <div class="projects-filters__chips">
       @for (filter of filters; track trackByFilterId($index, filter)) {
@@ -9,14 +9,14 @@
           class="projects-filters__chip"
           [class.is-active]="filtersState.category === filter.id"
           (click)="categorySelected.emit(filter.id)">
-          {{ filter.label }}
+          {{ filter.label | translate }}
         </button>
       }
     </div>
   </div>
 
   <div class="projects-filters__group projects-filters__group--picker">
-    <span class="projects-filters__label">Tags</span>
+    <span class="projects-filters__label">{{ 'projects.tags' | translate }}</span>
 
     <div class="projects-filters__picker">
       <button
@@ -24,7 +24,7 @@
         class="projects-filters__chip projects-filters__picker-trigger"
         [class.is-active]="isTagsPanelOpen || filtersState.tags.length > 0"
         (click)="toggleTagsPanel()">
-        Tags
+        {{ 'projects.tags' | translate }}
         <span class="projects-filters__picker-count">{{ filtersState.tags.length }}</span>
       </button>
 
@@ -33,7 +33,7 @@
           <input
             type="text"
             class="projects-filters__search"
-            placeholder="Rechercher un tag"
+            [placeholder]="'projects.filter.searchTag' | translate"
             [value]="tagQuery"
             (input)="tagQuery = $any($event.target).value" />
 
@@ -44,16 +44,16 @@
                 class="projects-filters__option"
                 [class.is-selected]="isTagSelected(tag)"
                 (click)="tagToggled.emit(tag)">
-                <span>{{ tag }}</span>
+                <span>{{ tag | translate }}</span>
                 @if (isTagSelected(tag)) {
-                  <span>Ajoute</span>
+                  <span>{{ 'projects.filter.added' | translate }}</span>
                 }
               </button>
             }
           </div>
 
           @if (!filteredTags.length) {
-            <p class="projects-filters__empty">Aucun tag trouve.</p>
+            <p class="projects-filters__empty">{{ 'projects.filter.noTag' | translate }}</p>
           }
         </div>
       }
@@ -66,7 +66,7 @@
             type="button"
             class="projects-filters__chip projects-filters__chip--tag is-active"
             (click)="tagToggled.emit(tag)">
-            {{ tag }} ×
+            {{ tag | translate }} ×
           </button>
         }
       </div>
@@ -74,7 +74,7 @@
   </div>
 
   <div class="projects-filters__group projects-filters__group--picker">
-    <span class="projects-filters__label">Stack</span>
+    <span class="projects-filters__label">{{ 'projects.stack' | translate }}</span>
 
     <div class="projects-filters__picker">
       <button
@@ -82,7 +82,7 @@
         class="projects-filters__chip projects-filters__picker-trigger"
         [class.is-active]="isStackPanelOpen || filtersState.stack.length > 0"
         (click)="toggleStackPanel()">
-        Stack
+        {{ 'projects.stack' | translate }}
         <span class="projects-filters__picker-count">{{ filtersState.stack.length }}</span>
       </button>
 
@@ -91,7 +91,7 @@
           <input
             type="text"
             class="projects-filters__search"
-            placeholder="Rechercher une stack"
+            [placeholder]="'projects.filter.searchStack' | translate"
             [value]="stackQuery"
             (input)="stackQuery = $any($event.target).value" />
 
@@ -102,16 +102,16 @@
                 class="projects-filters__option"
                 [class.is-selected]="isStackSelected(stackItem)"
                 (click)="stackToggled.emit(stackItem)">
-                <span>{{ stackItem }}</span>
+                <span>{{ stackItem | translate }}</span>
                 @if (isStackSelected(stackItem)) {
-                  <span>Ajoute</span>
+                  <span>{{ 'projects.filter.added' | translate }}</span>
                 }
               </button>
             }
           </div>
 
           @if (!filteredStack.length) {
-            <p class="projects-filters__empty">Aucune stack trouvee.</p>
+            <p class="projects-filters__empty">{{ 'projects.filter.noStack' | translate }}</p>
           }
         </div>
       }
@@ -124,7 +124,7 @@
             type="button"
             class="projects-filters__chip projects-filters__chip--stack is-active"
             (click)="stackToggled.emit(stackItem)">
-            {{ stackItem }} ×
+            {{ stackItem | translate }} ×
           </button>
         }
       </div>
@@ -134,7 +134,7 @@
   @if (hasActiveFilters()) {
     <div class="projects-filters__actions">
       <button type="button" class="projects-filters__reset" (click)="reset.emit()">
-        Reinitialiser
+        {{ 'projects.filter.reset' | translate }}
       </button>
     </div>
   }
