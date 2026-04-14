@@ -12,10 +12,11 @@ import {
 } from './resum-header.animations';
 import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
 import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on-click.directive';
+import { TranslatePipe } from '../../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-resum-header',
-  imports: [ResponsivePicture, PlaySoundOnClickDirective],
+  imports: [TranslatePipe, ResponsivePicture, PlaySoundOnClickDirective],
   templateUrl: './resum-header.html',
   styleUrl: './resum-header.css',
 })

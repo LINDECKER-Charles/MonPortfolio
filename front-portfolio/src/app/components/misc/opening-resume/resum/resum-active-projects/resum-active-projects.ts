@@ -8,10 +8,11 @@ import {
 } from './resum-active-projects.animations';
 import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
 import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on-click.directive';
+import { TranslatePipe } from '../../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-resum-active-projects',
-  imports: [ResponsivePicture, PlaySoundOnClickDirective],
+  imports: [TranslatePipe, ResponsivePicture, PlaySoundOnClickDirective],
   templateUrl: './resum-active-projects.html',
   styleUrl: './resum-active-projects.css',
 })

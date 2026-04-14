@@ -5,15 +5,15 @@
         <app-responsive-picture
           [sources]="workIcon.sources"
           [fallbackSrc]="workIcon.fallback"
-          [alt]="workIcon.alt"
+          [alt]="workIcon.alt | translate"
           loading="eager"
           decoding="async">
         </app-responsive-picture>
       </span>
 
       <span class="home-work__cta-label">
-        <span class="home-work__cta-top">Consulter</span>
-        <span class="home-work__cta-bottom">Mon parcours</span>
+        <span class="home-work__cta-top">{{ 'home.work.cta.primary.top' | translate }}</span>
+        <span class="home-work__cta-bottom">{{ 'home.work.cta.primary.bottom' | translate }}</span>
       </span>
     </a>
 
@@ -26,36 +26,33 @@
         <app-responsive-picture
           [sources]="linkedinIcon.sources"
           [fallbackSrc]="linkedinIcon.fallback"
-          [alt]="linkedinIcon.alt"
+          [alt]="linkedinIcon.alt | translate"
           loading="eager"
           decoding="async">
         </app-responsive-picture>
       </span>
 
       <span class="home-work__cta-label">
-        <span class="home-work__cta-top">Professionnel</span>
-        <span class="home-work__cta-bottom">Voir LinkedIn</span>
+        <span class="home-work__cta-top">{{ 'home.work.cta.secondary.top' | translate }}</span>
+        <span class="home-work__cta-bottom">{{ 'home.work.cta.secondary.bottom' | translate }}</span>
       </span>
     </a>
   </div>
 
   <div class="home-work__intro">
-    <span class="home-work__eyebrow">Parcours</span>
+    <span class="home-work__eyebrow">{{ 'home.work.eyebrow' | translate }}</span>
 
-    <h2>Expériences & Engagement</h2>
+    <h2>{{ 'home.work.title' | translate }}</h2>
 
-    <p>
-      Découvrez mon parcours, mes missions de formation, mes expériences
-      techniques et mon investissement associatif dans une section dédiée.
-    </p>
+    <p>{{ 'home.work.description' | translate }}</p>
 
-    <div class="home-work__rail" aria-label="Repères">
+    <div class="home-work__rail" [attr.aria-label]="'home.work.railAria' | translate">
       @for (icon of railIcons; track icon.fallback) {
-        <span class="home-work__rail-item" [attr.title]="icon.alt">
+        <span class="home-work__rail-item" [attr.title]="icon.alt | translate">
           <app-responsive-picture
             [sources]="icon.sources"
             [fallbackSrc]="icon.fallback"
-            [alt]="icon.alt"
+            [alt]="icon.alt | translate"
             loading="lazy"
             decoding="async">
           </app-responsive-picture>

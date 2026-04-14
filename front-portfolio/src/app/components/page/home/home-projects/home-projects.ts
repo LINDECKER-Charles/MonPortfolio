@@ -15,6 +15,7 @@ import {
   ResponsiveSource,
 } from '../../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../../imgSources/shared.sources';
+import { TranslatePipe } from '../../../../pipes/translate.pipe';
 
 interface CtaIconSet {
   sources: ResponsiveSource[];
@@ -24,7 +25,7 @@ interface CtaIconSet {
 
 @Component({
   selector: 'app-home-projects',
-  imports: [RouterLink, ResponsivePicture],
+  imports: [TranslatePipe, RouterLink, ResponsivePicture],
   templateUrl: './home-projects.html',
   styleUrl: './home-projects.css',
 })
@@ -34,22 +35,22 @@ export class HomeProjects implements AfterViewInit {
   private readonly isBrowser: boolean;
 
   protected readonly projectsIcon: CtaIconSet = {
-    alt: 'Explorer les projets',
+    alt: 'home.projects.icon.projects',
     sources: SHARED_IMAGES.icon.discover.sources,
     fallback: SHARED_IMAGES.icon.discover.fallbackSrc,
   };
   protected readonly githubIcon: CtaIconSet = {
-    alt: 'GitHub',
+    alt: 'home.projects.icon.github',
     sources: SHARED_IMAGES.stack.github.sources,
     fallback: SHARED_IMAGES.stack.github.fallbackSrc,
   };
 
   protected readonly stackIcons: CtaIconSet[] = [
-    { alt: '.NET', sources: SHARED_IMAGES.stack.dotnet.sources, fallback: SHARED_IMAGES.stack.dotnet.fallbackSrc },
-    { alt: 'Angular', sources: SHARED_IMAGES.stack.angular.sources, fallback: SHARED_IMAGES.stack.angular.fallbackSrc },
-    { alt: 'Symfony', sources: SHARED_IMAGES.stack.symfony.sources, fallback: SHARED_IMAGES.stack.symfony.fallbackSrc },
-    { alt: 'PostgreSQL', sources: SHARED_IMAGES.stack.postgre.sources, fallback: SHARED_IMAGES.stack.postgre.fallbackSrc },
-    { alt: 'Python', sources: SHARED_IMAGES.stack.python.sources, fallback: SHARED_IMAGES.stack.python.fallbackSrc },
+    { alt: 'home.tech.dotnet', sources: SHARED_IMAGES.stack.dotnet.sources, fallback: SHARED_IMAGES.stack.dotnet.fallbackSrc },
+    { alt: 'home.tech.angular', sources: SHARED_IMAGES.stack.angular.sources, fallback: SHARED_IMAGES.stack.angular.fallbackSrc },
+    { alt: 'home.tech.symfony', sources: SHARED_IMAGES.stack.symfony.sources, fallback: SHARED_IMAGES.stack.symfony.fallbackSrc },
+    { alt: 'home.tech.postgresql', sources: SHARED_IMAGES.stack.postgre.sources, fallback: SHARED_IMAGES.stack.postgre.fallbackSrc },
+    { alt: 'home.tech.python', sources: SHARED_IMAGES.stack.python.sources, fallback: SHARED_IMAGES.stack.python.fallbackSrc },
   ];
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {

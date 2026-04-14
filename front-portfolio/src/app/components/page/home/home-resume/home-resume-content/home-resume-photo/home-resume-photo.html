@@ -6,7 +6,7 @@
           [sources]="photoSources"
           [fallbackSrc]="photoFallback"
           sizes="(max-width: 980px) 100vw, 330px"
-          alt="Portrait de Charles Lindecker"
+          [alt]="'home.resume.photo.alt' | translate"
           fetchPriority="high"
           loading="eager"
           decoding="async">
@@ -15,9 +15,9 @@
     </div>
 
     <div class="portrait-card__plate">
-      <span>Développeur</span>
+      <span>{{ 'home.resume.photo.role.dev' | translate }}</span>
       <span class="portrait-card__divider"></span>
-      <span>Formateur</span>
+      <span>{{ 'home.resume.photo.role.trainer' | translate }}</span>
     </div>
   </div>
 </div>

@@ -5,10 +5,11 @@ import {
   animateResumRowHoverOut,
 } from '../resum-row-hover.animations';
 import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
+import { TranslatePipe } from '../../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-resum-stats',
-  imports: [ResponsivePicture],
+  imports: [TranslatePipe, ResponsivePicture],
   templateUrl: './resum-stats.html',
   styleUrl: './resum-stats.css',
 })

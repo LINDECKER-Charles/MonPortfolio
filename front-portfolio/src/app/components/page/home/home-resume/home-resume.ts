@@ -19,10 +19,11 @@ import {
 import { HomeResumeBanner } from './home-resume-banner/home-resume-banner';
 import { HomeResumeHeader } from './home-resume-header/home-resume-header';
 import { HomeResumeContent } from './home-resume-content/home-resume-content';
+import { TranslatePipe } from '../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-home-resume',
-  imports: [HomeResumeBanner, HomeResumeHeader, HomeResumeContent],
+  imports: [TranslatePipe, HomeResumeBanner, HomeResumeHeader, HomeResumeContent],
   templateUrl: './home-resume.html',
   styleUrl: './home-resume.css',
 })
@@ -31,12 +32,12 @@ export class HomeResume {
     {
       sources: HOME_RESUME_ESO_RESIST_SOURCES,
       fallbackSrc: HOME_RESUME_ESO_RESIST_FALLBACK,
-      alt: 'Résistance ésotérique',
+      alt: 'home.resume.icon.esoResist',
     },
     {
       sources: HOME_RESUME_FIRE_SOURCES,
       fallbackSrc: HOME_RESUME_FIRE_FALLBACK,
-      alt: 'Feu',
+      alt: 'home.resume.icon.fire',
     },
   ];
 
@@ -44,12 +45,12 @@ export class HomeResume {
     {
       sources: HOME_RESUME_PHYSIQUE_SOURCES,
       fallbackSrc: HOME_RESUME_PHYSIQUE_FALLBACK,
-      alt: 'Physique',
+      alt: 'home.resume.icon.physique',
     },
     {
       sources: HOME_RESUME_POUSSE_RES_SOURCES,
       fallbackSrc: HOME_RESUME_POUSSE_RES_FALLBACK,
-      alt: 'Résistance',
+      alt: 'home.resume.icon.resistance',
     },
   ];
 

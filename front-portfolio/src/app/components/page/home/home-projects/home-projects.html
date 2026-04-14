@@ -1,21 +1,18 @@
 <section class="home-projects" #ctaBlock>
   <div class="home-projects__intro">
-    <span class="home-projects__eyebrow">Suite</span>
+    <span class="home-projects__eyebrow">{{ 'home.projects.eyebrow' | translate }}</span>
 
-    <h2>Projets & Contributions</h2>
+    <h2>{{ 'home.projects.title' | translate }}</h2>
 
-    <p>
-      Retrouvez mes applications, mes expérimentations techniques et mes travaux
-      open source dans une section dédiée.
-    </p>
+    <p>{{ 'home.projects.description' | translate }}</p>
 
-    <div class="home-projects__stack" aria-label="Technologies principales">
+    <div class="home-projects__stack" [attr.aria-label]="'home.projects.stackAria' | translate">
       @for (icon of stackIcons; track icon.fallback) {
-        <span class="home-projects__stack-item" [attr.title]="icon.alt">
+        <span class="home-projects__stack-item" [attr.title]="icon.alt | translate">
           <app-responsive-picture
             [sources]="icon.sources"
             [fallbackSrc]="icon.fallback"
-            [alt]="icon.alt"
+            [alt]="icon.alt | translate"
             loading="lazy"
             decoding="async">
           </app-responsive-picture>
@@ -30,15 +27,15 @@
         <app-responsive-picture
           [sources]="projectsIcon.sources"
           [fallbackSrc]="projectsIcon.fallback"
-          [alt]="projectsIcon.alt"
+          [alt]="projectsIcon.alt | translate"
           loading="eager"
           decoding="async">
         </app-responsive-picture>
       </span>
 
       <span class="home-projects__cta-label">
-        <span class="home-projects__cta-top">Explorer</span>
-        <span class="home-projects__cta-bottom">Mes travaux</span>
+        <span class="home-projects__cta-top">{{ 'home.projects.cta.primary.top' | translate }}</span>
+        <span class="home-projects__cta-bottom">{{ 'home.projects.cta.primary.bottom' | translate }}</span>
       </span>
     </a>
 
@@ -51,15 +48,15 @@
         <app-responsive-picture
           [sources]="githubIcon.sources"
           [fallbackSrc]="githubIcon.fallback"
-          [alt]="githubIcon.alt"
+          [alt]="githubIcon.alt | translate"
           loading="eager"
           decoding="async">
         </app-responsive-picture>
       </span>
 
       <span class="home-projects__cta-label">
-        <span class="home-projects__cta-top">Open Source</span>
-        <span class="home-projects__cta-bottom">Voir GitHub</span>
+        <span class="home-projects__cta-top">{{ 'home.projects.cta.secondary.top' | translate }}</span>
+        <span class="home-projects__cta-bottom">{{ 'home.projects.cta.secondary.bottom' | translate }}</span>
       </span>
     </a>
   </div>

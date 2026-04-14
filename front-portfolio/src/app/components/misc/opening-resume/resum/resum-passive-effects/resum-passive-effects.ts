@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
+import { TranslatePipe } from '../../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-resum-passive-effects',
+  imports: [TranslatePipe],
   templateUrl: './resum-passive-effects.html',
   styleUrl: './resum-passive-effects.css',
 })

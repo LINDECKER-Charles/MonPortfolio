@@ -15,6 +15,7 @@ import {
   ResponsiveSource,
 } from '../../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../../imgSources/shared.sources';
+import { TranslatePipe } from '../../../../pipes/translate.pipe';
 
 interface WorkIconSet {
   sources: ResponsiveSource[];
@@ -24,7 +25,7 @@ interface WorkIconSet {
 
 @Component({
   selector: 'app-home-work',
-  imports: [RouterLink, ResponsivePicture],
+  imports: [TranslatePipe, RouterLink, ResponsivePicture],
   templateUrl: './home-work.html',
   styleUrl: './home-work.css',
 })
@@ -34,21 +35,21 @@ export class HomeWork implements AfterViewInit {
   private readonly isBrowser: boolean;
 
   protected readonly workIcon: WorkIconSet = {
-    alt: 'Parcours professionnel',
+    alt: 'home.work.icon.path',
     sources: SHARED_IMAGES.icon.strenght.sources,
     fallback: SHARED_IMAGES.icon.strenght.fallbackSrc,
   };
   protected readonly linkedinIcon: WorkIconSet = {
-    alt: 'LinkedIn',
+    alt: 'home.work.icon.linkedin',
     sources: SHARED_IMAGES.stack.linkedin.sources,
     fallback: SHARED_IMAGES.stack.linkedin.fallbackSrc,
   };
 
   protected readonly railIcons: WorkIconSet[] = [
-    { alt: 'Symfony', sources: SHARED_IMAGES.stack.symfony.sources, fallback: SHARED_IMAGES.stack.symfony.fallbackSrc },
-    { alt: 'PostgreSQL', sources: SHARED_IMAGES.stack.postgre.sources, fallback: SHARED_IMAGES.stack.postgre.fallbackSrc },
-    { alt: 'Python', sources: SHARED_IMAGES.stack.python.sources, fallback: SHARED_IMAGES.stack.python.fallbackSrc },
-    { alt: 'GitHub', sources: SHARED_IMAGES.stack.github.sources, fallback: SHARED_IMAGES.stack.github.fallbackSrc },
+    { alt: 'home.tech.symfony', sources: SHARED_IMAGES.stack.symfony.sources, fallback: SHARED_IMAGES.stack.symfony.fallbackSrc },
+    { alt: 'home.tech.postgresql', sources: SHARED_IMAGES.stack.postgre.sources, fallback: SHARED_IMAGES.stack.postgre.fallbackSrc },
+    { alt: 'home.tech.python', sources: SHARED_IMAGES.stack.python.sources, fallback: SHARED_IMAGES.stack.python.fallbackSrc },
+    { alt: 'home.tech.github', sources: SHARED_IMAGES.stack.github.sources, fallback: SHARED_IMAGES.stack.github.fallbackSrc },
   ];
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {

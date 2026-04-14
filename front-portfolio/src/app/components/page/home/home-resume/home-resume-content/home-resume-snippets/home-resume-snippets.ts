@@ -15,6 +15,7 @@ import {
   ResponsiveSource,
 } from '../../../../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../../../../imgSources/shared.sources';
+import { TranslatePipe } from '../../../../../../pipes/translate.pipe';
 
 interface HomeResumeSnippetState {
   id: string;
@@ -28,7 +29,7 @@ interface HomeResumeSnippetState {
 
 @Component({
   selector: 'app-home-resume-snippets',
-  imports: [CommonModule, ResponsivePicture],
+  imports: [TranslatePipe, CommonModule, ResponsivePicture],
   templateUrl: './home-resume-snippets.html',
   styleUrl: './home-resume-snippets.css',
 })
@@ -36,51 +37,51 @@ export class HomeResumeSnippets implements AfterViewInit {
   snippets: HomeResumeSnippetState[] = [
     {
       id: 'transmission',
-      title: 'Transmission & Enseignement',
+      title: 'home.resume.snippet.transmission.title',
       content:
-        'Il n’existe pas de meilleur exercice que le partage de connaissance : il permet d’éprouver nos raisonnements, de clarifier notre conception des choses et d’élever notre niveau d’exigence. Développeur depuis 9 ans, j’accorde une grande importance à la transmission auprès des futurs développeurs.',
+        'home.resume.snippet.transmission.content',
       isOpen: false,
-      iconAlt: 'Transmission et enseignement',
+      iconAlt: 'home.resume.snippet.transmission.iconAlt',
       iconSources: SHARED_IMAGES.icon.pousseRes.sources,
       iconFallback: SHARED_IMAGES.icon.pousseRes.fallbackSrc,
     },
     {
       id: 'stack',
-      title: 'Stack & Excellence Technique',
+      title: 'home.resume.snippet.stack.title',
       content:
-        'Mes choix technologiques sont en accord avec mes ambitions. Angular et .NET représentent aujourd’hui des solutions modernes, robustes et scalables. Mon objectif reste constant : concevoir pour mes clients des applications maintenables, solides et pérennes.',
+        'home.resume.snippet.stack.content',
       isOpen: false,
-      iconAlt: 'Stack et excellence technique',
+      iconAlt: 'home.resume.snippet.stack.iconAlt',
       iconSources: SHARED_IMAGES.icon.physique.sources,
       iconFallback: SHARED_IMAGES.icon.physique.fallbackSrc,
     },
     {
       id: 'architecture',
-      title: 'Sécurité Applicative & Architecture',
+      title: 'home.resume.snippet.architecture.title',
       content:
-        'Monolithe, microservices, architecture hexagonale ou serverless : chaque projet possède des contraintes et des besoins spécifiques. Mon rôle n’est pas seulement de proposer une solution, mais d’identifier la solution la plus adaptée, la plus cohérente et la plus fiable.',
+        'home.resume.snippet.architecture.content',
       isOpen: false,
-      iconAlt: 'Sécurité applicative et architecture',
+      iconAlt: 'home.resume.snippet.architecture.iconAlt',
       iconSources: SHARED_IMAGES.icon.esoResist.sources,
       iconFallback: SHARED_IMAGES.icon.esoResist.fallbackSrc,
     },
     {
       id: 'opensource',
-      title: 'Open Source & Bénévolat',
+      title: 'home.resume.snippet.opensource.title',
       content:
-        'Plus qu’un métier, le développement est une passion que j’exprime à travers mes contributions open source ainsi que par l’accompagnement de jeunes dans le cadre de missions bénévoles. J’y vois une manière concrète de rendre la technique utile et accessible.',
+        'home.resume.snippet.opensource.content',
       isOpen: false,
-      iconAlt: 'Open source et bénévolat',
+      iconAlt: 'home.resume.snippet.opensource.iconAlt',
       iconSources: SHARED_IMAGES.icon.fire.sources,
       iconFallback: SHARED_IMAGES.icon.fire.fallbackSrc,
     },
     {
       id: 'quality',
-      title: 'Qualité & Responsabilité',
+      title: 'home.resume.snippet.quality.title',
       content:
-        'Je m’appuie sur des standards de code rigoureux, une veille technique active et une exigence constante sur la qualité. Cette discipline me permet de rester à jour, de prendre de meilleures décisions techniques et de produire un code propre, fiable et responsable.',
+        'home.resume.snippet.quality.content',
       isOpen: false,
-      iconAlt: 'Qualité et responsabilité',
+      iconAlt: 'home.resume.snippet.quality.iconAlt',
       iconSources: SHARED_IMAGES.icon.lucidity.sources,
       iconFallback: SHARED_IMAGES.icon.lucidity.fallbackSrc,
     },

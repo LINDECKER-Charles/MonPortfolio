@@ -15,14 +15,14 @@
             <app-responsive-picture
               [sources]="snippet.iconSources"
               [fallbackSrc]="snippet.iconFallback"
-              [alt]="snippet.iconAlt"
+              [alt]="snippet.iconAlt | translate"
               loading="lazy"
               decoding="async">
             </app-responsive-picture>
           </span>
 
           <span class="about-snippet__mark"></span>
-          <h3>{{ snippet.title }}</h3>
+          <h3>{{ snippet.title | translate }}</h3>
         </span>
 
         <span class="about-snippet__icon" [class.is-open]="snippet.isOpen">
@@ -43,7 +43,7 @@
         [id]="'snippet-content-' + snippet.id"
         #snippetContent>
         <div class="about-snippet__content">
-          <p>{{ snippet.content }}</p>
+          <p>{{ snippet.content | translate }}</p>
         </div>
       </div>
     </article>

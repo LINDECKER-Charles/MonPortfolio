@@ -11,10 +11,11 @@ import {
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import {ResponsivePicture, ResponsiveSource} from '../../../../../assets/responsive-picture/responsive-picture';
+import { TranslatePipe } from '../../../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-home-resume-photo',
-  imports: [CommonModule, ResponsivePicture],
+  imports: [TranslatePipe, CommonModule, ResponsivePicture],
   templateUrl: './home-resume-photo.html',
   styleUrl: './home-resume-photo.css',
 })

@@ -15,10 +15,11 @@ import {
   ResponsivePicture,
   ResponsiveSource,
 } from '../../../../assets/responsive-picture/responsive-picture';
+import { TranslatePipe } from '../../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-home-resume-header',
-  imports: [CommonModule, RouterLink, ResponsivePicture],
+  imports: [TranslatePipe, CommonModule, RouterLink, ResponsivePicture],
   templateUrl: './home-resume-header.html',
   styleUrl: './home-resume-header.css',
 })
