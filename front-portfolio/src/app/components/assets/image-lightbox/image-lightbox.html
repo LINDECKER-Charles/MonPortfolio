@@ -9,9 +9,27 @@
       type="button"
       class="image-lightbox__close"
       (click)="close.emit()"
-      aria-label="Fermer l'aperçu plein ecran">
+      aria-label="Fermer l'apercu plein ecran">
       &times;
     </button>
+
+    @if (canNavigate) {
+      <button
+        type="button"
+        class="image-lightbox__nav image-lightbox__nav--previous"
+        (click)="previous.emit()"
+        aria-label="Image precedente">
+        <span aria-hidden="true">&#8249;</span>
+      </button>
+
+      <button
+        type="button"
+        class="image-lightbox__nav image-lightbox__nav--next"
+        (click)="next.emit()"
+        aria-label="Image suivante">
+        <span aria-hidden="true">&#8250;</span>
+      </button>
+    }
 
     <div class="image-lightbox__frame">
       <app-responsive-picture
@@ -24,5 +42,11 @@
         sizes="100vw">
       </app-responsive-picture>
     </div>
+
+    @if (canNavigate) {
+      <div class="image-lightbox__index" aria-live="polite">
+        {{ currentIndex + 1 }} / {{ total }}
+      </div>
+    }
   </div>
 </div>
