@@ -180,6 +180,10 @@
     [sources]="image.sources"
     [fallbackSrc]="image.fallbackSrc"
     [alt]="image.alt"
+    [currentIndex]="currentImageIndex"
+    [total]="project.detail?.images?.length ?? 1"
+    (previous)="previousImage.emit()"
+    (next)="nextImage.emit()"
     (close)="closeImageLightbox()">
   </app-image-lightbox>
 }
