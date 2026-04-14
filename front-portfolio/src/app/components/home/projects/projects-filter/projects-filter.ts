@@ -1,11 +1,17 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
   HostListener,
+  Inject,
   Input,
   Output,
+  PLATFORM_ID,
 } from '@angular/core';
+import gsap from 'gsap';
+import { CSSPlugin } from 'gsap/CSSPlugin';
 import {
   ProjectCategory,
   ProjectFilterItem,
@@ -18,7 +24,7 @@ import {
   templateUrl: './projects-filter.html',
   styleUrl: './projects-filter.css',
 })
-export class ProjectsFilter {
+export class ProjectsFilter implements AfterViewInit {
   @Input({ required: true }) filters: ProjectFilterItem[] = [];
   @Input({ required: true }) filtersState!: ProjectFiltersState;
   @Input({ required: true }) availableTags: string[] = [];
@@ -34,7 +40,54 @@ export class ProjectsFilter {
   protected tagQuery = '';
   protected stackQuery = '';
 
-  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}
+  private readonly isBrowser: boolean;
+
+  constructor(
+    private readonly elementRef: ElementRef<HTMLElement>,
+    @Inject(PLATFORM_ID) platformId: object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+    if (this.isBrowser) {
+      gsap.registerPlugin(CSSPlugin);
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (!this.isBrowser) return;
+
+    const host = this.elementRef.nativeElement;
+    const items = host.querySelectorAll(
+      '.projects-filters__group, .projects-filters__actions'
+    );
+
+    gsap.fromTo(
+      host,
+      { autoAlpha: 0, y: 24, filter: 'blur(10px)' },
+      {
+        autoAlpha: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        duration: 0.62,
+        ease: 'power3.out',
+        clearProps: 'filter',
+      }
+    );
+
+    if (items.length) {
+      gsap.fromTo(
+        items,
+        { autoAlpha: 0, y: 10 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.42,
+          ease: 'power2.out',
+          stagger: 0.05,
+          delay: 0.12,
+        }
+      );
+    }
+  }
 
   protected get filteredTags(): string[] {
     return this.filterItems(this.availableTags, this.tagQuery);
