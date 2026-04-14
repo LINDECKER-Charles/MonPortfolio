@@ -1,0 +1,29 @@
+<div class="language-modal__backdrop" (click)="close()"></div>
+
+<section class="language-modal" role="dialog" aria-modal="true" [attr.aria-label]="'language.modal.title' | translate">
+  <header class="language-modal__header">
+    <h2>{{ 'language.modal.title' | translate }}</h2>
+    <p>{{ 'language.modal.subtitle' | translate }}</p>
+  </header>
+
+  <div class="language-modal__list">
+    @for (language of languages; track language.code) {
+      <button
+        type="button"
+        class="language-modal__item"
+        [class.is-active]="isCurrentLanguage(language.code)"
+        (click)="selectLanguage(language)">
+        <span>{{ language.label }}</span>
+        @if (language.troll) {
+          <small>troll</small>
+        }
+      </button>
+    }
+  </div>
+
+  <footer class="language-modal__footer">
+    <button type="button" class="language-modal__close" (click)="close()">
+      {{ 'language.modal.close' | translate }}
+    </button>
+  </footer>
+</section>

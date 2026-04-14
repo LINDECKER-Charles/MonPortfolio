@@ -13,7 +13,7 @@
 
       <span class="nav-barre__brand-text">
         <span class="nav-barre__brand-name">Charles Lindecker</span>
-        <span class="nav-barre__brand-role">Développeur / Formateur</span>
+        <span class="nav-barre__brand-role">{{ 'brand.role' | translate }}</span>
       </span>
     </a>
 
@@ -35,9 +35,22 @@
             </app-responsive-picture>
           </span>
 
-          <span class="nav-barre__link-label">{{ item.label }}</span>
+          <span class="nav-barre__link-label">{{ item.labelKey | translate }}</span>
         </a>
       }
+
+      <button
+        class="nav-barre__language-button"
+        type="button"
+        (click)="openLanguageModal()"
+        [attr.aria-label]="'language.button' | translate">
+        <span class="nav-barre__language-icon" aria-hidden="true">🌐</span>
+        <span class="nav-barre__link-label">{{ 'language.button' | translate }}</span>
+      </button>
     </div>
   </div>
 </nav>
+
+@if (languageModalOpen()) {
+  <app-language-modal (closed)="closeLanguageModal()"></app-language-modal>
+}

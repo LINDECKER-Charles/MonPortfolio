@@ -248,3 +248,28 @@
     transition: none !important;
   }
 }
+
+.nav-barre__language-button {
+  min-height: 44px;
+  padding: 0.55rem 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(189, 193, 199, 0.08);
+  background:
+    linear-gradient(180deg, rgba(38, 42, 47, 0.88), rgba(24, 26, 29, 0.94));
+  color: #c7ccd3;
+  cursor: pointer;
+}
+
+.nav-barre__language-button:hover {
+  transform: translateY(-1px);
+  color: #f3f6f7;
+  border-color: rgba(166, 10, 10, 0.14);
+}
+
+.nav-barre__language-icon {
+  font-size: 1rem;
+  line-height: 1;
+}

@@ -1,0 +1,10 @@
+{
+  "nav.home": "ホーム",
+  "nav.projects": "プロジェクト",
+  "nav.works": "経歴",
+  "brand.role": "開発者 / 講師",
+  "language.button": "言語",
+  "language.modal.title": "言語を選択",
+  "language.modal.subtitle": "設定はローカルに保存されます",
+  "language.modal.close": "閉じる"
+}
