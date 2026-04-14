@@ -1,59 +1,105 @@
-# FrontPortfolio
+# MonPortfolio Front
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.4.
+Portfolio personnel développé avec Angular 20, SSR et une direction UI très orientée expérience.
 
-## Development server
+Le projet met l'accent sur :
 
-To start a local development server, run:
+- une home animée avec séquences d'ouverture et transitions GSAP
+- une architecture de composants standalone
+- des médias responsives centralisés dans `src/app/imgSources`
+- un rendu SSR avec prerender
+- une page projets filtrable avec modal, carousel et lightbox image
 
-```bash
-ng serve
-```
+## Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 20
+- TypeScript
+- Angular SSR
+- GSAP
+- CSS
+- Tailwind/PostCSS dans la toolchain
 
-## Code scaffolding
+## Démarrage
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Installe les dépendances :
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Lance le serveur de développement :
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+Application accessible sur `http://localhost:4200`.
 
-For end-to-end (e2e) testing, run:
+## Scripts utiles
 
 ```bash
-ng e2e
+npm start
+npm run build
+npm run watch
+npm run test
+npm run serve:ssr:front-portfolio
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Build
 
-## Additional Resources
+Build production SSR :
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run build
+```
+
+Le résultat est généré dans `dist/front-portfolio/`.
+
+Pour servir le build SSR localement :
+
+```bash
+npm run serve:ssr:front-portfolio
+```
+
+## Structure
+
+```text
+src/
+  app/
+    components/
+      assets/        composants UI réutilisables
+      home/          briques métiers des pages home/projets
+      misc/          navbar, footer, opening, resume
+      page/          pages routées
+    directives/      directives UI
+    imgSources/      sources d'images responsives centralisées
+public/              assets statiques servis tels quels
+```
+
+## Médias
+
+Les médias responsives sont décrits dans :
+
+- `src/app/imgSources/shared.sources.ts`
+- `src/app/imgSources/resum.sources.ts`
+- `src/app/imgSources/projects/*.ts`
+
+Le principe retenu dans le projet :
+
+- privilégier `webp` pour les icônes et captures de projets
+- utiliser des tailles réellement exploitées par l'interface
+- éviter la duplication de chemins d'assets dans les composants
+
+## Pages principales
+
+- `/` : accueil, résumé, projets mis en avant, parcours
+- `/projects` : listing complet des projets avec filtres, tags, stack et modal détail
+- `/resume` : version CV / résumé avec animations d'entrée
+- `/opening-home` : rejoue l'animation d'ouverture puis renvoie vers l'accueil
+- `/opening-resume` : animation d'ouverture dédiée au résumé
+
+## Notes
+
+- Le projet utilise des budgets Angular assez serrés sur le bundle initial et les styles de composants.
+- Certaines pages sont volontairement très travaillées visuellement, donc toute optimisation doit préserver l'intention de design.
+- Les images utilisées par l'UI doivent être déclarées via `imgSources` avant d'être branchées dans les composants.

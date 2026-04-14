@@ -1,0 +1,26 @@
+<main class="projects-page">
+  <app-projects-header />
+
+  <app-projects-filter
+    [filters]="filters"
+    [filtersState]="filtersState"
+    [availableTags]="availableTags"
+    [availableStack]="availableStack"
+    (categorySelected)="selectCategory($event)"
+    (tagToggled)="toggleTag($event)"
+    (stackToggled)="toggleStack($event)"
+    (reset)="clearFilters()" />
+
+  <app-projects-timeline
+    [projects]="filteredProjects"
+    (projectSelected)="openProject($event)" />
+
+  @if (selectedProject; as project) {
+    <app-projects-modal
+      [project]="project"
+      [currentImageIndex]="currentImageIndex"
+      (close)="closeProject()"
+      (nextImage)="nextImage()"
+      (previousImage)="previousImage()" />
+  }
+</main>

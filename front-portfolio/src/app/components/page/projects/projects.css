@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.projects-page {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 980px) {
+  .projects-page {
+    width: min(100%, calc(100% - 1.5rem));
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-page {
+    width: min(100%, calc(100% - 1rem));
+    padding: 1rem 0 3rem;
+    gap: 1.5rem;
+  }
+}

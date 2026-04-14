@@ -1,0 +1,61 @@
+<section class="projects-timeline" aria-label="Timeline des projets">
+  @for (project of projects; track trackByProjectId($index, project)) {
+    <article
+      class="projects-timeline__item"
+      appRevealOnScroll
+      [revealDelay]="$index * 0.06"
+      [revealY]="28"
+      [revealBlur]="10">
+      <div class="projects-timeline__line">
+        <span class="projects-timeline__dot"></span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card__top">
+          <div class="project-card__meta">
+            <span class="project-card__period">{{ formatPeriod(project) }}</span>
+            <span class="project-card__badge">{{ getCategoryLabel(project.category) }}</span>
+            <span class="project-card__badge project-card__badge--status">
+              {{ getStatusLabel(project.status) }}
+            </span>
+          </div>
+
+          @if (project.featured) {
+            <span class="project-card__featured">Projet cle</span>
+          }
+        </div>
+
+        <div class="project-card__head">
+          <h2>{{ project.title }}</h2>
+          <p>{{ project.shortDescription }}</p>
+        </div>
+
+        <div class="project-card__section">
+          <span class="project-card__section-label">Stack</span>
+
+          <div class="project-card__stack">
+            @for (item of project.stack; track item) {
+              <span class="project-card__stack-chip">{{ item }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="project-card__section">
+          <span class="project-card__section-label">Tags</span>
+
+          <div class="project-card__tags">
+            @for (tag of project.tags; track tag) {
+              <span class="project-card__tag-chip">{{ tag }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="project-card__actions">
+          <button type="button" class="project-card__toggle" (click)="projectSelected.emit(project)">
+            Voir le detail
+          </button>
+        </div>
+      </div>
+    </article>
+  }
+</section>

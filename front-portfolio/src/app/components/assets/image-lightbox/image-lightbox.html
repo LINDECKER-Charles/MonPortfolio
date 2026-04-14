@@ -1,0 +1,28 @@
+<div class="image-lightbox" (click)="close.emit()">
+  <div
+    class="image-lightbox__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Apercu plein ecran"
+    (click)="$event.stopPropagation()">
+    <button
+      type="button"
+      class="image-lightbox__close"
+      (click)="close.emit()"
+      aria-label="Fermer l'aperçu plein ecran">
+      &times;
+    </button>
+
+    <div class="image-lightbox__frame">
+      <app-responsive-picture
+        [sources]="sources"
+        [fallbackSrc]="fallbackSrc"
+        [alt]="alt"
+        loading="eager"
+        decoding="async"
+        objectFit="contain"
+        sizes="100vw">
+      </app-responsive-picture>
+    </div>
+  </div>
+</div>

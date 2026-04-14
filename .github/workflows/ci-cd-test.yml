@@ -13,6 +13,8 @@ env:
   FRONT_DIR: front-portfolio
   VPS_DIR: /var/www/portfolio-test
   FRONT_PROCESS: angular-portfolio-test.service
+  IMAGES_PATH: front-portfolio/public
+  IMAGES_VPS: /var/www/charles-lindecker-img
 
 concurrency:
   group: deploy-test-angular
@@ -75,6 +77,29 @@ jobs:
           git checkout test
           git merge origin/dev --no-ff -m "CI: merge dev into test"
           git push origin test
+
+  push-images-test:
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            ${{ env.IMAGES_PATH }}
+          sparse-checkout-cone-mode: true
+
+      - name: Sync images to VPS
+        uses: burnett01/rsync-deployments@8.0.4
+        continue-on-error: true
+        with:
+          switches: -av --delete
+          path: ${{ env.IMAGES_PATH }}/
+          remote_path: ${{ env.IMAGES_VPS }}
+          remote_host: ${{ secrets.VPS_IP }}
+          remote_user: ${{ secrets.VPS_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
 
   deploy-test:
     needs: ci

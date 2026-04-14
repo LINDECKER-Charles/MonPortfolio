@@ -1,0 +1,51 @@
+<div class="about__content">
+  @for (snippet of snippets; track snippet.id) {
+    <article
+      class="about-snippet"
+      [class.is-open]="snippet.isOpen"
+      #snippetCard>
+      <button
+        type="button"
+        class="about-snippet__trigger"
+        [attr.aria-expanded]="snippet.isOpen"
+        [attr.aria-controls]="'snippet-content-' + snippet.id"
+        (click)="toggleSnippet(snippet.id)">
+        <span class="about-snippet__heading">
+          <span class="about-snippet__icon-media">
+            <app-responsive-picture
+              [sources]="snippet.iconSources"
+              [fallbackSrc]="snippet.iconFallback"
+              [alt]="snippet.iconAlt"
+              loading="lazy"
+              decoding="async">
+            </app-responsive-picture>
+          </span>
+
+          <span class="about-snippet__mark"></span>
+          <h3>{{ snippet.title }}</h3>
+        </span>
+
+        <span class="about-snippet__icon" [class.is-open]="snippet.isOpen">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4 6L8 10L12 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+      </button>
+
+      <div
+        class="about-snippet__content-wrapper"
+        [id]="'snippet-content-' + snippet.id"
+        #snippetContent>
+        <div class="about-snippet__content">
+          <p>{{ snippet.content }}</p>
+        </div>
+      </div>
+    </article>
+  }
+</div>

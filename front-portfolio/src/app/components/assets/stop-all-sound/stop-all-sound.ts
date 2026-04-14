@@ -12,6 +12,8 @@ export class StopAllSound implements AfterViewInit {
   public readonly audioService: AudioService = inject(AudioService);
   private host = inject(ElementRef<HTMLElement>);
 
+  public collapsed = false;
+
   public get volumePercent(): number {
     return Math.round(this.audioService.masterVolume() * 100);
   }
@@ -43,6 +45,10 @@ export class StopAllSound implements AfterViewInit {
     }
 
     this.audioService.muteAll();
+  }
+
+  public toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
   }
 
   public onVolumeInput(event: Event): void {

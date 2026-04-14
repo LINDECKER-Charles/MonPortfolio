@@ -1,0 +1,23 @@
+<div class="about__media" #portraitBlock>
+  <div class="portrait-card">
+    <div class="portrait-card__frame">
+      <div class="portrait-card__inner">
+        <app-responsive-picture
+          [sources]="photoSources"
+          [fallbackSrc]="photoFallback"
+          sizes="(max-width: 980px) 100vw, 330px"
+          alt="Portrait de Charles Lindecker"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </div>
+    </div>
+
+    <div class="portrait-card__plate">
+      <span>Développeur</span>
+      <span class="portrait-card__divider"></span>
+      <span>Formateur</span>
+    </div>
+  </div>
+</div>

@@ -5,10 +5,13 @@ import {StopAllSound} from './components/assets/stop-all-sound/stop-all-sound';
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {MetaService} from './services/meta-service';
 import {filter, map, mergeMap} from 'rxjs';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {Footer} from './components/misc/footer/footer';
+import {NavBarre} from './components/misc/nav-barre/nav-barre';
 
 @Component({
   selector: 'app-root',
-  imports: [Loading, StopAllSound, RouterOutlet],
+  imports: [Loading, StopAllSound, RouterOutlet, Footer, NavBarre],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -69,7 +72,7 @@ export class App {
       newLocation: {
         src: './song/new_location.mp3',
         loop: false,
-        volume: 0.5,
+        volume: 0.3,
         preload: 'auto'
       }
     });
@@ -78,6 +81,22 @@ export class App {
   private readonly metaService = inject(MetaService);
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
+
+  protected readonly showFooter = toSignal(
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      map(() => {
+        let route = this.activatedRoute.firstChild;
+
+        while (route?.firstChild) {
+          route = route.firstChild;
+        }
+
+        return route?.snapshot.data['showFooter'] ?? true;
+      })
+    ),
+    { initialValue: true }
+  );
 
   async ngOnInit() {
     this.router.events.pipe(
@@ -105,6 +124,7 @@ export class App {
         this.metaService.updateTwitterDescription(event['twitterDescription']);
         this.metaService.updateTwitterCard(event['twitterCard']);
         this.metaService.updateTwitterImage(event['twitterImage']);
+        this.metaService.updateStructuredData(event['structuredData']);
       });
 
   }

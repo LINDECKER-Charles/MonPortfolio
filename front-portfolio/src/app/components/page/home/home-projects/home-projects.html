@@ -1,0 +1,66 @@
+<section class="home-projects" #ctaBlock>
+  <div class="home-projects__intro">
+    <span class="home-projects__eyebrow">Suite</span>
+
+    <h2>Projets & Contributions</h2>
+
+    <p>
+      Retrouvez mes applications, mes expérimentations techniques et mes travaux
+      open source dans une section dédiée.
+    </p>
+
+    <div class="home-projects__stack" aria-label="Technologies principales">
+      @for (icon of stackIcons; track icon.fallback) {
+        <span class="home-projects__stack-item" [attr.title]="icon.alt">
+          <app-responsive-picture
+            [sources]="icon.sources"
+            [fallbackSrc]="icon.fallback"
+            [alt]="icon.alt"
+            loading="lazy"
+            decoding="async">
+          </app-responsive-picture>
+        </span>
+      }
+    </div>
+  </div>
+
+  <div class="home-projects__actions">
+    <a class="home-projects__cta home-projects__cta--primary" routerLink="/projects" href="/projects">
+      <span class="home-projects__cta-icon">
+        <app-responsive-picture
+          [sources]="projectsIcon.sources"
+          [fallbackSrc]="projectsIcon.fallback"
+          [alt]="projectsIcon.alt"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
+
+      <span class="home-projects__cta-label">
+        <span class="home-projects__cta-top">Explorer</span>
+        <span class="home-projects__cta-bottom">Mes travaux</span>
+      </span>
+    </a>
+
+    <a
+      class="home-projects__cta home-projects__cta--secondary"
+      href="https://github.com/"
+      target="_blank"
+      rel="noreferrer noopener">
+      <span class="home-projects__cta-icon">
+        <app-responsive-picture
+          [sources]="githubIcon.sources"
+          [fallbackSrc]="githubIcon.fallback"
+          [alt]="githubIcon.alt"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
+
+      <span class="home-projects__cta-label">
+        <span class="home-projects__cta-top">Open Source</span>
+        <span class="home-projects__cta-bottom">Voir GitHub</span>
+      </span>
+    </a>
+  </div>
+</section>

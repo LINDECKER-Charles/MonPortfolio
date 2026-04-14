@@ -1,0 +1,141 @@
+<section class="projects-filters">
+  <div class="projects-filters__group">
+    <span class="projects-filters__label">Categorie</span>
+
+    <div class="projects-filters__chips">
+      @for (filter of filters; track trackByFilterId($index, filter)) {
+        <button
+          type="button"
+          class="projects-filters__chip"
+          [class.is-active]="filtersState.category === filter.id"
+          (click)="categorySelected.emit(filter.id)">
+          {{ filter.label }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="projects-filters__group projects-filters__group--picker">
+    <span class="projects-filters__label">Tags</span>
+
+    <div class="projects-filters__picker">
+      <button
+        type="button"
+        class="projects-filters__chip projects-filters__picker-trigger"
+        [class.is-active]="isTagsPanelOpen || filtersState.tags.length > 0"
+        (click)="toggleTagsPanel()">
+        Tags
+        <span class="projects-filters__picker-count">{{ filtersState.tags.length }}</span>
+      </button>
+
+      @if (isTagsPanelOpen) {
+        <div class="projects-filters__panel" (click)="$event.stopPropagation()">
+          <input
+            type="text"
+            class="projects-filters__search"
+            placeholder="Rechercher un tag"
+            [value]="tagQuery"
+            (input)="tagQuery = $any($event.target).value" />
+
+          <div class="projects-filters__panel-list">
+            @for (tag of filteredTags; track tag) {
+              <button
+                type="button"
+                class="projects-filters__option"
+                [class.is-selected]="isTagSelected(tag)"
+                (click)="tagToggled.emit(tag)">
+                <span>{{ tag }}</span>
+                @if (isTagSelected(tag)) {
+                  <span>Ajoute</span>
+                }
+              </button>
+            }
+          </div>
+
+          @if (!filteredTags.length) {
+            <p class="projects-filters__empty">Aucun tag trouve.</p>
+          }
+        </div>
+      }
+    </div>
+
+    @if (filtersState.tags.length) {
+      <div class="projects-filters__selected">
+        @for (tag of filtersState.tags; track tag) {
+          <button
+            type="button"
+            class="projects-filters__chip projects-filters__chip--tag is-active"
+            (click)="tagToggled.emit(tag)">
+            {{ tag }} ×
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="projects-filters__group projects-filters__group--picker">
+    <span class="projects-filters__label">Stack</span>
+
+    <div class="projects-filters__picker">
+      <button
+        type="button"
+        class="projects-filters__chip projects-filters__picker-trigger"
+        [class.is-active]="isStackPanelOpen || filtersState.stack.length > 0"
+        (click)="toggleStackPanel()">
+        Stack
+        <span class="projects-filters__picker-count">{{ filtersState.stack.length }}</span>
+      </button>
+
+      @if (isStackPanelOpen) {
+        <div class="projects-filters__panel" (click)="$event.stopPropagation()">
+          <input
+            type="text"
+            class="projects-filters__search"
+            placeholder="Rechercher une stack"
+            [value]="stackQuery"
+            (input)="stackQuery = $any($event.target).value" />
+
+          <div class="projects-filters__panel-list">
+            @for (stackItem of filteredStack; track stackItem) {
+              <button
+                type="button"
+                class="projects-filters__option"
+                [class.is-selected]="isStackSelected(stackItem)"
+                (click)="stackToggled.emit(stackItem)">
+                <span>{{ stackItem }}</span>
+                @if (isStackSelected(stackItem)) {
+                  <span>Ajoute</span>
+                }
+              </button>
+            }
+          </div>
+
+          @if (!filteredStack.length) {
+            <p class="projects-filters__empty">Aucune stack trouvee.</p>
+          }
+        </div>
+      }
+    </div>
+
+    @if (filtersState.stack.length) {
+      <div class="projects-filters__selected">
+        @for (stackItem of filtersState.stack; track stackItem) {
+          <button
+            type="button"
+            class="projects-filters__chip projects-filters__chip--stack is-active"
+            (click)="stackToggled.emit(stackItem)">
+            {{ stackItem }} ×
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+  @if (hasActiveFilters()) {
+    <div class="projects-filters__actions">
+      <button type="button" class="projects-filters__reset" (click)="reset.emit()">
+        Reinitialiser
+      </button>
+    </div>
+  }
+</section>
