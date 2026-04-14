@@ -3,10 +3,11 @@ import {OpeningResume} from './components/misc/opening-resume/opening-resume';
 import {Resum} from './components/misc/opening-resume/resum/resum';
 import {Home} from './components/page/home/home';
 import {Projects} from './components/page/projects/projects';
+import {Works} from './components/page/works/works';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'opening-resume',
     component: OpeningResume,
     title: 'Charles Lindecker - Développeur Web & Solutions sur mesure',
     data: {
@@ -55,7 +56,7 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'home',
+    path: '',
     component: Home,
     data: {
       showFooter: true,
@@ -64,6 +65,13 @@ export const routes: Routes = [
   {
     path: 'projects',
     component: Projects,
+    data: {
+      showFooter: true,
+    }
+  },
+  {
+    path: 'works',
+    component: Works,
     data: {
       showFooter: true,
     }

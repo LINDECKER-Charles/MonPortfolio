@@ -1,0 +1,314 @@
+:host {
+  display: block;
+}
+
+.projects-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(11, 12, 14, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.projects-modal__dialog {
+  position: relative;
+  width: min(1040px, 100%);
+  max-height: min(92dvh, 980px);
+  overflow: auto;
+  border: 1px solid rgba(189, 193, 199, 0.08);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(48, 53, 59, 0.24), rgba(27, 28, 28, 0.88)),
+    radial-gradient(circle at top left, rgba(166, 10, 10, 0.06), transparent 30%);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.projects-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(189, 193, 199, 0.1);
+  background:
+    linear-gradient(180deg, rgba(38, 42, 47, 0.92), rgba(24, 26, 29, 0.96));
+  color: #d8dde4;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 120ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.projects-modal__close:hover {
+  transform: translateY(-1px);
+  border-color: rgba(166, 10, 10, 0.16);
+  box-shadow:
+    0 10px 18px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(166, 10, 10, 0.04);
+}
+
+.projects-modal__layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 1.2rem;
+  padding-top: 3.4rem;
+}
+
+.projects-modal__media-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.projects-modal__carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.projects-modal__carousel-image {
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #1b1c1c;
+  border: 1px solid rgba(189, 193, 199, 0.06);
+}
+
+.projects-modal__carousel-image app-responsive-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.projects-modal__carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.projects-modal__carousel-button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(189, 193, 199, 0.08);
+  background:
+    linear-gradient(180deg, rgba(38, 42, 47, 0.92), rgba(24, 26, 29, 0.96));
+  color: #d8dde4;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition:
+    transform 120ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.projects-modal__carousel-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(166, 10, 10, 0.14);
+  box-shadow:
+    0 10px 18px rgba(0, 0, 0, 0.16),
+    0 0 0 1px rgba(166, 10, 10, 0.04);
+}
+
+.projects-modal__carousel-index {
+  font-size: 0.8rem;
+  color: #8f98a3;
+  white-space: nowrap;
+}
+
+.projects-modal__video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 18px;
+  background: #101112;
+}
+
+.projects-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  min-width: 0;
+}
+
+.projects-modal__header h2,
+.projects-modal__group h3,
+.projects-modal__group p,
+.projects-modal__list {
+  margin: 0;
+}
+
+.projects-modal__period {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  color: #8f98a3;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.projects-modal__header h2 {
+  color: #f3f6f7;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  line-height: 1;
+  padding-right: 3rem;
+}
+
+.projects-modal__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.projects-modal__group h3 {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8f939c;
+}
+
+.projects-modal__group p {
+  line-height: 1.8;
+  color: #bdc1c7;
+}
+
+.projects-modal__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.projects-modal__chip {
+  padding: 0.34rem 0.58rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+}
+
+.projects-modal__chip--tag {
+  color: #d6cab5;
+  background: rgba(166, 10, 10, 0.05);
+  border: 1px solid rgba(166, 10, 10, 0.08);
+}
+
+.projects-modal__chip--stack {
+  color: #c7ccd3;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(189, 193, 199, 0.06);
+}
+
+.projects-modal__list {
+  padding-left: 1rem;
+  color: #bdc1c7;
+  line-height: 1.8;
+}
+
+.projects-modal__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.projects-modal__links a {
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #ece7db;
+  border: 1px solid rgba(164, 148, 118, 0.16);
+  background:
+    linear-gradient(180deg, rgba(43, 38, 31, 0.94), rgba(24, 22, 20, 0.96));
+}
+
+.projects-modal__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.projects-modal__link-icon {
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+}
+
+.projects-modal__link-icon app-responsive-picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.projects-modal__carousel-button:active,
+.projects-modal__close:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 980px) {
+  .projects-modal__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-modal__media-column {
+    order: 1;
+  }
+
+  .projects-modal__content {
+    order: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-modal {
+    padding: 0.75rem;
+  }
+
+  .projects-modal__dialog {
+    border-radius: 22px;
+  }
+
+  .projects-modal__layout {
+    padding: 0.9rem;
+    padding-top: 3.2rem;
+    gap: 1rem;
+  }
+
+  .projects-modal__close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .projects-modal__carousel-image,
+  .projects-modal__video iframe {
+    border-radius: 16px;
+  }
+
+  .projects-modal__header h2 {
+    padding-right: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-modal__carousel-button,
+  .projects-modal__close {
+    transition: none !important;
+  }
+}

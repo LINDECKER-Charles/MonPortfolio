@@ -7,10 +7,11 @@ import {MetaService} from './services/meta-service';
 import {filter, map, mergeMap} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {Footer} from './components/misc/footer/footer';
+import {NavBarre} from './components/misc/nav-barre/nav-barre';
 
 @Component({
   selector: 'app-root',
-  imports: [Loading, StopAllSound, RouterOutlet, Footer],
+  imports: [Loading, StopAllSound, RouterOutlet, Footer, NavBarre],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -18,6 +18,8 @@ export class ResponsivePicture {
   @Input() alt = '';
   @Input() loading: 'eager' | 'lazy' = 'lazy';
   @Input() decoding: 'sync' | 'async' | 'auto' = 'async';
+  @Input() objectFit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down' = 'cover';
+  @Input() objectPosition = 'center';
 
   get sortedSources(): ResponsiveSource[] {
     return [...this.sources].sort((a, b) => {

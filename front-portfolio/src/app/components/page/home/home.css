@@ -6,10 +6,10 @@
 .home-page {
   width: min(1200px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 2rem 0 5rem;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.25rem;
   box-sizing: border-box;
 }
 
@@ -21,15 +21,15 @@
 @media (max-width: 980px) {
   .home-page {
     width: min(100%, calc(100% - 1.5rem));
-    padding: 1.5rem 0 4rem;
-    gap: 2.5rem;
+    padding: 0.85rem 0;
+    gap: 2rem;
   }
 }
 
 @media (max-width: 640px) {
   .home-page {
     width: min(100%, calc(100% - 1rem));
-    padding: 1rem 0 3rem;
-    gap: 2rem;
+    padding: 0.7rem 0;
+    gap: 1.6rem;
   }
 }

@@ -7,17 +7,17 @@
   position: relative;
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 3rem 0 5rem;
+  padding: 0.85rem 0 2.6rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 @media (max-width: 640px) {
   .home-resume {
     width: min(100%, calc(100% - 1.25rem));
-    padding: 1.5rem 0 3rem;
-    gap: 2rem;
+    padding: 0.55rem 0 1.9rem;
+    gap: 1.5rem;
   }
 }
 

@@ -1,1 +1,43 @@
-<p>nav-barre works!</p>
+<nav class="nav-barre" aria-label="Navigation principale">
+  <div class="nav-barre__inner">
+    <a class="nav-barre__brand" routerLink="/" href="/">
+      <span class="nav-barre__brand-logo">
+        <app-responsive-picture
+          [sources]="logoSources"
+          [fallbackSrc]="logoFallback"
+          alt="Logo Charles Lindecker"
+          loading="eager"
+          decoding="async">
+        </app-responsive-picture>
+      </span>
+
+      <span class="nav-barre__brand-text">
+        <span class="nav-barre__brand-name">Charles Lindecker</span>
+        <span class="nav-barre__brand-role">Développeur / Formateur</span>
+      </span>
+    </a>
+
+    <div class="nav-barre__links">
+      @for (item of navItems; track item.href) {
+        <a
+          class="nav-barre__link"
+          [routerLink]="item.href"
+          [href]="item.href"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }">
+          <span class="nav-barre__link-icon">
+            <app-responsive-picture
+              [sources]="item.iconSources"
+              [fallbackSrc]="item.iconFallback"
+              [alt]="item.iconAlt"
+              loading="lazy"
+              decoding="async">
+            </app-responsive-picture>
+          </span>
+
+          <span class="nav-barre__link-label">{{ item.label }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,212 @@
+:host {
+  display: block;
+}
+
+.projects-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid rgba(189, 193, 199, 0.08);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(48, 53, 59, 0.14), rgba(27, 28, 28, 0.46));
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.projects-filters__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.projects-filters__group--picker {
+  position: relative;
+}
+
+.projects-filters__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8f939c;
+}
+
+.projects-filters__chips,
+.projects-filters__selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.projects-filters__picker {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.projects-filters__chip,
+.projects-filters__reset,
+.projects-filters__option {
+  padding: 0.45rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(189, 193, 199, 0.08);
+  background:
+    linear-gradient(180deg, rgba(38, 42, 47, 0.92), rgba(24, 26, 29, 0.96));
+  color: #c3c8cf;
+  cursor: pointer;
+  font-size: 0.76rem;
+  line-height: 1;
+  transition:
+    transform 120ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    filter 180ms ease;
+}
+
+.projects-filters__chip:hover,
+.projects-filters__reset:hover,
+.projects-filters__option:hover {
+  transform: translateY(-1px);
+  border-color: rgba(166, 10, 10, 0.14);
+  box-shadow:
+    0 8px 14px rgba(0, 0, 0, 0.14),
+    0 0 0 1px rgba(166, 10, 10, 0.04);
+}
+
+.projects-filters__chip:active,
+.projects-filters__reset:active,
+.projects-filters__option:active {
+  transform: scale(0.96);
+}
+
+.projects-filters__chip.is-active {
+  color: #ece7db;
+  border-color: rgba(164, 148, 118, 0.22);
+  background:
+    linear-gradient(180deg, rgba(43, 38, 31, 0.94), rgba(24, 22, 20, 0.96));
+}
+
+.projects-filters__chip--tag.is-active {
+  border-color: rgba(166, 10, 10, 0.2);
+}
+
+.projects-filters__chip--stack.is-active {
+  border-color: rgba(189, 193, 199, 0.16);
+}
+
+.projects-filters__picker-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.projects-filters__picker-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ece7db;
+  font-size: 0.68rem;
+}
+
+.projects-filters__panel {
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  left: 0;
+  z-index: 5;
+  width: min(360px, calc(100vw - 3rem));
+  padding: 0.85rem;
+  border: 1px solid rgba(189, 193, 199, 0.08);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(38, 42, 47, 0.98), rgba(20, 22, 25, 0.98));
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(166, 10, 10, 0.03);
+}
+
+.projects-filters__search {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(189, 193, 199, 0.08);
+  border-radius: 12px;
+  background: rgba(10, 11, 13, 0.45);
+  color: #ece7db;
+  outline: none;
+}
+
+.projects-filters__search::placeholder {
+  color: #8f939c;
+}
+
+.projects-filters__search:focus {
+  border-color: rgba(166, 10, 10, 0.18);
+  box-shadow: 0 0 0 1px rgba(166, 10, 10, 0.08);
+}
+
+.projects-filters__panel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+  max-height: 240px;
+  overflow: auto;
+}
+
+.projects-filters__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.projects-filters__option.is-selected {
+  border-color: rgba(166, 10, 10, 0.18);
+  background: rgba(166, 10, 10, 0.08);
+  color: #f1e8d8;
+}
+
+.projects-filters__empty {
+  margin: 0.7rem 0 0;
+  color: #8f939c;
+  font-size: 0.82rem;
+}
+
+.projects-filters__actions {
+  padding-top: 0.1rem;
+}
+
+@media (max-width: 640px) {
+  .projects-filters {
+    padding: 0.85rem;
+    border-radius: 18px;
+  }
+
+  .projects-filters__chip,
+  .projects-filters__reset {
+    padding: 0.42rem 0.62rem;
+    font-size: 0.72rem;
+  }
+
+  .projects-filters__panel {
+    width: min(100%, calc(100vw - 2.5rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-filters__chip,
+  .projects-filters__reset,
+  .projects-filters__option {
+    transition: none !important;
+  }
+}
