@@ -116,11 +116,11 @@
 }
 
 .projects-filters__panel {
-  position: absolute;
-  top: calc(100% + 0.65rem);
-  left: 0;
-  z-index: 5;
+  position: relative;
+  z-index: 2;
   width: min(360px, calc(100vw - 3rem));
+  max-width: 100%;
+  margin-top: 0.65rem;
   padding: 0.85rem;
   border: 1px solid rgba(189, 193, 199, 0.08);
   border-radius: 18px;
@@ -199,7 +199,7 @@
   }
 
   .projects-filters__panel {
-    width: min(100%, calc(100vw - 2.5rem));
+    width: 100%;
   }
 }
 
