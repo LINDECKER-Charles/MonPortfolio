@@ -21,35 +21,75 @@
   max-height: 100%;
 }
 
+.image-lightbox__nav,
 .image-lightbox__close {
   position: absolute;
-  top: 0.25rem;
-  right: 0.25rem;
   z-index: 2;
-  width: 2.8rem;
-  height: 2.8rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(15, 17, 20, 0.86);
   color: #f3f6f7;
   cursor: pointer;
-  font-size: 1.45rem;
-  line-height: 1;
   transition:
     transform 120ms ease,
     border-color 180ms ease,
     background-color 180ms ease;
 }
 
+.image-lightbox__close {
+  top: 0.25rem;
+  right: 0.25rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.image-lightbox__nav {
+  top: 50%;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.image-lightbox__nav--previous {
+  left: 0.25rem;
+}
+
+.image-lightbox__nav--next {
+  right: 0.25rem;
+}
+
+.image-lightbox__nav span {
+  transform: translateY(-0.08em);
+}
+
+.image-lightbox__index {
+  position: absolute;
+  left: 50%;
+  bottom: 0.35rem;
+  transform: translateX(-50%);
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 17, 20, 0.72);
+  color: #dbe1e8;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.image-lightbox__nav:hover,
 .image-lightbox__close:hover {
-  transform: translateY(-1px);
   border-color: rgba(255, 255, 255, 0.24);
   background: rgba(20, 23, 27, 0.96);
 }
 
+.image-lightbox__nav:active,
 .image-lightbox__close:active {
   transform: scale(0.96);
 }
@@ -83,9 +123,29 @@
     max-width: calc(100vw - 1rem);
     height: min(78dvh, 720px);
   }
+
+  .image-lightbox__nav {
+    width: 2.7rem;
+    height: 2.7rem;
+    font-size: 1.7rem;
+  }
+
+  .image-lightbox__nav--previous {
+    left: 0.15rem;
+  }
+
+  .image-lightbox__nav--next {
+    right: 0.15rem;
+  }
+
+  .image-lightbox__index {
+    bottom: 0.55rem;
+    font-size: 0.76rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .image-lightbox__nav,
   .image-lightbox__close {
     transition: none !important;
   }

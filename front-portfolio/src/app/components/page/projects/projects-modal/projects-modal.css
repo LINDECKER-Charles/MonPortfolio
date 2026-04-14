@@ -132,7 +132,7 @@
 }
 
 .projects-modal__carousel-button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-0.5px);
   border-color: rgba(166, 10, 10, 0.14);
   box-shadow:
     0 10px 18px rgba(0, 0, 0, 0.16),
