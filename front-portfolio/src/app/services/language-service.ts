@@ -35,6 +35,17 @@ const AVAILABLE_LANGUAGES: AppLanguage[] = [
   { code: 'ja', label: '日本語' },
   { code: 'zh', label: '中文' },
   { code: 'ar', label: 'العربية' },
+  { code: 'binary', label: 'Binary — 01001000 01100101 01101100 01101100 01101111' },
+  { code: 'beefsteak', label: 'Beefsteak' },
+  { code: 'lorem', label: 'Lorem Ipsum' },
+  { code: 'elden', label: 'Elden Script' },
+  { code: 'hunter', label: 'Hunter’s Tongue' },
+  { code: 'machine', label: 'Machine Code' },
+  { code: 'php-legacy', label: 'Legacy PHP' },
+  { code: 'docker', label: 'Docker Compose' },
+  { code: 'regex', label: 'Regex' },
+  { code: 'min-js', label: 'Minified JavaScript' },
+  { code: 'uwu', label: 'UwU Language' },
 ];
 
 @Injectable({
