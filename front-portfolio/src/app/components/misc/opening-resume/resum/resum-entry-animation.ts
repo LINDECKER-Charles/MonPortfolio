@@ -7,6 +7,7 @@ export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   protected readonly isBrowser = isPlatformBrowser(this.platformId);
   protected readonly hostRef = inject(ElementRef<HTMLElement>);
+  protected isEntryAnimationComplete = !this.isBrowser;
   private ctx?: gsap.Context;
   private tween?: gsap.core.Tween;
 
@@ -21,7 +22,10 @@ export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
 
     this.ctx = gsap.context(() => {
       const targets = this.hostRef.nativeElement.querySelectorAll(this.animationSelectors);
-      if (!targets.length) return;
+      if (!targets.length) {
+        this.isEntryAnimationComplete = true;
+        return;
+      }
 
       gsap.set(targets, {
         opacity: 0,
@@ -36,6 +40,7 @@ export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
         stagger: this.animationStagger,
         ease: 'power3.out',
         onComplete: () => {
+          this.isEntryAnimationComplete = true;
           this.tween?.kill();
           this.tween = undefined;
         },
@@ -44,6 +49,7 @@ export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.isEntryAnimationComplete = true;
     this.tween?.kill();
     this.ctx?.revert();
   }

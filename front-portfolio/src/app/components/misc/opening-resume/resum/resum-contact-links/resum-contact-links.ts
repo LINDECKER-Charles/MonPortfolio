@@ -22,7 +22,7 @@ export class ResumContactLinks extends ResumEntryAnimation {
   protected override animationStagger = 0.04;
 
   onHoverEnter(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const row = event.currentTarget as HTMLElement | null;
     if (!row) return;
@@ -31,7 +31,7 @@ export class ResumContactLinks extends ResumEntryAnimation {
   }
 
   onHoverLeave(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const row = event.currentTarget as HTMLElement | null;
     if (!row) return;
@@ -40,7 +40,7 @@ export class ResumContactLinks extends ResumEntryAnimation {
   }
 
   onPress(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const row = event.currentTarget as HTMLElement | null;
     if (!row) return;
@@ -49,7 +49,7 @@ export class ResumContactLinks extends ResumEntryAnimation {
   }
 
   onRelease(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const row = event.currentTarget as HTMLElement | null;
     if (!row) return;

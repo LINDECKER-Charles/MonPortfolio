@@ -22,7 +22,7 @@ export class ResumRuneIcons extends ResumEntryAnimation {
   protected override animationStagger = 0.05;
 
   onHoverEnter(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const rune = event.currentTarget as HTMLElement | null;
     if (!rune) return;
@@ -31,7 +31,7 @@ export class ResumRuneIcons extends ResumEntryAnimation {
   }
 
   onHoverLeave(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const rune = event.currentTarget as HTMLElement | null;
     if (!rune) return;
@@ -40,7 +40,7 @@ export class ResumRuneIcons extends ResumEntryAnimation {
   }
 
   onPress(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const rune = event.currentTarget as HTMLElement | null;
     if (!rune) return;
@@ -49,7 +49,7 @@ export class ResumRuneIcons extends ResumEntryAnimation {
   }
 
   onRelease(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const rune = event.currentTarget as HTMLElement | null;
     if (!rune) return;

@@ -22,7 +22,7 @@ export class ResumActiveProjects extends ResumEntryAnimation {
   protected override animationStagger = 0.045;
 
   onProjectHoverEnter(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const link = event.currentTarget as HTMLElement | null;
     if (!link) return;
@@ -31,7 +31,7 @@ export class ResumActiveProjects extends ResumEntryAnimation {
   }
 
   onProjectHoverLeave(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const link = event.currentTarget as HTMLElement | null;
     if (!link) return;
@@ -40,7 +40,7 @@ export class ResumActiveProjects extends ResumEntryAnimation {
   }
 
   onProjectPress(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const link = event.currentTarget as HTMLElement | null;
     if (!link) return;
@@ -49,7 +49,7 @@ export class ResumActiveProjects extends ResumEntryAnimation {
   }
 
   onProjectRelease(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const link = event.currentTarget as HTMLElement | null;
     if (!link) return;

@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../directives/reveal-on-scroll';
-import { ProjectItem } from '../../../page/projects/projects.state';
+import { ProjectItem } from '../projects.state';
 import {
   formatProjectPeriod,
   getProjectCategoryLabel,
   getProjectStatusLabel,
-} from '../../../page/projects/projects.utils';
+} from '../projects.utils';
 
 @Component({
   selector: 'app-projects-timeline',

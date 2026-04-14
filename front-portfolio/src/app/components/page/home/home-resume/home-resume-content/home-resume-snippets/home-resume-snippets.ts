@@ -4,16 +4,17 @@ import {
   Component,
   ElementRef,
   Inject,
-  Input,
   PLATFORM_ID,
   QueryList,
   ViewChildren,
 } from '@angular/core';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
-import {ResponsivePicture, ResponsiveSource} from '../../../../../assets/responsive-picture/responsive-picture';
+import {
+  ResponsivePicture,
+  ResponsiveSource,
+} from '../../../../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../../../../imgSources/shared.sources';
-
 
 interface HomeResumeSnippetState {
   id: string;
@@ -111,9 +112,6 @@ export class HomeResumeSnippets implements AfterViewInit {
   protected toggleSnippet(id: string): void {
     if (!this.isBrowser) return;
 
-    const targetIndex = this.snippets.findIndex((snippet) => snippet.id === id);
-    if (targetIndex === -1) return;
-
     this.snippets.forEach((snippet, index) => {
       const contentEl = this.snippetContentRefs.get(index)?.nativeElement;
       if (!contentEl) return;
@@ -125,8 +123,8 @@ export class HomeResumeSnippets implements AfterViewInit {
 
         gsap.killTweensOf(contentEl);
         gsap.set(contentEl, {
-          overflow: 'hidden',
           display: 'block',
+          overflow: 'hidden',
         });
 
         gsap.fromTo(
@@ -134,20 +132,18 @@ export class HomeResumeSnippets implements AfterViewInit {
           {
             height: 0,
             autoAlpha: 0,
-            y: -8,
-            filter: 'blur(6px)',
           },
           {
             height: contentEl.scrollHeight,
             autoAlpha: 1,
-            y: 0,
-            filter: 'blur(0px)',
-            duration: 0.42,
-            ease: 'power3.out',
+            duration: 0.22,
+            ease: 'power1.out',
+            overwrite: 'auto',
             onComplete: () => {
               gsap.set(contentEl, {
                 height: 'auto',
                 overflow: 'visible',
+                clearProps: 'opacity',
               });
             },
           }
@@ -167,10 +163,9 @@ export class HomeResumeSnippets implements AfterViewInit {
         gsap.to(contentEl, {
           height: 0,
           autoAlpha: 0,
-          y: -8,
-          filter: 'blur(6px)',
-          duration: 0.34,
-          ease: 'power2.inOut',
+          duration: 0.18,
+          ease: 'power1.inOut',
+          overwrite: 'auto',
         });
       }
     });
@@ -182,8 +177,6 @@ export class HomeResumeSnippets implements AfterViewInit {
         height: 0,
         autoAlpha: 0,
         overflow: 'hidden',
-        y: -8,
-        filter: 'blur(6px)',
       });
     });
   }
@@ -193,18 +186,14 @@ export class HomeResumeSnippets implements AfterViewInit {
 
     gsap.set(cards, {
       autoAlpha: 0,
-      y: 24,
-      filter: 'blur(10px)',
     });
 
     gsap.to(cards, {
       autoAlpha: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      duration: 0.75,
-      ease: 'power3.out',
-      stagger: 0.08,
-      clearProps: 'filter',
+      duration: 0.3,
+      ease: 'power1.out',
+      overwrite: 'auto',
+      clearProps: 'opacity',
     });
   }
 }

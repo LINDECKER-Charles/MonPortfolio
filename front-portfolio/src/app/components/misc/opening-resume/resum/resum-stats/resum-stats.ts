@@ -18,7 +18,7 @@ export class ResumStats extends ResumEntryAnimation {
   protected override animationDelay = 0.18;
 
   onRowHoverEnter(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const row = event.currentTarget as HTMLElement | null;
     if (!row) return;
@@ -27,7 +27,7 @@ export class ResumStats extends ResumEntryAnimation {
   }
 
   onRowHoverLeave(event: Event): void {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
 
     const row = event.currentTarget as HTMLElement | null;
     if (!row) return;
