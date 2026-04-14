@@ -10,16 +10,17 @@ import {
 import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 interface ConstructionPillar {
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   icon: 'roadmap' | 'craft' | 'launch';
 }
 
 @Component({
   selector: 'app-construction-state',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TranslatePipe],
   templateUrl: './construction-state.html',
   styleUrl: './construction-state.css',
 })
@@ -37,21 +38,18 @@ export class ConstructionState implements AfterViewInit {
 
   protected readonly pillars: ConstructionPillar[] = [
     {
-      title: 'Parcours en narration',
-      description:
-        'Je construis une lecture plus claire de mon evolution, avec les vraies etapes, les pivots et les projets qui comptent.',
+      titleKey: 'construction.pillar.roadmap.title',
+      descriptionKey: 'construction.pillar.roadmap.description',
       icon: 'roadmap',
     },
     {
-      title: 'Presentation plus ambitieuse',
-      description:
-        'La page arrive avec une mise en scene plus forte, des interactions plus propres et un rendu mobile plus solide.',
+      titleKey: 'construction.pillar.craft.title',
+      descriptionKey: 'construction.pillar.craft.description',
       icon: 'craft',
     },
     {
-      title: 'Mise en ligne prochaine',
-      description:
-        "La structure est en cours de finalisation. En attendant, tu peux continuer vers mes projets ou revenir a l'accueil.",
+      titleKey: 'construction.pillar.launch.title',
+      descriptionKey: 'construction.pillar.launch.description',
       icon: 'launch',
     },
   ];

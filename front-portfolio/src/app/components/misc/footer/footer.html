@@ -2,19 +2,17 @@
   <div class="footer__top">
     <div class="footer__identity">
       <span class="footer__eyebrow">Charles Lindecker</span>
-      <p>
-        Développeur / Formateur ASP.NET & Angular & Symfony.
-      </p>
+      <p>{{ 'footer.tagline' | translate }}</p>
     </div>
 
-    <nav class="footer__nav" aria-label="Navigation du footer">
-      <a routerLink="/" href="/">Accueil</a>
-      <a routerLink="/resume" href="/resume">Résumé</a>
-      <a routerLink="/projects" href="/projects">Projets</a>
-      <a routerLink="/work" href="/work">Parcours</a>
+    <nav class="footer__nav" [attr.aria-label]="'footer.nav.aria' | translate">
+      <a routerLink="/" href="/">{{ 'nav.home' | translate }}</a>
+      <a routerLink="/resume" href="/resume">{{ 'footer.nav.resume' | translate }}</a>
+      <a routerLink="/projects" href="/projects">{{ 'nav.projects' | translate }}</a>
+      <a routerLink="/work" href="/work">{{ 'nav.works' | translate }}</a>
     </nav>
 
-    <div class="footer__socials" aria-label="Liens externes">
+    <div class="footer__socials" [attr.aria-label]="'footer.social.aria' | translate">
       <a
         class="footer__social"
         href="https://github.com/LINDECKER-Charles"
@@ -49,10 +47,7 @@
         </span>
       </a>
 
-      <a
-        class="footer__social"
-        href="mailto:charles.lindecker@outlook.fr"
-        aria-label="Email">
+      <a class="footer__social" href="mailto:charles.lindecker@outlook.fr" aria-label="Email">
         <span class="footer__social-icon">
           <app-responsive-picture
             [sources]="mailIcon.sources"
@@ -69,6 +64,6 @@
   <div class="footer__bottom">
     <span>© 2026 Charles Lindecker</span>
     <span class="footer__divider"></span>
-    <span>Conçu avec Angular</span>
+    <span>{{ 'footer.madeWith' | translate }}</span>
   </div>
 </footer>

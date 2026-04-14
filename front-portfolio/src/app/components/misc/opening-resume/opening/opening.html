@@ -9,7 +9,7 @@
         #soundButton
         class="sound-trigger"
         type="button"
-        aria-label="Activer le son"
+        [attr.aria-label]="'opening.sound.enable' | translate"
         (click)="launchBgMusic()"
         (mouseenter)="onSoundHoverEnter()"
         (mouseleave)="onSoundHoverLeave()"
@@ -35,14 +35,14 @@
         </svg>
       </button>
 
-      <p #soundLabel class="sound-label">Activer le son</p>
+      <p #soundLabel class="sound-label">{{ 'opening.sound.enable' | translate }}</p>
 
       <button
         class="skip-btn"
         type="button"
         (click)="skipOpening()"
       >
-        Passer l’animation
+        {{ 'opening.skip' | translate }}
       </button>
     </div>
   </div>
@@ -57,7 +57,7 @@
         #openingButton
         class="opening-btn"
         type="button"
-        aria-label="Lancer l’introduction"
+        [attr.aria-label]="'opening.launch' | translate"
         (click)="playVoice()"
         (mouseenter)="onOpeningHoverEnter()"
         (mouseleave)="onOpeningHoverLeave()"

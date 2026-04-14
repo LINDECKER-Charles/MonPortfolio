@@ -26,10 +26,11 @@ import {
 import {AudioService} from '../../../../services/audio-service';
 import {ResponsivePicture} from '../../../assets/responsive-picture/responsive-picture';
 import {OPENING_FALLBACK_SRC, OPENING_SOURCES} from '../../../../imgSources/opening.sources';
+import { TranslatePipe } from '../../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-opening',
-  imports: [ResponsivePicture],
+  imports: [ResponsivePicture, TranslatePipe],
   templateUrl: './opening.html',
   styleUrl: './opening.css',
 })

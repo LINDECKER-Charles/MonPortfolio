@@ -15,7 +15,7 @@
         (click)="selectLanguage(language)">
         <span>{{ language.label }}</span>
         @if (language.troll) {
-          <small>troll</small>
+          <small>{{ 'language.trollBadge' | translate }}</small>
         }
       </button>
     }

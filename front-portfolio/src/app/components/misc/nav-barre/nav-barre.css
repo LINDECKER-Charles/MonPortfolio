@@ -270,6 +270,17 @@
 }
 
 .nav-barre__language-icon {
-  font-size: 1rem;
-  line-height: 1;
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.nav-barre__language-icon app-responsive-picture,
+.nav-barre__language-icon picture,
+.nav-barre__language-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

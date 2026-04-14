@@ -26,6 +26,8 @@ interface NavItem {
 export class NavBarre {
   protected readonly logoSources: ResponsiveSource[] = SHARED_IMAGES.logo.white.sources;
   protected readonly logoFallback = SHARED_IMAGES.logo.white.fallbackSrc;
+  protected readonly languageButtonIconSources = SHARED_IMAGES.icon.level.sources;
+  protected readonly languageButtonIconFallback = SHARED_IMAGES.icon.level.fallbackSrc;
   protected readonly languageModalOpen = signal(false);
 
   protected readonly navItems: NavItem[] = [

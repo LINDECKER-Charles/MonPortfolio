@@ -3,10 +3,11 @@ import {
   ResponsivePicture,
   ResponsiveSource,
 } from '../responsive-picture/responsive-picture';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-image-lightbox',
-  imports: [ResponsivePicture],
+  imports: [ResponsivePicture, TranslatePipe],
   templateUrl: './image-lightbox.html',
   styleUrl: './image-lightbox.css',
 })

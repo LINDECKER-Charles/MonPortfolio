@@ -9,7 +9,7 @@
     <div class="construction__hero">
       <div class="construction__badge">
         <span class="construction__badge-dot"></span>
-        <span>Parcours en preparation</span>
+        <span>{{ 'construction.badge' | translate }}</span>
       </div>
 
       <div class="construction__icon-cluster" aria-hidden="true">
@@ -39,27 +39,24 @@
       </div>
 
       <div class="construction__copy">
-        <p class="construction__eyebrow">Section temporaire</p>
-        <h1>Cette page est en cours de construction.</h1>
-        <p class="construction__lead">
-          Je prepare une version plus riche de mon parcours professionnel, avec une vraie lecture
-          chronologique, des moments cles et une presentation plus soignee.
-        </p>
+        <p class="construction__eyebrow">{{ 'construction.temporary' | translate }}</p>
+        <h1>{{ 'construction.title' | translate }}</h1>
+        <p class="construction__lead">{{ 'construction.lead' | translate }}</p>
       </div>
 
       <div class="construction__actions">
         <a class="construction__cta construction__cta--primary" routerLink="/projects" href="/projects">
-          Voir mes projets
+          {{ 'construction.cta.projects' | translate }}
         </a>
 
         <a class="construction__cta construction__cta--secondary" routerLink="/" href="/">
-          Revenir a l'accueil
+          {{ 'construction.cta.home' | translate }}
         </a>
       </div>
     </div>
 
     <div class="construction__pillars">
-      @for (pillar of pillars; track pillar.title) {
+      @for (pillar of pillars; track pillar.titleKey) {
         <article class="construction__card">
           <div class="construction__card-icon" aria-hidden="true">
             @switch (pillar.icon) {
@@ -83,17 +80,17 @@
           </div>
 
           <div class="construction__card-copy">
-            <h2>{{ pillar.title }}</h2>
-            <p>{{ pillar.description }}</p>
+            <h2>{{ pillar.titleKey | translate }}</h2>
+            <p>{{ pillar.descriptionKey | translate }}</p>
           </div>
         </article>
       }
     </div>
 
-    <div class="construction__status" aria-label="Etat du chantier">
+    <div class="construction__status" [attr.aria-label]="'construction.status.aria' | translate">
       <div class="construction__status-head">
-        <span class="construction__status-title">Etat d'avancement</span>
-        <span class="construction__status-value">Design en cours</span>
+        <span class="construction__status-title">{{ 'construction.status.title' | translate }}</span>
+        <span class="construction__status-value">{{ 'construction.status.value' | translate }}</span>
       </div>
 
       <div class="construction__progress">
@@ -101,9 +98,9 @@
       </div>
 
       <div class="construction__status-notes">
-        <span>Structure</span>
-        <span>Direction visuelle</span>
-        <span>Contenu en affinage</span>
+        <span>{{ 'construction.note.structure' | translate }}</span>
+        <span>{{ 'construction.note.direction' | translate }}</span>
+        <span>{{ 'construction.note.content' | translate }}</span>
       </div>
     </div>
   </div>

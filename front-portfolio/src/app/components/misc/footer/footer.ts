@@ -5,6 +5,7 @@ import {
   ResponsiveSource,
 } from '../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../imgSources/shared.sources';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 interface FooterIconSet {
   sources: ResponsiveSource[];
@@ -14,7 +15,7 @@ interface FooterIconSet {
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, ResponsivePicture],
+  imports: [RouterLink, ResponsivePicture, TranslatePipe],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

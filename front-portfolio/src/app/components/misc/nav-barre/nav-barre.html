@@ -1,4 +1,4 @@
-<nav class="nav-barre" aria-label="Navigation principale">
+<nav class="nav-barre" [attr.aria-label]="'nav.aria' | translate">
   <div class="nav-barre__inner">
     <a class="nav-barre__brand" routerLink="/" href="/">
       <span class="nav-barre__brand-logo">
@@ -44,7 +44,15 @@
         type="button"
         (click)="openLanguageModal()"
         [attr.aria-label]="'language.button' | translate">
-        <span class="nav-barre__language-icon" aria-hidden="true">🌐</span>
+        <span class="nav-barre__language-icon" aria-hidden="true">
+          <app-responsive-picture
+            [sources]="languageButtonIconSources"
+            [fallbackSrc]="languageButtonIconFallback"
+            [alt]="'language.button' | translate"
+            loading="lazy"
+            decoding="async">
+          </app-responsive-picture>
+        </span>
         <span class="nav-barre__link-label">{{ 'language.button' | translate }}</span>
       </button>
     </div>
