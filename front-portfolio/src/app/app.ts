@@ -124,6 +124,7 @@ export class App {
         this.metaService.updateTwitterDescription(event['twitterDescription']);
         this.metaService.updateTwitterCard(event['twitterCard']);
         this.metaService.updateTwitterImage(event['twitterImage']);
+        this.metaService.updateStructuredData(event['structuredData']);
       });
 
   }
