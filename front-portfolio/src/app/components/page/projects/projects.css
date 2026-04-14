@@ -12,6 +12,24 @@
   gap: 2rem;
 }
 
+.projects-page app-projects-header,
+.projects-page app-projects-filter,
+.projects-page app-projects-timeline {
+  position: relative;
+}
+
+.projects-page app-projects-header {
+  z-index: 1;
+}
+
+.projects-page app-projects-filter {
+  z-index: 30;
+}
+
+.projects-page app-projects-timeline {
+  z-index: 1;
+}
+
 @media (max-width: 980px) {
   .projects-page {
     width: min(100%, calc(100% - 1.5rem));
