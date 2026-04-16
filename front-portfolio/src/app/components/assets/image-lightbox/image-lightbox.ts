@@ -1,8 +1,9 @@
-import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, inject, Input, Output } from '@angular/core';
 import {
   ResponsivePicture,
   ResponsiveSource,
 } from '../responsive-picture/responsive-picture';
+import { TranslationService } from '../../../services/translation.service';
 
 @Component({
   selector: 'app-image-lightbox',
@@ -11,6 +12,7 @@ import {
   styleUrl: './image-lightbox.css',
 })
 export class ImageLightbox {
+  protected readonly ts = inject(TranslationService);
   @Input({ required: true }) sources: ResponsiveSource[] = [];
   @Input({ required: true }) fallbackSrc = '';
   @Input({ required: true }) alt = '';

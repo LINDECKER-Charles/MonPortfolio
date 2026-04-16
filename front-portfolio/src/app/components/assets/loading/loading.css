@@ -65,7 +65,7 @@
 .loading-overlay {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: var(--z-loading);
 
   pointer-events: none; /* important pour ne pas bloquer le clic */
 

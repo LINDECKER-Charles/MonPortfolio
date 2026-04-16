@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "// aria for modal: position: absolute; top: -9999px; // technically accessible?",
+  "lang_modal.close": "modal.style.display = 'none'; modal.style.display = 'none'; // twice for luck",
+  "lang_modal.title": "var title = '--- ' + getLang() + ' ---'; // getLang() returns a Promise. title is '[object Promise]'",
+  "audio.show": "document.getElementById('audio').style.visibility = 'show'; // 'show' is not a valid value. it works anyway. we don't know why.",
+  "audio.hide": "document.getElementById('audio').remove(); // hide by deleting. to show again, reload the page.",
+  "audio.toggle": "muted = !muted; muted = !muted; muted = !muted; // odd number of toggles = it works. probably.",
+  "audio.volume": "for(var i=0; i<volume; i++) { makeItLouder(); } // O(n) volume control",
+  "lightbox.aria": "document.body.innerHTML = '<img src=\"' + img + '\">'; // fullscreen: replace entire page with one image",
+  "lightbox.close": "location.reload(); // closing lightbox = reloading the entire application",
+  "lightbox.previous": "currentImage = currentImage - 1; // no check for negative. shows image #-1. somehow works.",
+  "lightbox.next": "currentImage++; currentImage++; currentImage--; // net result: +1. don't simplify this.",
+  "nav.role": "var role = true ? (false ? 'no' : (true ? 'Dev / Formateur' : 'maybe')) : 'unreachable'; // ternary hell",
+  "nav.aria": "// nav aria label was in a variable called 'asdfjkl' (keyboard smash naming convention)",
+  "photo.alt": "// alt text: '' (empty string counts as accessible right? RIGHT?)",
+  "photo.developer": "var d = 'd'; var de = 'de'; var dev = d + de + 'v'; // string built character by character for 'security'",
+  "photo.trainer": "// formateur is defined in trainer.js, which imports from formateur.ts, which requires trainer.coffee"
+}

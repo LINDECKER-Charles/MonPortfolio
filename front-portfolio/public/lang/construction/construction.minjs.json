@@ -1,0 +1,20 @@
+{
+  "badge": "status='WIP'//path",
+  "eyebrow": "/*tmp_section*/void 0",
+  "title": "if(!page.ready)throw new Error('under_construction')",
+  "lead": "Promise.all([prepareTimeline(),loadKeyMoments(),polishPresentation()]).then(()=>console.log('soon')).catch(e=>'still building lol')",
+  "cta.projects": "router.navigate('/projects')",
+  "cta.home": "location.href='/'",
+  "status.aria": "document.querySelector('#build-status')",
+  "status.title": "var _s='Progress'",
+  "status.value": "design.status==='cooking'?'wait':'done'",
+  "status.structure": "!!struct",
+  "status.visual": "_0xVD='visual_dir'",
+  "status.content": "content.trim()||'refining...'",
+  "pillar.roadmap.title": "const narrate=()=>career",
+  "pillar.roadmap.description": "career.pivots.map(p=>p.milestone).filter(Boolean).join(';')//building clearer path",
+  "pillar.craft.title": "const _render=()=>'ambitious'",
+  "pillar.craft.description": "if(viewport.width<768){optimize()}interactions.forEach(i=>{i.polish()})//mobile first",
+  "pillar.launch.title": "setTimeout(launch,Soon)",
+  "pillar.launch.description": "while(!finalized){await sleep(1e3)}//go to /projects or / in the meantime"
+}

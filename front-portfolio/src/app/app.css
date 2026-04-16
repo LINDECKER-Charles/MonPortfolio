@@ -16,14 +16,20 @@ body {
   position: relative;
   min-height: 100dvh;
   overflow: hidden;
+  /* Crée un stacking context isolé pour contenir les z-index négatifs
+     des backgrounds sans qu'ils "fuient" sous le body. */
+  isolation: isolate;
 }
 
 /* ---------- BACKGROUND ---------- */
 
+/* z-index: var(--z-bg) = -1 : en dessous de tout le contenu dans l'isolation */
+
 .bg-gradient {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
 
   background:
     radial-gradient(
@@ -36,7 +42,7 @@ body {
 .bg-glow {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: var(--z-bg);
   pointer-events: none;
 
   background:
@@ -52,7 +58,7 @@ body {
 .bg-noise {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: var(--z-bg);
   pointer-events: none;
 
   opacity: 0.035;
@@ -63,27 +69,18 @@ body {
 
 /* ---------- LAYERS ---------- */
 
+/* Simple conteneur de flux — pas de z-index donc pas de stacking context.
+   Les éléments fixed à l'intérieur participent directement au contexte
+   de .app-root (isolation: isolate). */
 .app-layer {
   position: relative;
-  z-index: 10;
-}
-
-/* overlay (loading / opening / modal) */
-.app-layer.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
 }
 
 /* ---------- ANIMATION ---------- */
 
 @keyframes glowPulse {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
 }
 
 /* ---------- UX ---------- */
@@ -92,24 +89,4 @@ body {
   .bg-glow {
     animation: none;
   }
-}
-
-.bg-gradient,
-.bg-glow,
-.bg-noise {
-  pointer-events: none;
-}
-
-.app-layer.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  pointer-events: none;
-}
-
-.app-layer.ui-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 30;
-  pointer-events: none;
 }

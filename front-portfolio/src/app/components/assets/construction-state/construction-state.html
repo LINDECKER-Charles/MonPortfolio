@@ -9,7 +9,7 @@
     <div class="construction__hero">
       <div class="construction__badge">
         <span class="construction__badge-dot"></span>
-        <span>Parcours en preparation</span>
+        <span>{{ ts.translate('construction.badge') }}</span>
       </div>
 
       <div class="construction__icon-cluster" aria-hidden="true">
@@ -39,30 +39,29 @@
       </div>
 
       <div class="construction__copy">
-        <p class="construction__eyebrow">Section temporaire</p>
-        <h1>Cette page est en cours de construction.</h1>
+        <p class="construction__eyebrow">{{ ts.translate('construction.eyebrow') }}</p>
+        <h1>{{ ts.translate('construction.title') }}</h1>
         <p class="construction__lead">
-          Je prepare une version plus riche de mon parcours professionnel, avec une vraie lecture
-          chronologique, des moments cles et une presentation plus soignee.
+          {{ ts.translate('construction.lead') }}
         </p>
       </div>
 
       <div class="construction__actions">
         <a class="construction__cta construction__cta--primary" routerLink="/projects" href="/projects">
-          Voir mes projets
+          {{ ts.translate('construction.cta.projects') }}
         </a>
 
         <a class="construction__cta construction__cta--secondary" routerLink="/" href="/">
-          Revenir a l'accueil
+          {{ ts.translate('construction.cta.home') }}
         </a>
       </div>
     </div>
 
     <div class="construction__pillars">
-      @for (pillar of pillars; track pillar.title) {
+      @for (icon of pillarIcons; track icon) {
         <article class="construction__card">
           <div class="construction__card-icon" aria-hidden="true">
-            @switch (pillar.icon) {
+            @switch (icon) {
               @case ('roadmap') {
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M6 6C6 4.9 6.9 4 8 4H12C13.1 4 14 4.9 14 6C14 7.1 13.1 8 12 8H10C8.9 8 8 8.9 8 10C8 11.1 8.9 12 10 12H14C15.1 12 16 12.9 16 14C16 15.1 15.1 16 14 16H12C10.9 16 10 16.9 10 18C10 19.1 10.9 20 12 20H18" />
@@ -83,17 +82,17 @@
           </div>
 
           <div class="construction__card-copy">
-            <h2>{{ pillar.title }}</h2>
-            <p>{{ pillar.description }}</p>
+            <h2>{{ ts.translate('construction.pillar.' + icon + '.title') }}</h2>
+            <p>{{ ts.translate('construction.pillar.' + icon + '.description') }}</p>
           </div>
         </article>
       }
     </div>
 
-    <div class="construction__status" aria-label="Etat du chantier">
+    <div class="construction__status" [attr.aria-label]="ts.translate('construction.status.aria')">
       <div class="construction__status-head">
-        <span class="construction__status-title">Etat d'avancement</span>
-        <span class="construction__status-value">Design en cours</span>
+        <span class="construction__status-title">{{ ts.translate('construction.status.title') }}</span>
+        <span class="construction__status-value">{{ ts.translate('construction.status.value') }}</span>
       </div>
 
       <div class="construction__progress">
@@ -101,9 +100,9 @@
       </div>
 
       <div class="construction__status-notes">
-        <span>Structure</span>
-        <span>Direction visuelle</span>
-        <span>Contenu en affinage</span>
+        <span>{{ ts.translate('construction.status.structure') }}</span>
+        <span>{{ ts.translate('construction.status.visual') }}</span>
+        <span>{{ ts.translate('construction.status.content') }}</span>
       </div>
     </div>
   </div>

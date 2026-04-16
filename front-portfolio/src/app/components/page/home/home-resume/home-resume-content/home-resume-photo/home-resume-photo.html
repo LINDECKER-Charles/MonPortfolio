@@ -6,7 +6,7 @@
           [sources]="photoSources"
           [fallbackSrc]="photoFallback"
           sizes="(max-width: 980px) 100vw, 330px"
-          alt="Portrait de Charles Lindecker"
+          [alt]="ts.translate('common.photo.alt')"
           fetchPriority="high"
           loading="eager"
           decoding="async">
@@ -15,9 +15,9 @@
     </div>
 
     <div class="portrait-card__plate">
-      <span>Développeur</span>
+      <span>{{ ts.translate('common.photo.developer') }}</span>
       <span class="portrait-card__divider"></span>
-      <span>Formateur</span>
+      <span>{{ ts.translate('common.photo.trainer') }}</span>
     </div>
   </div>
 </div>

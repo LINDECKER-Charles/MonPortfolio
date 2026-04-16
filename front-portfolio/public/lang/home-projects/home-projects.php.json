@@ -1,0 +1,9 @@
+{
+  "eyebrow": "<?php echo $next; // undefined ?>",
+  "title": "mysql_query('SELECT * FROM projects ORDER BY vibes DESC')",
+  "description": "<?php include('config.inc'); $conn = mysql_connect('localhost','root',''); $result = mysql_query('SELECT * FROM projects WHERE deleted=0'); // TODO: add prepared statements since 2007 // TODO: password is literally 'root' // TODO: fix SQL injection reported 3 years ago ?>",
+  "cta.primary.top": "$_POST['explorer']",
+  "cta.primary.bottom": "require_once('mes_travaux.php')",
+  "cta.secondary.top": "fopen('github.com', 'r') // lol",
+  "cta.secondary.bottom": "echo $github_link; // Undefined variable"
+}

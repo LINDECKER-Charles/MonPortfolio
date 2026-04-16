@@ -1,0 +1,21 @@
+{
+  "header.level": "ENV LEVEL=senior # pinned, not negotiable",
+  "header.class": "LABEL class=formateur",
+  "header.class_value": "FROM formateur:dev-web AS class_value\n# multi-stage build for a string. overengineered? never.",
+  "active_projects.title": "docker ps --filter 'status=running' --format 'ACTIVE PROJECTS:'",
+  "active_projects.elan": "docker run -d --name elan-formation \\\n  -e ROLE=formateur \\\n  -e STACK=web \\\n  --restart unless-stopped \\\n  formation:latest",
+  "active_projects.omnicard": "docker pull omnicard:latest # 47GB image. it's a card game. don't ask.",
+  "active_projects.pvzf": "docker swarm init && docker service create --name pvzf-lead --replicas 1 translation-fr:latest",
+  "active_projects.mission_locale": "docker network connect community mission-locale",
+  "passive_effects.title": "docker stats --no-stream --format 'PASSIVE EFFECTS:'",
+  "passive_effects.0": "HEALTHCHECK --interval=1s CMD test -f /app/force-de-proposition || exit 1",
+  "passive_effects.1": "ENV GWENT_RANK=top500 # cached in a read-only volume since 2019",
+  "passive_effects.2": "restart: always # literally never stops (like the developer)",
+  "passive_effects.3": "docker network create --driver overlay teamwork # mesh networking = teamwork",
+  "passive_effects.4": "ENTRYPOINT [\"pedagogy\"] # runs before anything else",
+  "stats.backend": "docker inspect backend --format '{{.State.Status}}'\n> running (since 9 years, 0 restarts, somehow)",
+  "stats.frontend": "FROM node:20-alpine AS frontend\n# alpine because we care about image size\n# (node_modules: 1.8GB)",
+  "stats.architecture": "docker-compose.yml | wc -l\n> 2,847 lines # it's called 'micro' services",
+  "stats.security": "docker scan portfolio --severity critical\n> 0 vulnerabilities (because we didn't scan the dependencies)",
+  "stats.devops": "docker buildx build --platform linux/amd64,linux/arm64 --push \\\n  -t devops:mastered .\n# builds on both platforms because we can"
+}

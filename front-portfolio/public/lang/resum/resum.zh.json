@@ -1,0 +1,21 @@
+{
+  "header.level": "等级",
+  "header.class": "职业",
+  "header.class_value": "Web开发培训师",
+  "active_projects.title": "活跃项目",
+  "active_projects.elan": "Web开发培训师 — Elan Formation",
+  "active_projects.omnicard": "Omnicard 项目",
+  "active_projects.pvzf": "法语区负责人 — PVZ Fusion",
+  "active_projects.mission_locale": "演讲者 — Mission Locale",
+  "passive_effects.title": "被动效果",
+  "passive_effects.0": "积极主动的提案者",
+  "passive_effects.1": "Gwent 前世界前500名",
+  "passive_effects.2": "不知道睡眠为何物",
+  "passive_effects.3": "协调与团队合作",
+  "passive_effects.4": "教学能力",
+  "stats.backend": "Backend",
+  "stats.frontend": "Frontend",
+  "stats.architecture": "Architecture",
+  "stats.security": "安全",
+  "stats.devops": "DevOps"
+}

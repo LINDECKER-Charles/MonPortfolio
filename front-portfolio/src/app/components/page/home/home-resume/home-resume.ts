@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import {
   HOME_RESUME_ESO_RESIST_FALLBACK,
   HOME_RESUME_ESO_RESIST_SOURCES,
@@ -19,6 +19,7 @@ import {
 import { HomeResumeBanner } from './home-resume-banner/home-resume-banner';
 import { HomeResumeHeader } from './home-resume-header/home-resume-header';
 import { HomeResumeContent } from './home-resume-content/home-resume-content';
+import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'app-home-resume',
@@ -27,31 +28,33 @@ import { HomeResumeContent } from './home-resume-content/home-resume-content';
   styleUrl: './home-resume.css',
 })
 export class HomeResume {
-  protected readonly bannerIconsLeft = [
+  private readonly ts = inject(TranslationService);
+
+  protected readonly bannerIconsLeft = computed(() => [
     {
       sources: HOME_RESUME_ESO_RESIST_SOURCES,
       fallbackSrc: HOME_RESUME_ESO_RESIST_FALLBACK,
-      alt: 'Résistance ésotérique',
+      alt: this.ts.translate('home-resume.banner.icon.eso-resist'),
     },
     {
       sources: HOME_RESUME_FIRE_SOURCES,
       fallbackSrc: HOME_RESUME_FIRE_FALLBACK,
-      alt: 'Feu',
+      alt: this.ts.translate('home-resume.banner.icon.fire'),
     },
-  ];
+  ]);
 
-  protected readonly bannerIconsRight = [
+  protected readonly bannerIconsRight = computed(() => [
     {
       sources: HOME_RESUME_PHYSIQUE_SOURCES,
       fallbackSrc: HOME_RESUME_PHYSIQUE_FALLBACK,
-      alt: 'Physique',
+      alt: this.ts.translate('home-resume.banner.icon.physique'),
     },
     {
       sources: HOME_RESUME_POUSSE_RES_SOURCES,
       fallbackSrc: HOME_RESUME_POUSSE_RES_FALLBACK,
-      alt: 'Résistance',
+      alt: this.ts.translate('home-resume.banner.icon.pousse-res'),
     },
-  ];
+  ]);
 
   protected readonly photoSources = HOME_RESUME_PHOTO_SOURCES;
   protected readonly photoFallback = HOME_RESUME_PHOTO_FALLBACK;
@@ -61,6 +64,10 @@ export class HomeResume {
 
   protected readonly levelSources = HOME_RESUME_LEVEL_SOURCES;
   protected readonly levelFallback = HOME_RESUME_LEVEL_FALLBACK;
+
+  protected readonly bannerLabel = computed(() =>
+    this.ts.translate('home-resume.banner.label')
+  );
 
   protected readonly snippets = HOME_RESUME_SNIPPETS.map((snippet) => ({ ...snippet }));
 }

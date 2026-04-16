@@ -1,0 +1,21 @@
+{
+  "header.level": "/^niv(?:eau|el)?$/i",
+  "header.class": "/^class(?:e)?$/i",
+  "header.class_value": "/form(?:ateur|er)\\s+dev(?:elopment)?\\s+web/i",
+  "active_projects.title": "/^proj(?:et|ect)s?\\s+act(?:ifs?|ive)$/i",
+  "active_projects.elan": "/form(?:ateur|er).*Elan\\s+Form(?:ation)?/i",
+  "active_projects.omnicard": "/^(?:projet\\s+)?omnicard$/i",
+  "active_projects.pvzf": "/lead.*francoph[o0]ne.*PVZ\\s*Fusi[o0]n/i",
+  "active_projects.mission_locale": "/interven(?:ant|ient).*missi[o0]n\\s+locale/i",
+  "passive_effects.title": "/^eff(?:et|ect)s?\\s+pass(?:ifs?|ive)$/i",
+  "passive_effects.0": "/^f[o0]rce\\s+(?:de\\s+)?prop[o0]s(?:ition)?$/i",
+  "passive_effects.1": "/top\\s*5[0o]{2}.*Gwent/i",
+  "passive_effects.2": "/(?:sleep|sommeil)\\s*(?:[=!]=+|\\?)\\s*(?:undefined|null|NaN)/",
+  "passive_effects.3": "/c[o0]{2}rdinat(?:ion)?.*(?:team|[eé]quipe)/i",
+  "passive_effects.4": "/^p[eé]dagog(?:ie|y)$/i",
+  "stats.backend": "/^back[\\-_]?end$/i",
+  "stats.frontend": "/^front[\\-_]?end$/i",
+  "stats.architecture": "/^archit(?:ecture)?$/i",
+  "stats.security": "/^s[eé]curit[eé]?$/i",
+  "stats.devops": "/^dev[\\-_]?ops$/i"
+}

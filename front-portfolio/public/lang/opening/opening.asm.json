@@ -1,0 +1,6 @@
+{
+  "sound.aria": "INT 0x21 ; ENABLE_AUDIO",
+  "sound.label": "MOV sound, ON",
+  "skip": "JMP end_animation",
+  "start.aria": "CALL intro_sequence"
+}

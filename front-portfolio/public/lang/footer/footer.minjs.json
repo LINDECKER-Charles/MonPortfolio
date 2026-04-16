@@ -1,0 +1,11 @@
+{
+  "subtitle": "const _r=()=>'Dev/Trainer';_r()+' ASP.NET&Angular&Symfony'",
+  "nav.home": "!function(){return'home'}()",
+  "nav.resume": "void(_0x4e='resume')",
+  "nav.projects": "var _0x3f=projects",
+  "nav.work": "_w.call(this,'xp')",
+  "copyright": "String.fromCharCode(169)+' 2026 Charles Lindecker'",
+  "made_with": "require('angular').version//built",
+  "aria.nav": "document.getElementById('footer-nav')",
+  "aria.socials": "$$('a[rel=external]')"
+}

@@ -1,13 +1,10 @@
 <section class="home-projects" #ctaBlock>
   <div class="home-projects__intro">
-    <span class="home-projects__eyebrow">Suite</span>
+    <span class="home-projects__eyebrow">{{ ts.translate('home-projects.eyebrow') }}</span>
 
-    <h2>Projets & Contributions</h2>
+    <h2>{{ ts.translate('home-projects.title') }}</h2>
 
-    <p>
-      Retrouvez mes applications, mes expérimentations techniques et mes travaux
-      open source dans une section dédiée.
-    </p>
+    <p>{{ ts.translate('home-projects.description') }}</p>
 
     <div class="home-projects__stack" aria-label="Technologies principales">
       @for (icon of stackIcons; track icon.fallback) {
@@ -37,8 +34,8 @@
       </span>
 
       <span class="home-projects__cta-label">
-        <span class="home-projects__cta-top">Explorer</span>
-        <span class="home-projects__cta-bottom">Mes travaux</span>
+        <span class="home-projects__cta-top">{{ ts.translate('home-projects.cta.primary.top') }}</span>
+        <span class="home-projects__cta-bottom">{{ ts.translate('home-projects.cta.primary.bottom') }}</span>
       </span>
     </a>
 
@@ -58,8 +55,8 @@
       </span>
 
       <span class="home-projects__cta-label">
-        <span class="home-projects__cta-top">Open Source</span>
-        <span class="home-projects__cta-bottom">Voir GitHub</span>
+        <span class="home-projects__cta-top">{{ ts.translate('home-projects.cta.secondary.top') }}</span>
+        <span class="home-projects__cta-bottom">{{ ts.translate('home-projects.cta.secondary.bottom') }}</span>
       </span>
     </a>
   </div>

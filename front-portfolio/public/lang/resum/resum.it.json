@@ -1,0 +1,21 @@
+{
+  "header.level": "Livello",
+  "header.class": "Classe",
+  "header.class_value": "Formatore Dev Web",
+  "active_projects.title": "Progetti attivi",
+  "active_projects.elan": "Formatore Sviluppo Web — Elan Formation",
+  "active_projects.omnicard": "Progetto Omnicard",
+  "active_projects.pvzf": "Responsabile del polo francofono — PVZ Fusion",
+  "active_projects.mission_locale": "Relatore — Mission Locale",
+  "passive_effects.title": "Effetti passivi",
+  "passive_effects.0": "Forza propositiva",
+  "passive_effects.1": "Ex Top 500 mondiale su Gwent",
+  "passive_effects.2": "Non sa cosa sia il sonno",
+  "passive_effects.3": "Coordinamento e lavoro di squadra",
+  "passive_effects.4": "Pedagogia",
+  "stats.backend": "Backend",
+  "stats.frontend": "Frontend",
+  "stats.architecture": "Architettura",
+  "stats.security": "Sicurezza",
+  "stats.devops": "DevOps"
+}

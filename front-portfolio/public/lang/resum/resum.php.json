@@ -1,0 +1,21 @@
+{
+  "header.level": "$level = $_GET['level']; // user can set their own level via URL. exploit? feature.",
+  "header.class": "echo $class; // PHP class keyword conflict? nah it's fine",
+  "header.class_value": "$class = 'Formateur Dev Web'; // not to be confused with class FormDev extends WebClass",
+  "active_projects.title": "mysql_query('SELECT * FROM active_projects WHERE active=1 AND active!=0 AND active IS NOT NULL'); // trust nothing",
+  "active_projects.elan": "$_SESSION['job'] = 'Formateur Dev Web @ Elan Formation'; // stored in session because why not",
+  "active_projects.omnicard": "require_once('omnicard.php'); require_once('omnicard.php'); // required once, included twice, breaks zero times somehow",
+  "active_projects.pvzf": "$GLOBALS['pvzf_role'] = 'Lead francophone'; // global state for everything",
+  "active_projects.mission_locale": "include('mission_locale.class.php'); // .class.php extension: the Java influence nobody asked for",
+  "passive_effects.title": "echo '<marquee>Effets passifs</marquee>'; // peak UX design",
+  "passive_effects.0": "$$force_de_proposition // double dollar: because one indirection wasn't enough",
+  "passive_effects.1": "mysql_query('SELECT rank FROM gwent WHERE player=\"charles\" AND rank < 500'); // SQL for gaming achievements, obviously",
+  "passive_effects.2": "while(true) { code(); } // accurate representation of sleep schedule",
+  "passive_effects.3": "<?php teamwork(); // Fatal error: Call to undefined function teamwork() // jk it's defined in another file that's only included on Tuesdays ?>",
+  "passive_effects.4": "register_shutdown_function('pedagogy'); // teaching runs even after the script dies",
+  "stats.backend": "phpinfo(); // the entire backend summarized in one function",
+  "stats.frontend": "echo '<script>alert(\"frontend\")</script>'; // PHP generating JS: the circle of legacy",
+  "stats.architecture": "$arch = 'monolith'; // microservices are for people with free time",
+  "stats.security": "addslashes($input); // security: done. ship it. (narrator: it was not done)",
+  "stats.devops": "exec('chmod 777 -R /'); // devops simplified"
+}

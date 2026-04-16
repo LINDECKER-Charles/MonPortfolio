@@ -1,0 +1,6 @@
+{
+  "sound.aria": "audioCtx.resume()",
+  "sound.label": "audio.muted=!1",
+  "skip": "anim.kill()//skip",
+  "start.aria": "new Intro().play()"
+}

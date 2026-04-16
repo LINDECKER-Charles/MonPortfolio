@@ -1,0 +1,20 @@
+{
+  "badge": "STATUS: ImagePullBackOff (but vibes are good)",
+  "eyebrow": "LABEL stage=temporary # deployed 2 years ago",
+  "title": "docker stop construction && echo 'lol jk it has restart: always'",
+  "lead": "# This container was supposed to be temporary.\n# It now has 47 dependent services.\n# The Dockerfile is 800 lines.\n# Nobody remembers the build args.\n# It runs as root.\n# We are afraid of it.",
+  "cta.projects": "docker exec -it portfolio sh -c 'cd /app/projects && ls'",
+  "cta.home": "docker restart home # the universal fix",
+  "status.aria": "# EXPOSE 9001 # accessibility-checker port (commented out since day 1)",
+  "status.title": "docker inspect construction --format '{{.State.Status}}'",
+  "status.value": "STATUS: running (unhealthy) (but it's running, so...)",
+  "status.structure": "layers: 247 # each one adds 'just one more thing'",
+  "status.visual": "COPY ./design /app/ui # 3.2GB layer, all PSD files",
+  "status.content": "docker logs construction --tail 1\n> 'still refining content...' (repeated 847,293 times)",
+  "pillar.roadmap.title": "# roadmap service (CrashLoopBackOff since Tuesday)",
+  "pillar.roadmap.description": "services:\n  roadmap:\n    restart: always # because it crashes. always.\n    deploy:\n      restart_policy:\n        condition: any\n        max_attempts: 999999",
+  "pillar.craft.title": "FROM presentation:ambitious AS craft",
+  "pillar.craft.description": "RUN npm install --production\n# 'production' is doing a lot of heavy lifting in that sentence\n# node_modules: 2.1GB\n# actual code: 47KB",
+  "pillar.launch.title": "docker push launch:soon # soon(TM)",
+  "pillar.launch.description": "# Deploy pipeline:\n# 1. docker-compose up -d\n# 2. pray\n# 3. docker-compose logs -f | grep -i error\n# 4. cry\n# 5. docker-compose restart\n# 6. repeat"
+}

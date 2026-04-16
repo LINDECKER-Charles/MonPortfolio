@@ -1,0 +1,21 @@
+{
+  "header.level": "MOV AX, LEVEL",
+  "header.class": "MOV BX, CLASS",
+  "header.class_value": "DB 'Web Dev Trainer'",
+  "active_projects.title": "SEGMENT .active_quests",
+  "active_projects.elan": "CALL train_webdev ; AT Elan Formation",
+  "active_projects.omnicard": "PUSH omnicard_project",
+  "active_projects.pvzf": "MOV role, LEAD_FR ; PVZ Fusion",
+  "active_projects.mission_locale": "INT 0x21 ; SPEAKER @ Mission Locale",
+  "passive_effects.title": "SEGMENT .passive_buffs",
+  "passive_effects.0": "SET initiative_flag ; ALWAYS PROPOSING",
+  "passive_effects.1": "CMP gwent_rank, 500; JL top_500_global ; VERIFIED",
+  "passive_effects.2": "CALL sleep ; SEGFAULT — PROCESS NOT FOUND",
+  "passive_effects.3": "MOV teamwork, ENABLED ; SYNC ALL THREADS",
+  "passive_effects.4": "CALL teach ; PASSIVE_EFFECT ACTIVE",
+  "stats.backend": "MOV stat_backend, HIGH",
+  "stats.frontend": "MOV stat_frontend, HIGH",
+  "stats.architecture": "MOV stat_arch, MAX",
+  "stats.security": "MOV stat_sec, HIGH",
+  "stats.devops": "MOV stat_devops, MID"
+}

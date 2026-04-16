@@ -1,4 +1,4 @@
-<nav class="nav-barre" aria-label="Navigation principale">
+<nav class="nav-barre" [attr.aria-label]="ts.translate('common.nav.aria')">
   <div class="nav-barre__inner">
     <a class="nav-barre__brand" routerLink="/" href="/">
       <span class="nav-barre__brand-logo">
@@ -13,12 +13,12 @@
 
       <span class="nav-barre__brand-text">
         <span class="nav-barre__brand-name">Charles Lindecker</span>
-        <span class="nav-barre__brand-role">Développeur / Formateur</span>
+        <span class="nav-barre__brand-role">{{ ts.translate('common.nav.role') }}</span>
       </span>
     </a>
 
     <div class="nav-barre__links">
-      @for (item of navItems; track item.href) {
+      @for (item of navItems(); track item.href) {
         <a
           class="nav-barre__link"
           [routerLink]="item.href"
@@ -29,7 +29,6 @@
             <app-responsive-picture
               [sources]="item.iconSources"
               [fallbackSrc]="item.iconFallback"
-              [alt]="item.iconAlt"
               loading="lazy"
               decoding="async">
             </app-responsive-picture>
@@ -38,6 +37,16 @@
           <span class="nav-barre__link-label">{{ item.label }}</span>
         </a>
       }
+
+      <button
+        class="nav-barre__lang-btn"
+        (click)="ts.openModal()"
+        [attr.aria-label]="ts.translate('nav-barre.lang')"
+        type="button">
+        <span class="nav-barre__lang-btn-flag" aria-hidden="true">{{ currentLang().flag }}</span>
+        <span class="nav-barre__lang-btn-label">{{ ts.translate('nav-barre.lang') }}</span>
+        <span class="nav-barre__lang-btn-code">{{ currentLang().code | uppercase }}</span>
+      </button>
     </div>
   </div>
 </nav>

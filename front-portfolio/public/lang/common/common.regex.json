@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "/s[eé]lect(?:ion)?\\s+(?:de\\s+)?(?:la\\s+)?lang(?:ue|uage)/i",
+  "lang_modal.close": "/^(?:close|fermer)$/i",
+  "lang_modal.title": "/^[—-]+\\s*lang(?:ue)?\\s*[—-]+$/i",
+  "audio.show": "/(?:show|afficher)\\s+(?:les?\\s+)?(?:audio\\s+)?contr[oô]l(?:e|s)?/i",
+  "audio.hide": "/(?:hide|masquer)\\s+(?:les?\\s+)?(?:audio\\s+)?contr[oô]l(?:e|s)?/i",
+  "audio.toggle": "/(?:mute|unmute|couper|réactiver)\\s+(?:le\\s+)?s[o0](?:n|und)/i",
+  "audio.volume": "/(?:r[eé]gler|adjust)\\s+(?:le\\s+)?vol(?:ume)?/i",
+  "lightbox.aria": "/(?:aperçu|preview)\\s+(?:plein\\s+)?[eé]cran/i",
+  "lightbox.close": "/(?:fermer|close)\\s+(?:l'?)?(?:aperçu|preview)/i",
+  "lightbox.previous": "/(?:pr[eé]c[eé]dent|previous|prev)(?:e)?/i",
+  "lightbox.next": "/(?:suivant|next)(?:e)?/i",
+  "nav.role": "/d[eé]v(?:elop+[eè]ur)?\\s*\\/\\s*form(?:ateur|er)/i",
+  "nav.aria": "/nav(?:igation)?\\s+princip(?:ale|al)/i",
+  "photo.alt": "/portr(?:ait|aitum)\\s+(?:de\\s+)?Charles/i",
+  "photo.developer": "/d[eé]v(?:elop+[eè]ur)?/i",
+  "photo.trainer": "/form(?:ateur|er|atrice)/i"
+}

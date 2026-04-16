@@ -1,0 +1,25 @@
+{
+  "banner.label": "DB 'Hunter Dossier' ; ARCH, TRANSMISSION, PRECISION",
+  "banner.icon.eso-resist": "MOV resist, ESOTERIC",
+  "banner.icon.fire": "MOV dmg_type, FIRE",
+  "banner.icon.physique": "MOV stat, PHYSICAL",
+  "banner.icon.pousse-res": "MOV resist, THRUST",
+
+  "header.eyebrow": "SEGMENT .profile",
+  "header.subtitle": "MOV role, DEV_TRAINER ; ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "CALL read",
+  "header.cta.resume.bottom": "LEA AX, my_resume",
+  "header.cta.replay.top": "CALL restart",
+  "header.cta.replay.bottom": "JMP anim_start",
+
+  "snippets.transmission.title": "PROC transmission_and_teaching",
+  "snippets.transmission.content": "PUSH knowledge; CALL share; TEST reasoning, CLEAR; JNZ level_up; MOV exp_years, 9; CMP commitment, MAX; JGE train_next_gen ; THE BEST EXERCISE IS SHARING",
+  "snippets.stack.title": "PROC stack_excellence",
+  "snippets.stack.content": "MOV AX, ANGULAR; MOV BX, DOTNET; CMP modern, TRUE; CMP robust, TRUE; CMP scalable, TRUE; JGE build_maintainable_apps ; CHOICES ALIGNED WITH AMBITION",
+  "snippets.architecture.title": "PROC security_and_architecture",
+  "snippets.architecture.content": "CMP arch, MONOLITH; JE evaluate; CMP arch, MICRO; JE evaluate; CMP arch, HEXA; JE evaluate; CALL find_best_fit ; NOT JUST A SOLUTION — THE RIGHT ONE",
+  "snippets.opensource.title": "PROC open_source_volunteer",
+  "snippets.opensource.content": "MOV passion, DEV; CALL contribute_oss; CALL mentor_youth; OR AX, volunteer_flag; TEST impact, REAL; JNZ tech_is_useful ; MORE THAN A JOB",
+  "snippets.quality.title": "PROC quality_responsibility",
+  "snippets.quality.content": "MOV standards, STRICT; CALL tech_watch; CMP quality, HIGH; JL keep_improving; OUTPUT clean_code; OUTPUT reliable_code; RET ; DISCIPLINE ENABLES BETTER DECISIONS"
+}

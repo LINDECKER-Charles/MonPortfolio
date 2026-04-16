@@ -1,0 +1,9 @@
+{
+  "eyebrow": "NOP ; NEXT_SECTION",
+  "title": "PUSH projects; PUSH contributions; CALL display_all",
+  "description": "LEA SI, [repo_list]; MOV CX, project_count; LOOP render_each; CMP quality, 0xFF; JGE ship_it",
+  "cta.primary.top": "CALL explore",
+  "cta.primary.bottom": "LEA AX, my_work",
+  "cta.secondary.top": "MOV DX, OPEN_SRC",
+  "cta.secondary.bottom": "JMP github_remote"
+}

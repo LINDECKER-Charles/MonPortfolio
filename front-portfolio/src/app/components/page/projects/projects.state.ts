@@ -1,11 +1,11 @@
 import { ResponsiveSource } from '../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../imgSources/shared.sources';
-import {OMNICARD_IMAGES} from '../../../imgSources/projects/omnicard.sources';
-import {LIS_WEB_IMAGES} from '../../../imgSources/projects/lis.source';
-import {DEV_MATES_IMAGES} from '../../../imgSources/projects/devmates.source';
-import {SHREK_IMAGES} from '../../../imgSources/projects/shrek.source';
-import {LODB_IMAGES} from '../../../imgSources/projects/lodb.source';
-import {BLENDER_COLLECTION_IMAGES} from '../../../imgSources/projects/blendercollection.source';
+import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
+import {OMNICARD_IMAGES} from '../../../img-sources/projects/omnicard.sources';
+import {LIS_WEB_IMAGES} from '../../../img-sources/projects/lis.source';
+import {DEV_MATES_IMAGES} from '../../../img-sources/projects/devmates.source';
+import {SHREK_IMAGES} from '../../../img-sources/projects/shrek.source';
+import {LODB_IMAGES} from '../../../img-sources/projects/lodb.source';
+import {BLENDER_COLLECTION_IMAGES} from '../../../img-sources/projects/blendercollection.source';
 
 export interface Period {
   dateStart: Date;

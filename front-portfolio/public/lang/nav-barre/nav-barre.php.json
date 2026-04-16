@@ -1,0 +1,6 @@
+{
+  "home": "$_GET['home']",
+  "projects": "mysql_query('SELECT * FROM projects')",
+  "work": "$GLOBALS['parcours']",
+  "lang": "$$lang // variable variables ftw"
+}

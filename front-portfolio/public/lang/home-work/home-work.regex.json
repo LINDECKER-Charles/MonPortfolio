@@ -1,0 +1,10 @@
+{
+  "eyebrow": "/^parc[o0]urs$/i",
+  "title": "/exp[eé]ri[eè]nc(e|es)\\s*[&+]\\s*engag(ement)?/gi",
+  "description": "/(?:discover|find)\\s+(?:my\\s+)?(?:path|missions?|experiences?|volunteer(?:ing)?)\\s+in\\s+a?\\s*ded(?:icated)?\\s*section/i",
+  "cta.primary.top": "/^consult(er)?$/i",
+  "cta.primary.bottom": "/m[o0]n\\s+parc[o0]urs/i",
+  "cta.secondary.top": "/^profess?ion+[ae]l$/i",
+  "cta.secondary.bottom": "/(?:voir|see)\\s+LinkedIn/i",
+  "aria.landmarks": "/rep[eè]r(e|es)$/i"
+}

@@ -1,0 +1,9 @@
+{
+  "eyebrow": "LABEL stage=next",
+  "title": "docker-compose up projects --build",
+  "description": "services:\n  portfolio:\n    build:\n      context: ./projects\n      args:\n        - QUALITY=maximum\n    volumes:\n      - ./open-source:/app/contributions:ro\n    healthcheck:\n      test: curl -f http://localhost/projects || exit 1\n      interval: 30s\n      retries: 3",
+  "cta.primary.top": "docker pull explorer:latest",
+  "cta.primary.bottom": "WORKDIR /app/travaux",
+  "cta.secondary.top": "registry: ghcr.io/opensource",
+  "cta.secondary.bottom": "docker inspect github --format '{{.URL}}'"
+}

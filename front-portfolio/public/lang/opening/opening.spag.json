@@ -1,0 +1,6 @@
+{
+  "sound.aria": "// TODO: add aria (ticket created 2019, moved to backlog, backlog archived, backlog deleted)",
+  "sound.label": "var snd = true; // false; // true; // false; // currently true I think",
+  "skip": "for(var i=0;i<99999;i++){} // skip animation by freezing the browser",
+  "start.aria": "function start(){start();} // starts the intro. also starts a stack overflow."
+}

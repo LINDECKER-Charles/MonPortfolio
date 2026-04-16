@@ -1,0 +1,25 @@
+{
+  "banner.label": "LABEL hunter.dossier=\"architecture,transmission,precision\" # metadata nobody reads",
+  "banner.icon.eso-resist": "ENV RESISTANCE=esoteric # mystical container protection",
+  "banner.icon.fire": "docker run --rm fire-extinguisher:latest # the prod server again",
+  "banner.icon.physique": "docker stats --no-stream # the most physical docker gets",
+  "banner.icon.pousse-res": "restart: on-failure:9999 # resistance through sheer stubbornness",
+
+  "header.eyebrow": "LABEL section=profil",
+  "header.subtitle": "FROM developer:senior AS formateur\nRUN apk add --no-cache aspnet angular symfony\n# yes we're installing frameworks via apk. no I will not elaborate.",
+  "header.cta.resume.top": "docker cp resume:/app/cv.pdf ./consulter/",
+  "header.cta.resume.bottom": "VOLUME /app/resume # persistent resume. survives container death.",
+  "header.cta.replay.top": "docker restart animation # replay = restart. elegant.",
+  "header.cta.replay.bottom": "docker-compose up animation --force-recreate # nuclear replay option",
+
+  "snippets.transmission.title": "FROM teacher:latest AS transmission",
+  "snippets.transmission.content": "services:\n  transmission:\n    image: knowledge-sharing:9years\n    environment:\n      - TEACHING_STYLE=hands-on\n      - PATIENCE=infinite\n    deploy:\n      resources:\n        reservations:\n          cpus: '4.0'\n          memory: 16G\n    # teaching containers need MORE resources than prod\n    # because students will docker rm -f everything\n    # ask me how I know",
+  "snippets.stack.title": "docker images --format '{{.Repository}}:{{.Tag}}' | grep stack",
+  "snippets.stack.content": "services:\n  stack:\n    image: fullstack:modern\n    depends_on:\n      angular:\n        condition: service_healthy\n      dotnet:\n        condition: service_healthy\n      symfony:\n        condition: service_healthy\n    # if any dependency is unhealthy, the whole stack crashes\n    # just like real microservices\n    healthcheck:\n      test: curl -f http://localhost/am-i-still-sane || exit 1\n      interval: 10s",
+  "snippets.architecture.title": "docker-compose config --services | wc -l\n# 47 services. 'micro' is relative.",
+  "snippets.architecture.content": "# Architecture decision record:\n# Day 1: monolith (1 container)\n# Day 30: 'let's split this up' (3 containers)\n# Day 90: microservices (47 containers)\n# Day 91: kubernetes (someone said it at standup)\n# Day 92: back to monolith (1 container, but bigger)\n# Day 93: docker-compose down. went for a walk.",
+  "snippets.opensource.title": "docker push ghcr.io/opensource:contributor",
+  "snippets.opensource.content": "# Open source via Docker:\n# Step 1: docker pull interesting-project\n# Step 2: docker build --no-cache . (takes 45 min)\n# Step 3: docker push fix/typo-in-readme\n# Step 4: PR rejected (Dockerfile not optimized)\n# Step 5: squash 47 layers into 1\n# Step 6: PR merged. 2 bytes changed. 3 days spent.",
+  "snippets.quality.title": "docker scan quality --severity critical",
+  "snippets.quality.content": "# Quality pipeline:\n# 1. docker build --target test (runs tests)\n# 2. docker build --target lint (runs linter)\n# 3. docker build --target pray (custom stage)\n# 4. docker push :latest\n# 5. docker push :latest-probably-works\n# 6. docker push :latest-rollback-ready-just-in-case"
+}

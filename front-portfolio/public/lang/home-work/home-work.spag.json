@@ -1,0 +1,10 @@
+{
+  "eyebrow": "String s = \"Parcours\"; // was int before, nobody knows why",
+  "title": "if(true) if(true) if(true) if(true) { showExperience(); } // the pyramid of doom",
+  "description": "/* Original author: Unknown. Last modified: 2019-03-14 by 'temp_intern'. Comment history: 'this works', 'this still works', 'please dont touch', 'I touched it', 'reverting', 'reverting the revert', 'I give up'. There are 6 copies of this function. They all do slightly different things. */",
+  "cta.primary.top": "aa = consult(); // a was taken in line 1",
+  "cta.primary.bottom": "return parcours; // parcours is never defined",
+  "cta.secondary.top": "// linkedin link is hardcoded in 23 files",
+  "cta.secondary.bottom": "window.open(window.open(window.open('linkedin'))); // don't ask",
+  "aria.landmarks": "// TODO: add aria landmarks (created: 2019, assigned: nobody)"
+}

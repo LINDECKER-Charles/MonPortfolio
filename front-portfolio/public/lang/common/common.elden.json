@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "Tongue of the Lands Between selection",
+  "lang_modal.close": "Seal the fog gate",
+  "lang_modal.title": "-- Tongue of the Lands Between --",
+  "audio.show": "Reveal the Erdtree's song",
+  "audio.hide": "Silence the Erdtree's song",
+  "audio.toggle": "Mute or unmute the chanting of the Two Fingers",
+  "audio.volume": "Adjust the volume of Grace",
+  "lightbox.aria": "Behold in full majesty",
+  "lightbox.close": "Avert thine gaze",
+  "lightbox.previous": "Previous vision",
+  "lightbox.next": "Next vision",
+  "nav.role": "Code Bearer / Sage of the Erdtree",
+  "nav.aria": "Navigation of the Roundtable Hold",
+  "photo.alt": "Portrait of the Tarnished Charles Lindecker",
+  "photo.developer": "Code Bearer",
+  "photo.trainer": "Sage of the Erdtree"
+}

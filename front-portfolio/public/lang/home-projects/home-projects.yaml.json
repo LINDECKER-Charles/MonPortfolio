@@ -1,0 +1,9 @@
+{
+  "eyebrow": "section: next  # after home, duh",
+  "title": "projects:\n  contributions: true",
+  "description": "# WARNING: 2 spaces, not tabs\nprojects:\n  apps: true\n  experiments: true\n  open_source: also_true  # obviously",
+  "cta.primary.top": "action: explore",
+  "cta.primary.bottom": "target: mes_travaux",
+  "cta.secondary.top": "license: open_source",
+  "cta.secondary.bottom": "redirect: github  # pray it's up"
+}

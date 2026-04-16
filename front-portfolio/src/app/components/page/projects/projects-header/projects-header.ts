@@ -3,12 +3,14 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   Inject,
   PLATFORM_ID,
   ViewChild,
 } from '@angular/core';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
+import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'app-projects-header',
@@ -17,6 +19,7 @@ import { CSSPlugin } from 'gsap/CSSPlugin';
   styleUrl: './projects-header.css',
 })
 export class ProjectsHeader implements AfterViewInit {
+  protected readonly ts = inject(TranslationService);
   @ViewChild('hero') private heroRef?: ElementRef<HTMLElement>;
 
   private readonly isBrowser: boolean;

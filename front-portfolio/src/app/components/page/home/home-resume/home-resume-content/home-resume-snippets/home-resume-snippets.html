@@ -22,7 +22,7 @@
           </span>
 
           <span class="about-snippet__mark"></span>
-          <h3>{{ snippet.title }}</h3>
+          <h3>{{ ts.translate('home-resume.snippets.' + snippet.id + '.title') }}</h3>
         </span>
 
         <span class="about-snippet__icon" [class.is-open]="snippet.isOpen">
@@ -43,7 +43,7 @@
         [id]="'snippet-content-' + snippet.id"
         #snippetContent>
         <div class="about-snippet__content">
-          <p>{{ snippet.content }}</p>
+          <p>{{ ts.translate('home-resume.snippets.' + snippet.id + '.content') }}</p>
         </div>
       </div>
     </article>

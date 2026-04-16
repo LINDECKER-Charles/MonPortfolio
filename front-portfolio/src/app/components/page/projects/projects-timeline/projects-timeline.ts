@@ -1,11 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../directives/reveal-on-scroll';
 import { ProjectItem } from '../projects.state';
-import {
-  formatProjectPeriod,
-  getProjectCategoryLabel,
-  getProjectStatusLabel,
-} from '../projects.utils';
+import { formatProjectPeriod } from '../projects.utils';
+import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'app-projects-timeline',
@@ -14,6 +11,8 @@ import {
   styleUrl: './projects-timeline.css',
 })
 export class ProjectsTimeline {
+  protected readonly ts = inject(TranslationService);
+
   @Input({ required: true }) projects: ProjectItem[] = [];
   @Output() projectSelected = new EventEmitter<ProjectItem>();
 
@@ -22,14 +21,6 @@ export class ProjectsTimeline {
   }
 
   protected formatPeriod(project: ProjectItem): string {
-    return formatProjectPeriod(project);
-  }
-
-  protected getStatusLabel(status: ProjectItem['status']): string {
-    return getProjectStatusLabel(status);
-  }
-
-  protected getCategoryLabel(category: ProjectItem['category']): string {
-    return getProjectCategoryLabel(category);
+    return formatProjectPeriod(project, this.ts.lang(), this.ts.translate('projects.today'));
   }
 }

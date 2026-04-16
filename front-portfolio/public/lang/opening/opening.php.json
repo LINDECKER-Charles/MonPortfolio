@@ -1,0 +1,6 @@
+{
+  "sound.aria": "<?php // aria for sound? we just used <embed src='midi.mid'> ?>",
+  "sound.label": "mysql_query('UPDATE settings SET sound=1'); // SQL for UI state, yes",
+  "skip": "header('Location: ' . $_SERVER['PHP_SELF']); // skip by reloading the page",
+  "start.aria": "echo '<body onload=\"startIntro()\">'; // inline JS in PHP echo, peak 2003"
+}

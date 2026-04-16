@@ -1,4 +1,6 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { inject } from '@angular/core';
+import { TranslationService } from '../../../../../services/translation.service';
 import {
   AfterViewInit,
   Component,
@@ -23,6 +25,7 @@ import {
   styleUrl: './home-resume-header.css',
 })
 export class HomeResumeHeader implements AfterViewInit {
+  protected readonly ts = inject(TranslationService);
   @Input({ required: true }) luciditySources: ResponsiveSource[] = [];
   @Input({ required: true }) lucidityFallback = '';
   @Input({ required: true }) levelSources: ResponsiveSource[] = [];

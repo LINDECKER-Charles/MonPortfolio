@@ -3,18 +3,20 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   Inject,
   PLATFORM_ID,
   QueryList,
   ViewChildren,
 } from '@angular/core';
+import { TranslationService } from '../../../../../../services/translation.service';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import {
   ResponsivePicture,
   ResponsiveSource,
 } from '../../../../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../../../../imgSources/shared.sources';
+import { SHARED_IMAGES } from '../../../../../../img-sources/shared.sources';
 
 interface HomeResumeSnippetState {
   id: string;
@@ -33,6 +35,8 @@ interface HomeResumeSnippetState {
   styleUrl: './home-resume-snippets.css',
 })
 export class HomeResumeSnippets implements AfterViewInit {
+  protected readonly ts = inject(TranslationService);
+
   snippets: HomeResumeSnippetState[] = [
     {
       id: 'transmission',

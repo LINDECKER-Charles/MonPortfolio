@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "<?php // modal accessibility: echo '<div>'; // never closed ?>",
+  "lang_modal.close": "unset($modal); // garbage collection PHP style",
+  "lang_modal.title": "echo '&mdash; ' . $lang . ' &mdash;'; // XSS? what's that?",
+  "audio.show": "echo '<embed src=\"audio.mid\" hidden=\"false\">'; // unhide the embed",
+  "audio.hide": "echo '<embed src=\"audio.mid\" hidden=\"true\">'; // revolutionary UX",
+  "audio.toggle": "if($muted) { $muted = false; } else { $muted = true; } // ever heard of !$muted? me neither",
+  "audio.volume": "$volume = $_GET['vol']; // user-controlled volume via URL parameter, what could go wrong",
+  "lightbox.aria": "<?php echo '<table width=100% height=100%>'; // fullscreen via table, obviously ?>",
+  "lightbox.close": "echo '</table>'; // closing the fullscreen table",
+  "lightbox.previous": "echo '<a href=\"?img=' . ($id-1) . '\">'; // pagination via page reload",
+  "lightbox.next": "echo '<a href=\"?img=' . ($id+1) . '\">'; // no bounds checking lol",
+  "nav.role": "$dev = new Developer(); // no type hints, no constructor, no problem",
+  "nav.aria": "<!-- navigation principale (this HTML comment IS the accessibility) -->",
+  "photo.alt": "echo '<img src=\"charles.jpg\">'; // alt text is for quitters",
+  "photo.developer": "$$developer // variable variable: $developer contains 'developer' which contains... recursion",
+  "photo.trainer": "echo $formateur; // Notice: Undefined variable on line 1 of every page"
+}

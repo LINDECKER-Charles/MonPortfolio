@@ -1,0 +1,23 @@
+{
+  "banner.label": "狩人の記録 · アーキテクチャ · 伝承 · 精密",
+  "banner.icon.eso-resist": "秘術耐性",
+  "banner.icon.fire": "炎",
+  "banner.icon.physique": "体力",
+  "banner.icon.pousse-res": "ノックバック耐性",
+  "header.eyebrow": "プロフィール",
+  "header.subtitle": "開発者 / トレーナー ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "閲覧する",
+  "header.cta.resume.bottom": "履歴書",
+  "header.cta.replay.top": "再生する",
+  "header.cta.replay.bottom": "アニメーション",
+  "snippets.transmission.title": "教育と知識の伝承",
+  "snippets.transmission.content": "知識を共有すること以上の練習はありません。それは私たちの推論を試し、物事の理解を明確にし、卓越性のレベルを高めます。9年間の開発者として、次世代の開発者への知識の伝承に大きな重要性を置いています。",
+  "snippets.stack.title": "スタックと技術的卓越性",
+  "snippets.stack.content": "私の技術選択は私の志に沿っています。Angularと.NETは現代的で堅牢かつスケーラブルなソリューションです。私の目標は一貫しています：クライアントのために保守性が高く、堅実で持続可能なアプリケーションを構築すること。",
+  "snippets.architecture.title": "アプリケーションセキュリティとアーキテクチャ",
+  "snippets.architecture.content": "モノリス、マイクロサービス、ヘキサゴナルアーキテクチャ、サーバーレス：各プロジェクトには固有の制約と要件があります。私の役割はソリューションを提案するだけでなく、最も適切で一貫性があり信頼できるものを特定することです。",
+  "snippets.opensource.title": "オープンソースとボランティア",
+  "snippets.opensource.content": "開発は単なる仕事以上の情熱であり、オープンソースへの貢献やボランティア活動を通じた若者の支援で表現しています。技術を有用でアクセスしやすいものにする具体的な方法だと考えています。",
+  "snippets.quality.title": "品質と責任",
+  "snippets.quality.content": "厳格なコード標準、積極的な技術監視、品質への一貫した要求に基づいています。この規律により、最新の状態を保ち、より良い技術的決定を下し、クリーンで信頼性が高く責任あるコードを生産することができます。"
+}

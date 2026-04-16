@@ -1,0 +1,9 @@
+{
+  "eyebrow": "/*next*/void 0",
+  "title": "var _p='Projects';var _c='&Contrib';_p+_c",
+  "description": "for(var i=0;i<repos.length;i++){if(repos[i].stars>0)render(repos[i])}//apps,experiments,opensource",
+  "cta.primary.top": "()=>explore()",
+  "cta.primary.bottom": "this._work",
+  "cta.secondary.top": "!!window.openSource",
+  "cta.secondary.bottom": "location.href='github'"
+}

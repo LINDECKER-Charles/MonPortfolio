@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/* ─── Z-INDEX SCALE ───────────────────────────────────────────────────────────
+   Toutes les valeurs z-index de l'app passent par ces variables.
+   Modification ici = impact global cohérent.
+   ──────────────────────────────────────────────────────────────────────────── */
+:root {
+  --z-bg:        -1;   /* calques décoratifs en arrière-plan */
+  --z-nav:       50;   /* barre de navigation sticky */
+  --z-float:     60;   /* widgets flottants (son) */
+  --z-modal:    100;   /* modals (langue, projets) */
+  --z-lightbox: 200;   /* visionneuse d'images */
+  --z-loading:  300;   /* écran de chargement */
+}

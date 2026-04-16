@@ -3,13 +3,13 @@
     class="image-lightbox__dialog"
     role="dialog"
     aria-modal="true"
-    aria-label="Apercu plein ecran"
+    [attr.aria-label]="ts.translate('common.lightbox.aria')"
     (click)="$event.stopPropagation()">
     <button
       type="button"
       class="image-lightbox__close"
       (click)="close.emit()"
-      aria-label="Fermer l'apercu plein ecran">
+      [attr.aria-label]="ts.translate('common.lightbox.close')">
       &times;
     </button>
 
@@ -18,7 +18,7 @@
         type="button"
         class="image-lightbox__nav image-lightbox__nav--previous"
         (click)="previous.emit()"
-        aria-label="Image precedente">
+        [attr.aria-label]="ts.translate('common.lightbox.previous')">
         <span aria-hidden="true">&#8249;</span>
       </button>
 
@@ -26,7 +26,7 @@
         type="button"
         class="image-lightbox__nav image-lightbox__nav--next"
         (click)="next.emit()"
-        aria-label="Image suivante">
+        [attr.aria-label]="ts.translate('common.lightbox.next')">
         <span aria-hidden="true">&#8250;</span>
       </button>
     }

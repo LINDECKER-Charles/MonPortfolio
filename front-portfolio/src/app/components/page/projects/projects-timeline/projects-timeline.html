@@ -1,4 +1,4 @@
-<section class="projects-timeline" aria-label="Timeline des projets">
+<section class="projects-timeline" [attr.aria-label]="ts.translate('projects.timeline.aria')">
   @for (project of projects; track trackByProjectId($index, project)) {
     <article
       class="projects-timeline__item"
@@ -14,24 +14,24 @@
         <div class="project-card__top">
           <div class="project-card__meta">
             <span class="project-card__period">{{ formatPeriod(project) }}</span>
-            <span class="project-card__badge">{{ getCategoryLabel(project.category) }}</span>
+            <span class="project-card__badge">{{ ts.translate('projects.filter.' + project.category) }}</span>
             <span class="project-card__badge project-card__badge--status">
-              {{ getStatusLabel(project.status) }}
+              {{ ts.translate('projects.status.' + project.status) }}
             </span>
           </div>
 
           @if (project.featured) {
-            <span class="project-card__featured">Projet cle</span>
+            <span class="project-card__featured">{{ ts.translate('projects.timeline.featured') }}</span>
           }
         </div>
 
         <div class="project-card__head">
           <h2>{{ project.title }}</h2>
-          <p>{{ project.shortDescription }}</p>
+          <p>{{ ts.translate('projects.' + project.id + '.shortDescription') }}</p>
         </div>
 
         <div class="project-card__section">
-          <span class="project-card__section-label">Stack</span>
+          <span class="project-card__section-label">{{ ts.translate('projects.filter.stack') }}</span>
 
           <div class="project-card__stack">
             @for (item of project.stack; track item) {
@@ -41,7 +41,7 @@
         </div>
 
         <div class="project-card__section">
-          <span class="project-card__section-label">Tags</span>
+          <span class="project-card__section-label">{{ ts.translate('projects.filter.tags') }}</span>
 
           <div class="project-card__tags">
             @for (tag of project.tags; track tag) {
@@ -52,7 +52,7 @@
 
         <div class="project-card__actions">
           <button type="button" class="project-card__toggle" (click)="projectSelected.emit(project)">
-            Voir le detail
+            {{ ts.translate('projects.timeline.detail') }}
           </button>
         </div>
       </div>

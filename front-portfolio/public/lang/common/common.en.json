@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "Language selection",
+  "lang_modal.close": "Close",
+  "lang_modal.title": "— Language —",
+  "audio.show": "Show audio controls",
+  "audio.hide": "Hide audio controls",
+  "audio.toggle": "Mute or unmute sound",
+  "audio.volume": "Adjust volume",
+  "lightbox.aria": "Full screen preview",
+  "lightbox.close": "Close full screen preview",
+  "lightbox.previous": "Previous image",
+  "lightbox.next": "Next image",
+  "nav.role": "Developer / Trainer",
+  "nav.aria": "Main navigation",
+  "photo.alt": "Portrait of Charles Lindecker",
+  "photo.developer": "Developer",
+  "photo.trainer": "Trainer"
+}

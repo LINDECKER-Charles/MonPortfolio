@@ -1,0 +1,11 @@
+{
+  "subtitle": "$dev = new Developer(); // no type hints lol $dev->role = 'Formateur'; echo $dev->role . ' ASP.NET & Angular & Symfony';",
+  "nav.home": "$_GET['home']",
+  "nav.resume": "mysql_query('SELECT resume FROM dev LIMIT 1')",
+  "nav.projects": "require('projets.inc.php')",
+  "nav.work": "$GLOBALS['parcours']",
+  "copyright": "<?php echo '© ' . date('Y') . ' Charles Lindecker'; // at least THIS is dynamic ?>",
+  "made_with": "<?php echo 'Concu avec ' . PHP_VERSION; // still running PHP 4.3 btw ?>",
+  "aria.nav": "<!-- navigation du footer (HTML comment because who needs aria in 2003) -->",
+  "aria.socials": "echo '<marquee>Liens externes</marquee>'; // peak web design"
+}

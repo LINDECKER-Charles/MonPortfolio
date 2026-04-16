@@ -1,0 +1,21 @@
+{
+  "header.level": "Gradus",
+  "header.class": "Classis",
+  "header.class_value": "Formatorus Dev Web Ipsum",
+  "active_projects.title": "Opera Activa Lorem",
+  "active_projects.elan": "Formatorus Developmentum Web — Elan Lorem Formation",
+  "active_projects.omnicard": "Projectum Omnicard Ipsum",
+  "active_projects.pvzf": "Dux Poli Francophoni — PVZ Fusion Dolor",
+  "active_projects.mission_locale": "Interveniens — Missio Localis Amet",
+  "passive_effects.title": "Effectus Passivi Consectetur",
+  "passive_effects.0": "Vis Propositionis Ipsum",
+  "passive_effects.1": "Quondam Top 500 Orbis in Gwent Lorem",
+  "passive_effects.2": "Nescit quid sit somnus dolor amet",
+  "passive_effects.3": "Coordinatio et opus in squadra ipsum",
+  "passive_effects.4": "Pedagogia Dolor Sit",
+  "stats.backend": "Backendum",
+  "stats.frontend": "Frontendum",
+  "stats.architecture": "Architectura Ipsum",
+  "stats.security": "Securitas Dolor",
+  "stats.devops": "DevOps Amet"
+}

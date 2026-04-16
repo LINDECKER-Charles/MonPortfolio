@@ -1,0 +1,25 @@
+{
+  "banner.label": "Tarnished's Record - Erdtree Foundation - Rune Transmission - Golden Precision",
+  "banner.icon.eso-resist": "Erdtree Resistance",
+  "banner.icon.fire": "First Flame",
+  "banner.icon.physique": "Vigor",
+  "banner.icon.pousse-res": "Poise",
+
+  "header.eyebrow": "Tarnished Profile",
+  "header.subtitle": "Code Bearer / Sage of the Erdtree — .NET & Angular & Symfony",
+  "header.cta.resume.top": "Inspect",
+  "header.cta.resume.bottom": "The Rune Arc",
+  "header.cta.replay.top": "Witness Again",
+  "header.cta.replay.bottom": "The Prophecy",
+
+  "snippets.transmission.title": "Knowledge Transfer & the Erdtree's Wisdom",
+  "snippets.transmission.content": "As Rennala bestows rebirth, so too does the Code Bearer bestow knowledge. There is no greater rune than teaching: it tests one's understanding, clarifies the Golden Order, and elevates all Tarnished who seek Grace. For nine cycles of the Erdtree, knowledge has been shared with those who would become Elden Lords of code.",
+  "snippets.stack.title": "Sacred Armaments & Technical Mastery",
+  "snippets.stack.content": "The Tarnished's weapon choice reflects their ambition. Angular and .NET are the sacred armaments of the Lands Between: modern, robust, and scalable as the Erdtree itself. The mission remains unwavering: forge maintainable, solid applications that endure beyond the Shattering.",
+  "snippets.architecture.title": "The Erdtree's Foundation & Fortification",
+  "snippets.architecture.content": "Monolith, microservices, hexagonal architecture or serverless: each dungeon has its own constraints. The Code Bearer's role is not merely to propose a build, but to divine the most suitable, as Marika herself would decree. Every architecture decision is a Great Rune placed in the Elden Ring.",
+  "snippets.opensource.title": "Open Source & the Tarnished Fellowship",
+  "snippets.opensource.content": "Beyond mere duty, development is a calling that burns brighter than the First Flame. Through open source offerings and mentoring young Tarnished, the Code Bearer sees a way to make the sacred arts of code accessible to all who seek the Erdtree's light.",
+  "snippets.quality.title": "Quality & the Golden Order",
+  "snippets.quality.content": "Rigorous standards, watchful technical vigilance, and a constant demand for excellence: these are the laws of the Golden Order of Code. This discipline allows the Tarnished to stay current with the meta, make superior technical decisions, and produce code clean enough for Miquella himself."
+}

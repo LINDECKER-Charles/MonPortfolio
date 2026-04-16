@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "言語選択",
+  "lang_modal.close": "閉じる",
+  "lang_modal.title": "— 言語 —",
+  "audio.show": "オーディオコントロールを表示",
+  "audio.hide": "オーディオコントロールを非表示",
+  "audio.toggle": "サウンドのミュート切り替え",
+  "audio.volume": "音量を調整",
+  "lightbox.aria": "フルスクリーンプレビュー",
+  "lightbox.close": "フルスクリーンプレビューを閉じる",
+  "lightbox.previous": "前の画像",
+  "lightbox.next": "次の画像",
+  "nav.role": "開発者 / トレーナー",
+  "nav.aria": "メインナビゲーション",
+  "photo.alt": "Charles Lindeckerの肖像",
+  "photo.developer": "開発者",
+  "photo.trainer": "トレーナー"
+}

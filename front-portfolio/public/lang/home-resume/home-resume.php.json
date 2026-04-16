@@ -1,0 +1,25 @@
+{
+  "banner.label": "<?php echo implode(' · ', array('Dossier du Chasseur', 'Architecture', 'Transmission', 'Precision')); // array() not [], we're PHP 4 here ?>",
+  "banner.icon.eso-resist": "addslashes('Résistance ésotérique'); // protects against... esoterism?",
+  "banner.icon.fire": "$fire = true; // the server is literally on fire",
+  "banner.icon.physique": "echo phpinfo(); // the most physical thing PHP can do",
+  "banner.icon.pousse-res": "mysql_real_escape_string('Résistance aux coups'); // at least we're using the 'real' one",
+
+  "header.eyebrow": "$profil = 'Profil'; // this variable costs us $500/month in technical debt",
+  "header.subtitle": "$dev = new Developer(); $dev->role = 'Formateur'; $dev->stack = array('ASP.NET', 'Angular', 'Symfony'); echo implode(' & ', $dev->stack); // look ma, no type hints",
+  "header.cta.resume.top": "include('consulter.php'); // the file is empty but removing it breaks everything",
+  "header.cta.resume.bottom": "$_GET['resume'] // user can request any resume via URL. security? never heard of her.",
+  "header.cta.replay.top": "header('Refresh: 0'); // replay = refresh the page. revolutionary.",
+  "header.cta.replay.bottom": "ob_start(); // buffering the animation... in PHP... on the server",
+
+  "snippets.transmission.title": "class Transmission { var $title; } // PHP 4 class: var keyword, no visibility, no types, pure chaos",
+  "snippets.transmission.content": "<?php /* Teaching others is how I realized my own code was garbage. 9 years of development, and the best lesson was explaining to a student why mysql_query is bad while my entire app uses it. The irony is not lost on me. include('knowledge.php'); // knowledge.php includes wisdom.php which includes knowledge.php. Infinite recursion is just deep learning. */ ?>",
+  "snippets.stack.title": "phpversion(); // returns '4.4.9'. we don't talk about it.",
+  "snippets.stack.content": "<?php // My stack: Angular + .NET + Symfony. My server: PHP 4.4.9 on shared hosting with 256MB RAM, FTP deploy, and error_reporting(0). The stack is modern. The infrastructure is a war crime. But mysql_connect still works so we're fine. ?>",
+  "snippets.architecture.title": "require('architecture.class.php'); // the class file is 4000 lines. it's all in one class. the class is called 'Utils'.",
+  "snippets.architecture.content": "<?php // Monolith? Check. Microservices? Also check (we have 2 PHP files that talk to each other via file_get_contents). Hexagonal? Our folder structure is a hexagon if you squint. Serverless? The server is less... stable. My role: pick the architecture that scares the client the least. ?>",
+  "snippets.opensource.title": "echo '<a href=\"github.com\">'; // the href has been wrong since 2016",
+  "snippets.opensource.content": "<?php // Open source contribution: I once submitted a PR that fixed a typo in a README. It got rejected because I introduced a merge conflict. In the README. I also volunteer to teach kids coding. They now all use mysql_query. I have created a legacy. ?>",
+  "snippets.quality.title": "$quality = new stdClass(); // quality as a generic object. how meta.",
+  "snippets.quality.content": "<?php // Quality standards: error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED); // AKA 'suppress everything and hope'. My code review process: 1) open file 2) ctrl+f 'mysql_query' 3) cry 4) approve. Clean code is code where the bugs are well-hidden. ?>"
+}
