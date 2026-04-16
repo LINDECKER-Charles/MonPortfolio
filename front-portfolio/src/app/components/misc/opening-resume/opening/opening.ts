@@ -25,7 +25,7 @@ import {
 } from './opening-animation.service';
 import {AudioService} from '../../../../services/audio-service';
 import {ResponsivePicture} from '../../../assets/responsive-picture/responsive-picture';
-import {OPENING_FALLBACK_SRC, OPENING_SOURCES} from '../../../../imgSources/opening.sources';
+import {OPENING_FALLBACK_SRC, OPENING_SOURCES} from '../../../../img-sources/opening.sources';
 
 @Component({
   selector: 'app-opening',

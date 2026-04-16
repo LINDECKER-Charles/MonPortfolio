@@ -14,7 +14,7 @@ import {
   ResponsivePicture,
   ResponsiveSource,
 } from '../../../../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../../../../imgSources/shared.sources';
+import { SHARED_IMAGES } from '../../../../../../img-sources/shared.sources';
 
 interface HomeResumeSnippetState {
   id: string;

@@ -6,7 +6,7 @@ import {
   ResponsivePicture,
   ResponsiveSource,
 } from '../../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../../imgSources/shared.sources';
+import { SHARED_IMAGES } from '../../../../img-sources/shared.sources';
 import { ProjectItem } from '../projects.state';
 import { formatProjectPeriod } from '../projects.utils';
 
