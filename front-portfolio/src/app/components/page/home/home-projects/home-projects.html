@@ -1,14 +1,14 @@
-<section class="home-projects" #ctaBlock>
+<section class="home-projects surface-altar" #ctaBlock>
   <div class="home-projects__intro">
-    <span class="home-projects__eyebrow">{{ ts.translate('home-projects.eyebrow') }}</span>
+    <span class="home-projects__eyebrow text-rune">{{ ts.translate('home-projects.eyebrow') }}</span>
 
-    <h2>{{ ts.translate('home-projects.title') }}</h2>
+    <h2 class="text-engraved">{{ ts.translate('home-projects.title') }}</h2>
 
-    <p>{{ ts.translate('home-projects.description') }}</p>
+    <p class="text-tome">{{ ts.translate('home-projects.description') }}</p>
 
     <div class="home-projects__stack" aria-label="Technologies principales">
       @for (icon of stackIcons; track icon.fallback) {
-        <span class="home-projects__stack-item" [attr.title]="icon.alt">
+        <span class="home-projects__stack-item transition-ritual" [attr.title]="icon.alt">
           <app-responsive-picture
             [sources]="icon.sources"
             [fallbackSrc]="icon.fallback"
@@ -22,8 +22,8 @@
   </div>
 
   <div class="home-projects__actions">
-    <a class="home-projects__cta home-projects__cta--primary" routerLink="/projects" href="/projects">
-      <span class="home-projects__cta-icon">
+    <a class="cta-tome cta-tome--gilded transition-ritual" routerLink="/projects" href="/projects">
+      <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="projectsIcon.sources"
           [fallbackSrc]="projectsIcon.fallback"
@@ -33,18 +33,18 @@
         </app-responsive-picture>
       </span>
 
-      <span class="home-projects__cta-label">
-        <span class="home-projects__cta-top">{{ ts.translate('home-projects.cta.primary.top') }}</span>
-        <span class="home-projects__cta-bottom">{{ ts.translate('home-projects.cta.primary.bottom') }}</span>
+      <span class="cta-tome__label">
+        <span class="cta-tome__top">{{ ts.translate('home-projects.cta.primary.top') }}</span>
+        <span class="cta-tome__bottom">{{ ts.translate('home-projects.cta.primary.bottom') }}</span>
       </span>
     </a>
 
     <a
-      class="home-projects__cta home-projects__cta--secondary"
+      class="cta-tome cta-tome--shadow transition-ritual"
       href="https://github.com/"
       target="_blank"
       rel="noreferrer noopener">
-      <span class="home-projects__cta-icon">
+      <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="githubIcon.sources"
           [fallbackSrc]="githubIcon.fallback"
@@ -54,9 +54,9 @@
         </app-responsive-picture>
       </span>
 
-      <span class="home-projects__cta-label">
-        <span class="home-projects__cta-top">{{ ts.translate('home-projects.cta.secondary.top') }}</span>
-        <span class="home-projects__cta-bottom">{{ ts.translate('home-projects.cta.secondary.bottom') }}</span>
+      <span class="cta-tome__label">
+        <span class="cta-tome__top">{{ ts.translate('home-projects.cta.secondary.top') }}</span>
+        <span class="cta-tome__bottom">{{ ts.translate('home-projects.cta.secondary.bottom') }}</span>
       </span>
     </a>
   </div>

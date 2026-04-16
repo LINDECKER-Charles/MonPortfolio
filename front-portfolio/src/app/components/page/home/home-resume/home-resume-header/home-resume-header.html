@@ -1,4 +1,4 @@
-<header class="hero" #hero>
+<header class="hero surface-altar" #hero>
   <div class="hero__veil"></div>
 
   <div class="hero__content">
@@ -16,14 +16,14 @@
       </div>
 
       <div class="hero__titles">
-        <span class="hero__eyebrow">{{ ts.translate('home-resume.header.eyebrow') }}</span>
-        <h1>Charles LINDECKER</h1>
+        <span class="hero__eyebrow text-rune">{{ ts.translate('home-resume.header.eyebrow') }}</span>
+        <h1 class="text-engraved">Charles LINDECKER</h1>
         <h2>{{ ts.translate('home-resume.header.subtitle') }}</h2>
       </div>
     </div>
 
     <div class="hero__actions">
-      <a class="hero__cta" routerLink="/resume" href="/resume">
+      <a class="hero__cta transition-ritual" routerLink="/resume" href="/resume">
         <span class="hero__cta-icon-frame">
           <span class="hero__cta-icon">
             <app-responsive-picture
@@ -43,7 +43,7 @@
       </a>
 
       <a
-        class="hero__cta hero__cta--secondary"
+        class="hero__cta hero__cta--secondary transition-ritual"
         routerLink="/opening-home"
         href="/opening-home"
         [attr.aria-label]="ts.translate('home-resume.header.cta.replay.top')">

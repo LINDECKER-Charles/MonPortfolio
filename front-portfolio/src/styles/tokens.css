@@ -1,0 +1,168 @@
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  TOKENS — Source unique de vérité du design system Bloodborne           ║
+   ║  Tailwind 4 @theme : chaque --color-* est aussi dispo en classe          ║
+   ║  utilitaire (bg-blood, text-parchment, shadow-altar…).                   ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
+
+@theme {
+  /* ── PALETTE ────────────────────────────────────────────────────────────── */
+
+  /* Sang — accent rare, états critiques, hovers agressifs */
+  --color-blood: #a60a0a;
+  --color-blood-dim: #6b0808;
+
+  /* Ember — feu, torche, CTA primaire, états chauds */
+  --color-ember: #ff934d;
+  --color-ember-soft: #ffb86c;
+  --color-ember-deep: #c94d22;
+  --color-ember-ash: #572d1b;
+
+  /* Gold — or patiné, bordures rituelles, état actif */
+  --color-gold: #a49476;
+  --color-gold-dim: #7e6434;
+  --color-gold-faint: #8f7f5e;
+
+  /* Parchment — titres gravés, texte doré */
+  --color-parchment: #d7c09a;
+  --color-parchment-dim: #c9c3b8;
+
+  /* Bone — texte principal clair */
+  --color-bone: #ece7db;
+  --color-bone-bright: #f3f6f7;
+
+  /* Moonlight — insight, statut, infos, secondaire froid */
+  --color-moonlight: #8eb8ff;
+  --color-moonlight-dim: #7dabff;
+  --color-moonlight-soft: #d9ebff;
+
+  /* Ash — texte tertiaire, disabled */
+  --color-ash: #bdc1c7;
+  --color-ash-dim: #8f939c;
+  --color-ash-faint: #6b7280;
+
+  /* Stone — fonds, du plus sombre au plus élevé */
+  --color-stone-abyss: #0c0f13;
+  --color-stone-deep: #121010;
+  --color-stone: #1b1c1c;
+  --color-stone-elevated: #25282d;
+  --color-stone-raised: #30353b;
+
+  /* ── TYPOGRAPHIE ────────────────────────────────────────────────────────── */
+
+  --font-display: 'Cinzel', 'Trajan Pro', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-ui: Inter, system-ui, -apple-system, sans-serif;
+
+  /* ── TRACKING (letter-spacing) ──────────────────────────────────────────── */
+
+  --tracking-rune: 0.22em;    /* titres gravés, eyebrows */
+  --tracking-sigil: 0.14em;   /* labels uppercase */
+  --tracking-tag: 0.10em;     /* boutons, liens */
+
+  /* ── RAYONS ─────────────────────────────────────────────────────────────── */
+
+  --radius-pill: 999px;
+  --radius-panel: 24px;
+  --radius-panel-lg: 32px;
+  --radius-card: 16px;
+  --radius-chip: 10px;
+
+  /* ── MOTION ─────────────────────────────────────────────────────────────── */
+
+  --duration-fast: 150ms;
+  --duration-base: 180ms;
+  --duration-slow: 220ms;
+
+  /* Ease rituel : décollage doux, arrivée franche — pour hovers & micro-UI */
+  --ease-ritual: cubic-bezier(0.2, 0.7, 0.2, 1);
+  /* Ease émergence : effet "apparition" — pour modals, panels, reveals */
+  --ease-emerge: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Ease chute : fermeture franche */
+  --ease-fade: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  TOKENS COMPOSÉS — variables CSS non exposées à Tailwind                 ║
+   ║  (gradients, shadows, bordures : trop spécifiques pour @theme)           ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
+
+:root {
+  /* ── BORDURES RITUELLES ─────────────────────────────────────────────────── */
+
+  --border-ash: 1px solid rgb(189 193 199 / 0.08);
+  --border-ash-strong: 1px solid rgb(189 193 199 / 0.12);
+  --border-gilded: 1px solid rgb(164 148 118 / 0.18);
+  --border-gilded-strong: 1px solid rgb(164 148 118 / 0.28);
+  --border-ember: 1px solid rgb(255 184 108 / 0.22);
+
+  /* ── ÉLÉVATIONS ─────────────────────────────────────────────────────────── */
+
+  /* Léger — chips, boutons */
+  --shadow-chip: 0 10px 18px rgb(0 0 0 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.02);
+
+  /* Nav / cards plates */
+  --shadow-altar: 0 18px 38px rgb(0 0 0 / 0.24), inset 0 1px 0 rgb(255 255 255 / 0.03);
+
+  /* Panels profonds */
+  --shadow-sanctum: 0 30px 80px rgb(0 0 0 / 0.34), inset 0 1px 0 rgb(255 255 255 / 0.04);
+
+  /* Modals / crypt */
+  --shadow-crypt:
+    0 32px 64px rgb(0 0 0 / 0.52),
+    0 0 0 1px rgb(164 148 118 / 0.06),
+    inset 0 1px 0 rgb(255 248 220 / 0.04);
+
+  /* Halo actif (or) */
+  --shadow-gilded: 0 14px 26px rgb(0 0 0 / 0.2),
+                   0 0 0 1px rgb(164 148 118 / 0.04),
+                   inset 0 1px 0 rgb(255 248 220 / 0.05);
+
+  /* Halo hover (sang) */
+  --shadow-blood-halo: 0 14px 24px rgb(0 0 0 / 0.18),
+                       0 0 0 1px rgb(166 10 10 / 0.04);
+
+  /* Glow ember ponctuel (dots, focus) */
+  --glow-ember: 0 0 12px rgb(255 147 77 / 0.75);
+
+  /* ── OVERLAYS / GRADIENTS ───────────────────────────────────────────────── */
+
+  /* Verre de nav — gris-bleuté translucide */
+  --gradient-glass: linear-gradient(180deg, rgb(48 53 59 / 0.38), rgb(27 28 28 / 0.74));
+
+  /* Fond de panel crypt */
+  --gradient-crypt: linear-gradient(180deg, rgb(43 38 31 / 0.97), rgb(18 16 14 / 0.98));
+
+  /* Fond de sanctum (plus bleuté) */
+  --gradient-sanctum: linear-gradient(180deg, rgb(27 31 36 / 0.92), rgb(14 17 22 / 0.96));
+
+  /* Bouton idle (ombre pierre) */
+  --gradient-stone-chip: linear-gradient(180deg, rgb(38 42 47 / 0.88), rgb(24 26 29 / 0.94));
+
+  /* Bouton actif — or brun */
+  --gradient-gold-chip: linear-gradient(180deg, rgb(43 38 31 / 0.94), rgb(24 22 20 / 0.96));
+
+  /* CTA ember */
+  --gradient-ember: linear-gradient(180deg, rgb(124 58 31 / 0.96), rgb(73 36 23 / 0.98));
+
+  /* ── LUEURS D'AMBIANCE (radial) ─────────────────────────────────────────── */
+
+  --glow-blood-haze: radial-gradient(circle at top left,
+    rgb(166 10 10 / 0.06), transparent 34%);
+  --glow-gold-haze: radial-gradient(circle at 20% 0%,
+    rgb(126 100 52 / 0.08), transparent 50%);
+  --glow-gold-side: radial-gradient(circle at 20% 50%,
+    rgb(126 100 52 / 0.12), transparent 38%);
+  --glow-ember-haze: radial-gradient(circle at top left,
+    rgb(255 147 77 / 0.18), transparent 55%);
+  --glow-moonlight-haze: radial-gradient(circle at top right,
+    rgb(125 171 255 / 0.1), transparent 42%);
+
+  /* ── Z-INDEX (conservé) ─────────────────────────────────────────────────── */
+
+  --z-bg: -1;
+  --z-nav: 50;
+  --z-float: 60;
+  --z-modal: 100;
+  --z-lightbox: 200;
+  --z-loading: 300;
+}

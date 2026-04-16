@@ -5,10 +5,10 @@
     <span class="construction__grid"></span>
   </div>
 
-  <div class="construction__panel" #panel>
+  <div class="construction__panel surface-sanctum" #panel>
     <div class="construction__hero">
       <div class="construction__badge">
-        <span class="construction__badge-dot"></span>
+        <span class="construction__badge-dot glow-ember"></span>
         <span>{{ ts.translate('construction.badge') }}</span>
       </div>
 
@@ -39,20 +39,20 @@
       </div>
 
       <div class="construction__copy">
-        <p class="construction__eyebrow">{{ ts.translate('construction.eyebrow') }}</p>
-        <h1>{{ ts.translate('construction.title') }}</h1>
-        <p class="construction__lead">
+        <p class="construction__eyebrow text-rune">{{ ts.translate('construction.eyebrow') }}</p>
+        <h1 class="text-engraved">{{ ts.translate('construction.title') }}</h1>
+        <p class="construction__lead text-tome">
           {{ ts.translate('construction.lead') }}
         </p>
       </div>
 
       <div class="construction__actions">
-        <a class="construction__cta construction__cta--primary" routerLink="/projects" href="/projects">
-          {{ ts.translate('construction.cta.projects') }}
+        <a class="chip chip--ember transition-ritual" routerLink="/projects" href="/projects">
+          <span class="text-tag">{{ ts.translate('construction.cta.projects') }}</span>
         </a>
 
-        <a class="construction__cta construction__cta--secondary" routerLink="/" href="/">
-          {{ ts.translate('construction.cta.home') }}
+        <a class="chip chip--ghost transition-ritual" routerLink="/" href="/">
+          <span class="text-tag">{{ ts.translate('construction.cta.home') }}</span>
         </a>
       </div>
     </div>
@@ -82,8 +82,8 @@
           </div>
 
           <div class="construction__card-copy">
-            <h2>{{ ts.translate('construction.pillar.' + icon + '.title') }}</h2>
-            <p>{{ ts.translate('construction.pillar.' + icon + '.description') }}</p>
+            <h2 class="text-engraved">{{ ts.translate('construction.pillar.' + icon + '.title') }}</h2>
+            <p class="text-tome">{{ ts.translate('construction.pillar.' + icon + '.description') }}</p>
           </div>
         </article>
       }
@@ -91,7 +91,7 @@
 
     <div class="construction__status" [attr.aria-label]="ts.translate('construction.status.aria')">
       <div class="construction__status-head">
-        <span class="construction__status-title">{{ ts.translate('construction.status.title') }}</span>
+        <span class="construction__status-title text-sigil">{{ ts.translate('construction.status.title') }}</span>
         <span class="construction__status-value">{{ ts.translate('construction.status.value') }}</span>
       </div>
 

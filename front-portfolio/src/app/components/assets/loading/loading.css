@@ -1,22 +1,30 @@
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loading);
+  pointer-events: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 24px;
+}
+
 .loading-frames {
   position: relative;
-  width: 220px;
   aspect-ratio: 1 / 1;
+  width: clamp(120px, 15vw, 220px);
 }
 
 .loading-frame {
   position: absolute;
   inset: 0;
   margin: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   opacity: 0;
   transform: scale(0);
   transform-origin: center;
-
   animation: loadingScale 3.6s ease-in-out infinite;
   will-change: transform, opacity;
 }
@@ -28,67 +36,24 @@
   pointer-events: none;
 }
 
-/* décalage des frames */
 .frame-1 { animation-delay: 0s; }
 .frame-2 { animation-delay: 1.2s; }
 .frame-3 { animation-delay: 2.4s; }
 
 @keyframes loadingScale {
-  0% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-
-  /* apparition */
-  20% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* maintien */
-  45% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* disparition en shrink */
-  70% {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scale(0);
-  }
+  0%   { opacity: 0; transform: scale(0.6); }
+  20%  { opacity: 1; transform: scale(1); }
+  45%  { opacity: 1; transform: scale(1); }
+  70%  { opacity: 0; transform: scale(0); }
+  100% { opacity: 0; transform: scale(0); }
 }
-.loading-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-loading);
 
-  pointer-events: none; /* important pour ne pas bloquer le clic */
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-
-  padding: 24px; /* marge depuis le bord */
-}
-/* mobile */
 @media (max-width: 768px) {
   .loading-overlay {
     justify-content: center;
     align-items: center;
     padding: 0;
   }
-}
-/* mobile */
-@media (max-width: 768px) {
-  .loading-frames {
-    width: 140px;
-  }
-}
-.loading-frames {
-  width: clamp(120px, 15vw, 220px);
+
+  .loading-frames { width: 140px; }
 }

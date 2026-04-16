@@ -1,14 +1,20 @@
-@import "tailwindcss";
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  STYLES.CSS — Orchestrateur global                                        ║
+   ║                                                                            ║
+   ║  Ordre d'import volontaire :                                               ║
+   ║   1. Tailwind 4        → base, reset, utilities générées                  ║
+   ║   2. tokens            → @theme (palette, typo, motion) + CSS vars        ║
+   ║   3. motions           → @keyframes partagés                              ║
+   ║   4. primitives        → @layer components (surfaces, chips, textes)      ║
+   ║   5. utilities         → @layer utilities (transition-ritual, glow…)      ║
+   ║                                                                            ║
+   ║  Les composants n'écrivent que le layout / ce qui leur est propre —       ║
+   ║  tout le reste (couleurs, ombres, bordures, gradients, transitions)       ║
+   ║  passe par les primitives / tokens.                                        ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
 
-/* ─── Z-INDEX SCALE ───────────────────────────────────────────────────────────
-   Toutes les valeurs z-index de l'app passent par ces variables.
-   Modification ici = impact global cohérent.
-   ──────────────────────────────────────────────────────────────────────────── */
-:root {
-  --z-bg:        -1;   /* calques décoratifs en arrière-plan */
-  --z-nav:       50;   /* barre de navigation sticky */
-  --z-float:     60;   /* widgets flottants (son) */
-  --z-modal:    100;   /* modals (langue, projets) */
-  --z-lightbox: 200;   /* visionneuse d'images */
-  --z-loading:  300;   /* écran de chargement */
-}
+@import 'tailwindcss';
+@import './styles/tokens.css';
+@import './styles/motions.css';
+@import './styles/primitives.css';
+@import './styles/utilities.css';

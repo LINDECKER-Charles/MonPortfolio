@@ -1,0 +1,26 @@
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  MOTIONS — Keyframes partagés. Tout ce qu'au moins 2 composants           ║
+   ║  réutilisent vit ici ; les animations strictement locales restent         ║
+   ║  dans le .css du composant.                                               ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
+
+/* Pulsation lente — halos d'ambiance (glow de fond, auréoles) */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+/* Apparition / disparition simples */
+@keyframes ritualFadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ritualFadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+/* Émergence d'un panel (modals, lightbox) */
+@keyframes panelEmerge {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);   }
+}
+
+@keyframes panelVanish {
+  from { opacity: 1; transform: scale(1)    translateY(0);   }
+  to   { opacity: 0; transform: scale(0.95) translateY(8px); }
+}

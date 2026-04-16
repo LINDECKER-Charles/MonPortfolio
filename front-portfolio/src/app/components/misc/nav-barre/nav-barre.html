@@ -1,5 +1,5 @@
 <nav class="nav-barre" [attr.aria-label]="ts.translate('common.nav.aria')">
-  <div class="nav-barre__inner">
+  <div class="nav-barre__inner surface-altar">
     <a class="nav-barre__brand" routerLink="/" href="/">
       <span class="nav-barre__brand-logo">
         <app-responsive-picture
@@ -12,15 +12,15 @@
       </span>
 
       <span class="nav-barre__brand-text">
-        <span class="nav-barre__brand-name">Charles Lindecker</span>
-        <span class="nav-barre__brand-role">{{ ts.translate('common.nav.role') }}</span>
+        <span class="nav-barre__brand-name text-tag">Charles Lindecker</span>
+        <span class="nav-barre__brand-role text-rune">{{ ts.translate('common.nav.role') }}</span>
       </span>
     </a>
 
     <div class="nav-barre__links">
       @for (item of navItems(); track item.href) {
         <a
-          class="nav-barre__link"
+          class="chip transition-ritual"
           [routerLink]="item.href"
           [href]="item.href"
           routerLinkActive="is-active"
@@ -34,17 +34,17 @@
             </app-responsive-picture>
           </span>
 
-          <span class="nav-barre__link-label">{{ item.label }}</span>
+          <span class="text-tag nav-barre__link-label">{{ item.label }}</span>
         </a>
       }
 
       <button
-        class="nav-barre__lang-btn"
+        class="nav-barre__lang-btn transition-ritual"
         (click)="ts.openModal()"
         [attr.aria-label]="ts.translate('nav-barre.lang')"
         type="button">
         <span class="nav-barre__lang-btn-flag" aria-hidden="true">{{ currentLang().flag }}</span>
-        <span class="nav-barre__lang-btn-label">{{ ts.translate('nav-barre.lang') }}</span>
+        <span class="nav-barre__lang-btn-label text-tag">{{ ts.translate('nav-barre.lang') }}</span>
         <span class="nav-barre__lang-btn-code">{{ currentLang().code | uppercase }}</span>
       </button>
     </div>
