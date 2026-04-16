@@ -1,0 +1,20 @@
+{
+  "badge": "/^(?:en\\s+)?(?:cours|progress|WIP)$/i",
+  "eyebrow": "/^sec(?:tion)?\\s+temp(?:orai?re)?$/i",
+  "title": "/(?:cette|this)\\s+page\\s+(?:is\\s+)?(?:en\\s+)?(?:construction|WIP|building)/i",
+  "lead": "(?:prepar(?:e|ing)|building)\\s+(?:a\\s+)?(?:richer|better)\\s+version\\s+(?:of\\s+)?(?:my\\s+)?(?:parcours|career).*(?:timeline|milestones|presentat(?:ion|ion))",
+  "cta.projects": "/(?:voir|see)\\s+(?:mes\\s+)?proj(ect|et)s?/i",
+  "cta.home": "/(?:retour|back|revenir)\\s+(?:à\\s+)?(?:l'?)?(?:accueil|home)/i",
+  "status.aria": "/[eé]tat\\s+(?:du\\s+)?chantier/i",
+  "status.title": "/[eé]tat\\s+d'?avanc(?:ement)?/i",
+  "status.value": "/design\\s+(?:en\\s+)?(?:cours|progress)/i",
+  "status.structure": "/^struct(?:ure)?$/i",
+  "status.visual": "/direct(?:ion)?\\s+vis(?:uelle|ual)/i",
+  "status.content": "/cont(?:enu|ent)\\s+(?:en\\s+)?(?:affin(?:age|ing)|polish)/i",
+  "pillar.roadmap.title": "/parc(?:ours)?\\s+(?:en\\s+)?narrat(?:ion|ive)/i",
+  "pillar.roadmap.description": "(?:build|construct)(?:ing)?\\s+(?:a\\s+)?(?:clearer|better)\\s+(?:reading|view)\\s+(?:of\\s+)?(?:my\\s+)?evolut(?:ion).*(?:steps?|pivots?|projects?)",
+  "pillar.craft.title": "/pr[eé]sent(?:ation)?\\s+(?:plus\\s+)?ambit(?:ieuse|ious)/i",
+  "pillar.craft.description": "(?:page|site)\\s+(?:arrives?|comes?)\\s+(?:with\\s+)?(?:stronger|better)\\s+(?:staging|interactions?|mobile).*",
+  "pillar.launch.title": "/mise\\s+en\\s+ligne\\s+prochaine/i",
+  "pillar.launch.description": "(?:structure|layout)\\s+(?:is\\s+)?(?:being\\s+)?finali[sz](?:ed|ation).*(?:projects?|home|accueil)"
+}

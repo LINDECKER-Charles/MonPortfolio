@@ -1,5 +1,5 @@
 import { ResponsiveSource } from '../../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../../imgSources/shared.sources';
+import { SHARED_IMAGES } from '../../../../img-sources/shared.sources';
 
 export interface HomeResumeSnippetState {
   id: string;

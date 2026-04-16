@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "Workshop tongue selection",
+  "lang_modal.close": "Sheathe the blade",
+  "lang_modal.title": "-- Tongue of the Workshop --",
+  "audio.show": "Open the music box",
+  "audio.hide": "Close the music box",
+  "audio.toggle": "Silence or awaken the night's ambience",
+  "audio.volume": "Adjust the echoes of the Dream",
+  "lightbox.aria": "Full moonlit view",
+  "lightbox.close": "Avert your gaze, hunter",
+  "lightbox.previous": "Previous blood memory",
+  "lightbox.next": "Next blood memory",
+  "nav.role": "Workshop Hunter / Beast Slayer",
+  "nav.aria": "Workshop navigation",
+  "photo.alt": "Portrait of the Good Hunter Charles Lindecker",
+  "photo.developer": "Workshop Hunter",
+  "photo.trainer": "Mentor of the Dream"
+}

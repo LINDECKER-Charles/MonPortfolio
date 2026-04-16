@@ -1,0 +1,6 @@
+{
+  "sound.aria": "sound:\n  action: activate  # hope you have headphones",
+  "sound.label": "sound: on  # you asked for it",
+  "skip": "animation: skip  # coward",
+  "start.aria": "intro:\n  action: start  # no going back now"
+}

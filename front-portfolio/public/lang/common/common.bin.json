@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "0b01001100 LOCALE_SELECT",
+  "lang_modal.close": "0xFF TERMINATE",
+  "lang_modal.title": "-- 0x4C414E47 --",
+  "audio.show": "0b01000001 SHOW_AUDIO_CTL",
+  "audio.hide": "0b00 HIDE_AUDIO_CTL",
+  "audio.toggle": "0x4D555445 XOR 0x554E4D555445",
+  "audio.volume": "0b01010110 VOL_ADJUST",
+  "lightbox.aria": "0xFF FULLSCREEN_PREVIEW",
+  "lightbox.close": "0b00 CLOSE_PREVIEW",
+  "lightbox.previous": "0x505245 << 1",
+  "lightbox.next": "0x4E4558 >> 1",
+  "nav.role": "0b01000100 01000101 01010110 / 0x545241494E",
+  "nav.aria": "0b110 MAIN_NAV_PTR",
+  "photo.alt": "0x504F5254524149 of Charles_0x4C494E",
+  "photo.developer": "0b01000100 01000101 01010110",
+  "photo.trainer": "0x545241494E4552"
+}

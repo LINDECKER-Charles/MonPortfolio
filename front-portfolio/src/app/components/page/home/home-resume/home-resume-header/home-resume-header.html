@@ -8,7 +8,7 @@
           <app-responsive-picture
             [sources]="luciditySources"
             [fallbackSrc]="lucidityFallback"
-            alt="Icone Lucidity"
+            [alt]="ts.translate('home-resume.header.eyebrow')"
             loading="eager"
             decoding="async">
           </app-responsive-picture>
@@ -16,9 +16,9 @@
       </div>
 
       <div class="hero__titles">
-        <span class="hero__eyebrow">Profil</span>
+        <span class="hero__eyebrow">{{ ts.translate('home-resume.header.eyebrow') }}</span>
         <h1>Charles LINDECKER</h1>
-        <h2>Developpeur / Formateur ASP.NET & Angular & Symfony</h2>
+        <h2>{{ ts.translate('home-resume.header.subtitle') }}</h2>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
             <app-responsive-picture
               [sources]="levelSources"
               [fallbackSrc]="levelFallback"
-              alt="Icone niveau"
+              [alt]="ts.translate('home-resume.header.cta.resume.bottom')"
               loading="eager"
               decoding="async">
             </app-responsive-picture>
@@ -37,8 +37,8 @@
         </span>
 
         <span class="hero__cta-label">
-          <span class="hero__cta-label-top">Consulter</span>
-          <span class="hero__cta-label-bottom">Mon resume</span>
+          <span class="hero__cta-label-top">{{ ts.translate('home-resume.header.cta.resume.top') }}</span>
+          <span class="hero__cta-label-bottom">{{ ts.translate('home-resume.header.cta.resume.bottom') }}</span>
         </span>
       </a>
 
@@ -46,14 +46,14 @@
         class="hero__cta hero__cta--secondary"
         routerLink="/opening-home"
         href="/opening-home"
-        aria-label="Jouer l'animation d'ouverture">
+        [attr.aria-label]="ts.translate('home-resume.header.cta.replay.top')">
         <span class="hero__cta-icon-frame hero__cta-icon-frame--play">
           <span class="hero__cta-icon hero__cta-icon--play" aria-hidden="true"></span>
         </span>
 
         <span class="hero__cta-label">
-          <span class="hero__cta-label-top">Relancer</span>
-          <span class="hero__cta-label-bottom">L'animation</span>
+          <span class="hero__cta-label-top">{{ ts.translate('home-resume.header.cta.replay.top') }}</span>
+          <span class="hero__cta-label-bottom">{{ ts.translate('home-resume.header.cta.replay.bottom') }}</span>
         </span>
       </a>
     </div>

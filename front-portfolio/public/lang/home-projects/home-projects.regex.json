@@ -1,0 +1,9 @@
+{
+  "eyebrow": "/^su[i1]te$/i",
+  "title": "/pr[oO]j(ect|et)s?\\s*[&+]\\s*c[o0]ntrib(ution)?s?/gi",
+  "description": "(?:find|discover)\\s+(?:my\\s+)?(?:apps?|experiment(?:ation)?s?|open[\\s-]?source)\\s+(?:in\\s+)?(?:a\\s+)?dedicat(?:ed)?\\s+sec(?:tion)?",
+  "cta.primary.top": "/^expl[o0]r(e|er)$/i",
+  "cta.primary.bottom": "/m(?:es|y)\\s+trav(aux|ails?)/i",
+  "cta.secondary.top": "/[o0]pen\\s*[s5][o0]urce/i",
+  "cta.secondary.bottom": "/(?:voir|see)\\s+GitHub/i"
+}

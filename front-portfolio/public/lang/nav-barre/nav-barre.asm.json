@@ -1,0 +1,6 @@
+{
+  "home": "MOV AX, HOME",
+  "projects": "JMP 0x50524F4A",
+  "work": "CALL work_history",
+  "lang": "INT 0x21 ; SET_LANG"
+}

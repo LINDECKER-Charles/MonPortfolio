@@ -1,0 +1,6 @@
+{
+  "home": "container_name: home\n  restart: always",
+  "projects": "image: projects:latest",
+  "work": "docker exec -it parcours /bin/bash",
+  "lang": "ENV LANG=fr_FR.UTF-8"
+}

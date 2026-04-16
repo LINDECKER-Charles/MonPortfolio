@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "Selectio linguae arcanae",
+  "lang_modal.close": "Claudere",
+  "lang_modal.title": "-- Lingua Arcanum --",
+  "audio.show": "Revelare canticum sacrum",
+  "audio.hide": "Occultare canticum sacrum",
+  "audio.toggle": "Silentium vel sonum Ecclesiae",
+  "audio.volume": "Modulare volumen Insight",
+  "lightbox.aria": "Contemplatio in plenitudine",
+  "lightbox.close": "Claudere contemplationem",
+  "lightbox.previous": "Visio praecedentis",
+  "lightbox.next": "Visio sequentis",
+  "nav.role": "Scholaris Codex / Magister Byrgenwerth",
+  "nav.aria": "Navigatio principalis Ecclesiae",
+  "photo.alt": "Effigies Caroli Lindeckeri, Scholaris Byrgenwerth",
+  "photo.developer": "Scholaris Codex",
+  "photo.trainer": "Magister Ecclesiae"
+}

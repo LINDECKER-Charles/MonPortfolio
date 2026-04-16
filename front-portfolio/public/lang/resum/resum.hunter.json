@@ -1,0 +1,21 @@
+{
+  "header.level": "Blood Level",
+  "header.class": "Hunter Type",
+  "header.class_value": "Workshop Hunter & Beast Mentor",
+  "active_projects.title": "Active hunts",
+  "active_projects.elan": "Beast Mentor — Elan Hunter's Academy",
+  "active_projects.omnicard": "The Omnicard Hunt",
+  "active_projects.pvzf": "Lead Hunter of the French Pack — PVZ Fusion",
+  "active_projects.mission_locale": "Speaker at the Lantern — Mission Locale",
+  "passive_effects.title": "Caryll Runes inscribed",
+  "passive_effects.0": "Hunts problems before they become beasts",
+  "passive_effects.1": "Former World Top 500 on Gwent (blood echoes well spent)",
+  "passive_effects.2": "Has never returned to the Dream to rest (does not sleep)",
+  "passive_effects.3": "Rings the beckoning bell for cooperation",
+  "passive_effects.4": "Teaches young hunters the way of the saw cleaver",
+  "stats.backend": "Strength (Backend)",
+  "stats.frontend": "Skill (Frontend)",
+  "stats.architecture": "Bloodtinge (Architecture)",
+  "stats.security": "Endurance (Security)",
+  "stats.devops": "Arcane (DevOps)"
+}

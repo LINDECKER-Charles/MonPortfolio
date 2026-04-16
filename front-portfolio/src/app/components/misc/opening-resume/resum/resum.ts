@@ -6,7 +6,7 @@ import { ResumPassiveEffects } from './resum-passive-effects/resum-passive-effec
 import { ResumRuneIcons } from './resum-rune-icons/resum-rune-icons';
 import { ResumStack } from './resum-stack/resum-stack';
 import { ResumStats } from './resum-stats/resum-stats';
-import {RESUM_IMAGES} from '../../../../imgSources/resum.sources';
+import {RESUM_IMAGES} from '../../../../img-sources/resum.sources';
 
 @Component({
   selector: 'app-resum',

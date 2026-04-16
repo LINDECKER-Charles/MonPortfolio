@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   ResponsivePicture,
   ResponsiveSource,
 } from '../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../imgSources/shared.sources';
+import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
+import { TranslationService } from '../../../services/translation.service';
 
 interface FooterIconSet {
   sources: ResponsiveSource[];
@@ -19,6 +20,7 @@ interface FooterIconSet {
   styleUrl: './footer.css',
 })
 export class Footer {
+  protected readonly ts = inject(TranslationService);
   protected readonly githubIcon: FooterIconSet = {
     alt: 'GitHub',
     sources: SHARED_IMAGES.stack.github.sources,

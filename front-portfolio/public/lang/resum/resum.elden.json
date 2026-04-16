@@ -1,0 +1,21 @@
+{
+  "header.level": "Rune Level",
+  "header.class": "Class",
+  "header.class_value": "Erdtree Sage of Code",
+  "active_projects.title": "Active quests",
+  "active_projects.elan": "Sage of the Erdtree — Elan Academy of Grace",
+  "active_projects.omnicard": "The Omnicard Crusade",
+  "active_projects.pvzf": "Commander of the French Tarnished — PVZ Fusion",
+  "active_projects.mission_locale": "Herald at the Roundtable — Mission Locale",
+  "passive_effects.title": "Talismans equipped",
+  "passive_effects.0": "Proactive Elden Lord energy",
+  "passive_effects.1": "Former World Top 500 on Gwent (touched Grace early)",
+  "passive_effects.2": "Has never rested at a Site of Grace (does not sleep)",
+  "passive_effects.3": "Summons cooperators for jolly cooperation",
+  "passive_effects.4": "Bestows knowledge like Rennala bestows rebirths",
+  "stats.backend": "Strength (Backend)",
+  "stats.frontend": "Dexterity (Frontend)",
+  "stats.architecture": "Intelligence (Architecture)",
+  "stats.security": "Faith (Security)",
+  "stats.devops": "Arcane (DevOps)"
+}

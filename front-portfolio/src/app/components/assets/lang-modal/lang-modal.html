@@ -1,0 +1,23 @@
+<div class="lang-modal__backdrop" (click)="requestClose()" aria-hidden="true"></div>
+
+<div class="lang-modal__panel" role="dialog" aria-modal="true" [attr.aria-label]="ts.translate('common.lang_modal.aria')">
+  <button class="lang-modal__close" (click)="requestClose()" [attr.aria-label]="ts.translate('common.lang_modal.close')">✕</button>
+
+  <p class="lang-modal__title">{{ ts.translate('common.lang_modal.title') }}</p>
+
+  <ul class="lang-modal__list" role="list">
+    @for (lang of languages; track lang.code) {
+      <li>
+        <button
+          class="lang-modal__item"
+          [class.is-active]="ts.lang() === lang.code"
+          (click)="select(lang.code)"
+          [attr.aria-pressed]="ts.lang() === lang.code"
+          [attr.lang]="lang.code">
+          <span class="lang-modal__flag" aria-hidden="true">{{ lang.flag }}</span>
+          <span class="lang-modal__label">{{ lang.label }}</span>
+        </button>
+      </li>
+    }
+  </ul>
+</div>

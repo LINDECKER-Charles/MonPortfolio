@@ -1,0 +1,10 @@
+{
+  "eyebrow": "/*path*/0xPA",
+  "title": "var _x='XP';var _e='&Engagement';_x+_e",
+  "description": "career.filter(c=>c.type==='mission'||c.type==='training').forEach(c=>{render(c)})//+volunteer",
+  "cta.primary.top": "()=>consult()",
+  "cta.primary.bottom": "self._career",
+  "cta.secondary.top": "!!isPro",
+  "cta.secondary.bottom": "window.open('linkedin')",
+  "aria.landmarks": "document.querySelectorAll('.waypoint')"
+}

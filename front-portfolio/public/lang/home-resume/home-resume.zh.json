@@ -1,0 +1,23 @@
+{
+  "banner.label": "猎人档案 · 架构 · 传承 · 精准",
+  "banner.icon.eso-resist": "奥术抗性",
+  "banner.icon.fire": "火焰",
+  "banner.icon.physique": "体质",
+  "banner.icon.pousse-res": "击退抗性",
+  "header.eyebrow": "简介",
+  "header.subtitle": "开发者 / 培训师 ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "查看",
+  "header.cta.resume.bottom": "我的简历",
+  "header.cta.replay.top": "重播",
+  "header.cta.replay.bottom": "动画",
+  "snippets.transmission.title": "教学与知识传承",
+  "snippets.transmission.content": "没有比分享知识更好的练习了：它检验我们的推理，澄清我们对事物的理解，提升我们的卓越标准。作为9年的开发者，我非常重视向未来开发者的知识传承。",
+  "snippets.stack.title": "技术栈与技术卓越",
+  "snippets.stack.content": "我的技术选择与我的抱负一致。Angular和.NET代表着现代、稳健且可扩展的解决方案。我的目标始终如一：为客户构建可维护、稳固且持久的应用程序。",
+  "snippets.architecture.title": "应用安全与架构",
+  "snippets.architecture.content": "单体、微服务、六边形架构或无服务器：每个项目都有特定的约束和需求。我的角色不仅是提出解决方案，更是找到最合适、最一致、最可靠的方案。",
+  "snippets.opensource.title": "开源与志愿服务",
+  "snippets.opensource.content": "开发不仅仅是一份职业，更是一种热情，我通过开源贡献和志愿服务中的青年辅导来表达。我认为这是让技术变得有用和可及的具体方式。",
+  "snippets.quality.title": "质量与责任",
+  "snippets.quality.content": "我依靠严格的代码标准、积极的技术监控和对质量的持续要求。这种纪律使我能够保持更新，做出更好的技术决策，并产出干净、可靠且负责任的代码。"
+}

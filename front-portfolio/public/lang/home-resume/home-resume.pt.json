@@ -1,0 +1,23 @@
+{
+  "banner.label": "Dossiê do Caçador · Arquitetura · Transmissão · Precisão",
+  "banner.icon.eso-resist": "Resistência esotérica",
+  "banner.icon.fire": "Fogo",
+  "banner.icon.physique": "Físico",
+  "banner.icon.pousse-res": "Resistência ao recuo",
+  "header.eyebrow": "Perfil",
+  "header.subtitle": "Desenvolvedor / Formador ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "Consultar",
+  "header.cta.resume.bottom": "Meu currículo",
+  "header.cta.replay.top": "Repetir",
+  "header.cta.replay.bottom": "A animação",
+  "snippets.transmission.title": "Ensino & Transmissão de Conhecimento",
+  "snippets.transmission.content": "Não existe melhor exercício do que partilhar conhecimento: põe à prova o nosso raciocínio, clarifica a nossa compreensão das coisas e eleva o nosso nível de exigência. Desenvolvedor há 9 anos, atribuo grande importância à transmissão aos futuros programadores.",
+  "snippets.stack.title": "Stack & Excelência Técnica",
+  "snippets.stack.content": "As minhas escolhas tecnológicas estão alinhadas com as minhas ambições. Angular e .NET representam soluções modernas, robustas e escaláveis. O meu objetivo permanece constante: construir para os meus clientes aplicações sustentáveis, sólidas e duradouras.",
+  "snippets.architecture.title": "Segurança Aplicacional & Arquitetura",
+  "snippets.architecture.content": "Monólito, microsserviços, arquitetura hexagonal ou serverless: cada projeto tem restrições e requisitos específicos. O meu papel não é apenas propor uma solução, mas identificar a mais adequada, coerente e fiável.",
+  "snippets.opensource.title": "Open Source & Voluntariado",
+  "snippets.opensource.content": "Mais do que uma profissão, o desenvolvimento é uma paixão que exprimo através das minhas contribuições open source e do acompanhamento de jovens em trabalho voluntário. Vejo nisso uma forma concreta de tornar a tecnologia útil e acessível.",
+  "snippets.quality.title": "Qualidade & Responsabilidade",
+  "snippets.quality.content": "Apoio-me em padrões de código rigorosos, vigilância técnica ativa e uma exigência constante de qualidade. Esta disciplina permite-me manter-me atualizado, tomar melhores decisões técnicas e produzir código limpo, fiável e responsável."
+}

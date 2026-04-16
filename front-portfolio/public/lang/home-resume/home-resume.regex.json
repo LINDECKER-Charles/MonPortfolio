@@ -1,0 +1,25 @@
+{
+  "banner.label": "/Dossier.*Chasseur.*Archit(?:ecture)?.*Transmiss(?:ion)?.*Pr[eé]cis(?:ion)?/i",
+  "banner.icon.eso-resist": "/r[eé]sist(?:ance)?\\s+[eé]sot[eé]r(?:ique|ic)/i",
+  "banner.icon.fire": "/^(?:feu|fire|🔥)$/i",
+  "banner.icon.physique": "/^phys(?:ique|ical)$/i",
+  "banner.icon.pousse-res": "/r[eé]sist(?:ance)?\\s+(?:aux?\\s+)?(?:coups?|hits?)/i",
+
+  "header.eyebrow": "/^prof(?:il|ile)$/i",
+  "header.subtitle": "/d[eé]v(?:elop+[eè]ur)?\\s*\\/\\s*form(?:ateur|er)\\s+ASP\\.NET/i",
+  "header.cta.resume.top": "/^consult(?:er|are)?$/i",
+  "header.cta.resume.bottom": "/m[o0]n\\s+r[eé]sum[eé]?/i",
+  "header.cta.replay.top": "/^re(?:lanc|play|start)(?:er)?$/i",
+  "header.cta.replay.bottom": "/l'?anim(?:ation)?/i",
+
+  "snippets.transmission.title": "/transmiss(?:ion)?\\s*[&+]\\s*(?:enseign(?:ement)?|teach(?:ing)?)/i",
+  "snippets.transmission.content": "(?:no|il\\s+n'existe\\s+pas\\s+de)\\s+(?:better|meilleur)\\s+(?:exercise|exercice)\\s+(?:than|que)\\s+(?:sharing|partage)\\s+(?:of\\s+)?knowledge.*(?:dev(?:elop)?|d[eé]v)(?:elop+[eè]ur)?\\s+(?:since|depuis)\\s+\\d+\\s+(?:ans|years)",
+  "snippets.stack.title": "/stack\\s*[&+]\\s*excell(?:ence)?\\s+tech(?:nique|nical)?/i",
+  "snippets.stack.content": "(?:Angular|[.]NET).*(?:modern|robust|scalab).*(?:maintain|solid|p[eé]renn)",
+  "snippets.architecture.title": "/s[eé]curit[eé]?.*[&+].*archit(?:ecture)?/i",
+  "snippets.architecture.content": "(?:monolith|microservi|hexagonal|serverless).*(?:each|chaque)\\s+(?:project|projet).*(?:solution)\\s+(?:most|plus)\\s+(?:adapted|adapt[eé]e)",
+  "snippets.opensource.title": "/open\\s*source\\s*[&+]\\s*(?:b[eé]n[eé]vol|volunt)/i",
+  "snippets.opensource.content": "(?:more|plus)\\s+(?:than|qu')\\s+(?:a\\s+)?(?:job|m[eé]tier).*(?:passion).*(?:open\\s*source|contribut).*(?:youth|jeunes)",
+  "snippets.quality.title": "/qualit[eé]?\\s*[&+]\\s*responsab(?:ilit[eé]|ility)/i",
+  "snippets.quality.content": "(?:standard|rigour|veille|exigenc).*(?:clean|propre|fiabl|responsabl)"
+}

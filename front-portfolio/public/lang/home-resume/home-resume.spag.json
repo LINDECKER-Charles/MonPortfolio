@@ -1,0 +1,25 @@
+{
+  "banner.label": "var label = 'Dossier' + ' du ' + 'Chasseur' + ' · ' + 'Architecture'; // StringBuilder WHO?",
+  "banner.icon.eso-resist": "var r = r || 'Résistance ésotérique'; // r is undefined so this always works. also r is used 47 other places.",
+  "banner.icon.fire": "// fire icon: was an emoji, then an SVG, then a GIF, then a CSS animation, now it's a div with background-color:red. we've come full circle.",
+  "banner.icon.physique": "var phys = document.getElementById('physique') || document.querySelector('.physique') || document.getElementsByClassName('phys')[0] || document.getElementsByTagName('div')[47]; // we WILL find this element",
+  "banner.icon.pousse-res": "try { resist(); } catch(e) { resist(); } // if at first you don't succeed",
+
+  "header.eyebrow": "var eyebrow = eyebrow || window.eyebrow || parent.eyebrow || top.eyebrow || 'Profil'; // scope chain of despair",
+  "header.subtitle": "var role = 'Dev' + '/' + ' Form' + 'ateur ' + 'ASP' + '.' + 'NET' + ' & ' + 'Ang' + 'ular' + ' & ' + 'Sym' + 'fony'; // built character by character for 'maintainability'",
+  "header.cta.resume.top": "onClick=\"consulter()\" onmouseover=\"consulter()\" onfocus=\"consulter()\" // triple-bound. can't miss.",
+  "header.cta.resume.bottom": "var resume = JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(resume)))); // deep clone via JSON, twice, for safety",
+  "header.cta.replay.top": "location.reload(true); location.reload(true); location.reload(true); // 3 reloads = 1 replay. math.",
+  "header.cta.replay.bottom": "eval('eval(\"eval(animation.start())\")')  // inception-level eval. 3 layers deep.",
+
+  "snippets.transmission.title": "/* TRANSMISSION */ // this comment IS the title. the actual title variable was accidentally deleted in a regex find-replace.",
+  "snippets.stack.title": "var stack = []; stack.push('Angular'); stack.push('NET'); stack.pop(); stack.push('.NET'); // forgot the dot. had to pop and re-push.",
+  "snippets.stack.content": "/* My stack is modern. My code is not. I use Angular 20 with var declarations, .NET 9 with string concatenation SQL, and Symfony with raw PHP in Twig templates. I am the bridge between modern and legacy. I am the reason linters were invented. My IDE has given up highlighting errors -- it just shows a single red line from top to bottom. */",
+  "snippets.architecture.title": "// architecture.js (this file has been copied to architecture2.js, architecture_backup.js, and architecture_DO_NOT_DELETE.js)",
+  "snippets.architecture.content": "/* Architecture review meeting notes: 'It's a monolith.' 'No it's microservices.' 'The microservices share a database.' 'So it's a distributed monolith.' 'We prefer the term service-oriented monolith.' Action items: rename folders. Call it done. Meeting adjourned. Next meeting: never. */",
+  "snippets.transmission.content": "/* Teaching is the best way to learn that you know nothing. I spent 30 minutes explaining closures to a student, got confused by my own example, googled it during the break, and found my own StackOverflow question from 2017. Circle of life. 9 years of dev experience means 9 years of increasingly sophisticated ways to write the same bugs. */",
+  "snippets.opensource.title": "var open = 'source'; var source = 'open'; // neither variable is used anywhere",
+  "snippets.opensource.content": "/* My open source contribution history: Fixed a typo (PR #1, merged after 8 months). Added a semicolon (PR #2, rejected: 'we use ASI'). Deleted node_modules from a repo (PR #3, 47,000 files changed, auto-closed by bot). Created an issue: 'docs are outdated' (closed as duplicate of issue #1 from 2014). I also volunteer. The kids I teach now write better code than me. This is fine. */",
+  "snippets.quality.title": "// quality (the variable was misspelled as 'qualtiy' for 2 years and nobody noticed)",
+  "snippets.quality.content": "/* My quality process: 1) Write code. 2) Run it. 3) It works. 4) Commit with message 'fix'. 5) It breaks in prod. 6) Hotfix with message 'fix fix'. 7) That also breaks. 8) 'fix fix fix'. 9) Revert everything. 10) Original code was fine. 11) Commit: 'revert fix fix fix, re-apply fix fix, undo fix'. Git blame is a horror novel. */"
+}

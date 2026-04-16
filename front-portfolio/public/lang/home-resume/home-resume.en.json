@@ -1,0 +1,25 @@
+{
+  "banner.label": "Hunter's Record · Architecture · Transmission · Precision",
+  "banner.icon.eso-resist": "Arcane Resistance",
+  "banner.icon.fire": "Fire",
+  "banner.icon.physique": "Physique",
+  "banner.icon.pousse-res": "Knockback Resistance",
+
+  "header.eyebrow": "Profile",
+  "header.subtitle": "Developer / Trainer ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "View",
+  "header.cta.resume.bottom": "My resume",
+  "header.cta.replay.top": "Replay",
+  "header.cta.replay.bottom": "The animation",
+
+  "snippets.transmission.title": "Teaching & Knowledge Transfer",
+  "snippets.transmission.content": "There is no better exercise than sharing knowledge: it tests our reasoning, clarifies our understanding of things and raises our level of excellence. A developer for 9 years, I place great importance on passing knowledge on to future developers.",
+  "snippets.stack.title": "Stack & Technical Excellence",
+  "snippets.stack.content": "My technology choices align with my ambitions. Angular and .NET represent modern, robust and scalable solutions. My goal remains constant: to build maintainable, solid and long-lasting applications for my clients.",
+  "snippets.architecture.title": "Application Security & Architecture",
+  "snippets.architecture.content": "Monolith, microservices, hexagonal architecture or serverless: every project has specific constraints and requirements. My role is not just to propose a solution, but to identify the most suitable, coherent and reliable one.",
+  "snippets.opensource.title": "Open Source & Volunteering",
+  "snippets.opensource.content": "More than a job, development is a passion I express through open source contributions and by mentoring young people through volunteer work. I see it as a concrete way to make technology useful and accessible.",
+  "snippets.quality.title": "Quality & Responsibility",
+  "snippets.quality.content": "I rely on rigorous code standards, active technical watch and a constant demand for quality. This discipline allows me to stay current, make better technical decisions and produce clean, reliable and responsible code."
+}

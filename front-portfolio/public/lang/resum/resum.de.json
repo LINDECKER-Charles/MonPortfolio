@@ -1,0 +1,21 @@
+{
+  "header.level": "Stufe",
+  "header.class": "Klasse",
+  "header.class_value": "Webentwicklungs-Trainer",
+  "active_projects.title": "Aktive Projekte",
+  "active_projects.elan": "Webentwicklungs-Trainer — Elan Formation",
+  "active_projects.omnicard": "Projekt Omnicard",
+  "active_projects.pvzf": "Leiter der frankophonen Abteilung — PVZ Fusion",
+  "active_projects.mission_locale": "Referent — Mission Locale",
+  "passive_effects.title": "Passive Effekte",
+  "passive_effects.0": "Proaktiver Problemlöser",
+  "passive_effects.1": "Ehemaliger Welt-Top-500 bei Gwent",
+  "passive_effects.2": "Weiß nicht, was Schlaf ist",
+  "passive_effects.3": "Koordination und Teamarbeit",
+  "passive_effects.4": "Pädagogik",
+  "stats.backend": "Backend",
+  "stats.frontend": "Frontend",
+  "stats.architecture": "Architektur",
+  "stats.security": "Sicherheit",
+  "stats.devops": "DevOps"
+}

@@ -1,0 +1,21 @@
+{
+  "header.level": "المستوى",
+  "header.class": "الفئة",
+  "header.class_value": "مدرب تطوير ويب",
+  "active_projects.title": "المشاريع النشطة",
+  "active_projects.elan": "مدرب تطوير الويب — Elan Formation",
+  "active_projects.omnicard": "مشروع Omnicard",
+  "active_projects.pvzf": "قائد القسم الفرنكوفوني — PVZ Fusion",
+  "active_projects.mission_locale": "متحدث — Mission Locale",
+  "passive_effects.title": "التأثيرات السلبية",
+  "passive_effects.0": "قوة اقتراح",
+  "passive_effects.1": "من أفضل 500 عالمياً سابقاً في Gwent",
+  "passive_effects.2": "لا يعرف ما هو النوم",
+  "passive_effects.3": "التنسيق والعمل الجماعي",
+  "passive_effects.4": "التعليم",
+  "stats.backend": "Backend",
+  "stats.frontend": "Frontend",
+  "stats.architecture": "Architecture",
+  "stats.security": "الأمان",
+  "stats.devops": "DevOps"
+}

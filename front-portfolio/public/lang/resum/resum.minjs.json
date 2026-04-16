@@ -1,0 +1,21 @@
+{
+  "header.level": "this.lvl",
+  "header.class": "this.class",
+  "header.class_value": "const _c='Web Dev Trainer'",
+  "active_projects.title": "Object.keys(activeQuests)",
+  "active_projects.elan": "new Job('Trainer','Elan Formation','WebDev')",
+  "active_projects.omnicard": "_0xOMNI='Omnicard'",
+  "active_projects.pvzf": "role='lead_fr';/*PVZ Fusion*/",
+  "active_projects.mission_locale": "emit('speak',{at:'Mission Locale'})",
+  "passive_effects.title": "this._passives",
+  "passive_effects.0": "if(initiative)return true//always",
+  "passive_effects.1": "gwent.rank<500&&gwent.scope==='global'//verified",
+  "passive_effects.2": "try{sleep()}catch(e){/*not found*/}",
+  "passive_effects.3": "Promise.all(team.map(t=>t.sync()))",
+  "passive_effects.4": "const teach=()=>'passive_on'",
+  "stats.backend": "stats.backend",
+  "stats.frontend": "stats.frontend",
+  "stats.architecture": "stats.arch",
+  "stats.security": "stats.sec",
+  "stats.devops": "stats.devops"
+}

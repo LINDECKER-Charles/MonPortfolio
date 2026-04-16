@@ -1,0 +1,21 @@
+{
+  "header.level": "0x4C56",
+  "header.class": "0b01000011 CLASS",
+  "header.class_value": "0x545241494E4552 WebDev_0b110",
+  "active_projects.title": "0b01000001 ACTIVE_PRJ[]",
+  "active_projects.elan": "0x545241494E — WebDev @ Elan Formation [0b110]",
+  "active_projects.omnicard": "0x4F4D4E49 CARD_PRJ",
+  "active_projects.pvzf": "0b110 LEAD_FR — PVZ Fusion translation.ptr",
+  "active_projects.mission_locale": "0x494E54 Mission_Locale [SPEAKER]",
+  "passive_effects.title": "0b01010000 PASSIVE_FX[]",
+  "passive_effects.0": "0b11001100 INITIATIVE_FLAG = TRUE",
+  "passive_effects.1": "RANK < 500 GLOBAL on 0x4757454E54 (verified.bin)",
+  "passive_effects.2": "sleep.exe NOT_FOUND — ERROR 0x00",
+  "passive_effects.3": "0b01010100 TEAMWORK_SYNC enabled",
+  "passive_effects.4": "0x50454441 PEDAGOGY_MODE active",
+  "stats.backend": "0b01000010 BACKEND",
+  "stats.frontend": "0x4652 FRONTEND",
+  "stats.architecture": "0b01000001 ARCH",
+  "stats.security": "0x534543 SECURITY",
+  "stats.devops": "0b01000100 DEVOPS"
+}

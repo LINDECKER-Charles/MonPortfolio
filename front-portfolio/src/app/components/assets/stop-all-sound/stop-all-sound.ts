@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
 import { AudioService } from '../../../services/audio-service';
+import { TranslationService } from '../../../services/translation.service';
 import gsap from 'gsap';
 
 @Component({
@@ -10,6 +11,7 @@ import gsap from 'gsap';
 })
 export class StopAllSound implements AfterViewInit {
   public readonly audioService: AudioService = inject(AudioService);
+  protected readonly ts = inject(TranslationService);
   private host = inject(ElementRef<HTMLElement>);
 
   public collapsed = false;

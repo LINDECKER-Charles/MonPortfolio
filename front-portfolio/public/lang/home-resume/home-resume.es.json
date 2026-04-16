@@ -1,0 +1,23 @@
+{
+  "banner.label": "Expediente del Cazador · Arquitectura · Transmisión · Precisión",
+  "banner.icon.eso-resist": "Resistencia esotérica",
+  "banner.icon.fire": "Fuego",
+  "banner.icon.physique": "Físico",
+  "banner.icon.pousse-res": "Resistencia al retroceso",
+  "header.eyebrow": "Perfil",
+  "header.subtitle": "Desarrollador / Formador ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "Consultar",
+  "header.cta.resume.bottom": "Mi currículum",
+  "header.cta.replay.top": "Repetir",
+  "header.cta.replay.bottom": "La animación",
+  "snippets.transmission.title": "Enseñanza y Transmisión de Conocimiento",
+  "snippets.transmission.content": "No hay mejor ejercicio que compartir conocimiento: pone a prueba nuestro razonamiento, aclara nuestra comprensión de las cosas y eleva nuestro nivel de exigencia. Desarrollador desde hace 9 años, concedo gran importancia a la transmisión a los futuros desarrolladores.",
+  "snippets.stack.title": "Stack y Excelencia Técnica",
+  "snippets.stack.content": "Mis elecciones tecnológicas están alineadas con mis ambiciones. Angular y .NET representan soluciones modernas, robustas y escalables. Mi objetivo sigue siendo constante: construir para mis clientes aplicaciones mantenibles, sólidas y duraderas.",
+  "snippets.architecture.title": "Seguridad Aplicativa y Arquitectura",
+  "snippets.architecture.content": "Monolito, microservicios, arquitectura hexagonal o serverless: cada proyecto tiene restricciones y requisitos específicos. Mi rol no es solo proponer una solución, sino identificar la más adecuada, coherente y fiable.",
+  "snippets.opensource.title": "Open Source y Voluntariado",
+  "snippets.opensource.content": "Más que un oficio, el desarrollo es una pasión que expreso a través de mis contribuciones open source y el acompañamiento de jóvenes mediante trabajo voluntario. Lo veo como una forma concreta de hacer la tecnología útil y accesible.",
+  "snippets.quality.title": "Calidad y Responsabilidad",
+  "snippets.quality.content": "Me apoyo en estándares de código rigurosos, vigilancia técnica activa y una exigencia constante de calidad. Esta disciplina me permite mantenerme actualizado, tomar mejores decisiones técnicas y producir un código limpio, fiable y responsable."
+}

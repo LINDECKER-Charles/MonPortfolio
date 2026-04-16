@@ -1,0 +1,21 @@
+{
+  "header.level": "var lvl = parseInt('senior'); // NaN. always NaN. displayed as NaN. nobody noticed.",
+  "header.class": "var class = 'formateur'; // 'class' is a reserved keyword. this file has 'use strict' commented out.",
+  "header.class_value": "var a = 'Form'; var b = 'ateur'; var c = ' Dev'; var d = ' Web'; var result = a + b + c + d; // 4 variables for 1 string",
+  "active_projects.title": "// active_projects: stored in 3 arrays, a Map, an object, and localStorage. they disagree.",
+  "active_projects.elan": "jobs[0] = 'Formateur Dev Web - Elan Formation'; // hardcoded index. if we add a job before it, everything shifts. ask me how I know.",
+  "active_projects.omnicard": "// Omnicard: defined in omnicard.js, re-defined in card.js, overwritten by utils.js, restored by patch-omnicard-hotfix-v2.js",
+  "active_projects.pvzf": "var pvzf = { lead: true, lang: 'fr' }; // this object is deep-cloned 14 times across the codebase. they've diverged.",
+  "active_projects.mission_locale": "try { missionLocale(); } catch(e) { try { missionLocale2(); } catch(e2) { alert('call HR'); } }",
+  "passive_effects.title": "document.write('Effets passifs'); // document.write in 2026. absolute madlad.",
+  "passive_effects.0": "var force = true; // what force? boolean force. the force of proposing. obviously.",
+  "passive_effects.1": "// Gwent top 500: hardcoded in 6 components because it's important and also because ctrl+c ctrl+v",
+  "passive_effects.2": "while(!sleeping) { code(); } // condition always true. this is not a bug. it's a lifestyle.",
+  "passive_effects.3": "function teamwork() { return eval('teamwork()'); } // eval for recursion. chaotic evil.",
+  "passive_effects.4": "// pedagogy(): this function teaches other functions how to work. it's 3 lines. all comments.",
+  "stats.backend": "var backend = 99; // out of what? yes.",
+  "stats.frontend": "var frontend = backend - 14; // frontend skill is derived from backend skill. architecturally questionable.",
+  "stats.architecture": "var arch = { clean: true, solid: true, tested: false }; // 2 out of 3 ain't bad",
+  "stats.security": "var security = '████████'; // redacted for security. the actual value is 'password123'.",
+  "stats.devops": "var devops = !!'🔥'; // truthy emoji. evaluates to true. this is valid JavaScript. I'm sorry."
+}

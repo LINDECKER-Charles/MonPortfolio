@@ -1,0 +1,25 @@
+{
+  "banner.label": "'Hunter Dossier'+['Arch','Transmission','Precision'].join(' | ')",
+  "banner.icon.eso-resist": "resist.type='esoteric'",
+  "banner.icon.fire": "dmg='fire'",
+  "banner.icon.physique": "stat='physical'",
+  "banner.icon.pousse-res": "resist.type='thrust'",
+
+  "header.eyebrow": "/*profile*/void 0",
+  "header.subtitle": "const _r=()=>'Dev/Trainer';_r()+' ASP.NET&Angular&Symfony'",
+  "header.cta.resume.top": "()=>fetch('/resume')",
+  "header.cta.resume.bottom": "this._resume",
+  "header.cta.replay.top": "()=>replay()",
+  "header.cta.replay.bottom": "gsap.timeline().restart()",
+
+  "snippets.transmission.title": "const teach=()=>'Transmission&Teaching'",
+  "snippets.transmission.content": "const best=()=>{share(knowledge);verify(reasoning);raise(standards)};for(let y=0;y<9;y++){exp++}//train next gen devs",
+  "snippets.stack.title": "const stack=()=>'Excellence'",
+  "snippets.stack.content": "const s=['Angular','.NET'];if(s.every(t=>t.modern&&t.robust&&t.scalable))return buildApps({maintainable:!0,solid:!0})",
+  "snippets.architecture.title": "const arch=()=>'Security&Arch'",
+  "snippets.architecture.content": "['monolith','micro','hexa','serverless'].find(a=>a.fits(project))//not just A solution—THE solution",
+  "snippets.opensource.title": "const oss=()=>'OpenSource&Volunteer'",
+  "snippets.opensource.content": "if(dev!=='job'){contribute('oss');mentor('youth');volunteer.flag=!0}//make tech useful&&accessible",
+  "snippets.quality.title": "const q=()=>'Quality&Responsibility'",
+  "snippets.quality.content": "Object.assign(output,{clean:!0,reliable:!0,responsible:!0});setInterval(techWatch,1e3)//strict standards always"
+}

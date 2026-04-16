@@ -8,10 +8,12 @@ import {filter, map, mergeMap} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {Footer} from './components/misc/footer/footer';
 import {NavBarre} from './components/misc/nav-barre/nav-barre';
+import {LangModal} from './components/assets/lang-modal/lang-modal';
+import {TranslationService} from './services/translation.service';
 
 @Component({
   selector: 'app-root',
-  imports: [Loading, StopAllSound, RouterOutlet, Footer, NavBarre],
+  imports: [Loading, StopAllSound, RouterOutlet, Footer, NavBarre, LangModal],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -19,6 +21,7 @@ export class App {
   protected readonly title = signal('front-portfolio');
 
   public audio = inject(AudioService);
+  protected readonly ts = inject(TranslationService);
   constructor() {
     this.audio.registerMany({
       bgMusic: {
