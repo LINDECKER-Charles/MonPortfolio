@@ -35,6 +35,7 @@ export const AVAILABLE_LANGUAGES: Language[] = [
 const NAMESPACES = ['nav-barre', 'home-resume', 'home-projects', 'home-work', 'projects', 'footer', 'construction', 'opening', 'common', 'resum'] as const;
 const DEFAULT_LANG = 'fr';
 const STORAGE_KEY = 'lang';
+const QUERY_PARAM = 'lang';
 
 // { lang: { namespace: { key: value } } }
 type TranslationCache = Map<string, Record<string, Record<string, string>>>;
@@ -71,9 +72,12 @@ export class TranslationService {
   async initialize(): Promise<void> {
     if (!this.isBrowser) return;
 
+    const queryLang = this.getLangFromUrl();
     const stored = localStorage.getItem(STORAGE_KEY);
     const initialLang =
-      stored && AVAILABLE_LANGUAGES.some((l) => l.code === stored) ? stored : DEFAULT_LANG;
+      (queryLang && AVAILABLE_LANGUAGES.some((l) => l.code === queryLang) ? queryLang : null)
+      ?? (stored && AVAILABLE_LANGUAGES.some((l) => l.code === stored) ? stored : null)
+      ?? DEFAULT_LANG;
 
     await this.loadLang(DEFAULT_LANG);
     if (initialLang !== DEFAULT_LANG) {
@@ -81,11 +85,15 @@ export class TranslationService {
     }
     this._lang.set(initialLang);
     this.applyMerge(initialLang);
+    if (this.isBrowser) localStorage.setItem(STORAGE_KEY, initialLang);
   }
 
   setLang(code: string): void {
     if (!AVAILABLE_LANGUAGES.some((l) => l.code === code)) return;
-    if (this.isBrowser) localStorage.setItem(STORAGE_KEY, code);
+    if (this.isBrowser) {
+      localStorage.setItem(STORAGE_KEY, code);
+      this.syncUrlParam(code);
+    }
     void this.loadAndApply(code);
   }
 
@@ -123,6 +131,27 @@ export class TranslationService {
       })
     );
     this.cache.set(lang, result);
+  }
+
+  private getLangFromUrl(): string | null {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(QUERY_PARAM);
+    } catch {
+      return null;
+    }
+  }
+
+  private syncUrlParam(code: string): void {
+    try {
+      const url = new URL(window.location.href);
+      if (code === DEFAULT_LANG) {
+        url.searchParams.delete(QUERY_PARAM);
+      } else {
+        url.searchParams.set(QUERY_PARAM, code);
+      }
+      window.history.replaceState(null, '', url.toString());
+    } catch { /* SSR / security guard */ }
   }
 
   private applyMerge(lang: string): void {
