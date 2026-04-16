@@ -24,6 +24,8 @@ body {
 /* ── BACKGROUNDS D'AMBIANCE ───────────────────────────────────────────────── */
 
 .bg-gradient,
+.bg-moon,
+.bg-mist,
 .bg-glow,
 .bg-noise {
   position: absolute;
@@ -38,6 +40,26 @@ body {
               var(--color-stone-elevated) 60%);
 }
 
+/* Lune implicite — halo froid en haut à droite, rappelle le moonlight */
+.bg-moon {
+  background:
+    radial-gradient(circle at 88% 12%,
+      rgb(142 184 255 / 0.07) 0%,
+      rgb(125 171 255 / 0.035) 18%,
+      transparent 42%);
+}
+
+/* Brume qui dérive — blob radial chaud qui flotte en 40 s */
+.bg-mist {
+  background:
+    radial-gradient(ellipse 60% 40% at 40% 60%,
+      rgb(166 10 10 / 0.06) 0%,
+      rgb(126 100 52 / 0.04) 35%,
+      transparent 70%);
+  animation: mistDrift 40s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
 .bg-glow {
   background: radial-gradient(circle at 50% 50%,
               rgb(226 164 17 / 0.05), transparent 60%);
@@ -45,7 +67,7 @@ body {
 }
 
 .bg-noise {
-  opacity: 0.035;
+  opacity: 0.045;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -60,5 +82,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bg-glow { animation: none; }
+  .bg-glow,
+  .bg-mist {
+    animation: none;
+  }
 }

@@ -17,4 +17,6 @@
 @import './styles/tokens.css';
 @import './styles/motions.css';
 @import './styles/primitives.css';
+@import './styles/ornaments.css';
 @import './styles/utilities.css';
+@import './styles/theatrical.css';

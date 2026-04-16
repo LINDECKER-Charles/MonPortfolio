@@ -64,7 +64,7 @@
   height: 40px;
   display: grid;
   place-items: center;
-  border-radius: 12px;
+  border-radius: var(--radius-pill);
   border: var(--border-ash);
   background: linear-gradient(180deg, rgb(33 36 41 / 0.88), rgb(24 25 28 / 0.92));
   box-shadow: var(--shadow-chip);

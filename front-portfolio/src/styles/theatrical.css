@@ -1,0 +1,142 @@
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  THEATRICAL — Chrome global thématisé : scrollbar, sélection, focus,    ║
+   ║  placeholder, curseur. Ces détails touchent 100 % de l'app et           ║
+   ║  cumulent un énorme effet "Bloodborne" sans coût par composant.          ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
+
+/* ── SÉLECTION DE TEXTE ───────────────────────────────────────────────────── */
+
+::selection {
+  background: rgb(166 10 10 / 0.42);
+  color: var(--color-bone-bright);
+  text-shadow: 0 0 8px rgb(166 10 10 / 0.35);
+}
+
+::-moz-selection {
+  background: rgb(166 10 10 / 0.42);
+  color: var(--color-bone-bright);
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────────────────────────────
+   Piste sombre comme une gaine de cuir, pouce or patiné avec halo
+   rituel au hover. Firefox + WebKit.
+   ──────────────────────────────────────────────────────────────────────── */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(164 148 118 / 0.35) rgb(12 15 19 / 0.6);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background:
+    linear-gradient(180deg, rgb(12 15 19 / 0.8), rgb(6 8 10 / 0.9));
+  border-left: 1px solid rgb(164 148 118 / 0.06);
+}
+
+*::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(180deg, rgb(164 148 118 / 0.4), rgb(126 100 52 / 0.5));
+  border-radius: 999px;
+  border: 2px solid rgb(12 15 19 / 0.9);
+  box-shadow: inset 0 0 0 1px rgb(215 192 154 / 0.08);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(180deg, rgb(215 192 154 / 0.55), rgb(164 148 118 / 0.65));
+  box-shadow:
+    inset 0 0 0 1px rgb(255 248 220 / 0.14),
+    0 0 8px rgb(164 148 118 / 0.3);
+}
+
+*::-webkit-scrollbar-corner {
+  background: rgb(12 15 19 / 0.9);
+}
+
+/* ── FOCUS GLOBAL ─────────────────────────────────────────────────────────
+   Double outline : or patiné sur fond noir, style gravure rituelle.
+   N'écrase PAS les composants qui ont déjà leur propre focus.
+   ──────────────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid rgb(164 148 118 / 0.7);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgb(12 10 8 / 0.9);
+}
+
+/* Désactive le outline standard là où un composant gère déjà son focus */
+.chip:focus-visible,
+.cta-tome:focus-visible,
+button:focus-visible:where(.nav-barre__lang-btn, .sound-button, .collapse-toggle) {
+  outline: 2px solid rgb(164 148 118 / 0.55);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* ── PLACEHOLDERS ─────────────────────────────────────────────────────────
+   Italique EB Garamond, teinte gold-faint — touche manuscrite.
+   ──────────────────────────────────────────────────────────────────────── */
+
+::placeholder {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--color-gold-faint);
+  opacity: 0.65;
+  letter-spacing: 0.02em;
+}
+
+/* ── STACK ICONS ──────────────────────────────────────────────────────────
+   Toutes les icônes de `/icon/stack/` (GitHub, LinkedIn, Angular, .NET,
+   Symfony, Python, Postgre, Mail, Action) sont des logos carrés qu'on
+   veut présenter comme des sceaux circulaires — cohérent avec la DA.
+   Centralisé ici pour que toute future icône du dossier soit automatiquement
+   traitée, sans modifier le composant qui l'affiche.
+   ──────────────────────────────────────────────────────────────────────── */
+
+img[src*="/icon/stack/"],
+picture source[srcset*="/icon/stack/"] + img {
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* ── CURSEURS ──────────────────────────────────────────────────────────────
+   Chrome + Firefox rendent `<button>` avec `cursor: default` par défaut
+   alors que tous nos boutons sont cliquables. On force pointer globalement
+   puis on ré-écrase pour les états disabled.
+   ──────────────────────────────────────────────────────────────────────── */
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+a:not([href]),
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+/* ── ANCRES HORS-COMPOSANTS ───────────────────────────────────────────────
+   Liens inline dans du texte long (paragraphes), style souligné rituel.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.text-tome a,
+.text-tome--drop-cap a {
+  color: var(--color-parchment);
+  text-decoration: underline;
+  text-decoration-color: rgb(164 148 118 / 0.4);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--duration-base) ease,
+              text-decoration-color var(--duration-base) ease;
+}
+
+.text-tome a:hover {
+  color: #fff5ea;
+  text-decoration-color: rgb(166 10 10 / 0.6);
+}

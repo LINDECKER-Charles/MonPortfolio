@@ -124,6 +124,38 @@
   /* Glow ember ponctuel (dots, focus) */
   --glow-ember: 0 0 12px rgb(255 147 77 / 0.75);
 
+  /* ── GRAVURE (text-shadow) ──────────────────────────────────────────────── */
+
+  /* Gravé sur pierre : ombre profonde descendante + filet clair ascendant */
+  --text-shadow-engraved:
+    0 1px 0 rgb(0 0 0 / 0.55),
+    0 -1px 0 rgb(255 248 220 / 0.08);
+
+  --text-shadow-engraved-deep:
+    0 2px 0 rgb(0 0 0 / 0.65),
+    0 -1px 0 rgb(255 248 220 / 0.1),
+    0 0 18px rgb(126 100 52 / 0.16);
+
+  /* Halo rituel pour chair/feu — auréole chaude derrière un titre */
+  --text-shadow-ritual:
+    0 0 20px rgb(166 10 10 / 0.25),
+    0 0 40px rgb(166 10 10 / 0.12);
+
+  /* ── TEXTURES (SVG noise inline) ────────────────────────────────────────── */
+
+  /* Grain de parchemin — à poser en overlay sur les surfaces */
+  --texture-parchment: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.86  0 0 0 0 0.75  0 0 0 0 0.6  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+
+  /* Grain plus rugueux — pierre sombre */
+  --texture-stone: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+
+  /* ── VIGNETTES ──────────────────────────────────────────────────────────── */
+
+  /* Vignette inset — centre lumineux, bords plongés dans l'ombre */
+  --shadow-vignette-soft: inset 0 0 80px rgb(0 0 0 / 0.28);
+  --shadow-vignette-deep: inset 0 0 120px rgb(0 0 0 / 0.45),
+                          inset 0 0 24px rgb(0 0 0 / 0.28);
+
   /* ── OVERLAYS / GRADIENTS ───────────────────────────────────────────────── */
 
   /* Verre de nav — gris-bleuté translucide */

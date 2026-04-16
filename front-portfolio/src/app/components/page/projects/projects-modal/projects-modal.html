@@ -1,6 +1,6 @@
 <div class="projects-modal" (click)="close.emit()">
   <div
-    class="projects-modal__dialog surface-altar"
+    class="projects-modal__dialog surface-crypt surface-crypt--ornate surface-textured"
     role="dialog"
     aria-modal="true"
     aria-labelledby="project-modal-title"
@@ -78,7 +78,7 @@
       <div class="projects-modal__content">
         <div class="projects-modal__header">
           <span class="projects-modal__period text-sigil">{{ formatPeriod() }}</span>
-          <h2 id="project-modal-title" class="text-engraved">{{ project.title }}</h2>
+          <h2 id="project-modal-title" class="text-engraved text-engraved--carved">{{ project.title }}</h2>
         </div>
 
         <div class="projects-modal__group">
@@ -103,7 +103,7 @@
 
         <div class="projects-modal__group">
           <h3 class="text-sigil">{{ ts.translate('projects.modal.description') }}</h3>
-          <p class="text-tome">{{ ts.translate('projects.' + project.id + '.longDescription') }}</p>
+          <p class="text-tome text-tome--drop-cap">{{ ts.translate('projects.' + project.id + '.longDescription') }}</p>
         </div>
 
         @if (project.detail?.lessonsLearned?.length) {
