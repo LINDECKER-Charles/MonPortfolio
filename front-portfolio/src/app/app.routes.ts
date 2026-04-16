@@ -16,7 +16,7 @@ const personSchema = {
   '@id': `${SITE_URL}/#charles-lindecker`,
   name: 'Charles Lindecker',
   url: SITE_URL,
-  image: `${SITE_URL}/photos/480x639_me.jpg`,
+  image: `${SITE_URL}/photos/640x853_me.webp`,
   jobTitle: 'Developpeur Full Stack',
   knowsAbout: [
     '.NET',

@@ -12,10 +12,13 @@ const ICON_SIZES = [
 ] as const;
 
 const PHOTO_SIZES = [
-  { filePrefix: '160x213_', width: 160 },
   { filePrefix: '320x426_', width: 320 },
-  { filePrefix: '480x639_', width: 480 },
+  { filePrefix: '480x640_', width: 480 },
   { filePrefix: '640x853_', width: 640 },
+  { filePrefix: '768x1024_', width: 768 },
+  { filePrefix: '1024x1365_', width: 1024 },
+  { filePrefix: '1280x1706_', width: 1280 },
+  { filePrefix: '1536x2048_', width: 1536 },
 ] as const;
 
 function buildWebpSources(
@@ -28,19 +31,6 @@ function buildWebpSources(
     width,
     maxWidth,
     type: 'image/webp',
-  }));
-}
-
-function buildJpgSources(
-  pathPrefix: string,
-  baseName: string,
-  sizes: ReadonlyArray<{ filePrefix: string; width?: number; maxWidth?: number }>
-): ResponsiveSource[] {
-  return sizes.map(({ filePrefix, width, maxWidth }) => ({
-    src: `${pathPrefix}/${filePrefix}${baseName}.jpg`,
-    width,
-    maxWidth,
-    type: 'image/jpeg',
   }));
 }
 
@@ -69,10 +59,7 @@ export function createLogoSet(name: string): ResponsiveImageSet {
 }
 
 export function createPhotoSet(name: string): ResponsiveImageSet {
-  return {
-    sources: buildJpgSources('/photos', name, PHOTO_SIZES),
-    fallbackSrc: `/photos/480x639_${name}.jpg`,
-  };
+  return createWebpImageSet('/photos', name, PHOTO_SIZES, '640x853_');
 }
 
 export const SHARED_IMAGES = {
