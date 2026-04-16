@@ -3,11 +3,13 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   Inject,
   PLATFORM_ID,
   QueryList,
   ViewChildren,
 } from '@angular/core';
+import { TranslationService } from '../../../../../../services/translation.service';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import {
@@ -33,6 +35,8 @@ interface HomeResumeSnippetState {
   styleUrl: './home-resume-snippets.css',
 })
 export class HomeResumeSnippets implements AfterViewInit {
+  protected readonly ts = inject(TranslationService);
+
   snippets: HomeResumeSnippetState[] = [
     {
       id: 'transmission',

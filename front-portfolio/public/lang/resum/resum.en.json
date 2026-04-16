@@ -1,0 +1,21 @@
+{
+  "header.level": "Level",
+  "header.class": "Class",
+  "header.class_value": "Web Dev Trainer",
+  "active_projects.title": "Active projects",
+  "active_projects.elan": "Web Development Trainer — Elan Formation",
+  "active_projects.omnicard": "Omnicard Project",
+  "active_projects.pvzf": "French Branch Lead — PVZ Fusion",
+  "active_projects.mission_locale": "Speaker — Mission Locale",
+  "passive_effects.title": "Passive effects",
+  "passive_effects.0": "Proactive problem-solver",
+  "passive_effects.1": "Former World Top 500 on Gwent",
+  "passive_effects.2": "Doesn't know what sleep is",
+  "passive_effects.3": "Coordination and teamwork",
+  "passive_effects.4": "Teaching",
+  "stats.backend": "Backend",
+  "stats.frontend": "Frontend",
+  "stats.architecture": "Architecture",
+  "stats.security": "Security",
+  "stats.devops": "DevOps"
+}

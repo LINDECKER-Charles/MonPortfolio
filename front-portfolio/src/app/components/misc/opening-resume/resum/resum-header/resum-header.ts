@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateResumRowHoverIn,
@@ -12,6 +12,7 @@ import {
 } from './resum-header.animations';
 import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
 import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on-click.directive';
+import { TranslationService } from '../../../../../services/translation.service';
 
 @Component({
   selector: 'app-resum-header',
@@ -20,6 +21,7 @@ import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on
   styleUrl: './resum-header.css',
 })
 export class ResumHeader extends ResumEntryAnimation {
+  protected readonly ts = inject(TranslationService);
   @Input({ required: true }) images!: any;
   protected readonly animationSelectors = '.title, .row';
   protected override animationDelay = 0.05;

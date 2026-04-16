@@ -1,0 +1,21 @@
+{
+  "header.level": "Уровень",
+  "header.class": "Класс",
+  "header.class_value": "Тренер по веб-разработке",
+  "active_projects.title": "Активные проекты",
+  "active_projects.elan": "Тренер по веб-разработке — Elan Formation",
+  "active_projects.omnicard": "Проект Omnicard",
+  "active_projects.pvzf": "Руководитель франкоязычного отдела — PVZ Fusion",
+  "active_projects.mission_locale": "Спикер — Mission Locale",
+  "passive_effects.title": "Пассивные эффекты",
+  "passive_effects.0": "Инициативность",
+  "passive_effects.1": "Бывший топ-500 мира в Gwent",
+  "passive_effects.2": "Не знает, что такое сон",
+  "passive_effects.3": "Координация и командная работа",
+  "passive_effects.4": "Педагогика",
+  "stats.backend": "Backend",
+  "stats.frontend": "Frontend",
+  "stats.architecture": "Архитектура",
+  "stats.security": "Безопасность",
+  "stats.devops": "DevOps"
+}

@@ -5,6 +5,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  inject,
   Inject,
   Input,
   Output,
@@ -17,6 +18,7 @@ import {
   ProjectFilterItem,
   ProjectFiltersState,
 } from '../projects.state';
+import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'app-projects-filter',
@@ -25,6 +27,7 @@ import {
   styleUrl: './projects-filter.css',
 })
 export class ProjectsFilter implements AfterViewInit {
+  protected readonly ts = inject(TranslationService);
   @Input({ required: true }) filters: ProjectFilterItem[] = [];
   @Input({ required: true }) filtersState!: ProjectFiltersState;
   @Input({ required: true }) availableTags: string[] = [];

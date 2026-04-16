@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateResumRowHoverIn,
   animateResumRowHoverOut,
 } from '../resum-row-hover.animations';
 import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
+import { TranslationService } from '../../../../../services/translation.service';
 
 @Component({
   selector: 'app-resum-stats',
@@ -13,6 +14,7 @@ import {ResponsivePicture} from '../../../../assets/responsive-picture/responsiv
   styleUrl: './resum-stats.css',
 })
 export class ResumStats extends ResumEntryAnimation {
+  protected readonly ts = inject(TranslationService);
   @Input({ required: true }) images!: any;
   protected readonly animationSelectors = '.row';
   protected override animationDelay = 0.18;

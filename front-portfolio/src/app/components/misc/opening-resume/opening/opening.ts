@@ -26,6 +26,7 @@ import {
 import {AudioService} from '../../../../services/audio-service';
 import {ResponsivePicture} from '../../../assets/responsive-picture/responsive-picture';
 import {OPENING_FALLBACK_SRC, OPENING_SOURCES} from '../../../../img-sources/opening.sources';
+import {TranslationService} from '../../../../services/translation.service';
 
 @Component({
   selector: 'app-opening',
@@ -36,6 +37,7 @@ import {OPENING_FALLBACK_SRC, OPENING_SOURCES} from '../../../../img-sources/ope
 export class Opening implements AfterViewInit, OnDestroy {
   private readonly audioService = inject(AudioService);
   private readonly animationService = inject(OpeningAnimationService);
+  protected readonly ts = inject(TranslationService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 

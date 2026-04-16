@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   Inject,
   PLATFORM_ID,
   ViewChild,
@@ -15,6 +16,7 @@ import {
   ResponsiveSource,
 } from '../../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../../img-sources/shared.sources';
+import {TranslationService} from '../../../../services/translation.service';
 
 interface CtaIconSet {
   sources: ResponsiveSource[];
@@ -29,6 +31,8 @@ interface CtaIconSet {
   styleUrl: './home-projects.css',
 })
 export class HomeProjects implements AfterViewInit {
+  protected readonly ts = inject(TranslationService);
+
   @ViewChild('ctaBlock') private ctaBlockRef?: ElementRef<HTMLElement>;
 
   private readonly isBrowser: boolean;

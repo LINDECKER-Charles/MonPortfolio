@@ -1,24 +1,20 @@
 <div class="app-root">
 
+  <!-- Background (z-index: --z-bg = -1, derrière tout) -->
+  <div class="bg-gradient"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-noise"></div>
+
+  <!-- Navigation (z-index: --z-nav via sticky) -->
   @if (showFooter()) {
     <div class="app-layer">
       <app-nav-barre></app-nav-barre>
     </div>
   }
 
-  <!-- Background -->
-  <div class="bg-gradient"></div>
-  <div class="bg-glow"></div>
-  <div class="bg-noise"></div>
-
-  <!-- Main content -->
+  <!-- Contenu principal -->
   <div class="app-layer">
     <router-outlet></router-outlet>
-  </div>
-
-  <!-- Loading overlay -->
-  <div class="app-layer overlay">
-    <app-loading></app-loading>
   </div>
 
   @if (showFooter()) {
@@ -27,11 +23,15 @@
     </div>
   }
 
-  <!-- Sound UI -->
+  <!-- Overlays globaux : tous fixed, z-index défini par l'échelle CSS -->
+  <app-loading></app-loading>
+
   @if (audio.isAnythingPlaying()) {
-    <div class="app-layer ui-overlay">
-      <app-stop-all-sound></app-stop-all-sound>
-    </div>
+    <app-stop-all-sound></app-stop-all-sound>
+  }
+
+  @if (ts.isLangModalOpen()) {
+    <app-lang-modal (close)="ts.closeModal()" />
   }
 
 </div>

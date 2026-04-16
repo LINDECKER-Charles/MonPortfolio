@@ -1,0 +1,23 @@
+{
+  "banner.label": "Fascicolo del Cacciatore · Architettura · Trasmissione · Precisione",
+  "banner.icon.eso-resist": "Resistenza esoterica",
+  "banner.icon.fire": "Fuoco",
+  "banner.icon.physique": "Fisico",
+  "banner.icon.pousse-res": "Resistenza al contraccolpo",
+  "header.eyebrow": "Profilo",
+  "header.subtitle": "Sviluppatore / Formatore ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "Consultare",
+  "header.cta.resume.bottom": "Il mio CV",
+  "header.cta.replay.top": "Ripetere",
+  "header.cta.replay.bottom": "L'animazione",
+  "snippets.transmission.title": "Insegnamento & Trasmissione del Sapere",
+  "snippets.transmission.content": "Non esiste esercizio migliore della condivisione della conoscenza: mette alla prova il nostro ragionamento, chiarisce la nostra comprensione delle cose e alza il nostro livello di esigenza. Sviluppatore da 9 anni, attribuisco grande importanza alla trasmissione ai futuri sviluppatori.",
+  "snippets.stack.title": "Stack & Eccellenza Tecnica",
+  "snippets.stack.content": "Le mie scelte tecnologiche sono in linea con le mie ambizioni. Angular e .NET rappresentano soluzioni moderne, robuste e scalabili. Il mio obiettivo resta costante: costruire per i miei clienti applicazioni manutenibili, solide e durature.",
+  "snippets.architecture.title": "Sicurezza Applicativa & Architettura",
+  "snippets.architecture.content": "Monolite, microservizi, architettura esagonale o serverless: ogni progetto ha vincoli e requisiti specifici. Il mio ruolo non è solo proporre una soluzione, ma identificare quella più adatta, coerente e affidabile.",
+  "snippets.opensource.title": "Open Source & Volontariato",
+  "snippets.opensource.content": "Più che un mestiere, lo sviluppo è una passione che esprimo attraverso i miei contributi open source e l'accompagnamento dei giovani nel volontariato. Lo considero un modo concreto per rendere la tecnologia utile e accessibile.",
+  "snippets.quality.title": "Qualità & Responsabilità",
+  "snippets.quality.content": "Mi affido a standard di codice rigorosi, vigilanza tecnica attiva e un'esigenza costante di qualità. Questa disciplina mi permette di restare aggiornato, prendere migliori decisioni tecniche e produrre codice pulito, affidabile e responsabile."
+}

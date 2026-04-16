@@ -1,8 +1,8 @@
 :host {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 40;
+  z-index: var(--z-float);
   pointer-events: auto;
   display: block;
 }

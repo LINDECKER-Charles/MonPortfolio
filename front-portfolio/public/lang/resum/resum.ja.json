@@ -1,0 +1,21 @@
+{
+  "header.level": "レベル",
+  "header.class": "クラス",
+  "header.class_value": "Web開発トレーナー",
+  "active_projects.title": "アクティブプロジェクト",
+  "active_projects.elan": "Web開発トレーナー — Elan Formation",
+  "active_projects.omnicard": "Omnicard プロジェクト",
+  "active_projects.pvzf": "フランス語圏リーダー — PVZ Fusion",
+  "active_projects.mission_locale": "講演者 — Mission Locale",
+  "passive_effects.title": "パッシブエフェクト",
+  "passive_effects.0": "提案力",
+  "passive_effects.1": "Gwent 元世界トップ500",
+  "passive_effects.2": "睡眠を知らない",
+  "passive_effects.3": "調整力とチームワーク",
+  "passive_effects.4": "教育力",
+  "stats.backend": "Backend",
+  "stats.frontend": "Frontend",
+  "stats.architecture": "Architecture",
+  "stats.security": "セキュリティ",
+  "stats.devops": "DevOps"
+}

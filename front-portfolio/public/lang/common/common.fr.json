@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "Sélection de la langue",
+  "lang_modal.close": "Fermer",
+  "lang_modal.title": "— Langue —",
+  "audio.show": "Afficher les contrôles audio",
+  "audio.hide": "Masquer les contrôles audio",
+  "audio.toggle": "Couper ou réactiver le son",
+  "audio.volume": "Régler le volume",
+  "lightbox.aria": "Aperçu plein écran",
+  "lightbox.close": "Fermer l'aperçu plein écran",
+  "lightbox.previous": "Image précédente",
+  "lightbox.next": "Image suivante",
+  "nav.role": "Développeur / Formateur",
+  "nav.aria": "Navigation principale",
+  "photo.alt": "Portrait de Charles Lindecker",
+  "photo.developer": "Développeur",
+  "photo.trainer": "Formateur"
+}

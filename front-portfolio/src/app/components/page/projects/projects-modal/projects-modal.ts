@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, SecurityContext } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, SecurityContext } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ImageLightbox } from '../../../assets/image-lightbox/image-lightbox';
 import {
@@ -9,6 +9,7 @@ import {
 import { SHARED_IMAGES } from '../../../../img-sources/shared.sources';
 import { ProjectItem } from '../projects.state';
 import { formatProjectPeriod } from '../projects.utils';
+import { TranslationService } from '../../../../services/translation.service';
 
 interface ProjectIconSet {
   sources: ResponsiveSource[];
@@ -23,6 +24,8 @@ interface ProjectIconSet {
   styleUrl: './projects-modal.css',
 })
 export class ProjectsModal {
+  protected readonly ts = inject(TranslationService);
+
   @Input({ required: true }) project!: ProjectItem;
   @Input() currentImageIndex = 0;
   @Output() close = new EventEmitter<void>();
@@ -59,7 +62,7 @@ export class ProjectsModal {
   }
 
   protected formatPeriod(): string {
-    return formatProjectPeriod(this.project);
+    return formatProjectPeriod(this.project, this.ts.lang(), this.ts.translate('projects.today'));
   }
 
   protected openImageLightbox(): void {

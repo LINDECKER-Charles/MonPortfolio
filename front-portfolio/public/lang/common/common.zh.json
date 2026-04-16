@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "语言选择",
+  "lang_modal.close": "关闭",
+  "lang_modal.title": "— 语言 —",
+  "audio.show": "显示音频控制",
+  "audio.hide": "隐藏音频控制",
+  "audio.toggle": "静音或取消静音",
+  "audio.volume": "调节音量",
+  "lightbox.aria": "全屏预览",
+  "lightbox.close": "关闭全屏预览",
+  "lightbox.previous": "上一张图片",
+  "lightbox.next": "下一张图片",
+  "nav.role": "开发者 / 培训师",
+  "nav.aria": "主导航",
+  "photo.alt": "Charles Lindecker的肖像",
+  "photo.developer": "开发者",
+  "photo.trainer": "培训师"
+}

@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  inject,
   Inject,
   Input,
   PLATFORM_ID,
@@ -11,6 +12,7 @@ import {
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import {ResponsivePicture, ResponsiveSource} from '../../../../../assets/responsive-picture/responsive-picture';
+import { TranslationService } from '../../../../../../services/translation.service';
 
 @Component({
   selector: 'app-home-resume-photo',
@@ -19,6 +21,7 @@ import {ResponsivePicture, ResponsiveSource} from '../../../../../assets/respons
   styleUrl: './home-resume-photo.css',
 })
 export class HomeResumePhoto implements AfterViewInit {
+  protected readonly ts = inject(TranslationService);
   @Input({ required: true }) photoSources: ResponsiveSource[] = [];
   @Input({ required: true }) photoFallback = '';
 

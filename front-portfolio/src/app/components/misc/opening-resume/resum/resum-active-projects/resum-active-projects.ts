@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateProjectHoverIn,
@@ -8,6 +8,7 @@ import {
 } from './resum-active-projects.animations';
 import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
 import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on-click.directive';
+import { TranslationService } from '../../../../../services/translation.service';
 
 @Component({
   selector: 'app-resum-active-projects',
@@ -16,6 +17,7 @@ import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on
   styleUrl: './resum-active-projects.css',
 })
 export class ResumActiveProjects extends ResumEntryAnimation {
+  protected readonly ts = inject(TranslationService);
   @Input({ required: true }) images!: any;
   protected readonly animationSelectors = '.section-title, .project-list li';
   protected override animationDelay = 0.34;

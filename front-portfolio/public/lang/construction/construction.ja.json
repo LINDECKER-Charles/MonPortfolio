@@ -1,0 +1,20 @@
+{
+  "badge": "キャリアページ準備中",
+  "eyebrow": "仮セクション",
+  "title": "このページは現在構築中です。",
+  "lead": "より充実したキャリア紹介ページを準備しています。実際の時系列に沿った構成、重要な転機、そしてより洗練されたプレゼンテーションを予定しています。",
+  "cta.projects": "プロジェクトを見る",
+  "cta.home": "ホームに戻る",
+  "status.aria": "構築状況",
+  "status.title": "進捗状況",
+  "status.value": "デザイン進行中",
+  "status.structure": "構造",
+  "status.visual": "ビジュアル方針",
+  "status.content": "コンテンツの精査",
+  "pillar.roadmap.title": "キャリアの物語",
+  "pillar.roadmap.description": "自分の成長をより明確に伝えるために、実際のマイルストーン、転換点、重要なプロジェクトを整理しています。",
+  "pillar.craft.title": "より洗練されたプレゼンテーション",
+  "pillar.craft.description": "より力強い演出、より洗練されたインタラクション、より安定したモバイル表示を備えたページになる予定です。",
+  "pillar.launch.title": "近日公開",
+  "pillar.launch.description": "構造の最終調整を行っています。それまでの間、プロジェクトページをご覧いただくか、ホームページにお戻りください。"
+}

@@ -1,0 +1,23 @@
+{
+  "banner.label": "Jägerakte · Architektur · Weitergabe · Präzision",
+  "banner.icon.eso-resist": "Esoterischer Widerstand",
+  "banner.icon.fire": "Feuer",
+  "banner.icon.physique": "Physik",
+  "banner.icon.pousse-res": "Rückstoßwiderstand",
+  "header.eyebrow": "Profil",
+  "header.subtitle": "Entwickler / Trainer ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "Ansehen",
+  "header.cta.resume.bottom": "Mein Lebenslauf",
+  "header.cta.replay.top": "Wiederholen",
+  "header.cta.replay.bottom": "Die Animation",
+  "snippets.transmission.title": "Lehre & Wissensweitergabe",
+  "snippets.transmission.content": "Es gibt keine bessere Übung als Wissen zu teilen: Es prüft unser Denken, klärt unser Verständnis und hebt unser Anspruchsniveau. Seit 9 Jahren Entwickler, lege ich großen Wert auf die Weitergabe an zukünftige Entwickler.",
+  "snippets.stack.title": "Stack & Technische Exzellenz",
+  "snippets.stack.content": "Meine Technologieentscheidungen stimmen mit meinen Ambitionen überein. Angular und .NET stehen für moderne, robuste und skalierbare Lösungen. Mein Ziel bleibt konstant: wartbare, solide und nachhaltige Anwendungen für meine Kunden zu entwickeln.",
+  "snippets.architecture.title": "Anwendungssicherheit & Architektur",
+  "snippets.architecture.content": "Monolith, Microservices, hexagonale Architektur oder Serverless: Jedes Projekt hat spezifische Einschränkungen und Anforderungen. Meine Rolle ist nicht nur eine Lösung vorzuschlagen, sondern die geeignetste, kohärenteste und zuverlässigste zu identifizieren.",
+  "snippets.opensource.title": "Open Source & Ehrenamt",
+  "snippets.opensource.content": "Mehr als ein Beruf ist Entwicklung eine Leidenschaft, die ich durch Open-Source-Beiträge und die Betreuung junger Menschen im Rahmen ehrenamtlicher Arbeit ausdrücke. Ich sehe darin eine konkrete Möglichkeit, Technologie nützlich und zugänglich zu machen.",
+  "snippets.quality.title": "Qualität & Verantwortung",
+  "snippets.quality.content": "Ich stütze mich auf rigorose Code-Standards, aktive technische Beobachtung und eine konstante Qualitätsanforderung. Diese Disziplin ermöglicht es mir, aktuell zu bleiben, bessere technische Entscheidungen zu treffen und sauberen, zuverlässigen und verantwortungsvollen Code zu produzieren."
+}

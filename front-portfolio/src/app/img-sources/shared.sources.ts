@@ -87,6 +87,7 @@ export const SHARED_IMAGES = {
     pousseRes: createIconSet('pousse_res'),
     dex: createIconSet('dex'),
     eso: createIconSet('eso'),
+    hearth: createIconSet('hearth'),
   },
   stack: {
     action: createStackIconSet('action'),
