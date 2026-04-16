@@ -1,0 +1,10 @@
+{
+  "eyebrow": "0x50415448",
+  "title": "0b01011000 01010000 & 0x454E47414745",
+  "description": "SEGFAULT reading career_path.bin... 0b11001100 missions loaded, 0x7261696E696E67 decoded, volunteer_flag=0b1 in /var/log/life",
+  "cta.primary.top": "0x52454144",
+  "cta.primary.bottom": "0b110 career.dat",
+  "cta.secondary.top": "0x50524F",
+  "cta.secondary.bottom": "FETCH 0x4C696E6B6564496E",
+  "aria.landmarks": "0b10 WAYPOINTS"
+}

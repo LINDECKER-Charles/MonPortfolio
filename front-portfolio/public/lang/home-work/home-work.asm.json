@@ -1,0 +1,10 @@
+{
+  "eyebrow": "MOV SI, PATH",
+  "title": "PUSH experience; PUSH engagement; RET",
+  "description": "LEA DI, [career]; CALL load_missions; CALL load_training; OR AX, volunteer_bit; CMP dedication, MAX_INT; JGE impressive",
+  "cta.primary.top": "CALL consult",
+  "cta.primary.bottom": "LEA BX, my_path",
+  "cta.secondary.top": "MOV CX, PRO",
+  "cta.secondary.bottom": "JMP linkedin_addr",
+  "aria.landmarks": "INT 0x13 ; WAYPOINTS"
+}

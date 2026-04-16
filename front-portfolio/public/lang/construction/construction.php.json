@@ -1,0 +1,20 @@
+{
+  "badge": "<?php header('X-Status: under-construction'); // geocities energy ?>",
+  "eyebrow": "$section = 'temporaire'; // since 2014",
+  "title": "die('Cette page est en cours de construction.'); // graceful, right?",
+  "lead": "<?php /* I'll finish this page when I finish migrating from PHP 4. So... never. The mysql_* functions are deprecated but they still work so why fix what ain't broken? register_globals is ON btw. */ ?>",
+  "cta.projects": "header('Location: projets.php'); exit; // the OG redirect",
+  "cta.home": "header('Location: index.php'); // there are 4 index.php files. good luck.",
+  "status.aria": "<!-- accessibility? in MY PHP 4? (it's less likely than you think) -->",
+  "status.title": "echo '<blink>Status</blink>'; // yes blink tag",
+  "status.value": "$status = 'en cours'; // assigned to $status since 2009, never read",
+  "status.structure": "include('structure.inc'); // no one knows where this file is",
+  "status.visual": "$css = 'style.css'; // there are also style2.css, style_old.css, style_FINAL.css",
+  "status.content": "mysql_query('UPDATE content SET status=\"affinement\" WHERE 1=1'); // yes, WHERE 1=1",
+  "pillar.roadmap.title": "// Roadmap (file: roadmap_v2_final_FINAL_useThisOne.php)",
+  "pillar.roadmap.description": "<?php $plan = fopen('roadmap.txt','r'); // file doesn't exist but error_reporting is OFF so we'll never know ?>",
+  "pillar.craft.title": "$presentation = new stdClass(); // typed? never heard of her",
+  "pillar.craft.description": "<?php echo '<table><tr><td><table><tr><td>'; // nested tables for layout, as god intended ?>",
+  "pillar.launch.title": "exec('rm -rf /tmp/launch_date'); // cleanup before launch lol",
+  "pillar.launch.description": "<?php // Deploy process: FTP upload to production at 5pm on Friday. What could go wrong? // Last deploy broke: sessions, uploads, and somehow the CEO's email. ?>"
+}

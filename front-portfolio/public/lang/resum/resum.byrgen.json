@@ -1,0 +1,21 @@
+{
+  "header.level": "Gradus Insight",
+  "header.class": "Classis",
+  "header.class_value": "Magister Codex Byrgenwerth",
+  "active_projects.title": "Investigationes activae",
+  "active_projects.elan": "Magister Ecclesiae — Elan Formatio Sanguinis",
+  "active_projects.omnicard": "Experimentum Omnicard",
+  "active_projects.pvzf": "Praefectus Gallicus — PVZ Fusion Translatio",
+  "active_projects.mission_locale": "Orator — Missio Localis Ecclesiae",
+  "passive_effects.title": "Effectus passivi (Blood Gems)",
+  "passive_effects.0": "Solutio problematum proactiva per Insight",
+  "passive_effects.1": "Olim Top 500 Mundialis in Gwent (Insight abundans)",
+  "passive_effects.2": "Nescit quid sit somnus (Blood-drunk Scholar)",
+  "passive_effects.3": "Coordinatio et cooperatio per Old Blood",
+  "passive_effects.4": "Transmissio sapientiae ut Choir Ecclesiae",
+  "stats.backend": "Vis Sanguinis (Backend)",
+  "stats.frontend": "Arcana Visio (Frontend)",
+  "stats.architecture": "Architectura Hexagonalis",
+  "stats.security": "Securitas Ecclesiae",
+  "stats.devops": "Alchimia Operationalis (DevOps)"
+}

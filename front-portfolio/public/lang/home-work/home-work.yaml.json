@@ -1,0 +1,10 @@
+{
+  "eyebrow": "section: parcours",
+  "title": "experience:\n  engagement: true  # mandatory",
+  "description": "# This section is NOT optional\nparcours:\n  formations: true\n  experiences: true\n  volunteer: yes_really",
+  "cta.primary.top": "action: consult",
+  "cta.primary.bottom": "target: mon_parcours  # no tabs allowed",
+  "cta.secondary.top": "type: professional",
+  "cta.secondary.bottom": "redirect: linkedin  # fingers crossed",
+  "aria.landmarks": "landmarks:\n  - here  # you are here"
+}

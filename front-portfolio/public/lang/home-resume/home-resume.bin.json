@@ -1,0 +1,25 @@
+{
+  "banner.label": "0x444F5353494552 du Chasseur -- 0b01000001 ARCH -- 0x545258 -- 0b01010000 PRECISION",
+  "banner.icon.eso-resist": "0b11001100 ESO_RESIST",
+  "banner.icon.fire": "0xFF FIRE_DMG",
+  "banner.icon.physique": "0x50485953",
+  "banner.icon.pousse-res": "0b01001000 HIT_RESIST",
+
+  "header.eyebrow": "0x50524F46494C",
+  "header.subtitle": "0b01000100 01000101 01010110 / 0x545241494E — ASP.NET & Angular & Symfony",
+  "header.cta.resume.top": "0x52454144",
+  "header.cta.resume.bottom": "resume.bin",
+  "header.cta.replay.top": "0b01010010 RESTART",
+  "header.cta.replay.bottom": "anim_sequence.dat",
+
+  "snippets.transmission.title": "0x545258 & 0b01010100 TEACH",
+  "snippets.transmission.content": "BEST_PRACTICE = SHARE_KNOWLEDGE; while(teaching){clarity++; reasoning.verify(); standards.raise()} — 0b1001 years DEV_EXP loaded, transmission_priority_flag=0xFF for next_gen_developers.bin",
+  "snippets.stack.title": "0x535441434B & 0b01010100 EXCELLENCE",
+  "snippets.stack.content": "STACK_SELECT aligned with 0xFF AMBITION — Angular.dll + .NET.exe = MODERN | ROBUST | SCALABLE; target: MAINTAINABLE && SOLID && 0b11111111 PERENNIAL apps for client_segment",
+  "snippets.architecture.title": "0x534543 & 0b01000001 ARCH",
+  "snippets.architecture.content": "SWITCH(arch_type){case 0x4D4F4E4F: break; case 0x4D494352: break; case 0x48455841: break; case 0x534552: break;} — IDENTIFY best_solution WHERE coherent=TRUE AND reliable=0xFF",
+  "snippets.opensource.title": "0b01001111 OPEN_SRC & 0x56",
+  "snippets.opensource.content": "DEV != JUST_JOB; DEV = PASSION.exe — CONTRIBUTING to open_source.git AND mentoring youth.bin via volunteer_missions; tech.makeUseful() && tech.makeAccessible()",
+  "snippets.quality.title": "0x5155414C & 0b01010010 RESPONSIBILITY",
+  "snippets.quality.content": "STANDARDS = STRICT; tech_watch.status = ACTIVE; quality.demand = CONSTANT; OUTPUT: clean_code && reliable_code && responsible_code — ALWAYS_UP_TO_DATE_FLAG = 0b1"
+}

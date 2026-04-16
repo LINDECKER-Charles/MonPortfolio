@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "document.querySelector('#lang-modal')",
+  "lang_modal.close": "modal.close()",
+  "lang_modal.title": "--lang--",
+  "audio.show": "$audio.style.display=''",
+  "audio.hide": "$audio.style.display='none'",
+  "audio.toggle": "audio.muted=!audio.muted",
+  "audio.volume": "audio.volume=parseFloat(el.value)",
+  "lightbox.aria": "new Lightbox().open()",
+  "lightbox.close": "lightbox.destroy()",
+  "lightbox.previous": "idx=(idx-1+n)%n",
+  "lightbox.next": "idx=(idx+1)%n",
+  "nav.role": "const _r='Dev/Trainer'",
+  "nav.aria": "$('#main-nav')[0]",
+  "photo.alt": "'Portrait:'+name",
+  "photo.developer": "typeof dev",
+  "photo.trainer": "class{teach(){}}"
+}

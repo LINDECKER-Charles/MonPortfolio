@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "LABEL accessibility.modal=\"lang-selector\"",
+  "lang_modal.close": "docker stop lang-modal # close = stop, obviously",
+  "lang_modal.title": "ENV MODAL_TITLE=\"--- Language ---\"",
+  "audio.show": "docker exec audio-service sh -c 'echo show > /proc/1/fd/1'",
+  "audio.hide": "docker exec audio-service kill -STOP 1 # pause = hide, right?",
+  "audio.toggle": "docker pause audio-service || docker unpause audio-service",
+  "audio.volume": "docker update --cpus=0.5 audio-service # less CPU = quieter, trust me",
+  "lightbox.aria": "docker run -d --name lightbox --privileged=true fullscreen:latest # privileged for fullscreen",
+  "lightbox.close": "docker rm -f lightbox # with prejudice",
+  "lightbox.previous": "docker rollback lightbox --image previous:tag",
+  "lightbox.next": "docker pull lightbox:next && docker service update --image next lightbox",
+  "nav.role": "FROM developer:senior AS formateur\nLABEL role=\"fullstack\"",
+  "nav.aria": "# navigation: handled by docker-compose service discovery",
+  "photo.alt": "COPY charles.jpg /app/public/ # alt text stored in image EXIF (it's not)",
+  "photo.developer": "docker inspect developer --format '{{.Config.Labels.role}}'",
+  "photo.trainer": "docker tag developer:latest formateur:latest # same person, different hat"
+}

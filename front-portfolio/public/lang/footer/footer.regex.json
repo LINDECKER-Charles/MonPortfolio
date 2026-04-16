@@ -1,0 +1,11 @@
+{
+  "subtitle": "/d[eé]v(elop+[eè]ur)?\\s*\\/\\s*form(ateur|er)\\s+ASP\\.NET\\s*&\\s*Angular\\s*&\\s*Symfony/i",
+  "nav.home": "/^(accueil|home)$/i",
+  "nav.resume": "/r[eé]sum[eé]?/i",
+  "nav.projects": "/pr[oO]j(ect|et)s?/g",
+  "nav.work": "/parc[o0]urs|w[o0]rk/i",
+  "copyright": "/©\\s*20\\d{2}\\s+Charles\\s+L\\.?/",
+  "made_with": "/(?:built|made|conçu)\\s+(?:with|avec)\\s+Angular/i",
+  "aria.nav": "/nav(igation)?\\s+(du\\s+)?footer/i",
+  "aria.socials": "/li[ea]ns?\\s+ext(ern(es|al))?/i"
+}

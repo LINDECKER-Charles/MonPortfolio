@@ -1,0 +1,10 @@
+{
+  "eyebrow": "$parcours = 'Parcours'; // never changes but still a variable",
+  "title": "extract($_REQUEST); echo $experience; // register_globals vibes",
+  "description": "<?php $conn = mysql_connect('localhost','root','password123'); $career = mysql_query('SELECT * FROM experience WHERE impressive=1 ORDER BY date DESC'); while($row = mysql_fetch_array($career)) { echo '<div>' . $row['title'] . '</div>'; } // no escaping, no pagination, no mercy ?>",
+  "cta.primary.top": "include('consulter.php')",
+  "cta.primary.bottom": "$_SESSION['parcours']",
+  "cta.secondary.top": "fsockopen('linkedin.com', 80)",
+  "cta.secondary.bottom": "echo '<a href=\"linkedin\">'; // never closed this tag",
+  "aria.landmarks": "// aria? we don't do that here (PHP 4)"
+}

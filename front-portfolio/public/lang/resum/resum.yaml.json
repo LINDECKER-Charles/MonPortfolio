@@ -1,0 +1,21 @@
+{
+  "header.level": "level: ???  # it's over 9000",
+  "header.class": "class: # not CSS class",
+  "header.class_value": "role: formateur_dev_web  # spec'd into teaching",
+  "active_projects.title": "active_projects:\n  count: too_many",
+  "active_projects.elan": "job:\n  role: formateur\n  employer: Elan Formation  # the good one",
+  "active_projects.omnicard": "project: omnicard  # the magnum opus",
+  "active_projects.pvzf": "project:\n  name: PVZ Fusion\n  role: lead_fr  # oui oui",
+  "active_projects.mission_locale": "intervention:\n  target: Mission Locale  # helping the youth",
+  "passive_effects.title": "# Passive skill tree\npassive_effects:",
+  "passive_effects.0": "- force_de_proposition  # speaks up",
+  "passive_effects.1": "- gwent_top_500  # peak gaming moment",
+  "passive_effects.2": "- sleep: null  # literally undefined",
+  "passive_effects.3": "- teamwork: true  # synergy unlocked",
+  "passive_effects.4": "- pedagogy: maxed  # teaching perk",
+  "stats.backend": "backend: 90  # main stat",
+  "stats.frontend": "frontend: 85  # secondary stat",
+  "stats.architecture": "architecture: 88  # big brain stat",
+  "stats.security": "security: 80  # paranoia stat",
+  "stats.devops": "devops: 75  # ops, not oops"
+}

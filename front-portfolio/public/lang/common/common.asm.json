@@ -1,0 +1,18 @@
+{
+  "lang_modal.aria": "SEGMENT .lang_select",
+  "lang_modal.close": "POP; RET ; CLOSE",
+  "lang_modal.title": "-- LANG --",
+  "audio.show": "MOV audio_ctl, VISIBLE",
+  "audio.hide": "MOV audio_ctl, HIDDEN",
+  "audio.toggle": "XOR sound, MUTE",
+  "audio.volume": "MOV volume, [slider]",
+  "lightbox.aria": "CALL fullscreen_view",
+  "lightbox.close": "POP; RET ; CLOSE_VIEW",
+  "lightbox.previous": "DEC image_index",
+  "lightbox.next": "INC image_index",
+  "nav.role": "MOV role, DEV_TRAINER",
+  "nav.aria": "SEGMENT .main_nav",
+  "photo.alt": "DB 'Portrait: Charles Lindecker'",
+  "photo.developer": "MOV class, DEVELOPER",
+  "photo.trainer": "MOV class, TRAINER"
+}

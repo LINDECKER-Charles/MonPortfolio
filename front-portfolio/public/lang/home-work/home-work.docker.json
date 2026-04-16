@@ -1,0 +1,10 @@
+{
+  "eyebrow": "LABEL component=parcours",
+  "title": "docker run -d --name experience --restart unless-stopped career:latest",
+  "description": "services:\n  parcours:\n    image: career:lts\n    deploy:\n      replicas: 9\n      resources:\n        limits:\n          cpus: '99.0'\n          memory: 999G\n    environment:\n      - AMBITION=unlimited\n      - COFFEE_SUPPLY=infinite\n    networks:\n      - professional",
+  "cta.primary.top": "COPY ./consulter /app/",
+  "cta.primary.bottom": "ENTRYPOINT [\"/app/parcours\"]",
+  "cta.secondary.top": "ports:\n  - \"443:443\" # linkedin",
+  "cta.secondary.bottom": "HEALTHCHECK CMD curl -f https://linkedin.com || exit 1",
+  "aria.landmarks": "# accessibility: enabled (we're not monsters)"
+}

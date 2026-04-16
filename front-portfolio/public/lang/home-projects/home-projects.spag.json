@@ -1,0 +1,9 @@
+{
+  "eyebrow": "// next (or prev? unclear)",
+  "title": "/* WARNING: DO NOT RENAME THIS VARIABLE. Last time someone did, prod went down for 3 days. */",
+  "description": "/* This function is 2,847 lines long. It was supposed to be temporary in 2018. It handles projects, auth, email sending, PDF generation, and somehow also the coffee machine API. Nobody fully understands it. We call it 'The Monolith'. It has 4 TODOs, 7 FIXMEs, and 2 comments that just say 'why'. The last person who tried to refactor it quit. */",
+  "cta.primary.top": "temp2 = explore(); // temp1 was taken",
+  "cta.primary.bottom": "final_final_v3_REAL_travaux()",
+  "cta.secondary.top": "a = getOpenSource(); // a for... something",
+  "cta.secondary.bottom": "goto github; // we don't talk about this goto"
+}
