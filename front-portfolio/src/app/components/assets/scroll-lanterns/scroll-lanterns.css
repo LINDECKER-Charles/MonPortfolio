@@ -1,0 +1,65 @@
+.scroll-lanterns {
+  position: fixed;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--z-float);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  pointer-events: auto;
+}
+
+.scroll-lanterns__lantern {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgb(164 148 118 / 0.25);
+  background: rgb(12 10 8 / 0.7);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    border-color var(--duration-slow) ease,
+    box-shadow var(--duration-slow) ease,
+    transform var(--duration-slow) ease;
+}
+
+.scroll-lanterns__lantern:hover {
+  border-color: rgb(164 148 118 / 0.5);
+  transform: scale(1.15);
+}
+
+.scroll-lanterns__flame {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: rgb(164 148 118 / 0.35);
+  transition:
+    background var(--duration-slow) ease,
+    box-shadow var(--duration-slow) ease;
+}
+
+/* Lanterne allumée — cœur ember incandescent avec halo chaud */
+.scroll-lanterns__lantern.is-lit {
+  border-color: rgb(255 147 77 / 0.45);
+  box-shadow: 0 0 10px rgb(255 147 77 / 0.25);
+}
+
+.scroll-lanterns__lantern.is-lit .scroll-lanterns__flame {
+  background: var(--color-ember);
+  box-shadow: 0 0 8px rgb(255 147 77 / 0.75),
+              0 0 2px rgb(255 211 114 / 0.9);
+  animation: candleFlicker 3.8s ease-in-out infinite;
+}
+
+@media (max-width: 1024px) {
+  .scroll-lanterns { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-lanterns__lantern.is-lit .scroll-lanterns__flame {
+    animation: none;
+  }
+}

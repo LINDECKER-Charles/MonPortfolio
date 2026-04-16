@@ -1,6 +1,7 @@
 import {Component, inject, signal} from '@angular/core';
 import {Loading} from './components/assets/loading/loading';
 import {AudioService} from './services/audio-service';
+import {UiSoundService} from './services/ui-sound.service';
 import {StopAllSound} from './components/assets/stop-all-sound/stop-all-sound';
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {MetaService} from './services/meta-service';
@@ -9,11 +10,14 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {Footer} from './components/misc/footer/footer';
 import {NavBarre} from './components/misc/nav-barre/nav-barre';
 import {LangModal} from './components/assets/lang-modal/lang-modal';
+import {EmberParticles} from './components/assets/ember-particles/ember-particles';
+import {PageTransition} from './components/assets/page-transition/page-transition';
+import {ScrollLanterns} from './components/assets/scroll-lanterns/scroll-lanterns';
 import {TranslationService} from './services/translation.service';
 
 @Component({
   selector: 'app-root',
-  imports: [Loading, StopAllSound, RouterOutlet, Footer, NavBarre, LangModal],
+  imports: [Loading, StopAllSound, RouterOutlet, Footer, NavBarre, LangModal, EmberParticles, PageTransition, ScrollLanterns],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -21,6 +25,7 @@ export class App {
   protected readonly title = signal('front-portfolio');
 
   public audio = inject(AudioService);
+  private readonly uiSound = inject(UiSoundService);
   protected readonly ts = inject(TranslationService);
   constructor() {
     this.audio.registerMany({
@@ -102,6 +107,8 @@ export class App {
   );
 
   async ngOnInit() {
+    this.uiSound.start();
+
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map(() => this.activatedRoute),

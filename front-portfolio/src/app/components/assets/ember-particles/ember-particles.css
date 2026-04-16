@@ -1,0 +1,59 @@
+.ember-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: var(--z-bg);
+}
+
+.ember-particle {
+  position: absolute;
+  bottom: -10%;
+  width: 3px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(circle,
+    rgb(255 147 77 / 0.85) 0%,
+    rgb(255 147 77 / 0.2) 60%,
+    transparent 100%);
+  box-shadow: 0 0 6px rgb(255 147 77 / 0.5);
+  will-change: transform, opacity;
+  animation: emberRise 14s linear infinite;
+}
+
+/* Positions horizontales staggered + délais variés pour un effet organique.
+   12 positions réparties avec des paramètres uniques par particule. */
+.ember-particle:nth-child(1)  { left: 6%;  animation-duration: 16s; animation-delay: 0s;    transform: scale(0.9); }
+.ember-particle:nth-child(2)  { left: 14%; animation-duration: 18s; animation-delay: 3.5s;  transform: scale(1.1); }
+.ember-particle:nth-child(3)  { left: 22%; animation-duration: 13s; animation-delay: 7s;    transform: scale(0.7); }
+.ember-particle:nth-child(4)  { left: 32%; animation-duration: 20s; animation-delay: 1.2s;  transform: scale(1);   }
+.ember-particle:nth-child(5)  { left: 41%; animation-duration: 15s; animation-delay: 5s;    transform: scale(0.8); }
+.ember-particle:nth-child(6)  { left: 49%; animation-duration: 17s; animation-delay: 9s;    transform: scale(1.2); }
+.ember-particle:nth-child(7)  { left: 58%; animation-duration: 14s; animation-delay: 2.3s;  transform: scale(0.9); }
+.ember-particle:nth-child(8)  { left: 66%; animation-duration: 19s; animation-delay: 11s;   transform: scale(0.7); }
+.ember-particle:nth-child(9)  { left: 74%; animation-duration: 16s; animation-delay: 4.4s;  transform: scale(1);   }
+.ember-particle:nth-child(10) { left: 82%; animation-duration: 15s; animation-delay: 8s;    transform: scale(0.85);}
+.ember-particle:nth-child(11) { left: 89%; animation-duration: 18s; animation-delay: 6.2s;  transform: scale(1.1); }
+.ember-particle:nth-child(12) { left: 94%; animation-duration: 13s; animation-delay: 10s;   transform: scale(0.75);}
+
+@keyframes emberRise {
+  0%   { transform: translate3d(0, 0, 0)         scale(var(--ember-scale, 1)); opacity: 0; }
+  10%  {                                                                      opacity: 0.9; }
+  50%  { transform: translate3d(-8px, -50vh, 0)  scale(var(--ember-scale, 1)); opacity: 0.7; }
+  100% { transform: translate3d(12px, -110vh, 0) scale(var(--ember-scale, 1)); opacity: 0; }
+}
+
+/* Mobile : moins de particules pour préserver la batterie.
+   On cache 2/3 via display: none — le CSS ne les anime plus. */
+@media (max-width: 768px) {
+  .ember-particle:nth-child(n + 5):nth-child(-n + 10) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ember-particle {
+    animation: none;
+    display: none;
+  }
+}

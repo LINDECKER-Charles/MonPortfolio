@@ -2,6 +2,12 @@
   display: block;
 }
 
+/* ── TIMELINE EN CARTE RUNIQUE ────────────────────────────────────────────
+   Ligne centrale = chemin gravé (gradient 3 stops + halo).
+   Chaque jalon = sceau SVG centré (cercle doré + cœur rouge rituel).
+   Les items featured ont un halo plus marqué.
+   ──────────────────────────────────────────────────────────────────────── */
+
 .projects-timeline {
   position: relative;
   display: flex;
@@ -12,20 +18,37 @@
 .projects-timeline::before {
   content: "";
   position: absolute;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  left: 19px;
+  width: 2px;
+  background:
+    linear-gradient(180deg,
+      transparent 0%,
+      rgb(166 10 10 / 0.18) 8%,
+      rgb(164 148 118 / 0.28) 50%,
+      rgb(166 10 10 / 0.18) 92%,
+      transparent 100%);
+  box-shadow: 0 0 12px rgb(166 10 10 / 0.12);
+}
+
+.projects-timeline::after {
+  content: "";
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 18px;
-  width: 1px;
-  background: linear-gradient(180deg,
-    rgb(166 10 10 / 0.08),
-    rgb(189 193 199 / 0.14),
-    rgb(166 10 10 / 0.08));
+  width: 4px;
+  background: radial-gradient(ellipse at center,
+    rgb(166 10 10 / 0.04) 0%,
+    transparent 70%);
+  pointer-events: none;
 }
 
 .projects-timeline__item {
   position: relative;
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr);
+  grid-template-columns: 40px minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
 }
@@ -35,18 +58,32 @@
   min-height: 100%;
 }
 
-.projects-timeline__dot {
+/* Sceau SVG — remplace l'ancien dot */
+.projects-timeline__seal {
   position: absolute;
-  top: 1.15rem;
-  left: 9px;
-  width: 18px;
-  height: 18px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgb(166 10 10 / 0.2);
-  background: radial-gradient(circle at center, rgb(166 10 10 / 0.35), rgb(37 40 45 / 0.9));
-  box-shadow:
-    0 0 0 4px rgb(37 40 45 / 0.9),
-    0 0 14px rgb(166 10 10 / 0.08);
+  top: 0.75rem;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 0 8px rgb(166 10 10 / 0.35));
+  transform-origin: center;
+  animation: sealBreath 5s ease-in-out infinite;
+}
+
+/* Featured : halo plus marqué, légère augmentation de l'échelle */
+.projects-timeline__item--featured .projects-timeline__seal {
+  filter: drop-shadow(0 0 14px rgb(255 147 77 / 0.45))
+          drop-shadow(0 0 4px rgb(166 10 10 / 0.3));
+  animation-duration: 3.5s;
+}
+
+@keyframes sealBreath {
+  0%, 100% { transform: scale(1);    opacity: 0.95; }
+  50%      { transform: scale(1.08); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-timeline__seal { animation: none; }
 }
 
 /* ── PROJECT CARD ─────────────────────────────────────────────────────────── */
@@ -209,16 +246,17 @@
 
 @media (max-width: 640px) {
   .projects-timeline__item {
-    grid-template-columns: 30px minmax(0, 1fr);
+    grid-template-columns: 32px minmax(0, 1fr);
     gap: 0.75rem;
   }
 
-  .projects-timeline::before { left: 14px; }
+  .projects-timeline::before { left: 15px; }
+  .projects-timeline::after  { left: 14px; }
 
-  .projects-timeline__dot {
-    left: 5px;
-    width: 16px;
-    height: 16px;
+  .projects-timeline__seal {
+    width: 32px;
+    height: 32px;
+    top: 0.6rem;
   }
 
   .project-card { border-radius: 20px; }
