@@ -1,14 +1,13 @@
-:host {
-  display: contents;
-}
+:host { display: contents; }
 
 .title {
   margin: 0 0 1rem;
   padding-bottom: 0.7rem;
   font-size: 1.9rem;
   font-weight: 500;
-  color: #d7c09a;
-  border-bottom: 1px solid rgba(215, 215, 215, 0.22);
+  color: var(--color-parchment);
+  font-family: var(--font-display);
+  border-bottom: 1px solid rgb(215 215 215 / 0.22);
 }
 
 .title-link {
@@ -26,9 +25,9 @@
   gap: 1rem;
   min-height: 42px;
   padding: 0.2rem 0;
-  border-bottom: 1px solid rgba(215, 215, 215, 0.09);
+  border-bottom: 1px solid rgb(215 215 215 / 0.09);
   font-size: 1rem;
-  color: #c9c3b8;
+  color: var(--color-parchment-dim);
   transform-origin: 0 50%;
   will-change: transform;
 }
@@ -65,14 +64,8 @@
 }
 
 @media (max-width: 768px) {
-  .title {
-    font-size: 1.55rem;
-  }
-
-  .row {
-    min-height: 40px;
-    font-size: 0.95rem;
-  }
+  .title { font-size: 1.55rem; }
+  .row { min-height: 40px; font-size: 0.95rem; }
 }
 
 @media (max-width: 480px) {
@@ -82,11 +75,7 @@
     margin-bottom: 0.75rem;
   }
 
-  .row {
-    gap: 0.6rem;
-    min-height: 38px;
-    font-size: 0.88rem;
-  }
+  .row { gap: 0.6rem; min-height: 38px; font-size: 0.88rem; }
 
   .label {
     gap: 0.45rem;
@@ -96,58 +85,27 @@
 
   .label app-responsive-picture,
   .label picture,
-  .label img {
-    width: 18px;
-    height: 18px;
-  }
+  .label img { width: 18px; height: 18px; }
 
-  .value {
-    font-size: 0.85rem;
-  }
+  .value { font-size: 0.85rem; }
 }
 
 @media (max-width: 360px) {
-  .title {
-    font-size: 1.15rem;
-  }
+  .title { font-size: 1.15rem; }
+  .row { gap: 0.45rem; min-height: 36px; font-size: 0.8rem; }
 
-  .row {
-    gap: 0.45rem;
-    min-height: 36px;
-    font-size: 0.8rem;
-  }
-
-  .label {
-    gap: 0.4rem;
-    font-size: 0.82rem;
-  }
+  .label { gap: 0.4rem; font-size: 0.82rem; }
 
   .label app-responsive-picture,
   .label picture,
-  .label img {
-    width: 16px;
-    height: 16px;
-  }
+  .label img { width: 16px; height: 16px; }
 
-  .value {
-    font-size: 0.78rem;
-  }
+  .value { font-size: 0.78rem; }
 }
 
 @media (max-width: 320px) {
-  .title {
-    font-size: 1.05rem;
-  }
-
-  .row {
-    font-size: 0.76rem;
-  }
-
-  .label {
-    font-size: 0.78rem;
-  }
-
-  .value {
-    font-size: 0.72rem;
-  }
+  .title { font-size: 1.05rem; }
+  .row { font-size: 0.76rem; }
+  .label { font-size: 0.78rem; }
+  .value { font-size: 0.72rem; }
 }

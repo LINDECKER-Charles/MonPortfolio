@@ -1,6 +1,4 @@
-:host {
-  display: contents;
-}
+:host { display: contents; }
 
 .section-title {
   margin: 0 0 0.85rem;
@@ -8,7 +6,8 @@
   font-size: 1.2rem;
   font-weight: 500;
   color: #cbb996;
-  border-bottom: 1px solid rgba(215, 215, 215, 0.16);
+  font-family: var(--font-display);
+  border-bottom: 1px solid rgb(215 215 215 / 0.16);
 }
 
 .passives {
@@ -21,14 +20,12 @@
   min-height: 38px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(215, 215, 215, 0.09);
-  color: #c9c3b8;
+  border-bottom: 1px solid rgb(215 215 215 / 0.09);
+  color: var(--color-parchment-dim);
 }
 
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 1.05rem;
-  }
+  .section-title { font-size: 1.05rem; }
 }
 
 @media (max-width: 480px) {
@@ -38,25 +35,14 @@
     margin-bottom: 0.65rem;
   }
 
-  .passives li {
-    min-height: 34px;
-    font-size: 0.88rem;
-  }
+  .passives li { min-height: 34px; font-size: 0.88rem; }
 }
 
 @media (max-width: 360px) {
-  .section-title {
-    font-size: 0.92rem;
-  }
-
-  .passives li {
-    min-height: 32px;
-    font-size: 0.8rem;
-  }
+  .section-title { font-size: 0.92rem; }
+  .passives li { min-height: 32px; font-size: 0.8rem; }
 }
 
 @media (max-width: 320px) {
-  .section-title {
-    font-size: 0.88rem;
-  }
+  .section-title { font-size: 0.88rem; }
 }

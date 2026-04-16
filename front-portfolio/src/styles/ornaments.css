@@ -1,0 +1,184 @@
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  ORNAMENTS — Coins runiques, gravures, drop caps.                        ║
+   ║  Appliqués sélectivement sur les surfaces phares (modals, hero, CV)      ║
+   ║  pour garder une tension entre parts ornées et parts minimalistes.       ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
+
+@layer components {
+
+  /* ── CORNER ORNAMENTS ─────────────────────────────────────────────────────
+     4 motifs runiques de 56px aux 4 coins. Chaque SVG est une équerre
+     dorée + sceau circulaire — minimaliste mais iconique From Software.
+     À poser sur `.surface-crypt--ornate` ou `.surface-sanctum--ornate`.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  .surface-crypt--ornate,
+  .surface-sanctum--ornate,
+  .surface-altar--ornate {
+    position: relative;
+  }
+
+  .surface-crypt--ornate::before,
+  .surface-sanctum--ornate::before,
+  .surface-altar--ornate::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    pointer-events: none;
+    border: 1px solid rgb(164 148 118 / 0.14);
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  .surface-crypt--ornate::after,
+  .surface-sanctum--ornate::after,
+  .surface-altar--ornate::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background-image:
+      /* Top-left */
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56' fill='none' stroke='%23a49476' stroke-linecap='round'><path d='M0 18 L0 0 L18 0' stroke-width='0.9' opacity='0.78'/><path d='M0 24 L0 22' stroke-width='0.9' opacity='0.4'/><path d='M22 0 L24 0' stroke-width='0.9' opacity='0.4'/><circle cx='7' cy='7' r='2.2' stroke-width='0.7' opacity='0.65'/><circle cx='7' cy='7' r='0.5' fill='%23a49476' stroke='none'/><path d='M11 11 L16 6' stroke-width='0.55' opacity='0.35'/></svg>"),
+      /* Top-right */
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56' fill='none' stroke='%23a49476' stroke-linecap='round'><path d='M38 0 L56 0 L56 18' stroke-width='0.9' opacity='0.78'/><path d='M56 24 L56 22' stroke-width='0.9' opacity='0.4'/><path d='M34 0 L32 0' stroke-width='0.9' opacity='0.4'/><circle cx='49' cy='7' r='2.2' stroke-width='0.7' opacity='0.65'/><circle cx='49' cy='7' r='0.5' fill='%23a49476' stroke='none'/><path d='M45 11 L40 6' stroke-width='0.55' opacity='0.35'/></svg>"),
+      /* Bottom-left */
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56' fill='none' stroke='%23a49476' stroke-linecap='round'><path d='M0 38 L0 56 L18 56' stroke-width='0.9' opacity='0.78'/><path d='M0 32 L0 34' stroke-width='0.9' opacity='0.4'/><path d='M22 56 L24 56' stroke-width='0.9' opacity='0.4'/><circle cx='7' cy='49' r='2.2' stroke-width='0.7' opacity='0.65'/><circle cx='7' cy='49' r='0.5' fill='%23a49476' stroke='none'/><path d='M11 45 L16 50' stroke-width='0.55' opacity='0.35'/></svg>"),
+      /* Bottom-right */
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56' fill='none' stroke='%23a49476' stroke-linecap='round'><path d='M38 56 L56 56 L56 38' stroke-width='0.9' opacity='0.78'/><path d='M56 32 L56 34' stroke-width='0.9' opacity='0.4'/><path d='M34 56 L32 56' stroke-width='0.9' opacity='0.4'/><circle cx='49' cy='49' r='2.2' stroke-width='0.7' opacity='0.65'/><circle cx='49' cy='49' r='0.5' fill='%23a49476' stroke='none'/><path d='M45 45 L40 50' stroke-width='0.55' opacity='0.35'/></svg>");
+    background-position: 4px 4px, right 4px top 4px, left 4px bottom 4px, right 4px bottom 4px;
+    background-size: 56px 56px;
+    background-repeat: no-repeat;
+  }
+
+  /* ── TEXTURE MATIÈRE ──────────────────────────────────────────────────────
+     À combiner avec une surface. Le grain fin + vignette donne la
+     sensation d'une plaque de pierre éclairée au centre, pas d'un
+     panneau de verre dépoli.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  .surface-textured {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .surface-textured::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: var(--texture-parchment);
+    background-size: 320px 320px;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+  }
+
+  .surface-vignetted {
+    box-shadow:
+      var(--shadow-altar),
+      var(--shadow-vignette-soft);
+  }
+
+  .surface-vignetted--deep {
+    box-shadow:
+      var(--shadow-crypt),
+      var(--shadow-vignette-deep);
+  }
+
+  /* ── GRAVURE TYPO ─────────────────────────────────────────────────────────
+     .text-engraved--carved : titres Cinzel avec ombre de gravure profonde.
+     .text-engraved--hero   : version XL avec halo rituel rouge.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  .text-engraved--carved {
+    text-shadow: var(--text-shadow-engraved);
+  }
+
+  .text-engraved--deep {
+    text-shadow: var(--text-shadow-engraved-deep);
+  }
+
+  .text-engraved--hero {
+    font-family: var(--font-display);
+    color: var(--color-parchment);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow:
+      var(--text-shadow-engraved-deep),
+      var(--text-shadow-ritual);
+  }
+
+  /* Small-caps plus élégant qu'uppercase pur pour les sous-titres */
+  .text-smallcaps {
+    font-family: var(--font-display);
+    font-variant: small-caps;
+    letter-spacing: var(--tracking-sigil);
+    color: var(--color-parchment-dim);
+  }
+
+  /* ── DROP CAP ─────────────────────────────────────────────────────────────
+     Première lettre gravée en or, style manuscrit enluminé.
+     À appliquer sur un paragraphe introductif uniquement.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  .text-tome--drop-cap::first-letter {
+    font-family: var(--font-display);
+    float: left;
+    font-size: 3.4em;
+    line-height: 0.85;
+    padding: 0.08em 0.12em 0 0;
+    color: var(--color-parchment);
+    text-shadow: var(--text-shadow-engraved-deep);
+    font-weight: 600;
+  }
+
+  /* ── SÉPARATEUR ORNÉ ──────────────────────────────────────────────────────
+     Une ligne horizontale avec un losange doré au centre.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  .divider-ornate {
+    position: relative;
+    height: 1px;
+    margin: 1.5rem 0;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgb(164 148 118 / 0.32) 40%,
+      rgb(164 148 118 / 0.32) 60%,
+      transparent 100%);
+  }
+
+  .divider-ornate::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--color-gold);
+    box-shadow: 0 0 10px rgb(164 148 118 / 0.4);
+  }
+}
+
+@layer utilities {
+  /* ── LUMIÈRE VIVANTE ──────────────────────────────────────────────────────
+     Utilitaires d'animation à poser sur des cibles précises.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  .flicker-candle {
+    animation: candleFlicker 3.8s ease-in-out infinite;
+  }
+
+  .breath-gold {
+    animation: goldBreath 6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flicker-candle,
+    .breath-gold {
+      animation: none !important;
+    }
+  }
+}

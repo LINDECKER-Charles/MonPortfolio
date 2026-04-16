@@ -1,7 +1,7 @@
-<section class="home-work" #ctaBlock>
+<section class="home-work surface-altar" #ctaBlock>
   <div class="home-work__actions">
-    <a class="home-work__cta home-work__cta--primary" routerLink="/works" href="/works">
-      <span class="home-work__cta-icon">
+    <a class="cta-tome cta-tome--gilded transition-ritual breath-gold" routerLink="/works" href="/works">
+      <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="workIcon.sources"
           [fallbackSrc]="workIcon.fallback"
@@ -11,18 +11,18 @@
         </app-responsive-picture>
       </span>
 
-      <span class="home-work__cta-label">
-        <span class="home-work__cta-top">{{ ts.translate('home-work.cta.primary.top') }}</span>
-        <span class="home-work__cta-bottom">{{ ts.translate('home-work.cta.primary.bottom') }}</span>
+      <span class="cta-tome__label">
+        <span class="cta-tome__top">{{ ts.translate('home-work.cta.primary.top') }}</span>
+        <span class="cta-tome__bottom">{{ ts.translate('home-work.cta.primary.bottom') }}</span>
       </span>
     </a>
 
     <a
-      class="home-work__cta home-work__cta--secondary"
+      class="cta-tome cta-tome--shadow transition-ritual"
       href="https://www.linkedin.com/in/charles-lindecker/"
       target="_blank"
       rel="noreferrer noopener">
-      <span class="home-work__cta-icon">
+      <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="linkedinIcon.sources"
           [fallbackSrc]="linkedinIcon.fallback"
@@ -32,23 +32,23 @@
         </app-responsive-picture>
       </span>
 
-      <span class="home-work__cta-label">
-        <span class="home-work__cta-top">{{ ts.translate('home-work.cta.secondary.top') }}</span>
-        <span class="home-work__cta-bottom">{{ ts.translate('home-work.cta.secondary.bottom') }}</span>
+      <span class="cta-tome__label">
+        <span class="cta-tome__top">{{ ts.translate('home-work.cta.secondary.top') }}</span>
+        <span class="cta-tome__bottom">{{ ts.translate('home-work.cta.secondary.bottom') }}</span>
       </span>
     </a>
   </div>
 
   <div class="home-work__intro">
-    <span class="home-work__eyebrow">{{ ts.translate('home-work.eyebrow') }}</span>
+    <span class="home-work__eyebrow text-rune">{{ ts.translate('home-work.eyebrow') }}</span>
 
-    <h2>{{ ts.translate('home-work.title') }}</h2>
+    <h2 class="text-engraved text-engraved--deep">{{ ts.translate('home-work.title') }}</h2>
 
-    <p>{{ ts.translate('home-work.description') }}</p>
+    <p class="text-tome">{{ ts.translate('home-work.description') }}</p>
 
     <div class="home-work__rail" [attr.aria-label]="ts.translate('home-work.aria.landmarks')">
       @for (icon of railIcons; track icon.fallback) {
-        <span class="home-work__rail-item" [attr.title]="icon.alt">
+        <span class="home-work__rail-item transition-ritual" [attr.title]="icon.alt">
           <app-responsive-picture
             [sources]="icon.sources"
             [fallbackSrc]="icon.fallback"

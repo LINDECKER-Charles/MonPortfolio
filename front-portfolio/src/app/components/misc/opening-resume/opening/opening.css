@@ -18,30 +18,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: clamp(2rem, 4vw, 2.75rem) clamp(1rem, 4vw, 1.5rem);
   pointer-events: none;
 }
 
 .audio-gate,
 .opening-trigger,
-.opening-figure {
-  pointer-events: none;
-}
+.opening-figure { pointer-events: none; }
 
 .sound-trigger,
 .opening-btn,
-.skip-btn {
-  pointer-events: auto;
-}
+.skip-btn { pointer-events: auto; }
 
-
-.audio-state {
-  z-index: 2;
-}
-
-.opening-state {
-  z-index: 3;
-}
+.audio-state { z-index: 2; }
+.opening-state { z-index: 3; }
 
 .audio-gate,
 .opening-trigger {
@@ -72,18 +62,18 @@
 .sound-trigger:focus-visible,
 .opening-btn:focus-visible,
 .skip-btn:focus-visible {
-  outline: 2px solid #f3f6f7;
+  outline: 2px solid var(--color-bone-bright);
   outline-offset: 8px;
 }
 
-/* state 1 */
+/* ── State 1 — Audio gate ─────────────────────────────────────────────────── */
 
 .sound-trigger {
   width: clamp(84px, 10vw, 120px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .sound-trigger svg {
@@ -99,7 +89,7 @@
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #bdc1c7;
+  color: var(--color-ash);
   opacity: 0.85;
   will-change: transform, opacity;
 }
@@ -115,15 +105,15 @@
   text-transform: uppercase;
   color: #888c96;
   opacity: 0.72;
-  transition: opacity 180ms ease, color 180ms ease;
+  transition: opacity var(--duration-base) ease, color var(--duration-base) ease;
 }
 
 .skip-btn:hover {
   opacity: 1;
-  color: #bdc1c7;
+  color: var(--color-ash);
 }
 
-/* state 2 */
+/* ── State 2 — Logo trigger ───────────────────────────────────────────────── */
 
 .opening-btn {
   position: relative;
@@ -149,9 +139,7 @@
 }
 
 @media (max-width: 768px) {
-  .opening-btn {
-    width: min(82vw, 420px);
-  }
+  .opening-btn { width: min(82vw, 420px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -164,9 +152,4 @@
     transition: none !important;
     animation: none !important;
   }
-}
-
-
-.state-layer {
-  padding: clamp(2rem, 4vw, 2.75rem) clamp(1rem, 4vw, 1.5rem);
 }
