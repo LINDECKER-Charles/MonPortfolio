@@ -1,0 +1,27 @@
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loading);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgb(12 10 8 / 0.92) 0%, rgb(0 0 0 / 0.98) 100%);
+  will-change: opacity;
+}
+
+.page-transition__rune {
+  width: 96px;
+  height: 96px;
+  filter: drop-shadow(0 0 12px rgb(164 148 118 / 0.35));
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition,
+  .page-transition__rune {
+    transition: opacity 120ms linear !important;
+    animation: none !important;
+  }
+}

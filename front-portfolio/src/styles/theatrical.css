@@ -90,6 +90,41 @@ button:focus-visible:where(.nav-barre__lang-btn, .sound-button, .collapse-toggle
   letter-spacing: 0.02em;
 }
 
+/* ── SKIP LINK ────────────────────────────────────────────────────────────
+   Lien "aller au contenu" caché jusqu'au focus clavier — accessibilité WCAG.
+   Stylisé comme un sceau doré minimaliste, cohérent avec la DA.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: calc(var(--z-loading) + 10);
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: var(--border-gilded-strong);
+  background: var(--gradient-crypt);
+  color: var(--color-parchment);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: var(--tracking-sigil);
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: var(--shadow-gilded);
+  transform: translateY(-200%);
+  transition: transform var(--duration-base) var(--ease-emerge);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: none;
+}
+
+/* Focus programmatique de #main-content — pas de outline disgracieux */
+#main-content:focus {
+  outline: none;
+}
+
 /* ── STACK ICONS ──────────────────────────────────────────────────────────
    Toutes les icônes de `/icon/stack/` (GitHub, LinkedIn, Angular, .NET,
    Symfony, Python, Postgre, Mail, Action) sont des logos carrés qu'on

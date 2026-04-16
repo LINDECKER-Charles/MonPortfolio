@@ -6,6 +6,7 @@ import { Home } from './components/page/home/home';
 import { PROJECTS_DATA } from './components/page/projects/projects.state';
 import { Projects } from './components/page/projects/projects';
 import { Works } from './components/page/works/works';
+import { NotFound } from './components/page/not-found/not-found';
 
 const SITE_URL = 'https://charles-lindecker.com';
 const LOGO_URL = `${SITE_URL}/logo/80x80_logo_white.webp`;
@@ -288,6 +289,27 @@ export const routes: Routes = [
           { name: 'Parcours', url: `${SITE_URL}/works` },
         ]),
       ],
+      showFooter: true,
+    },
+  },
+  {
+    path: '**',
+    component: NotFound,
+    title: 'Page introuvable - Charles Lindecker',
+    data: {
+      description: 'Page 404 : la ressource demandée est introuvable.',
+      canonical: `${SITE_URL}/404`,
+      robots: 'noindex, nofollow',
+      ogTitle: 'Page introuvable - Charles Lindecker',
+      ogDescription: 'Vous avez été banni de ces terres.',
+      ogImage: LOGO_URL,
+      ogUrl: SITE_URL,
+      ogType: 'website',
+      twitterCard: 'summary',
+      twitterTitle: 'Page introuvable',
+      twitterDescription: 'Vous avez été banni de ces terres.',
+      twitterImage: SOCIAL_IMAGE_URL,
+      structuredData: [],
       showFooter: true,
     },
   },
