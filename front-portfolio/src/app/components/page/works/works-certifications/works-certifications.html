@@ -1,0 +1,86 @@
+<section class="works-cert" aria-labelledby="works-cert-title">
+  <header class="works-cert__head">
+    <p class="works-cert__eyebrow text-rune">{{ ts.translate('works.certifications.subtitle') }}</p>
+    <h2 id="works-cert-title" class="text-engraved text-engraved--deep">
+      {{ ts.translate('works.certifications.title') }}
+    </h2>
+  </header>
+
+  <ul class="works-cert__grid" role="list">
+    @for (cert of certifications; track trackById($index, cert); let idx = $index) {
+      <li
+        class="works-cert__item"
+        appRevealOnScroll
+        [revealDelay]="idx * 0.04"
+        [revealY]="24"
+        [revealScale]="true">
+        @if (cert.url) {
+          <a
+            [href]="cert.url"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="works-cert__card works-cert__card--link transition-ritual"
+            [attr.aria-label]="cert.title + ' — ' + organismName(cert.organism)">
+            <div class="works-cert__medal">
+              <app-responsive-picture
+                [sources]="logoSources(cert.organism)"
+                [fallbackSrc]="logoFallback(cert.organism)"
+                [alt]="organismName(cert.organism)"
+                loading="lazy"
+                decoding="async"
+                objectFit="contain">
+              </app-responsive-picture>
+            </div>
+
+            <div class="works-cert__content">
+              <h3 class="works-cert__title text-engraved text-engraved--carved">{{ cert.title }}</h3>
+              <p class="works-cert__org">{{ organismName(cert.organism) }}</p>
+              <p class="works-cert__issued">
+                <span class="text-rune">{{ ts.translate('works.certifications.issued') }}</span>
+                <span>{{ issuedAt(cert) }}</span>
+              </p>
+              @if (cert.credentialId) {
+                <p class="works-cert__credential">
+                  <span class="text-rune">{{ ts.translate('works.certifications.credential') }}</span>
+                  <code>{{ cert.credentialId }}</code>
+                </p>
+              }
+            </div>
+
+            <span class="works-cert__link-hint text-tag" aria-hidden="true">
+              {{ ts.translate('works.certifications.link') }} →
+            </span>
+          </a>
+        } @else {
+          <div class="works-cert__card">
+            <div class="works-cert__medal">
+              <app-responsive-picture
+                [sources]="logoSources(cert.organism)"
+                [fallbackSrc]="logoFallback(cert.organism)"
+                [alt]="organismName(cert.organism)"
+                loading="lazy"
+                decoding="async"
+                objectFit="contain">
+              </app-responsive-picture>
+            </div>
+
+            <div class="works-cert__content">
+              <h3 class="works-cert__title text-engraved text-engraved--carved">{{ cert.title }}</h3>
+              <p class="works-cert__org">{{ organismName(cert.organism) }}</p>
+              <p class="works-cert__issued">
+                <span class="text-rune">{{ ts.translate('works.certifications.issued') }}</span>
+                <span>{{ issuedAt(cert) }}</span>
+              </p>
+              @if (cert.credentialId) {
+                <p class="works-cert__credential">
+                  <span class="text-rune">{{ ts.translate('works.certifications.credential') }}</span>
+                  <code>{{ cert.credentialId }}</code>
+                </p>
+              }
+            </div>
+          </div>
+        }
+      </li>
+    }
+  </ul>
+</section>

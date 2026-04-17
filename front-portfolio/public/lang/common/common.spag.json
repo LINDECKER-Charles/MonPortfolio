@@ -14,5 +14,15 @@
   "nav.aria": "// nav aria label was in a variable called 'asdfjkl' (keyboard smash naming convention)",
   "photo.alt": "// alt text: '' (empty string counts as accessible right? RIGHT?)",
   "photo.developer": "var d = 'd'; var de = 'de'; var dev = d + de + 'v'; // string built character by character for 'security'",
-  "photo.trainer": "// formateur is defined in trainer.js, which imports from formateur.ts, which requires trainer.coffee"
+  "photo.trainer": "// formateur is defined in trainer.js, which imports from formateur.ts, which requires trainer.coffee",
+  "skip_to_content": "// skip link — added 2019, nobody tested",
+  "404.eyebrow": "// 404 page, last touched 2014",
+  "404.title": "Error 500 actually, we mislabeled it",
+  "404.lead": "/* This page shows when route fails. Or when route succeeds but template crashes. Or when server is on vacation. Or when the intern pushed without testing. We were going to debug it but the ticket got closed by mistake. */",
+  "404.cta.home.top": "// back to",
+  "404.cta.home.bottom": "home (index.html, not index2.html)",
+  "404.cta.projects.top": "// explore (broken link",
+  "404.cta.projects.bottom": "since 2017, still clicked)",
+  "nav.logo_alt": "// logo alt = the original var name is lost",
+  "loading.frame_alt": "// loading logo, waiting since 2017"
 }

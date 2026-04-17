@@ -5,5 +5,7 @@
   "cta.primary.top": "0x5343414E",
   "cta.primary.bottom": "0b110 .workfiles",
   "cta.secondary.top": "0x4F50454E 0b101",
-  "cta.secondary.bottom": "READ 0x476974487562"
+  "cta.secondary.bottom": "READ 0x476974487562",
+  "stack.aria": "0x535441434B MAIN_TECH",
+  "cta.primary.icon_alt": "0x4558504C 0x505247"
 }

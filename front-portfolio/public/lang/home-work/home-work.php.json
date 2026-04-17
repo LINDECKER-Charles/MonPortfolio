@@ -6,5 +6,6 @@
   "cta.primary.bottom": "$_SESSION['parcours']",
   "cta.secondary.top": "fsockopen('linkedin.com', 80)",
   "cta.secondary.bottom": "echo '<a href=\"linkedin\">'; // never closed this tag",
-  "aria.landmarks": "// aria? we don't do that here (PHP 4)"
+  "aria.landmarks": "// aria? we don't do that here (PHP 4)",
+  "cta.primary.icon_alt": "<?=$resume?> // career resume loaded"
 }

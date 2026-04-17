@@ -5,5 +5,7 @@
   "cta.primary.top": "探索",
   "cta.primary.bottom": "我的作品",
   "cta.secondary.top": "开源",
-  "cta.secondary.bottom": "查看GitHub"
+  "cta.secondary.bottom": "查看GitHub",
+  "stack.aria": "主要技术",
+  "cta.primary.icon_alt": "探索项目"
 }

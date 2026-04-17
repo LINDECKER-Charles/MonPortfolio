@@ -5,5 +5,7 @@
   "cta.primary.top": "探索する",
   "cta.primary.bottom": "私の作品",
   "cta.secondary.top": "オープンソース",
-  "cta.secondary.bottom": "GitHubを見る"
+  "cta.secondary.bottom": "GitHubを見る",
+  "stack.aria": "主な技術",
+  "cta.primary.icon_alt": "プロジェクトを探す"
 }

@@ -2,6 +2,8 @@
   "header.eyebrow": "var x = 'Portfolio'; // x because 'portfolio' was too long to type",
   "header.title": "document.title = getTitle() || getTitle2() || getTitleBackup() || 'Projets'; // fallback chain of broken functions",
   "header.description": "/* This description was written by 4 developers over 3 years. Each one added a sentence without reading the others. It contradicts itself twice. The grammar checker crashed. We shipped it anyway. It's held together by string concatenation and hope. */",
+  "header.cta_works.top": "// the button that opens 14 modals",
+  "header.cta_works.bottom": "// redirects 3 times, nobody knows why",
   "filter.category": "switch(cat) { case 'all': case 'personal': case 'open_source': case 'client': default: showAll(); break; } // every case does the same thing",
   "filter.tags": "var tags = tags || tag || Tags || TAGS || window.tags || []; // we WILL find the tags",
   "filter.stack": "var stack = JSON.parse(localStorage.getItem('stack') || sessionStorage.getItem('stack') || cookies.get('stack') || 'null') || []; // checked every storage mechanism known to man",

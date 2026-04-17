@@ -1,0 +1,76 @@
+<section class="works-xp" aria-labelledby="works-xp-title">
+  <header class="works-xp__head">
+    <p class="works-xp__eyebrow text-rune">{{ ts.translate('works.experiences.subtitle') }}</p>
+    <h2 id="works-xp-title" class="text-engraved text-engraved--deep">
+      {{ ts.translate('works.experiences.title') }}
+    </h2>
+  </header>
+
+  <ol class="works-xp__rail">
+    @for (exp of experiences; track trackById($index, exp); let idx = $index) {
+      <li
+        class="works-xp__item"
+        [class.works-xp__item--left]="idx % 2 === 0"
+        [class.works-xp__item--right]="idx % 2 === 1"
+        [class.works-xp__item--volunteer]="exp.volunteer"
+        appRevealOnScroll
+        [revealDelay]="idx * 0.08"
+        [revealY]="32"
+        [revealBlur]="12">
+        <div class="works-xp__seal" [class.works-xp__seal--monogram]="!hasLogo(exp.organism)">
+          <div class="works-xp__seal-inner">
+            @if (hasLogo(exp.organism)) {
+              <app-responsive-picture
+                [sources]="logoSources(exp.organism)"
+                [fallbackSrc]="logoFallback(exp.organism)"
+                [alt]="organismName(exp.organism)"
+                loading="lazy"
+                decoding="async"
+                objectFit="contain">
+              </app-responsive-picture>
+            } @else {
+              <span class="works-xp__seal-monogram" [attr.aria-label]="organismName(exp.organism)">
+                {{ monogram(exp.organism) }}
+              </span>
+            }
+          </div>
+        </div>
+
+        <article class="works-xp__card surface-altar">
+          <header class="works-xp__card-head">
+            <span class="works-xp__period text-sigil">{{ period(exp) }}</span>
+            <span class="works-xp__duration">· {{ duration(exp) }}</span>
+          </header>
+
+          <h3 class="works-xp__title text-engraved text-engraved--carved">{{ title(exp) }}</h3>
+
+          <p class="works-xp__org">
+            <strong>{{ organismName(exp.organism) }}</strong>
+            <span aria-hidden="true"> · </span>
+            <span class="works-xp__employment">{{ employmentLabel(exp) }}</span>
+          </p>
+
+          <p class="works-xp__meta">
+            @if (exp.sector) {
+              <span class="works-xp__sector">{{ sectorLabel(exp) }}</span>
+              <span aria-hidden="true"> · </span>
+            }
+            @if (exp.location) {
+              <span>{{ locationLabel(exp) }}</span>
+              <span aria-hidden="true"> · </span>
+            }
+            <span>{{ workModeLabel(exp) }}</span>
+          </p>
+
+          <div class="divider-rune"></div>
+
+          <div class="works-xp__body text-tome">
+            @for (para of paragraphs(description(exp)); track $index) {
+              <p>{{ para }}</p>
+            }
+          </div>
+        </article>
+      </li>
+    }
+  </ol>
+</section>

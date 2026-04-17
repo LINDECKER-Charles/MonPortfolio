@@ -14,5 +14,15 @@
   "nav.aria": "$('#main-nav')[0]",
   "photo.alt": "'Portrait:'+name",
   "photo.developer": "typeof dev",
-  "photo.trainer": "class{teach(){}}"
+  "photo.trainer": "class{teach(){}}",
+  "skip_to_content": "()=>_s()",
+  "404.eyebrow": "404&&\"ruins\"",
+  "404.title": "throw new Error('banished')",
+  "404.lead": "if(!routes[p])throw 404;_survivors.filter(s=>s.vigilant).forEach(_dream)//undefined_is_not_a_function",
+  "404.cta.home.top": "()=>go()",
+  "404.cta.home.bottom": "/#/h",
+  "404.cta.projects.top": "()=>see()",
+  "404.cta.projects.bottom": "/#/p",
+  "nav.logo_alt": "'logo:'+n",
+  "loading.frame_alt": "'loading'"
 }

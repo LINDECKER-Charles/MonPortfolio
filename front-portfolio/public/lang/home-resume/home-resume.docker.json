@@ -4,14 +4,12 @@
   "banner.icon.fire": "docker run --rm fire-extinguisher:latest # the prod server again",
   "banner.icon.physique": "docker stats --no-stream # the most physical docker gets",
   "banner.icon.pousse-res": "restart: on-failure:9999 # resistance through sheer stubbornness",
-
   "header.eyebrow": "LABEL section=profil",
   "header.subtitle": "FROM developer:senior AS formateur\nRUN apk add --no-cache aspnet angular symfony\n# yes we're installing frameworks via apk. no I will not elaborate.",
   "header.cta.resume.top": "docker cp resume:/app/cv.pdf ./consulter/",
   "header.cta.resume.bottom": "VOLUME /app/resume # persistent resume. survives container death.",
   "header.cta.replay.top": "docker restart animation # replay = restart. elegant.",
   "header.cta.replay.bottom": "docker-compose up animation --force-recreate # nuclear replay option",
-
   "snippets.transmission.title": "FROM teacher:latest AS transmission",
   "snippets.transmission.content": "services:\n  transmission:\n    image: knowledge-sharing:9years\n    environment:\n      - TEACHING_STYLE=hands-on\n      - PATIENCE=infinite\n    deploy:\n      resources:\n        reservations:\n          cpus: '4.0'\n          memory: 16G\n    # teaching containers need MORE resources than prod\n    # because students will docker rm -f everything\n    # ask me how I know",
   "snippets.stack.title": "docker images --format '{{.Repository}}:{{.Tag}}' | grep stack",
@@ -21,5 +19,10 @@
   "snippets.opensource.title": "docker push ghcr.io/opensource:contributor",
   "snippets.opensource.content": "# Open source via Docker:\n# Step 1: docker pull interesting-project\n# Step 2: docker build --no-cache . (takes 45 min)\n# Step 3: docker push fix/typo-in-readme\n# Step 4: PR rejected (Dockerfile not optimized)\n# Step 5: squash 47 layers into 1\n# Step 6: PR merged. 2 bytes changed. 3 days spent.",
   "snippets.quality.title": "docker scan quality --severity critical",
-  "snippets.quality.content": "# Quality pipeline:\n# 1. docker build --target test (runs tests)\n# 2. docker build --target lint (runs linter)\n# 3. docker build --target pray (custom stage)\n# 4. docker push :latest\n# 5. docker push :latest-probably-works\n# 6. docker push :latest-rollback-ready-just-in-case"
+  "snippets.quality.content": "# Quality pipeline:\n# 1. docker build --target test (runs tests)\n# 2. docker build --target lint (runs linter)\n# 3. docker build --target pray (custom stage)\n# 4. docker push :latest\n# 5. docker push :latest-probably-works\n# 6. docker push :latest-rollback-ready-just-in-case",
+  "snippets.transmission.icon_alt": "LABEL teach=\"knowledge\"",
+  "snippets.stack.icon_alt": "LABEL stack=\"excellence\"",
+  "snippets.architecture.icon_alt": "LABEL arch=\"secure\"",
+  "snippets.opensource.icon_alt": "LABEL license=\"MIT\"",
+  "snippets.quality.icon_alt": "LABEL quality=\"high\""
 }

@@ -14,5 +14,15 @@
   "nav.aria": "Navigation of the Roundtable Hold",
   "photo.alt": "Portrait of the Tarnished Charles Lindecker",
   "photo.developer": "Code Bearer",
-  "photo.trainer": "Sage of the Erdtree"
+  "photo.trainer": "Sage of the Erdtree",
+  "skip_to_content": "To the path",
+  "404.eyebrow": "404 — Withered Ruins",
+  "404.title": "Thou art banished from these lands",
+  "404.lead": "The path thou walked has crumbled, or was never forged. Only the most grace-touched Tarnished find their way through the withered ruins of the Lands Between.",
+  "404.cta.home.top": "Return",
+  "404.cta.home.bottom": "The Table",
+  "404.cta.projects.top": "Seek",
+  "404.cta.projects.bottom": "The Realms",
+  "nav.logo_alt": "Sigil of Charles the Tarnished",
+  "loading.frame_alt": "Sigil of Grace arrival"
 }

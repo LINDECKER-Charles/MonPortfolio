@@ -17,5 +17,9 @@
   "stats.frontend": "Dexterity (Frontend)",
   "stats.architecture": "Intelligence (Architecture)",
   "stats.security": "Faith (Security)",
-  "stats.devops": "Arcane (DevOps)"
+  "stats.devops": "Arcane (DevOps)",
+  "runes.bloodtinge": "Arcane of the Tarnished",
+  "runes.eso": "Intelligence of the Tarnished",
+  "runes.heart": "Vigor of the Tarnished",
+  "runes.endurance": "Endurance of the Tarnished"
 }

@@ -4,4 +4,13 @@
   <h1 class="text-engraved--hero">{{ ts.translate('projects.header.title') }}</h1>
 
   <p class="text-tome">{{ ts.translate('projects.header.description') }}</p>
+
+  <div class="projects-hero__actions">
+    <a class="cta-tome cta-tome--shadow transition-ritual" routerLink="/works" href="/works">
+      <span class="cta-tome__label">
+        <span class="cta-tome__top">{{ ts.translate('projects.header.cta_works.top') }}</span>
+        <span class="cta-tome__bottom">{{ ts.translate('projects.header.cta_works.bottom') }}</span>
+      </span>
+    </a>
+  </div>
 </header>

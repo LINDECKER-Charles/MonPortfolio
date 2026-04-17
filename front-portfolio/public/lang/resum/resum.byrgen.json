@@ -17,5 +17,9 @@
   "stats.frontend": "Arcana Visio (Frontend)",
   "stats.architecture": "Architectura Hexagonalis",
   "stats.security": "Securitas Ecclesiae",
-  "stats.devops": "Alchimia Operationalis (DevOps)"
+  "stats.devops": "Alchimia Operationalis (DevOps)",
+  "runes.bloodtinge": "Sanguis arcanus",
+  "runes.eso": "Arcanum esotericum",
+  "runes.heart": "Vitalitas cor",
+  "runes.endurance": "Endurantia corporis"
 }

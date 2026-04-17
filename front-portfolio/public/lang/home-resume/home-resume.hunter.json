@@ -4,14 +4,12 @@
   "banner.icon.fire": "Molotov Cocktail",
   "banner.icon.physique": "Vitality",
   "banner.icon.pousse-res": "Rally Resistance",
-
   "header.eyebrow": "Hunter's Profile",
   "header.subtitle": "Workshop Hunter / Beast Mentor — .NET & Angular & Symfony",
   "header.cta.resume.top": "Inspect",
   "header.cta.resume.bottom": "The Hunter's Mark",
   "header.cta.replay.top": "Relive",
   "header.cta.replay.bottom": "The Dream",
-
   "snippets.transmission.title": "Mentorship & the Workshop's Legacy",
   "snippets.transmission.content": "A hunter is nothing without those who came before. Gehrman passed his knowledge to us, and so we pass it on. Teaching tests a hunter's resolve, clarifies the anatomy of beasts, and elevates the next generation of hunters. For nine long nights, this hunter has guided fledglings through the code-infested streets of Yharnam.",
   "snippets.stack.title": "Trick Weapons & Technical Arsenal",
@@ -21,5 +19,10 @@
   "snippets.opensource.title": "Open Source & the Hunter's Fellowship",
   "snippets.opensource.content": "The hunt is not a solitary affair. Through open source contributions and mentoring young hunters, this Workshop veteran sees a concrete way to light more lanterns in the darkness. The beckoning bell rings for all who seek to learn.",
   "snippets.quality.title": "Quality & the Hunter's Discipline",
-  "snippets.quality.content": "Rigorous standards, vigilant eyes scanning for beasts of technical debt, and an unwavering demand for quality: these are the hunter's creed. This discipline keeps one ahead of the scourge, makes for sharper technical instincts, and produces code clean enough to present to the Doll herself."
+  "snippets.quality.content": "Rigorous standards, vigilant eyes scanning for beasts of technical debt, and an unwavering demand for quality: these are the hunter's creed. This discipline keeps one ahead of the scourge, makes for sharper technical instincts, and produces code clean enough to present to the Doll herself.",
+  "snippets.transmission.icon_alt": "Workshop teachings",
+  "snippets.stack.icon_alt": "Arsenal of the workshop",
+  "snippets.architecture.icon_alt": "Workshop's fortified blueprint",
+  "snippets.opensource.icon_alt": "Workshop's open doors",
+  "snippets.quality.icon_alt": "Workshop's honour"
 }

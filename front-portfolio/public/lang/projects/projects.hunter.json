@@ -2,6 +2,8 @@
   "header.eyebrow": "Workshop Archives",
   "header.title": "Hunts Undertaken",
   "header.description": "A blood-stained record of personal hunts, technical experiments carried out in the back alleys of Yharnam, and open source offerings left at the Workshop gates. Filter by contract type, beast marks, and trick weapons used.",
+  "header.cta_works.top": "Follow",
+  "header.cta_works.bottom": "My Chronicle",
   "filter.category": "Contract Type",
   "filter.tags": "Beast Marks",
   "filter.stack": "Trick Weapons",

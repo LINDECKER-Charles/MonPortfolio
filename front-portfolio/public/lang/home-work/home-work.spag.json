@@ -6,5 +6,6 @@
   "cta.primary.bottom": "return parcours; // parcours is never defined",
   "cta.secondary.top": "// linkedin link is hardcoded in 23 files",
   "cta.secondary.bottom": "window.open(window.open(window.open('linkedin'))); // don't ask",
-  "aria.landmarks": "// TODO: add aria landmarks (created: 2019, assigned: nobody)"
+  "aria.landmarks": "// TODO: add aria landmarks (created: 2019, assigned: nobody)",
+  "cta.primary.icon_alt": "// career: commits pre-2020 deleted"
 }

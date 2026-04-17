@@ -2,6 +2,8 @@
   "header.eyebrow": "section: portfolio  # the good stuff",
   "header.title": "projects:\n  list: all  # brace yourself",
   "header.description": "# A curated selection\nprojects:\n  types: [personal, experiments, open_source]\n  filter_by: [category, tags, stack]\n  # yes, all of them",
+  "header.cta_works.top": "action: explore",
+  "header.cta_works.bottom": "target: journey",
   "filter.category": "filter: category  # pick wisely",
   "filter.tags": "filter: tags  # so many tags",
   "filter.stack": "filter: stack  # the real question",

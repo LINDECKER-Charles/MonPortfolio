@@ -17,5 +17,9 @@
   "stats.frontend": "Frontendum",
   "stats.architecture": "Architectura Ipsum",
   "stats.security": "Securitas Dolor",
-  "stats.devops": "DevOps Amet"
+  "stats.devops": "DevOps Amet",
+  "runes.bloodtinge": "Sanguis arcanum",
+  "runes.eso": "Arcana ipsum",
+  "runes.heart": "Vitalitas ipsum",
+  "runes.endurance": "Endurantia ipsum"
 }

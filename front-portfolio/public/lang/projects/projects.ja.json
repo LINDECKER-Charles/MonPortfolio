@@ -2,6 +2,8 @@
   "header.eyebrow": "ポートフォリオ",
   "header.title": "プロジェクト",
   "header.description": "個人作品、技術的実験、オープンソース貢献の選集。カテゴリ、タグ、スタックでフィルタリング可能。",
+  "header.cta_works.top": "見る",
+  "header.cta_works.bottom": "歩み",
   "filter.category": "カテゴリ",
   "filter.tags": "タグ",
   "filter.stack": "スタック",

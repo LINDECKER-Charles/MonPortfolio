@@ -4,14 +4,12 @@
   "banner.icon.fire": "Ignis Lorem",
   "banner.icon.physique": "Physicum Dolor",
   "banner.icon.pousse-res": "Resistentia ad Ictus Amet",
-
   "header.eyebrow": "Profilum",
   "header.subtitle": "Developator / Formatorus ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "Consultare",
   "header.cta.resume.bottom": "Meum Resume Ipsum",
   "header.cta.replay.top": "Relancere",
   "header.cta.replay.bottom": "Animationem Dolor",
-
   "snippets.transmission.title": "Transmissio & Docentia Ipsum",
   "snippets.transmission.content": "Lorem ipsum dolor sit amet, non est melius exercitium quam partitio scientiae: permittit npm install nostros ratiocinationes, clarificare nostram conceptionem rerum et elevare nostrum gradum exigentiae. Developator ab 9 annis, magnam importantiam do transmissioni ad futuros git push developers.",
   "snippets.stack.title": "Stack & Excellentia Technica Dolor",
@@ -21,5 +19,10 @@
   "snippets.opensource.title": "Apertum Fontem & Voluntariatum",
   "snippets.opensource.content": "Plus quam officium, developmentum est passio quam exprimo per meas contributiones open source sicut per accompanimentum juvenum in framework missionum bénévolarum. Lorem ipsum video modum concretum reddendi technicam utilem et npm publish accessibilem.",
   "snippets.quality.title": "Qualitas & Responsabilitas Amet",
-  "snippets.quality.content": "Lorem ipsum dolor sit amet, innitor standardibus codis rigorosis, vigilia technica activa et exigentia constanti super qualitate. Haec disciplina permittit mihi manere ad diem, sumere meliores decisiones technicas et producere codicem purum, fiabilem et git commit -m 'responsabilem'."
+  "snippets.quality.content": "Lorem ipsum dolor sit amet, innitor standardibus codis rigorosis, vigilia technica activa et exigentia constanti super qualitate. Haec disciplina permittit mihi manere ad diem, sumere meliores decisiones technicas et producere codicem purum, fiabilem et git commit -m 'responsabilem'.",
+  "snippets.transmission.icon_alt": "Transmissio et doctrina ipsum",
+  "snippets.stack.icon_alt": "Stacka et excellentia technica",
+  "snippets.architecture.icon_alt": "Securitas et architectura ipsum",
+  "snippets.opensource.icon_alt": "Fons apertus et voluntariat ipsum",
+  "snippets.quality.icon_alt": "Qualitas et responsabilitas ipsum"
 }

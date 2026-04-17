@@ -5,5 +5,7 @@
   "cta.primary.top": "action: explore",
   "cta.primary.bottom": "target: mes_travaux",
   "cta.secondary.top": "license: open_source",
-  "cta.secondary.bottom": "redirect: github  # pray it's up"
+  "cta.secondary.bottom": "redirect: github  # pray it's up",
+  "stack.aria": "stack:\n  type: main",
+  "cta.primary.icon_alt": "action: explore_projects"
 }

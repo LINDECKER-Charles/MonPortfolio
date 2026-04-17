@@ -35,6 +35,20 @@
   max-width: 70ch;
 }
 
+.projects-hero__actions {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .projects-hero__actions .cta-tome {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 640px) {
   .projects-hero {
     padding: 1.2rem 1rem;

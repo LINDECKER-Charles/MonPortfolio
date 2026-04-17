@@ -32,7 +32,7 @@ export const AVAILABLE_LANGUAGES: Language[] = [
   { code: 'spag', label: 'Spaghetti Code',      flag: 'SP' },
 ];
 
-const NAMESPACES = ['nav-barre', 'home-resume', 'home-projects', 'home-work', 'projects', 'footer', 'construction', 'opening', 'common', 'resum'] as const;
+const NAMESPACES = ['nav-barre', 'home-resume', 'home-projects', 'home-work', 'projects', 'works', 'footer', 'construction', 'opening', 'common', 'resum'] as const;
 const DEFAULT_LANG = 'fr';
 const STORAGE_KEY = 'lang';
 const QUERY_PARAM = 'lang';

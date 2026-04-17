@@ -5,5 +5,7 @@
   "cta.primary.top": "Inspicere",
   "cta.primary.bottom": "Opera Magna",
   "cta.secondary.top": "Codex Apertus",
-  "cta.secondary.bottom": "Videre GitHub"
+  "cta.secondary.bottom": "Videre GitHub",
+  "stack.aria": "Instrumenta arcana principalia",
+  "cta.primary.icon_alt": "Explorare opera arcana"
 }

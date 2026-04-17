@@ -14,5 +14,15 @@
   "nav.aria": "Navigation principale",
   "photo.alt": "Portrait de Charles Lindecker",
   "photo.developer": "Développeur",
-  "photo.trainer": "Formateur"
+  "photo.trainer": "Formateur",
+  "skip_to_content": "Aller au contenu",
+  "404.eyebrow": "404 — Ruines cendrées",
+  "404.title": "Vous avez été banni de ces terres",
+  "404.lead": "La route que vous empruntiez n'existe plus, ou n'a jamais existé. Seuls les rêveurs les plus vigilants trouvent encore leur chemin dans les ruines du Rêve du Chasseur.",
+  "404.cta.home.top": "Retour",
+  "404.cta.home.bottom": "Accueil",
+  "404.cta.projects.top": "Explorer",
+  "404.cta.projects.bottom": "Projets",
+  "nav.logo_alt": "Logo Charles Lindecker",
+  "loading.frame_alt": "Logo de chargement"
 }

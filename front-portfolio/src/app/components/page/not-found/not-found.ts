@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslationService } from '../../../services/translation.service';
 
 /**
  * Page 404 — les terres que tu cherches n'existent plus.
@@ -13,4 +14,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './not-found.html',
   styleUrl: './not-found.css',
 })
-export class NotFound {}
+export class NotFound {
+  protected readonly ts = inject(TranslationService);
+}

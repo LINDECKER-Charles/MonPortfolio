@@ -5,5 +5,7 @@
   "cta.primary.top": "docker pull explorer:latest",
   "cta.primary.bottom": "WORKDIR /app/travaux",
   "cta.secondary.top": "registry: ghcr.io/opensource",
-  "cta.secondary.bottom": "docker inspect github --format '{{.URL}}'"
+  "cta.secondary.bottom": "docker inspect github --format '{{.URL}}'",
+  "stack.aria": "LABEL stack=\"core\"",
+  "cta.primary.icon_alt": "docker pull projects"
 }

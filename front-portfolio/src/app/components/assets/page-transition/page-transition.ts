@@ -13,7 +13,6 @@ import {
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import gsap from 'gsap';
-import { AudioService } from '../../../services/audio-service';
 
 /**
  * Transitions de page ritualisées — fade-to-black + rune qui apparaît, puis
@@ -43,7 +42,6 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   @ViewChild('overlay', { static: true }) private overlayRef!: ElementRef<HTMLElement>;
 
   private readonly router = inject(Router);
-  private readonly audio = inject(AudioService);
   private readonly isBrowser: boolean;
 
   private subscription?: Subscription;
@@ -98,8 +96,9 @@ export class PageTransition implements AfterViewInit, OnDestroy {
 
     if (this.isExcluded(url)) return;
 
-    // Petit feedback sonore (utilise le son newLocation déjà enregistré).
-    this.audio.playOnce('newLocation');
+    /* Le son newLocation est joué par UiSoundService au clic sur le chip
+       de nav (feedback immédiat). Ici on ne gère que le visuel pour
+       éviter la double lecture à l'arrivée. */
 
     gsap.to(rune, {
       autoAlpha: 0,

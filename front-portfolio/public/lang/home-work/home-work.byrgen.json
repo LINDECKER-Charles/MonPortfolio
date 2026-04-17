@@ -6,5 +6,6 @@
   "cta.primary.bottom": "Annales Meos",
   "cta.secondary.top": "Testimonium",
   "cta.secondary.bottom": "Videre LinkedIn",
-  "aria.landmarks": "Monumenta Antiqua"
+  "aria.landmarks": "Monumenta Antiqua",
+  "cta.primary.icon_alt": "Iter sapientiae"
 }

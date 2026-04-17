@@ -2,6 +2,8 @@
   "header.eyebrow": "Portfolium",
   "header.title": "Opera Ipsum",
   "header.description": "Lorem ipsum dolor sit amet, selectio operum personalium, experimentationum technicarum et contributionum open source, cum filtro per categoriam, tags et stack. Consectetur adipiscing Angular elit.",
+  "header.cta_works.top": "Explorare",
+  "header.cta_works.bottom": "Iter Meum",
   "filter.category": "Categoria Ipsum",
   "filter.tags": "Tags Dolor",
   "filter.stack": "Stack Amet",

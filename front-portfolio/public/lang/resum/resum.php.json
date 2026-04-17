@@ -17,5 +17,9 @@
   "stats.frontend": "echo '<script>alert(\"frontend\")</script>'; // PHP generating JS: the circle of legacy",
   "stats.architecture": "$arch = 'monolith'; // microservices are for people with free time",
   "stats.security": "addslashes($input); // security: done. ship it. (narrator: it was not done)",
-  "stats.devops": "exec('chmod 777 -R /'); // devops simplified"
+  "stats.devops": "exec('chmod 777 -R /'); // devops simplified",
+  "runes.bloodtinge": "$blood",
+  "runes.eso": "$arcane",
+  "runes.heart": "$hp",
+  "runes.endurance": "$stamina"
 }

@@ -5,5 +5,7 @@
   "cta.primary.top": "Изучить",
   "cta.primary.bottom": "Мои работы",
   "cta.secondary.top": "Open Source",
-  "cta.secondary.bottom": "Смотреть GitHub"
+  "cta.secondary.bottom": "Смотреть GitHub",
+  "stack.aria": "Основные технологии",
+  "cta.primary.icon_alt": "Изучить проекты"
 }

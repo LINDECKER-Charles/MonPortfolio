@@ -14,5 +14,15 @@
   "nav.aria": "nav:\n  type: main  # the important one",
   "photo.alt": "alt: portrait_charles  # handsome yaml",
   "photo.developer": "class: developer",
-  "photo.trainer": "class: trainer  # not a pokemon trainer"
+  "photo.trainer": "class: trainer  # not a pokemon trainer",
+  "skip_to_content": "jump_to: content",
+  "404.eyebrow": "# 404: path not found",
+  "404.title": "status: banished",
+  "404.lead": "error:\n  code: 404\n  reason: path does not exist\n  # or never did\n  survivors: [vigilant_dreamers_only]",
+  "404.cta.home.top": "action: return",
+  "404.cta.home.bottom": "target: home",
+  "404.cta.projects.top": "action: explore",
+  "404.cta.projects.bottom": "target: projects",
+  "nav.logo_alt": "logo: charles_lindecker  # signature",
+  "loading.frame_alt": "logo: loading  # spinning"
 }

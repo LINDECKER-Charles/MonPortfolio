@@ -4,14 +4,12 @@
   "banner.icon.fire": "element: fire  # 🔥 not a comment",
   "banner.icon.physique": "stat: physique  # bro lifts",
   "banner.icon.pousse-res": "resist: physical  # tank build",
-
   "header.eyebrow": "section: profil  # the interesting part",
   "header.subtitle": "role: dev/formateur\nstack:\n  - ASP.NET\n  - Angular\n  - Symfony  # the holy trinity",
   "header.cta.resume.top": "action: consult",
   "header.cta.resume.bottom": "target: resume  # scroll down pls",
   "header.cta.replay.top": "action: replay",
   "header.cta.replay.bottom": "target: animation  # worth watching twice",
-
   "snippets.transmission.title": "transmission:\n  teaching: true  # knowledge is power",
   "snippets.transmission.content": "# Best practice: share knowledge\nsharing:\n  exercises: true\n  reasoning: clarified\n  standards: elevated\n  experience_years: 9  # and counting",
   "snippets.stack.title": "stack:\n  excellence: technical  # not accidental",
@@ -21,5 +19,10 @@
   "snippets.opensource.title": "opensource:\n  volunteer: true  # free as in freedom",
   "snippets.opensource.content": "# More than a job\npassion:\n  opensource: true\n  mentoring: youth\n  purpose: make_tech_accessible\n  # mass: indeterminate",
   "snippets.quality.title": "quality:\n  responsibility: true  # no YOLO deploys",
-  "snippets.quality.content": "# Standards are non-negotiable\ncode:\n  standards: rigorous\n  monitoring: active\n  output: [clean, reliable, responsible]\n  # git blame won't scare me"
+  "snippets.quality.content": "# Standards are non-negotiable\ncode:\n  standards: rigorous\n  monitoring: active\n  output: [clean, reliable, responsible]\n  # git blame won't scare me",
+  "snippets.transmission.icon_alt": "action: teach",
+  "snippets.stack.icon_alt": "stack:\n  quality: max",
+  "snippets.architecture.icon_alt": "arch:\n  secure: true",
+  "snippets.opensource.icon_alt": "license: MIT",
+  "snippets.quality.icon_alt": "quality: 9000"
 }

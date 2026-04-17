@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateRuneHoverIn,
@@ -8,6 +8,7 @@ import {
 } from './resum-rune-icons.animations';
 import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on-click.directive';
 import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
+import { TranslationService } from '../../../../../services/translation.service';
 
 @Component({
   selector: 'app-resum-rune-icons',
@@ -16,6 +17,7 @@ import {ResponsivePicture} from '../../../../assets/responsive-picture/responsiv
   styleUrl: './resum-rune-icons.css',
 })
 export class ResumRuneIcons extends ResumEntryAnimation {
+  protected readonly ts = inject(TranslationService);
   @Input({ required: true }) images!: any;
   protected readonly animationSelectors = '.rune';
   protected override animationDelay = 0.2;

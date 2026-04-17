@@ -10,11 +10,12 @@ import {
 } from '@angular/core';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
+import { RouterLink } from '@angular/router';
 import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'app-projects-header',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './projects-header.html',
   styleUrl: './projects-header.css',
 })
