@@ -48,6 +48,41 @@
           <p class="text-tome">{{ ts.translate('projects.' + project.id + '.shortDescription') }}</p>
         </div>
 
+        @if (previewImage(project); as preview) {
+          <button
+            type="button"
+            class="project-card__preview transition-ritual"
+            (click)="projectSelected.emit(project)"
+            [attr.aria-label]="ts.translate('projects.timeline.detail')">
+            <app-responsive-picture
+              [sources]="preview.sources"
+              [fallbackSrc]="preview.fallbackSrc"
+              [alt]="preview.alt"
+              loading="lazy"
+              decoding="async"
+              objectFit="cover">
+            </app-responsive-picture>
+
+            @for (corner of ['tl','tr','br','bl']; track corner) {
+              <svg
+                class="project-card__preview-corner project-card__preview-corner--{{ corner }}"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true">
+                <path d="M2 15 L2 4 L13 4" stroke="#a49476" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+                <path d="M5 11 L5 7 L9 7" stroke="#a49476" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
+                <circle cx="2" cy="4" r="1.1" fill="#a49476" opacity="0.75"/>
+              </svg>
+            }
+
+            @if (previewCount(project) > 1) {
+              <span class="project-card__preview-count" aria-hidden="true">
+                <span class="project-card__preview-count-value">+{{ previewCount(project) - 1 }}</span>
+              </span>
+            }
+          </button>
+        }
+
         <div class="project-card__section">
           <span class="project-card__section-label">{{ ts.translate('projects.filter.stack') }}</span>
 
