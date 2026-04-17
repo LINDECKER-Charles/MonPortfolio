@@ -63,8 +63,22 @@
               objectFit="cover">
             </app-responsive-picture>
 
+            @for (corner of ['tl','tr','br','bl']; track corner) {
+              <svg
+                class="project-card__preview-corner project-card__preview-corner--{{ corner }}"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true">
+                <path d="M2 15 L2 4 L13 4" stroke="#a49476" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+                <path d="M5 11 L5 7 L9 7" stroke="#a49476" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
+                <circle cx="2" cy="4" r="1.1" fill="#a49476" opacity="0.75"/>
+              </svg>
+            }
+
             @if (previewCount(project) > 1) {
-              <span class="project-card__preview-count">+{{ previewCount(project) - 1 }}</span>
+              <span class="project-card__preview-count" aria-hidden="true">
+                <span class="project-card__preview-count-value">+{{ previewCount(project) - 1 }}</span>
+              </span>
             }
           </button>
         }
