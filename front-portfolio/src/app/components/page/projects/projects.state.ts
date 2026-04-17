@@ -378,6 +378,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     links: {
       github: 'https://github.com/LINDECKER-Charles/ShrekSophone',
+      website: 'https://shrek.charles-lindecker.com',
     },
     highlights: [
       'Concept volontairement minimaliste et immédiatement identifiable',
@@ -427,6 +428,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     ],
     links: {
       github: 'https://github.com/LINDECKER-Charles/GlossaireQuest',
+      website: 'https://glossaire.bloodsouls-mail.com/home'
     },
     highlights: [
       'Authentification sécurisée via JWT',
