@@ -4,14 +4,12 @@
   "banner.icon.fire": "Fire",
   "banner.icon.physique": "Physique",
   "banner.icon.pousse-res": "Knockback Resistance",
-
   "header.eyebrow": "Profile",
   "header.subtitle": "Developer / Trainer ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "View",
   "header.cta.resume.bottom": "My resume",
   "header.cta.replay.top": "Replay",
   "header.cta.replay.bottom": "The animation",
-
   "snippets.transmission.title": "Teaching & Knowledge Transfer",
   "snippets.transmission.content": "There is no better exercise than sharing knowledge: it tests our reasoning, clarifies our understanding of things and raises our level of excellence. A developer for 9 years, I place great importance on passing knowledge on to future developers.",
   "snippets.stack.title": "Stack & Technical Excellence",
@@ -21,5 +19,10 @@
   "snippets.opensource.title": "Open Source & Volunteering",
   "snippets.opensource.content": "More than a job, development is a passion I express through open source contributions and by mentoring young people through volunteer work. I see it as a concrete way to make technology useful and accessible.",
   "snippets.quality.title": "Quality & Responsibility",
-  "snippets.quality.content": "I rely on rigorous code standards, active technical watch and a constant demand for quality. This discipline allows me to stay current, make better technical decisions and produce clean, reliable and responsible code."
+  "snippets.quality.content": "I rely on rigorous code standards, active technical watch and a constant demand for quality. This discipline allows me to stay current, make better technical decisions and produce clean, reliable and responsible code.",
+  "snippets.transmission.icon_alt": "Teaching and knowledge transfer",
+  "snippets.stack.icon_alt": "Stack and technical excellence",
+  "snippets.architecture.icon_alt": "Application security and architecture",
+  "snippets.opensource.icon_alt": "Open source and volunteer work",
+  "snippets.quality.icon_alt": "Quality and responsibility"
 }

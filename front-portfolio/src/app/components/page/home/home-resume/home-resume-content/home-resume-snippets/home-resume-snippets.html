@@ -15,7 +15,7 @@
             <app-responsive-picture
               [sources]="snippet.iconSources"
               [fallbackSrc]="snippet.iconFallback"
-              [alt]="snippet.iconAlt"
+              [alt]="ts.translate('home-resume.snippets.' + snippet.id + '.icon_alt')"
               loading="lazy"
               decoding="async">
             </app-responsive-picture>

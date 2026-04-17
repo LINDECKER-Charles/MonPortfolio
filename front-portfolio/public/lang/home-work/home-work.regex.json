@@ -6,5 +6,6 @@
   "cta.primary.bottom": "/m[o0]n\\s+parc[o0]urs/i",
   "cta.secondary.top": "/^profess?ion+[ae]l$/i",
   "cta.secondary.bottom": "/(?:voir|see)\\s+LinkedIn/i",
-  "aria.landmarks": "/rep[eè]r(e|es)$/i"
+  "aria.landmarks": "/rep[eè]r(e|es)$/i",
+  "cta.primary.icon_alt": "/(?:parcours|journey|career)/i"
 }

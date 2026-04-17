@@ -5,5 +5,7 @@
   "cta.primary.top": "Explorer",
   "cta.primary.bottom": "Mes travaux",
   "cta.secondary.top": "Open Source",
-  "cta.secondary.bottom": "Voir GitHub"
+  "cta.secondary.bottom": "Voir GitHub",
+  "stack.aria": "Technologies principales",
+  "cta.primary.icon_alt": "Explorer les projets"
 }

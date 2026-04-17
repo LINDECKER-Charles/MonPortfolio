@@ -17,5 +17,9 @@
   "stats.frontend": "frontend: 85  # secondary stat",
   "stats.architecture": "architecture: 88  # big brain stat",
   "stats.security": "security: 80  # paranoia stat",
-  "stats.devops": "devops: 75  # ops, not oops"
+  "stats.devops": "devops: 75  # ops, not oops",
+  "runes.bloodtinge": "stat: bloodtinge",
+  "runes.eso": "stat: arcane",
+  "runes.heart": "stat: vitality",
+  "runes.endurance": "stat: endurance"
 }

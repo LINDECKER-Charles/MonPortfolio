@@ -19,5 +19,10 @@
   "snippets.opensource.title": "オープンソースとボランティア",
   "snippets.opensource.content": "開発は単なる仕事以上の情熱であり、オープンソースへの貢献やボランティア活動を通じた若者の支援で表現しています。技術を有用でアクセスしやすいものにする具体的な方法だと考えています。",
   "snippets.quality.title": "品質と責任",
-  "snippets.quality.content": "厳格なコード標準、積極的な技術監視、品質への一貫した要求に基づいています。この規律により、最新の状態を保ち、より良い技術的決定を下し、クリーンで信頼性が高く責任あるコードを生産することができます。"
+  "snippets.quality.content": "厳格なコード標準、積極的な技術監視、品質への一貫した要求に基づいています。この規律により、最新の状態を保ち、より良い技術的決定を下し、クリーンで信頼性が高く責任あるコードを生産することができます。",
+  "snippets.transmission.icon_alt": "伝承と教育",
+  "snippets.stack.icon_alt": "技術スタックと技術的卓越性",
+  "snippets.architecture.icon_alt": "アプリケーションのセキュリティと設計",
+  "snippets.opensource.icon_alt": "オープンソースとボランティア",
+  "snippets.quality.icon_alt": "品質と責任"
 }

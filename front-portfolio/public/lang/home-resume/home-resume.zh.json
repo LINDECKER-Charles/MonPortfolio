@@ -19,5 +19,10 @@
   "snippets.opensource.title": "开源与志愿服务",
   "snippets.opensource.content": "开发不仅仅是一份职业，更是一种热情，我通过开源贡献和志愿服务中的青年辅导来表达。我认为这是让技术变得有用和可及的具体方式。",
   "snippets.quality.title": "质量与责任",
-  "snippets.quality.content": "我依靠严格的代码标准、积极的技术监控和对质量的持续要求。这种纪律使我能够保持更新，做出更好的技术决策，并产出干净、可靠且负责任的代码。"
+  "snippets.quality.content": "我依靠严格的代码标准、积极的技术监控和对质量的持续要求。这种纪律使我能够保持更新，做出更好的技术决策，并产出干净、可靠且负责任的代码。",
+  "snippets.transmission.icon_alt": "传承与教学",
+  "snippets.stack.icon_alt": "技术栈与技术卓越",
+  "snippets.architecture.icon_alt": "应用安全与架构",
+  "snippets.opensource.icon_alt": "开源与志愿服务",
+  "snippets.quality.icon_alt": "质量与责任"
 }

@@ -5,5 +5,7 @@
   "cta.primary.top": "/^expl[o0]r(e|er)$/i",
   "cta.primary.bottom": "/m(?:es|y)\\s+trav(aux|ails?)/i",
   "cta.secondary.top": "/[o0]pen\\s*[s5][o0]urce/i",
-  "cta.secondary.bottom": "/(?:voir|see)\\s+GitHub/i"
+  "cta.secondary.bottom": "/(?:voir|see)\\s+GitHub/i",
+  "stack.aria": "/(?:main|principal)\\s+(?:tech|stack)/i",
+  "cta.primary.icon_alt": "/explor(?:e|er)\\s+projects?/i"
 }

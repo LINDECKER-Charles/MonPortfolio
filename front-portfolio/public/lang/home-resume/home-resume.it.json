@@ -19,5 +19,10 @@
   "snippets.opensource.title": "Open Source & Volontariato",
   "snippets.opensource.content": "Più che un mestiere, lo sviluppo è una passione che esprimo attraverso i miei contributi open source e l'accompagnamento dei giovani nel volontariato. Lo considero un modo concreto per rendere la tecnologia utile e accessibile.",
   "snippets.quality.title": "Qualità & Responsabilità",
-  "snippets.quality.content": "Mi affido a standard di codice rigorosi, vigilanza tecnica attiva e un'esigenza costante di qualità. Questa disciplina mi permette di restare aggiornato, prendere migliori decisioni tecniche e produrre codice pulito, affidabile e responsabile."
+  "snippets.quality.content": "Mi affido a standard di codice rigorosi, vigilanza tecnica attiva e un'esigenza costante di qualità. Questa disciplina mi permette di restare aggiornato, prendere migliori decisioni tecniche e produrre codice pulito, affidabile e responsabile.",
+  "snippets.transmission.icon_alt": "Trasmissione e insegnamento",
+  "snippets.stack.icon_alt": "Stack ed eccellenza tecnica",
+  "snippets.architecture.icon_alt": "Sicurezza applicativa e architettura",
+  "snippets.opensource.icon_alt": "Open source e volontariato",
+  "snippets.quality.icon_alt": "Qualità e responsabilità"
 }

@@ -6,5 +6,6 @@
   "cta.primary.bottom": "我的经历",
   "cta.secondary.top": "专业",
   "cta.secondary.bottom": "查看LinkedIn",
-  "aria.landmarks": "标志"
+  "aria.landmarks": "标志",
+  "cta.primary.icon_alt": "职业经历"
 }

@@ -5,5 +5,7 @@
   "cta.primary.top": "Take Up Arms",
   "cta.primary.bottom": "Join the Hunt",
   "cta.secondary.top": "Workshop Archives",
-  "cta.secondary.bottom": "Seek on GitHub"
+  "cta.secondary.bottom": "Seek on GitHub",
+  "stack.aria": "Hunter's trusted tools",
+  "cta.primary.icon_alt": "Hunt for projects"
 }

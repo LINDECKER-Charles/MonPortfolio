@@ -6,5 +6,6 @@
   "cta.primary.bottom": "ENTRYPOINT [\"/app/parcours\"]",
   "cta.secondary.top": "ports:\n  - \"443:443\" # linkedin",
   "cta.secondary.bottom": "HEALTHCHECK CMD curl -f https://linkedin.com || exit 1",
-  "aria.landmarks": "# accessibility: enabled (we're not monsters)"
+  "aria.landmarks": "# accessibility: enabled (we're not monsters)",
+  "cta.primary.icon_alt": "LABEL career=\"journey\""
 }

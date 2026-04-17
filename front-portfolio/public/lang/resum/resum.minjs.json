@@ -17,5 +17,9 @@
   "stats.frontend": "stats.frontend",
   "stats.architecture": "stats.arch",
   "stats.security": "stats.sec",
-  "stats.devops": "stats.devops"
+  "stats.devops": "stats.devops",
+  "runes.bloodtinge": "blood||0",
+  "runes.eso": "arcane||0",
+  "runes.heart": "hp||1",
+  "runes.endurance": "stam||0"
 }

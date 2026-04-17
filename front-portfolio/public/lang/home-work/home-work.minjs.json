@@ -6,5 +6,6 @@
   "cta.primary.bottom": "self._career",
   "cta.secondary.top": "!!isPro",
   "cta.secondary.bottom": "window.open('linkedin')",
-  "aria.landmarks": "document.querySelectorAll('.waypoint')"
+  "aria.landmarks": "document.querySelectorAll('.waypoint')",
+  "cta.primary.icon_alt": "cv||'void'"
 }

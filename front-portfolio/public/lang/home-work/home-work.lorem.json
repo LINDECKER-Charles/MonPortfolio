@@ -6,5 +6,6 @@
   "cta.primary.bottom": "Meum Iter",
   "cta.secondary.top": "Professionale",
   "cta.secondary.bottom": "Videre LinkedIn",
-  "aria.landmarks": "Reperia Ipsum"
+  "aria.landmarks": "Reperia Ipsum",
+  "cta.primary.icon_alt": "Iter professionale ipsum"
 }

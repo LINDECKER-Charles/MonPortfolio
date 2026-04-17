@@ -8,7 +8,7 @@
     (mousedown)="onPress($event)"
     (mouseup)="onRelease($event)"
     (blur)="onHoverLeave($event)"
-    aria-label="Bloodtinge"
+    [attr.aria-label]="ts.translate('resum.runes.bloodtinge')"
   >
     <app-responsive-picture
       [sources]="images.runes.gear.sources"
@@ -26,7 +26,7 @@
     (mousedown)="onPress($event)"
     (mouseup)="onRelease($event)"
     (blur)="onHoverLeave($event)"
-    aria-label="Eso"
+    [attr.aria-label]="ts.translate('resum.runes.eso')"
   >
     <app-responsive-picture
       [sources]="images.runes.brain.sources"
@@ -44,7 +44,7 @@
     (mousedown)="onPress($event)"
     (mouseup)="onRelease($event)"
     (blur)="onHoverLeave($event)"
-    aria-label="Heart"
+    [attr.aria-label]="ts.translate('resum.runes.heart')"
   >
     <app-responsive-picture
       [sources]="images.runes.fire.sources"
@@ -62,7 +62,7 @@
     (mousedown)="onPress($event)"
     (mouseup)="onRelease($event)"
     (blur)="onHoverLeave($event)"
-    aria-label="Endurance"
+    [attr.aria-label]="ts.translate('resum.runes.endurance')"
   >
     <app-responsive-picture
       [sources]="images.runes.moon.sources"

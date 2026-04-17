@@ -5,5 +5,7 @@
   "cta.primary.top": "temp2 = explore(); // temp1 was taken",
   "cta.primary.bottom": "final_final_v3_REAL_travaux()",
   "cta.secondary.top": "a = getOpenSource(); // a for... something",
-  "cta.secondary.bottom": "goto github; // we don't talk about this goto"
+  "cta.secondary.bottom": "goto github; // we don't talk about this goto",
+  "stack.aria": "// main stack, comments lost in git history",
+  "cta.primary.icon_alt": "// explore = scroll through 200 files"
 }

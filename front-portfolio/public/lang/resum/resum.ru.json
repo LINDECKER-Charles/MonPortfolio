@@ -17,5 +17,9 @@
   "stats.frontend": "Frontend",
   "stats.architecture": "Архитектура",
   "stats.security": "Безопасность",
-  "stats.devops": "DevOps"
+  "stats.devops": "DevOps",
+  "runes.bloodtinge": "Кровяной оттенок",
+  "runes.eso": "Тайное",
+  "runes.heart": "Живучесть",
+  "runes.endurance": "Выносливость"
 }

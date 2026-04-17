@@ -6,5 +6,6 @@
   "cta.primary.bottom": "target: mon_parcours  # no tabs allowed",
   "cta.secondary.top": "type: professional",
   "cta.secondary.bottom": "redirect: linkedin  # fingers crossed",
-  "aria.landmarks": "landmarks:\n  - here  # you are here"
+  "aria.landmarks": "landmarks:\n  - here  # you are here",
+  "cta.primary.icon_alt": "career: journey"
 }

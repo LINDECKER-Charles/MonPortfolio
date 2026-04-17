@@ -17,5 +17,9 @@
   "stats.frontend": "Frontend",
   "stats.architecture": "Architecture",
   "stats.security": "الأمان",
-  "stats.devops": "DevOps"
+  "stats.devops": "DevOps",
+  "runes.bloodtinge": "صبغة الدم",
+  "runes.eso": "الغامض",
+  "runes.heart": "الحيوية",
+  "runes.endurance": "التحمل"
 }

@@ -5,5 +5,7 @@
   "cta.primary.top": "()=>explore()",
   "cta.primary.bottom": "this._work",
   "cta.secondary.top": "!!window.openSource",
-  "cta.secondary.bottom": "location.href='github'"
+  "cta.secondary.bottom": "location.href='github'",
+  "stack.aria": "stack.main||[]",
+  "cta.primary.icon_alt": "go('/p')"
 }

@@ -6,5 +6,6 @@
   "cta.primary.bottom": "私の経歴",
   "cta.secondary.top": "プロフェッショナル",
   "cta.secondary.bottom": "LinkedInを見る",
-  "aria.landmarks": "ランドマーク"
+  "aria.landmarks": "ランドマーク",
+  "cta.primary.icon_alt": "職歴"
 }

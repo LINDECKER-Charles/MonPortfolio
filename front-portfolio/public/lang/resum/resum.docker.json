@@ -17,5 +17,9 @@
   "stats.frontend": "FROM node:20-alpine AS frontend\n# alpine because we care about image size\n# (node_modules: 1.8GB)",
   "stats.architecture": "docker-compose.yml | wc -l\n> 2,847 lines # it's called 'micro' services",
   "stats.security": "docker scan portfolio --severity critical\n> 0 vulnerabilities (because we didn't scan the dependencies)",
-  "stats.devops": "docker buildx build --platform linux/amd64,linux/arm64 --push \\\n  -t devops:mastered .\n# builds on both platforms because we can"
+  "stats.devops": "docker buildx build --platform linux/amd64,linux/arm64 --push \\\n  -t devops:mastered .\n# builds on both platforms because we can",
+  "runes.bloodtinge": "LABEL stat=\"bloodtinge\"",
+  "runes.eso": "LABEL stat=\"arcane\"",
+  "runes.heart": "LABEL stat=\"vitality\"",
+  "runes.endurance": "LABEL stat=\"endurance\""
 }

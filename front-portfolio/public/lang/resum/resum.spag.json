@@ -17,5 +17,9 @@
   "stats.frontend": "var frontend = backend - 14; // frontend skill is derived from backend skill. architecturally questionable.",
   "stats.architecture": "var arch = { clean: true, solid: true, tested: false }; // 2 out of 3 ain't bad",
   "stats.security": "var security = '████████'; // redacted for security. the actual value is 'password123'.",
-  "stats.devops": "var devops = !!'🔥'; // truthy emoji. evaluates to true. this is valid JavaScript. I'm sorry."
+  "stats.devops": "var devops = !!'🔥'; // truthy emoji. evaluates to true. this is valid JavaScript. I'm sorry.",
+  "runes.bloodtinge": "// bloodtinge, forgotten but critical",
+  "runes.eso": "// arcane, magic number from god knows where",
+  "runes.heart": "// HP, never decremented in prod",
+  "runes.endurance": "// stamina, bug: never regenerates"
 }

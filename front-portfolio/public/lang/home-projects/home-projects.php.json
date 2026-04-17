@@ -5,5 +5,7 @@
   "cta.primary.top": "$_POST['explorer']",
   "cta.primary.bottom": "require_once('mes_travaux.php')",
   "cta.secondary.top": "fopen('github.com', 'r') // lol",
-  "cta.secondary.bottom": "echo $github_link; // Undefined variable"
+  "cta.secondary.bottom": "echo $github_link; // Undefined variable",
+  "stack.aria": "<?php // main technologies, unsorted ?>",
+  "cta.primary.icon_alt": "header('Location: /projects')"
 }

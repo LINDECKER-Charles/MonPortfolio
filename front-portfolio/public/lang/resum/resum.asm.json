@@ -17,5 +17,9 @@
   "stats.frontend": "MOV stat_frontend, HIGH",
   "stats.architecture": "MOV stat_arch, MAX",
   "stats.security": "MOV stat_sec, HIGH",
-  "stats.devops": "MOV stat_devops, MID"
+  "stats.devops": "MOV stat_devops, MID",
+  "runes.bloodtinge": "DB 'BLOODTINGE'",
+  "runes.eso": "DB 'ARCANE'",
+  "runes.heart": "DB 'VITALITY'",
+  "runes.endurance": "DB 'ENDURANCE'"
 }

@@ -6,7 +6,7 @@
 
     <p class="text-tome">{{ ts.translate('home-projects.description') }}</p>
 
-    <div class="home-projects__stack" aria-label="Technologies principales">
+    <div class="home-projects__stack" [attr.aria-label]="ts.translate('home-projects.stack.aria')">
       @for (icon of stackIcons; track icon.fallback) {
         <span class="home-projects__stack-item transition-ritual" [attr.title]="icon.alt">
           <app-responsive-picture
@@ -27,7 +27,7 @@
         <app-responsive-picture
           [sources]="projectsIcon.sources"
           [fallbackSrc]="projectsIcon.fallback"
-          [alt]="projectsIcon.alt"
+          [alt]="ts.translate('home-projects.cta.primary.icon_alt')"
           loading="eager"
           decoding="async">
         </app-responsive-picture>

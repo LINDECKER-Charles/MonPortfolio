@@ -5,5 +5,7 @@
   "cta.primary.top": "استكشاف",
   "cta.primary.bottom": "أعمالي",
   "cta.secondary.top": "مفتوح المصدر",
-  "cta.secondary.bottom": "عرض GitHub"
+  "cta.secondary.bottom": "عرض GitHub",
+  "stack.aria": "التقنيات الرئيسية",
+  "cta.primary.icon_alt": "استكشف المشاريع"
 }
