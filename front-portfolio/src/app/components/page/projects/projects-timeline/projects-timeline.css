@@ -179,6 +179,83 @@
   color: var(--color-ash);
 }
 
+.project-card__preview {
+  position: relative;
+  display: block;
+  margin: 1rem 1.25rem 0;
+  padding: 0;
+  width: calc(100% - 2.5rem);
+  aspect-ratio: 16 / 9;
+  border: var(--border-ash);
+  border-radius: var(--radius-panel);
+  background: rgb(17 18 19 / 0.4);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow:
+    0 10px 24px rgb(0 0 0 / 0.28),
+    inset 0 1px 0 rgb(255 255 255 / 0.03);
+}
+
+.project-card__preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, transparent 40%, rgb(0 0 0 / 0.35) 100%),
+    linear-gradient(180deg, transparent 55%, rgb(166 10 10 / 0.12) 100%);
+  pointer-events: none;
+  opacity: 0.85;
+  transition: opacity var(--duration-slow) ease;
+}
+
+.project-card__preview app-responsive-picture,
+.project-card__preview :is(picture, img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.project-card__preview :is(picture, img) {
+  transition: transform var(--duration-slow) ease, filter var(--duration-slow) ease;
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.project-card__preview:hover :is(picture, img) {
+  transform: scale(1.04);
+  filter: saturate(1.05) contrast(1.06);
+}
+
+.project-card__preview:hover::after {
+  opacity: 0.6;
+}
+
+.project-card__preview:hover {
+  border-color: rgb(166 10 10 / 0.22);
+  box-shadow:
+    0 14px 32px rgb(0 0 0 / 0.32),
+    0 0 0 1px rgb(166 10 10 / 0.1),
+    var(--shadow-blood-halo);
+}
+
+.project-card__preview:active {
+  transform: scale(0.995);
+}
+
+.project-card__preview-count {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgb(164 148 118 / 0.2);
+  background: rgb(17 18 19 / 0.72);
+  color: var(--color-bone);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
 .project-card__section {
   padding-top: 0.95rem;
   display: flex;
@@ -277,6 +354,11 @@
 
   .project-card__actions { padding-bottom: 1rem; }
 
+  .project-card__preview {
+    margin: 0.85rem 1rem 0;
+    width: calc(100% - 2rem);
+  }
+
   .project-card__featured {
     max-width: 100%;
     white-space: normal;
@@ -286,4 +368,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .project-card { transition: none !important; }
+  .project-card__preview :is(picture, img) { transition: none !important; }
+  .project-card__preview:hover :is(picture, img) { transform: none; }
 }

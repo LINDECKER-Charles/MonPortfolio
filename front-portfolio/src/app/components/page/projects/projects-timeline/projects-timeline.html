@@ -48,6 +48,27 @@
           <p class="text-tome">{{ ts.translate('projects.' + project.id + '.shortDescription') }}</p>
         </div>
 
+        @if (previewImage(project); as preview) {
+          <button
+            type="button"
+            class="project-card__preview transition-ritual"
+            (click)="projectSelected.emit(project)"
+            [attr.aria-label]="ts.translate('projects.timeline.detail')">
+            <app-responsive-picture
+              [sources]="preview.sources"
+              [fallbackSrc]="preview.fallbackSrc"
+              [alt]="preview.alt"
+              loading="lazy"
+              decoding="async"
+              objectFit="cover">
+            </app-responsive-picture>
+
+            @if (previewCount(project) > 1) {
+              <span class="project-card__preview-count">+{{ previewCount(project) - 1 }}</span>
+            }
+          </button>
+        }
+
         <div class="project-card__section">
           <span class="project-card__section-label">{{ ts.translate('projects.filter.stack') }}</span>
 
