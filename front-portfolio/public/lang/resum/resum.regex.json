@@ -17,5 +17,9 @@
   "stats.frontend": "/^front[\\-_]?end$/i",
   "stats.architecture": "/^archit(?:ecture)?$/i",
   "stats.security": "/^s[eé]curit[eé]?$/i",
-  "stats.devops": "/^dev[\\-_]?ops$/i"
+  "stats.devops": "/^dev[\\-_]?ops$/i",
+  "runes.bloodtinge": "/bl[o0]{2}d(?:tinge)?/i",
+  "runes.eso": "/(?:arcane|eso(?:teric)?)/i",
+  "runes.heart": "/(?:heart|vital(?:ity)?|hp)/i",
+  "runes.endurance": "/endur(?:ance)?|stamina/i"
 }

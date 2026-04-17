@@ -1,6 +1,4 @@
-:host {
-  display: contents;
-}
+:host { display: contents; }
 
 .section-title {
   margin: 0 0 0.85rem;
@@ -8,7 +6,8 @@
   font-size: 1.2rem;
   font-weight: 500;
   color: #cbb996;
-  border-bottom: 1px solid rgba(215, 215, 215, 0.16);
+  font-family: var(--font-display);
+  border-bottom: 1px solid rgb(215 215 215 / 0.16);
 }
 
 .project-list {
@@ -21,8 +20,8 @@
   min-height: 38px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(215, 215, 215, 0.09);
-  color: #c9c3b8;
+  border-bottom: 1px solid rgb(215 215 215 / 0.09);
+  color: var(--color-parchment-dim);
 }
 
 .project-item {
@@ -43,14 +42,12 @@
 }
 
 .project-list a {
-  color: #c9c3b8;
+  color: var(--color-parchment-dim);
   text-decoration: none;
   transition: color 160ms ease;
 }
 
-.project-list a:hover {
-  color: #f3eee3;
-}
+.project-list a:hover { color: #f3eee3; }
 
 .project-item app-responsive-picture,
 .project-item picture,
@@ -63,9 +60,7 @@
 }
 
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 1.05rem;
-  }
+  .section-title { font-size: 1.05rem; }
 }
 
 @media (max-width: 480px) {
@@ -75,53 +70,26 @@
     margin-bottom: 0.65rem;
   }
 
-  .project-list li {
-    min-height: 34px;
-    font-size: 0.88rem;
-  }
+  .project-list li { min-height: 34px; font-size: 0.88rem; }
 
-  .project-item .label {
-    white-space: normal;
-    line-height: 1.2;
-  }
+  .project-item .label { white-space: normal; line-height: 1.2; }
 
   .project-item app-responsive-picture,
   .project-item picture,
-  .project-item img {
-    width: 18px;
-    height: 18px;
-  }
+  .project-item img { width: 18px; height: 18px; }
 }
 
 @media (max-width: 360px) {
-  .section-title {
-    font-size: 0.92rem;
-  }
-
-  .project-list li {
-    min-height: 32px;
-    font-size: 0.8rem;
-  }
-
-  .project-item .label {
-    gap: 0.4rem;
-    font-size: 0.82rem;
-  }
+  .section-title { font-size: 0.92rem; }
+  .project-list li { min-height: 32px; font-size: 0.8rem; }
+  .project-item .label { gap: 0.4rem; font-size: 0.82rem; }
 
   .project-item app-responsive-picture,
   .project-item picture,
-  .project-item img {
-    width: 16px;
-    height: 16px;
-  }
+  .project-item img { width: 16px; height: 16px; }
 }
 
 @media (max-width: 320px) {
-  .section-title {
-    font-size: 0.88rem;
-  }
-
-  .project-item .label {
-    font-size: 0.78rem;
-  }
+  .section-title { font-size: 0.88rem; }
+  .project-item .label { font-size: 0.78rem; }
 }

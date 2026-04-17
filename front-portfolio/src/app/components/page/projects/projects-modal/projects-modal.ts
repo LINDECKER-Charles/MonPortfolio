@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Input, Output, SecurityContext } from '@angular/core';
+import { Component, EventEmitter, HostListener, inject, Input, Output, SecurityContext } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ImageLightbox } from '../../../assets/image-lightbox/image-lightbox';
 import {
@@ -10,6 +10,7 @@ import { SHARED_IMAGES } from '../../../../img-sources/shared.sources';
 import { ProjectItem } from '../projects.state';
 import { formatProjectPeriod } from '../projects.utils';
 import { TranslationService } from '../../../../services/translation.service';
+import { FocusTrapDirective } from '../../../../directives/focus-trap.directive';
 
 interface ProjectIconSet {
   sources: ResponsiveSource[];
@@ -19,7 +20,7 @@ interface ProjectIconSet {
 
 @Component({
   selector: 'app-projects-modal',
-  imports: [CommonModule, ResponsivePicture, ImageLightbox],
+  imports: [CommonModule, ResponsivePicture, ImageLightbox, FocusTrapDirective],
   templateUrl: './projects-modal.html',
   styleUrl: './projects-modal.css',
 })
@@ -40,6 +41,15 @@ export class ProjectsModal {
   };
 
   constructor(private readonly sanitizer: DomSanitizer) {}
+
+  @HostListener('document:keydown.escape')
+  protected onEscape(): void {
+    if (this.isImageLightboxOpen) {
+      this.closeImageLightbox();
+      return;
+    }
+    this.close.emit();
+  }
 
   protected get currentImage() {
     const images = this.project.detail?.images ?? [];

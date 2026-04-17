@@ -5,14 +5,14 @@
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1.2rem;
-  border: 1px solid rgba(189, 193, 199, 0.1);
-  border-radius: 999px;
+  border: 1px solid rgb(189 193 199 / 0.1);
+  border-radius: var(--radius-pill);
   background:
-    linear-gradient(180deg, rgba(48, 53, 59, 0.36), rgba(27, 28, 28, 0.6)),
-    radial-gradient(circle at center, rgba(166, 10, 10, 0.06), transparent 55%);
+    linear-gradient(180deg, rgb(48 53 59 / 0.36), rgb(27 28 28 / 0.6)),
+    radial-gradient(circle at center, rgb(166 10 10 / 0.06), transparent 55%);
   box-shadow:
-    0 12px 34px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    0 12px 34px rgb(0 0 0 / 0.24),
+    inset 0 1px 0 rgb(255 255 255 / 0.03);
   overflow: hidden;
 }
 
@@ -40,8 +40,7 @@
 
 .home-resume__banner-line {
   height: 1px;
-  background:
-    linear-gradient(90deg, transparent, rgba(189, 193, 199, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgb(189 193 199 / 0.2), transparent);
 }
 
 .home-resume__banner p {
@@ -49,7 +48,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #8f939c;
+  color: var(--color-ash-dim);
   white-space: nowrap;
   text-align: center;
 }
@@ -63,9 +62,7 @@
     padding: 0.9rem 1rem;
   }
 
-  .home-resume__banner-line {
-    width: 100%;
-  }
+  .home-resume__banner-line { width: 100%; }
 
   .home-resume__banner p {
     white-space: normal;

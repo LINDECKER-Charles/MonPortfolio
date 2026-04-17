@@ -1,0 +1,36 @@
+<section class="not-found">
+  <div class="not-found__panel surface-crypt surface-crypt--ornate surface-textured">
+    <svg class="not-found__rune" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <circle cx="60" cy="60" r="48" stroke="#a49476" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="60" cy="60" r="34" stroke="#a49476" stroke-width="0.8" opacity="0.45"/>
+      <circle cx="60" cy="60" r="20" stroke="#a49476" stroke-width="0.6" opacity="0.35"/>
+      <path d="M60 12 L60 108 M12 60 L108 60" stroke="#a49476" stroke-width="0.5" opacity="0.3"/>
+      <path d="M26 26 L94 94 M94 26 L26 94" stroke="#a49476" stroke-width="0.4" opacity="0.2"/>
+      <circle cx="60" cy="60" r="4" fill="#a60a0a" opacity="0.85"/>
+    </svg>
+
+    <p class="not-found__eyebrow text-rune">{{ ts.translate('common.404.eyebrow') }}</p>
+
+    <h1 class="text-engraved--hero">{{ ts.translate('common.404.title') }}</h1>
+
+    <p class="not-found__lead text-tome">
+      {{ ts.translate('common.404.lead') }}
+    </p>
+
+    <div class="not-found__actions">
+      <a routerLink="/" class="cta-tome cta-tome--gilded transition-ritual breath-gold">
+        <span class="cta-tome__label">
+          <span class="cta-tome__top">{{ ts.translate('common.404.cta.home.top') }}</span>
+          <span class="cta-tome__bottom">{{ ts.translate('common.404.cta.home.bottom') }}</span>
+        </span>
+      </a>
+
+      <a routerLink="/projects" class="cta-tome cta-tome--shadow transition-ritual">
+        <span class="cta-tome__label">
+          <span class="cta-tome__top">{{ ts.translate('common.404.cta.projects.top') }}</span>
+          <span class="cta-tome__bottom">{{ ts.translate('common.404.cta.projects.bottom') }}</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>

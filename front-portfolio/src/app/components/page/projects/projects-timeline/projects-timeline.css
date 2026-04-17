@@ -2,6 +2,12 @@
   display: block;
 }
 
+/* ── TIMELINE EN CARTE RUNIQUE ────────────────────────────────────────────
+   Ligne centrale = chemin gravé (gradient 3 stops + halo).
+   Chaque jalon = sceau SVG centré (cercle doré + cœur rouge rituel).
+   Les items featured ont un halo plus marqué.
+   ──────────────────────────────────────────────────────────────────────── */
+
 .projects-timeline {
   position: relative;
   display: flex;
@@ -12,22 +18,37 @@
 .projects-timeline::before {
   content: "";
   position: absolute;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  left: 19px;
+  width: 2px;
+  background:
+    linear-gradient(180deg,
+      transparent 0%,
+      rgb(166 10 10 / 0.18) 8%,
+      rgb(164 148 118 / 0.28) 50%,
+      rgb(166 10 10 / 0.18) 92%,
+      transparent 100%);
+  box-shadow: 0 0 12px rgb(166 10 10 / 0.12);
+}
+
+.projects-timeline::after {
+  content: "";
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 18px;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(166, 10, 10, 0.08),
-    rgba(189, 193, 199, 0.14),
-    rgba(166, 10, 10, 0.08)
-  );
+  width: 4px;
+  background: radial-gradient(ellipse at center,
+    rgb(166 10 10 / 0.04) 0%,
+    transparent 70%);
+  pointer-events: none;
 }
 
 .projects-timeline__item {
   position: relative;
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr);
+  grid-template-columns: 40px minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
 }
@@ -37,42 +58,52 @@
   min-height: 100%;
 }
 
-.projects-timeline__dot {
+/* Sceau SVG — remplace l'ancien dot */
+.projects-timeline__seal {
   position: absolute;
-  top: 1.15rem;
-  left: 9px;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(166, 10, 10, 0.2);
-  background:
-    radial-gradient(circle at center, rgba(166, 10, 10, 0.35), rgba(37, 40, 45, 0.9));
-  box-shadow:
-    0 0 0 4px rgba(37, 40, 45, 0.9),
-    0 0 14px rgba(166, 10, 10, 0.08);
+  top: 0.75rem;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 0 8px rgb(166 10 10 / 0.35));
+  transform-origin: center;
+  animation: sealBreath 5s ease-in-out infinite;
 }
 
+/* Featured : halo plus marqué, légère augmentation de l'échelle */
+.projects-timeline__item--featured .projects-timeline__seal {
+  filter: drop-shadow(0 0 14px rgb(255 147 77 / 0.45))
+          drop-shadow(0 0 4px rgb(166 10 10 / 0.3));
+  animation-duration: 3.5s;
+}
+
+@keyframes sealBreath {
+  0%, 100% { transform: scale(1);    opacity: 0.95; }
+  50%      { transform: scale(1.08); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-timeline__seal { animation: none; }
+}
+
+/* ── PROJECT CARD ─────────────────────────────────────────────────────────── */
+
 .project-card {
-  border: 1px solid rgba(189, 193, 199, 0.08);
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(48, 53, 59, 0.18), rgba(27, 28, 28, 0.52));
-  box-shadow:
-    0 16px 36px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  border: var(--border-ash);
+  border-radius: var(--radius-panel);
+  background: linear-gradient(180deg, rgb(48 53 59 / 0.18), rgb(27 28 28 / 0.52));
+  box-shadow: 0 16px 36px rgb(0 0 0 / 0.18), inset 0 1px 0 rgb(255 255 255 / 0.02);
   overflow: hidden;
   transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
+    transform var(--duration-slow) ease,
+    border-color var(--duration-slow) ease,
+    box-shadow var(--duration-slow) ease;
 }
 
 .projects-timeline__item:hover .project-card {
   transform: translateY(-2px);
-  border-color: rgba(166, 10, 10, 0.12);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.22),
-    0 0 0 1px rgba(166, 10, 10, 0.04);
+  border-color: rgb(166 10 10 / 0.12);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.22), 0 0 0 1px rgb(166 10 10 / 0.04);
 }
 
 .project-card__top,
@@ -101,7 +132,7 @@
 .project-card__badge,
 .project-card__featured {
   padding: 0.32rem 0.55rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -109,12 +140,12 @@
 
 .project-card__period {
   color: #8f98a3;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgb(255 255 255 / 0.03);
 }
 
 .project-card__badge {
   color: #d3d8de;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgb(255 255 255 / 0.04);
 }
 
 .project-card__badge--status {
@@ -122,10 +153,9 @@
 }
 
 .project-card__featured {
-  color: #ece7db;
-  background:
-    linear-gradient(180deg, rgba(43, 38, 31, 0.94), rgba(24, 22, 20, 0.96));
-  border: 1px solid rgba(164, 148, 118, 0.16);
+  color: var(--color-bone);
+  background: var(--gradient-gold-chip);
+  border: 1px solid rgb(164 148 118 / 0.16);
   white-space: nowrap;
 }
 
@@ -140,13 +170,13 @@
 
 .project-card__head h2 {
   font-size: 1.25rem;
-  color: #f3f6f7;
+  color: var(--color-bone-bright);
 }
 
 .project-card__head p {
   margin-top: 0.7rem;
   line-height: 1.8;
-  color: #bdc1c7;
+  color: var(--color-ash);
 }
 
 .project-card__section {
@@ -160,7 +190,7 @@
   font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8f939c;
+  color: var(--color-ash-dim);
 }
 
 .project-card__stack,
@@ -173,20 +203,20 @@
 .project-card__stack-chip,
 .project-card__tag-chip {
   padding: 0.35rem 0.6rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-size: 0.72rem;
 }
 
 .project-card__stack-chip {
   color: #c7ccd3;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(189, 193, 199, 0.06);
+  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(189 193 199 / 0.06);
 }
 
 .project-card__tag-chip {
   color: #d6cab5;
-  background: rgba(166, 10, 10, 0.05);
-  border: 1px solid rgba(166, 10, 10, 0.08);
+  background: rgb(166 10 10 / 0.05);
+  border: 1px solid rgb(166 10 10 / 0.08);
 }
 
 .project-card__actions {
@@ -197,24 +227,17 @@
 .project-card__toggle {
   padding: 0.55rem 0.8rem;
   border-radius: 12px;
-  border: 1px solid rgba(189, 193, 199, 0.08);
-  background:
-    linear-gradient(180deg, rgba(38, 42, 47, 0.92), rgba(24, 26, 29, 0.96));
+  border: var(--border-ash);
+  background: var(--gradient-stone-chip);
   color: #d8dde4;
   cursor: pointer;
   font-size: 0.84rem;
-  transition:
-    transform 120ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
 }
 
 .project-card__toggle:hover {
   transform: translateY(-1px);
-  border-color: rgba(166, 10, 10, 0.14);
-  box-shadow:
-    0 10px 18px rgba(0, 0, 0, 0.16),
-    0 0 0 1px rgba(166, 10, 10, 0.04);
+  border-color: rgb(166 10 10 / 0.14);
+  box-shadow: var(--shadow-blood-halo);
 }
 
 .project-card__toggle:active {
@@ -223,23 +246,20 @@
 
 @media (max-width: 640px) {
   .projects-timeline__item {
-    grid-template-columns: 30px minmax(0, 1fr);
+    grid-template-columns: 32px minmax(0, 1fr);
     gap: 0.75rem;
   }
 
-  .projects-timeline::before {
-    left: 14px;
+  .projects-timeline::before { left: 15px; }
+  .projects-timeline::after  { left: 14px; }
+
+  .projects-timeline__seal {
+    width: 32px;
+    height: 32px;
+    top: 0.6rem;
   }
 
-  .projects-timeline__dot {
-    left: 5px;
-    width: 16px;
-    height: 16px;
-  }
-
-  .project-card {
-    border-radius: 20px;
-  }
+  .project-card { border-radius: 20px; }
 
   .project-card__top,
   .project-card__head,
@@ -255,9 +275,7 @@
     align-items: flex-start;
   }
 
-  .project-card__actions {
-    padding-bottom: 1rem;
-  }
+  .project-card__actions { padding-bottom: 1rem; }
 
   .project-card__featured {
     max-width: 100%;
@@ -267,8 +285,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-card,
-  .project-card__toggle {
-    transition: none !important;
-  }
+  .project-card { transition: none !important; }
 }

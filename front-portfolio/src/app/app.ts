@@ -1,7 +1,6 @@
 import {Component, inject, signal} from '@angular/core';
 import {Loading} from './components/assets/loading/loading';
 import {AudioService} from './services/audio-service';
-import {StopAllSound} from './components/assets/stop-all-sound/stop-all-sound';
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {MetaService} from './services/meta-service';
 import {filter, map, mergeMap} from 'rxjs';
@@ -9,11 +8,13 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {Footer} from './components/misc/footer/footer';
 import {NavBarre} from './components/misc/nav-barre/nav-barre';
 import {LangModal} from './components/assets/lang-modal/lang-modal';
+import {EmberParticles} from './components/assets/ember-particles/ember-particles';
+import {PageTransition} from './components/assets/page-transition/page-transition';
 import {TranslationService} from './services/translation.service';
 
 @Component({
   selector: 'app-root',
-  imports: [Loading, StopAllSound, RouterOutlet, Footer, NavBarre, LangModal],
+  imports: [Loading, RouterOutlet, Footer, NavBarre, LangModal, EmberParticles, PageTransition],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

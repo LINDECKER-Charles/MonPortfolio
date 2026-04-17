@@ -6,27 +6,26 @@
 
 .about-snippet {
   position: relative;
-  border: 1px solid rgba(189, 193, 199, 0.08);
+  border: var(--border-ash);
   border-radius: 22px;
-  background:
-    linear-gradient(180deg, rgba(48, 53, 59, 0.18), rgba(27, 28, 28, 0.52));
+  background: linear-gradient(180deg, rgb(48 53 59 / 0.18), rgb(27 28 28 / 0.52));
   box-shadow:
-    0 16px 36px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    0 16px 36px rgb(0 0 0 / 0.18),
+    inset 0 1px 0 rgb(255 255 255 / 0.02);
   overflow: hidden;
   transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    background 220ms ease;
+    transform var(--duration-slow) ease,
+    border-color var(--duration-slow) ease,
+    box-shadow var(--duration-slow) ease,
+    background var(--duration-slow) ease;
 }
 
 .about-snippet.is-open {
-  border-color: rgba(166, 10, 10, 0.18);
+  border-color: rgb(166 10 10 / 0.18);
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.22),
-    0 0 0 1px rgba(166, 10, 10, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    0 18px 42px rgb(0 0 0 / 0.22),
+    0 0 0 1px rgb(166 10 10 / 0.06),
+    inset 0 1px 0 rgb(255 255 255 / 0.02);
 }
 
 .about-snippet__trigger {
@@ -43,11 +42,11 @@
   text-align: left;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 180ms ease;
+  transition: background-color var(--duration-base) ease;
 }
 
 .about-snippet__trigger:focus-visible {
-  outline: 2px solid rgba(166, 10, 10, 0.8);
+  outline: 2px solid rgb(166 10 10 / 0.8);
   outline-offset: -2px;
 }
 
@@ -64,9 +63,9 @@
   flex: 0 0 auto;
   opacity: 0.92;
   transition:
-    transform 220ms ease,
-    opacity 220ms ease,
-    filter 220ms ease;
+    transform var(--duration-slow) ease,
+    opacity var(--duration-slow) ease,
+    filter var(--duration-slow) ease;
 }
 
 .about-snippet__icon-media app-responsive-picture,
@@ -81,12 +80,12 @@
 .about-snippet__mark {
   width: 24px;
   height: 1px;
-  background: rgba(166, 10, 10, 0.45);
+  background: rgb(166 10 10 / 0.45);
   flex: 0 0 auto;
   transition:
-    width 220ms ease,
-    background-color 220ms ease,
-    opacity 220ms ease;
+    width var(--duration-slow) ease,
+    background-color var(--duration-slow) ease,
+    opacity var(--duration-slow) ease;
 }
 
 .about-snippet h3,
@@ -98,11 +97,11 @@
   font-size: 1rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #f3f6f7;
+  color: var(--color-bone-bright);
   transition:
-    color 220ms ease,
-    transform 220ms ease,
-    text-shadow 220ms ease;
+    color var(--duration-slow) ease,
+    transform var(--duration-slow) ease,
+    text-shadow var(--duration-slow) ease;
 }
 
 .about-snippet__icon {
@@ -111,16 +110,16 @@
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  border-radius: 999px;
-  border: 1px solid rgba(189, 193, 199, 0.08);
-  background: rgba(27, 28, 28, 0.45);
+  border-radius: var(--radius-pill);
+  border: var(--border-ash);
+  background: rgb(27 28 28 / 0.45);
   color: #a9adb5;
   transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    color 220ms ease,
-    background-color 220ms ease,
-    box-shadow 220ms ease;
+    transform var(--duration-slow) ease,
+    border-color var(--duration-slow) ease,
+    color var(--duration-slow) ease,
+    background-color var(--duration-slow) ease,
+    box-shadow var(--duration-slow) ease;
 }
 
 .about-snippet__icon svg {
@@ -132,8 +131,8 @@
 .about-snippet__icon.is-open {
   transform: rotate(180deg);
   color: #d0b48a;
-  border-color: rgba(166, 10, 10, 0.22);
-  background: rgba(166, 10, 10, 0.08);
+  border-color: rgb(166 10 10 / 0.22);
+  background: rgb(166 10 10 / 0.08);
 }
 
 .about-snippet__content-wrapper {
@@ -149,70 +148,54 @@
 .about-snippet__content p {
   font-size: 1rem;
   line-height: 1.8;
-  color: #bdc1c7;
+  color: var(--color-ash);
 }
 
 @media (max-width: 640px) {
-  .about-snippet {
-    border-radius: 18px;
-  }
-
-  .about-snippet__trigger {
-    padding: 1rem;
-  }
-
-  .about-snippet__content {
-    padding: 0 1rem 1rem;
-  }
-
-  .about-snippet h3 {
-    font-size: 0.92rem;
-  }
-
-  .about-snippet__icon-media {
-    width: 20px;
-    height: 20px;
-  }
+  .about-snippet { border-radius: 18px; }
+  .about-snippet__trigger { padding: 1rem; }
+  .about-snippet__content { padding: 0 1rem 1rem; }
+  .about-snippet h3 { font-size: 0.92rem; }
+  .about-snippet__icon-media { width: 20px; height: 20px; }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .about-snippet__trigger:hover {
-    background: rgba(255, 255, 255, 0.015);
+    background: rgb(255 255 255 / 0.015);
   }
 
   .about-snippet:hover {
     transform: translateY(-2px);
-    border-color: rgba(166, 10, 10, 0.14);
+    border-color: rgb(166 10 10 / 0.14);
     box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.22),
-      0 0 0 1px rgba(166, 10, 10, 0.04),
-      inset 0 1px 0 rgba(255, 255, 255, 0.025);
-    background:
-      linear-gradient(180deg, rgba(52, 58, 65, 0.2), rgba(27, 28, 28, 0.56));
+      0 20px 40px rgb(0 0 0 / 0.22),
+      0 0 0 1px rgb(166 10 10 / 0.04),
+      inset 0 1px 0 rgb(255 255 255 / 0.025);
+    background: linear-gradient(180deg, rgb(52 58 65 / 0.2), rgb(27 28 28 / 0.56));
   }
 
   .about-snippet:hover .about-snippet__icon-media {
     transform: scale(1.05);
     opacity: 1;
-    filter: drop-shadow(0 0 6px rgba(166, 10, 10, 0.14));
+    filter: drop-shadow(0 0 6px rgb(166 10 10 / 0.14));
   }
 
   .about-snippet:hover .about-snippet__mark {
     width: 30px;
-    background: rgba(166, 10, 10, 0.62);
+    background: rgb(166 10 10 / 0.62);
   }
 
   .about-snippet:hover h3 {
     color: #fff5ea;
     transform: translateX(1px);
-    text-shadow: 0 0 10px rgba(166, 10, 10, 0.08);
+    text-shadow: 0 0 10px rgb(166 10 10 / 0.08);
   }
 
   .about-snippet:hover .about-snippet__icon {
-    border-color: rgba(166, 10, 10, 0.14);
+    border-color: rgb(166 10 10 / 0.14);
     color: #c6b9a2;
-    background: rgba(166, 10, 10, 0.04);
-    box-shadow: 0 0 0 1px rgba(166, 10, 10, 0.04);
+    background: rgb(166 10 10 / 0.04);
+    box-shadow: 0 0 0 1px rgb(166 10 10 / 0.04);
   }
 }
 

@@ -14,5 +14,15 @@
   "nav.aria": "Navegação principal",
   "photo.alt": "Retrato de Charles Lindecker",
   "photo.developer": "Desenvolvedor",
-  "photo.trainer": "Formador"
+  "photo.trainer": "Formador",
+  "skip_to_content": "Ir para o conteúdo",
+  "404.eyebrow": "404 — Ruínas cinzentas",
+  "404.title": "Você foi banido destas terras",
+  "404.lead": "O caminho que você percorria não existe mais, ou nunca existiu. Apenas os sonhadores mais vigilantes ainda encontram seu caminho nas ruínas do Sonho do Caçador.",
+  "404.cta.home.top": "Voltar",
+  "404.cta.home.bottom": "Início",
+  "404.cta.projects.top": "Explorar",
+  "404.cta.projects.bottom": "Projetos",
+  "nav.logo_alt": "Logótipo Charles Lindecker",
+  "loading.frame_alt": "Logótipo de carregamento"
 }

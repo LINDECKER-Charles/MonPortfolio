@@ -2,6 +2,8 @@
   "header.eyebrow": "SEGMENT .portfolio",
   "header.title": "DB 'PROJECTS'",
   "header.description": "LEA SI, [personal_work]; PUSH experiments; PUSH oss_contrib; MOV filter_mode, CAT|TAGS|STACK; CALL render_all",
+  "header.cta_works.top": "CALL explore",
+  "header.cta_works.bottom": "JMP parcours",
   "filter.category": "MOV AX, CATEGORY",
   "filter.tags": "LEA BX, tags[]",
   "filter.stack": "MOV CX, STACK",
@@ -33,7 +35,6 @@
   "modal.demo": "JMP demo_addr",
   "modal.site": "JMP site_addr",
   "today": "CALL get_date ; NOW",
-
   "omnicard.shortDescription": "PUSH card_game; MOV engine, CUSTOM; MOV arch, MODULAR; CALL sync_realtime",
   "omnicard.longDescription": "PROC omnicard_project; PUSH ambitious_flag; CALL init_game_engine; MOV rules, COMPLEX; LEA arch, [long_term]; CALL model_business; CALL manage_effects; CALL sync_players; CMP scope, ENORMOUS; JGE keep_building ; INTERSECTION OF game_design, architecture AND fullstack",
   "omnicard.highlights.0": "PROC modular_engine ; RULE_ORIENTED design pattern",
@@ -42,7 +43,6 @@
   "omnicard.lessonsLearned.0": "CALL structure_business_logic ; WITHOUT losing readability",
   "omnicard.lessonsLearned.1": "CALL evolve_engine ; CLEAN AND TESTABLE",
   "omnicard.lessonsLearned.2": "MOV scope, LONG_TERM; PUSH front; PUSH back; PUSH gameplay; CALL architect_all",
-
   "pvzf-translation-fr.shortDescription": "MOV role, LEAD; CALL manage_fr_translation ; PVZ Fusion",
   "pvzf-translation-fr.longDescription": "PROC pvzf_translation; MOV branch, FR; MOV role, LEAD; CALL coordinate; CALL review; CALL unify_terminology; CALL track_contributions; CMP task, JUST_TRANSLATE; JNE its_more_than_that ; MAINTAIN coherence AND quality",
   "pvzf-translation-fr.highlights.0": "MOV position, LEAD ; FR segment",
@@ -51,7 +51,6 @@
   "pvzf-translation-fr.lessonsLearned.0": "CALL manage_collab ; WITH coherence_requirement flag SET",
   "pvzf-translation-fr.lessonsLearned.1": "CALL formalize_standards ; translation AND validation",
   "pvzf-translation-fr.lessonsLearned.2": "CALL quality_control ; IN evolving community CONTEXT",
-
   "portfolio.shortDescription": "MOV type, NEXT_GEN; CALL create_immersive_portfolio ; BRANDING + ANIM + ARCH",
   "portfolio.longDescription": "CMP this, SIMPLE_SHOWCASE; JNE full_tech_demo; CALL create_immersive_exp; MOV quality, MAX; TEST tech_level, 0xFF; TEST product_sense, ACTIVE; TEST attention_detail, EXTREME; JNZ ship_it ; MUCH MORE THAN A WEBSITE",
   "portfolio.highlights.0": "MOV arch, ANGULAR_MODERN; CALL enable_ssr; CALL enable_hydration",
@@ -63,7 +62,6 @@
   "portfolio.lessonsLearned.1": "CALL reconcile ; rich_anim AND mobile_perf",
   "portfolio.lessonsLearned.2": "MOV ux, BRANDING_VECTOR ; FOR tech_identity",
   "portfolio.lessonsLearned.3": "CALL industrialize ; responsive_media IN Angular",
-
   "lis-web.shortDescription": "CALL create_pro_site ; web_presence AND real_delivery",
   "lis-web.longDescription": "PROC lis_web; MOV type, REAL_PRO_PROJECT; CALL confront_tech_with_communication; CALL ensure_readability; CALL ensure_credibility; RET",
   "lis-web.highlights.0": "MOV web_presence, CREDIBLE; SET exploitable_flag",
@@ -72,7 +70,6 @@
   "lis-web.lessonsLearned.0": "CALL translate_needs ; business TO structured_interface",
   "lis-web.lessonsLearned.1": "CALL build_presence ; WITH credibility_requirement",
   "lis-web.lessonsLearned.2": "CALL converge ; tech, image, readability",
-
   "dev-mates.shortDescription": "CALL build_showcase ; identity, services, credibility",
   "dev-mates.longDescription": "PROC dev_mates; MOV type, COMPANY_SHOWCASE; CALL establish_presence; CALL clarify_identity; CALL highlight_services; RET",
   "dev-mates.highlights.0": "CALL highlight ; professional_activity",
@@ -81,7 +78,6 @@
   "dev-mates.lessonsLearned.0": "CALL build_site ; SERVING comm AND tech EQUALLY",
   "dev-mates.lessonsLearned.1": "CALL think_identity ; THROUGH web_presence",
   "dev-mates.lessonsLearned.2": "MOV approach, IMAGE_ORIENTED; TEST rigor, INTACT; JNZ proceed",
-
   "pvz-fuzion-console-manager.shortDescription": "CALL check_translations ; missing_per_version, CONSOLE_MODE",
   "pvz-fuzion-console-manager.longDescription": "PROC pvz_console_mgr; CALL detect_missing_translations; MOV target, SPECIFIC_VERSION; CALL simplify_qa; CMP utility, HIGH; JGE ship",
   "pvz-fuzion-console-manager.highlights.0": "CALL autodetect ; missing_translation[] SCAN",
@@ -90,7 +86,6 @@
   "pvz-fuzion-console-manager.lessonsLearned.0": "CALL create_simple_tools ; genuinely_useful FOR existing_workflow",
   "pvz-fuzion-console-manager.lessonsLearned.1": "CALL automate_repetitive ; TO increase quality_reliability",
   "pvz-fuzion-console-manager.lessonsLearned.2": "CALL design_from_field ; concrete_need AS input",
-
   "shreksophone.shortDescription": "INT 0x53 ; TROLL CDN — fullscreen Shrek saxophone OVERRIDE",
   "shreksophone.longDescription": "PROC shreksophone; MOV absurd_flag, TRUE; MOV tech, SIMPLE; MOV commitment, FULL; PUSH one_click; POP interface_dignity; CALL play_shrek_sax_fullscreen; HLT ; SERIOUSNESS HAS LEFT THE CHAT",
   "shreksophone.highlights.0": "MOV concept, MINIMAL; TEST recognizable, INSTANT; JNZ perfect",
@@ -99,7 +94,6 @@
   "shreksophone.lessonsLearned.0": "CALL commit_to_concept ; EVEN WHEN absurd",
   "shreksophone.lessonsLearned.1": "CALL create_memorable ; WITH minimal_complexity",
   "shreksophone.lessonsLearned.2": "CALL work_on ; tone, impact, coherence OF atypical_ux",
-
   "glossairequest.shortDescription": "PUSH Angular; PUSH ASP_NET_Core; CALL build_quiz_app ; PEDAGOGICAL",
   "glossairequest.longDescription": "PROC glossairequest; MOV frontend, ANGULAR; MOV backend, ASPNET_CORE; CALL enable_interactive_quizzes; CALL track_stats; CALL manage_admin; CMP pedagogical_value, HIGH; JGE deploy",
   "glossairequest.highlights.0": "CALL auth_jwt ; SECURE",
@@ -108,7 +102,6 @@
   "glossairequest.lessonsLearned.0": "CALL reinforce_separation ; Angular_front AND dotnet_api",
   "glossairequest.lessonsLearned.1": "CALL structure_routes ; protected WITH clean_auth_cycle",
   "glossairequest.lessonsLearned.2": "CALL design_pedagogical_app ; business_logic AND user_tracking",
-
   "league-of-data-base.shortDescription": "CALL centralize_lol_data ; multilang, multi_version, WEB_APP",
   "league-of-data-base.longDescription": "PROC league_of_database; CALL centralize; CALL store; CALL display; MOV data_src, LOL; MOV interface, CLEAR|RESPONSIVE|FAST; LEA base, [extensible]; PUSH champions; PUSH items; PUSH runes; CALL load_all",
   "league-of-data-base.highlights.0": "CALL integrate_riot_api ; multilang AND multi_version",
@@ -117,7 +110,6 @@
   "league-of-data-base.lessonsLearned.0": "CALL design_extensible_arch ; around evolving_api",
   "league-of-data-base.lessonsLearned.1": "CALL optimize ; storage AND render FOR large_media_volume",
   "league-of-data-base.lessonsLearned.2": "CALL manage_user_prefs ; sessions, cookies, url",
-
   "blender-collection.shortDescription": "CALL build_platform ; Blender addon collections, share AND manage",
   "blender-collection.longDescription": "PROC blender_collection; CALL centralize_addons; CALL organize; CALL share; MOV visibility, PUBLIC|PRIVATE; CALL pack_and_download ; single_archive",
   "blender-collection.highlights.0": "PUSH user_profiles; PUSH collections; MOV visibility, PUB_OR_PRIV",
@@ -126,7 +118,6 @@
   "blender-collection.lessonsLearned.0": "CALL structure_community_app ; multiple role_levels",
   "blender-collection.lessonsLearned.1": "CALL process_heavy_ops ; WITHOUT blocking interface",
   "blender-collection.lessonsLearned.2": "CALL deploy_pipeline ; Docker AND GitHub_Actions, PRO GRADE",
-
   "symfony-session.shortDescription": "CALL init_symfony ; session_mgmt, security, admin",
   "symfony-session.longDescription": "PROC symfony_session; CALL manage_sessions; CALL enforce_security; CALL build_admin; CMP base, SOLID; JGE use_for_backoffice_or_training",
   "symfony-session.highlights.0": "PUSH captcha_v3; PUSH honeypot; PUSH rate_limiter; CALL secure",

@@ -2,6 +2,8 @@
   "header.eyebrow": "Bibliotheca Byrgenwerth",
   "header.title": "Opera Magna Scholaris",
   "header.description": "Collectio selecta operum personalium, experimentorum technicorum et contributionum ad Codex Apertum. Filtrabilis per categoriam, sigilla et instrumenta sacra. Per Insight, omnia revelantur.",
+  "header.cta_works.top": "Contemplare",
+  "header.cta_works.bottom": "Iter Meum",
   "filter.category": "Categoria Ecclesiae",
   "filter.tags": "Sigilla Arcana",
   "filter.stack": "Instrumenta Sacra",

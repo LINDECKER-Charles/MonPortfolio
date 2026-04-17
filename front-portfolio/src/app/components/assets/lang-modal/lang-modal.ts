@@ -1,11 +1,12 @@
-import { Component, HostBinding, inject, output } from '@angular/core';
+import { Component, HostBinding, HostListener, inject, output } from '@angular/core';
 import { AVAILABLE_LANGUAGES, TranslationService } from '../../../services/translation.service';
+import { FocusTrapDirective } from '../../../directives/focus-trap.directive';
 
 const CLOSE_DURATION_MS = 200;
 
 @Component({
   selector: 'app-lang-modal',
-  imports: [],
+  imports: [FocusTrapDirective],
   templateUrl: './lang-modal.html',
   styleUrl: './lang-modal.css',
 })
@@ -16,6 +17,11 @@ export class LangModal {
   protected readonly languages = AVAILABLE_LANGUAGES;
 
   @HostBinding('class.is-closing') isClosing = false;
+
+  @HostListener('document:keydown.escape')
+  protected onEscape(): void {
+    this.requestClose();
+  }
 
   protected requestClose(): void {
     if (this.isClosing) return;

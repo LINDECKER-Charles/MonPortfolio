@@ -1,0 +1,46 @@
+<section class="works-edu" aria-labelledby="works-edu-title">
+  <header class="works-edu__head">
+    <p class="works-edu__eyebrow text-rune">{{ ts.translate('works.education.subtitle') }}</p>
+    <h2 id="works-edu-title" class="text-engraved text-engraved--deep">
+      {{ ts.translate('works.education.title') }}
+    </h2>
+  </header>
+
+  <div class="works-edu__grid">
+    @for (edu of educations; track trackById($index, edu); let idx = $index) {
+      <article
+        class="works-edu__card surface-crypt surface-crypt--ornate surface-textured"
+        appRevealOnScroll
+        [revealDelay]="idx * 0.12"
+        [revealY]="28"
+        [revealScale]="true">
+        <div class="works-edu__year-wrap">
+          <span class="works-edu__year">{{ endYear(edu) }}</span>
+          <span class="works-edu__year-label text-sigil">{{ ts.translate('works.education.period') }}</span>
+        </div>
+
+        <div class="divider-ornate" aria-hidden="true"></div>
+
+        <div class="works-edu__logo">
+          <app-responsive-picture
+            [sources]="logoSources(edu.organism)"
+            [fallbackSrc]="logoFallback(edu.organism)"
+            [alt]="organismName(edu.organism)"
+            loading="lazy"
+            decoding="async"
+            objectFit="contain">
+          </app-responsive-picture>
+        </div>
+
+        <h3 class="works-edu__title text-engraved text-engraved--carved">{{ title(edu) }}</h3>
+
+        @if (edu.hasSubtitle) {
+          <p class="works-edu__subtitle text-smallcaps">{{ subtitle(edu) }}</p>
+        }
+
+        <p class="works-edu__org">{{ organismName(edu.organism) }}</p>
+        <p class="works-edu__period">{{ period(edu) }}</p>
+      </article>
+    }
+  </div>
+</section>

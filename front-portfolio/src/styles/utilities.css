@@ -1,0 +1,31 @@
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  UTILITIES — Helpers atomiques complémentaires à Tailwind.                ║
+   ║  Prefixés @layer utilities pour se mêler correctement à la cascade.      ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
+
+@layer utilities {
+
+  /* Transition rituelle standard — à mettre sur tout élément interactif
+     qui change de couleur/bordure/ombre/transform au hover. */
+  .transition-ritual {
+    transition:
+      transform var(--duration-base) var(--ease-ritual),
+      border-color var(--duration-base) var(--ease-ritual),
+      box-shadow var(--duration-base) var(--ease-ritual),
+      color var(--duration-base) var(--ease-ritual),
+      background var(--duration-base) var(--ease-ritual);
+  }
+
+  /* Glow ponctuel ember (dots, focus accents) */
+  .glow-ember {
+    box-shadow: var(--glow-ember);
+  }
+
+  /* Respect prefers-reduced-motion sur les transitions rituelles.
+     Ailleurs, chaque composant gère ses propres animations. */
+  @media (prefers-reduced-motion: reduce) {
+    .transition-ritual {
+      transition: none !important;
+    }
+  }
+}

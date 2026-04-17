@@ -14,5 +14,15 @@
   "nav.aria": "# navigation: handled by docker-compose service discovery",
   "photo.alt": "COPY charles.jpg /app/public/ # alt text stored in image EXIF (it's not)",
   "photo.developer": "docker inspect developer --format '{{.Config.Labels.role}}'",
-  "photo.trainer": "docker tag developer:latest formateur:latest # same person, different hat"
+  "photo.trainer": "docker tag developer:latest formateur:latest # same person, different hat",
+  "skip_to_content": "docker exec content",
+  "404.eyebrow": "HTTP 404 — image not found",
+  "404.title": "Error: Cannot find path 'route' in /app",
+  "404.lead": "services:\n  requested:\n    status: exited (404)\n    message: \"container stopped unexpectedly\"\n    restart: no",
+  "404.cta.home.top": "docker pull",
+  "404.cta.home.bottom": "home:latest",
+  "404.cta.projects.top": "COPY ./",
+  "404.cta.projects.bottom": "projects",
+  "nav.logo_alt": "LABEL logo=\"charles-lindecker\"",
+  "loading.frame_alt": "LABEL status=\"loading\""
 }

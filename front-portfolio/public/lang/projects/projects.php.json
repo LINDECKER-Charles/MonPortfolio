@@ -2,6 +2,8 @@
   "header.eyebrow": "$portfolio = 'Portfolio'; // assigned once, never reassigned, still a variable",
   "header.title": "mysql_query('SELECT title FROM pages WHERE slug=\"projets\"'); // dynamic title from DB because why hardcode",
   "header.description": "<?php echo nl2br(stripslashes(htmlspecialchars(mysql_real_escape_string('Une sélection de travaux personnels')))); // 4 layers of escaping. none of them in the right order. ?>",
+  "header.cta_works.top": "include('explore.php')",
+  "header.cta_works.bottom": "$_SESSION['journey']",
   "filter.category": "echo $_GET['cat']; // filter by category via URL. SQL injection welcome.",
   "filter.tags": "$tags = explode(',', $_GET['tags']); // user-controlled array via URL",
   "filter.stack": "$$stack // variable variable: the stack decides itself",

@@ -14,5 +14,15 @@
   "nav.aria": "Navigazione principale",
   "photo.alt": "Ritratto di Charles Lindecker",
   "photo.developer": "Sviluppatore",
-  "photo.trainer": "Formatore"
+  "photo.trainer": "Formatore",
+  "skip_to_content": "Vai al contenuto",
+  "404.eyebrow": "404 — Rovine di cenere",
+  "404.title": "Sei stato bandito da queste terre",
+  "404.lead": "La via che percorrevi non esiste più, o non è mai esistita. Solo i sognatori più vigili trovano ancora la loro strada tra le rovine del Sogno del Cacciatore.",
+  "404.cta.home.top": "Ritorno",
+  "404.cta.home.bottom": "Home",
+  "404.cta.projects.top": "Esplorare",
+  "404.cta.projects.bottom": "Progetti",
+  "nav.logo_alt": "Logo Charles Lindecker",
+  "loading.frame_alt": "Logo di caricamento"
 }

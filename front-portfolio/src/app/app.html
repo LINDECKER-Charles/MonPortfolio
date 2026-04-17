@@ -1,9 +1,15 @@
 <div class="app-root">
 
+  <!-- Skip link — focus-visible uniquement, pour lecteurs d'écran et navigation clavier -->
+  <a class="skip-link" href="#main-content">{{ ts.translate('common.skip_to_content') }}</a>
+
   <!-- Background (z-index: --z-bg = -1, derrière tout) -->
   <div class="bg-gradient"></div>
+  <div class="bg-moon"></div>
+  <div class="bg-mist"></div>
   <div class="bg-glow"></div>
   <div class="bg-noise"></div>
+  <app-ember-particles></app-ember-particles>
 
   <!-- Navigation (z-index: --z-nav via sticky) -->
   @if (showFooter()) {
@@ -13,7 +19,7 @@
   }
 
   <!-- Contenu principal -->
-  <div class="app-layer">
+  <div class="app-layer" id="main-content" tabindex="-1">
     <router-outlet></router-outlet>
   </div>
 
@@ -25,10 +31,7 @@
 
   <!-- Overlays globaux : tous fixed, z-index défini par l'échelle CSS -->
   <app-loading></app-loading>
-
-  @if (audio.isAnythingPlaying()) {
-    <app-stop-all-sound></app-stop-all-sound>
-  }
+  <app-page-transition></app-page-transition>
 
   @if (ts.isLangModalOpen()) {
     <app-lang-modal (close)="ts.closeModal()" />

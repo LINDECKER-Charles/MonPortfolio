@@ -6,5 +6,6 @@
   "cta.primary.bottom": "My career",
   "cta.secondary.top": "Professional",
   "cta.secondary.bottom": "See LinkedIn",
-  "aria.landmarks": "Landmarks"
+  "aria.landmarks": "Landmarks",
+  "cta.primary.icon_alt": "Professional journey"
 }

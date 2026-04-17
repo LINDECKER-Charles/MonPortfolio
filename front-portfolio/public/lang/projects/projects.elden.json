@@ -2,6 +2,8 @@
   "header.eyebrow": "Hall of Great Runes",
   "header.title": "Feats of the Tarnished",
   "header.description": "A curated collection of legendary conquests, technical experimentations forged in the crucible of the Lands Between, and open source offerings laid at the foot of the Erdtree. Filterable by decree, sigils, and sacred armaments.",
+  "header.cta_works.top": "Behold",
+  "header.cta_works.bottom": "My Path",
   "filter.category": "Royal Decree",
   "filter.tags": "Sigils",
   "filter.stack": "Sacred Armaments",

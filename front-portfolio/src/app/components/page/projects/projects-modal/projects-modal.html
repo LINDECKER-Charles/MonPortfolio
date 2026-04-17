@@ -1,13 +1,14 @@
 <div class="projects-modal" (click)="close.emit()">
   <div
-    class="projects-modal__dialog"
+    class="projects-modal__dialog surface-crypt surface-crypt--ornate surface-textured"
     role="dialog"
     aria-modal="true"
     aria-labelledby="project-modal-title"
+    appFocusTrap
     (click)="$event.stopPropagation()">
     <button
       type="button"
-      class="projects-modal__close"
+      class="projects-modal__close transition-ritual"
       (click)="close.emit()"
       [attr.aria-label]="ts.translate('projects.modal.close')">
       &times;
@@ -40,7 +41,7 @@
                   <div class="projects-modal__carousel-controls">
                     <button
                       type="button"
-                      class="projects-modal__carousel-button"
+                      class="projects-modal__carousel-button transition-ritual"
                       (click)="previousImage.emit()">
                       {{ ts.translate('projects.modal.previous') }}
                     </button>
@@ -51,7 +52,7 @@
 
                     <button
                       type="button"
-                      class="projects-modal__carousel-button"
+                      class="projects-modal__carousel-button transition-ritual"
                       (click)="nextImage.emit()">
                       {{ ts.translate('projects.modal.next') }}
                     </button>
@@ -77,12 +78,12 @@
 
       <div class="projects-modal__content">
         <div class="projects-modal__header">
-          <span class="projects-modal__period">{{ formatPeriod() }}</span>
-          <h2 id="project-modal-title">{{ project.title }}</h2>
+          <span class="projects-modal__period text-sigil">{{ formatPeriod() }}</span>
+          <h2 id="project-modal-title" class="text-engraved text-engraved--carved">{{ project.title }}</h2>
         </div>
 
         <div class="projects-modal__group">
-          <h3>{{ ts.translate('projects.filter.tags') }}</h3>
+          <h3 class="text-sigil">{{ ts.translate('projects.filter.tags') }}</h3>
 
           <div class="projects-modal__chips">
             @for (tag of project.tags; track tag) {
@@ -92,7 +93,7 @@
         </div>
 
         <div class="projects-modal__group">
-          <h3>{{ ts.translate('projects.filter.stack') }}</h3>
+          <h3 class="text-sigil">{{ ts.translate('projects.filter.stack') }}</h3>
 
           <div class="projects-modal__chips">
             @for (item of project.stack; track item) {
@@ -102,15 +103,15 @@
         </div>
 
         <div class="projects-modal__group">
-          <h3>{{ ts.translate('projects.modal.description') }}</h3>
-          <p>{{ ts.translate('projects.' + project.id + '.longDescription') }}</p>
+          <h3 class="text-sigil">{{ ts.translate('projects.modal.description') }}</h3>
+          <p class="text-tome text-tome--drop-cap">{{ ts.translate('projects.' + project.id + '.longDescription') }}</p>
         </div>
 
         @if (project.detail?.lessonsLearned?.length) {
           <div class="projects-modal__group">
-            <h3>{{ ts.translate('projects.modal.lessons') }}</h3>
+            <h3 class="text-sigil">{{ ts.translate('projects.modal.lessons') }}</h3>
 
-            <ul class="projects-modal__list">
+            <ul class="projects-modal__list text-tome">
               @for (lesson of project.detail?.lessonsLearned ?? []; track $index) {
                 <li>{{ ts.translate('projects.' + project.id + '.lessonsLearned.' + $index) }}</li>
               }
@@ -120,9 +121,9 @@
 
         @if (project.highlights.length) {
           <div class="projects-modal__group">
-            <h3>{{ ts.translate('projects.modal.highlights') }}</h3>
+            <h3 class="text-sigil">{{ ts.translate('projects.modal.highlights') }}</h3>
 
-            <ul class="projects-modal__list">
+            <ul class="projects-modal__list text-tome">
               @for (highlight of project.highlights; track $index) {
                 <li>{{ ts.translate('projects.' + project.id + '.highlights.' + $index) }}</li>
               }
@@ -132,12 +133,12 @@
 
         @if (project.links.github || project.links.demo || project.links.website) {
           <div class="projects-modal__group">
-            <h3>{{ ts.translate('projects.modal.links') }}</h3>
+            <h3 class="text-sigil">{{ ts.translate('projects.modal.links') }}</h3>
 
             <div class="projects-modal__links">
               @if (project.links.github) {
                 <a
-                  class="projects-modal__link"
+                  class="chip chip--gilded transition-ritual"
                   [href]="project.links.github"
                   target="_blank"
                   rel="noreferrer noopener">
@@ -152,19 +153,27 @@
                     </app-responsive-picture>
                   </span>
 
-                  <span>GitHub</span>
+                  <span class="text-tag">GitHub</span>
                 </a>
               }
 
               @if (project.links.demo) {
-                <a [href]="project.links.demo" target="_blank" rel="noreferrer noopener">
-                  {{ ts.translate('projects.modal.demo') }}
+                <a
+                  class="chip chip--gilded transition-ritual"
+                  [href]="project.links.demo"
+                  target="_blank"
+                  rel="noreferrer noopener">
+                  <span class="text-tag">{{ ts.translate('projects.modal.demo') }}</span>
                 </a>
               }
 
               @if (project.links.website) {
-                <a [href]="project.links.website" target="_blank" rel="noreferrer noopener">
-                  {{ ts.translate('projects.modal.site') }}
+                <a
+                  class="chip chip--gilded transition-ritual"
+                  [href]="project.links.website"
+                  target="_blank"
+                  rel="noreferrer noopener">
+                  <span class="text-tag">{{ ts.translate('projects.modal.site') }}</span>
                 </a>
               }
             </div>

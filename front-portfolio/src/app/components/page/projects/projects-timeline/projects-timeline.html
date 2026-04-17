@@ -1,13 +1,31 @@
 <section class="projects-timeline" [attr.aria-label]="ts.translate('projects.timeline.aria')">
-  @for (project of projects; track trackByProjectId($index, project)) {
+  @for (project of projects; track trackByProjectId($index, project); let idx = $index) {
     <article
       class="projects-timeline__item"
+      [class.projects-timeline__item--featured]="project.featured"
       appRevealOnScroll
-      [revealDelay]="$index * 0.06"
+      [revealDelay]="idx * 0.06"
       [revealY]="28"
       [revealBlur]="10">
       <div class="projects-timeline__line">
-        <span class="projects-timeline__dot"></span>
+        <svg class="projects-timeline__seal" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <!-- Cercle externe doré -->
+          <circle cx="20" cy="20" r="18" stroke="#a49476" stroke-width="0.7" opacity="0.45"/>
+          <!-- Anneau rituel -->
+          <circle cx="20" cy="20" r="13" stroke="#a49476" stroke-width="0.5" opacity="0.7"/>
+          <!-- Marques cardinales -->
+          <path d="M20 4 L20 8 M20 32 L20 36 M4 20 L8 20 M32 20 L36 20" stroke="#a49476" stroke-width="0.6" opacity="0.5"/>
+          <!-- Cœur rouge rituel -->
+          <circle cx="20" cy="20" r="4" fill="url(#sealGlow)"/>
+          <circle cx="20" cy="20" r="2.2" fill="#a60a0a"/>
+          <defs>
+            <radialGradient id="sealGlow">
+              <stop offset="0%" stop-color="#ff934d" stop-opacity="0.9"/>
+              <stop offset="60%" stop-color="#a60a0a" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#a60a0a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+        </svg>
       </div>
 
       <div class="project-card">
@@ -26,8 +44,8 @@
         </div>
 
         <div class="project-card__head">
-          <h2>{{ project.title }}</h2>
-          <p>{{ ts.translate('projects.' + project.id + '.shortDescription') }}</p>
+          <h2 class="text-engraved text-engraved--carved">{{ project.title }}</h2>
+          <p class="text-tome">{{ ts.translate('projects.' + project.id + '.shortDescription') }}</p>
         </div>
 
         <div class="project-card__section">
@@ -51,7 +69,7 @@
         </div>
 
         <div class="project-card__actions">
-          <button type="button" class="project-card__toggle" (click)="projectSelected.emit(project)">
+          <button type="button" class="project-card__toggle transition-ritual" (click)="projectSelected.emit(project)">
             {{ ts.translate('projects.timeline.detail') }}
           </button>
         </div>

@@ -6,5 +6,6 @@
   "cta.primary.bottom": "0b110 career.dat",
   "cta.secondary.top": "0x50524F",
   "cta.secondary.bottom": "FETCH 0x4C696E6B6564496E",
-  "aria.landmarks": "0b10 WAYPOINTS"
+  "aria.landmarks": "0b10 WAYPOINTS",
+  "cta.primary.icon_alt": "0x50415243 WORK_HIST"
 }

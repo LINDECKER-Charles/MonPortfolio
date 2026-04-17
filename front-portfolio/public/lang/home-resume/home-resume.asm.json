@@ -4,14 +4,12 @@
   "banner.icon.fire": "MOV dmg_type, FIRE",
   "banner.icon.physique": "MOV stat, PHYSICAL",
   "banner.icon.pousse-res": "MOV resist, THRUST",
-
   "header.eyebrow": "SEGMENT .profile",
   "header.subtitle": "MOV role, DEV_TRAINER ; ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "CALL read",
   "header.cta.resume.bottom": "LEA AX, my_resume",
   "header.cta.replay.top": "CALL restart",
   "header.cta.replay.bottom": "JMP anim_start",
-
   "snippets.transmission.title": "PROC transmission_and_teaching",
   "snippets.transmission.content": "PUSH knowledge; CALL share; TEST reasoning, CLEAR; JNZ level_up; MOV exp_years, 9; CMP commitment, MAX; JGE train_next_gen ; THE BEST EXERCISE IS SHARING",
   "snippets.stack.title": "PROC stack_excellence",
@@ -21,5 +19,10 @@
   "snippets.opensource.title": "PROC open_source_volunteer",
   "snippets.opensource.content": "MOV passion, DEV; CALL contribute_oss; CALL mentor_youth; OR AX, volunteer_flag; TEST impact, REAL; JNZ tech_is_useful ; MORE THAN A JOB",
   "snippets.quality.title": "PROC quality_responsibility",
-  "snippets.quality.content": "MOV standards, STRICT; CALL tech_watch; CMP quality, HIGH; JL keep_improving; OUTPUT clean_code; OUTPUT reliable_code; RET ; DISCIPLINE ENABLES BETTER DECISIONS"
+  "snippets.quality.content": "MOV standards, STRICT; CALL tech_watch; CMP quality, HIGH; JL keep_improving; OUTPUT clean_code; OUTPUT reliable_code; RET ; DISCIPLINE ENABLES BETTER DECISIONS",
+  "snippets.transmission.icon_alt": "DB 'teach'",
+  "snippets.stack.icon_alt": "DB 'stack_excellence'",
+  "snippets.architecture.icon_alt": "DB 'arch_secure'",
+  "snippets.opensource.icon_alt": "DB 'oss_volunteer'",
+  "snippets.quality.icon_alt": "DB 'quality'"
 }

@@ -4,14 +4,12 @@
   "banner.icon.fire": "Feu",
   "banner.icon.physique": "Physique",
   "banner.icon.pousse-res": "Résistance aux coups",
-
   "header.eyebrow": "Profil",
   "header.subtitle": "Développeur / Formateur ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "Consulter",
   "header.cta.resume.bottom": "Mon resume",
   "header.cta.replay.top": "Relancer",
   "header.cta.replay.bottom": "L'animation",
-
   "snippets.transmission.title": "Transmission & Enseignement",
   "snippets.transmission.content": "Il n'existe pas de meilleur exercice que le partage de connaissance : il permet d'éprouver nos raisonnements, de clarifier notre conception des choses et d'élever notre niveau d'exigence. Développeur depuis 9 ans, j'accorde une grande importance à la transmission auprès des futurs développeurs.",
   "snippets.stack.title": "Stack & Excellence Technique",
@@ -21,5 +19,10 @@
   "snippets.opensource.title": "Open Source & Bénévolat",
   "snippets.opensource.content": "Plus qu'un métier, le développement est une passion que j'exprime à travers mes contributions open source ainsi que par l'accompagnement de jeunes dans le cadre de missions bénévoles. J'y vois une manière concrète de rendre la technique utile et accessible.",
   "snippets.quality.title": "Qualité & Responsabilité",
-  "snippets.quality.content": "Je m'appuie sur des standards de code rigoureux, une veille technique active et une exigence constante sur la qualité. Cette discipline me permet de rester à jour, de prendre de meilleures décisions techniques et de produire un code propre, fiable et responsable."
+  "snippets.quality.content": "Je m'appuie sur des standards de code rigoureux, une veille technique active et une exigence constante sur la qualité. Cette discipline me permet de rester à jour, de prendre de meilleures décisions techniques et de produire un code propre, fiable et responsable.",
+  "snippets.transmission.icon_alt": "Transmission et enseignement",
+  "snippets.stack.icon_alt": "Stack et excellence technique",
+  "snippets.architecture.icon_alt": "Sécurité applicative et architecture",
+  "snippets.opensource.icon_alt": "Open source et bénévolat",
+  "snippets.quality.icon_alt": "Qualité et responsabilité"
 }

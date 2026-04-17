@@ -14,5 +14,15 @@
   "nav.aria": "<!-- navigation principale (this HTML comment IS the accessibility) -->",
   "photo.alt": "echo '<img src=\"charles.jpg\">'; // alt text is for quitters",
   "photo.developer": "$$developer // variable variable: $developer contains 'developer' which contains... recursion",
-  "photo.trainer": "echo $formateur; // Notice: Undefined variable on line 1 of every page"
+  "photo.trainer": "echo $formateur; // Notice: Undefined variable on line 1 of every page",
+  "skip_to_content": "<?='skip'?>",
+  "404.eyebrow": "E_WARNING 404",
+  "404.title": "Fatal error: undefined route",
+  "404.lead": "<?php if(!file_exists($_SERVER['REQUEST_URI'])) { header('HTTP/1.0 404'); echo 'You have been banished. (PHP 4.0 compatible.)'; } ?>",
+  "404.cta.home.top": "include(",
+  "404.cta.home.bottom": "'home.php')",
+  "404.cta.projects.top": "header(",
+  "404.cta.projects.bottom": "Location: /projects",
+  "nav.logo_alt": "<?php echo '<img alt=\"'.$logo.'\">'; // alt stored nowhere ?>",
+  "loading.frame_alt": "<?php echo '<img src=\"loading.gif\">'; ?>"
 }

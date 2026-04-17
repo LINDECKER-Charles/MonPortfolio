@@ -2,6 +2,8 @@
   "header.eyebrow": "/^p[o0]rtf[o0]li[o0]$/i",
   "header.title": "/^pr[oO]j(ect|et)s?$/gi",
   "header.description": "(?:select(?:ion)?|curated)\\s+(?:of\\s+)?(?:personal|perso)\\s+(?:works?|travaux).*(?:filter|filtr).*(?:categ|tags?|stack)",
+  "header.cta_works.top": "/^explor(e|ar|er)?$/i",
+  "header.cta_works.bottom": "/m[ey]\\s+parc[o0]urs?/i",
   "filter.category": "/^cat[eé]gor(?:ie|y)$/i",
   "filter.tags": "/^tags?$/i",
   "filter.stack": "/^stack$/i",

@@ -5,5 +5,7 @@
   "cta.primary.top": "CALL explore",
   "cta.primary.bottom": "LEA AX, my_work",
   "cta.secondary.top": "MOV DX, OPEN_SRC",
-  "cta.secondary.bottom": "JMP github_remote"
+  "cta.secondary.bottom": "JMP github_remote",
+  "stack.aria": "SECTION .stack_main",
+  "cta.primary.icon_alt": "CALL explore_projects"
 }

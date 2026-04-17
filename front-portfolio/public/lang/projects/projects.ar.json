@@ -2,6 +2,8 @@
   "header.eyebrow": "معرض الأعمال",
   "header.title": "المشاريع",
   "header.description": "مجموعة مختارة من الأعمال الشخصية والتجارب التقنية والمساهمات مفتوحة المصدر، قابلة للتصفية حسب الفئة والعلامات والمكدس التقني.",
+  "header.cta_works.top": "استكشف",
+  "header.cta_works.bottom": "مسيرتي",
   "filter.category": "الفئة",
   "filter.tags": "العلامات",
   "filter.stack": "المكدس التقني",

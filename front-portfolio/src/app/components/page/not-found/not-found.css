@@ -1,0 +1,70 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.not-found {
+  min-height: calc(100dvh - 8rem);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found__panel {
+  width: min(760px, 100%);
+  padding: clamp(2rem, 4vw, 3rem);
+  border-radius: var(--radius-panel-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+}
+
+.not-found__rune {
+  width: clamp(96px, 12vw, 140px);
+  height: clamp(96px, 12vw, 140px);
+  filter: drop-shadow(0 0 20px rgb(166 10 10 / 0.18));
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+.not-found__eyebrow {
+  margin: 0;
+}
+
+.not-found h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.05;
+  max-width: 14ch;
+}
+
+.not-found__lead {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 1rem;
+}
+
+.not-found__actions {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .not-found__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .not-found__actions .cta-tome {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found__rune { animation: none; }
+}

@@ -4,14 +4,12 @@
   "banner.icon.fire": "Ignis Antiquus",
   "banner.icon.physique": "Corpus Physicum",
   "banner.icon.pousse-res": "Resistentia Impulsus",
-
   "header.eyebrow": "Profilus Scholaris",
   "header.subtitle": "Scholaris Codex Byrgenwerth / Magister .NET & Angular & Symfony",
   "header.cta.resume.top": "Inspicere",
   "header.cta.resume.bottom": "Curriculum Sanguinis",
   "header.cta.replay.top": "Repetere",
   "header.cta.replay.bottom": "Ritum Introductionem",
-
   "snippets.transmission.title": "Transmissio Sapientiae & Insight",
   "snippets.transmission.content": "Non est exercitium melius quam dividere cognitionem: probat rationem nostram, clarificat comprehensionem rerum et elevat gradum excellentiae. Per novem cyclos sanguinis, Scholaris Byrgenwerth magna cum cura transmittit sapientiam ad futuros adeptos Codex. Sicut Willem docuit: fear the Old Blood, sed share the knowledge.",
   "snippets.stack.title": "Instrumenta Sacra & Excellentia Technica",
@@ -21,5 +19,10 @@
   "snippets.opensource.title": "Codex Apertus & Opus Voluntarium",
   "snippets.opensource.content": "Plus quam labor, developmentum est passio quam Scholaris exprimit per contributiones ad Codex Apertum et per mentoratum iuvenum per opus voluntarium. Sicut Healing Church servit communitas, ita servimus technologiam accessibilem et utilem omnibus.",
   "snippets.quality.title": "Qualitas & Responsabilitas Sanguinis",
-  "snippets.quality.content": "Per standards rigorosos codicum, vigiliam technicam activam et exigentiam constantem qualitatis, Scholaris manet in fronte cognitionis. Haec disciplina permittit decisiones technicas meliores et productionem codici puri, fidei et responsabili. Grant us eyes, grant us clean code."
+  "snippets.quality.content": "Per standards rigorosos codicum, vigiliam technicam activam et exigentiam constantem qualitatis, Scholaris manet in fronte cognitionis. Haec disciplina permittit decisiones technicas meliores et productionem codici puri, fidei et responsabili. Grant us eyes, grant us clean code.",
+  "snippets.transmission.icon_alt": "Traditio et magisterium",
+  "snippets.stack.icon_alt": "Ars arcana et excellentia",
+  "snippets.architecture.icon_alt": "Securitas et architectura arcana",
+  "snippets.opensource.icon_alt": "Munificentia librorum",
+  "snippets.quality.icon_alt": "Qualitas et officium"
 }

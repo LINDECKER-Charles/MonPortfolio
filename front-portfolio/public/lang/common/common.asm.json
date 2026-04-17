@@ -14,5 +14,15 @@
   "nav.aria": "SEGMENT .main_nav",
   "photo.alt": "DB 'Portrait: Charles Lindecker'",
   "photo.developer": "MOV class, DEVELOPER",
-  "photo.trainer": "MOV class, TRAINER"
+  "photo.trainer": "MOV class, TRAINER",
+  "skip_to_content": "JMP content",
+  "404.eyebrow": "INT 0x194",
+  "404.title": "PUSH banished; HLT",
+  "404.lead": "CMP path, [memory]; JNE banished; MOV AX, 404; INT 0x21; ; no route in memory, segment fault imminent",
+  "404.cta.home.top": "CALL return",
+  "404.cta.home.bottom": "JMP home",
+  "404.cta.projects.top": "LEA DI, explore",
+  "404.cta.projects.bottom": "JMP projects",
+  "nav.logo_alt": "DB 'Charles Lindecker logo'",
+  "loading.frame_alt": "DB 'loading logo frame'"
 }

@@ -17,5 +17,9 @@
   "stats.frontend": "0x4652 FRONTEND",
   "stats.architecture": "0b01000001 ARCH",
   "stats.security": "0x534543 SECURITY",
-  "stats.devops": "0b01000100 DEVOPS"
+  "stats.devops": "0b01000100 DEVOPS",
+  "runes.bloodtinge": "0x424C4F4F44",
+  "runes.eso": "0x41524341",
+  "runes.heart": "0x56495441",
+  "runes.endurance": "0x454E4455"
 }

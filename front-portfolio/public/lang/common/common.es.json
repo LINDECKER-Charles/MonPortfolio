@@ -14,5 +14,15 @@
   "nav.aria": "Navegación principal",
   "photo.alt": "Retrato de Charles Lindecker",
   "photo.developer": "Desarrollador",
-  "photo.trainer": "Formador"
+  "photo.trainer": "Formador",
+  "skip_to_content": "Ir al contenido",
+  "404.eyebrow": "404 — Ruinas cenicientas",
+  "404.title": "Has sido desterrado de estas tierras",
+  "404.lead": "El camino que recorrías ya no existe, o nunca existió. Solo los soñadores más vigilantes aún encuentran su camino entre las ruinas del Sueño del Cazador.",
+  "404.cta.home.top": "Volver",
+  "404.cta.home.bottom": "Inicio",
+  "404.cta.projects.top": "Explorar",
+  "404.cta.projects.bottom": "Proyectos",
+  "nav.logo_alt": "Logotipo Charles Lindecker",
+  "loading.frame_alt": "Logotipo de carga"
 }
