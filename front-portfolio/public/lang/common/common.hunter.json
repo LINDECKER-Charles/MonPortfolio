@@ -14,5 +14,15 @@
   "nav.aria": "Workshop navigation",
   "photo.alt": "Portrait of the Good Hunter Charles Lindecker",
   "photo.developer": "Workshop Hunter",
-  "photo.trainer": "Mentor of the Dream"
+  "photo.trainer": "Mentor of the Dream",
+  "skip_to_content": "To the Hunt",
+  "404.eyebrow": "404 — Ashen Ruins",
+  "404.title": "You have been banished from these lands",
+  "404.lead": "The trail you walked has gone cold, or never was. Only the most watchful dreamers still find their way through the ruins of the Hunter's Dream.",
+  "404.cta.home.top": "Return",
+  "404.cta.home.bottom": "Workshop",
+  "404.cta.projects.top": "Seek",
+  "404.cta.projects.bottom": "The Hunts",
+  "nav.logo_alt": "Hunter's mark of Charles Lindecker",
+  "loading.frame_alt": "Blood memory loading"
 }

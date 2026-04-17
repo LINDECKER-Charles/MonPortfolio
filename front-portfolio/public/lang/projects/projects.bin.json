@@ -2,6 +2,8 @@
   "header.eyebrow": "0x504F5254",
   "header.title": "0b01010000 01010010 01001010",
   "header.description": "0b11010010 personal_repos SCANNED — 0x455850 experiments DECODED — 0b01001111 open_source contributions INDEXED — filter by CATEGORY | TAGS | STACK",
+  "header.cta_works.top": "0x4558504C4F5245",
+  "header.cta_works.bottom": "0x504152434F555253",
   "filter.category": "0x43415445",
   "filter.tags": "0b01010100 TAGS[]",
   "filter.stack": "0x535441434B",
@@ -33,7 +35,6 @@
   "modal.demo": "0b01000100 DEMO.exe",
   "modal.site": "0x53495445",
   "today": "0x4E4F57",
-
   "omnicard.shortDescription": "0b01000011 CARD_GAME with custom LOGIC_ENGINE, MODULAR_ARCH and 0xFF REALTIME_SYNC",
   "omnicard.longDescription": "MALLOC omnicard_project... AMBITIOUS_FLAG=0b1 — custom GAME_ENGINE loaded, RULE_LOGIC complex, ARCH designed for LONG_TERM persistence. Working on: MODEL_BUSINESS, EFFECT_MANAGEMENT, REALTIME_SYNC between players. INTERSECTION of game_design.bin, architecture.dll and fullstack_dev.exe — BUFFER_SIZE: ENORMOUS",
   "omnicard.highlights.0": "0b01001101 MODULAR engine with RULE_ORIENTED design",
@@ -42,7 +43,6 @@
   "omnicard.lessonsLearned.0": "STRUCT complex_business_logic WITHOUT losing READABILITY_SCORE",
   "omnicard.lessonsLearned.1": "EVOLVE game_engine.dll in CLEAN && TESTABLE manner",
   "omnicard.lessonsLearned.2": "ARCHITECT long_term project MIXING front.js + back.dll + gameplay.bin",
-
   "pvzf-translation-fr.shortDescription": "0b01001100 LEAD_ROLE on FR translation of PVZ Fusion — COORD_MODE active",
   "pvzf-translation-fr.longDescription": "PVZF_TRANSLATION.FR — 0b110 francophone BRANCH of PVZ Fusion translation pipeline. ROLE=LEAD. TASKS: coordination, review, terminology_consistency, contribution_tracking. NOT_JUST translate.exe — MAINTAIN coherence of TONE && QUALITY across evolving COLLECTIVE_WORK.dat",
   "pvzf-translation-fr.highlights.0": "0xFF LEAD on FR segment",
@@ -51,7 +51,6 @@
   "pvzf-translation-fr.lessonsLearned.0": "MANAGE collaborative_work WITH coherence_requirement",
   "pvzf-translation-fr.lessonsLearned.1": "FORMALIZE translation_standards && validation_rules",
   "pvzf-translation-fr.lessonsLearned.2": "QUALITY_CONTROL in evolving community context",
-
   "portfolio.shortDescription": "0xFF NEXT_GEN portfolio — IMMERSIVE_EXP with personal BRANDING, ADVANCED_ANIM and modern FRONT_ARCH",
   "portfolio.longDescription": "NOT_JUST a showcase.html — FULL_TECH_DEMO of modern frontend approach. GOAL: CREATE immersive && HIGH_QUALITY experience REFLECTING: tech_level=0xFF, product_sense=ACTIVE, attention_to_detail=EXTREME. BUFFER allocated for MAXIMUM_IMPACT",
   "portfolio.highlights.0": "MODERN Angular ARCH with SSR + HYDRATION protocol",
@@ -63,7 +62,6 @@
   "portfolio.lessonsLearned.1": "RECONCILE rich_animations && mobile_performance",
   "portfolio.lessonsLearned.2": "UX as BRANDING_VECTOR for tech_identity",
   "portfolio.lessonsLearned.3": "INDUSTRIALIZE responsive_media management IN Angular",
-
   "lis-web.shortDescription": "0b01010000 PRO_PROJECT — web_presence, showcase AND real_delivery",
   "lis-web.longDescription": "LIS_WEB = REAL professional project. CONFRONTING tech_requirements WITH communication_needs, readability_demands, content_clarity AND online_credibility. STATUS: DEPLOYED",
   "lis-web.highlights.0": "CREDIBLE web_presence — EXPLOITABLE.flag=TRUE",
@@ -72,7 +70,6 @@
   "lis-web.lessonsLearned.0": "TRANSLATE business_needs INTO clear_structured_interface",
   "lis-web.lessonsLearned.1": "WEB_PRESENCE with real CREDIBILITY_REQUIREMENT",
   "lis-web.lessonsLearned.2": "CONVERGE tech + image + readability",
-
   "dev-mates.shortDescription": "0b01010011 SHOWCASE_SITE — identity, services AND credibility_focused",
   "dev-mates.longDescription": "DEV_MATES.exe = company SHOWCASE. LOGIC: professional_presence, clear_identity, service_offer HIGHLIGHT. DEPLOYED on production_segment",
   "dev-mates.highlights.0": "HIGHLIGHT professional_activity",
@@ -81,7 +78,6 @@
   "dev-mates.lessonsLearned.0": "BUILD site SERVING communication AS_MUCH_AS tech",
   "dev-mates.lessonsLearned.1": "THINK company_identity THROUGH web_presence",
   "dev-mates.lessonsLearned.2": "IMAGE_ORIENTED approach WITHOUT losing RIGOR_FLAG",
-
   "pvz-fuzion-console-manager.shortDescription": "0b01000011 CONSOLE_TOOL — verify MISSING_TRANSLATIONS on target_version",
   "pvz-fuzion-console-manager.longDescription": "PVZ_CONSOLE_MGR.exe — TOOL for translation TRACKING && VALIDATION. DETECT missing translations PER_VERSION, SIMPLIFY quality_control. UTILITY_SCORE = 0xFF",
   "pvz-fuzion-console-manager.highlights.0": "AUTOMATED detection OF missing_translation[]",
@@ -90,7 +86,6 @@
   "pvz-fuzion-console-manager.lessonsLearned.0": "CREATE simple BUT genuinely_useful TOOLS for existing_workflow",
   "pvz-fuzion-console-manager.lessonsLearned.1": "AUTOMATE repetitive_tasks TO increase QUALITY_RELIABILITY",
   "pvz-fuzion-console-manager.lessonsLearned.2": "DESIGN utility FROM concrete_field_need",
-
   "shreksophone.shortDescription": "0xFF TROLL_CDN — replaces UX with FULLSCREEN Shrek saxophone 0b01010011 01000001 01011000",
   "shreksophone.longDescription": "SHREKSOPHONE.exe — ABSURD_FLAG=TRUE, TECH_SIMPLE but FULLY_COMMITTED. PROCESS: ONE_CLICK → interface.dignity=NULL → FULLSCREEN Shrek SAXOPHONE solo. SEGFAULT in seriousness.dll — CORE_DUMP of fun",
   "shreksophone.highlights.0": "CONCEPT: MINIMAL && INSTANTLY_RECOGNIZABLE",
@@ -99,7 +94,6 @@
   "shreksophone.lessonsLearned.0": "COMMIT to concept EVEN_WHEN absurd_flag=TRUE",
   "shreksophone.lessonsLearned.1": "CREATE memorable_project WITH minimal TECH_COMPLEXITY",
   "shreksophone.lessonsLearned.2": "WORK on tone + impact + COHERENCE of atypical UX",
-
   "glossairequest.shortDescription": "0b01010001 QUIZ_APP — Angular + ASP.NET Core PEDAGOGICAL_MODE",
   "glossairequest.longDescription": "GLOSSAIREQUEST.exe — modern WEB_APP: Angular FRONTEND + ASP.NET Core BACKEND. FEATURES: interactive QUIZ[], theme_variety, STATS_TRACKING, result_history, ADMIN_PANEL. PEDAGOGICAL_SCORE = 0xFF",
   "glossairequest.highlights.0": "JWT AUTH_SECURE protocol",
@@ -108,7 +102,6 @@
   "glossairequest.lessonsLearned.0": "REINFORCE separation_of_concerns BETWEEN Angular_front AND .NET_API",
   "glossairequest.lessonsLearned.1": "STRUCT protected_routes AND clean AUTH_CYCLE",
   "glossairequest.lessonsLearned.2": "DESIGN pedagogical_app WITH business_logic AND user_tracking",
-
   "league-of-data-base.shortDescription": "0b01001100 LOL_DATA centralization — MULTILANG + MULTI_VERSION web_app",
   "league-of-data-base.longDescription": "LEAGUE_OF_DATA_BASE.exe — CENTRALIZE + STORE + DISPLAY LoL data VIA clear, responsive, FAST interface. EXTENSIBLE_BASE handling champions[], items[], runes[] AND more_resources",
   "league-of-data-base.highlights.0": "RIOT_API integration WITH multilang + multi_version SUPPORT",
@@ -117,7 +110,6 @@
   "league-of-data-base.lessonsLearned.0": "DESIGN extensible ARCH around evolving API",
   "league-of-data-base.lessonsLearned.1": "OPTIMIZE storage + render FOR large MEDIA_VOLUME",
   "league-of-data-base.lessonsLearned.2": "MANAGE user_prefs ACROSS sessions + cookies + URL",
-
   "blender-collection.shortDescription": "0b01000010 BLENDER addon collection PLATFORM — share + manage",
   "blender-collection.longDescription": "BLENDER_COLLECTION.exe — CENTRALIZE + ORGANIZE + SHARE Blender addons. USERS can CREATE collections[], SET visibility=PUBLIC|PRIVATE, DOWNLOAD all_extensions IN single_archive.zip",
   "blender-collection.highlights.0": "USER_PROFILES + collections[] + visibility PUBLIC/PRIVATE",
@@ -126,7 +118,6 @@
   "blender-collection.lessonsLearned.0": "STRUCT community_app WITH multiple ROLE_LEVELS",
   "blender-collection.lessonsLearned.1": "PROCESS heavy_ops WITHOUT blocking INTERFACE_THREAD",
   "blender-collection.lessonsLearned.2": "DEPLOY pipeline: Docker + GitHub Actions = 0xFF PRO",
-
   "symfony-session.shortDescription": "0b01010011 SYMFONY app — session_mgmt, WEB_SECURITY, admin_panel",
   "symfony-session.longDescription": "SYMFONY_SESSION.exe — WEB_APP for concrete session_management, APP_SECURITY and ADMINISTRATION cases. SERVES as solid BASE for backoffice_tools OR training_platforms",
   "symfony-session.highlights.0": "CAPTCHA_v3 + HONEYPOT + RATE_LIMITER security_stack",

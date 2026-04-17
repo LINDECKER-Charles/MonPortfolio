@@ -2,6 +2,8 @@
   "header.eyebrow": "作品集",
   "header.title": "项目",
   "header.description": "精选个人作品、技术实验和开源贡献，可按类别、标签和技术栈筛选。",
+  "header.cta_works.top": "查看",
+  "header.cta_works.bottom": "我的历程",
   "filter.category": "类别",
   "filter.tags": "标签",
   "filter.stack": "技术栈",

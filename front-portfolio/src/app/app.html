@@ -1,7 +1,7 @@
 <div class="app-root">
 
   <!-- Skip link — focus-visible uniquement, pour lecteurs d'écran et navigation clavier -->
-  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <a class="skip-link" href="#main-content">{{ ts.translate('common.skip_to_content') }}</a>
 
   <!-- Background (z-index: --z-bg = -1, derrière tout) -->
   <div class="bg-gradient"></div>
@@ -32,11 +32,6 @@
   <!-- Overlays globaux : tous fixed, z-index défini par l'échelle CSS -->
   <app-loading></app-loading>
   <app-page-transition></app-page-transition>
-  <app-scroll-lanterns></app-scroll-lanterns>
-
-  @if (audio.isAnythingPlaying()) {
-    <app-stop-all-sound></app-stop-all-sound>
-  }
 
   @if (ts.isLangModalOpen()) {
     <app-lang-modal (close)="ts.closeModal()" />

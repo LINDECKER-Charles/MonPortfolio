@@ -2,6 +2,8 @@
   "header.eyebrow": "/*portfolio*/void 0",
   "header.title": "var _0xP='Projects'",
   "header.description": "repos.filter(r=>r.type==='personal'||r.oss).map(r=>render(r))//+filter by cat,tags,stack",
+  "header.cta_works.top": "()=>explore()",
+  "header.cta_works.bottom": "self._journey",
   "filter.category": "el.dataset.cat",
   "filter.tags": "Array.from(tags)",
   "filter.stack": "window.__stack",
@@ -33,7 +35,6 @@
   "modal.demo": "window.open(demo.url)",
   "modal.site": "location.assign(site)",
   "today": "new Date().toLocaleDateString()",
-
   "omnicard.shortDescription": "new CardGame({engine:'custom',arch:'modular',sync:!0})",
   "omnicard.longDescription": "class Omnicard{constructor(){this.ambitious=!0;this.engine=new GameEngine({rules:'complex'});this.arch='long_term'}model(){return{business:!0,effects:!0,sync:'realtime'}}scope(){return'enormous'}}//game_design+arch+fullstack",
   "omnicard.highlights.0": "const engine=new ModularEngine({pattern:'rule_oriented'})",
@@ -42,7 +43,6 @@
   "omnicard.lessonsLearned.0": "structureLogic({complex:!0,readable:!0})",
   "omnicard.lessonsLearned.1": "engine.evolve({clean:!0,testable:!0})",
   "omnicard.lessonsLearned.2": "architect({front:!0,back:!0,gameplay:!0,longTerm:!0})",
-
   "pvzf-translation-fr.shortDescription": "const role='lead';manage('fr',{project:'PVZ Fusion'})",
   "pvzf-translation-fr.longDescription": "class PVZFTranslation{branch='fr';role='lead';run(){this.coordinate();this.review();this.unifyTerms();this.track()}isJustTranslate(){return!1}//maintain coherence&&quality}",
   "pvzf-translation-fr.highlights.0": "this.position='lead'//fr_segment",
@@ -51,7 +51,6 @@
   "pvzf-translation-fr.lessonsLearned.0": "manageCollab({coherenceRequired:!0})",
   "pvzf-translation-fr.lessonsLearned.1": "formalize({translationStandards:!0,validation:!0})",
   "pvzf-translation-fr.lessonsLearned.2": "qualityControl({context:'evolving_community'})",
-
   "portfolio.shortDescription": "new Portfolio({gen:'next',immersive:!0,branding:!0,anim:'advanced',arch:'modern'})",
   "portfolio.longDescription": "if(this!=='simple_showcase'){const xp=createImmersiveExp();xp.quality='max';assert(xp.techLevel===0xFF);assert(xp.productSense);assert(xp.detailAttention==='extreme')}//way more than a website",
   "portfolio.highlights.0": "const app=new AngularSSR({hydration:!0})",
@@ -63,7 +62,6 @@
   "portfolio.lessonsLearned.1": "reconcile(richAnim,mobilePerf)//tricky",
   "portfolio.lessonsLearned.2": "ux.asBrandingVector('tech_identity')",
   "portfolio.lessonsLearned.3": "industrialize('responsive_media',{framework:'Angular'})",
-
   "lis-web.shortDescription": "deploy({type:'pro',presence:!0,showcase:!0,real:!0})",
   "lis-web.longDescription": "const lis=new ProProject();lis.confront('tech','communication');lis.ensure('readability','credibility')//real pro project",
   "lis-web.highlights.0": "presence.credible=!0;presence.exploitable=!0",
@@ -72,7 +70,6 @@
   "lis-web.lessonsLearned.0": "translate(businessNeeds,'structured_interface')",
   "lis-web.lessonsLearned.1": "buildPresence({credibilityRequired:!0})",
   "lis-web.lessonsLearned.2": "converge('tech','image','readability')",
-
   "dev-mates.shortDescription": "new Showcase({identity:!0,services:!0,credibility:!0})",
   "dev-mates.longDescription": "class DevMates extends CompanyShowcase{constructor(){super();this.presence='professional';this.identity='clear';this.services.highlight()}}",
   "dev-mates.highlights.0": "highlight(professionalActivity)",
@@ -81,7 +78,6 @@
   "dev-mates.lessonsLearned.0": "buildSite({serving:['comm','tech']})",
   "dev-mates.lessonsLearned.1": "thinkIdentity({through:'web_presence'})",
   "dev-mates.lessonsLearned.2": "approach='image_oriented';assert(rigor)//still solid",
-
   "pvz-fuzion-console-manager.shortDescription": "cli.run('check-translations',{version:target})",
   "pvz-fuzion-console-manager.longDescription": "const mgr=new ConsoleMgr();mgr.detectMissing(version);mgr.simplifyQA()//utility_score=max",
   "pvz-fuzion-console-manager.highlights.0": "translations.filter(t=>!t.value).length//auto detect",
@@ -90,7 +86,6 @@
   "pvz-fuzion-console-manager.lessonsLearned.0": "createSimpleTools({genuinelyUseful:!0,for:'existing_workflow'})",
   "pvz-fuzion-console-manager.lessonsLearned.1": "automate(repetitiveTasks,{goal:'quality_reliability'})",
   "pvz-fuzion-console-manager.lessonsLearned.2": "designFrom({concreteFieldNeed:!0})",
-
   "shreksophone.shortDescription": "fetch('/shrek-sax.mp4').then(v=>document.body.replaceWith(v))//troll cdn",
   "shreksophone.longDescription": "!function(){const absurd=!0,committed=!0;document.onclick=()=>{document.body.innerHTML='';const v=document.createElement('video');v.src='shrek-sax.mp4';v.autoplay=!0;v.loop=!0;v.style.cssText='position:fixed;inset:0;width:100vw;height:100vh;object-fit:cover';document.body.append(v)}}()//dignity=null",
   "shreksophone.highlights.0": "concept={minimal:!0,recognizable:'instant'}",
@@ -99,7 +94,6 @@
   "shreksophone.lessonsLearned.0": "commitToConcept({evenWhenAbsurd:!0})",
   "shreksophone.lessonsLearned.1": "createMemorable({complexity:'minimal'})",
   "shreksophone.lessonsLearned.2": "workOn(['tone','impact','coherence'],{ux:'atypical'})",
-
   "glossairequest.shortDescription": "new QuizApp({front:'Angular',back:'ASP.NET Core',mode:'pedagogical'})",
   "glossairequest.longDescription": "class GlossaireQuest{front='Angular';back='ASP.NET Core';features=['quizzes','stats','results','admin'];pedagogicalScore=0xFF}",
   "glossairequest.highlights.0": "auth.use(jwt)//secure",
@@ -108,7 +102,6 @@
   "glossairequest.lessonsLearned.0": "reinforceSeparation('Angular','dotnet_api')",
   "glossairequest.lessonsLearned.1": "structureRoutes({protected:!0,authCycle:'clean'})",
   "glossairequest.lessonsLearned.2": "designApp({pedagogical:!0,businessLogic:!0,userTracking:!0})",
-
   "league-of-data-base.shortDescription": "centralize('lol_data',{multilang:!0,multiVersion:!0})",
   "league-of-data-base.longDescription": "const db=new LeagueDB();db.centralize();db.store();db.display({interface:'clear|responsive|fast'});db.extend(['champions','items','runes'])",
   "league-of-data-base.highlights.0": "riotApi.integrate({multilang:!0,multiVersion:!0})",
@@ -117,7 +110,6 @@
   "league-of-data-base.lessonsLearned.0": "designExtensibleArch({aroundEvolvingApi:!0})",
   "league-of-data-base.lessonsLearned.1": "optimize({storage:!0,render:!0,mediaVolume:'large'})",
   "league-of-data-base.lessonsLearned.2": "managePrefs({across:['sessions','cookies','url']})",
-
   "blender-collection.shortDescription": "new Platform({type:'Blender addons',share:!0,manage:!0})",
   "blender-collection.longDescription": "class BlenderCollection{centralize(){};organize(){};share(){};setVisibility(v){/*pub|priv*/};download(){return'single_archive.zip'}}",
   "blender-collection.highlights.0": "const profiles={collections:[],visibility:'public|private'}",
@@ -126,7 +118,6 @@
   "blender-collection.lessonsLearned.0": "structureCommunityApp({roleLevels:'multiple'})",
   "blender-collection.lessonsLearned.1": "processHeavyOps({blocking:!1})//async",
   "blender-collection.lessonsLearned.2": "deployPipeline(['Docker','GitHub Actions'])//pro",
-
   "symfony-session.shortDescription": "new SymfonyApp({sessions:!0,security:!0,admin:!0})",
   "symfony-session.longDescription": "class SymfonySession{manageSessions(){};enforceSecurity(){};buildAdmin(){};isSolidBase(){return!0}//backoffice_or_training}",
   "symfony-session.highlights.0": "[captchaV3,honeypot,rateLimiter].forEach(s=>app.use(s))",

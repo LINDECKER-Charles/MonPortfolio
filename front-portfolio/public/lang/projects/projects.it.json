@@ -2,6 +2,8 @@
   "header.eyebrow": "Portfolio",
   "header.title": "Progetti",
   "header.description": "Una selezione di lavori personali, esperimenti tecnici e contributi open source, filtrabile per categoria, tag e stack.",
+  "header.cta_works.top": "Scoprire",
+  "header.cta_works.bottom": "Il mio percorso",
   "filter.category": "Categoria",
   "filter.tags": "Tag",
   "filter.stack": "Stack",

@@ -14,5 +14,15 @@
   "nav.aria": "/nav(?:igation)?\\s+princip(?:ale|al)/i",
   "photo.alt": "/portr(?:ait|aitum)\\s+(?:de\\s+)?Charles/i",
   "photo.developer": "/d[eé]v(?:elop+[eè]ur)?/i",
-  "photo.trainer": "/form(?:ateur|er|atrice)/i"
+  "photo.trainer": "/form(?:ateur|er|atrice)/i",
+  "skip_to_content": "/skip/i",
+  "404.eyebrow": "/^40[34]$/ — /ruins?/i",
+  "404.title": "/banish(ed|ment)?/gi",
+  "404.lead": "/(?:path|route|road)\\s+(?:never|no\\s+longer)\\s+exists?/i — /only\\s+(?:the\\s+)?(?:most\\s+)?vigilant\\s+dreamers?/i",
+  "404.cta.home.top": "/ret(urn|our)?/i",
+  "404.cta.home.bottom": "/h[o0]me?/i",
+  "404.cta.projects.top": "/explor(e|ar)?/i",
+  "404.cta.projects.bottom": "/pr[o0]j(ects?|ets?)/i",
+  "nav.logo_alt": "/logo\\s+Charles\\s+Lindecker/i",
+  "loading.frame_alt": "/load(?:ing)?\\s+logo/i"
 }

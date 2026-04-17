@@ -14,5 +14,15 @@
   "nav.aria": "メインナビゲーション",
   "photo.alt": "Charles Lindeckerの肖像",
   "photo.developer": "開発者",
-  "photo.trainer": "トレーナー"
+  "photo.trainer": "トレーナー",
+  "skip_to_content": "コンテンツへ移動",
+  "404.eyebrow": "404 — 灰の廃墟",
+  "404.title": "この地より追放された",
+  "404.lead": "あなたが辿っていた道はもはや存在しない、あるいは最初から存在しなかった。狩人の夢の廃墟を歩み抜けるのは、最も目覚めた夢追人たちのみ。",
+  "404.cta.home.top": "戻る",
+  "404.cta.home.bottom": "ホーム",
+  "404.cta.projects.top": "探索",
+  "404.cta.projects.bottom": "プロジェクト",
+  "nav.logo_alt": "チャールズ・リンデッカーのロゴ",
+  "loading.frame_alt": "読み込み中のロゴ"
 }

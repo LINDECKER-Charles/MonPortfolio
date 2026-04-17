@@ -2,6 +2,8 @@
   "header.eyebrow": "LABEL section=portfolio",
   "header.title": "docker-compose up projects --build --force-recreate",
   "header.description": "services:\n  portfolio:\n    image: travaux:curated\n    volumes:\n      - ./projects:/app/showcase:ro\n    labels:\n      - 'filter.enabled=true'\n      - 'stack.visible=true'",
+  "header.cta_works.top": "COPY ./explore",
+  "header.cta_works.bottom": "ENTRYPOINT [\"journey\"]",
   "filter.category": "docker ps --filter label=category",
   "filter.tags": "docker ps --filter label=tag --format '{{.Labels}}'",
   "filter.stack": "docker images --filter reference='stack/*'",

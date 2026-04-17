@@ -5,7 +5,7 @@
         <app-responsive-picture
           [sources]="logoSources"
           [fallbackSrc]="logoFallback"
-          alt="Logo Charles Lindecker"
+          [alt]="ts.translate('common.nav.logo_alt')"
           loading="eager"
           decoding="async">
         </app-responsive-picture>
@@ -17,7 +17,7 @@
       </span>
     </a>
 
-    <div class="nav-barre__links">
+    <div class="nav-barre__primary">
       @for (item of navItems(); track item.href) {
         <a
           class="chip transition-ritual"
@@ -37,15 +37,83 @@
           <span class="text-tag nav-barre__link-label">{{ item.label }}</span>
         </a>
       }
+    </div>
+
+    <span class="nav-barre__separator" aria-hidden="true"></span>
+
+    <div class="nav-barre__settings">
+      @if (audio.isAnythingPlaying() || audio.muted()) {
+        <div class="nav-barre__setting-wrap">
+          <button
+            type="button"
+            class="nav-barre__icon-btn transition-ritual"
+            [class.is-muted]="audio.muted()"
+            [class.is-open]="soundPopoverOpen()"
+            (click)="toggleSoundPopover()"
+            [attr.aria-label]="ts.translate('common.audio.toggle')"
+            [attr.aria-expanded]="soundPopoverOpen()">
+            @if (audio.muted()) {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 5L6 9H3v6h3l5 4V5z"/>
+                <line x1="22" y1="9" x2="16" y2="15"/>
+                <line x1="16" y1="9" x2="22" y2="15"/>
+              </svg>
+            } @else {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 5L6 9H3v6h3l5 4V5z"/>
+                <path d="M15.54 8.46a5 5 0 010 7.07"/>
+                <path d="M19.07 4.93a10 10 0 010 14.14"/>
+              </svg>
+            }
+          </button>
+
+          @if (soundPopoverOpen()) {
+            <div class="nav-barre__sound-popover surface-crypt"
+                 role="dialog"
+                 [attr.aria-label]="ts.translate('common.audio.toggle')">
+              <button
+                type="button"
+                class="nav-barre__popover-mute chip transition-ritual"
+                [class.is-active]="audio.muted()"
+                (click)="toggleMute()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  @if (audio.muted()) {
+                    <path d="M11 5L6 9H3v6h3l5 4V5z"/>
+                    <line x1="22" y1="9" x2="16" y2="15"/>
+                    <line x1="16" y1="9" x2="22" y2="15"/>
+                  } @else {
+                    <path d="M11 5L6 9H3v6h3l5 4V5z"/>
+                    <path d="M15.54 8.46a5 5 0 010 7.07"/>
+                    <path d="M19.07 4.93a10 10 0 010 14.14"/>
+                  }
+                </svg>
+                <span class="text-tag">{{ audio.muted() ? '—' : '♪' }}</span>
+              </button>
+
+              <div class="nav-barre__popover-volume">
+                <input
+                  class="nav-barre__volume-slider"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  [value]="volumePercent()"
+                  [attr.aria-label]="ts.translate('common.audio.volume')"
+                  (input)="onVolumeInput($event)">
+                <span class="nav-barre__volume-value text-sigil">{{ volumePercent() }}%</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
 
       <button
-        class="nav-barre__lang-btn transition-ritual"
+        type="button"
+        class="nav-barre__icon-btn nav-barre__icon-btn--lang transition-ritual"
         (click)="ts.openModal()"
-        [attr.aria-label]="ts.translate('nav-barre.lang')"
-        type="button">
-        <span class="nav-barre__lang-btn-flag" aria-hidden="true">{{ currentLang().flag }}</span>
-        <span class="nav-barre__lang-btn-label text-tag">{{ ts.translate('nav-barre.lang') }}</span>
-        <span class="nav-barre__lang-btn-code">{{ currentLang().code | uppercase }}</span>
+        [attr.aria-label]="ts.translate('nav-barre.lang')">
+        <span class="nav-barre__lang-flag" aria-hidden="true">{{ currentLang().flag }}</span>
+        <span class="nav-barre__lang-code text-tag">{{ currentLang().code | uppercase }}</span>
       </button>
     </div>
   </div>

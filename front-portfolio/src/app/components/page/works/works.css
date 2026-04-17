@@ -2,3 +2,32 @@
   display: block;
   width: 100%;
 }
+
+.works-page {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.works-page__section {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 980px) {
+  .works-page {
+    width: min(100%, calc(100% - 1.5rem));
+    gap: 2.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .works-page {
+    width: min(100%, calc(100% - 1rem));
+    padding: 1rem 0 3rem;
+    gap: 2.25rem;
+  }
+}

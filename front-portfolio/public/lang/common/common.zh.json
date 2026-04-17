@@ -14,5 +14,15 @@
   "nav.aria": "主导航",
   "photo.alt": "Charles Lindecker的肖像",
   "photo.developer": "开发者",
-  "photo.trainer": "培训师"
+  "photo.trainer": "培训师",
+  "skip_to_content": "跳至内容",
+  "404.eyebrow": "404 — 灰烬废墟",
+  "404.title": "你已被放逐出此地",
+  "404.lead": "你所行之路已不复存在,或从未存在。唯有最警觉的梦者,方能在猎人之梦的废墟中寻得归路。",
+  "404.cta.home.top": "返回",
+  "404.cta.home.bottom": "首页",
+  "404.cta.projects.top": "探索",
+  "404.cta.projects.bottom": "项目",
+  "nav.logo_alt": "Charles Lindecker 标志",
+  "loading.frame_alt": "加载中的标志"
 }

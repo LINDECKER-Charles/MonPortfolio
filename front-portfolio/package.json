@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:front-portfolio": "node dist/front-portfolio/server/server.mjs",
-    "optimize:photos": "node scripts/optimize-photos.mjs"
+    "optimize:photos": "node scripts/optimize-photos.mjs",
+    "audit:i18n": "node scripts/audit-i18n.mjs"
   },
   "prettier": {
     "printWidth": 100,

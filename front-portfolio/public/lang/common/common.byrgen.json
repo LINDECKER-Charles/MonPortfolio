@@ -14,5 +14,15 @@
   "nav.aria": "Navigatio principalis Ecclesiae",
   "photo.alt": "Effigies Caroli Lindeckeri, Scholaris Byrgenwerth",
   "photo.developer": "Scholaris Codex",
-  "photo.trainer": "Magister Ecclesiae"
+  "photo.trainer": "Magister Ecclesiae",
+  "skip_to_content": "Ad contentum",
+  "404.eyebrow": "CDIV — Ruinae cinereae",
+  "404.title": "Ex his terris expulsus es",
+  "404.lead": "Via quam ambulabas iam non est, aut numquam fuit. Soli somniantes vigilantissimi iter suum inter ruinas Somnii Venatoris inveniunt.",
+  "404.cta.home.top": "Redire",
+  "404.cta.home.bottom": "Domum",
+  "404.cta.projects.top": "Explorare",
+  "404.cta.projects.bottom": "Opera",
+  "nav.logo_alt": "Sigillum Caroli Lindecker",
+  "loading.frame_alt": "Sigillum adventus"
 }

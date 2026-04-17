@@ -14,5 +14,15 @@
   "nav.aria": "Main navigation",
   "photo.alt": "Portrait of Charles Lindecker",
   "photo.developer": "Developer",
-  "photo.trainer": "Trainer"
+  "photo.trainer": "Trainer",
+  "skip_to_content": "Skip to content",
+  "404.eyebrow": "404 — Ashen Ruins",
+  "404.title": "You have been banished from these lands",
+  "404.lead": "The path you were walking no longer exists, or never did. Only the most vigilant dreamers still find their way through the ruins of the Hunter's Dream.",
+  "404.cta.home.top": "Return",
+  "404.cta.home.bottom": "Home",
+  "404.cta.projects.top": "Explore",
+  "404.cta.projects.bottom": "Projects",
+  "nav.logo_alt": "Charles Lindecker logo",
+  "loading.frame_alt": "Loading logo"
 }

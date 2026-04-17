@@ -14,5 +14,15 @@
   "nav.aria": "Основная навигация",
   "photo.alt": "Портрет Charles Lindecker",
   "photo.developer": "Разработчик",
-  "photo.trainer": "Тренер"
+  "photo.trainer": "Тренер",
+  "skip_to_content": "К содержимому",
+  "404.eyebrow": "404 — Пепельные руины",
+  "404.title": "Вы изгнаны из этих земель",
+  "404.lead": "Путь, которым вы шли, больше не существует — или не существовал никогда. Только самые бдительные сновидцы находят дорогу сквозь руины Сна Охотника.",
+  "404.cta.home.top": "Назад",
+  "404.cta.home.bottom": "Главная",
+  "404.cta.projects.top": "Исследовать",
+  "404.cta.projects.bottom": "Проекты",
+  "nav.logo_alt": "Логотип Charles Lindecker",
+  "loading.frame_alt": "Логотип загрузки"
 }

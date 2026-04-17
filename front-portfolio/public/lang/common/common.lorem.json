@@ -14,5 +14,15 @@
   "nav.aria": "Navigatio principalis ipsum",
   "photo.alt": "Portraitum de Carolus Lindecker ipsum",
   "photo.developer": "Developator",
-  "photo.trainer": "Formatorus"
+  "photo.trainer": "Formatorus",
+  "skip_to_content": "Ad textum ipsum",
+  "404.eyebrow": "404 — Ruinae Ipsum",
+  "404.title": "Lorem ipsum exile dolor",
+  "404.lead": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 404 magna aliqua. Path non inveniri potest.",
+  "404.cta.home.top": "Revertere",
+  "404.cta.home.bottom": "Domum",
+  "404.cta.projects.top": "Explorare",
+  "404.cta.projects.bottom": "Projecta",
+  "nav.logo_alt": "Logotypus Caroli Lindecker ipsum",
+  "loading.frame_alt": "Logotypus loadicus ipsum"
 }

@@ -14,5 +14,15 @@
   "nav.aria": "التنقل الرئيسي",
   "photo.alt": "صورة Charles Lindecker",
   "photo.developer": "مطور",
-  "photo.trainer": "مدرب"
+  "photo.trainer": "مدرب",
+  "skip_to_content": "الانتقال إلى المحتوى",
+  "404.eyebrow": "٤٠٤ — أطلال الرماد",
+  "404.title": "لقد نُفيت من هذه الأراضي",
+  "404.lead": "الطريق الذي كنت تسلكه لم يعد موجوداً، أو لم يوجد قط. وحدهم الحالمون الأكثر يقظة يجدون طريقهم في أطلال حلم الصياد.",
+  "404.cta.home.top": "عودة",
+  "404.cta.home.bottom": "الرئيسية",
+  "404.cta.projects.top": "استكشاف",
+  "404.cta.projects.bottom": "المشاريع",
+  "nav.logo_alt": "شعار شارل لينديكر",
+  "loading.frame_alt": "شعار التحميل"
 }

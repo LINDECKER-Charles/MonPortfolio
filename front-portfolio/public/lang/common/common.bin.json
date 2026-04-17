@@ -14,5 +14,15 @@
   "nav.aria": "0b110 MAIN_NAV_PTR",
   "photo.alt": "0x504F5254524149 of Charles_0x4C494E",
   "photo.developer": "0b01000100 01000101 01010110",
-  "photo.trainer": "0x545241494E4552"
+  "photo.trainer": "0x545241494E4552",
+  "skip_to_content": "0x5343 content",
+  "404.eyebrow": "0x194 — 0x52554E",
+  "404.title": "0x42414E49534845",
+  "404.lead": "SEGFAULT at 0x404... path not in memory map. 0b00000001 survivors found in /dev/dream. Stack trace truncated.",
+  "404.cta.home.top": "JMP 0x00",
+  "404.cta.home.bottom": "0x484F4D45",
+  "404.cta.projects.top": "0x45585052",
+  "404.cta.projects.bottom": "0x504A43",
+  "nav.logo_alt": "0x4C4F474F Charles_0x4C494E",
+  "loading.frame_alt": "0x4C4F41444E47 logo"
 }

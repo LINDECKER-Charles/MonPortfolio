@@ -14,5 +14,15 @@
   "nav.aria": "Hauptnavigation",
   "photo.alt": "Porträt von Charles Lindecker",
   "photo.developer": "Entwickler",
-  "photo.trainer": "Trainer"
+  "photo.trainer": "Trainer",
+  "skip_to_content": "Zum Inhalt springen",
+  "404.eyebrow": "404 — Aschenruinen",
+  "404.title": "Du wurdest aus diesen Landen verbannt",
+  "404.lead": "Der Weg, den du beschrittest, existiert nicht mehr, oder hat nie existiert. Nur die wachsamsten Träumer finden noch ihren Weg durch die Ruinen des Jägertraums.",
+  "404.cta.home.top": "Zurück",
+  "404.cta.home.bottom": "Startseite",
+  "404.cta.projects.top": "Entdecken",
+  "404.cta.projects.bottom": "Projekte",
+  "nav.logo_alt": "Charles-Lindecker-Logo",
+  "loading.frame_alt": "Lade-Logo"
 }

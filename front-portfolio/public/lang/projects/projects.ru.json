@@ -2,6 +2,8 @@
   "header.eyebrow": "Портфолио",
   "header.title": "Проекты",
   "header.description": "Подборка личных работ, технических экспериментов и вкладов в open source с фильтрацией по категории, тегам и стеку.",
+  "header.cta_works.top": "Смотреть",
+  "header.cta_works.bottom": "Мой путь",
   "filter.category": "Категория",
   "filter.tags": "Теги",
   "filter.stack": "Стек",

@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, ElementRef, HostListener, inject, signal } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -6,6 +6,7 @@ import {
   ResponsiveSource,
 } from '../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
+import { AudioService } from '../../../services/audio-service';
 import { AVAILABLE_LANGUAGES, TranslationService } from '../../../services/translation.service';
 
 interface NavItemDef {
@@ -30,9 +31,16 @@ const NAV_ITEMS_DEF: NavItemDef[] = [
 })
 export class NavBarre {
   protected readonly ts = inject(TranslationService);
+  protected readonly audio = inject(AudioService);
+  private readonly host = inject(ElementRef<HTMLElement>);
 
   protected readonly logoSources = SHARED_IMAGES.logo.white.sources;
   protected readonly logoFallback = SHARED_IMAGES.logo.white.fallbackSrc;
+
+  /** Popover des contrôles audio (mute + volume). */
+  protected readonly soundPopoverOpen = signal(false);
+
+  protected readonly volumePercent = computed(() => Math.round(this.audio.masterVolume() * 100));
 
   protected readonly navItems = computed(() =>
     NAV_ITEMS_DEF.map((def) => ({
@@ -45,4 +53,41 @@ export class NavBarre {
     const code = this.ts.lang();
     return AVAILABLE_LANGUAGES.find((l) => l.code === code) ?? AVAILABLE_LANGUAGES[0];
   });
+
+  protected toggleSoundPopover(): void {
+    this.soundPopoverOpen.update((v) => !v);
+  }
+
+  protected toggleMute(): void {
+    if (this.audio.muted()) {
+      this.audio.unmuteAll();
+      return;
+    }
+    this.audio.muteAll();
+  }
+
+  protected onVolumeInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const value = Number(input.value);
+    if (Number.isNaN(value)) return;
+    this.audio.setMasterVolume(value / 100);
+  }
+
+  /** Ferme le popover si on clique en-dehors. */
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    if (!this.soundPopoverOpen()) return;
+    const target = event.target as Node | null;
+    if (target && !this.host.nativeElement.contains(target)) {
+      this.soundPopoverOpen.set(false);
+    }
+  }
+
+  /** Escape ferme aussi le popover. */
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.soundPopoverOpen()) {
+      this.soundPopoverOpen.set(false);
+    }
+  }
 }
