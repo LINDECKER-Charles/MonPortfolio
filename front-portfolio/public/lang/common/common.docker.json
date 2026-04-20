@@ -24,5 +24,8 @@
   "404.cta.projects.top": "COPY ./",
   "404.cta.projects.bottom": "projects",
   "nav.logo_alt": "LABEL logo=\"charles-lindecker\"",
-  "loading.frame_alt": "LABEL status=\"loading\""
+  "loading.frame_alt": "LABEL status=\"loading\"",
+  "nav.home": "service: home",
+  "nav.projects": "service: projects",
+  "nav.work": "service: work"
 }

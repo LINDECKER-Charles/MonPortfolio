@@ -61,7 +61,7 @@
         class="hero__cta hero__cta--tertiary transition-ritual"
         routerLink="/linktree"
         href="/linktree"
-        aria-label="Linktree - tous mes liens">
+        [attr.aria-label]="ts.translate('home-resume.header.cta.linktree.aria')">
         <span class="hero__cta-icon-frame hero__cta-icon-frame--tome">
           <span class="hero__cta-icon hero__cta-icon--tome" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +72,7 @@
         </span>
 
         <span class="hero__cta-label">
-          <span class="hero__cta-label-top">Tous mes liens</span>
+          <span class="hero__cta-label-top">{{ ts.translate('home-resume.header.cta.linktree.top') }}</span>
           <span class="hero__cta-label-bottom">Linktree</span>
         </span>
       </a>

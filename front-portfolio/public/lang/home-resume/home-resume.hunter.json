@@ -24,5 +24,7 @@
   "snippets.stack.icon_alt": "Arsenal of the workshop",
   "snippets.architecture.icon_alt": "Workshop's fortified blueprint",
   "snippets.opensource.icon_alt": "Workshop's open doors",
-  "snippets.quality.icon_alt": "Workshop's honour"
+  "snippets.quality.icon_alt": "Workshop's honour",
+  "header.cta.linktree.top": "Hunter's links",
+  "header.cta.linktree.aria": "Linktree — the hunter's links"
 }

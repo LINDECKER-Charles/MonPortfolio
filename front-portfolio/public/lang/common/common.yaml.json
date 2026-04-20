@@ -24,5 +24,8 @@
   "404.cta.projects.top": "action: explore",
   "404.cta.projects.bottom": "target: projects",
   "nav.logo_alt": "logo: charles_lindecker  # signature",
-  "loading.frame_alt": "logo: loading  # spinning"
+  "loading.frame_alt": "logo: loading  # spinning",
+  "nav.home": "route: /",
+  "nav.projects": "route: /projects",
+  "nav.work": "route: /work"
 }

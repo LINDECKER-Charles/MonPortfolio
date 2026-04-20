@@ -24,5 +24,8 @@
   "404.cta.projects.top": "探索",
   "404.cta.projects.bottom": "项目",
   "nav.logo_alt": "Charles Lindecker 标志",
-  "loading.frame_alt": "加载中的标志"
+  "loading.frame_alt": "加载中的标志",
+  "nav.home": "首页",
+  "nav.projects": "项目",
+  "nav.work": "历程"
 }

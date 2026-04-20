@@ -24,5 +24,8 @@
   "404.cta.projects.top": "header(",
   "404.cta.projects.bottom": "Location: /projects",
   "nav.logo_alt": "<?php echo '<img alt=\"'.$logo.'\">'; // alt stored nowhere ?>",
-  "loading.frame_alt": "<?php echo '<img src=\"loading.gif\">'; ?>"
+  "loading.frame_alt": "<?php echo '<img src=\"loading.gif\">'; ?>",
+  "nav.home": "index.php",
+  "nav.projects": "projects.php",
+  "nav.work": "work.php"
 }

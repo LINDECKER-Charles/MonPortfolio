@@ -24,5 +24,7 @@
   "snippets.stack.icon_alt": "/stack|excellence/i",
   "snippets.architecture.icon_alt": "/(?:sec|arch)(?:urity|itecture)/i",
   "snippets.opensource.icon_alt": "/open\\s*source|volunteer/i",
-  "snippets.quality.icon_alt": "/(?:qual|resp)(?:ity|ibilit)/i"
+  "snippets.quality.icon_alt": "/(?:qual|resp)(?:ity|ibilit)/i",
+  "header.cta.linktree.top": "/links?/gi",
+  "header.cta.linktree.aria": "Linktree -> /links?/gi"
 }

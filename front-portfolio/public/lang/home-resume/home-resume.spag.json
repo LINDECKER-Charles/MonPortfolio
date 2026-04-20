@@ -24,5 +24,7 @@
   "snippets.stack.icon_alt": "// stack: jenga tower, do not breathe",
   "snippets.architecture.icon_alt": "// security: password was in git history",
   "snippets.opensource.icon_alt": "// OSS: forked and ghosted",
-  "snippets.quality.icon_alt": "// quality: 'works on my machine'"
+  "snippets.quality.icon_alt": "// quality: 'works on my machine'",
+  "header.cta.linktree.top": "// todos links",
+  "header.cta.linktree.aria": "// spaghetti linktree links"
 }

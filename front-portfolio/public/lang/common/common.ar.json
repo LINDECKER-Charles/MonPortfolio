@@ -24,5 +24,8 @@
   "404.cta.projects.top": "استكشاف",
   "404.cta.projects.bottom": "المشاريع",
   "nav.logo_alt": "شعار شارل لينديكر",
-  "loading.frame_alt": "شعار التحميل"
+  "loading.frame_alt": "شعار التحميل",
+  "nav.home": "الرئيسية",
+  "nav.projects": "المشاريع",
+  "nav.work": "المسار"
 }

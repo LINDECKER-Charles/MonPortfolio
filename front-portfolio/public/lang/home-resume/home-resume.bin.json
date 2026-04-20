@@ -24,5 +24,7 @@
   "snippets.stack.icon_alt": "0x535441434B 0x455843",
   "snippets.architecture.icon_alt": "0x5345435552 0x41524348",
   "snippets.opensource.icon_alt": "0x4F50454E 0x564F4C55",
-  "snippets.quality.icon_alt": "0x5155414C 0x52455350"
+  "snippets.quality.icon_alt": "0x5155414C 0x52455350",
+  "header.cta.linktree.top": "01001100 01001001 01001110 01001011",
+  "header.cta.linktree.aria": "0x4C494E4B54524545 PTR_ALL"
 }
