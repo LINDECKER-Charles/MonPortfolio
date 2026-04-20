@@ -24,5 +24,7 @@
   "snippets.stack.icon_alt": "技術スタックと技術的卓越性",
   "snippets.architecture.icon_alt": "アプリケーションのセキュリティと設計",
   "snippets.opensource.icon_alt": "オープンソースとボランティア",
-  "snippets.quality.icon_alt": "品質と責任"
+  "snippets.quality.icon_alt": "品質と責任",
+  "header.cta.linktree.top": "全リンク",
+  "header.cta.linktree.aria": "Linktree — 全リンク"
 }

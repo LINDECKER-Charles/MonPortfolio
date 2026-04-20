@@ -24,5 +24,7 @@
   "snippets.stack.icon_alt": "Стек и техническое совершенство",
   "snippets.architecture.icon_alt": "Безопасность приложений и архитектура",
   "snippets.opensource.icon_alt": "Открытый код и волонтёрство",
-  "snippets.quality.icon_alt": "Качество и ответственность"
+  "snippets.quality.icon_alt": "Качество и ответственность",
+  "header.cta.linktree.top": "Все мои ссылки",
+  "header.cta.linktree.aria": "Linktree — все мои ссылки"
 }

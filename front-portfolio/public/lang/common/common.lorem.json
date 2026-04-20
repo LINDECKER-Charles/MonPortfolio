@@ -24,5 +24,8 @@
   "404.cta.projects.top": "Explorare",
   "404.cta.projects.bottom": "Projecta",
   "nav.logo_alt": "Logotypus Caroli Lindecker ipsum",
-  "loading.frame_alt": "Logotypus loadicus ipsum"
+  "loading.frame_alt": "Logotypus loadicus ipsum",
+  "nav.home": "Principium",
+  "nav.projects": "Opera",
+  "nav.work": "Iter"
 }

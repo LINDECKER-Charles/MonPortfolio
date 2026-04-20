@@ -24,5 +24,8 @@
   "404.cta.projects.top": "LEA DI, explore",
   "404.cta.projects.bottom": "JMP projects",
   "nav.logo_alt": "DB 'Charles Lindecker logo'",
-  "loading.frame_alt": "DB 'loading logo frame'"
+  "loading.frame_alt": "DB 'loading logo frame'",
+  "nav.home": "JMP 0x00",
+  "nav.projects": "JMP PRJ",
+  "nav.work": "JMP WORK"
 }

@@ -24,5 +24,8 @@
   "404.cta.projects.top": "Esplorare",
   "404.cta.projects.bottom": "Progetti",
   "nav.logo_alt": "Logo Charles Lindecker",
-  "loading.frame_alt": "Logo di caricamento"
+  "loading.frame_alt": "Logo di caricamento",
+  "nav.home": "Home",
+  "nav.projects": "Progetti",
+  "nav.work": "Percorso"
 }

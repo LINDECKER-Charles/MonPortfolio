@@ -24,5 +24,7 @@
   "snippets.stack.icon_alt": "التقنيات والتميز الفني",
   "snippets.architecture.icon_alt": "أمن التطبيقات والهندسة المعمارية",
   "snippets.opensource.icon_alt": "المصادر المفتوحة والعمل التطوعي",
-  "snippets.quality.icon_alt": "الجودة والمسؤولية"
+  "snippets.quality.icon_alt": "الجودة والمسؤولية",
+  "header.cta.linktree.top": "كل روابطي",
+  "header.cta.linktree.aria": "Linktree — كل روابطي"
 }

@@ -24,5 +24,8 @@
   "404.cta.projects.top": "Исследовать",
   "404.cta.projects.bottom": "Проекты",
   "nav.logo_alt": "Логотип Charles Lindecker",
-  "loading.frame_alt": "Логотип загрузки"
+  "loading.frame_alt": "Логотип загрузки",
+  "nav.home": "Главная",
+  "nav.projects": "Проекты",
+  "nav.work": "Путь"
 }

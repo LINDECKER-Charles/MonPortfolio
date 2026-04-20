@@ -24,5 +24,8 @@
   "404.cta.projects.top": "0x45585052",
   "404.cta.projects.bottom": "0x504A43",
   "nav.logo_alt": "0x4C4F474F Charles_0x4C494E",
-  "loading.frame_alt": "0x4C4F41444E47 logo"
+  "loading.frame_alt": "0x4C4F41444E47 logo",
+  "nav.home": "0x484F4D45",
+  "nav.projects": "0x50524A",
+  "nav.work": "0x574F524B"
 }

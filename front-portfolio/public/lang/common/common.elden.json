@@ -24,5 +24,8 @@
   "404.cta.projects.top": "Seek",
   "404.cta.projects.bottom": "The Realms",
   "nav.logo_alt": "Sigil of Charles the Tarnished",
-  "loading.frame_alt": "Sigil of Grace arrival"
+  "loading.frame_alt": "Sigil of Grace arrival",
+  "nav.home": "Grace",
+  "nav.projects": "Ruins",
+  "nav.work": "Legacy"
 }
