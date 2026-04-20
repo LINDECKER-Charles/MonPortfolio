@@ -1,0 +1,618 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.linktree-page {
+  position: relative;
+  width: min(720px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3rem 0 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.linktree-page__aura {
+  position: absolute;
+  inset: -3rem -5rem auto -5rem;
+  height: 620px;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(166 10 10 / 0.09), transparent 55%),
+    radial-gradient(ellipse at 18% 25%, rgb(126 100 52 / 0.1), transparent 60%),
+    radial-gradient(ellipse at 82% 35%, rgb(125 171 255 / 0.06), transparent 60%);
+  filter: blur(22px);
+  z-index: 0;
+}
+
+@media (max-width: 640px) {
+  .linktree-page {
+    width: min(100%, calc(100% - 1rem));
+    padding: 1.75rem 0 4rem;
+    gap: 2.75rem;
+  }
+}
+
+/* ── HERO ─────────────────────────────────────────────────────────────────── */
+
+.linktree {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+  padding: 0.5rem 0.75rem 0;
+}
+
+.linktree__portrait {
+  position: relative;
+  width: 156px;
+  height: 156px;
+  margin-bottom: 0.5rem;
+}
+
+.linktree__portrait-halo {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid rgb(164 148 118 / 0.22);
+  background:
+    conic-gradient(from 210deg,
+      rgb(164 148 118 / 0.18),
+      rgb(166 10 10 / 0.1),
+      rgb(164 148 118 / 0.18),
+      rgb(125 171 255 / 0.08),
+      rgb(164 148 118 / 0.18));
+  mask: radial-gradient(circle, transparent 62%, #000 63%, #000 100%);
+  -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%, #000 100%);
+  animation: linktree-halo 22s linear infinite;
+  opacity: 0.9;
+}
+
+.linktree__portrait-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgb(164 148 118 / 0.28);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 248 220 / 0.04),
+    inset 0 0 30px rgb(0 0 0 / 0.5),
+    0 20px 44px rgb(0 0 0 / 0.45);
+}
+
+.linktree__portrait-frame app-responsive-picture,
+.linktree__portrait-frame picture,
+.linktree__portrait-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.linktree__portrait-frame img {
+  object-fit: cover;
+  object-position: center 18%;
+  filter: saturate(0.92) contrast(1.02) brightness(0.96);
+}
+
+.linktree__eyebrow {
+  font-size: 0.72rem;
+  color: #a49476;
+  letter-spacing: 0.3em;
+}
+
+.linktree__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.8vw, 3.6rem);
+  line-height: 0.95;
+  letter-spacing: 0.08em;
+  color: var(--color-bone-bright);
+  text-transform: uppercase;
+  text-shadow: var(--text-shadow-engraved-deep);
+}
+
+.linktree__role {
+  color: #9aa0ab;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+}
+
+.linktree__intro-text {
+  margin: 0.35rem auto 0;
+  max-width: 48ch;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-ash);
+  font-style: italic;
+}
+
+.linktree__intro-text::first-letter {
+  font-family: var(--font-display);
+  font-size: 1.8em;
+  font-style: normal;
+  color: var(--color-parchment);
+  margin-right: 0.12em;
+  float: left;
+  line-height: 0.95;
+}
+
+/* ── CHAPITRES ───────────────────────────────────────────────────────────── */
+
+.linktree-chapters {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.linktree-chapter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.linktree-chapter__label {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto 1fr;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-gold-faint);
+}
+
+.linktree-chapter__rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(164 148 118 / 0.26), rgb(164 148 118 / 0.26), transparent);
+}
+
+.linktree-chapter__numeral {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.3em;
+  color: var(--color-parchment);
+}
+
+.linktree-chapter__mark {
+  font-family: var(--font-display);
+  color: rgb(164 148 118 / 0.9);
+  font-size: 0.8rem;
+  transform: translateY(-1px);
+}
+
+.linktree-chapter__heading {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.72rem;
+  color: #a49476;
+}
+
+.linktree-chapter__intro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.linktree-chapter__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-bone-bright);
+}
+
+.linktree-chapter__description {
+  margin: 0;
+  max-width: 52ch;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--color-ash);
+}
+
+.linktree-chapter__list {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* ── LIGNES ──────────────────────────────────────────────────────────────── */
+
+.linktree-row {
+  position: relative;
+}
+
+/* Fleuron discret entre les lignes — remplace la règle horizontale */
+.linktree-row + .linktree-row::before {
+  content: "◈";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  color: rgb(164 148 118 / 0.28);
+  pointer-events: none;
+  transition: color 480ms var(--ease-emerge), transform 480ms var(--ease-emerge);
+}
+
+.linktree-row__link {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 1.15rem 0.85rem;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 14px;
+  isolation: isolate;
+  transition:
+    transform 520ms var(--ease-emerge),
+    color var(--duration-slow) var(--ease-ritual);
+}
+
+/* Aura latérale qui s'allume à la droite de l'icône sur hover */
+.linktree-row__link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse at 6% 50%,
+      rgb(126 100 52 / 0.22) 0%,
+      rgb(126 100 52 / 0.08) 32%,
+      transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 480ms var(--ease-emerge);
+  z-index: -1;
+}
+
+.linktree-row__link:focus-visible {
+  outline: none;
+}
+
+.linktree-row__link:focus-visible::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 10px;
+  border: 1px solid rgb(164 148 118 / 0.6);
+  pointer-events: none;
+}
+
+/* ── ICÔNE cinématique : verre/vitrail, sans chip plein ─────────────────── */
+
+.linktree-row__icon {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  color: var(--color-parchment);
+  isolation: isolate;
+  transition: transform 520ms var(--ease-emerge);
+}
+
+/* Halo de bougie derrière le glyphe — présent mais discret, bloom au hover */
+.linktree-row__icon::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 55%,
+    rgb(255 184 108 / 0.14) 0%,
+    rgb(126 100 52 / 0.1) 38%,
+    rgb(18 20 24 / 0.55) 72%,
+    transparent 100%);
+  opacity: 0.5;
+  transform: scale(0.85);
+  transition:
+    opacity 520ms var(--ease-emerge),
+    transform 520ms var(--ease-emerge);
+  z-index: -2;
+}
+
+/* Anneau filigrane doré — apparaît au hover, rotation lente */
+.linktree-row__icon::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 1px solid rgb(164 148 118 / 0);
+  box-shadow: 0 0 0 1px rgb(255 248 220 / 0) inset;
+  opacity: 0;
+  transform: scale(0.92) rotate(0deg);
+  transition:
+    border-color 420ms var(--ease-emerge),
+    box-shadow 420ms var(--ease-emerge),
+    opacity 420ms var(--ease-emerge),
+    transform 1200ms var(--ease-emerge);
+  z-index: -1;
+}
+
+.linktree-row__icon app-responsive-picture,
+.linktree-row__icon picture,
+.linktree-row__icon img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.55)) saturate(0.95);
+  transition:
+    filter 420ms var(--ease-emerge),
+    transform 520ms var(--ease-emerge);
+}
+
+.linktree-row__icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.5));
+  transition:
+    filter 420ms var(--ease-emerge),
+    transform 520ms var(--ease-emerge);
+}
+
+.linktree-row__emoji {
+  font-size: 1.55rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.5));
+  transition: filter 420ms var(--ease-emerge), transform 520ms var(--ease-emerge);
+}
+
+/* ── Texte ───────────────────────────────────────────────────────────────── */
+
+.linktree-row__text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.linktree-row__label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--color-bone-bright);
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 0.45);
+  transition: color var(--duration-slow) var(--ease-ritual), letter-spacing 520ms var(--ease-emerge);
+}
+
+.linktree-row__handle {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #8f939c;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--duration-slow) var(--ease-ritual);
+}
+
+/* ── CTA ─────────────────────────────────────────────────────────────────── */
+
+.linktree-row__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #8f7f5e;
+  transition:
+    color var(--duration-slow) var(--ease-ritual),
+    transform 520ms var(--ease-emerge);
+}
+
+.linktree-row__cta-word {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 420ms var(--ease-emerge),
+    transform 520ms var(--ease-emerge);
+}
+
+.linktree-row__cta-arrow {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+}
+
+.linktree-row__cta-arrow svg {
+  width: 17px;
+  height: 17px;
+  transition: transform 520ms var(--ease-emerge);
+}
+
+/* Soulignement gilded — se dessine au hover, parfaitement centré */
+.linktree-row__underline {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 0.35rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(164 148 118 / 0.7), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 620ms var(--ease-emerge);
+  pointer-events: none;
+}
+
+/* ── Hover ───────────────────────────────────────────────────────────────── */
+
+@media (hover: hover) and (pointer: fine) {
+  .linktree-row__link:hover {
+    transform: translateX(2px);
+  }
+
+  .linktree-row__link:hover::before {
+    opacity: 1;
+  }
+
+  .linktree-row__link:hover .linktree-row__icon::before {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  .linktree-row__link:hover .linktree-row__icon::after {
+    opacity: 1;
+    border-color: rgb(164 148 118 / 0.55);
+    box-shadow: 0 0 0 1px rgb(255 248 220 / 0.05) inset, 0 0 22px rgb(126 100 52 / 0.32);
+    transform: scale(1) rotate(40deg);
+  }
+
+  .linktree-row__link:hover .linktree-row__icon img,
+  .linktree-row__link:hover .linktree-row__icon svg,
+  .linktree-row__link:hover .linktree-row__emoji {
+    filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.5)) saturate(1.08) brightness(1.08);
+    transform: translateY(-1px);
+  }
+
+  .linktree-row__link:hover .linktree-row__label {
+    color: var(--color-parchment);
+    letter-spacing: 0.1em;
+  }
+
+  .linktree-row__link:hover .linktree-row__handle {
+    color: #b2b7c1;
+  }
+
+  .linktree-row__link:hover .linktree-row__cta {
+    color: var(--color-parchment);
+  }
+
+  .linktree-row__link:hover .linktree-row__cta-word {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .linktree-row__link:hover .linktree-row__cta-arrow svg {
+    transform: translateX(5px);
+  }
+
+  .linktree-row__link:hover .linktree-row__underline {
+    transform: scaleX(1);
+  }
+
+  .linktree-row:has(.linktree-row__link:hover) + .linktree-row::before,
+  .linktree-row:has(.linktree-row__link:hover)::before {
+    color: rgb(164 148 118 / 0);
+  }
+}
+
+/* ── OUTRO ornementale ────────────────────────────────────────────────────── */
+
+.linktree-outro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  padding-top: 1rem;
+  color: #9aa0ab;
+}
+
+.linktree-outro::before {
+  content: "";
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(164 148 118 / 0.38), transparent);
+  margin-bottom: 0.75rem;
+}
+
+.linktree-outro__mark {
+  font-family: var(--font-display);
+  color: rgb(164 148 118 / 0.85);
+  font-size: 0.85rem;
+}
+
+.linktree-outro__text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: #8f939c;
+  max-width: 44ch;
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+
+@keyframes linktree-halo {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linktree__portrait-halo { animation: none; }
+  .linktree-row__link,
+  .linktree-row__link::before,
+  .linktree-row__icon,
+  .linktree-row__icon::before,
+  .linktree-row__icon::after,
+  .linktree-row__icon img,
+  .linktree-row__icon svg,
+  .linktree-row__emoji,
+  .linktree-row__cta-word,
+  .linktree-row__cta-arrow svg,
+  .linktree-row__underline,
+  .linktree-row__label,
+  .linktree-row__handle,
+  .linktree-row__cta {
+    transition: none !important;
+  }
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .linktree__portrait { width: 124px; height: 124px; }
+
+  .linktree-chapter { gap: 1.25rem; }
+
+  .linktree-chapter__label {
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .linktree-chapter__rule { display: none; }
+
+  .linktree-row__link {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.9rem;
+    padding: 0.95rem 0.4rem;
+  }
+
+  .linktree-row__icon { width: 48px; height: 48px; }
+
+  .linktree-row__icon app-responsive-picture,
+  .linktree-row__icon picture,
+  .linktree-row__icon img { width: 28px; height: 28px; }
+
+  .linktree-row__icon svg { width: 24px; height: 24px; }
+
+  .linktree-row__emoji { font-size: 1.35rem; }
+
+  .linktree-row__label { font-size: 0.98rem; }
+  .linktree-row__handle { font-size: 0.82rem; }
+
+  .linktree-row__cta-word { display: none; }
+
+  .linktree-row__underline { left: 10%; right: 10%; }
+}

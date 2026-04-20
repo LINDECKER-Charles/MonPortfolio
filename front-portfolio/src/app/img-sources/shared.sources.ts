@@ -11,6 +11,13 @@ const ICON_SIZES = [
   { filePrefix: '80x80_', width: 80 },
 ] as const;
 
+const OTHER_ICON_SIZES = [
+  { filePrefix: '24x24_', width: 24 },
+  { filePrefix: '40x40_', width: 40 },
+  { filePrefix: '80x80_', width: 80 },
+  { filePrefix: '160x160_', width: 160 },
+] as const;
+
 const PHOTO_SIZES = [
   { filePrefix: '320x426_', width: 320 },
   { filePrefix: '480x640_', width: 480 },
@@ -52,6 +59,10 @@ export function createIconSet(name: string): ResponsiveImageSet {
 
 export function createStackIconSet(name: string): ResponsiveImageSet {
   return createWebpImageSet('/icon/stack', name, ICON_SIZES, '80x80_');
+}
+
+export function createOtherIconSet(name: string): ResponsiveImageSet {
+  return createWebpImageSet('/icon/other', name, OTHER_ICON_SIZES, '80x80_');
 }
 
 /** Logos d'organismes (entreprises, écoles, certificateurs) — ratios variables,
@@ -96,6 +107,12 @@ export const SHARED_IMAGES = {
     postgre: createStackIconSet('postgre'),
     python: createStackIconSet('python'),
     symfony: createStackIconSet('symfony'),
+  },
+  other: {
+    frontendMentor: createOtherIconSet('fm'),
+    opgg: createOtherIconSet('opgg'),
+    gwent: createOtherIconSet('gwent'),
+    rootme: createOtherIconSet('rootme'),
   },
   logo: {
     white: createLogoSet('logo_white'),

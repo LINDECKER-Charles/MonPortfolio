@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "SEGMENT .compendium_chasseur",
+  "intro.title": "DB 'Grimoire des liens', 0",
+  "intro.role": "MOV EAX, 'Charles Lindecker' ; MOV EBX, 'Full Stack Dev'",
+  "intro.description": "LEA ESI, [paths_to_me] ; LOOP load_all ; ; réseau, forge, arène, invocation — tout en mémoire basse",
+  "intro.photo_alt": "DB 'Portrait: Charles Lindecker', 0",
+
+  "section.network.eyebrow": "SEGMENT .network",
+  "section.network.title": "PUSH allied_hunters ; CALL greet ; RET",
+  "section.network.description": "MOV EDI, official_channels ; CALL iterate ; ; échange, collaboration, suivi quotidien",
+
+  "section.craft.eyebrow": "SEGMENT .forge",
+  "section.craft.title": "MOV ECX, workshops ; SHL craft, 1",
+  "section.craft.description": "CMP skill, MAX ; JL practice_loop ; ; kata, front-end, sécurité offensive — boucle infinie",
+
+  "section.arena.eyebrow": "SEGMENT .arena",
+  "section.arena.title": "CALL hunting_grounds ; POP EAX",
+  "section.arena.description": "XOR leisure, WORK ; JNZ play ; ; escapades pour maintenir l'acuité",
+
+  "section.summon.eyebrow": "SEGMENT .summon",
+  "section.summon.title": "INT 0x64 ; ; DIRECT_CALL",
+  "section.summon.description": "PUSH contact_vector ; CALL invoke_me ; ; voies les plus rapides pour me joindre",
+
+  "action.open": "JMP",
+  "action.open_aria": "CALL open_link ; NOP",
+
+  "outro": "POP path ; RET ; ; que le chemin choisi éclaire la suite — à très vite"
+}
