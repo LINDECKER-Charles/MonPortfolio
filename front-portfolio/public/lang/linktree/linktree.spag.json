@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "// compendium (voir compendium2.php, compendium_FINAL.js, compendium_v3_REVISED.ts)",
+  "intro.title": "var t = 'Grimoire'; var titre = t; var TITRE = titre; var GRIMOIRE_TITRE = TITRE; // utiliser GRIMOIRE_TITRE",
+  "intro.role": "var r = 'Charles'; r += ' '; r += 'Lindecker'; r += ' ·'; r += ' Dév'; r += 'eloppeur'; r += ' Full Stack'; // champion de concaténation",
+  "intro.description": "// TODO: expliquer les chemins. Voir commentaire dans archive/grimoire_old.js ligne 847. Fichier supprimé en 2018.",
+  "intro.photo_alt": "// alt = '' (il était là, quelqu'un l'a retiré, l'attribut est resté)",
+
+  "section.network.eyebrow": "var s = 'Réseau'; var reseau = s; var RESEAU = reseau; // utiliser RESEAU",
+  "section.network.title": "// 'Chasseurs alliés' — voir allies_new.js (identique à allies_old.js mais plus récent)",
+  "section.network.description": "for(i=0;i<channels.length;i++){for(j=0;j<channels[i].length;j++){show(channels[i][j])}} // O(n²) par respect de la tradition",
+
+  "section.craft.eyebrow": "// Forge — aussi appelée Workshop, Atelier, Lab, Boutique (c'est pareil)",
+  "section.craft.title": "var a = 'Ateliers'; a = a + ' de'; a = a + ' pratique'; // pas de template literals on est en 2009",
+  "section.craft.description": "while(true){sharpen();if(ok){break;}} // optimisation prévue pour le sprint 47",
+
+  "section.arena.eyebrow": "// ARENA (pas Arena, pas arena — ARENA. Voir NAMING_CONVENTIONS.doc page 1)",
+  "section.arena.title": "var g = 'Terrains'; g += ' de chasse'; // terrainsDeChasseOfficielFinal était trop long",
+  "section.arena.description": "// loisirs: ajouté pour 'l'équilibre'. Supprimé 2019. Remis 2020. Supprimé. Remis. Ici maintenant.",
+
+  "section.summon.eyebrow": "// contact / summon / invoke / call / reachMe — un seul suffit (on n'a pas choisi)",
+  "section.summon.title": "var inv = 'Invocation'; inv += ' directe'; // inv = invoice? investigation? les deux marchaient",
+  "section.summon.description": "sendEmail(me); // sendEmail() dans utils.js, qui require helpers.js, qui importe utils.js",
+
+  "action.open": "open() // ou est-ce Open()? openLink()? triggerOpen()?",
+  "action.open_aria": "// aria pour ouvrir le lien (ajouté 2022, jamais testé sur lecteur d'écran)",
+
+  "outro": "// que le chemin choisi éclaire la suite. À très vite. (TODO: traduire ce commentaire)"
+}

@@ -151,6 +151,44 @@
     0 0 0 1px rgb(166 10 10 / 0.08);
 }
 
+.hero__cta--tertiary {
+  color: var(--color-moonlight-soft);
+  border-color: rgb(125 171 255 / 0.22);
+  background:
+    linear-gradient(180deg, rgb(29 47 78 / 0.78), rgb(18 24 37 / 0.92)),
+    radial-gradient(circle at top left, rgb(125 171 255 / 0.14), transparent 55%);
+}
+
+.hero__cta--tertiary:hover {
+  border-color: rgb(125 171 255 / 0.38);
+  box-shadow:
+    0 18px 38px rgb(0 0 0 / 0.34),
+    0 0 0 1px rgb(125 171 255 / 0.14);
+}
+
+.hero__cta-icon-frame--tome {
+  background: linear-gradient(180deg, rgb(125 171 255 / 0.22), rgb(40 54 82 / 0.22));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 0 0 1px rgb(125 171 255 / 0.14);
+}
+
+.hero__cta-icon--tome {
+  display: grid;
+  place-items: center;
+  color: var(--color-moonlight-soft);
+  background: radial-gradient(circle at 30% 30%, rgb(44 68 110 / 0.96), rgb(14 20 32 / 0.98));
+}
+
+.hero__cta-icon--tome svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.hero__cta--tertiary .hero__cta-label-top { color: #9eb5d9; }
+.hero__cta--tertiary .hero__cta-label-bottom { color: #eaf2ff; }
+
 .hero__cta-icon-frame {
   width: 48px;
   height: 48px;

@@ -6,6 +6,7 @@ import { Home } from './components/page/home/home';
 import { PROJECTS_DATA } from './components/page/projects/projects.state';
 import { Projects } from './components/page/projects/projects';
 import { Works } from './components/page/works/works';
+import { Linktree } from './components/page/linktree/linktree';
 import { NotFound } from './components/page/not-found/not-found';
 
 const SITE_URL = 'https://charles-lindecker.com';
@@ -287,6 +288,43 @@ export const routes: Routes = [
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
           { name: 'Parcours', url: `${SITE_URL}/works` },
+        ]),
+      ],
+      showFooter: true,
+    },
+  },
+  {
+    path: 'linktree',
+    component: Linktree,
+    title: 'Linktree - Charles Lindecker',
+    data: {
+      description:
+        'Tous les liens de Charles Lindecker : LinkedIn, GitHub, Discord, plateformes de code et contact direct rassembles sur une seule page.',
+      canonical: `${SITE_URL}/linktree`,
+      robots: 'index, follow',
+      ogTitle: 'Linktree - Charles Lindecker',
+      ogDescription:
+        'LinkedIn, GitHub, Discord, Frontend Mentor, freeCodeCamp, Root-Me, npm, email et plus : tous mes liens reunis.',
+      ogImage: LOGO_URL,
+      ogUrl: `${SITE_URL}/linktree`,
+      ogType: 'website',
+      twitterCard: 'summary_large_image',
+      twitterTitle: 'Linktree - Charles Lindecker',
+      twitterDescription:
+        'Tous les liens de Charles Lindecker reunis : reseaux, plateformes de pratique et contact direct.',
+      twitterImage: SOCIAL_IMAGE_URL,
+      structuredData: [
+        personSchema,
+        {
+          '@type': 'WebPage',
+          name: 'Linktree - Charles Lindecker',
+          url: `${SITE_URL}/linktree`,
+          isPartOf: { '@id': `${SITE_URL}/#website` },
+          about: { '@id': `${SITE_URL}/#charles-lindecker` },
+        },
+        breadcrumb([
+          { name: 'Accueil', url: SITE_URL },
+          { name: 'Linktree', url: `${SITE_URL}/linktree` },
         ]),
       ],
       showFooter: true,

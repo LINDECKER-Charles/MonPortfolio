@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "The hunter's compendium",
+  "intro.title": "Grimoire of links",
+  "intro.role": "Charles Lindecker · Full Stack Developer",
+  "intro.description": "Every path that leads to me, inscribed in this grimoire: professional guilds, workshops of practice, playful arenas and direct summons.",
+  "intro.photo_alt": "Portrait of Charles Lindecker",
+
+  "section.network.eyebrow": "Network",
+  "section.network.title": "Allied hunters",
+  "section.network.description": "The official channels to exchange, collaborate, or follow my daily work.",
+
+  "section.craft.eyebrow": "Forge",
+  "section.craft.title": "Workshops of practice",
+  "section.craft.description": "Where I sharpen my weapons — code katas, front-end challenges and offensive security.",
+
+  "section.arena.eyebrow": "Arena",
+  "section.arena.title": "Hunting grounds",
+  "section.arena.description": "A few playful escapes, to keep the eye sharp and the hand nimble.",
+
+  "section.summon.eyebrow": "Contact",
+  "section.summon.title": "Direct summoning",
+  "section.summon.description": "The fastest ways to reach me or begin a mission together.",
+
+  "action.open": "Open",
+  "action.open_aria": "Open link",
+
+  "outro": "May the chosen path light what comes next. See you soon."
+}
