@@ -27,5 +27,10 @@
   "loading.frame_alt": "加载中的标志",
   "nav.home": "首页",
   "nav.projects": "项目",
-  "nav.work": "历程"
+  "nav.work": "历程",
+  "cv.download.top": "下载",
+  "cv.download.bottom": "我的简历",
+  "cv.download.label": "下载我的简历",
+  "cv.download.aria": "下载 Charles Lindecker 的简历 (PDF)",
+  "cv.download.icon_alt": "卷轴图标"
 }

@@ -27,5 +27,10 @@
   "loading.frame_alt": "DB 'loading logo frame'",
   "nav.home": "JMP 0x00",
   "nav.projects": "JMP PRJ",
-  "nav.work": "JMP WORK"
+  "nav.work": "JMP WORK",
+  "cv.download.top": "MOV AX, DL",
+  "cv.download.bottom": "CV.PDF",
+  "cv.download.label": "CALL download_cv",
+  "cv.download.aria": "CALL download_cv ; Charles Lindecker ; FORMAT=PDF",
+  "cv.download.icon_alt": "DB 'scroll_icon'"
 }

@@ -27,5 +27,10 @@
   "loading.frame_alt": "// loading logo, waiting since 2017",
   "nav.home": "goHome()",
   "nav.projects": "doProjects()",
-  "nav.work": "doWork()"
+  "nav.work": "doWork()",
+  "cv.download.top": "// download",
+  "cv.download.bottom": "cv_final_v37(real)(USE_THIS).pdf",
+  "cv.download.label": "// TODO: fix link next sprint (ticket opened 2019, still pending)",
+  "cv.download.aria": "// fetches cv.pdf — or cv.docx — or cv.jpg depending on which intern uploaded last. we just alias them all to .pdf",
+  "cv.download.icon_alt": "// scroll.gif, still animated"
 }

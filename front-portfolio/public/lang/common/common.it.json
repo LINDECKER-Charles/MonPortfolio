@@ -27,5 +27,10 @@
   "loading.frame_alt": "Logo di caricamento",
   "nav.home": "Home",
   "nav.projects": "Progetti",
-  "nav.work": "Percorso"
+  "nav.work": "Percorso",
+  "cv.download.top": "Scarica",
+  "cv.download.bottom": "Il mio CV",
+  "cv.download.label": "Scarica il mio CV",
+  "cv.download.aria": "Scarica il CV di Charles Lindecker (PDF)",
+  "cv.download.icon_alt": "Icona pergamena"
 }

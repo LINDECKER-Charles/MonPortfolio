@@ -27,5 +27,10 @@
   "loading.frame_alt": "'loading'",
   "nav.home": "h()",
   "nav.projects": "p()",
-  "nav.work": "w()"
+  "nav.work": "w()",
+  "cv.download.top": "dl=()=>",
+  "cv.download.bottom": "cv.pdf",
+  "cv.download.label": "a.download=1;a.click()",
+  "cv.download.aria": "fetch('/cv.pdf').then(b=>b.blob()).then(_dl)//Charles",
+  "cv.download.icon_alt": "'scroll'"
 }

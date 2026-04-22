@@ -47,6 +47,7 @@
                 [href]="link.href"
                 [attr.target]="link.external ? '_blank' : null"
                 [attr.rel]="link.external ? 'noreferrer noopener' : null"
+                [attr.download]="link.download ? '' : null"
                 [attr.aria-label]="ts.translate('linktree.action.open_aria') + ' — ' + link.label">
                 <span class="linktree-row__icon">
                   @switch (link.icon.kind) {
@@ -75,6 +76,14 @@
                         @case ('npm') {
                           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M3 8h18v8h-9v1.5H8V16H3V8zm2 6h2V10h1v4h1v-4h1v4h1V10h-5v4zm7-4v5h2v-1h2v-4h-4zm2 1h.9v2H14v-2zm3 3h2v-3h1v3h1V10h-4v4z"/>
+                          </svg>
+                        }
+                        @case ('scroll') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/>
+                            <path d="M14 3v5h5"/>
+                            <path d="M12 12v6"/>
+                            <path d="M9 15l3 3 3-3"/>
                           </svg>
                         }
                       }

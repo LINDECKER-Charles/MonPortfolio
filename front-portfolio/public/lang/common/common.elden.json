@@ -27,5 +27,10 @@
   "loading.frame_alt": "Sigil of Grace arrival",
   "nav.home": "Grace",
   "nav.projects": "Ruins",
-  "nav.work": "Legacy"
+  "nav.work": "Legacy",
+  "cv.download.top": "Inscribe",
+  "cv.download.bottom": "The Tarnished scroll",
+  "cv.download.label": "Claim the Tarnished's scroll",
+  "cv.download.aria": "Claim the Tarnished scroll of Charles Lindecker (sealed PDF)",
+  "cv.download.icon_alt": "Sigil of the scroll"
 }

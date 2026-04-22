@@ -27,5 +27,10 @@
   "loading.frame_alt": "logo: loading  # spinning",
   "nav.home": "route: /",
   "nav.projects": "route: /projects",
-  "nav.work": "route: /work"
+  "nav.work": "route: /work",
+  "cv.download.top": "action: download",
+  "cv.download.bottom": "target: cv.pdf",
+  "cv.download.label": "download:\n  artifact: cv.pdf  # trust me bro",
+  "cv.download.aria": "artifact:\n  kind: resume\n  author: Charles Lindecker\n  mime: application/pdf",
+  "cv.download.icon_alt": "icon: scroll  # parchment vibes"
 }
