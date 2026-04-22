@@ -172,7 +172,7 @@ export const SHARED_IMAGES = {
     ], '80x80_'),
   },
   photo: {
-    me: createPhotoSet('me (1)'),
+    me: createPhotoSet('me-1'),
     meCarousel: createPhotoCarousel('me', PHOTO_CAROUSEL_COUNT),
   },
 } as const;
