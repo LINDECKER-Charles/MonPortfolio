@@ -1,11 +1,14 @@
 import { ResponsiveSource } from '../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
 import {OMNICARD_IMAGES} from '../../../img-sources/projects/omnicard.sources';
 import {LIS_WEB_IMAGES} from '../../../img-sources/projects/lis.source';
 import {DEV_MATES_IMAGES} from '../../../img-sources/projects/devmates.source';
 import {SHREK_IMAGES} from '../../../img-sources/projects/shrek.source';
 import {LODB_IMAGES} from '../../../img-sources/projects/lodb.source';
 import {BLENDER_COLLECTION_IMAGES} from '../../../img-sources/projects/blendercollection.source';
+import {GLOSSAIRE_QUEST_IMAGES} from '../../../img-sources/projects/glossairequest.source';
+import {PORTFOLIO_IMAGES} from '../../../img-sources/projects/portfolio.source';
+import {PVZF_CONSOLE_MANAGER_IMAGES} from '../../../img-sources/projects/pvzf-console-manager.source';
+import {PVZF_TRADUCTION_IMAGES} from '../../../img-sources/projects/pvzf-traduction.source';
 
 export interface Period {
   dateStart: Date;
@@ -74,28 +77,6 @@ export const PROJECT_FILTERS: ProjectFilterItem[] = [
   { id: 'open_source', label: 'Open Source' },
   { id: 'client', label: 'Client' },
 ];
-
-const omnicardImages: ProjectMediaImage[] = [
-  {
-    alt: 'Aperçu Omnicard 1',
-    fallbackSrc: SHARED_IMAGES.photo.me.fallbackSrc,
-    sources: SHARED_IMAGES.photo.me.sources,
-  },
-  {
-    alt: 'Aperçu Omnicard 2',
-    fallbackSrc: SHARED_IMAGES.photo.me.fallbackSrc,
-    sources: SHARED_IMAGES.photo.me.sources,
-  },
-];
-
-const portfolioImages: ProjectMediaImage[] = [
-  {
-    alt: 'Aperçu Portfolio 1',
-    fallbackSrc: SHARED_IMAGES.photo.me.fallbackSrc,
-    sources: SHARED_IMAGES.photo.me.sources,
-  },
-];
-
 
 export const PROJECTS_DATA: ProjectItem[] = [
   {
@@ -177,7 +158,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Travail de coordination et de structuration de contribution',
     ],
     detail: {
-      images: [],
+      images: PVZF_TRADUCTION_IMAGES,
       lessonsLearned: [
         'Piloter un travail collaboratif avec une exigence de cohérence',
         'Formaliser des standards de traduction et de validation',
@@ -227,7 +208,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Design system custom cohérent avec identité visuelle forte',
     ],
     detail: {
-      images: [],
+      images: PORTFOLIO_IMAGES,
       lessonsLearned: [
         'Construire une architecture front scalable pour un site fortement animé',
         'Concilier animations riches et performances élevées sur mobile',
@@ -345,7 +326,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Approche orientée utilité concrète pour la communauté',
     ],
     detail: {
-      images: [],
+      images: PVZF_CONSOLE_MANAGER_IMAGES,
       lessonsLearned: [
         'Créer des outils simples mais réellement utiles à un workflow existant',
         'Automatiser des tâches répétitives pour fiabiliser la qualité',
@@ -436,7 +417,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Architecture front/back claire entre Angular et ASP.NET Core',
     ],
     detail: {
-      images: [],
+      images: GLOSSAIRE_QUEST_IMAGES,
       lessonsLearned: [
         'Renforcer la séparation des responsabilités entre front Angular et API .NET',
         'Structurer des routes protégées et un cycle d’authentification propre',
