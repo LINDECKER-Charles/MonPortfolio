@@ -26,5 +26,6 @@
   "snippets.opensource.icon_alt": "// OSS: forked and ghosted",
   "snippets.quality.icon_alt": "// quality: 'works on my machine'",
   "header.cta.linktree.top": "// todos links",
-  "header.cta.linktree.aria": "// spaghetti linktree links"
+  "header.cta.linktree.aria": "// spaghetti linktree links",
+  "header.cta.linktree.bottom": "LinkTree_v2_FINAL"
 }

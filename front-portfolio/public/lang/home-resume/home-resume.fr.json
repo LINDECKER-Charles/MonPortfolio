@@ -26,5 +26,6 @@
   "snippets.opensource.icon_alt": "Open source et bénévolat",
   "snippets.quality.icon_alt": "Qualité et responsabilité",
   "header.cta.linktree.top": "Tous mes liens",
-  "header.cta.linktree.aria": "Linktree — tous mes liens"
+  "header.cta.linktree.aria": "Linktree — tous mes liens",
+  "header.cta.linktree.bottom": "Linktree"
 }

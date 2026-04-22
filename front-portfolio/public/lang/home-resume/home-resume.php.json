@@ -26,5 +26,6 @@
   "snippets.opensource.icon_alt": "/* MIT license, probably */",
   "snippets.quality.icon_alt": "// tests? we ship on prod",
   "header.cta.linktree.top": "get_all_links()",
-  "header.cta.linktree.aria": "// Linktree: get_all_links()"
+  "header.cta.linktree.aria": "// Linktree: get_all_links()",
+  "header.cta.linktree.bottom": "$linktree"
 }

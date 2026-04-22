@@ -26,5 +26,6 @@
   "snippets.opensource.icon_alt": "/open\\s*source|volunteer/i",
   "snippets.quality.icon_alt": "/(?:qual|resp)(?:ity|ibilit)/i",
   "header.cta.linktree.top": "/links?/gi",
-  "header.cta.linktree.aria": "Linktree -> /links?/gi"
+  "header.cta.linktree.aria": "Linktree -> /links?/gi",
+  "header.cta.linktree.bottom": "/linktree/i"
 }
