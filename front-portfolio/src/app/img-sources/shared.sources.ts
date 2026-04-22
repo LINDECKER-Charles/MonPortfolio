@@ -19,14 +19,26 @@ const OTHER_ICON_SIZES = [
 ] as const;
 
 const PHOTO_SIZES = [
-  { filePrefix: '320x426_', width: 320 },
-  { filePrefix: '480x640_', width: 480 },
-  { filePrefix: '640x853_', width: 640 },
-  { filePrefix: '768x1024_', width: 768 },
-  { filePrefix: '1024x1365_', width: 1024 },
-  { filePrefix: '1280x1706_', width: 1280 },
-  { filePrefix: '1536x2048_', width: 1536 },
+  { filePrefix: '24x36_', width: 24 },
+  { filePrefix: '40x60_', width: 40 },
+  { filePrefix: '80x120_', width: 80 },
+  { filePrefix: '160x240_', width: 160 },
+  { filePrefix: '320x480_', width: 320 },
+  { filePrefix: '640x960_', width: 640 },
+  { filePrefix: '768x1152_', width: 768 },
+  { filePrefix: '1024x1536_', width: 1024 },
+  { filePrefix: '1280x1920_', width: 1280 },
+  { filePrefix: '1536x2304_', width: 1536 },
 ] as const;
+
+const PHOTO_FALLBACK_PREFIX = '640x960_';
+const PHOTO_CAROUSEL_COUNT = 4;
+
+/** srcset parse les URL en utilisant les espaces — les noms de fichiers avec
+    espace ou parenthèses doivent donc être percent-encodés. */
+function encodeAssetName(name: string): string {
+  return name.replace(/ /g, '%20').replace(/\(/g, '%28').replace(/\)/g, '%29');
+}
 
 function buildWebpSources(
   pathPrefix: string,
@@ -80,7 +92,11 @@ export function createLogoSet(name: string): ResponsiveImageSet {
 }
 
 export function createPhotoSet(name: string): ResponsiveImageSet {
-  return createWebpImageSet('/photos', name, PHOTO_SIZES, '640x853_');
+  return createWebpImageSet('/photos', encodeAssetName(name), PHOTO_SIZES, PHOTO_FALLBACK_PREFIX);
+}
+
+function createPhotoCarousel(baseName: string, count: number): ResponsiveImageSet[] {
+  return Array.from({ length: count }, (_, i) => createPhotoSet(`${baseName} (${i + 1})`));
 }
 
 export const SHARED_IMAGES = {
@@ -153,6 +169,7 @@ export const SHARED_IMAGES = {
     ], '80x80_'),
   },
   photo: {
-    me: createPhotoSet('me'),
+    me: createPhotoSet('me (1)'),
+    meCarousel: createPhotoCarousel('me', PHOTO_CAROUSEL_COUNT),
   },
 } as const;

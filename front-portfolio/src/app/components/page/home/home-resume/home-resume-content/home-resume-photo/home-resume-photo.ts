@@ -11,20 +11,22 @@ import {
 } from '@angular/core';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
-import {ResponsivePicture, ResponsiveSource} from '../../../../../assets/responsive-picture/responsive-picture';
+import {
+  PhotoCarousel,
+  PhotoCarouselSlide,
+} from '../../../../../assets/photo-carousel/photo-carousel';
 import { TranslationService } from '../../../../../../services/translation.service';
 import { TiltDirective } from '../../../../../../directives/tilt.directive';
 
 @Component({
   selector: 'app-home-resume-photo',
-  imports: [CommonModule, ResponsivePicture, TiltDirective],
+  imports: [CommonModule, PhotoCarousel, TiltDirective],
   templateUrl: './home-resume-photo.html',
   styleUrl: './home-resume-photo.css',
 })
 export class HomeResumePhoto implements AfterViewInit {
   protected readonly ts = inject(TranslationService);
-  @Input({ required: true }) photoSources: ResponsiveSource[] = [];
-  @Input({ required: true }) photoFallback = '';
+  @Input({ required: true }) slides: PhotoCarouselSlide[] = [];
 
   @ViewChild('portraitBlock') private portraitBlockRef?: ElementRef<HTMLElement>;
 
