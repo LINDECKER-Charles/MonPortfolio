@@ -18,20 +18,23 @@ const OTHER_ICON_SIZES = [
   { filePrefix: '160x160_', width: 160 },
 ] as const;
 
+/** Breakpoints denses autour de 320-640w (zone où la photo est rendue sur tous
+    les viewports à DPR 1-2) ; 24/40/160/1280 écartés car jamais sélectionnés
+    par le navigateur pour le carousel. */
 const PHOTO_SIZES = [
-  { filePrefix: '24x36_', width: 24 },
-  { filePrefix: '40x60_', width: 40 },
   { filePrefix: '80x120_', width: 80 },
   { filePrefix: '160x240_', width: 160 },
   { filePrefix: '320x480_', width: 320 },
+  { filePrefix: '400x600_', width: 400 },
+  { filePrefix: '480x720_', width: 480 },
+  { filePrefix: '560x840_', width: 560 },
   { filePrefix: '640x960_', width: 640 },
   { filePrefix: '768x1152_', width: 768 },
   { filePrefix: '1024x1536_', width: 1024 },
-  { filePrefix: '1280x1920_', width: 1280 },
   { filePrefix: '1536x2304_', width: 1536 },
 ] as const;
 
-const PHOTO_FALLBACK_PREFIX = '640x960_';
+const PHOTO_FALLBACK_PREFIX = '480x720_';
 const PHOTO_CAROUSEL_COUNT = 4;
 
 /** srcset parse les URL en utilisant les espaces — les noms de fichiers avec
@@ -96,7 +99,7 @@ export function createPhotoSet(name: string): ResponsiveImageSet {
 }
 
 function createPhotoCarousel(baseName: string, count: number): ResponsiveImageSet[] {
-  return Array.from({ length: count }, (_, i) => createPhotoSet(`${baseName} (${i + 1})`));
+  return Array.from({ length: count }, (_, i) => createPhotoSet(`${baseName}-${i + 1}`));
 }
 
 export const SHARED_IMAGES = {
