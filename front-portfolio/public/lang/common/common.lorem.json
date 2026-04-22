@@ -27,5 +27,10 @@
   "loading.frame_alt": "Logotypus loadicus ipsum",
   "nav.home": "Principium",
   "nav.projects": "Opera",
-  "nav.work": "Iter"
+  "nav.work": "Iter",
+  "cv.download.top": "Descaregare",
+  "cv.download.bottom": "Curriculum ipsum",
+  "cv.download.label": "Descaregare curriculum ipsum",
+  "cv.download.aria": "Descaregare curriculum vitae Caroli Lindecker ipsum (PDF)",
+  "cv.download.icon_alt": "Icona pergamenae ipsum"
 }

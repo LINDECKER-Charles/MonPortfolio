@@ -27,5 +27,10 @@
   "loading.frame_alt": "Логотип загрузки",
   "nav.home": "Главная",
   "nav.projects": "Проекты",
-  "nav.work": "Путь"
+  "nav.work": "Путь",
+  "cv.download.top": "Скачать",
+  "cv.download.bottom": "Моё резюме",
+  "cv.download.label": "Скачать моё резюме",
+  "cv.download.aria": "Скачать резюме Charles Lindecker (PDF)",
+  "cv.download.icon_alt": "Значок свитка"
 }

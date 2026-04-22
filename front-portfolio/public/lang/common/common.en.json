@@ -27,5 +27,10 @@
   "loading.frame_alt": "Loading logo",
   "nav.home": "Home",
   "nav.projects": "Projects",
-  "nav.work": "Journey"
+  "nav.work": "Journey",
+  "cv.download.top": "Download",
+  "cv.download.bottom": "My resume",
+  "cv.download.label": "Download my resume",
+  "cv.download.aria": "Download Charles Lindecker's resume (PDF)",
+  "cv.download.icon_alt": "Scroll icon"
 }

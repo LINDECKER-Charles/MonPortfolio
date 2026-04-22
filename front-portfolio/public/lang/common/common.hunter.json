@@ -27,5 +27,10 @@
   "loading.frame_alt": "Blood memory loading",
   "nav.home": "The Dream",
   "nav.projects": "The Hunt",
-  "nav.work": "The Trail"
+  "nav.work": "The Trail",
+  "cv.download.top": "Claim",
+  "cv.download.bottom": "Hunter's Record",
+  "cv.download.label": "Claim the Hunter's Record",
+  "cv.download.aria": "Claim the Hunter's Record of Charles Lindecker (sealed PDF)",
+  "cv.download.icon_alt": "Mark of the Record"
 }

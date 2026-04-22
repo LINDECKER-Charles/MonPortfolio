@@ -27,5 +27,10 @@
   "loading.frame_alt": "読み込み中のロゴ",
   "nav.home": "ホーム",
   "nav.projects": "プロジェクト",
-  "nav.work": "歩み"
+  "nav.work": "歩み",
+  "cv.download.top": "ダウンロード",
+  "cv.download.bottom": "履歴書",
+  "cv.download.label": "履歴書をダウンロード",
+  "cv.download.aria": "Charles Lindeckerの履歴書をダウンロード (PDF)",
+  "cv.download.icon_alt": "巻物アイコン"
 }

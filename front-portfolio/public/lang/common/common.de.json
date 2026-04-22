@@ -27,5 +27,10 @@
   "loading.frame_alt": "Lade-Logo",
   "nav.home": "Startseite",
   "nav.projects": "Projekte",
-  "nav.work": "Werdegang"
+  "nav.work": "Werdegang",
+  "cv.download.top": "Herunterladen",
+  "cv.download.bottom": "Mein Lebenslauf",
+  "cv.download.label": "Meinen Lebenslauf herunterladen",
+  "cv.download.aria": "Lebenslauf von Charles Lindecker herunterladen (PDF)",
+  "cv.download.icon_alt": "Pergament-Symbol"
 }

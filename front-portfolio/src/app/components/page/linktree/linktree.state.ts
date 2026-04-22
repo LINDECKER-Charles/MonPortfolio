@@ -3,7 +3,7 @@ import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
 
 export type LinktreeIconKind = 'picture' | 'svg' | 'emoji';
 
-export type LinktreeSvgKey = 'discord' | 'npm';
+export type LinktreeSvgKey = 'discord' | 'npm' | 'scroll';
 
 export interface LinktreeIcon {
   kind: LinktreeIconKind;
@@ -22,6 +22,8 @@ export interface LinktreeLink {
   href: string;
   icon: LinktreeIcon;
   external: boolean;
+  /** Déclenche l'attribut `download` sur le lien (asset local). */
+  download?: boolean;
 }
 
 export interface LinktreeSection {
@@ -136,6 +138,15 @@ export const LINKTREE_SECTIONS: LinktreeSection[] = [
     id: 'summon',
     numeral: 'IV',
     links: [
+      {
+        id: 'cv',
+        label: 'CV',
+        handle: 'CV-FR-FR-DESIGN.pdf',
+        href: '/CV-FR-FR-DESIGN.pdf',
+        icon: svg('scroll'),
+        external: false,
+        download: true,
+      },
       {
         id: 'email',
         label: 'Email',
