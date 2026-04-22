@@ -12,6 +12,19 @@
       <a routerLink="/resume" href="/resume">{{ ts.translate('footer.nav.resume') }}</a>
       <a routerLink="/projects" href="/projects">{{ ts.translate('footer.nav.projects') }}</a>
       <a routerLink="/work" href="/work">{{ ts.translate('footer.nav.work') }}</a>
+      <a
+        class="footer__cv-link transition-ritual"
+        href="/CV-FR-FR-DESIGN.pdf"
+        download
+        [attr.aria-label]="ts.translate('common.cv.download.aria')">
+        <svg class="footer__cv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/>
+          <path d="M14 3v5h5"/>
+          <path d="M12 12v6"/>
+          <path d="M9 15l3 3 3-3"/>
+        </svg>
+        <span>{{ ts.translate('common.cv.download.label') }}</span>
+      </a>
     </nav>
 
     <div class="footer__socials" [attr.aria-label]="ts.translate('footer.aria.socials')">

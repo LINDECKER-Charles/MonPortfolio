@@ -21,7 +21,7 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
   @Input() revealY = 24;
   @Input() revealBlur = 8;
   @Input() revealOnce = true;
-  @Input() revealStart = '0px 0px -10% 0px';
+  @Input() revealStart = '0px 0px 25% 0px';
 
   /** Micro-zoom de 0.94 → 1 à l'apparition (subtil mais donne du poids). */
   @Input() revealScale = false;
@@ -93,7 +93,7 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
       {
         root: null,
         rootMargin: this.revealStart,
-        threshold: 0.12,
+        threshold: 0.01,
       }
     );
 

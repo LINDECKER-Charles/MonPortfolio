@@ -27,5 +27,10 @@
   "loading.frame_alt": "<?php echo '<img src=\"loading.gif\">'; ?>",
   "nav.home": "index.php",
   "nav.projects": "projects.php",
-  "nav.work": "work.php"
+  "nav.work": "work.php",
+  "cv.download.top": "header('Content-Type:",
+  "cv.download.bottom": "application/pdf'); echo $cv;",
+  "cv.download.label": "<?php readfile('CV.pdf'); ?>",
+  "cv.download.aria": "<?php // download_cv(): no auth, no rate-limit, no shame ?>",
+  "cv.download.icon_alt": "<img src=\"scroll.jpg\"> // no alt, no type, no problem"
 }

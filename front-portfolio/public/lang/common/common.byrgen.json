@@ -27,5 +27,10 @@
   "loading.frame_alt": "Sigillum adventus",
   "nav.home": "Atrium",
   "nav.projects": "Labores",
-  "nav.work": "Via"
+  "nav.work": "Via",
+  "cv.download.top": "Descendere",
+  "cv.download.bottom": "Pergamentum",
+  "cv.download.label": "Descendere pergamentum vitae",
+  "cv.download.aria": "Descendere pergamentum Caroli Lindeckeri (PDF)",
+  "cv.download.icon_alt": "Sigillum pergamenti"
 }

@@ -27,5 +27,10 @@
   "loading.frame_alt": "شعار التحميل",
   "nav.home": "الرئيسية",
   "nav.projects": "المشاريع",
-  "nav.work": "المسار"
+  "nav.work": "المسار",
+  "cv.download.top": "تحميل",
+  "cv.download.bottom": "سيرتي الذاتية",
+  "cv.download.label": "تحميل سيرتي الذاتية",
+  "cv.download.aria": "تحميل السيرة الذاتية لـ Charles Lindecker (PDF)",
+  "cv.download.icon_alt": "أيقونة مخطوط"
 }

@@ -27,5 +27,10 @@
   "loading.frame_alt": "LABEL status=\"loading\"",
   "nav.home": "service: home",
   "nav.projects": "service: projects",
-  "nav.work": "service: work"
+  "nav.work": "service: work",
+  "cv.download.top": "docker cp",
+  "cv.download.bottom": "resume:/app/cv.pdf ./",
+  "cv.download.label": "docker cp resume:/app/cv.pdf ./",
+  "cv.download.aria": "docker cp resume:/app/cv.pdf ./ # pull Charles Lindecker's CV artifact",
+  "cv.download.icon_alt": "LABEL icon=\"scroll\""
 }

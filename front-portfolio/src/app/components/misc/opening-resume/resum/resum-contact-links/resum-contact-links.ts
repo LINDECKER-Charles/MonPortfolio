@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateContactHoverIn,
@@ -8,6 +8,7 @@ import {
 } from './resum-contact-links.animations';
 import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
 import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on-click.directive';
+import {TranslationService} from '../../../../../services/translation.service';
 
 @Component({
   selector: 'app-resum-contact-links',
@@ -17,6 +18,7 @@ import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on
 })
 export class ResumContactLinks extends ResumEntryAnimation {
   @Input({ required: true }) images!: any;
+  protected readonly ts = inject(TranslationService);
   protected readonly animationSelectors = '.contact-block, .contact-row';
   protected override animationDelay = 0.38;
   protected override animationStagger = 0.04;

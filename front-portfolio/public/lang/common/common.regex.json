@@ -27,5 +27,10 @@
   "loading.frame_alt": "/load(?:ing)?\\s+logo/i",
   "nav.home": "^/$",
   "nav.projects": "^/projects$",
-  "nav.work": "^/work$"
+  "nav.work": "^/work$",
+  "cv.download.top": "/(?:d[ln]|download|t[eé]l[eé]charger)/i",
+  "cv.download.bottom": "/\\bcv\\b|r[eé]sum[eé]/i",
+  "cv.download.label": "/(?:download|t[eé]l[eé]charger)\\s+(?:my|mon)?\\s*(?:cv|r[eé]sum[eé])/i",
+  "cv.download.aria": "^(?=.*cv)(?=.*\\.pdf$).+Charles.Lindecker",
+  "cv.download.icon_alt": "/scroll|parchment|parchemin/i"
 }

@@ -189,6 +189,44 @@
 .hero__cta--tertiary .hero__cta-label-top { color: #9eb5d9; }
 .hero__cta--tertiary .hero__cta-label-bottom { color: #eaf2ff; }
 
+.hero__cta--quaternary {
+  color: #f5dfc5;
+  border-color: rgb(201 77 34 / 0.28);
+  background:
+    linear-gradient(180deg, rgb(60 24 14 / 0.92), rgb(28 14 10 / 0.96)),
+    radial-gradient(circle at top left, rgb(255 147 77 / 0.18), transparent 55%);
+}
+
+.hero__cta--quaternary:hover {
+  border-color: rgb(255 147 77 / 0.42);
+  box-shadow:
+    0 18px 38px rgb(0 0 0 / 0.34),
+    0 0 14px rgb(201 77 34 / 0.2);
+}
+
+.hero__cta-icon-frame--scroll {
+  background: linear-gradient(180deg, rgb(255 147 77 / 0.24), rgb(87 45 27 / 0.24));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 0 0 1px rgb(201 77 34 / 0.18);
+}
+
+.hero__cta-icon--scroll {
+  display: grid;
+  place-items: center;
+  color: var(--color-ember-soft);
+  background: radial-gradient(circle at 30% 30%, rgb(82 34 18 / 0.96), rgb(28 14 10 / 0.98));
+}
+
+.hero__cta-icon--scroll svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.hero__cta--quaternary .hero__cta-label-top { color: #d49a75; }
+.hero__cta--quaternary .hero__cta-label-bottom { color: #f5dfc5; }
+
 .hero__cta-icon-frame {
   width: 48px;
   height: 48px;
