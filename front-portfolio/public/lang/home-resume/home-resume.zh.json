@@ -26,5 +26,6 @@
   "snippets.opensource.icon_alt": "开源与志愿服务",
   "snippets.quality.icon_alt": "质量与责任",
   "header.cta.linktree.top": "我的所有链接",
-  "header.cta.linktree.aria": "Linktree — 我的所有链接"
+  "header.cta.linktree.aria": "Linktree — 我的所有链接",
+  "header.cta.linktree.bottom": "Linktree"
 }
