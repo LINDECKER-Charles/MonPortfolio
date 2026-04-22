@@ -24,5 +24,8 @@
   "snippets.stack.icon_alt": "$stack=[...]; // excellence",
   "snippets.architecture.icon_alt": "// SQL injection? never heard of it",
   "snippets.opensource.icon_alt": "/* MIT license, probably */",
-  "snippets.quality.icon_alt": "// tests? we ship on prod"
+  "snippets.quality.icon_alt": "// tests? we ship on prod",
+  "header.cta.linktree.top": "get_all_links()",
+  "header.cta.linktree.aria": "// Linktree: get_all_links()",
+  "header.cta.linktree.bottom": "$linktree"
 }

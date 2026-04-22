@@ -24,5 +24,8 @@
   "404.cta.projects.top": "()=>see()",
   "404.cta.projects.bottom": "/#/p",
   "nav.logo_alt": "'logo:'+n",
-  "loading.frame_alt": "'loading'"
+  "loading.frame_alt": "'loading'",
+  "nav.home": "h()",
+  "nav.projects": "p()",
+  "nav.work": "w()"
 }

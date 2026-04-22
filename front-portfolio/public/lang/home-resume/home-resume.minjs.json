@@ -24,5 +24,8 @@
   "snippets.stack.icon_alt": "Object.keys(stack)",
   "snippets.architecture.icon_alt": "!!secure&&!!arch",
   "snippets.opensource.icon_alt": "oss||volunteer",
-  "snippets.quality.icon_alt": "q&&r"
+  "snippets.quality.icon_alt": "q&&r",
+  "header.cta.linktree.top": "l.all()",
+  "header.cta.linktree.aria": "lt.all()",
+  "header.cta.linktree.bottom": "lt"
 }

@@ -24,5 +24,8 @@
   "404.cta.projects.top": "// explore (broken link",
   "404.cta.projects.bottom": "since 2017, still clicked)",
   "nav.logo_alt": "// logo alt = the original var name is lost",
-  "loading.frame_alt": "// loading logo, waiting since 2017"
+  "loading.frame_alt": "// loading logo, waiting since 2017",
+  "nav.home": "goHome()",
+  "nav.projects": "doProjects()",
+  "nav.work": "doWork()"
 }

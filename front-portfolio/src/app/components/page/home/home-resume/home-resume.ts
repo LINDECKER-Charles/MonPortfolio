@@ -8,8 +8,7 @@ import {
   HOME_RESUME_LEVEL_SOURCES,
   HOME_RESUME_LUCIDITY_FALLBACK,
   HOME_RESUME_LUCIDITY_SOURCES,
-  HOME_RESUME_PHOTO_FALLBACK,
-  HOME_RESUME_PHOTO_SOURCES,
+  HOME_RESUME_PHOTO_CAROUSEL,
   HOME_RESUME_PHYSIQUE_FALLBACK,
   HOME_RESUME_PHYSIQUE_SOURCES,
   HOME_RESUME_POUSSE_RES_FALLBACK,
@@ -19,6 +18,7 @@ import {
 import { HomeResumeBanner } from './home-resume-banner/home-resume-banner';
 import { HomeResumeHeader } from './home-resume-header/home-resume-header';
 import { HomeResumeContent } from './home-resume-content/home-resume-content';
+import { PhotoCarouselSlide } from '../../../assets/photo-carousel/photo-carousel';
 import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
@@ -56,8 +56,15 @@ export class HomeResume {
     },
   ]);
 
-  protected readonly photoSources = HOME_RESUME_PHOTO_SOURCES;
-  protected readonly photoFallback = HOME_RESUME_PHOTO_FALLBACK;
+  protected readonly photoSlides = computed<PhotoCarouselSlide[]>(() =>
+    HOME_RESUME_PHOTO_CAROUSEL.map((set, i) => ({
+      sources: set.sources,
+      fallbackSrc: set.fallbackSrc,
+      alt: this.ts
+        .translate('photo-carousel.slide_alt')
+        .replace('{index}', String(i + 1)),
+    }))
+  );
 
   protected readonly luciditySources = HOME_RESUME_LUCIDITY_SOURCES;
   protected readonly lucidityFallback = HOME_RESUME_LUCIDITY_FALLBACK;

@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
+import { TranslationService } from '../../../services/translation.service';
 
 interface Lantern {
   targetSelector: string;
@@ -38,7 +39,7 @@ interface Lantern {
             [href]="lantern.targetSelector"
             class="scroll-lanterns__lantern"
             [class.is-lit]="activeIndex() === idx"
-            [attr.aria-label]="lantern.label"
+            [attr.aria-label]="ts.translate(lantern.label)"
             (click)="scrollTo($event, lantern.targetSelector)">
             <span class="scroll-lanterns__flame"></span>
           </a>
@@ -53,14 +54,15 @@ export class ScrollLanterns implements AfterViewInit, OnDestroy {
      Les pages qui n'ont pas ces ids laisseront simplement les lanternes
      éteintes (pas d'erreur). */
   protected readonly lanterns: Lantern[] = [
-    { targetSelector: '#hero',     label: 'Accueil' },
-    { targetSelector: '#projects', label: 'Projets' },
-    { targetSelector: '#work',     label: 'Parcours' },
+    { targetSelector: '#hero',     label: 'common.nav.home' },
+    { targetSelector: '#projects', label: 'common.nav.projects' },
+    { targetSelector: '#work',     label: 'common.nav.work' },
   ];
 
   protected activeIndex = signal(0);
   protected hasTargets = signal(false);
 
+  protected readonly ts = inject(TranslationService);
   private readonly router = inject(Router);
   private observer?: IntersectionObserver;
   private routerSub?: Subscription;

@@ -24,5 +24,8 @@
   "snippets.stack.icon_alt": "Stack and technical excellence",
   "snippets.architecture.icon_alt": "Application security and architecture",
   "snippets.opensource.icon_alt": "Open source and volunteer work",
-  "snippets.quality.icon_alt": "Quality and responsibility"
+  "snippets.quality.icon_alt": "Quality and responsibility",
+  "header.cta.linktree.top": "All my links",
+  "header.cta.linktree.aria": "Linktree — all my links",
+  "header.cta.linktree.bottom": "Linktree"
 }

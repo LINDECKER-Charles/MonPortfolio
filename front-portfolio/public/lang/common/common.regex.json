@@ -24,5 +24,8 @@
   "404.cta.projects.top": "/explor(e|ar)?/i",
   "404.cta.projects.bottom": "/pr[o0]j(ects?|ets?)/i",
   "nav.logo_alt": "/logo\\s+Charles\\s+Lindecker/i",
-  "loading.frame_alt": "/load(?:ing)?\\s+logo/i"
+  "loading.frame_alt": "/load(?:ing)?\\s+logo/i",
+  "nav.home": "^/$",
+  "nav.projects": "^/projects$",
+  "nav.work": "^/work$"
 }

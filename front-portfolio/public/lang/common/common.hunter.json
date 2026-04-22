@@ -24,5 +24,8 @@
   "404.cta.projects.top": "Seek",
   "404.cta.projects.bottom": "The Hunts",
   "nav.logo_alt": "Hunter's mark of Charles Lindecker",
-  "loading.frame_alt": "Blood memory loading"
+  "loading.frame_alt": "Blood memory loading",
+  "nav.home": "The Dream",
+  "nav.projects": "The Hunt",
+  "nav.work": "The Trail"
 }

@@ -24,5 +24,8 @@
   "snippets.stack.icon_alt": "DB 'stack_excellence'",
   "snippets.architecture.icon_alt": "DB 'arch_secure'",
   "snippets.opensource.icon_alt": "DB 'oss_volunteer'",
-  "snippets.quality.icon_alt": "DB 'quality'"
+  "snippets.quality.icon_alt": "DB 'quality'",
+  "header.cta.linktree.top": "MOV LINKS, ALL",
+  "header.cta.linktree.aria": "CALL linktree_ptr ; all links",
+  "header.cta.linktree.bottom": "linktree.bss"
 }

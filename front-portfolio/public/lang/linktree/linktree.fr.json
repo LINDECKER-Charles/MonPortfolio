@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "Compendium du chasseur",
+  "intro.title": "Grimoire des liens",
+  "intro.role": "Charles Lindecker · Développeur Full Stack",
+  "intro.description": "Toutes les voies qui mènent jusqu’à moi, gravées dans ce grimoire : confréries professionnelles, ateliers de pratique, arènes ludiques et invocations directes.",
+  "intro.photo_alt": "Portrait de Charles Lindecker",
+
+  "section.network.eyebrow": "Réseau",
+  "section.network.title": "Chasseurs alliés",
+  "section.network.description": "Les canaux officiels pour échanger, collaborer ou suivre mes travaux au quotidien.",
+
+  "section.craft.eyebrow": "Forge",
+  "section.craft.title": "Ateliers de pratique",
+  "section.craft.description": "Lieux où j’affûte mes armes — katas de code, défis front-end et sécurité offensive.",
+
+  "section.arena.eyebrow": "Arène",
+  "section.arena.title": "Terrains de chasse",
+  "section.arena.description": "Quelques escapades ludiques, pour garder l’œil affûté et la main agile.",
+
+  "section.summon.eyebrow": "Contact",
+  "section.summon.title": "Invocation directe",
+  "section.summon.description": "Les voies les plus rapides pour me joindre ou démarrer une mission ensemble.",
+
+  "action.open": "Ouvrir",
+  "action.open_aria": "Ouvrir le lien",
+
+  "outro": "Que le chemin choisi éclaire la suite. À très vite."
+}

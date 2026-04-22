@@ -24,5 +24,8 @@
   "snippets.stack.icon_alt": "技术栈与技术卓越",
   "snippets.architecture.icon_alt": "应用安全与架构",
   "snippets.opensource.icon_alt": "开源与志愿服务",
-  "snippets.quality.icon_alt": "质量与责任"
+  "snippets.quality.icon_alt": "质量与责任",
+  "header.cta.linktree.top": "我的所有链接",
+  "header.cta.linktree.aria": "Linktree — 我的所有链接",
+  "header.cta.linktree.bottom": "Linktree"
 }

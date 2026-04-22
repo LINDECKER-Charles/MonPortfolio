@@ -24,5 +24,8 @@
   "404.cta.projects.top": "Entdecken",
   "404.cta.projects.bottom": "Projekte",
   "nav.logo_alt": "Charles-Lindecker-Logo",
-  "loading.frame_alt": "Lade-Logo"
+  "loading.frame_alt": "Lade-Logo",
+  "nav.home": "Startseite",
+  "nav.projects": "Projekte",
+  "nav.work": "Werdegang"
 }

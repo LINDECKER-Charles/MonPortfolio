@@ -24,5 +24,8 @@
   "404.cta.projects.top": "Explorare",
   "404.cta.projects.bottom": "Opera",
   "nav.logo_alt": "Sigillum Caroli Lindecker",
-  "loading.frame_alt": "Sigillum adventus"
+  "loading.frame_alt": "Sigillum adventus",
+  "nav.home": "Atrium",
+  "nav.projects": "Labores",
+  "nav.work": "Via"
 }

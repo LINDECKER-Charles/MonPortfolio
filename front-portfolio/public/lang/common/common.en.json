@@ -24,5 +24,8 @@
   "404.cta.projects.top": "Explore",
   "404.cta.projects.bottom": "Projects",
   "nav.logo_alt": "Charles Lindecker logo",
-  "loading.frame_alt": "Loading logo"
+  "loading.frame_alt": "Loading logo",
+  "nav.home": "Home",
+  "nav.projects": "Projects",
+  "nav.work": "Journey"
 }

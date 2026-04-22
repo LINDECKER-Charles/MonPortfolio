@@ -1,0 +1,9 @@
+{
+  "label": "Carosello dei ritratti",
+  "previous": "Ritratto precedente",
+  "next": "Ritratto successivo",
+  "pause": "Metti in pausa il carosello",
+  "play": "Riprendi il carosello",
+  "go_to": "Vai al ritratto {index}",
+  "slide_alt": "Ritratto di Charles Lindecker — {index}"
+}

@@ -24,5 +24,8 @@
   "snippets.stack.icon_alt": "Ars arcana et excellentia",
   "snippets.architecture.icon_alt": "Securitas et architectura arcana",
   "snippets.opensource.icon_alt": "Munificentia librorum",
-  "snippets.quality.icon_alt": "Qualitas et officium"
+  "snippets.quality.icon_alt": "Qualitas et officium",
+  "header.cta.linktree.top": "Omnes nexus",
+  "header.cta.linktree.aria": "Linktree — omnes nexus mei",
+  "header.cta.linktree.bottom": "Nexus arcanus"
 }

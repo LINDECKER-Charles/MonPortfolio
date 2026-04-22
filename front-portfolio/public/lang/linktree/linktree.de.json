@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "Kompendium des Jägers",
+  "intro.title": "Grimoire der Verbindungen",
+  "intro.role": "Charles Lindecker · Full-Stack-Entwickler",
+  "intro.description": "Alle Wege, die zu mir führen, in dieses Grimoire eingraviert: berufliche Bünde, Werkstätten der Übung, spielerische Arenen und direkte Beschwörungen.",
+  "intro.photo_alt": "Porträt von Charles Lindecker",
+
+  "section.network.eyebrow": "Netz",
+  "section.network.title": "Verbündete Jäger",
+  "section.network.description": "Die offiziellen Kanäle zum Austausch, zur Zusammenarbeit und zur Verfolgung meiner täglichen Arbeit.",
+
+  "section.craft.eyebrow": "Schmiede",
+  "section.craft.title": "Werkstätten der Übung",
+  "section.craft.description": "Orte, an denen ich meine Waffen schärfe: Code-Katas, Frontend-Herausforderungen und offensive Sicherheit.",
+
+  "section.arena.eyebrow": "Arena",
+  "section.arena.title": "Jagdgründe",
+  "section.arena.description": "Einige spielerische Ausflüge, um das Auge scharf und die Hand geschmeidig zu halten.",
+
+  "section.summon.eyebrow": "Kontakt",
+  "section.summon.title": "Direkte Beschwörung",
+  "section.summon.description": "Die schnellsten Wege, mich zu erreichen oder gemeinsam eine Mission zu beginnen.",
+
+  "action.open": "Öffnen",
+  "action.open_aria": "Link öffnen",
+
+  "outro": "Möge der gewählte Pfad erhellen, was kommt. Bis bald."
+}
