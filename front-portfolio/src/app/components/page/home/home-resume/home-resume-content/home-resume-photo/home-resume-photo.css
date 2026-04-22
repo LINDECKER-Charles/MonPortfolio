@@ -55,7 +55,13 @@
   border-radius: 20px;
   overflow: hidden;
   background: var(--color-stone);
-  aspect-ratio: 320 / 426;
+  aspect-ratio: 2 / 3;
+}
+
+.portrait-card__inner app-photo-carousel {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .portrait-card__inner app-responsive-picture,

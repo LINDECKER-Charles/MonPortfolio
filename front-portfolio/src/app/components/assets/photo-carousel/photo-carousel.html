@@ -1,0 +1,107 @@
+@if (slides.length) {
+  <section
+    class="photo-carousel"
+    [class.photo-carousel--bare]="bare"
+    [class.surface-altar]="!bare"
+    role="region"
+    [attr.aria-roledescription]="'carousel'"
+    [attr.aria-label]="label()"
+    tabindex="0"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+    (focusin)="onMouseEnter()"
+    (focusout)="onMouseLeave()"
+    (keydown)="onKeydown($event)">
+    <div class="photo-carousel__viewport">
+      @for (slide of slides; track slide.fallbackSrc; let i = $index) {
+        <div
+          class="photo-carousel__slide"
+          [class.photo-carousel__slide--active]="isActive(i)"
+          role="group"
+          [attr.aria-roledescription]="'slide'"
+          [attr.aria-label]="goToSlideLabel(i)"
+          [attr.aria-hidden]="isActive(i) ? null : true">
+          <app-responsive-picture
+            [sources]="slide.sources"
+            [fallbackSrc]="slide.fallbackSrc"
+            [alt]="slide.alt"
+            [loading]="i === 0 ? 'eager' : 'lazy'"
+            [fetchPriority]="i === 0 ? 'high' : 'auto'"
+            decoding="async"
+            objectFit="cover"
+            [sizes]="sizes">
+          </app-responsive-picture>
+        </div>
+      }
+
+      @if (slides.length > 1) {
+        <button
+          type="button"
+          class="photo-carousel__nav photo-carousel__nav--prev transition-ritual"
+          (click)="previous()"
+          [attr.aria-label]="previousLabel()">
+          <span aria-hidden="true">&#8249;</span>
+        </button>
+
+        <button
+          type="button"
+          class="photo-carousel__nav photo-carousel__nav--next transition-ritual"
+          (click)="next()"
+          [attr.aria-label]="nextLabel()">
+          <span aria-hidden="true">&#8250;</span>
+        </button>
+      }
+
+      @if (running() && slides.length > 1) {
+        <div class="photo-carousel__progress" aria-hidden="true">
+          @for (k of progressKey(); track k) {
+            <div
+              class="photo-carousel__progress-fill"
+              [style.--progress-duration.ms]="interval">
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    @if (slides.length > 1) {
+      <div class="photo-carousel__controls">
+        <div
+          class="photo-carousel__dots"
+          role="tablist"
+          [attr.aria-label]="label()">
+          @for (slide of slides; track slide.fallbackSrc; let i = $index) {
+            <button
+              type="button"
+              role="tab"
+              class="photo-carousel__dot transition-ritual"
+              [class.photo-carousel__dot--active]="isActive(i)"
+              [attr.aria-selected]="isActive(i)"
+              [attr.aria-label]="goToSlideLabel(i)"
+              (click)="goTo(i)">
+            </button>
+          }
+        </div>
+
+        @if (autoplay) {
+          <button
+            type="button"
+            class="photo-carousel__toggle transition-ritual"
+            (click)="togglePause()"
+            [attr.aria-label]="isPaused() ? playLabel() : pauseLabel()">
+            @if (isPaused()) {
+              <svg viewBox="0 0 12 14" aria-hidden="true" focusable="false">
+                <path d="M1 1 L11 7 L1 13 Z" fill="currentColor" />
+              </svg>
+            } @else {
+              <svg viewBox="0 0 12 14" aria-hidden="true" focusable="false">
+                <rect x="1" y="1" width="3.2" height="12" fill="currentColor" />
+                <rect x="7.8" y="1" width="3.2" height="12" fill="currentColor" />
+              </svg>
+            }
+          </button>
+        }
+      </div>
+    }
+  </section>
+}

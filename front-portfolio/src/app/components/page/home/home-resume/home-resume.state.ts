@@ -11,8 +11,7 @@ export interface HomeResumeSnippetState {
   iconFallback: string;
 }
 
-export const HOME_RESUME_PHOTO_SOURCES: ResponsiveSource[] = SHARED_IMAGES.photo.me.sources;
-export const HOME_RESUME_PHOTO_FALLBACK = SHARED_IMAGES.photo.me.fallbackSrc;
+export const HOME_RESUME_PHOTO_CAROUSEL = SHARED_IMAGES.photo.meCarousel;
 export const HOME_RESUME_LUCIDITY_SOURCES: ResponsiveSource[] = SHARED_IMAGES.icon.lucidity.sources;
 export const HOME_RESUME_LUCIDITY_FALLBACK = SHARED_IMAGES.icon.lucidity.fallbackSrc;
 export const HOME_RESUME_LEVEL_SOURCES: ResponsiveSource[] = SHARED_IMAGES.icon.level.sources;
