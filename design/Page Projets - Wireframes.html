@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Wireframes — Page Projets</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="wireframes/sketch.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0a0808; height: 100%; font-family: 'Kalam', cursive; color: #d8cba8; }
+  /* canvas chrome override for gothic look */
+  .dc-root { background: radial-gradient(ellipse at top, #1a1410 0%, #0a0807 70%) !important; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="wireframes/data.jsx"></script>
+<script type="text/babel" src="wireframes/wf1.jsx"></script>
+<script type="text/babel" src="wireframes/wf2.jsx"></script>
+<script type="text/babel" src="wireframes/wf3.jsx"></script>
+<script type="text/babel" src="wireframes/wf4.jsx"></script>
+<script type="text/babel" src="wireframes/wf5.jsx"></script>
+<script type="text/babel" src="wireframes/wf6.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="env,react">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+const W = 1200;
+const H = 900;
+
+function App() {
+  return (
+    <DesignCanvas
+      title="Page Projets — 6 wireframes"
+      subtitle="Bloodborne / parchemin gothique · lo-fi · explore les structures, pas le détail visuel"
+    >
+      <DCSection id="wireframes" title="Six structures à comparer" subtitle="Cliquer une vignette pour la passer en plein écran. Glisser pour réorganiser.">
+        <DCArtboard id="wf1" label="① Grimoire · grille dense" width={W} height={H}>
+          <window.WF1Grimoire />
+        </DCArtboard>
+        <DCArtboard id="wf2" label="② Chapitres · sections par type" width={W} height={H}>
+          <window.WF2Chapitres />
+        </DCArtboard>
+        <DCArtboard id="wf3" label="③ Codex · sidebar + liste" width={W} height={H}>
+          <window.WF3Codex />
+        </DCArtboard>
+        <DCArtboard id="wf4" label="④ Chronique · timeline" width={W} height={H}>
+          <window.WF4Chronique />
+        </DCArtboard>
+        <DCArtboard id="wf5" label="⑤ Pilier + Onglets" width={W} height={H}>
+          <window.WF5Pilier />
+        </DCArtboard>
+        <DCArtboard id="wf6" label="⑥ Atlas · constellation" width={W} height={H}>
+          <window.WF6Atlas />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

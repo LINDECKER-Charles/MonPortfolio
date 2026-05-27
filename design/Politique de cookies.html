@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Politique de cookies — MonPortefolio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="legal.css" />
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- NAV -->
+  <nav class="nav" data-screen-label="Politique de cookies">
+    <div class="nav-brand">⚔ MonPortefolio</div>
+    <div class="nav-links">
+      <a href="Accueil.html">Accueil</a>
+      <a href="Page Parcours.html">Parcours</a>
+      <a href="Projets.html">Projets</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO HEADER -->
+  <header class="hero">
+    <div>
+      <div class="kicker">Annexe · Petites traces</div>
+      <h1>
+        Cookies <span class="amp">·</span> stockage local
+      </h1>
+      <p class="sub">
+        Ce que le site dépose, ou plutôt ne dépose pas, dans votre navigateur — et ce qu'il y conserve uniquement pour votre confort.
+      </p>
+    </div>
+    <div class="seal" aria-label="Dernière mise à jour">
+      <div>
+        <div class="seal-glyph">⚜</div>
+        <div class="seal-label">Mise à jour</div>
+        <div class="seal-date">27·05·2026</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- TOC -->
+    <aside class="toc" aria-label="Sommaire">
+      <div class="toc-title">Sommaire</div>
+      <ol>
+        <li><a href="#sans-cookies">Aucun cookie déposé</a></li>
+        <li><a href="#localstorage">Stockage local</a></li>
+        <li><a href="#supprimer">Supprimer ces données</a></li>
+        <li><a href="#plus-loin">Pour aller plus loin</a></li>
+      </ol>
+      <div class="toc-foot">
+        <a href="Mentions légales.html">Mentions légales</a>
+        <a href="Politique de confidentialité.html">Confidentialité</a>
+      </div>
+    </aside>
+
+    <!-- MANUSCRIPT -->
+    <article class="manuscript">
+
+      <!-- En tête : annonce claire -->
+      <div class="callout">
+        <span class="callout-label">⚜ En un mot</span>
+        <p>
+          <strong>Pas de cookies, pas de traceurs, pas de bannière à fermer.</strong>
+          Seules trois préférences d'usage sont conservées <em>localement</em> dans votre navigateur pour ne pas vous demander la même chose à chaque visite.
+        </p>
+      </div>
+
+      <section id="sans-cookies">
+        <h2><span class="num">I.</span>Le site n'utilise pas de cookies</h2>
+        <p class="lede">
+          Le site <strong>ne dépose aucun cookie</strong> sur votre terminal : ni cookie de session, ni cookie publicitaire, ni cookie de mesure d'audience, ni traceur tiers.
+        </p>
+        <p>
+          Aucun consentement n'est donc requis au sens des lignes directrices de la <strong>CNIL</strong> et de l'article&nbsp;82 de la loi « Informatique et Libertés ».
+        </p>
+      </section>
+
+      <section id="localstorage">
+        <h2><span class="num">II.</span>Stockage local fonctionnel <code>localStorage</code></h2>
+        <p class="lede">
+          Le site utilise le mécanisme <code>localStorage</code> du navigateur pour mémoriser vos préférences d'usage. Ce stockage reste <strong>local à votre navigateur</strong> : son contenu n'est jamais transmis au serveur ni à un tiers.
+        </p>
+
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th>Clé</th>
+              <th>Finalité</th>
+              <th>Donnée stockée</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Langue de l'interface</td>
+              <td>Conserver la langue choisie entre les visites</td>
+              <td>Code de langue (ex. <code>fr</code>, <code>en</code>)</td>
+            </tr>
+            <tr>
+              <td>Volume audio</td>
+              <td>Conserver le niveau sonore de l'ambiance</td>
+              <td>Valeur numérique</td>
+            </tr>
+            <tr>
+              <td>Sourdine audio</td>
+              <td>Conserver l'état activé / coupé du son</td>
+              <td>Booléen</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          Ces informations correspondent à des <strong>préférences strictement nécessaires</strong> au confort d'utilisation, expressément demandées par l'utilisateur (choix de la langue, réglage du son). À ce titre, elles relèvent de l'<strong>exemption de consentement</strong> prévue par la CNIL pour les traceurs « strictement nécessaires à la fourniture d'un service expressément demandé ».
+        </p>
+      </section>
+
+      <section id="supprimer">
+        <h2><span class="num">III.</span>Comment supprimer ces données</h2>
+        <p class="lede">
+          Vous pouvez à tout moment effacer le stockage local via les paramètres de votre navigateur — rubrique « Données de site », « Cookies et données de sites » ou « Effacer les données de navigation ».
+        </p>
+        <p>
+          Leur suppression réinitialise simplement vos préférences (langue et audio) aux valeurs par défaut, <strong>sans dégrader le fonctionnement du site</strong>.
+        </p>
+
+        <div class="callout warn">
+          <span class="callout-label">⚜ Astuce</span>
+          <p>
+            Dans la console du navigateur, la commande <code>localStorage.clear()</code> exécutée sur ce site supprime instantanément les trois préférences ci-dessus.
+          </p>
+        </div>
+      </section>
+
+      <section id="plus-loin">
+        <h2><span class="num">IV.</span>Pour aller plus loin</h2>
+        <p class="lede">
+          Ces deux documents complètent la présente politique et précisent le cadre général dans lequel le site fonctionne.
+        </p>
+        <ul>
+          <li><a href="Politique de confidentialité.html">Politique de confidentialité</a> — traitement des données et droits RGPD.</li>
+          <li><a href="Mentions légales.html">Mentions légales</a> — éditeur, hébergeur, propriété intellectuelle.</li>
+        </ul>
+      </section>
+
+      <!-- CROSS LINKS -->
+      <nav class="cross-links" aria-label="Pages liées">
+        <a class="cross-link" href="Mentions légales.html">
+          <div class="cl-kicker">Tome i</div>
+          <div class="cl-title">Mentions légales <span class="arrow">→</span></div>
+        </a>
+        <a class="cross-link" href="Politique de confidentialité.html">
+          <div class="cl-kicker">Tome ii</div>
+          <div class="cl-title">Confidentialité <span class="arrow">→</span></div>
+        </a>
+      </nav>
+
+    </article>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="foot" id="contact">
+    <div>© 2026 · MonPortefolio · Forgé à la main</div>
+    <div>
+      <a href="mailto:charles.lindecker@outlook.fr">charles.lindecker@outlook.fr</a> ·
+      <a href="Mentions légales.html">Mentions ↗</a> ·
+      <a href="Politique de confidentialité.html">Confidentialité ↗</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

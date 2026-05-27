@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Parcours — MonPortefolio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="parcours/parcours.css" />
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- Nav rappel -->
+  <nav class="nav" data-screen-label="Parcours">
+    <div class="nav-brand">⚔ MonPortefolio</div>
+    <div class="nav-links">
+      <a href="#">Accueil</a>
+      <a href="#" class="active">Parcours</a>
+      <a href="#">Projets</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="kicker">Chap. II · Chronique</div>
+    <h1 class="title">Parcours</h1>
+    <p class="subtitle">
+      Le récit chronologique de mes expériences, de ma formation et des
+      sceaux obtenus en chemin. Lecture du plus récent au plus ancien.
+    </p>
+
+    <div class="stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-lbl">Années · XP</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-lbl">Entreprises</div>
+      </div>
+      <div>
+        <div class="stat-num">1</div>
+        <div class="stat-lbl">Master · Bac+5</div>
+      </div>
+      <div>
+        <div class="stat-num">12</div>
+        <div class="stat-lbl">Certifications</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Grille principale -->
+  <div class="parcours-grid">
+
+    <!-- ─── TIMELINE / SPINE ─── -->
+    <main class="timeline">
+      <div class="section-head">
+        <h2><span class="section-num">I</span>Expérience &amp; Formation</h2>
+        <div class="sort">
+          <button class="active">↑ Récent</button>
+          <button>↓ Ancien</button>
+        </div>
+      </div>
+
+      <div class="spine"></div>
+
+      <!-- 2024 → présent -->
+      <div class="year-marker">
+        <div class="year-pill">2024 — 2026</div>
+        <div class="year-line"></div>
+      </div>
+
+      <article class="node">
+        <div class="card">
+          <div class="period">
+            <span>Janv. 2024 — aujourd'hui</span>
+            <span class="badge">CDI · Lead</span>
+          </div>
+          <h3 class="role">Développeur Full-Stack Senior</h3>
+          <div class="company">
+            Société A
+            <span class="sep">·</span>
+            Paris · Remote
+          </div>
+          <ul class="bullets">
+            <li>Lead technique sur la refonte du produit cœur (équipe de 3 développeurs).</li>
+            <li>Mise en place CI/CD complète et monitoring temps réel (Datadog, Sentry).</li>
+            <li>Réduction du temps de réponse API de 40% via optimisation et cache distribué.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">React</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">AWS</span>
+            <span class="chip">TypeScript</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2022 — 2024 -->
+      <div class="year-marker">
+        <div class="year-pill">2022 — 2024</div>
+        <div class="year-line"></div>
+      </div>
+
+      <article class="node">
+        <div class="card">
+          <div class="period">
+            <span>Sept. 2022 — Déc. 2023</span>
+            <span class="badge">CDI</span>
+          </div>
+          <h3 class="role">Développeur Full-Stack</h3>
+          <div class="company">
+            Société B
+            <span class="sep">·</span>
+            Lyon
+          </div>
+          <ul class="bullets">
+            <li>Développement d'une plateforme SaaS B2B (plus de 500 clients actifs).</li>
+            <li>Migration progressive d'un monolithe vers une architecture microservices.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">Vue.js</span>
+            <span class="chip">Python</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Redis</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2021 — 2022 -->
+      <div class="year-marker">
+        <div class="year-pill">2021 — 2022</div>
+        <div class="year-line"></div>
+      </div>
+
+      <article class="node">
+        <div class="card">
+          <div class="period">
+            <span>Mars 2021 — Août 2022</span>
+            <span class="badge">CDI</span>
+          </div>
+          <h3 class="role">Développeur Front-End</h3>
+          <div class="company">
+            Agence C
+            <span class="sep">·</span>
+            Lyon
+          </div>
+          <ul class="bullets">
+            <li>Sites e-commerce sur-mesure pour clients retail (8 projets livrés).</li>
+            <li>Mise en place d'un design system partagé entre toutes les équipes.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">React</span>
+            <span class="chip">Next.js</span>
+            <span class="chip">Sass</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2020 — 2021 -->
+      <div class="year-marker">
+        <div class="year-pill">2020 — 2021</div>
+        <div class="year-line"></div>
+      </div>
+
+      <article class="node is-past">
+        <div class="card">
+          <div class="period">
+            <span>Sept. 2020 — Févr. 2021</span>
+            <span class="badge">CDI · Junior</span>
+          </div>
+          <h3 class="role">Développeur Junior</h3>
+          <div class="company">
+            Startup D
+            <span class="sep">·</span>
+            Lyon
+          </div>
+          <ul class="bullets">
+            <li>Premier poste, montée en compétences full-stack sur produit interne.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">JavaScript</span>
+            <span class="chip">PHP</span>
+            <span class="chip">MySQL</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2019 — Formation + stage -->
+      <div class="year-marker">
+        <div class="year-pill">2017 — 2020</div>
+        <div class="year-line"></div>
+      </div>
+
+      <!-- Stage -->
+      <article class="node is-past">
+        <div class="card">
+          <div class="period">
+            <span>Mars 2020 — Août 2020</span>
+            <span class="badge">Stage · 6 mois</span>
+          </div>
+          <h3 class="role">Stage de fin d'études</h3>
+          <div class="company">
+            Startup D
+            <span class="sep">·</span>
+            Lyon
+          </div>
+          <ul class="bullets">
+            <li>Refonte complète du back-office interne, validée et déployée en production.</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">JavaScript</span>
+            <span class="chip">PHP</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Jalon FORMATION -->
+      <article class="node formation">
+        <div class="card card-formation">
+          <div class="period">
+            <span>2017 — 2019 · Formation</span>
+            <span class="badge">Bac+5 · Master</span>
+          </div>
+          <h3 class="role">Master Informatique — Génie Logiciel</h3>
+          <div class="company">
+            Université / École X
+            <span class="sep">·</span>
+            Lyon
+          </div>
+          <div class="mention">Mention Bien</div>
+          <ul class="bullets">
+            <li>Architecture logicielle, design patterns, méthodes agiles &amp; DevOps.</li>
+            <li>Projet de fin d'études : moteur de recommandation distribué (Scala + Spark).</li>
+          </ul>
+          <div class="stack">
+            <span class="chip">Algorithmique</span>
+            <span class="chip">Systèmes</span>
+            <span class="chip">Réseaux</span>
+            <span class="chip">BDD</span>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- ─── RAIL CERTIFICATIONS ─── -->
+    <aside class="rail">
+      <div class="section-head">
+        <h2><span class="section-num">II</span>Sceaux</h2>
+        <div class="meta">12 certifs</div>
+      </div>
+
+      <div class="filters">
+        <span class="filter active">Tous · 12</span>
+        <span class="filter"><span class="glyph">☁</span>Cloud</span>
+        <span class="filter"><span class="glyph">⚙</span>DevOps</span>
+        <span class="filter"><span class="glyph">◬</span>Agile</span>
+        <span class="filter"><span class="glyph">◉</span>Data</span>
+        <span class="filter"><span class="glyph">◆</span>Dev</span>
+        <span class="filter"><span class="glyph">✚</span>Sécu</span>
+        <span class="filter"><span class="glyph">✦</span>Langues</span>
+      </div>
+
+      <ul class="cert-list">
+        <li class="cert">
+          <div class="glyph-box">☁</div>
+          <div>
+            <div class="title-line">AWS Solutions Architect — Associate</div>
+            <div class="issuer">Amazon Web Services</div>
+          </div>
+          <div class="yr">2025</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">☁</div>
+          <div>
+            <div class="title-line">AWS Certified Developer — Associate</div>
+            <div class="issuer">Amazon Web Services</div>
+          </div>
+          <div class="yr">2024</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">☁</div>
+          <div>
+            <div class="title-line">Google Cloud Associate Engineer</div>
+            <div class="issuer">Google Cloud</div>
+          </div>
+          <div class="yr">2024</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">⚙</div>
+          <div>
+            <div class="title-line">Certified Kubernetes Administrator</div>
+            <div class="issuer">CNCF</div>
+          </div>
+          <div class="yr">2024</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">⚙</div>
+          <div>
+            <div class="title-line">Terraform Associate</div>
+            <div class="issuer">HashiCorp</div>
+          </div>
+          <div class="yr">2023</div>
+        </li>
+        <li class="cert is-expired">
+          <div class="glyph-box">⚙</div>
+          <div>
+            <div class="title-line">Docker Certified Associate</div>
+            <div class="issuer">Docker — Expirée</div>
+          </div>
+          <div class="yr">2023</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">◬</div>
+          <div>
+            <div class="title-line">Professional Scrum Master I</div>
+            <div class="issuer">Scrum.org</div>
+          </div>
+          <div class="yr">2023</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">◉</div>
+          <div>
+            <div class="title-line">MongoDB Certified Developer</div>
+            <div class="issuer">MongoDB Inc.</div>
+          </div>
+          <div class="yr">2022</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">◆</div>
+          <div>
+            <div class="title-line">Meta Front-End Developer</div>
+            <div class="issuer">Coursera · Meta</div>
+          </div>
+          <div class="yr">2022</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">◆</div>
+          <div>
+            <div class="title-line">TypeScript Deep Dive</div>
+            <div class="issuer">Frontend Masters</div>
+          </div>
+          <div class="yr">2022</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">✚</div>
+          <div>
+            <div class="title-line">OWASP Web Security Fundamentals</div>
+            <div class="issuer">OWASP</div>
+          </div>
+          <div class="yr">2021</div>
+        </li>
+        <li class="cert">
+          <div class="glyph-box">✦</div>
+          <div>
+            <div class="title-line">TOEIC — 945 / 990</div>
+            <div class="issuer">ETS</div>
+          </div>
+          <div class="yr">2020</div>
+        </li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer class="foot">
+    <div>© 2026 · MonPortefolio</div>
+    <div><a href="#">Télécharger le CV ↗</a></div>
+  </footer>
+
+</div>
+
+</body>
+</html>
