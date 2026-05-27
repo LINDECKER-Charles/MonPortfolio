@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+    ServerName ${APACHE_TEST_DOMAIN}
+    ServerAlias www.${APACHE_TEST_DOMAIN}
+
+    Redirect permanent / ${APACHE_TEST_REDIRECT_TARGET}
+</VirtualHost>

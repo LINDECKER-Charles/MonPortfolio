@@ -40,6 +40,7 @@ ScaffoldingReadMe.txt
 ~$*
 *~
 CodeCoverage/
+.idea
 
 # MSBuild Binary and Structured Log
 *.binlog
@@ -54,3 +55,10 @@ TestResult.xml
 nunit-*.xml
 
 devops-omnicard
+
+# Config Apache rendue (générée depuis config/*.conf.template)
+config/*.conf
+config/README.md
+
+# Spec fonctionnelle (non versionnée)
+FUNCTIONAL_SPEC.md
