@@ -1,0 +1,94 @@
+<main class="legal-page">
+  <div class="legal-page__aura" aria-hidden="true"></div>
+
+  <app-legal-layout
+    kickerKey="legal.ml.kicker"
+    titlePreKey="legal.ml.title_pre"
+    titlePostKey="legal.ml.title_post"
+    subtitleKey="legal.ml.sub"
+    [updated]="updated"
+    [tocItems]="toc"
+    [tocLinks]="tocLinks"
+    [crossLinks]="crossLinks">
+
+    <section id="editeur">
+      <h2><span class="num">I.</span>{{ ts.translate('legal.ml.editeur.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.ml.editeur.lede')"></p>
+      <div class="info-card">
+        <dl>
+          <dt>{{ ts.translate('legal.ml.editeur.dt_editeur') }}</dt>
+          <dd>{{ ts.translate('legal.ml.editeur.dd_editeur') }}</dd>
+          <dt>{{ ts.translate('legal.ml.editeur.dt_statut') }}</dt>
+          <dd>{{ ts.translate('legal.ml.editeur.dd_statut') }}</dd>
+          <dt>{{ ts.translate('legal.ml.editeur.dt_contact') }}</dt>
+          <dd [innerHTML]="ts.translate('legal.ml.editeur.dd_contact')"></dd>
+          <dt>{{ ts.translate('legal.ml.editeur.dt_siret') }}</dt>
+          <dd [innerHTML]="ts.translate('legal.ml.editeur.dd_siret')"></dd>
+          <dt>{{ ts.translate('legal.ml.editeur.dt_tva') }}</dt>
+          <dd>{{ ts.translate('legal.ml.editeur.dd_tva') }}</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="directeur">
+      <h2><span class="num">II.</span>{{ ts.translate('legal.ml.directeur.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.ml.directeur.lede')"></p>
+    </section>
+
+    <section id="hebergeur">
+      <h2><span class="num">III.</span>{{ ts.translate('legal.ml.hebergeur.title') }}</h2>
+      <p class="lede">{{ ts.translate('legal.ml.hebergeur.lede') }}</p>
+      <div class="info-card">
+        <dl>
+          <dt>{{ ts.translate('legal.ml.hebergeur.dt_societe') }}</dt>
+          <dd>{{ ts.translate('legal.ml.hebergeur.dd_societe') }}</dd>
+          <dt>{{ ts.translate('legal.ml.hebergeur.dt_adresse') }}</dt>
+          <dd>{{ ts.translate('legal.ml.hebergeur.dd_adresse') }}</dd>
+          <dt>{{ ts.translate('legal.ml.hebergeur.dt_web') }}</dt>
+          <dd [innerHTML]="ts.translate('legal.ml.hebergeur.dd_web')"></dd>
+          <dt>{{ ts.translate('legal.ml.hebergeur.dt_contact') }}</dt>
+          <dd [innerHTML]="ts.translate('legal.ml.hebergeur.dd_contact')"></dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="propriete">
+      <h2><span class="num">IV.</span>{{ ts.translate('legal.ml.propriete.title') }}</h2>
+      <p class="lede">{{ ts.translate('legal.ml.propriete.lede') }}</p>
+      <p [innerHTML]="ts.translate('legal.ml.propriete.p2')"></p>
+
+      <h3>{{ ts.translate('legal.ml.propriete.tiers_title') }}</h3>
+      <p>{{ ts.translate('legal.ml.propriete.tiers_intro') }}</p>
+      <ul>
+        <li [innerHTML]="ts.translate('legal.ml.propriete.tiers_1')"></li>
+        <li [innerHTML]="ts.translate('legal.ml.propriete.tiers_2')"></li>
+        <li [innerHTML]="ts.translate('legal.ml.propriete.tiers_3')"></li>
+      </ul>
+    </section>
+
+    <section id="liens">
+      <h2><span class="num">V.</span>{{ ts.translate('legal.ml.liens.title') }}</h2>
+      <p class="lede">{{ ts.translate('legal.ml.liens.lede') }}</p>
+    </section>
+
+    <section id="responsabilite">
+      <h2><span class="num">VI.</span>{{ ts.translate('legal.ml.resp.title') }}</h2>
+      <p class="lede">{{ ts.translate('legal.ml.resp.lede') }}</p>
+      <p>{{ ts.translate('legal.ml.resp.p2') }}</p>
+    </section>
+
+    <section id="donnees">
+      <h2><span class="num">VII.</span>{{ ts.translate('legal.ml.donnees.title') }}</h2>
+      <p class="lede">{{ ts.translate('legal.ml.donnees.lede') }}</p>
+      <div class="callout">
+        <span class="callout__label">⚜ {{ ts.translate('legal.ml.donnees.callout_label') }}</span>
+        <p [innerHTML]="ts.translate('legal.ml.donnees.callout')"></p>
+      </div>
+    </section>
+
+    <section id="droit">
+      <h2><span class="num">VIII.</span>{{ ts.translate('legal.ml.droit.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.ml.droit.lede')"></p>
+    </section>
+  </app-legal-layout>
+</main>

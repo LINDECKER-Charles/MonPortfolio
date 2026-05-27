@@ -1,0 +1,310 @@
+:host {
+  display: block;
+}
+
+/* ── EN-TÊTE GRAVÉ + SCEAU ───────────────────────────────────────────────── */
+
+.legal-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+  border-bottom: var(--border-gilded);
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  position: relative;
+}
+
+.legal-hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-blood) 0%, var(--color-blood-dim) 20%, transparent 60%);
+}
+
+.legal-hero__kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.9rem;
+  color: var(--color-gold);
+}
+
+.legal-hero__kicker::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.legal-hero__title {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.18em;
+  font-weight: 600;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-bone);
+  text-shadow: var(--text-shadow-engraved);
+}
+
+.legal-hero__amp {
+  color: var(--color-blood);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.legal-hero__sub {
+  margin: 1.1rem 0 0;
+  max-width: 56ch;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--color-gold-faint);
+}
+
+.legal-seal {
+  flex-shrink: 0;
+  width: 152px;
+  height: 152px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  border-radius: var(--radius-pill);
+  position: relative;
+  color: var(--color-bone);
+  transform: rotate(-6deg);
+  background:
+    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.08), transparent 50%),
+    radial-gradient(
+      circle at center,
+      var(--color-blood-dim) 0%,
+      color-mix(in srgb, var(--color-blood-dim) 55%, #000) 70%,
+      var(--color-stone-abyss) 100%
+    );
+  box-shadow:
+    inset 0 0 0 2px rgb(0 0 0 / 0.4),
+    inset 0 0 0 3px var(--color-blood-dim),
+    inset 0 -8px 18px rgb(0 0 0 / 0.55),
+    0 6px 22px rgb(0 0 0 / 0.6);
+}
+
+.legal-seal::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgb(236 231 219 / 0.3);
+  border-radius: 50%;
+}
+
+.legal-seal__glyph {
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-parchment);
+  text-shadow: 0 0 12px rgb(126 100 52 / 0.5);
+}
+
+.legal-seal__label {
+  margin-top: 0.4rem;
+  font-size: 0.5rem;
+  color: var(--color-gold-faint);
+}
+
+.legal-seal__date {
+  margin-top: 0.15rem;
+  font-family: var(--font-ui);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: var(--color-bone);
+}
+
+/* ── GRILLE : SOMMAIRE + MANUSCRIT ───────────────────────────────────────── */
+
+.legal-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.legal-toc {
+  position: sticky;
+  top: 5.5rem;
+  padding: 0.25rem 0 0.25rem 1.125rem;
+  border-left: var(--border-gilded);
+  font-family: var(--font-ui);
+}
+
+.legal-toc__title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.9rem;
+  color: var(--color-gold);
+}
+
+.legal-toc__title::before {
+  content: '';
+  width: 12px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.legal-toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: toc;
+}
+
+.legal-toc__list li {
+  counter-increment: toc;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.legal-toc__list a {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.25rem;
+  padding: 0.15rem 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ash);
+  transition: color var(--duration-base) var(--ease-ritual);
+}
+
+.legal-toc__list a::before {
+  content: counter(toc, upper-roman) '.';
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--color-ash-dim);
+}
+
+.legal-toc__list a:hover {
+  color: var(--color-bone);
+}
+
+.legal-toc__list a:hover::before {
+  color: var(--color-blood);
+}
+
+.legal-toc__foot {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed rgb(164 148 118 / 0.2);
+}
+
+.legal-toc__foot a {
+  padding: 0.35rem 0;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tag);
+  color: var(--color-ash);
+}
+
+.legal-toc__foot a::before {
+  content: '↳ ';
+  color: var(--color-ash-dim);
+}
+
+.legal-toc__foot a:hover {
+  color: var(--color-bone);
+}
+
+/* ── MANUSCRIT (conteneur ; le contenu projeté est stylé par legal-content.css) ─ */
+
+.legal-manuscript {
+  max-width: 68ch;
+  min-width: 0;
+  position: relative;
+}
+
+/* ── CARTES DE RENVOI ────────────────────────────────────────────────────── */
+
+.legal-cross {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding-top: 2rem;
+  border-top: var(--border-gilded);
+}
+
+.legal-cross__link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-card);
+}
+
+.legal-cross__link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-blood), transparent 70%);
+}
+
+.legal-cross__link:hover {
+  transform: translateX(2px);
+}
+
+.legal-cross__kicker {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.6rem;
+  color: var(--color-ash-dim);
+}
+
+.legal-cross__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tag);
+  color: var(--color-bone);
+}
+
+.legal-cross__arrow {
+  color: var(--color-blood);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .legal-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-toc {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .legal-hero {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .legal-seal {
+    justify-self: start;
+    transform: rotate(-6deg) scale(0.9);
+  }
+}
