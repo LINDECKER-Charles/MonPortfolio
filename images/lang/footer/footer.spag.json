@@ -1,0 +1,11 @@
+{
+  "subtitle": "var role = getRole() || getRole2() || getRole3() || 'idk'; // one of these works",
+  "nav.home": "goto home; // goto #47 in this file",
+  "nav.resume": "// resume link was here. Then it wasn't. Now it's back. Maybe.",
+  "nav.projects": "if(projects) { if(projects.length) { if(projects.length > 0) { show(); } } } // trust issues",
+  "nav.work": "parcours = parcours || parcour || parcors || 'work'; // typo archaeology",
+  "copyright": "// Copyright: yes (don't ask legal, they stopped replying)",
+  "made_with": "// Built with: pain, mass copy-paste, and mass ctrl+z",
+  "aria.nav": "// aria.nav: WONTFIX (ticket #4,892)",
+  "aria.socials": "// socials div has z-index: 99999999 because it kept disappearing"
+}

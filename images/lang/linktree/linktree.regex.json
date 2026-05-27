@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "/compendium[_\\s]du[_\\s]chasseur/i",
+  "intro.title": "/grimoire[_\\s](?:des|of)[_\\s]liens?/i",
+  "intro.role": "/^Charles\\s+Lindecker\\s+·\\s+D[eé]v(?:elop{1,2}[eè]ur)?\\s+Full\\s+Stack$/",
+  "intro.description": "/(?:toutes?\\s+)?(?:les?\\s+)?voies?\\s+(?:qui\\s+)?m[eè]nent?\\s+(?:jusqu')?à\\s+moi/i",
+  "intro.photo_alt": "/portr(?:ait)?\\s+(?:de\\s+)?Charles(?:\\s+Lindecker)?/i",
+
+  "section.network.eyebrow": "/r[eé]s(?:eau|ö)/i",
+  "section.network.title": "/chass(?:eurs?)?\\s+alli[eé]s?/i",
+  "section.network.description": "/(?:canaux|channels?)\\s+offici(?:els?|al)\\s+pour\\s+(?:échanger|collaborer)/i",
+
+  "section.craft.eyebrow": "/forg(?:e|ing)/i",
+  "section.craft.title": "/ateliers?\\s+(?:de\\s+)?pratique/i",
+  "section.craft.description": "/(?:kata|challenge|s[eé]curit[eé])\\s*[,;]?\\s*(?:code|front[\\-.]end|offensive)?/gi",
+
+  "section.arena.eyebrow": "/ar[eè]n(?:e|a)/i",
+  "section.arena.title": "/terrains?\\s+(?:de\\s+)?chasse/i",
+  "section.arena.description": "/(?:escapades?|loisirs?)\\s+ludiques?/i",
+
+  "section.summon.eyebrow": "/contact/i",
+  "section.summon.title": "/invocation\\s+directe/i",
+  "section.summon.description": "/(?:voies?|fa[çc]ons?)\\s+les?\\s+plus\\s+rapides?\\s+pour\\s+(?:me\\s+)?joindre/i",
+
+  "action.open": "/ouvrir/i",
+  "action.open_aria": "/ouvrir\\s+(?:le\\s+)?lien/i",
+
+  "outro": "/que\\s+le\\s+chemin\\s+.+\\s+éclaire\\s+la\\s+suite\\.?\\s+à\\s+tr[eè]s\\s+vite\\.?/i"
+}

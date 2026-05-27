@@ -1,0 +1,9 @@
+{
+  "label": "carousel.text",
+  "previous": "dec ecx ; prev frame",
+  "next": "inc ecx ; next frame",
+  "pause": "cli ; halt scheduler",
+  "play": "sti ; resume scheduler",
+  "go_to": "jmp frame_{index}",
+  "slide_alt": "frame_{index}: db 'Charles Lindecker',0"
+}

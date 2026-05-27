@@ -1,0 +1,6 @@
+{
+  "sound.aria": "0b01000001 AUDIO_ENABLE",
+  "sound.label": "0x534F554E44 = ON",
+  "skip": "0xFF SKIP_ANIM",
+  "start.aria": "0b01010011 INIT_SEQUENCE"
+}

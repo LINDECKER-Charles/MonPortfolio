@@ -12,20 +12,18 @@
     # === CORS ===
 
     LoadModule headers_module modules/mod_headers.so
-    LoadModule cspnonce_module modules/mod_cspnonce.so
-    LoadModule substitute_module modules/mod_substitute.so
 
     <IfModule mod_headers.c>
         # Autoriser ton front
         Header always set Access-Control-Allow-Origin "https://${APACHE_PROD_DOMAIN}"
         Header always set Access-Control-Allow-Methods "GET,POST,OPTIONS"
         Header always set Access-Control-Allow-Headers "Content-Type,Authorization"
-        Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' 'unsafe-inline' https://fonts.gstatic.com; img-src 'self' https://placehold.co blob: data:; object-src 'none'; media-src 'self'; frame-src 'self'; connect-src 'self' https://${APACHE_PROD_DOMAIN}; frame-ancestors 'none';" env=CSP_NONCE
-        Header always set Strict-Transport-Security "max-age=0; includeSubDomains; preload"
+        # CSP stricte : aucun script inline (app Angular prérendue → zéro nonce/hash requis).
+        # 'unsafe-inline' conservé uniquement sur style-src (styles composants Angular + attributs style ; faible surface).
+        # frame-src : embed vidéo YouTube de la modale projets (sinon retirer pour 'none').
+        Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://images.charles-lindecker.com; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests"
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
    </IfModule>
-
-    RequestHeader set X-CSP-Nonce %{CSP_NONCE}e
-    RequestHeader set X-Debug-Nonce "%{CSP_NONCE}e"
 
     # Gérer les préflight OPTIONS
     RewriteEngine On
@@ -39,7 +37,8 @@
     # Security headers
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-Frame-Options "DENY"
-    Header always set X-XSS-Protection "1; mode=block"
+    Header always set X-XSS-Protection "0"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
 
     ErrorLog ${APACHE_LOG_DIR}/mates_error.log
     CustomLog ${APACHE_LOG_DIR}/mates_access.log combined

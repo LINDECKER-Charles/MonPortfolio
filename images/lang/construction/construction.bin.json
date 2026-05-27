@@ -1,0 +1,20 @@
+{
+  "badge": "0x50415448 in_progress.bin",
+  "eyebrow": "0b01010100 01001101 01010000",
+  "title": "0x50414745 UNDER_CONSTRUCTION — STATUS 0b00",
+  "lead": "01100010 01110101 01101001 01101100 01100100 processing... enhanced career.dat v2 loading... HEAP_ALLOC for timeline_struct, rendering_pipeline queued in segment 0xFF",
+  "cta.projects": "JMP 0x50524F4A454354",
+  "cta.home": "GOTO 0x484F4D45",
+  "status.aria": "0b110 BUILD_STATUS_REG",
+  "status.title": "0x50524F47 REGISTER",
+  "status.value": "0b01000100 DESIGN_MODE",
+  "status.structure": "0x5354525543",
+  "status.visual": "0b01010110 DIRECTION",
+  "status.content": "0x434F4E54 REFINING...",
+  "pillar.roadmap.title": "0b110 PATH_NARRATION",
+  "pillar.roadmap.description": "MALLOC career_evolution... parsing pivots[] from /dev/life — 0b11001100 milestones buffered, awaiting RENDER_CALL",
+  "pillar.craft.title": "0x414D4249 PRESENTATION",
+  "pillar.craft.description": "UI_BUFFER upgraded... 0b11010010 interactions polished, mobile_viewport OPTIMIZED — responsive_flag=0xFF",
+  "pillar.launch.title": "0b01001100 LAUNCH_PENDING",
+  "pillar.launch.description": "STRUCT finalizing... 0x574149 — redirect to PRJ_EXEC or GOTO 0x484F4D45 while(building){patience++}"
+}

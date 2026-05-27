@@ -39,20 +39,15 @@
   <meta name="apple-mobile-web-app-title" content="BloodSouls" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="preload"
-    as="style"
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
-  <noscript>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap"
-    />
-  </noscript>
+  <!-- Serveur d'images statique : ouverture anticipée de la connexion -->
+  <link rel="preconnect" href="https://images.charles-lindecker.com" />
+
+  <!-- Polices auto-hébergées (woff2 bundlé via styles.css). Préchargement des
+       sous-ensembles latins critiques ; les fonts sont toujours fetchées en mode
+       CORS → l'attribut crossorigin est requis même en same-origin. -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/cinzel-8vIJ7ww63mVu7gt79mT7.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/eb-garamond-SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/inter-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" />
 </head>
 <body>
   <app-root></app-root>

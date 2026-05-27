@@ -1,0 +1,6 @@
+{
+  "sound.aria": "/activ(?:er|ate)\\s+(?:le\\s+)?s[o0]n(?:d|und)?/i",
+  "sound.label": "/activ(?:er|ate)\\s+(?:le\\s+)?s[o0]n(?:d|und)?/i",
+  "skip": "/(?:pass|skip)(?:er)?\\s+(?:l'?)?anim(?:ation)?/i",
+  "start.aria": "/(?:lanc|start)(?:er)?\\s+(?:l'?)?intro(?:duction)?/i"
+}
