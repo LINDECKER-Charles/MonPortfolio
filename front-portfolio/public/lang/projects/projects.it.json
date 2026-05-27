@@ -125,5 +125,21 @@
   "modal.links": "Link",
   "modal.demo": "Demo",
   "modal.site": "Sito web",
-  "today": "Oggi"
+  "today": "Oggi",
+  "gup.shortDescription": "Un'unica CLI per scansionare e aggiornare tutto ciò che è installato su una macchina di sviluppo — oltre 130 gestori di pacchetti.",
+  "gup.longDescription": "gup (Global Updater) è uno strumento da riga di comando che unifica gli aggiornamenti software di una macchina aggregando oltre 130 sorgenti: winget, scoop, choco, npm, pnpm, yarn, bun, pip, pipx, uv, cargo, gem, dotnet tools, helm, kubectl, terraform, estensioni VSCode/JetBrains, distribuzioni WSL e molte altre. Affronta la frammentazione dei gestori di pacchetti con un'interfaccia unica, una modalità interattiva di selezione, una scansione rapida, output JSON per lo scripting CI/CD e un comando doctor per rilevare i provider installati. La sicurezza è trattata in profondità: esecuzione senza shell tramite execa (vettore argv), solo HTTPS, analisi statica CodeQL/Semgrep/gitleaks e audit automatizzato delle dipendenze.",
+  "gup.highlights.0": "Interfaccia unica di aggiornamento per oltre 130 provider (winget, npm, cargo, pip, kubectl…)",
+  "gup.highlights.1": "Modalità interattiva, scansione rapida, output JSON e comando doctor di rilevamento",
+  "gup.highlights.2": "Sicurezza in profondità: execa senza shell, solo HTTPS, CodeQL/Semgrep/gitleaks",
+  "gup.lessonsLearned.0": "Progettare un'astrazione comune su decine di gestori eterogenei",
+  "gup.lessonsLearned.1": "Industrializzare una CLI testabile e scriptabile pensata per la CI/CD",
+  "gup.lessonsLearned.2": "Applicare un approccio di sicurezza difensiva a strati a uno strumento di sistema",
+  "img-convertor.shortDescription": "Convertitore di immagini e ridimensionatore responsive veloce per il web — WebP, AVIF, JPEG, PNG, in CLI o modalità interattiva.",
+  "img-convertor.longDescription": "img-convertor è uno strumento da riga di comando per la preparazione di asset web: conversione tra WebP, AVIF, JPEG e PNG e generazione di varianti responsive alle larghezze dei breakpoint preservando il rapporto d'aspetto. Offre sia una CLI curata sia una console interattiva guidata, l'elaborazione ricorsiva delle directory, preset di breakpoint con nome e configurazione persistente (~/.img-convertor/config.json). L'architettura separa una logica pura (core/) riutilizzabile dai livelli di interfaccia, consentendo un uso programmatico o standalone. Si basa su sharp per la codifica, Commander per la CLI e Inquirer per la modalità interattiva, con copertura dei test al 100% e una CI GitHub Actions multipiattaforma.",
+  "img-convertor.highlights.0": "Conversione WebP / AVIF / JPEG / PNG e ridimensionamento responsive per breakpoint",
+  "img-convertor.highlights.1": "CLI curata + console interattiva, elaborazione ricorsiva e preset configurabili",
+  "img-convertor.highlights.2": "Architettura core/ pura disaccoppiata dalla UI, copertura dei test al 100%",
+  "img-convertor.lessonsLearned.0": "Disaccoppiare una logica di business pura da interfacce CLI e interattive",
+  "img-convertor.lessonsLearned.1": "Strumentare end-to-end la preparazione di asset web responsive",
+  "img-convertor.lessonsLearned.2": "Mantenere una copertura dei test esaustiva su uno strumento di elaborazione immagini"
 }

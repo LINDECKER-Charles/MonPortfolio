@@ -125,5 +125,21 @@
   "modal.links": "/^(?:liens?|links?)$/i",
   "modal.demo": "/^d[eé]mo$/i",
   "modal.site": "/^site$/i",
-  "today": "/^(?:aujourd'hui|today)$/i"
+  "today": "/^(?:aujourd'hui|today)$/i",
+  "gup.shortDescription": "/(?:gup|global[\\s-]?updater).*(?:scan|update).*(?:130\\+?|package[\\s-]?managers?)/i",
+  "gup.longDescription": "(?:gup).*(?:unif(?:y|ies)).*(?:winget|scoop|choco|npm|pip|cargo|kubectl|terraform|WSL).*(?:130\\+).*(?:interactive|scan|JSON|doctor).*(?:execa|HTTPS|CodeQL|Semgrep|gitleaks)",
+  "gup.highlights.0": "/(?:single|one)[\\s-]?interface.*(?:130\\+).*(?:winget|npm|cargo|pip|kubectl)/i",
+  "gup.highlights.1": "/(?:interactive).*(?:scan).*(?:JSON).*(?:doctor)/i",
+  "gup.highlights.2": "/(?:execa|shell-?less).*(?:HTTPS).*(?:CodeQL|Semgrep|gitleaks)/i",
+  "gup.lessonsLearned.0": "/(?:common[\\s-]?abstraction).*(?:heterogeneous).*(?:managers?)/i",
+  "gup.lessonsLearned.1": "/(?:testable|scriptable).*CLI.*(?:CI\\/CD)/i",
+  "gup.lessonsLearned.2": "/(?:defen[cs]e[\\s-]?in[\\s-]?depth).*(?:system[\\s-]?tool)/i",
+  "img-convertor.shortDescription": "/(?:img[\\s-]?convertor).*(?:convert|resiz).*(?:WebP|AVIF|JPE?G|PNG).*(?:CLI|interactive)/i",
+  "img-convertor.longDescription": "(?:img-convertor).*(?:convert).*(?:WebP|AVIF|JPE?G|PNG).*(?:responsive).*(?:breakpoint).*(?:CLI|interactive).*(?:sharp|Commander|Inquirer).*(?:100%|coverage)",
+  "img-convertor.highlights.0": "/(?:WebP|AVIF|JPE?G|PNG).*(?:responsive).*(?:breakpoint)/i",
+  "img-convertor.highlights.1": "/(?:CLI).*(?:interactive).*(?:recursi).*(?:presets?)/i",
+  "img-convertor.highlights.2": "/(?:core\\/).*(?:decoupl|pure).*(?:100%|coverage)/i",
+  "img-convertor.lessonsLearned.0": "/(?:pure[\\s-]?logic).*(?:decoupl).*(?:CLI|interactive)/i",
+  "img-convertor.lessonsLearned.1": "/(?:responsive).*(?:asset).*(?:end[\\s-]?to[\\s-]?end)/i",
+  "img-convertor.lessonsLearned.2": "/(?:exhaustive|100%).*(?:coverage).*(?:image)/i"
 }

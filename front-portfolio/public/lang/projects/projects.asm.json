@@ -125,5 +125,21 @@
   "symfony-session.highlights.2": "CALL generate_pdf; CALL render_calendar ; FullCalendar",
   "symfony-session.lessonsLearned.0": "CALL harden_symfony ; multiple security_layers",
   "symfony-session.lessonsLearned.1": "CALL structure_mvc ; clean ON complete_admin_project",
-  "symfony-session.lessonsLearned.2": "CALL articulate ; front_ergonomics AND server_management"
+  "symfony-session.lessonsLearned.2": "CALL articulate ; front_ergonomics AND server_management",
+  "gup.shortDescription": "CALL scan_and_update ; ALL installed, 130+ package_managers",
+  "gup.longDescription": "PROC gup ; global_updater. CALL unify_updates ; MOV sources, 130+ ; PUSH winget; PUSH scoop; PUSH choco; PUSH npm; PUSH pip; PUSH cargo; PUSH kubectl; PUSH terraform; CALL aggregate. MOV interface, SINGLE ; CALL interactive_mode ; CALL fast_scan ; MOV output, JSON ; CALL doctor ; detect_providers. MOV security, DEEP ; CALL execa ; NO_SHELL argv ; MOV proto, HTTPS_ONLY ; LINK codeql.o; LINK semgrep.o; LINK gitleaks.o",
+  "gup.highlights.0": "MOV interface, SINGLE ; FOR 130+ providers (winget, npm, cargo, pip, kubectl)",
+  "gup.highlights.1": "CALL interactive_mode ; CALL fast_scan ; MOV output, JSON ; CALL doctor",
+  "gup.highlights.2": "MOV security, DEEP ; execa NO_SHELL ; HTTPS_ONLY ; LINK codeql, semgrep, gitleaks",
+  "gup.lessonsLearned.0": "CALL design_abstraction ; OVER heterogeneous_managers[]",
+  "gup.lessonsLearned.1": "CALL industrialize ; testable AND scriptable CLI FOR ci_cd",
+  "gup.lessonsLearned.2": "CALL apply_defense_in_depth ; TO system_tool",
+  "img-convertor.shortDescription": "CALL convert_and_resize ; responsive FOR web ; WebP, AVIF, JPEG, PNG ; CLI OR interactive",
+  "img-convertor.longDescription": "PROC img_convertor ; CALL convert ; MOV formats, [WebP|AVIF|JPEG|PNG] ; CALL resize ; MOV variants, RESPONSIVE ; MOV ratio, PRESERVED. CALL cli_polished ; CALL interactive_console ; CALL recurse_dirs ; MOV presets, NAMED ; MOV config, [~/.img-convertor/config.json] ; PERSISTENT. LEA core, [pure_logic] ; DECOUPLE ui. LINK sharp.o; LINK commander.o; LINK inquirer.o ; MOV coverage, 100 ; MOV ci, MULTI_OS",
+  "img-convertor.highlights.0": "CALL convert ; [WebP|AVIF|JPEG|PNG] ; CALL resize ; BY breakpoint",
+  "img-convertor.highlights.1": "CALL cli_polished ; CALL interactive_console ; CALL recurse ; MOV presets, CONFIGURABLE",
+  "img-convertor.highlights.2": "LEA core, [pure] ; DECOUPLE ui ; MOV coverage, 100",
+  "img-convertor.lessonsLearned.0": "CALL decouple ; pure_logic FROM cli AND interactive",
+  "img-convertor.lessonsLearned.1": "CALL tool_asset_prep ; responsive_web END_TO_END",
+  "img-convertor.lessonsLearned.2": "CALL maintain_coverage ; EXHAUSTIVE ON image_tool"
 }

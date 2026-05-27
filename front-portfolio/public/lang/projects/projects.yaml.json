@@ -125,5 +125,21 @@
   "modal.links": "section: links  # the useful part",
   "modal.demo": "link: demo  # try before you buy",
   "modal.site": "link: site  # the real deal",
-  "today": "date: today  # carpe diem.yaml"
+  "today": "date: today  # carpe diem.yaml",
+  "gup.shortDescription": "# One CLI to update them all\ngup:\n  scan: all\n  managers: 130+  # winget, npm, cargo, pip, kubectl...",
+  "gup.longDescription": "# Global Updater\ngup:\n  sources: 130+  # winget, scoop, choco, npm, pnpm, pip, cargo, dotnet, helm, kubectl, terraform, WSL\n  interface: single\n  modes: [interactive, fast_scan]\n  output: json        # for CI/CD\n  doctor: true        # detect installed providers\n  security:\n    execution: execa  # no shell, argv vector\n    protocol: https_only\n    static_analysis: [CodeQL, Semgrep, gitleaks]",
+  "gup.highlights.0": "- interface: single  # 130+ providers: winget, npm, cargo, pip, kubectl",
+  "gup.highlights.1": "- features: [interactive, fast_scan, json_output, doctor]  # the essentials",
+  "gup.highlights.2": "- security: [execa_no_shell, https_only, CodeQL, Semgrep, gitleaks]  # defense in depth",
+  "gup.lessonsLearned.0": "- abstraction: common  # over dozens of heterogeneous managers",
+  "gup.lessonsLearned.1": "- cli: [testable, scriptable]  # built for CI/CD",
+  "gup.lessonsLearned.2": "- security_approach: defense_in_depth  # on a system tool",
+  "img-convertor.shortDescription": "# Fast web image tooling\nimg_convertor:\n  formats: [webp, avif, jpeg, png]\n  modes: [cli, interactive]",
+  "img-convertor.longDescription": "# Web asset preparation\nimg_convertor:\n  convert: [webp, avif, jpeg, png]\n  resize: responsive       # at breakpoint widths, aspect ratio preserved\n  interfaces: [cli, interactive_console]\n  recursive: true\n  presets: named\n  config: ~/.img-convertor/config.json  # persistent\n  engine: sharp\n  deps: [Commander, Inquirer]\n  architecture: core_decoupled_from_ui\n  test_coverage: 100%\n  ci: github_actions_multi_os",
+  "img-convertor.highlights.0": "- conversion: [webp, avif, jpeg, png]  # + responsive resize by breakpoint",
+  "img-convertor.highlights.1": "- interfaces: [polished_cli, interactive_console]  # recursive + configurable presets",
+  "img-convertor.highlights.2": "- architecture: core_pure  # decoupled from UI, 100% coverage",
+  "img-convertor.lessonsLearned.0": "- decouple: [pure_logic, cli, interactive]  # clean separation",
+  "img-convertor.lessonsLearned.1": "- asset_prep: end_to_end  # responsive web",
+  "img-convertor.lessonsLearned.2": "- test_coverage: exhaustive  # on an image tool"
 }

@@ -125,5 +125,21 @@
   "modal.links": "链接",
   "modal.demo": "演示",
   "modal.site": "网站",
-  "today": "今天"
+  "today": "今天",
+  "gup.shortDescription": "用一个 CLI 扫描并更新开发机器上安装的一切 —— 支持 130 多种包管理器。",
+  "gup.longDescription": "gup（Global Updater）是一款命令行工具，通过聚合 130 多个来源统一机器上的软件更新：winget、scoop、choco、npm、pnpm、yarn、bun、pip、pipx、uv、cargo、gem、dotnet tools、helm、kubectl、terraform、VSCode/JetBrains 扩展、WSL 发行版等等。它以统一界面、交互式选择模式、快速扫描、面向 CI/CD 脚本的 JSON 输出，以及用于检测已安装提供者的 doctor 命令，来应对包管理器的碎片化。安全性按纵深防御处理：通过 execa 实现无 shell 执行（argv 向量）、仅 HTTPS、CodeQL/Semgrep/gitleaks 静态分析以及自动化依赖审计。",
+  "gup.highlights.0": "为 130 多个提供者（winget、npm、cargo、pip、kubectl……）提供统一更新界面",
+  "gup.highlights.1": "交互模式、快速扫描、JSON 输出和用于检测的 doctor 命令",
+  "gup.highlights.2": "纵深防御安全：无 shell 的 execa、仅 HTTPS、CodeQL/Semgrep/gitleaks",
+  "gup.lessonsLearned.0": "在数十种异构包管理器之上设计统一抽象",
+  "gup.lessonsLearned.1": "打造面向 CI/CD、可测试且可脚本化的 CLI",
+  "gup.lessonsLearned.2": "为系统工具应用纵深防御的安全方法",
+  "img-convertor.shortDescription": "面向 Web 的快速图像转换与响应式断点缩放工具 —— WebP、AVIF、JPEG、PNG，支持 CLI 或交互模式。",
+  "img-convertor.longDescription": "img-convertor 是一款用于 Web 资源准备的命令行工具：在 WebP、AVIF、JPEG 和 PNG 之间转换，并在保持纵横比的同时按断点宽度生成响应式变体。它同时提供精致的 CLI 和带引导的交互式控制台、目录递归处理、命名断点预设以及持久化配置（~/.img-convertor/config.json）。其架构将可复用的纯逻辑（core/）与 UI 层分离，既支持编程式调用也支持独立使用。它使用 sharp 进行编码、Commander 构建 CLI、Inquirer 实现交互模式，测试覆盖率达 100%，并配备跨操作系统的 GitHub Actions CI。",
+  "img-convertor.highlights.0": "WebP / AVIF / JPEG / PNG 转换与按断点的响应式缩放",
+  "img-convertor.highlights.1": "精致 CLI + 交互式控制台、递归处理与可配置预设",
+  "img-convertor.highlights.2": "与 UI 解耦的纯 core/ 架构，测试覆盖率 100%",
+  "img-convertor.lessonsLearned.0": "将纯业务逻辑与 CLI 和交互式界面解耦",
+  "img-convertor.lessonsLearned.1": "端到端地工具化响应式 Web 资源的准备流程",
+  "img-convertor.lessonsLearned.2": "在图像处理工具上维持详尽的测试覆盖"
 }

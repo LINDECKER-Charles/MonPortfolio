@@ -125,5 +125,21 @@
   "modal.links": "docker network inspect project-links",
   "modal.demo": "docker run --rm -p 8080:80 demo:latest # demo: ephemeral container. gone when you close it.",
   "modal.site": "kubectl port-forward svc/project-site 8080:80 # we switched to k8s mid-sentence",
-  "today": "docker exec timekeeper date +%Y-%m-%d # dedicated container for current date"
+  "today": "docker exec timekeeper date +%Y-%m-%d # dedicated container for current date",
+  "gup.shortDescription": "docker run --rm -v /usr/bin:/host gup:global-updater scan --all  # one container to update them all. 130+ managers. the image is 2GB.",
+  "gup.longDescription": "services:\n  gup:\n    image: gup:global-updater  # 130+ package managers, one CLI\n    command: update --all --yes\n    volumes:\n      - /var/run/docker.sock:/var/run/docker.sock  # to update docker, from docker. yes.\n    environment:\n      - SCAN_FAST=true   # skips the slow ones. there are many slow ones.\n      - OUTPUT=json      # for the CI/CD pipeline nobody reads\n    security_opt:\n      - no-new-privileges:true  # execa, no shell, argv vector. HTTPS only. we mean it.\n    # winget, scoop, choco, npm, pip, cargo, kubectl, terraform, WSL...\n    # the doctor command found 47 managers you forgot you installed",
+  "gup.highlights.0": "docker run gup doctor  # detects 130+ providers (winget, npm, cargo, pip, kubectl). finds the ones you regret.",
+  "gup.highlights.1": "docker run gup update --interactive --scan-fast --json  # interactive in a container. you'll attach a TTY and regret it.",
+  "gup.highlights.2": "# execa, no shell spawned. HTTPS only. CodeQL/Semgrep/gitleaks in the build stage.\nRUN trivy scan gup:global-updater  # defense in depth, even the image gets scanned",
+  "gup.lessonsLearned.0": "# Learned: a common abstraction over 130 managers means 130 edge cases in a trench coat",
+  "gup.lessonsLearned.1": "# Learned: a scriptable CLI with JSON output is the only friend your CI/CD pipeline has",
+  "gup.lessonsLearned.2": "# Learned: 'no shell spawning' is a personality trait now",
+  "img-convertor.shortDescription": "docker run --rm -v $PWD:/img img-convertor convert --to webp --responsive  # one container, every web format. the night is dark and full of AVIF.",
+  "img-convertor.longDescription": "services:\n  img-convertor:\n    image: img-convertor:latest  # sharp inside. the image is 600MB. sharp is 580MB of it.\n    command: convert --formats webp,avif,jpeg,png --breakpoints sm,md,lg\n    volumes:\n      - ./assets:/input\n      - ./dist:/output   # responsive variants, aspect ratio preserved\n    environment:\n      - IMG_CONVERTOR_CONFIG_DIR=/config  # persistent presets, because typing flags is for the weak\n    # core/ logic decoupled from the UI. CLI and interactive console.\n    # 100% test coverage. multi-OS CI. the container only runs on Linux. irony.",
+  "img-convertor.highlights.0": "docker run img-convertor convert --to webp,avif,jpeg,png --responsive  # every format, every breakpoint",
+  "img-convertor.highlights.1": "docker run -it img-convertor  # interactive console + polished CLI + recursive dirs + named presets",
+  "img-convertor.highlights.2": "# core/ pure logic, decoupled from UI. 100% test coverage.\nRUN npm test -- --coverage  # the green checkmark that justifies existence",
+  "img-convertor.lessonsLearned.0": "# Learned: separating core/ from the UI means the container does one thing well",
+  "img-convertor.lessonsLearned.1": "# Learned: end-to-end responsive asset prep is just sharp doing the heavy lifting and you taking credit",
+  "img-convertor.lessonsLearned.2": "# Learned: 100% coverage on an image tool means you tested every way a PNG can betray you"
 }

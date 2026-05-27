@@ -125,5 +125,21 @@
   "modal.links": "Blood Trails",
   "modal.demo": "Trial Hunt",
   "modal.site": "The Lair",
-  "today": "Tonight"
+  "today": "Tonight",
+  "gup.shortDescription": "One CLI to hunt down and update every binary on your machine — 130+ package managers, culled in a single night's work.",
+  "gup.longDescription": "gup (Global Updater) is a command-line hunter that unifies software updates across 130+ sources — winget, scoop, choco, npm, pnpm, pip, cargo, dotnet tools, helm, kubectl, terraform, WSL and more. It ends the curse of fragmented package managers with a single interface, an interactive selection mode, a swift scan, JSON output for CI/CD, and a doctor command that scouts installed providers like a hunter reading the signs of the hunt. Security is layered like Cathedral Ward's gates: shell-less execution via execa, HTTPS-only, and CodeQL/Semgrep/gitleaks keeping watch against the beasts.",
+  "gup.highlights.0": "A single interface to hunt 130+ providers (winget, npm, cargo, pip, kubectl…)",
+  "gup.highlights.1": "Interactive mode, swift scan, JSON output and a doctor that reads the signs",
+  "gup.highlights.2": "Defenses layered like Cathedral Ward: shell-less execa, HTTPS-only, CodeQL/Semgrep/gitleaks",
+  "gup.lessonsLearned.0": "Tracking a common abstraction across dozens of heterogeneous package managers",
+  "gup.lessonsLearned.1": "Honing a testable, scriptable CLI sharp enough for the CI/CD hunt",
+  "gup.lessonsLearned.2": "Layering defense-in-depth onto a system tool, as any good hunter prepares",
+  "img-convertor.shortDescription": "A swift image converter and responsive resizer for the web — WebP, AVIF, JPEG, PNG — keen as a trick weapon, CLI or interactive.",
+  "img-convertor.longDescription": "img-convertor is a command-line tool for preparing web assets: converting between WebP, AVIF, JPEG and PNG, and generating responsive variants at breakpoint widths while preserving the aspect ratio. It wields both a polished CLI and a guided interactive console, recursive directory hunts, named breakpoint presets and a persistent config (~/.img-convertor/config.json). Pure core/ logic is kept apart from the UI — a trick weapon's two forms — allowing programmatic or standalone use. Forged with sharp, Commander and Inquirer, with 100% test coverage and a multi-OS GitHub Actions CI.",
+  "img-convertor.highlights.0": "WebP / AVIF / JPEG / PNG conversion and responsive resizing at every breakpoint",
+  "img-convertor.highlights.1": "Polished CLI and interactive console, recursive hunts and configurable presets",
+  "img-convertor.highlights.2": "Pure core/ kept apart from the UI — the trick weapon's two forms — 100% test coverage",
+  "img-convertor.lessonsLearned.0": "Keeping pure logic apart from CLI and interactive interfaces",
+  "img-convertor.lessonsLearned.1": "Hunting web asset preparation from raw to responsive, end to end",
+  "img-convertor.lessonsLearned.2": "Holding flawless test coverage on an image-processing tool"
 }
