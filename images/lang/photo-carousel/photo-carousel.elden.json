@@ -1,0 +1,9 @@
+{
+  "label": "Tarnished portrait gallery",
+  "previous": "Previous visage",
+  "next": "Next visage",
+  "pause": "Halt the pilgrimage",
+  "play": "Resume the pilgrimage",
+  "go_to": "Gaze upon visage {index}",
+  "slide_alt": "Visage of the Tarnished — {index}"
+}

@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "# compendium_du_chasseur",
+  "intro.title": "title: Grimoire des liens",
+  "intro.role": "person:\n  name: Charles Lindecker\n  role: Full Stack Developer",
+  "intro.description": "# toutes les voies — réseau, forge, arène, invocation\ndescription: see public/grimoire.yaml  # fichier inexistant",
+  "intro.photo_alt": "alt: portrait_charles  # handsome yaml",
+
+  "section.network.eyebrow": "section: réseau  # network",
+  "section.network.title": "title: Chasseurs alliés",
+  "section.network.description": "channels:\n  type: official\n  purpose: exchange-collaborate  # préparez-vous au multiline",
+
+  "section.craft.eyebrow": "section: forge",
+  "section.craft.title": "title: Ateliers de pratique",
+  "section.craft.description": "skills:\n  - kata\n  - front-end-challenges\n  - security  # flaveur offensive",
+
+  "section.arena.eyebrow": "section: arène",
+  "section.arena.title": "title: Terrains de chasse",
+  "section.arena.description": "escapades:\n  type: ludique\n  frequency: occasional  # garde la main agile",
+
+  "section.summon.eyebrow": "section: contact",
+  "section.summon.title": "title: Invocation directe",
+  "section.summon.description": "contact:\n  speed: fastest\n  mode: direct  # pas de middleware",
+
+  "action.open": "action: open",
+  "action.open_aria": "aria: open_link",
+
+  "outro": "# que le chemin choisi éclaire la suite\nstatus: à-très-vite  # hyphenated because yaml"
+}

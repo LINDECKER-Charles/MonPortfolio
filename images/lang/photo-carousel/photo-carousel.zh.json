@@ -1,0 +1,9 @@
+{
+  "label": "肖像轮播",
+  "previous": "上一张肖像",
+  "next": "下一张肖像",
+  "pause": "暂停轮播",
+  "play": "恢复轮播",
+  "go_to": "前往肖像 {index}",
+  "slide_alt": "Charles Lindecker 的肖像 — {index}"
+}

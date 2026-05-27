@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "狩人の便覧",
+  "intro.title": "リンクの魔導書",
+  "intro.role": "シャルル・ランデッカー · フルスタック開発者",
+  "intro.description": "私へと続くすべての道が、この魔導書に刻まれています。仕事の同胞、鍛錬の工房、遊戯の闘技場、そして直接の召喚。",
+  "intro.photo_alt": "シャルル・ランデッカーの肖像",
+
+  "section.network.eyebrow": "ネットワーク",
+  "section.network.title": "同胞の狩人",
+  "section.network.description": "交流し、協働し、日々の仕事を追うための公式の経路。",
+
+  "section.craft.eyebrow": "鍛冶場",
+  "section.craft.title": "鍛錬の工房",
+  "section.craft.description": "武器を研ぐ場所。コード型稽古、フロントエンドの挑戦、攻撃的セキュリティ。",
+
+  "section.arena.eyebrow": "闘技場",
+  "section.arena.title": "狩り場",
+  "section.arena.description": "目と手を鋭く保つための、いくつかの遊戯の逃避。",
+
+  "section.summon.eyebrow": "連絡",
+  "section.summon.title": "直接の召喚",
+  "section.summon.description": "最速で連絡を取り、共に任務を始めるための経路。",
+
+  "action.open": "開く",
+  "action.open_aria": "リンクを開く",
+
+  "outro": "選ばれし道がこの先を照らしますように。またすぐに。"
+}

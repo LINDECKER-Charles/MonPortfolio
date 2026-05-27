@@ -1,0 +1,9 @@
+{
+  "label": "CarouselManagerFactoryImpl",
+  "previous": "goBackOnePleaseThanks()",
+  "next": "nextOneGoGoGo()",
+  "pause": "stahp",
+  "play": "playAgainSam",
+  "go_to": "jumpToSlide_DONT_TOUCH({index})",
+  "slide_alt": "ma_tronche_v{index}_final_final2"
+}

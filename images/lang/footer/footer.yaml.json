@@ -1,0 +1,11 @@
+{
+  "subtitle": "role: dev/formateur  # ASP.NET & Angular & Symfony",
+  "nav.home": "home: true",
+  "nav.resume": "resume: enabled",
+  "nav.projects": "projects: enabled  # probably",
+  "nav.work": "work: enabled  # if it compiles",
+  "copyright": "copyright:\n  year: 2026\n  owner: Charles Lindecker  # DO NOT CHANGE",
+  "made_with": "built_with: Angular  # no jQuery was harmed",
+  "aria.nav": "aria:\n  nav: footer  # accessibility matters",
+  "aria.socials": "external_links: true  # they open new tabs, deal with it"
+}

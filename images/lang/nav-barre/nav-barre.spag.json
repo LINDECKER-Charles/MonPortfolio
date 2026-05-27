@@ -1,0 +1,6 @@
+{
+  "home": "goto home; // TODO: refactor this since 2019",
+  "projects": "// FIXME: this whole section",
+  "work": "var x1 = getWork(); // what does x1 do? nobody knows",
+  "lang": "// lang was hardcoded in 47 places, good luck"
+}

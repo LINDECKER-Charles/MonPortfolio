@@ -1,0 +1,11 @@
+{
+  "subtitle": "LABEL maintainer=\"developer/formateur\" \\\n      stack=\"aspnet,angular,symfony\" \\\n      status=\"caffeinated\"",
+  "nav.home": "docker start home",
+  "nav.resume": "docker logs resume --tail 1",
+  "nav.projects": "docker images | grep projects",
+  "nav.work": "docker history parcours:latest",
+  "copyright": "LABEL copyright=\"2026 Charles Lindecker\" # baked into the image",
+  "made_with": "FROM angular:20 AS portfolio\n# no, we're not using nginx:alpine, fight me",
+  "aria.nav": "# nav service discovery via docker DNS",
+  "aria.socials": "networks:\n  socials:\n    external: true"
+}
