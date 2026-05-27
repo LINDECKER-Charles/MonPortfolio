@@ -1,0 +1,158 @@
+<main class="legal-page">
+  <div class="legal-page__aura" aria-hidden="true"></div>
+
+  <app-legal-layout
+    kickerKey="legal.pc.kicker"
+    titlePreKey="legal.pc.title_pre"
+    titlePostKey="legal.pc.title_post"
+    subtitleKey="legal.pc.sub"
+    [updated]="updated"
+    [tocItems]="toc"
+    [tocLinks]="tocLinks"
+    [crossLinks]="crossLinks">
+
+    <div class="callout">
+      <span class="callout__label">⚜ {{ ts.translate('legal.pc.summary_label') }}</span>
+      <p [innerHTML]="ts.translate('legal.pc.summary')"></p>
+    </div>
+
+    <section id="responsable">
+      <h2><span class="num">I.</span>{{ ts.translate('legal.pc.responsable.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.pc.responsable.lede')"></p>
+      <div class="info-card">
+        <dl>
+          <dt>{{ ts.translate('legal.pc.responsable.dt_responsable') }}</dt>
+          <dd>{{ ts.translate('legal.pc.responsable.dd_responsable') }}</dd>
+          <dt>{{ ts.translate('legal.pc.responsable.dt_qualite') }}</dt>
+          <dd>{{ ts.translate('legal.pc.responsable.dd_qualite') }}</dd>
+          <dt>{{ ts.translate('legal.pc.responsable.dt_contact') }}</dt>
+          <dd [innerHTML]="ts.translate('legal.pc.responsable.dd_contact')"></dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="donnees">
+      <h2><span class="num">II.</span>{{ ts.translate('legal.pc.donnees.title') }}</h2>
+
+      <h3>{{ ts.translate('legal.pc.donnees.h_logs') }}</h3>
+      <p class="lede">{{ ts.translate('legal.pc.donnees.logs_lede') }}</p>
+
+      <div class="legal-table-wrap">
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th>{{ ts.translate('legal.pc.donnees.th_donnee') }}</th>
+              <th>{{ ts.translate('legal.pc.donnees.th_exemple') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ ts.translate('legal.pc.donnees.r_ip') }}</td>
+              <td [innerHTML]="ts.translate('legal.pc.donnees.r_ip_ex')"></td>
+            </tr>
+            <tr>
+              <td>{{ ts.translate('legal.pc.donnees.r_date') }}</td>
+              <td [innerHTML]="ts.translate('legal.pc.donnees.r_date_ex')"></td>
+            </tr>
+            <tr>
+              <td>{{ ts.translate('legal.pc.donnees.r_res') }}</td>
+              <td [innerHTML]="ts.translate('legal.pc.donnees.r_res_ex')"></td>
+            </tr>
+            <tr>
+              <td>{{ ts.translate('legal.pc.donnees.r_agent') }}</td>
+              <td [innerHTML]="ts.translate('legal.pc.donnees.r_agent_ex')"></td>
+            </tr>
+            <tr>
+              <td>{{ ts.translate('legal.pc.donnees.r_ref') }}</td>
+              <td [innerHTML]="ts.translate('legal.pc.donnees.r_ref_ex')"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul>
+        <li [innerHTML]="ts.translate('legal.pc.donnees.li_finalites')"></li>
+        <li [innerHTML]="ts.translate('legal.pc.donnees.li_base')"></li>
+      </ul>
+
+      <h3>{{ ts.translate('legal.pc.donnees.h_email') }}</h3>
+      <p>{{ ts.translate('legal.pc.donnees.email_p') }}</p>
+      <ul>
+        <li [innerHTML]="ts.translate('legal.pc.donnees.email_li')"></li>
+      </ul>
+
+      <h3>{{ ts.translate('legal.pc.donnees.h_audience') }}</h3>
+      <p [innerHTML]="ts.translate('legal.pc.donnees.audience_p1')"></p>
+      <p [innerHTML]="ts.translate('legal.pc.donnees.audience_p2')"></p>
+    </section>
+
+    <section id="destinataires">
+      <h2><span class="num">III.</span>{{ ts.translate('legal.pc.destinataires.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.pc.destinataires.lede')"></p>
+      <p [innerHTML]="ts.translate('legal.pc.destinataires.p2')"></p>
+    </section>
+
+    <section id="transferts">
+      <h2><span class="num">IV.</span>{{ ts.translate('legal.pc.transferts.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.pc.transferts.lede')"></p>
+    </section>
+
+    <section id="duree">
+      <h2><span class="num">V.</span>{{ ts.translate('legal.pc.duree.title') }}</h2>
+      <p class="lede">{{ ts.translate('legal.pc.duree.lede') }}</p>
+      <div class="legal-table-wrap">
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th>{{ ts.translate('legal.pc.duree.th_donnee') }}</th>
+              <th>{{ ts.translate('legal.pc.duree.th_duree') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ ts.translate('legal.pc.duree.r_logs') }}</td>
+              <td>{{ ts.translate('legal.pc.duree.r_logs_d') }}</td>
+            </tr>
+            <tr>
+              <td>{{ ts.translate('legal.pc.duree.r_email') }}</td>
+              <td>{{ ts.translate('legal.pc.duree.r_email_d') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="securite">
+      <h2><span class="num">VI.</span>{{ ts.translate('legal.pc.securite.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.pc.securite.lede')"></p>
+    </section>
+
+    <section id="droits">
+      <h2><span class="num">VII.</span>{{ ts.translate('legal.pc.droits.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.pc.droits.lede')"></p>
+      <p [innerHTML]="ts.translate('legal.pc.droits.p2')"></p>
+
+      <div class="callout callout--warn">
+        <span class="callout__label">⚠ {{ ts.translate('legal.pc.droits.warn_label') }}</span>
+        <p>{{ ts.translate('legal.pc.droits.warn') }}</p>
+      </div>
+
+      <p [innerHTML]="ts.translate('legal.pc.droits.p3')"></p>
+      <div class="info-card">
+        <dl>
+          <dt>{{ ts.translate('legal.pc.droits.dt_autorite') }}</dt>
+          <dd>{{ ts.translate('legal.pc.droits.dd_autorite') }}</dd>
+          <dt>{{ ts.translate('legal.pc.droits.dt_web') }}</dt>
+          <dd [innerHTML]="ts.translate('legal.pc.droits.dd_web')"></dd>
+          <dt>{{ ts.translate('legal.pc.droits.dt_adresse') }}</dt>
+          <dd>{{ ts.translate('legal.pc.droits.dd_adresse') }}</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="evolution">
+      <h2><span class="num">VIII.</span>{{ ts.translate('legal.pc.evolution.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.pc.evolution.lede')"></p>
+    </section>
+  </app-legal-layout>
+</main>

@@ -125,5 +125,21 @@
   "modal.links": "echo '<a href=\"' . $url . '\" target=_blank>'; // target=_blank without rel=noopener. phishing vector: open.",
   "modal.demo": "header('Location: demo.php'); // redirect to demo. demo.php is a 404. has been for 3 years.",
   "modal.site": "echo '<iframe src=\"' . $site . '\" width=100% height=600>'; // iframe: the original micro-frontend",
-  "today": "echo date('Y-m-d'); // at least date() works without mysql_connect"
+  "today": "echo date('Y-m-d'); // at least date() works without mysql_connect",
+  "gup.shortDescription": "<?php exec('winget upgrade'); exec('npm update'); exec('pip install -U'); // 130+ managers. one CLI. this is the PHP-flavored nightmare it replaces. ?>",
+  "gup.longDescription": "<?php /* gup, but imagine it in PHP. Version 0: a 4000-line index.php that shell_exec()'d every package manager it could find. winget? shell_exec. npm? shell_exec. cargo? shell_exec with the args concatenated straight from $_GET. Command injection was not a bug, it was the API. The real gup is TypeScript, uses execa with an argv vector (NO shell), HTTPS only, and CodeQL/Semgrep/gitleaks watch the gates. 130+ providers, interactive mode, fast scan, JSON output, a doctor command. This PHP version had none of that. It had register_globals. */ ?>",
+  "gup.highlights.0": "<?php // 130+ providers via one interface. the PHP draft did it with a switch statement 600 cases long. ?>",
+  "gup.highlights.1": "<?php $mode = $_GET['interactive'] ?? false; // interactive mode, fast scan, JSON output. the JSON was echoed with string concatenation. ?>",
+  "gup.highlights.2": "<?php // execa, no shell, HTTPS only, CodeQL/Semgrep/gitleaks. the PHP version used shell_exec($_GET['cmd']). don't. ?>",
+  "gup.lessonsLearned.0": "// Learned: a common abstraction over 130 managers is not 130 elseif branches",
+  "gup.lessonsLearned.1": "// Learned: JSON output means json_encode(), not gluing braces and quotes by hand",
+  "gup.lessonsLearned.2": "// Learned: 'no shell spawning' is the lesson shell_exec($_GET) teaches you the hard way",
+  "img-convertor.shortDescription": "<?php $img = imagecreatefromjpeg($f); imagewebp($img, $out); // converting images in PHP-GD. img-convertor uses sharp instead. wisely. ?>",
+  "img-convertor.longDescription": "<?php /* img-convertor, if it had been written in PHP-GD like the cursed first attempt. imagecreatefromjpeg(), imagecopyresampled() with manually computed ratios that were always off by one pixel, imagewebp() at quality 80 because someone read it online. AVIF? PHP-GD said no. The real img-convertor is TypeScript + sharp: WebP, AVIF, JPEG, PNG, responsive variants at breakpoint widths, a polished CLI AND an interactive console, recursive dirs, named presets, persistent config, core/ decoupled from UI, 100% test coverage. The PHP version had a memory_limit of 128M and died on anything over 4 megapixels. */ ?>",
+  "img-convertor.highlights.0": "<?php // WebP/AVIF/JPEG/PNG + responsive resize by breakpoint. PHP-GD managed two of those formats and crashed on the third. ?>",
+  "img-convertor.highlights.1": "mysql_query('SELECT preset FROM config'); // named presets + interactive console + recursive dirs. the presets lived in a database for some reason.",
+  "img-convertor.highlights.2": "<?php /* core/ pure logic, decoupled from UI, 100% coverage. the PHP version was one file. tests were a folder named tests containing a .gitkeep. */ ?>",
+  "img-convertor.lessonsLearned.0": "// Learned: pure logic decoupled from the UI is not one 4000-line index.php",
+  "img-convertor.lessonsLearned.1": "// Learned: responsive asset prep end-to-end is sharp's job, not imagecopyresampled()'s",
+  "img-convertor.lessonsLearned.2": "// Learned: 100% test coverage beats a tests/ folder with a single .gitkeep"
 }

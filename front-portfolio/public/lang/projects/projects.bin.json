@@ -125,5 +125,21 @@
   "symfony-session.highlights.2": "PDF_GEN + FullCalendar DYNAMIC_VIEW",
   "symfony-session.lessonsLearned.0": "HARDEN Symfony app WITH multiple SECURITY_LAYERS",
   "symfony-session.lessonsLearned.1": "STRUCT clean MVC codebase ON complete ADMIN_PROJECT",
-  "symfony-session.lessonsLearned.2": "ARTICULATE front_ergonomics AND server_side MANAGEMENT_LOGIC"
+  "symfony-session.lessonsLearned.2": "ARTICULATE front_ergonomics AND server_side MANAGEMENT_LOGIC",
+  "gup.shortDescription": "0b01100111 GUP.exe — SCAN + UPDATE everything_installed ACROSS 130+ package_managers",
+  "gup.longDescription": "GUP.exe — Global Updater. UNIFY software_updates VIA 130+ sources[]: winget, scoop, choco, npm, pnpm, pip, cargo, dotnet, helm, kubectl, terraform, WSL... SINGLE_INTERFACE + interactive_mode + fast_scan + JSON_output FOR ci_cd + doctor_cmd FOR provider_detection. SECURITY=DEEP: execa NO_SHELL (argv_vector), HTTPS_ONLY, CodeQL|Semgrep|gitleaks STATIC_ANALYSIS",
+  "gup.highlights.0": "SINGLE update_interface FOR 130+ providers (winget, npm, cargo, pip, kubectl)",
+  "gup.highlights.1": "INTERACTIVE_MODE + fast_scan + JSON_output + doctor_detection",
+  "gup.highlights.2": "SECURITY_DEPTH: execa NO_SHELL, HTTPS_ONLY, CodeQL|Semgrep|gitleaks",
+  "gup.lessonsLearned.0": "DESIGN common_abstraction OVER dozens_of heterogeneous_managers[]",
+  "gup.lessonsLearned.1": "INDUSTRIALIZE testable + scriptable CLI FOR ci_cd",
+  "gup.lessonsLearned.2": "APPLY defense_in_depth SECURITY TO system_tool",
+  "img-convertor.shortDescription": "0b01101001 IMG_CONVERTOR.exe — CONVERT + RESIZE responsive FOR web: WebP|AVIF|JPEG|PNG, CLI|INTERACTIVE",
+  "img-convertor.longDescription": "IMG_CONVERTOR.exe — CONVERT(WebP|AVIF|JPEG|PNG) + RESIZE responsive_variants AT breakpoint_widths, PRESERVE aspect_ratio. POLISHED_CLI + interactive_console + recursive_traversal + named_presets[] + persistent_config(~/.img-convertor/config.json). ARCH: core/ PURE_LOGIC DECOUPLED FROM ui. POWERED_BY sharp|Commander|Inquirer. TEST_COVERAGE=100% + multi_os ci",
+  "img-convertor.highlights.0": "CONVERT WebP|AVIF|JPEG|PNG + responsive_resize BY breakpoint",
+  "img-convertor.highlights.1": "POLISHED_CLI + interactive_console + recursive_processing + configurable_presets[]",
+  "img-convertor.highlights.2": "core/ PURE_ARCH DECOUPLED FROM ui, TEST_COVERAGE=100%",
+  "img-convertor.lessonsLearned.0": "DECOUPLE pure_business_logic FROM cli + interactive_interfaces",
+  "img-convertor.lessonsLearned.1": "TOOL responsive_web_asset_prep END_TO_END",
+  "img-convertor.lessonsLearned.2": "MAINTAIN exhaustive_test_coverage ON image_processing_tool"
 }

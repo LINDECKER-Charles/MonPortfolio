@@ -1,106 +1,149 @@
 :host {
   display: block;
+  position: sticky;
+  top: 6rem;
+  align-self: start;
 }
 
 .works-cert {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.1rem;
 }
+
+/* ── En-tête de chapitre ──────────────────────────────────────────────────── */
 
 .works-cert__head {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.works-cert__title {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-variant: small-caps;
+}
+
+.works-cert__num {
+  color: var(--color-blood);
+  font-family: var(--font-display);
+  font-size: 0.85em;
+  letter-spacing: var(--tracking-rune);
+}
+
+.works-cert__meta {
+  font-size: 0.66rem;
+  color: var(--color-ash-dim);
+}
+
+/* ── Filtres par catégorie ────────────────────────────────────────────────── */
+
+.works-cert__filters {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.35rem;
-  text-align: center;
 }
 
-.works-cert__eyebrow {
-  margin: 0;
-  align-self: center;
-}
-
-.works-cert__head h2 {
-  margin: 0;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-}
-
-/* ── Grille de sceaux ────────────────────────────────────────────────────
-   3 colonnes en desktop, 2 en tablette, 1 en mobile.
-   Chaque item est un "sceau" cliquable (si url présente).
-   ──────────────────────────────────────────────────────────────────────── */
-
-.works-cert__grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.works-cert__item {
-  display: flex;
-}
-
-.works-cert__card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.works-cert__filter {
+  appearance: none;
+  font: inherit;
+  font-size: 0.62rem;
+  display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 1.3rem 1.1rem 1.15rem;
-  border-radius: var(--radius-panel);
-  border: var(--border-gilded);
-  background:
-    linear-gradient(180deg, rgb(43 38 31 / 0.72), rgb(24 22 20 / 0.88)),
-    var(--glow-gold-haze);
-  box-shadow:
-    0 10px 22px rgb(0 0 0 / 0.24),
-    inset 0 1px 0 rgb(255 248 220 / 0.04);
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-/* Variante cliquable — inherit styles + hover lift */
-.works-cert__card--link {
+  gap: 0.35rem;
+  padding: 0.34rem 0.6rem;
+  border-radius: var(--radius-chip);
+  border: var(--border-ash-strong);
+  background: transparent;
+  color: var(--color-ash-dim);
   cursor: pointer;
 }
 
-.works-cert__card--link:hover {
-  transform: translateY(-2px);
-  border-color: rgb(164 148 118 / 0.42);
-  box-shadow:
-    0 16px 32px rgb(0 0 0 / 0.34),
-    0 0 0 1px rgb(164 148 118 / 0.1),
-    0 0 16px rgb(126 100 52 / 0.14),
-    inset 0 1px 0 rgb(255 248 220 / 0.08);
+.works-cert__filter:hover {
+  color: var(--color-bone);
+  border-color: rgb(166 10 10 / 0.18);
 }
 
-.works-cert__card--link:active {
-  transform: scale(0.99);
+.works-cert__filter.is-active {
+  color: var(--color-parchment);
+  border-color: rgb(164 148 118 / 0.28);
+  background: var(--gradient-gold-chip);
+  box-shadow: var(--shadow-gilded);
 }
 
-/* ── Médaillon logo ─────────────────────────────────────────────────────── */
+.works-cert__filter-glyph {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--color-gold-faint);
+  line-height: 1;
+}
+
+.works-cert__filter.is-active .works-cert__filter-glyph {
+  color: var(--color-parchment);
+}
+
+/* ── Liste des sceaux ─────────────────────────────────────────────────────── */
+
+.works-cert__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.works-cert__item {
+  border-bottom: 1px dashed rgb(215 215 215 / 0.1);
+}
+
+.works-cert__item:last-child {
+  border-bottom: none;
+}
+
+.works-cert__row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radius-chip);
+}
+
+.works-cert__row--link {
+  cursor: pointer;
+}
+
+.works-cert__row--link:hover {
+  background: rgb(255 255 255 / 0.03);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.works-cert__row--link:hover .works-cert__name {
+  color: var(--color-bone-bright);
+}
+
+.works-cert__row--link:hover .works-cert__yr {
+  color: var(--color-ember-soft);
+}
+
+/* ── Médaillon logo (compact) ─────────────────────────────────────────────── */
 
 .works-cert__medal {
-  width: 64px;
-  height: 64px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-pill);
-  border: var(--border-gilded-strong);
-  background:
-    radial-gradient(circle at center,
-      rgb(255 255 255 / 0.06) 0%,
-      rgb(12 10 8 / 0.6) 100%);
+  border: var(--border-gilded);
+  background: radial-gradient(circle at center, rgb(255 255 255 / 0.06) 0%, rgb(12 10 8 / 0.6) 100%);
   display: grid;
   place-items: center;
-  padding: 8px;
-  box-shadow:
-    inset 0 1px 0 rgb(255 248 220 / 0.1),
-    0 0 14px rgb(164 148 118 / 0.16);
+  padding: 5px;
   overflow: hidden;
 }
 
@@ -113,74 +156,56 @@
   object-fit: contain;
 }
 
-/* ── Textes ─────────────────────────────────────────────────────────────── */
+/* ── Textes ───────────────────────────────────────────────────────────────── */
 
-.works-cert__content {
+.works-cert__info {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  align-items: center;
-  width: 100%;
+  gap: 0.12rem;
+  min-width: 0;
 }
 
-.works-cert__title {
-  margin: 0.25rem 0 0;
-  font-size: 1rem;
+.works-cert__name {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
   line-height: 1.25;
-  min-height: 2.5em;
-  display: flex;
-  align-items: center;
-}
-
-.works-cert__org {
-  margin: 0;
   color: var(--color-bone);
-  font-size: 0.86rem;
-  font-variant: small-caps;
-  letter-spacing: 0.05em;
 }
 
-.works-cert__issued,
-.works-cert__credential {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  font-size: 0.78rem;
-  color: var(--color-ash-dim);
+.works-cert__issuer {
+  font-size: 0.58rem;
+  color: var(--color-ash-faint);
 }
 
-.works-cert__credential code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.72rem;
+.works-cert__yr {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
   color: var(--color-gold-faint);
-  background: rgb(12 10 8 / 0.5);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-chip);
-  border: var(--border-ash);
+  white-space: nowrap;
 }
 
-.works-cert__link-hint {
-  margin-top: 0.25rem;
-  font-size: 0.68rem;
-  color: var(--color-parchment);
-  opacity: 0.7;
-  transition: opacity var(--duration-base) ease;
-}
+/* ── Tablette / mobile : rail empilé sous la timeline ─────────────────────── */
 
-.works-cert__card--link:hover .works-cert__link-hint {
-  opacity: 1;
-  color: var(--color-ember-soft);
-}
-
-@media (max-width: 640px) {
-  .works-cert__grid {
-    grid-template-columns: 1fr;
+@media (max-width: 980px) {
+  /* Plus de colonne sticky une fois passé en pleine largeur. */
+  :host {
+    position: static;
+    top: auto;
   }
+}
 
-  .works-cert__medal {
-    width: 56px;
-    height: 56px;
+/* Largeur disponible en pleine largeur : on étale les sceaux sur 2 colonnes. */
+@media (max-width: 980px) and (min-width: 681px) {
+  .works-cert__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .works-cert__filter {
+    transition: none;
   }
 }

@@ -1,17 +1,15 @@
 <main class="works-page">
-  <section class="works-page__section" id="hero">
+  <section class="works-page__hero" id="hero">
     <app-works-header></app-works-header>
   </section>
 
-  <section class="works-page__section" id="experiences">
-    <app-works-experiences></app-works-experiences>
-  </section>
+  <div class="works-page__grid">
+    <div class="works-page__timeline" id="parcours">
+      <app-works-timeline></app-works-timeline>
+    </div>
 
-  <section class="works-page__section" id="education">
-    <app-works-education></app-works-education>
-  </section>
-
-  <section class="works-page__section" id="certifications">
-    <app-works-certifications></app-works-certifications>
-  </section>
+    <aside class="works-page__rail" id="certifications">
+      <app-works-certifications></app-works-certifications>
+    </aside>
+  </div>
 </main>

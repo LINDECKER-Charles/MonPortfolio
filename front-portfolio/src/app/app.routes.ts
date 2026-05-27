@@ -7,7 +7,11 @@ import { PROJECTS_DATA } from './components/page/projects/projects.state';
 import { Projects } from './components/page/projects/projects';
 import { Works } from './components/page/works/works';
 import { Linktree } from './components/page/linktree/linktree';
+import { MentionsLegales } from './components/page/legal/mentions-legales/mentions-legales';
+import { PolitiqueConfidentialite } from './components/page/legal/politique-confidentialite/politique-confidentialite';
+import { PolitiqueCookies } from './components/page/legal/politique-cookies/politique-cookies';
 import { NotFound } from './components/page/not-found/not-found';
+import { imageServerUrl } from './img-sources/image-server';
 
 const SITE_URL = 'https://charles-lindecker.com';
 const LOGO_URL = `${SITE_URL}/logo/80x80_logo_white.webp`;
@@ -18,7 +22,7 @@ const personSchema = {
   '@id': `${SITE_URL}/#charles-lindecker`,
   name: 'Charles Lindecker',
   url: SITE_URL,
-  image: `${SITE_URL}/photos/640x853_me.webp`,
+  image: imageServerUrl('/photos/640x960_me-1.webp'),
   jobTitle: 'Developpeur Full Stack',
   knowsAbout: [
     '.NET',
@@ -325,6 +329,114 @@ export const routes: Routes = [
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
           { name: 'Linktree', url: `${SITE_URL}/linktree` },
+        ]),
+      ],
+      showFooter: true,
+    },
+  },
+  {
+    path: 'mentions-legales',
+    component: MentionsLegales,
+    title: 'Mentions legales - Charles Lindecker',
+    data: {
+      description:
+        'Mentions legales du site de Charles Lindecker : editeur, directeur de publication, hebergeur, propriete intellectuelle et droit applicable.',
+      canonical: `${SITE_URL}/mentions-legales`,
+      robots: 'index, follow',
+      ogTitle: 'Mentions legales - Charles Lindecker',
+      ogDescription:
+        'Editeur, hebergeur, propriete intellectuelle et droit applicable du site charles-lindecker.com.',
+      ogImage: LOGO_URL,
+      ogUrl: `${SITE_URL}/mentions-legales`,
+      ogType: 'website',
+      twitterCard: 'summary',
+      twitterTitle: 'Mentions legales - Charles Lindecker',
+      twitterDescription:
+        'Editeur, hebergeur, propriete intellectuelle et droit applicable du site.',
+      twitterImage: SOCIAL_IMAGE_URL,
+      structuredData: [
+        {
+          '@type': 'WebPage',
+          name: 'Mentions legales - Charles Lindecker',
+          url: `${SITE_URL}/mentions-legales`,
+          isPartOf: { '@id': `${SITE_URL}/#website` },
+          about: { '@id': `${SITE_URL}/#charles-lindecker` },
+        },
+        breadcrumb([
+          { name: 'Accueil', url: SITE_URL },
+          { name: 'Mentions legales', url: `${SITE_URL}/mentions-legales` },
+        ]),
+      ],
+      showFooter: true,
+    },
+  },
+  {
+    path: 'politique-confidentialite',
+    component: PolitiqueConfidentialite,
+    title: 'Politique de confidentialite - Charles Lindecker',
+    data: {
+      description:
+        'Politique de confidentialite du site de Charles Lindecker : donnees traitees, finalites, durees de conservation et droits RGPD des utilisateurs.',
+      canonical: `${SITE_URL}/politique-confidentialite`,
+      robots: 'index, follow',
+      ogTitle: 'Politique de confidentialite - Charles Lindecker',
+      ogDescription:
+        'Traitement des donnees personnelles, finalites, conservation et droits RGPD sur charles-lindecker.com.',
+      ogImage: LOGO_URL,
+      ogUrl: `${SITE_URL}/politique-confidentialite`,
+      ogType: 'website',
+      twitterCard: 'summary',
+      twitterTitle: 'Politique de confidentialite - Charles Lindecker',
+      twitterDescription:
+        'Donnees traitees, finalites, conservation et droits RGPD des utilisateurs.',
+      twitterImage: SOCIAL_IMAGE_URL,
+      structuredData: [
+        {
+          '@type': 'WebPage',
+          name: 'Politique de confidentialite - Charles Lindecker',
+          url: `${SITE_URL}/politique-confidentialite`,
+          isPartOf: { '@id': `${SITE_URL}/#website` },
+          about: { '@id': `${SITE_URL}/#charles-lindecker` },
+        },
+        breadcrumb([
+          { name: 'Accueil', url: SITE_URL },
+          { name: 'Politique de confidentialite', url: `${SITE_URL}/politique-confidentialite` },
+        ]),
+      ],
+      showFooter: true,
+    },
+  },
+  {
+    path: 'politique-cookies',
+    component: PolitiqueCookies,
+    title: 'Politique de cookies - Charles Lindecker',
+    data: {
+      description:
+        'Politique de cookies et de stockage local du site de Charles Lindecker : aucun cookie ni traceur, seules des preferences fonctionnelles en localStorage.',
+      canonical: `${SITE_URL}/politique-cookies`,
+      robots: 'index, follow',
+      ogTitle: 'Politique de cookies - Charles Lindecker',
+      ogDescription:
+        'Aucun cookie ni traceur : seules des preferences fonctionnelles (langue, audio) en stockage local.',
+      ogImage: LOGO_URL,
+      ogUrl: `${SITE_URL}/politique-cookies`,
+      ogType: 'website',
+      twitterCard: 'summary',
+      twitterTitle: 'Politique de cookies - Charles Lindecker',
+      twitterDescription:
+        'Aucun cookie ni traceur : seules des preferences fonctionnelles en stockage local.',
+      twitterImage: SOCIAL_IMAGE_URL,
+      structuredData: [
+        {
+          '@type': 'WebPage',
+          name: 'Politique de cookies - Charles Lindecker',
+          url: `${SITE_URL}/politique-cookies`,
+          isPartOf: { '@id': `${SITE_URL}/#website` },
+          about: { '@id': `${SITE_URL}/#charles-lindecker` },
+        },
+        breadcrumb([
+          { name: 'Accueil', url: SITE_URL },
+          { name: 'Politique de cookies', url: `${SITE_URL}/politique-cookies` },
         ]),
       ],
       showFooter: true,

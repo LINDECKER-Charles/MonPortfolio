@@ -125,5 +125,21 @@
   "modal.links": "// links: <a href='javascript:void(0)' onclick='window.open(url)'>. every link opens a popup. every popup is blocked. zero links work.",
   "modal.demo": "// demo link: points to localhost:4200. works on my machine. only on my machine.",
   "modal.site": "// site link: href is a relative path '../../../site/index.html'. resolves to /index.html. which is this site. clicking 'site' opens this page. recursive portfolio.",
-  "today": "var today = new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate(); // 3 new Date() calls. what if midnight strikes between them? different days. that's the fun."
+  "today": "var today = new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate(); // 3 new Date() calls. what if midnight strikes between them? different days. that's the fun.",
+  "gup.shortDescription": "eval(prompt('which package manager?')+' upgrade'); // v0 of gup. one eval(). user-supplied. 130 managers, infinite vulnerabilities.",
+  "gup.longDescription": "/* gup: The Global Updater. The honest version is TypeScript with execa, no shell, HTTPS only, CodeQL/Semgrep/gitleaks. This is the spaghetti origin story. v0.1: a while(true) loop that ran every update command it could string-concatenate. winget, npm, pip, cargo — all via child_process.exec(userInput). v0.2: added security — wrapped exec() in a try/catch that printed all good! regardless. v0.3: the doctor command. It detected providers by parsing the output of ls /usr/bin with three nested split() calls. v0.4: JSON output. Implemented by gluing braces, keys and values together with +. A value contained an apostrophe once. The pipeline has been red since. */",
+  "gup.highlights.0": "providers.forEach(p=>exec(p+' update')); // 130+ providers, one forEach, zero error handling. it updates until something explodes.",
+  "gup.highlights.1": "var json='{'; for(k in r){json+=k+':'+r[k]+','} json+='}'; // interactive + scan + JSON output. trailing comma. invalid JSON. ships anyway.",
+  "gup.highlights.2": "try{exec(cmd)}catch(e){console.log('secure ✓')} // 'defense in depth'. the depth is one try/catch. the defense is a checkmark.",
+  "gup.lessonsLearned.0": "// Learned: a common abstraction is not child_process.exec() in a for loop",
+  "gup.lessonsLearned.1": "// Learned: building JSON with string concatenation is how pipelines learn to hate you",
+  "gup.lessonsLearned.2": "// Learned: a try/catch that prints secure ✓ is not a security model",
+  "img-convertor.shortDescription": "img.onload=()=>{c.drawImage(img,0,0);out.src=c.toDataURL('image/webp')} // 'image converter'. one canvas. converts until the tab crashes.",
+  "img-convertor.longDescription": "/* img-convertor: WebP, AVIF, JPEG, PNG, responsive, sharp, 100% coverage. That's the real one. The spaghetti prototype: a single canvas element, drawImage(), and toDataURL(). AVIF support? coming soon (it wasn't). Responsive variants? A for loop that set canvas.width to [320,640,1280] and re-encoded each time, leaking the canvas every iteration. Recursive directories? It read one file. The interactive mode was a series of prompt() calls. The config was a global var called CONFIG that was reassigned in four different files. We migrated to TypeScript + sharp and core/ logic decoupled from the UI. The canvas is in a museum now. */",
+  "img-convertor.highlights.0": "[320,640,1280].map(w=>resize(w)); // WebP/AVIF/JPEG/PNG + responsive breakpoints. the map() leaked a canvas each time. memory went up. so did the graph.",
+  "img-convertor.highlights.1": "var CONFIG=CONFIG||{}; // interactive console + presets + recursive dirs. CONFIG was global, reassigned in 4 files. nobody knew which won.",
+  "img-convertor.highlights.2": "// core/ decoupled from UI, 100% coverage. the prototype was one file, one canvas, zero tests, infinite confidence.",
+  "img-convertor.lessonsLearned.0": "// Learned: decoupling core/ from the UI means not reassigning a global CONFIG in four files",
+  "img-convertor.lessonsLearned.1": "// Learned: responsive asset prep is sharp's job, not a canvas leaking memory in a map()",
+  "img-convertor.lessonsLearned.2": "// Learned: 100% coverage on an image tool means you stopped trusting toDataURL()"
 }

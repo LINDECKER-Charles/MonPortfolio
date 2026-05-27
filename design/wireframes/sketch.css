@@ -1,0 +1,210 @@
+/* ───────────────────────────────────────────────
+   Wireframes — Parchemin Gothique
+   Lo-fi / sketchy avec direction Bloodborne
+   ─────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Caveat:wght@500;700&family=Kalam:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #d8cba8;          /* bone cream — main ink */
+  --ink-soft: #a89a78;     /* faded ink */
+  --ink-faint: #6e6248;    /* ghost ink */
+  --paper: #14100c;        /* deep aged parchment burnt */
+  --paper-2: #1c1812;      /* slightly raised */
+  --paper-3: #251f17;      /* card surface */
+  --blood: #c2363e;        /* crimson accent */
+  --blood-dim: #7a1f24;
+  --gold: #b8945a;         /* gilded accent */
+  --gold-dim: #6e5836;
+  --moss: #6a7a48;         /* archived / faded green */
+
+  --serif: 'Cinzel', 'Times New Roman', serif;
+  --hand: 'Caveat', cursive;
+  --hand2: 'Kalam', cursive;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+.wf {
+  font-family: var(--hand2);
+  color: var(--ink);
+  background: var(--paper);
+  width: 100%;
+  height: 100%;
+  padding: 32px 40px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle paper grain — single noise layer baked in */
+.wf::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(184,148,90,0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(194,54,62,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.wf > * { position: relative; }
+
+/* ── Typography ─────────────────────────────── */
+.wf h1, .wf .h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 38px;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.wf h2, .wf .h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+}
+.wf h3, .wf .h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.wf .kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.wf .note {
+  font-family: var(--hand);
+  font-size: 20px;
+  color: var(--blood);
+  line-height: 1.1;
+}
+.wf .mono { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+
+/* ── Sketchy borders ────────────────────────── */
+.box {
+  border: 1.5px dashed var(--ink-soft);
+  border-radius: 2px;
+  background: var(--paper-2);
+}
+.box-solid { border: 1.5px solid var(--ink); border-radius: 2px; background: var(--paper-3); }
+.box-faint { border: 1px dashed var(--ink-faint); border-radius: 2px; }
+.box-blood { border: 1.5px solid var(--blood); background: rgba(194,54,62,0.06); }
+
+/* placeholder image */
+.ph {
+  background:
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(168,154,120,0.10) 14px 15px),
+    var(--paper-3);
+  border: 1.2px dashed var(--ink-faint);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* chip / tag */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--ink-soft);
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.chip-on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.chip-blood { border-color: var(--blood); color: var(--blood); }
+.chip-blood.chip-on { background: var(--blood); color: var(--ink); }
+.chip-gold { border-color: var(--gold-dim); color: var(--gold); }
+.chip-mini { padding: 2px 7px; font-size: 9px; letter-spacing: 0.08em; }
+
+/* status dots */
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot-active { background: var(--blood); box-shadow: 0 0 8px var(--blood-dim); }
+.dot-wip { background: var(--gold); }
+.dot-archived { background: var(--moss); opacity: 0.6; }
+
+/* type icon (small glyph in box) */
+.glyph {
+  width: 26px; height: 26px;
+  border: 1px solid var(--ink-soft);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--paper);
+  flex-shrink: 0;
+}
+
+/* search box */
+.search {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 14px;
+  border: 1.5px dashed var(--ink-soft);
+  background: var(--paper-2);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* sketchy underline for headings */
+.underline-sketch {
+  background-image: linear-gradient(to right, var(--ink-soft) 0, var(--ink-soft) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  padding-bottom: 6px;
+}
+
+/* annotation arrow + label */
+.annot {
+  position: absolute;
+  font-family: var(--hand);
+  color: var(--blood);
+  font-size: 18px;
+  line-height: 1.1;
+  pointer-events: none;
+  z-index: 10;
+}
+.annot svg { display: block; }
+
+/* layout helpers */
+.row { display: flex; align-items: center; gap: 10px; }
+.col { display: flex; flex-direction: column; gap: 10px; }
+.spread { display: flex; align-items: center; justify-content: space-between; }
+.divider {
+  height: 1px;
+  background: repeating-linear-gradient(to right, var(--ink-faint) 0 6px, transparent 6px 12px);
+}
+.divider-v {
+  width: 1px; align-self: stretch;
+  background: repeating-linear-gradient(to bottom, var(--ink-faint) 0 6px, transparent 6px 12px);
+}
+
+/* subtle scribble for "more" or selected */
+.scribble {
+  font-family: var(--hand);
+  color: var(--blood);
+  font-size: 16px;
+  transform: rotate(-3deg);
+  display: inline-block;
+}

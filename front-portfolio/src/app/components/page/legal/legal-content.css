@@ -1,0 +1,311 @@
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  MANUSCRIT LÉGAL — styles partagés par les 3 pages légales.               ║
+   ║  Inclus via styleUrls dans chaque page : l'encapsulation Angular scope    ║
+   ║  ces règles au contenu projeté (qui porte l'attribut de la page).         ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
+
+:host {
+  display: block;
+}
+
+.legal-page {
+  position: relative;
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1rem, 5vw, 3.5rem) 5rem;
+}
+
+.legal-page__aura {
+  position: absolute;
+  inset: -2rem -4rem auto -4rem;
+  height: 460px;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(20px);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(166 10 10 / 0.08), transparent 55%),
+    radial-gradient(ellipse at 15% 20%, rgb(126 100 52 / 0.08), transparent 60%);
+}
+
+.legal-page > app-legal-layout {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SECTIONS ────────────────────────────────────────────────────────────── */
+
+.legal-page section {
+  margin-bottom: clamp(2.25rem, 4vw, 3.25rem);
+  scroll-margin-top: 6rem;
+}
+
+.legal-page h2 {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0 0 1.4rem;
+  padding-bottom: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  letter-spacing: var(--tracking-sigil);
+  text-transform: uppercase;
+  color: var(--color-parchment);
+  border-bottom: var(--border-gilded);
+}
+
+.legal-page h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 60px;
+  height: 1px;
+  background: var(--color-blood);
+}
+
+.legal-page h2 .num {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--color-blood);
+}
+
+.legal-page h3 {
+  margin: 1.75rem 0 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: var(--tracking-rune);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.legal-page p {
+  margin: 0 0 1rem;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-bone);
+}
+
+/* Lettrine sang sur le premier paragraphe d'un chapitre */
+.legal-page .lede::first-letter {
+  float: left;
+  margin: 0.05em 0.12em 0 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 4.2em;
+  line-height: 0.85;
+  color: var(--color-blood);
+  text-shadow: var(--text-shadow-engraved-deep);
+}
+
+.legal-page a {
+  color: var(--color-gold);
+  border-bottom: 1px dotted var(--color-gold-dim);
+  transition:
+    color var(--duration-base) var(--ease-ritual),
+    border-color var(--duration-base) var(--ease-ritual);
+}
+
+.legal-page a:hover {
+  color: var(--color-bone);
+  border-color: var(--color-bone);
+}
+
+.legal-page strong {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-bone-bright);
+}
+
+.legal-page code {
+  padding: 0.05em 0.4em;
+  border-radius: 4px;
+  border: var(--border-gilded);
+  background: var(--color-stone);
+  font-family: var(--font-ui);
+  font-size: 0.82em;
+  color: var(--color-gold);
+}
+
+/* ── LISTES ──────────────────────────────────────────────────────────────── */
+
+.legal-page ul {
+  margin: 0 0 1.1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.legal-page li {
+  position: relative;
+  padding: 0.25rem 0 0.25rem 1.4rem;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--color-bone);
+}
+
+.legal-page li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+  font-size: 0.5rem;
+  color: var(--color-blood);
+}
+
+/* ── CARTE D'INFORMATION (éditeur, hébergeur, autorité…) ─────────────────── */
+
+.legal-page .info-card {
+  position: relative;
+  margin: 0.75rem 0 1.1rem;
+  padding: 1.1rem 1.35rem;
+  border: var(--border-gilded);
+  background: var(--gradient-crypt);
+}
+
+.legal-page .info-card::before,
+.legal-page .info-card::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--color-gold-dim);
+  pointer-events: none;
+}
+
+.legal-page .info-card::before {
+  top: 4px;
+  left: 4px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.legal-page .info-card::after {
+  bottom: 4px;
+  right: 4px;
+  border-left: none;
+  border-top: none;
+}
+
+.legal-page .info-card dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.1rem;
+  align-items: baseline;
+}
+
+.legal-page .info-card dt {
+  font-family: var(--font-ui);
+  font-size: 0.625rem;
+  letter-spacing: var(--tracking-sigil);
+  text-transform: uppercase;
+  color: var(--color-ash-dim);
+}
+
+.legal-page .info-card dd {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  color: var(--color-bone);
+}
+
+/* ── ENCART / MARGINALIA ─────────────────────────────────────────────────── */
+
+.legal-page .callout {
+  position: relative;
+  margin: 1.1rem 0 1.3rem;
+  padding: 1.1rem 1.35rem;
+  border-left: 2px solid var(--color-blood);
+  background: linear-gradient(180deg, var(--color-stone-elevated), var(--color-stone));
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--color-ash);
+}
+
+.legal-page .callout__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-ui);
+  font-style: normal;
+  font-size: 0.625rem;
+  letter-spacing: var(--tracking-sigil);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.legal-page .callout p {
+  margin: 0;
+  font-style: italic;
+  color: var(--color-bone);
+}
+
+.legal-page .callout strong {
+  color: var(--color-blood);
+}
+
+.legal-page .callout--warn {
+  border-left-color: var(--color-gold);
+}
+
+.legal-page .callout--warn .callout__label {
+  color: var(--color-gold);
+}
+
+.legal-page .callout--warn strong {
+  color: var(--color-gold);
+}
+
+/* ── REGISTRE / TABLEAU ──────────────────────────────────────────────────── */
+
+.legal-page .legal-table-wrap {
+  margin: 1.1rem 0 1.3rem;
+  overflow-x: auto;
+}
+
+.legal-page .ledger {
+  width: 100%;
+  border-collapse: collapse;
+  border: var(--border-gilded);
+  background: var(--color-stone-deep);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+}
+
+.legal-page .ledger th {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-sigil);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  background: var(--color-stone-elevated);
+  border-bottom: var(--border-gilded);
+}
+
+.legal-page .ledger td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px dashed rgb(164 148 118 / 0.18);
+  color: var(--color-bone);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.legal-page .ledger tr:last-child td {
+  border-bottom: none;
+}
+
+.legal-page .ledger code {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-moonlight);
+  font-size: 0.95em;
+}

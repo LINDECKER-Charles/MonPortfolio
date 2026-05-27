@@ -125,5 +125,21 @@
   "symfony-session.highlights.2": "generatePDF();new FullCalendar(el)//dynamic",
   "symfony-session.lessonsLearned.0": "hardenSymfony({securityLayers:'multiple'})",
   "symfony-session.lessonsLearned.1": "structureMVC({clean:!0,project:'complete_admin'})",
-  "symfony-session.lessonsLearned.2": "articulate('front_ergonomics','server_management')"
+  "symfony-session.lessonsLearned.2": "articulate('front_ergonomics','server_management')",
+  "gup.shortDescription": "scanAndUpdate('*',{packageManagers:'130+'})",
+  "gup.longDescription": "const gup=new GlobalUpdater();gup.aggregate(['winget','scoop','choco','npm','pnpm','pip','cargo','dotnet','helm','kubectl','terraform','wsl']);gup.run({interface:'single',interactive:!0,fastScan:!0,output:'json',doctor:!0,security:{exec:'execa',shell:!1,https:!0,scan:['CodeQL','Semgrep','gitleaks']}})",
+  "gup.highlights.0": "updateAll({providers:'130+',via:['winget','npm','cargo','pip','kubectl']})",
+  "gup.highlights.1": "gup.run({interactive:!0,fastScan:!0,output:'json',doctor:!0})",
+  "gup.highlights.2": "secure({exec:'execa',shell:!1,https:!0,sast:['CodeQL','Semgrep','gitleaks']})",
+  "gup.lessonsLearned.0": "designAbstraction({over:'heterogeneousManagers',count:'dozens'})",
+  "gup.lessonsLearned.1": "industrialize({cli:!0,testable:!0,scriptable:!0,for:'ci/cd'})",
+  "gup.lessonsLearned.2": "applyDefenseInDepth({target:'systemTool'})",
+  "img-convertor.shortDescription": "convertAndResize({formats:['webp','avif','jpeg','png'],responsive:!0,modes:['cli','interactive']})",
+  "img-convertor.longDescription": "const ic=new ImgConvertor();ic.convert(['webp','avif','jpeg','png']);ic.resize({responsive:!0,byBreakpoint:!0,preserveRatio:!0});ic.ui(['cli','interactiveConsole']);ic.recursive(!0).presets('named').config('~/.img-convertor/config.json');ic.engine('sharp').deps(['Commander','Inquirer']);ic.arch({core:'decoupledFromUi',coverage:1})",
+  "img-convertor.highlights.0": "convert(['webp','avif','jpeg','png']);resize({responsive:!0,byBreakpoint:!0})",
+  "img-convertor.highlights.1": "ui(['cli','interactive']);recursive(!0);presets({configurable:!0})",
+  "img-convertor.highlights.2": "arch({core:'pure',decoupledFromUi:!0,coverage:1})",
+  "img-convertor.lessonsLearned.0": "decouple({logic:'pure',from:['cli','interactive']})",
+  "img-convertor.lessonsLearned.1": "tool({assetPrep:'responsiveWeb',mode:'endToEnd'})",
+  "img-convertor.lessonsLearned.2": "maintain({coverage:'exhaustive',on:'imageTool'})"
 }

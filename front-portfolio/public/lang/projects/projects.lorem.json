@@ -125,5 +125,21 @@
   "modal.links": "Nexus",
   "modal.demo": "Demonstratio",
   "modal.site": "Situs",
-  "today": "Hodie Ipsum"
+  "today": "Hodie Ipsum",
+  "gup.shortDescription": "Una CLI ipsum ad scrutandum et renovandum omnia installata in machina developatoris dolor — plus quam 130 administratores fasciculorum amet.",
+  "gup.longDescription": "Lorem ipsum dolor sit amet, gup (Global Updater) est instrumentum lineae imperii quod renovationes programmatum unificat, plus quam 130 fontes congregans: winget, scoop, choco, npm, pip, cargo, kubectl, terraform et alia. Consectetur adipiscing, fragmentationem administratorum sanat per interfaciem unicam, modum interactivum, scrutationem celerem, exitum JSON pro CI/CD et imperium doctor. Securitas in altum: execa sine cochlea, HTTPS solum, CodeQL/Semgrep/gitleaks lorem ipsum.",
+  "gup.highlights.0": "Interfacies unica pro 130+ providers (winget, npm, cargo, pip, kubectl…) ipsum",
+  "gup.highlights.1": "Modus interactivus, scrutatio celeris, exitus JSON et imperium doctor dolor",
+  "gup.highlights.2": "Securitas in altum: execa sine cochlea, HTTPS solum, CodeQL/Semgrep/gitleaks amet",
+  "gup.lessonsLearned.0": "Fingere abstractionem communem super decem administratores heterogeneos lorem",
+  "gup.lessonsLearned.1": "Industriam facere CLI probabilem et scriptabilem pro CI/CD ipsum",
+  "gup.lessonsLearned.2": "Applicare rationem securitatis in profundum ad instrumentum systematis dolor",
+  "img-convertor.shortDescription": "Conversor imaginum et resizer responsivus celer pro web ipsum — WebP, AVIF, JPEG, PNG, CLI vel interactivus amet.",
+  "img-convertor.longDescription": "Lorem ipsum dolor sit amet, img-convertor est instrumentum lineae imperii ad praeparanda bona web: conversio inter WebP, AVIF, JPEG et PNG, et generatio variantium responsivarum ad latitudines punctorum, ratione servata. Consectetur, praebet CLI politam et consolam interactivam, processum recursivum, praesetta nominata et configurationem persistentem. Nititur sharp, Commander et Inquirer, cum coverage 100% et CI GitHub Actions php artisan lorem.",
+  "img-convertor.highlights.0": "Conversio WebP / AVIF / JPEG / PNG et resizing responsivum per puncta ipsum",
+  "img-convertor.highlights.1": "CLI polita et consola interactiva, processus recursivus et praesetta configurabilia dolor",
+  "img-convertor.highlights.2": "Architectura core/ pura ab interfacie separata, coverage 100% amet",
+  "img-convertor.lessonsLearned.0": "Separare logicam puram ab interfaciebus CLI et interactivis lorem",
+  "img-convertor.lessonsLearned.1": "Instrumentare praeparationem bonorum web responsivorum a fine ad finem ipsum",
+  "img-convertor.lessonsLearned.2": "Tenere coverage probationum exhaustivum in instrumento imaginum dolor"
 }

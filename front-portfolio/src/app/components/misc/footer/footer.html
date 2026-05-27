@@ -11,7 +11,7 @@
       <a routerLink="/" href="/">{{ ts.translate('footer.nav.home') }}</a>
       <a routerLink="/resume" href="/resume">{{ ts.translate('footer.nav.resume') }}</a>
       <a routerLink="/projects" href="/projects">{{ ts.translate('footer.nav.projects') }}</a>
-      <a routerLink="/work" href="/work">{{ ts.translate('footer.nav.work') }}</a>
+      <a routerLink="/works" href="/works">{{ ts.translate('footer.nav.work') }}</a>
       <a
         class="footer__cv-link transition-ritual"
         href="/CV-FR-FR-DESIGN.pdf"
@@ -84,4 +84,10 @@
     <span class="footer__divider"></span>
     <span>{{ ts.translate('footer.made_with') }}</span>
   </div>
+
+  <nav class="footer__legal" [attr.aria-label]="ts.translate('footer.aria.legal')">
+    <a routerLink="/mentions-legales" href="/mentions-legales">{{ ts.translate('footer.legal.mentions') }}</a>
+    <a routerLink="/politique-confidentialite" href="/politique-confidentialite">{{ ts.translate('footer.legal.privacy') }}</a>
+    <a routerLink="/politique-cookies" href="/politique-cookies">{{ ts.translate('footer.legal.cookies') }}</a>
+  </nav>
 </footer>

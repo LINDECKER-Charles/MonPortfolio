@@ -1,9 +1,11 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, Inject, inject, PLATFORM_ID } from '@angular/core';
+import { ProjectsConstellation } from './projects-constellation/projects-constellation';
 import { ProjectsFilter } from './projects-filter/projects-filter';
 import { ProjectsHeader } from './projects-header/projects-header';
 import { ProjectsModal } from './projects-modal/projects-modal';
 import { ProjectsTimeline } from './projects-timeline/projects-timeline';
+import { TranslationService } from '../../../services/translation.service';
 import {
   PROJECT_FILTERS,
   PROJECTS_DATA,
@@ -13,15 +15,27 @@ import {
   ProjectItem,
 } from './projects.state';
 
+type ProjectsView = 'map' | 'list';
+
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule, ProjectsHeader, ProjectsFilter, ProjectsTimeline, ProjectsModal],
+  imports: [
+    CommonModule,
+    ProjectsHeader,
+    ProjectsConstellation,
+    ProjectsFilter,
+    ProjectsTimeline,
+    ProjectsModal,
+  ],
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })
 export class Projects {
+  protected readonly ts = inject(TranslationService);
   protected readonly filters: ProjectFilterItem[] = PROJECT_FILTERS;
   protected readonly projects: ProjectItem[] = PROJECTS_DATA.map((project) => ({ ...project }));
+
+  protected view: ProjectsView = 'map';
 
   protected filtersState: ProjectFiltersState = {
     category: 'all',
@@ -103,6 +117,10 @@ export class Projects {
       tags: [],
       stack: [],
     };
+  }
+
+  protected setView(view: ProjectsView): void {
+    this.view = view;
   }
 
   protected openProject(project: ProjectItem): void {
