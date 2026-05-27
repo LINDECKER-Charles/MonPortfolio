@@ -15,7 +15,7 @@
 .projects-page app-projects-header,
 .projects-page app-projects-filter,
 .projects-page app-projects-timeline,
-.projects-page app-projects-constellation {
+.projects-page app-constellation {
   position: relative;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .projects-page app-projects-timeline,
-.projects-page app-projects-constellation {
+.projects-page app-constellation {
   z-index: 1;
 }
 
