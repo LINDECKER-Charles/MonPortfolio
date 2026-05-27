@@ -1,0 +1,439 @@
+:host {
+  display: block;
+}
+
+.works-tl {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── En-tête de chapitre : titre gravé + tri ──────────────────────────────── */
+
+.works-tl__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.works-tl__title {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  font-variant: small-caps;
+}
+
+.works-tl__num {
+  color: var(--color-blood);
+  font-family: var(--font-display);
+  font-size: 0.85em;
+  letter-spacing: var(--tracking-rune);
+}
+
+.works-tl__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.9rem;
+}
+
+/* Séparateur subtil entre le groupe scope et le groupe tri */
+.works-tl__scope {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  position: relative;
+}
+
+.works-tl__sort {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.works-tl__chip {
+  appearance: none;
+  font: inherit;
+  font-size: 0.66rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius-chip);
+  border: var(--border-ash-strong);
+  background: transparent;
+  color: var(--color-ash-dim);
+  cursor: pointer;
+}
+
+.works-tl__sort-arrow {
+  font-family: var(--font-ui);
+  line-height: 1;
+}
+
+.works-tl__chip:hover {
+  color: var(--color-bone);
+  border-color: rgb(166 10 10 / 0.18);
+}
+
+.works-tl__chip.is-active {
+  color: var(--color-parchment);
+  border-color: rgb(164 148 118 / 0.28);
+  background: var(--gradient-gold-chip);
+  box-shadow: var(--shadow-gilded);
+}
+
+/* ── Axe gravé (spine) + colonne de lignes ────────────────────────────────── */
+
+.works-tl__spine-wrap {
+  position: relative;
+  padding-left: 64px;
+}
+
+.works-tl__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.works-tl__spine {
+  position: absolute;
+  left: 22px;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(126 100 52 / 0.5) 5%,
+    rgb(166 10 10 / 0.42) 50%,
+    rgb(126 100 52 / 0.5) 95%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgb(166 10 10 / 0.12);
+}
+
+/* ── Marqueur d'année ─────────────────────────────────────────────────────── */
+
+.works-tl__year {
+  position: relative;
+  margin: 0 0 1.4rem -64px;
+  padding-left: 64px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.works-tl__year:not(:first-child) {
+  margin-top: 1.6rem;
+}
+
+.works-tl__year-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32rem 0.95rem;
+  border-radius: var(--radius-chip);
+  border: var(--border-gilded-strong);
+  background: var(--gradient-gold-chip);
+  color: var(--color-parchment);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-gilded);
+}
+
+/* Filet horizontal reliant la pastille à l'axe */
+.works-tl__year-pill::before {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 50%;
+  width: 28px;
+  height: 1px;
+  background: rgb(164 148 118 / 0.5);
+  transform: translateY(-50%);
+}
+
+.works-tl__year-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgb(164 148 118 / 0.4), transparent);
+  opacity: 0.6;
+}
+
+/* ── Nœud (carte) ─────────────────────────────────────────────────────────── */
+
+.works-tl__node {
+  position: relative;
+  margin-bottom: 1.4rem;
+}
+
+.works-tl__node:last-child {
+  margin-bottom: 0;
+}
+
+/* Sceau sur l'axe — point sang par défaut */
+.works-tl__node::before {
+  content: "";
+  position: absolute;
+  left: -52px;
+  top: 1.7rem;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-stone-deep);
+  border: 2px solid var(--color-blood);
+  box-shadow: 0 0 14px rgb(166 10 10 / 0.4);
+  z-index: 1;
+}
+
+/* Bénévolat — teinte moonlight sur le point d'axe */
+.works-tl__node--volunteer::before {
+  border-color: rgb(125 171 255 / 0.7);
+  box-shadow: 0 0 14px rgb(125 171 255 / 0.32);
+}
+
+/* Formation — losange doré intercalé */
+.works-tl__node--formation::before {
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 16px rgb(126 100 52 / 0.42);
+  transform: rotate(45deg);
+}
+
+/* ── Carte ────────────────────────────────────────────────────────────────── */
+
+.works-tl__card {
+  position: relative;
+  padding: 1.2rem 1.35rem;
+  border-radius: var(--radius-panel);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* Trait de liaison carte ⇄ axe */
+.works-tl__card::after {
+  content: "";
+  position: absolute;
+  left: -1.25rem;
+  top: 2rem;
+  width: 1.25rem;
+  height: 1px;
+  background: linear-gradient(270deg, transparent, rgb(164 148 118 / 0.5));
+  pointer-events: none;
+}
+
+.works-tl__card--formation {
+  border: var(--border-gilded-strong);
+  background: var(--gradient-gold-chip), var(--glow-gold-haze);
+  box-shadow: var(--shadow-gilded);
+}
+
+.works-tl__card-top {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+/* ── Sceau organisme (médaillon logo) ─────────────────────────────────────── */
+
+.works-tl__seal {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-pill);
+  border: var(--border-gilded-strong);
+  background: radial-gradient(circle at center, rgb(255 255 255 / 0.06) 0%, rgb(12 10 8 / 0.6) 100%);
+  display: grid;
+  place-items: center;
+  padding: 7px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgb(255 248 220 / 0.08), 0 0 12px rgb(164 148 118 / 0.14);
+}
+
+.works-tl__seal app-responsive-picture,
+.works-tl__seal picture,
+.works-tl__seal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.works-tl__node--volunteer .works-tl__seal {
+  border-color: rgb(125 171 255 / 0.3);
+}
+
+.works-tl__monogram {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-parchment);
+  text-shadow: var(--text-shadow-engraved);
+  line-height: 1;
+}
+
+.works-tl__node--volunteer .works-tl__monogram {
+  color: var(--color-moonlight-soft);
+}
+
+/* ── Texte de la carte ────────────────────────────────────────────────────── */
+
+.works-tl__heading {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.works-tl__period-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.works-tl__period {
+  color: var(--color-gold-faint);
+  font-size: 0.74rem;
+}
+
+.works-tl__badge {
+  font-size: 0.62rem;
+  padding: 0.16rem 0.5rem;
+  border-radius: var(--radius-chip);
+  border: var(--border-ash-strong);
+  color: var(--color-ash-dim);
+}
+
+.works-tl__card--formation .works-tl__badge {
+  border-color: rgb(164 148 118 / 0.28);
+  color: var(--color-gold-faint);
+}
+
+.works-tl__role {
+  margin: 0.05rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  font-variant: small-caps;
+}
+
+.works-tl__card--formation .works-tl__role {
+  color: var(--color-parchment);
+}
+
+.works-tl__org {
+  margin: 0;
+  color: var(--color-bone);
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: baseline;
+}
+
+.works-tl__org strong {
+  color: var(--color-parchment);
+  font-weight: 600;
+}
+
+.works-tl__duration {
+  color: var(--color-ash-dim);
+  font-size: 0.82rem;
+}
+
+.works-tl__meta {
+  margin: 0;
+  color: var(--color-ash-dim);
+  font-size: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+.works-tl__sector {
+  color: var(--color-gold-faint);
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+
+.works-tl__mention {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--color-gold-faint);
+}
+
+.works-tl__body {
+  margin: 0;
+  font-size: 0.94rem;
+}
+
+.works-tl__body p {
+  margin: 0 0 0.65rem;
+}
+
+.works-tl__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Mobile — axe resserré, médaillon réduit ──────────────────────────────── */
+
+@media (max-width: 600px) {
+  .works-tl__spine-wrap {
+    padding-left: 36px;
+  }
+
+  .works-tl__spine {
+    left: 12px;
+  }
+
+  .works-tl__year {
+    margin-left: -36px;
+    padding-left: 36px;
+  }
+
+  .works-tl__year-pill::before {
+    left: -24px;
+    width: 14px;
+  }
+
+  .works-tl__node::before {
+    left: -30px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .works-tl__node--formation::before {
+    width: 13px;
+    height: 13px;
+  }
+
+  .works-tl__card {
+    padding: 1rem 1.05rem;
+  }
+
+  .works-tl__card::after {
+    display: none;
+  }
+
+  .works-tl__seal {
+    width: 44px;
+    height: 44px;
+    padding: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .works-tl__chip {
+    transition: none;
+  }
+}

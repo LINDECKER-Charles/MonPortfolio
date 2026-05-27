@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { WorksHeader } from './works-header/works-header';
-import { WorksExperiences } from './works-experiences/works-experiences';
-import { WorksEducation } from './works-education/works-education';
+import { WorksTimeline } from './works-timeline/works-timeline';
 import { WorksCertifications } from './works-certifications/works-certifications';
 
 @Component({
   selector: 'app-works',
   standalone: true,
-  imports: [WorksHeader, WorksExperiences, WorksEducation, WorksCertifications],
+  imports: [WorksHeader, WorksTimeline, WorksCertifications],
   templateUrl: './works.html',
   styleUrl: './works.css',
 })

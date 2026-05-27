@@ -176,28 +176,146 @@ export const EDUCATIONS: Education[] = [
 /* ─────────────────────────────────────────────────────────────────────────
    CERTIFICATIONS — sceaux obtenus, triés récent → ancien.
    url facultatif : si présent, le badge est cliquable.
+   category : axe de filtrage du rail (glyphes ci-dessous, labels i18n).
    ─────────────────────────────────────────────────────────────────────── */
+
+export type CertCategory = 'dev' | 'web' | 'data' | 'lang';
+
+/** Glyphe rituel par catégorie — affiché dans les puces de filtre du rail. */
+export const CERT_CATEGORIES: Record<CertCategory, { glyph: string }> = {
+  dev:  { glyph: '◆' },
+  web:  { glyph: '❖' },
+  data: { glyph: '◉' },
+  lang: { glyph: '✦' },
+};
+
+/** Ordre d'affichage des filtres (le filtre "tous" est ajouté en tête par l'UI). */
+export const CERT_CATEGORY_ORDER: CertCategory[] = ['dev', 'web', 'data', 'lang'];
 
 export interface Certification {
   id: string;
   title: string;
   organism: OrganismKey;
   issuedAt: string;
+  category: CertCategory;
   credentialId?: string;
   url?: string;
 }
 
 export const CERTIFICATIONS: Certification[] = [
-  { id: 'fcc-js',         title: 'JavaScript',                                        organism: 'freecodecamp', issuedAt: '2026-03', credentialId: 'hexanti-jsv9' },
-  { id: 'fcc-py',         title: 'Python',                                            organism: 'freecodecamp', issuedAt: '2026-03', credentialId: 'hexanti-pyv9' },
-  { id: 'fcc-b1-efd',     title: 'B1 English for Developers',                         organism: 'freecodecamp', issuedAt: '2026-03', credentialId: 'hexanti-b1efd' },
-  { id: 'fcc-rdv9',       title: 'Relational Database',                               organism: 'freecodecamp', issuedAt: '2026-03', credentialId: 'hexanti-rdv9' },
-  { id: 'fcc-rd-v8',      title: 'Relational Database V8',                            organism: 'freecodecamp', issuedAt: '2026-03', credentialId: 'hexanti-rd' },
-  { id: 'fcc-a2-efd',     title: 'A2 English for Developers',                         organism: 'freecodecamp', issuedAt: '2026-03', credentialId: 'hexanti-a2efd' },
-  { id: 'fcc-rwd-v9',     title: 'Responsive Web Design',                             organism: 'freecodecamp', issuedAt: '2026-03', credentialId: 'hexanti-rwdv9' },
-  { id: 'fcc-legacy-jads',title: 'Legacy JavaScript Algorithms and Data Structures V7', organism: 'freecodecamp', issuedAt: '2025-11', credentialId: 'hexanti-ljaads' },
-  { id: 'ms-csharp',      title: 'Foundational C# with Microsoft',                    organism: 'microsoft',    issuedAt: '2025-11', credentialId: 'hexanti-fcswm' },
-  { id: 'fcc-backend',    title: 'Back End Development and APIs',                     organism: 'freecodecamp', issuedAt: '2025-06' },
-  { id: 'fcc-jads',       title: 'JavaScript Algorithms and Data Structures',         organism: 'freecodecamp', issuedAt: '2025-06', credentialId: 'hexanti-jaads' },
-  { id: 'fcc-rwd',        title: 'Responsive Web Design',                             organism: 'freecodecamp', issuedAt: '2024-11', credentialId: 'hexanti-rwd' },
+  { id: 'fcc-js',         title: 'JavaScript',                                        organism: 'freecodecamp', issuedAt: '2026-03', category: 'dev',  credentialId: 'hexanti-jsv9' },
+  { id: 'fcc-py',         title: 'Python',                                            organism: 'freecodecamp', issuedAt: '2026-03', category: 'dev',  credentialId: 'hexanti-pyv9' },
+  { id: 'fcc-b1-efd',     title: 'B1 English for Developers',                         organism: 'freecodecamp', issuedAt: '2026-03', category: 'lang', credentialId: 'hexanti-b1efd' },
+  { id: 'fcc-rdv9',       title: 'Relational Database',                               organism: 'freecodecamp', issuedAt: '2026-03', category: 'data', credentialId: 'hexanti-rdv9' },
+  { id: 'fcc-rd-v8',      title: 'Relational Database V8',                            organism: 'freecodecamp', issuedAt: '2026-03', category: 'data', credentialId: 'hexanti-rd' },
+  { id: 'fcc-a2-efd',     title: 'A2 English for Developers',                         organism: 'freecodecamp', issuedAt: '2026-03', category: 'lang', credentialId: 'hexanti-a2efd' },
+  { id: 'fcc-rwd-v9',     title: 'Responsive Web Design',                             organism: 'freecodecamp', issuedAt: '2026-03', category: 'web',  credentialId: 'hexanti-rwdv9' },
+  { id: 'fcc-legacy-jads',title: 'Legacy JavaScript Algorithms and Data Structures V7', organism: 'freecodecamp', issuedAt: '2025-11', category: 'dev', credentialId: 'hexanti-ljaads' },
+  { id: 'ms-csharp',      title: 'Foundational C# with Microsoft',                    organism: 'microsoft',    issuedAt: '2025-11', category: 'dev',  credentialId: 'hexanti-fcswm' },
+  { id: 'fcc-backend',    title: 'Back End Development and APIs',                     organism: 'freecodecamp', issuedAt: '2025-06', category: 'web' },
+  { id: 'fcc-jads',       title: 'JavaScript Algorithms and Data Structures',         organism: 'freecodecamp', issuedAt: '2025-06', category: 'dev',  credentialId: 'hexanti-jaads' },
+  { id: 'fcc-rwd',        title: 'Responsive Web Design',                             organism: 'freecodecamp', issuedAt: '2024-11', category: 'web',  credentialId: 'hexanti-rwd' },
 ];
+
+/* ─────────────────────────────────────────────────────────────────────────
+   TIMELINE — fusion chronologique expériences + formations sur un même axe.
+   buildTimeline trie selon l'ordre demandé et insère un marqueur d'année à
+   chaque changement d'année.
+   ─────────────────────────────────────────────────────────────────────── */
+
+export type TimelineNode =
+  | { kind: 'experience'; exp: Experience }
+  | { kind: 'education'; edu: Education };
+
+export type TimelineRow =
+  | { type: 'year'; year: string }
+  | { type: 'node'; node: TimelineNode };
+
+export type TimelineOrder = 'recent' | 'old';
+
+/** Périmètre de la timeline : tout, piste pro/académique, ou bénévolat seul. */
+export type TimelineScope = 'all' | 'pro' | 'volunteer';
+
+/** La formation (diplôme) est rattachée à la piste pro (non bénévole). */
+function inScope(node: TimelineNode, scope: TimelineScope): boolean {
+  if (scope === 'all') return true;
+  if (node.kind === 'education') return scope === 'pro';
+  return scope === 'volunteer' ? !!node.exp.volunteer : !node.exp.volunteer;
+}
+
+/** "YYYY-MM" du mois courant — utilisé pour rattacher les postes en cours. */
+function nowYearMonth(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+}
+
+export function buildTimeline(order: TimelineOrder, scope: TimelineScope = 'all'): TimelineRow[] {
+  // Une expérience "en poste" (end === null) est rattachée à l'année courante
+  // pour le tri et le marqueur d'année, même si elle a démarré plus tôt.
+  const now = nowYearMonth();
+  const nodes = [
+    ...EXPERIENCES.map((exp) => ({
+      start: exp.start,
+      sortKey: exp.end === null ? now : exp.start,
+      node: { kind: 'experience', exp } as TimelineNode,
+    })),
+    ...EDUCATIONS.map((edu) => ({
+      start: edu.start,
+      sortKey: edu.start,
+      node: { kind: 'education', edu } as TimelineNode,
+    })),
+  ].filter(({ node }) => inScope(node, scope));
+
+  // "YYYY-MM" se compare lexicalement comme chronologiquement.
+  // Tri sur la clé effective, départage par le vrai début (ordre cohérent
+  // entre plusieurs postes en cours).
+  nodes.sort((a, b) => {
+    const primary =
+      order === 'recent'
+        ? b.sortKey.localeCompare(a.sortKey)
+        : a.sortKey.localeCompare(b.sortKey);
+    if (primary !== 0) return primary;
+    return order === 'recent' ? b.start.localeCompare(a.start) : a.start.localeCompare(b.start);
+  });
+
+  const rows: TimelineRow[] = [];
+  let currentYear = '';
+  for (const { sortKey, node } of nodes) {
+    const year = sortKey.slice(0, 4);
+    if (year !== currentYear) {
+      rows.push({ type: 'year', year });
+      currentYear = year;
+    }
+    rows.push({ type: 'node', node });
+  }
+  return rows;
+}
+
+/** Nombre de nœuds (hors marqueurs d'année) par périmètre — pour les compteurs UI. */
+export function timelineCounts(): Record<TimelineScope, number> {
+  const count = (scope: TimelineScope) =>
+    buildTimeline('recent', scope).filter((row) => row.type === 'node').length;
+  return { all: count('all'), pro: count('pro'), volunteer: count('volunteer') };
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   STATS — chiffres dérivés des données pour le bandeau du header.
+   ─────────────────────────────────────────────────────────────────────── */
+
+export interface WorksStat {
+  key: 'experiences' | 'organisms' | 'formations' | 'certifications';
+  value: number;
+}
+
+export function computeStats(): WorksStat[] {
+  const organisms = new Set<OrganismKey>();
+  for (const exp of EXPERIENCES) organisms.add(exp.organism);
+  for (const edu of EDUCATIONS) organisms.add(edu.organism);
+
+  return [
+    { key: 'experiences', value: EXPERIENCES.length },
+    { key: 'organisms', value: organisms.size },
+    { key: 'formations', value: EDUCATIONS.length },
+    { key: 'certifications', value: CERTIFICATIONS.length },
+  ];
+}

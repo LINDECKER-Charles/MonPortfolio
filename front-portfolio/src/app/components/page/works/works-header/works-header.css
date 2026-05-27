@@ -29,6 +29,39 @@
   font-size: 1.02rem;
 }
 
+/* ── Bandeau de stats (chiffres dérivés des données) ──────────────────────── */
+
+.works-hero__stats {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 1.3rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.4rem, 4vw, 3rem);
+  border-top: 1px solid rgb(215 215 215 / 0.1);
+}
+
+.works-hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.works-hero__stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-parchment);
+  text-shadow: var(--text-shadow-engraved-deep);
+}
+
+.works-hero__stat-lbl {
+  font-size: 0.62rem;
+  color: var(--color-gold-faint);
+}
+
 .works-hero__actions {
   margin-top: 0.4rem;
   display: flex;
