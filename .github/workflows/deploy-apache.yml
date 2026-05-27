@@ -1,0 +1,106 @@
+name: Deploy - Apache config
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'config/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-apache
+  cancel-in-progress: false
+
+env:
+  APACHE_SITES_DIR: /etc/apache2/sites-available
+  REMOTE_STAGING: apache-config-staging
+  APACHE_SITES: >-
+    portfolio portfolio-le-ssl
+    portfolio-test portfolio-test-le-ssl
+    portfolio-images portfolio-images-le-ssl
+
+jobs:
+  deploy-apache:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: config
+          sparse-checkout-cone-mode: true
+
+      - name: Render vhost templates
+        working-directory: config
+        env:
+          APACHE_PROD_DOMAIN: ${{ secrets.APACHE_PROD_DOMAIN }}
+          APACHE_PROD_SSR_PORT: ${{ secrets.APACHE_PROD_SSR_PORT }}
+          APACHE_TEST_DOMAIN: ${{ secrets.APACHE_TEST_DOMAIN }}
+          APACHE_TEST_SSR_PORT: ${{ secrets.APACHE_TEST_SSR_PORT }}
+          APACHE_TEST_REDIRECT_TARGET: ${{ secrets.APACHE_TEST_REDIRECT_TARGET }}
+          APACHE_IMAGES_DOMAIN: ${{ secrets.APACHE_IMAGES_DOMAIN }}
+          APACHE_IMAGES_DOCROOT: ${{ secrets.APACHE_IMAGES_DOCROOT }}
+        run: |
+          set -euo pipefail
+          command -v envsubst >/dev/null || sudo apt-get install -y gettext-base
+          # Allowlist explicite : ne JAMAIS substituer ${APACHE_LOG_DIR} (résolu par Apache).
+          ALLOW='$APACHE_PROD_DOMAIN $APACHE_PROD_SSR_PORT $APACHE_TEST_DOMAIN $APACHE_TEST_SSR_PORT $APACHE_TEST_REDIRECT_TARGET $APACHE_IMAGES_DOMAIN $APACHE_IMAGES_DOCROOT'
+          mkdir -p staging
+          for t in *.conf.template; do
+            out="staging/${t%.template}"
+            envsubst "$ALLOW" < "$t" > "$out"
+            echo "Rendered $out"
+          done
+
+      - name: Copy rendered configs to VPS (staging dir)
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "config/staging/*.conf"
+          target: ${{ env.REMOTE_STAGING }}
+          strip_components: 2
+          rm: true
+
+      - name: Apply config with configtest guard
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: APACHE_SITES_DIR,REMOTE_STAGING,APACHE_SITES
+          script: |
+            set -euo pipefail
+            STAGING="$HOME/$REMOTE_STAGING"
+            TS="$(date +%Y%m%d-%H%M%S)"
+            BACKUP="/tmp/apache-sites-backup-$TS"
+
+            echo "==> Backup $APACHE_SITES_DIR -> $BACKUP"
+            sudo cp -a "$APACHE_SITES_DIR" "$BACKUP"
+
+            echo "==> Deploy rendered vhosts"
+            for f in "$STAGING"/*.conf; do
+              sudo cp "$f" "$APACHE_SITES_DIR/$(basename "$f")"
+            done
+
+            echo "==> Enable sites (idempotent)"
+            sudo a2ensite $APACHE_SITES
+
+            echo "==> apache2ctl configtest"
+            if ! sudo apache2ctl configtest; then
+              echo "!! configtest FAILED — rollback"
+              sudo cp -a "$BACKUP"/. "$APACHE_SITES_DIR"/
+              sudo apache2ctl configtest
+              rm -rf "$STAGING"
+              exit 1
+            fi
+
+            echo "==> Graceful reload"
+            sudo systemctl reload apache2
+            sudo systemctl is-active apache2
+            rm -rf "$STAGING"
+            echo "==> Done (backup kept at $BACKUP)"
