@@ -125,5 +125,21 @@
   "modal.links": "Pathways",
   "modal.demo": "Trial by Combat",
   "modal.site": "The Domain",
-  "today": "This very age"
+  "today": "This very age",
+  "gup.shortDescription": "One command to update every binary across 130+ realms — the Elden Ring of package managers, binding winget, npm, cargo and more under a single Order.",
+  "gup.longDescription": "gup (Global Updater) is a CLI that unifies updates across 130+ sources — winget, scoop, choco, npm, pnpm, pip, cargo, dotnet tools, helm, kubectl, terraform, WSL and more — as the Elden Ring once bound the Great Runes. A single interface, an interactive selection mode, a swift scan, JSON output for CI/CD, and a doctor command that scouts installed providers like a Finger Reader. Security is layered like Leyndell's walls: shell-less execution via execa, HTTPS-only, and CodeQL/Semgrep/gitleaks standing watch.",
+  "gup.highlights.0": "One interface to rule 130+ providers — winget, npm, cargo, pip, kubectl, as Great Runes under one Ring",
+  "gup.highlights.1": "Interactive mode, swift scan, JSON output and a doctor that reads the Fingers of your machine",
+  "gup.highlights.2": "Defense layered like the Capital: shell-less execa, HTTPS-only, CodeQL/Semgrep/gitleaks on watch",
+  "gup.lessonsLearned.0": "Forging a common Order over dozens of heterogeneous package managers",
+  "gup.lessonsLearned.1": "Tempering a testable, scriptable CLI worthy of the CI/CD battlefield",
+  "gup.lessonsLearned.2": "Layering defenses upon a system tool as the Golden Order demands",
+  "img-convertor.shortDescription": "A swift image converter and responsive resizer for the web — WebP, AVIF, JPEG, PNG — sharp as a Misericorde, CLI or interactive.",
+  "img-convertor.longDescription": "img-convertor is a CLI for forging web assets: converting between WebP, AVIF, JPEG and PNG, and birthing responsive variants at breakpoint widths while preserving the aspect — grace untarnished. It offers a polished CLI and a guided interactive console, recursive traversal of directories, named breakpoint presets and a persistent config (~/.img-convertor/config.json). Pure core/ logic is severed from the UI like Marika from Radagon, allowing programmatic or standalone use. Powered by sharp, Commander and Inquirer, with 100% test coverage and a multi-OS GitHub Actions CI.",
+  "img-convertor.highlights.0": "WebP / AVIF / JPEG / PNG conversion and responsive resizing — variants forged at each breakpoint",
+  "img-convertor.highlights.1": "Polished CLI and interactive console, recursive traversal, presets bound like talismans",
+  "img-convertor.highlights.2": "Pure core/ severed from the UI — a Radagon/Marika split — with 100% test coverage",
+  "img-convertor.lessonsLearned.0": "Severing pure logic from CLI and interactive interfaces",
+  "img-convertor.lessonsLearned.1": "Forging responsive web assets from raw to grace, end to end",
+  "img-convertor.lessonsLearned.2": "Holding a flawless, untarnished test coverage on an image-processing tool"
 }

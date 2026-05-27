@@ -1,0 +1,20 @@
+{
+  "badge": "status: WIP  # what else is new",
+  "eyebrow": "section: temporary  # like all my fixes",
+  "title": "page:\n  status: under_construction\n  # it's been 3 sprints",
+  "lead": "# WARNING: do NOT deploy this page yet\nparcours:\n  version: richer\n  timeline: true\n  milestones: pending  # always pending",
+  "cta.projects": "redirect: /projects  # at least THAT works",
+  "cta.home": "redirect: /  # home sweet home.yaml",
+  "status.aria": "aria:\n  label: chantier_status  # a11y is not optional",
+  "status.title": "progress:\n  label: avancement",
+  "status.value": "design:\n  status: in_progress  # like my life",
+  "status.structure": "structure: true  # barely",
+  "status.visual": "visual_direction: exists  # debatable",
+  "status.content": "content:\n  status: polishing\n  # it's never done",
+  "pillar.roadmap.title": "roadmap:\n  narrative: true  # once upon a sprint",
+  "pillar.roadmap.description": "# TODO: write actual roadmap\nevolution:\n  steps: [pivot, pivot, pivot]\n  projects: the_ones_that_matter",
+  "pillar.craft.title": "presentation:\n  ambition: high  # ego: higher",
+  "pillar.craft.description": "# DO NOT REMOVE\nfeatures:\n  staging: stronger\n  interactions: cleaner\n  mobile: solid  # on my phone at least",
+  "pillar.launch.title": "launch:\n  eta: soon  # (tm)",
+  "pillar.launch.description": "# FIXME: actually finish this\nstructure: finalizing\nfallback:\n  - /projects\n  - /  # the classics"
+}

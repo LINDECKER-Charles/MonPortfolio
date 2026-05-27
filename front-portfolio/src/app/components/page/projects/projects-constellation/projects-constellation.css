@@ -1,0 +1,620 @@
+:host {
+  display: block;
+  width: 100%;
+
+  /* Couleur sémantique par constellation (catégorie) — issue des tokens. */
+  --cat-personal: var(--color-ember);
+  --cat-open_source: var(--color-moonlight);
+  --cat-client: var(--color-gold);
+}
+
+.constellation {
+  position: relative;
+  display: block;
+}
+
+/* ─── Carte (pleine largeur, occupe l'essentiel de l'espace) ─── */
+.constellation__map {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: clamp(460px, 72vh, 780px);
+}
+
+.constellation__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  touch-action: none;
+  cursor: grab;
+}
+
+.constellation__svg--grabbing {
+  cursor: grabbing;
+}
+
+/* halo galactique (cœur lumineux) */
+.constellation__haze {
+  pointer-events: none;
+}
+
+/* poussière d'étoiles */
+.constellation__star {
+  fill: var(--color-parchment);
+  opacity: 0.14;
+}
+
+/* teintes ponctuelles — enrichissent la galaxie */
+.constellation__star--gold {
+  fill: var(--color-gold);
+  opacity: 0.2;
+}
+.constellation__star--blood {
+  fill: var(--color-blood);
+  opacity: 0.22;
+}
+.constellation__star--moon {
+  fill: var(--color-moonlight);
+  opacity: 0.21;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .constellation__star {
+    animation: constellationTwinkle 6s ease-in-out infinite;
+  }
+  .constellation__star--s2 {
+    animation-duration: 4.5s;
+    animation-delay: -1.2s;
+  }
+  .constellation__star--s3 {
+    animation-duration: 7.5s;
+    animation-delay: -2.4s;
+  }
+}
+
+@keyframes constellationTwinkle {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.32; }
+}
+
+/* anneaux de cluster */
+.constellation__ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-dasharray: 2 4;
+  stroke-width: 0.4;
+  opacity: 0.3;
+}
+
+/* liens */
+.constellation__edge {
+  stroke: var(--color-gold-faint);
+  stroke-width: 0.22;
+  stroke-opacity: 0.4;
+  stroke-dasharray: 0.8 1.4;
+  transition: stroke 0.2s, stroke-opacity 0.2s, stroke-width 0.2s;
+}
+
+.constellation__edge--dim {
+  stroke-opacity: 0.12;
+}
+
+.constellation__edge--highlight {
+  stroke: var(--color-blood);
+  stroke-width: 0.4;
+  stroke-opacity: 0.85;
+  stroke-dasharray: none;
+}
+
+/* nœuds */
+.constellation__node {
+  cursor: pointer;
+  outline: none;
+}
+
+.constellation__hit {
+  fill: transparent;
+}
+
+.constellation__dot {
+  transition: r 0.2s, filter 0.2s;
+  filter: drop-shadow(0 0 0.6px currentColor);
+}
+
+.constellation__node--selected .constellation__dot {
+  filter: drop-shadow(0 0 1.8px currentColor);
+}
+
+.constellation__wip {
+  fill: var(--color-ember);
+}
+
+.constellation__label {
+  fill: var(--color-gold-faint);
+  font-family: var(--font-ui);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  transition: fill 0.15s, opacity 0.25s;
+}
+
+.constellation__node:hover .constellation__label,
+.constellation__node:focus-visible .constellation__label,
+.constellation__node--selected .constellation__label {
+  fill: var(--color-parchment);
+}
+
+.constellation__node:focus-visible .constellation__dot {
+  filter: drop-shadow(0 0 2px var(--color-gold));
+}
+
+.constellation__node--dimmed {
+  opacity: 0.26;
+}
+
+/* jiggle : chaque sphère flotte doucement, désynchronisée via --drift-* */
+@media (prefers-reduced-motion: no-preference) {
+  .constellation__node {
+    animation: constellationDrift var(--drift-dur, 8s) ease-in-out var(--drift-delay, 0s) infinite;
+    will-change: transform;
+  }
+}
+
+@keyframes constellationDrift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(0.42px, -0.3px); }
+  50%  { transform: translate(-0.26px, 0.4px); }
+  75%  { transform: translate(-0.4px, -0.18px); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .constellation__pulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: constellationPulse 2.4s ease-out infinite;
+  }
+}
+
+@keyframes constellationPulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ─── Vue galaxie (très dézoomé) ───
+   On efface le bruit (labels, anneaux) et on laisse les boules de couleur
+   rayonner comme des étoiles. */
+.constellation__svg--galaxy .constellation__label {
+  opacity: 0;
+}
+
+.constellation__svg--galaxy .constellation__node--selected .constellation__label {
+  opacity: 1;
+}
+
+.constellation__svg--galaxy .constellation__ring {
+  opacity: 0.1;
+}
+
+.constellation__svg--galaxy .constellation__edge {
+  stroke-opacity: 0.18;
+}
+
+.constellation__svg--galaxy .constellation__dot {
+  filter: drop-shadow(0 0 1.6px currentColor) drop-shadow(0 0 3.5px currentColor);
+}
+
+/* ─── Overlays de carte ─── */
+.constellation__search {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  width: min(230px, calc(100% - 1.7rem));
+  border: 1px solid var(--color-gold-dim);
+  background: rgb(12 15 19 / 0.66);
+  backdrop-filter: blur(4px);
+  color: var(--color-parchment);
+  cursor: text;
+}
+
+.constellation__search:focus-within {
+  border-color: var(--color-gold);
+}
+
+.constellation__search-glyph {
+  color: var(--color-gold);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.constellation__search-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--color-parchment);
+  font-family: var(--font-ui);
+}
+
+.constellation__search-input::placeholder {
+  color: var(--color-ash-faint);
+}
+
+/* contrôles de zoom */
+.constellation__zoom {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.constellation__zoom-btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-gold-dim);
+  background: rgb(12 15 19 / 0.66);
+  backdrop-filter: blur(4px);
+  color: var(--color-parchment);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.constellation__zoom-btn:hover:not(:disabled),
+.constellation__zoom-btn:focus-visible:not(:disabled) {
+  border-color: var(--color-gold);
+  color: var(--color-bone);
+  outline: none;
+}
+
+.constellation__zoom-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* légende compacte */
+.constellation__legend {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  padding: 0.45rem 0.55rem;
+  backdrop-filter: blur(4px);
+}
+
+.constellation__legend-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.15rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-ash);
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.6rem;
+}
+
+.constellation__legend-row:hover,
+.constellation__legend-row:focus-visible {
+  color: var(--color-parchment);
+  outline: none;
+}
+
+.constellation__legend-row--off {
+  opacity: 0.38;
+}
+
+.constellation__legend-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: currentColor;
+  box-shadow: 0 0 5px currentColor;
+}
+
+.constellation__legend-label {
+  flex: 1;
+}
+
+.constellation__legend-count {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  color: var(--color-ash-faint);
+}
+
+/* méta (bas droite) */
+.constellation__meta {
+  position: absolute;
+  bottom: 0.85rem;
+  right: 0.85rem;
+  color: var(--color-ash-faint);
+  font-size: 0.55rem;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* ─── Carte de détail (overlay flottant à droite) ───
+   Fond quasi opaque (surface-crypt) pour un contraste net au-dessus de la
+   galaxie ; liseré et accents teintés par la constellation sélectionnée. */
+.constellation__panel {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: clamp(296px, 26vw, 350px);
+  max-height: calc(clamp(460px, 72vh, 780px) - 1.7rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.35rem 1.3rem 1.45rem;
+  color: var(--color-bone);
+  border: var(--border-gilded-strong);
+  border-radius: var(--radius-card);
+}
+
+.constellation__panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  background: linear-gradient(90deg, var(--panel-accent, var(--color-blood)) 0%, transparent 78%);
+}
+
+.constellation__panel-kicker {
+  color: var(--panel-accent, var(--color-gold));
+  font-size: 0.64rem;
+  letter-spacing: var(--tracking-rune);
+}
+
+.constellation__panel-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.constellation__panel-glyph {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.constellation__panel-title h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+}
+
+.constellation__panel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.9rem;
+}
+
+.constellation__period {
+  color: var(--color-gold-faint);
+  font-size: 0.62rem;
+}
+
+.constellation__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  letter-spacing: var(--tracking-sigil);
+  text-transform: uppercase;
+  color: var(--color-ash);
+}
+
+.constellation__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-ash);
+}
+
+.constellation__status[data-status='in_progress'] .constellation__status-dot {
+  background: var(--color-ember);
+  box-shadow: var(--glow-ember);
+}
+
+.constellation__status[data-status='done'] .constellation__status-dot {
+  background: var(--color-gold);
+  box-shadow: 0 0 8px rgb(164 148 118 / 0.6);
+}
+
+.constellation__status[data-status='archived'] .constellation__status-dot {
+  background: var(--color-ash-faint);
+}
+
+.constellation__panel-desc {
+  margin: 0;
+  color: var(--color-bone);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.constellation__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+/* tags stack — volontairement petits */
+.constellation__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-chip);
+  border: var(--border-ash-strong);
+  background: rgb(255 255 255 / 0.03);
+  color: var(--color-ash);
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.constellation__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.3rem;
+}
+
+/* boutons d'action — icône + label, affordance nette */
+.constellation__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.7rem;
+  border-radius: var(--radius-chip);
+  border: var(--border-gilded-strong);
+  background: var(--gradient-stone-chip);
+  box-shadow: var(--shadow-chip);
+  color: var(--color-bone);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: var(--tracking-tag);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.constellation__action-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.constellation__action:hover,
+.constellation__action:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgb(164 148 118 / 0.42);
+  color: var(--color-bone-bright);
+  box-shadow: var(--shadow-gilded);
+  outline: none;
+}
+
+.constellation__action:active {
+  transform: scale(0.98);
+}
+
+/* primaire (Détail) — braise, action dominante */
+.constellation__action--primary {
+  color: #fff4eb;
+  border-color: rgb(255 184 108 / 0.3);
+  background: var(--gradient-ember), var(--glow-ember-haze);
+}
+
+.constellation__action--primary:hover,
+.constellation__action--primary:focus-visible {
+  color: #fff;
+  border-color: rgb(255 184 108 / 0.5);
+  box-shadow:
+    0 16px 28px rgb(0 0 0 / 0.26),
+    0 0 0 1px rgb(255 147 77 / 0.12);
+}
+
+.constellation__related-title {
+  margin: 0 0 0.5rem;
+  color: var(--color-parchment);
+  font-size: 0.66rem;
+}
+
+.constellation__related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.constellation__related-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.28rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-ash);
+  cursor: pointer;
+  text-align: left;
+}
+
+.constellation__related-row:hover,
+.constellation__related-row:focus-visible {
+  color: var(--color-parchment);
+  padding-left: 0.25rem;
+  outline: none;
+}
+
+.constellation__related-arrow {
+  color: var(--color-gold-dim);
+}
+
+.constellation__related-row:hover .constellation__related-arrow {
+  color: var(--color-blood);
+}
+
+.constellation__related-glyph {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.constellation__empty {
+  margin: 0;
+  color: var(--color-ash);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ─── Responsive : panneau sous la carte ─── */
+@media (max-width: 900px) {
+  .constellation__map {
+    height: clamp(420px, 64vh, 620px);
+  }
+
+  .constellation__panel {
+    position: static;
+    width: 100%;
+    max-height: none;
+    margin-top: clamp(0.75rem, 2vw, 1.25rem);
+    backdrop-filter: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .constellation__map {
+    height: clamp(380px, 70vh, 560px);
+  }
+
+  .constellation__search {
+    width: calc(100% - 4.6rem);
+  }
+
+  .constellation__meta {
+    display: none;
+  }
+}

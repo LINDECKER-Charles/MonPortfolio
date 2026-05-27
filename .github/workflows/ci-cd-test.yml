@@ -13,7 +13,7 @@ env:
   FRONT_DIR: front-portfolio
   VPS_DIR: /var/www/portfolio-test
   FRONT_PROCESS: angular-portfolio-test.service
-  IMAGES_PATH: front-portfolio/public
+  IMAGES_PATH: images
   IMAGES_VPS: /var/www/charles-lindecker-img
 
 concurrency:
@@ -151,4 +151,11 @@ jobs:
           script: |
             sudo systemctl restart ${{ env.FRONT_PROCESS }}
             sudo systemctl status ${{ env.FRONT_PROCESS }} --no-pager
+
+  apply-apache-config:
+    needs: deploy-test
+    uses: ./.github/workflows/deploy-apache.yml
+    with:
+      sites: "portfolio-test portfolio-test-le-ssl portfolio-images portfolio-images-le-ssl"
+    secrets: inherit
 

@@ -1,0 +1,28 @@
+{
+  "intro.eyebrow": "Compêndio do caçador",
+  "intro.title": "Grimório de ligações",
+  "intro.role": "Charles Lindecker · Desenvolvedor Full Stack",
+  "intro.description": "Todos os caminhos que levam até mim, gravados neste grimório: confrarias profissionais, oficinas de prática, arenas lúdicas e invocações directas.",
+  "intro.photo_alt": "Retrato de Charles Lindecker",
+
+  "section.network.eyebrow": "Rede",
+  "section.network.title": "Caçadores aliados",
+  "section.network.description": "Os canais oficiais para trocar, colaborar ou seguir o meu trabalho diário.",
+
+  "section.craft.eyebrow": "Forja",
+  "section.craft.title": "Oficinas de prática",
+  "section.craft.description": "Onde afio as minhas armas: katas de código, desafios front-end e segurança ofensiva.",
+
+  "section.arena.eyebrow": "Arena",
+  "section.arena.title": "Terrenos de caça",
+  "section.arena.description": "Algumas escapadas lúdicas, para manter o olho afiado e a mão ágil.",
+
+  "section.summon.eyebrow": "Contacto",
+  "section.summon.title": "Invocação directa",
+  "section.summon.description": "As vias mais rápidas para me contactar ou iniciar uma missão em conjunto.",
+
+  "action.open": "Abrir",
+  "action.open_aria": "Abrir ligação",
+
+  "outro": "Que o caminho escolhido ilumine o que virá. Até breve."
+}

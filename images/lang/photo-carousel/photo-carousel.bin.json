@@ -1,0 +1,9 @@
+{
+  "label": "0x434152 portrait_carousel",
+  "previous": "0x505245 prev_frame",
+  "next": "0x4E455854 next_frame",
+  "pause": "SIGSTOP — halt autoplay",
+  "play": "SIGCONT — resume autoplay",
+  "go_to": "seek frame {index}",
+  "slide_alt": "portrait_Charles_Lindecker_{index}.webp"
+}

@@ -130,6 +130,24 @@
   flex: 0 0 auto;
 }
 
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-size: 0.78rem;
+}
+
+.footer__legal a {
+  color: var(--color-ash-dim);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color var(--duration-base) ease;
+}
+
+.footer__legal a:hover {
+  color: var(--color-bone);
+}
+
 @media (max-width: 980px) {
   .footer { width: min(100%, calc(100% - 1.5rem)); }
   .footer__top {

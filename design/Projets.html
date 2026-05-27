@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Projets · Constellation</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:        #d8cba8;
+    --ink-soft:   #a89a78;
+    --ink-faint:  #6e6248;
+    --ink-ghost:  #3d3625;
+    --paper:      #100c08;
+    --paper-2:    #181310;
+    --paper-3:    #221b14;
+    --blood:      #c2363e;
+    --blood-dim:  #7a1f24;
+    --gold:       #b8945a;
+    --gold-dim:   #6e5836;
+    --moss:       #6a7a48;
+    --violet:     #8a7aa8;
+
+    --c-app:   #c2363e;
+    --c-cli:   #b8945a;
+    --c-lib:   #c8b890;
+    --c-oss:   #7a8b6a;
+    --c-xp:    #8a7aa8;
+
+    --serif:  'Cinzel', 'Times New Roman', serif;
+    --mono:   'JetBrains Mono', 'Courier New', monospace;
+    --hand:   'Caveat', cursive;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background:
+      radial-gradient(ellipse at 50% -10%, #1a130d 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, #1a0c0d 0%, transparent 50%),
+      var(--paper);
+  }
+
+  a { color: inherit; }
+
+  /* ───── Layout shell ───── */
+  .page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: clamp(16px, 3vw, 40px);
+    gap: clamp(16px, 2.4vw, 28px);
+  }
+
+  /* ───── Header ───── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--ink-ghost);
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(32px, 5.5vw, 56px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+  }
+  h1 .amp {
+    color: var(--blood);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .lede {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    letter-spacing: 0.04em;
+    max-width: 48ch;
+  }
+  .header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .search {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 14px;
+    border: 1px solid var(--ink-ghost);
+    background: rgba(20,16,12,0.6);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    min-width: 180px;
+    cursor: text;
+    transition: border-color 0.18s;
+  }
+  .search:focus-within, .search:hover { border-color: var(--ink-soft); }
+  .search input {
+    background: none; border: 0; outline: 0;
+    color: var(--ink);
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    width: 100%;
+  }
+  .search input::placeholder { color: var(--ink-faint); }
+  .icon-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    border: 1px solid var(--ink-ghost);
+    background: transparent;
+    color: var(--ink-soft);
+    font-family: var(--serif);
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .icon-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .icon-btn.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* ───── Main: map + panel ───── */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: clamp(16px, 2vw, 24px);
+    min-height: 0;
+  }
+  @media (max-width: 960px) {
+    main { grid-template-columns: 1fr; }
+  }
+
+  /* ───── The map ───── */
+  .map-wrap {
+    position: relative;
+    border: 1px solid var(--ink-ghost);
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(184,148,90,0.06), transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(194,54,62,0.05), transparent 50%),
+      var(--paper-2);
+    overflow: hidden;
+    aspect-ratio: 16 / 11;
+    min-height: 360px;
+  }
+  @media (max-width: 640px) {
+    .map-wrap { aspect-ratio: 5 / 6; min-height: 420px; }
+  }
+  .map-wrap svg.constellation {
+    display: block;
+    width: 100%; height: 100%;
+    cursor: default;
+    touch-action: manipulation;
+    user-select: none;
+  }
+
+  /* corner overlays inside map */
+  .legend {
+    position: absolute;
+    bottom: 14px; left: 14px;
+    padding: 10px 12px;
+    background: rgba(16,12,8,0.78);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--ink-ghost);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    max-width: 200px;
+  }
+  .legend .title-row {
+    font-family: var(--serif);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .legend-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 3px 0;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .legend-row:hover { color: var(--ink); }
+  .legend-row.off { opacity: 0.35; }
+  .legend-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px currentColor;
+  }
+  .legend-count {
+    margin-left: auto;
+    font-size: 9px;
+    color: var(--ink-faint);
+  }
+  .map-meta {
+    position: absolute;
+    top: 14px; left: 14px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    padding: 6px 10px;
+    background: rgba(16,12,8,0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--ink-ghost);
+  }
+  .map-controls {
+    position: absolute;
+    top: 14px; right: 14px;
+    display: flex; flex-direction: column;
+    gap: 6px;
+  }
+  .map-controls .icon-btn {
+    background: rgba(16,12,8,0.78);
+    backdrop-filter: blur(4px);
+  }
+
+  /* hint text in map */
+  .map-hint {
+    position: absolute;
+    bottom: 18px; right: 18px;
+    font-family: var(--hand);
+    color: var(--blood);
+    font-size: 18px;
+    line-height: 1.05;
+    text-align: right;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  /* ───── Detail panel ───── */
+  .panel {
+    border: 1px solid var(--ink-ghost);
+    background: linear-gradient(180deg, var(--paper-3) 0%, var(--paper-2) 100%);
+    padding: 22px 22px 24px;
+    display: flex; flex-direction: column;
+    gap: 14px;
+    position: relative;
+    min-height: 0;
+  }
+  .panel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blood-dim), var(--blood) 50%, transparent);
+  }
+  .panel-kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .panel-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .panel-glyph {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1;
+  }
+  .panel h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 26px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .panel-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .status-line {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-active   { background: var(--blood);  box-shadow: 0 0 8px var(--blood-dim); }
+  .dot-wip      { background: var(--gold);   box-shadow: 0 0 8px rgba(184,148,90,0.5); }
+  .dot-archived { background: var(--moss);   opacity: 0.7; }
+
+  .panel-desc {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+  .chips {
+    display: flex; flex-wrap: wrap; gap: 5px;
+  }
+  .chip {
+    display: inline-flex; align-items: center;
+    padding: 3px 9px;
+    border: 1px solid var(--ink-ghost);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .actions {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid var(--ink-soft);
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.18s;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn-primary {
+    border-color: var(--blood);
+    color: var(--blood);
+  }
+  .btn-primary:hover {
+    background: var(--blood); color: var(--ink);
+  }
+  .divider {
+    height: 1px;
+    background: repeating-linear-gradient(to right, var(--ink-ghost) 0 6px, transparent 6px 12px);
+  }
+  .links-section .h3 {
+    font-family: var(--serif);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin: 0 0 8px;
+  }
+  .links-section ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .link-row {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    padding: 4px 0;
+    transition: color 0.15s, padding 0.15s;
+  }
+  .link-row:hover { color: var(--ink); padding-left: 4px; }
+  .link-row .arrow { color: var(--ink-faint); }
+  .link-row:hover .arrow { color: var(--blood); }
+
+  .empty-panel {
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+  }
+
+  /* ───── Footer / legend strip ───── */
+  footer {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--ink-ghost);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  footer .breadcrumb {
+    color: var(--ink-soft);
+  }
+  footer a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  footer a:hover { color: var(--ink); }
+
+  /* ───── SVG node ───── */
+  .node-group { cursor: pointer; }
+  .node-group .node-tap { fill: transparent; }
+  .node-group .node-dot { transition: r 0.2s, filter 0.2s; }
+  .node-group .node-label {
+    font-family: var(--mono);
+    fill: var(--ink-soft);
+    letter-spacing: 0.06em;
+    transition: fill 0.15s, font-weight 0.15s;
+    pointer-events: none;
+  }
+  .node-group:hover .node-label { fill: var(--ink); }
+  .node-group.selected .node-label { fill: var(--ink); font-weight: 500; }
+  .node-group.dimmed { opacity: 0.28; }
+
+  .edge { transition: stroke 0.2s, stroke-opacity 0.2s, stroke-width 0.2s; }
+  .edge.dim { stroke-opacity: 0.15; }
+  .edge.highlight { stroke-opacity: 0.85; stroke-width: 1.4; }
+
+  .cluster-label {
+    font-family: var(--serif);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    fill: currentColor;
+    pointer-events: none;
+  }
+  .cluster-label.sub {
+    font-family: var(--mono);
+    letter-spacing: 0.18em;
+  }
+  .cluster-ring {
+    fill: none;
+    stroke: currentColor;
+    stroke-dasharray: 2 4;
+    stroke-width: 0.5;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  /* twinkle for stars */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.18; }
+    50% { opacity: 0.5; }
+  }
+  .star { animation: twinkle 6s ease-in-out infinite; }
+  .star.s2 { animation-duration: 4.5s; animation-delay: -1.2s; }
+  .star.s3 { animation-duration: 7.5s; animation-delay: -2.4s; }
+
+  @keyframes pulse-sel {
+    0%, 100% { r: 1.6; opacity: 0.55; }
+    50% { r: 2.6; opacity: 0; }
+  }
+  .selected-pulse { animation: pulse-sel 2.4s ease-out infinite; }
+
+  /* responsive details */
+  @media (max-width: 640px) {
+    .panel { padding: 18px 18px 20px; }
+    .panel h2 { font-size: 22px; }
+    .legend { padding: 8px 10px; max-width: 150px; font-size: 9px; }
+    .legend .title-row { font-size: 9px; margin-bottom: 6px; }
+    .map-hint { display: none; }
+    .map-controls { display: none; }
+    header { grid-template-columns: 1fr; }
+    .header-actions { justify-content: flex-start; }
+    .search { flex: 1; min-width: 0; }
+  }
+
+  /* hide cluster labels on small */
+  @media (max-width: 480px) {
+    .cluster-label.sub { display: none; }
+  }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="env,react">
+const { useState, useMemo, useRef, useEffect } = React;
+
+// ─────────────────────────────────────────────
+// Data
+// ─────────────────────────────────────────────
+const PROJECTS = [
+  { id:'omnicard',   title:'Omnicard',       type:'app', status:'wip',      year:'2026', stack:['React','Node','WebSocket'],     tags:['game','realtime'],     role:'Solo · Lead',          desc:"Jeu de cartes en ligne, temps réel, écrit en TypeScript. Architecture event-sourced, salles persistantes." },
+  { id:'penumbra',   title:'Penumbra',       type:'cli', status:'active',   year:'2025', stack:['Rust'],                          tags:['devtool','log'],       role:'Solo',                 desc:"Analyseur de logs structurés. Filtres composables, sortie colorée, mode follow." },
+  { id:'vellum',     title:'Vellum',         type:'lib', status:'active',   year:'2025', stack:['TypeScript'],                    tags:['parser','markdown'],   role:'Maintainer',           desc:"Parser Markdown extensible. AST stable, plugins typés, performance proche de remark." },
+  { id:'lantern',    title:'Lantern',        type:'oss', status:'active',   year:'2024', stack:['TypeScript','Next.js'],          tags:['perf','SSR'],          role:'Contributeur',         desc:"Optimisations SSR pour Next : streaming partial hydration, mesures Core Web Vitals." },
+  { id:'hexcalibur', title:'Hexcalibur',     type:'app', status:'active',   year:'2024', stack:['Vue','PostgreSQL'],              tags:['saas','b2b'],          role:'Co-fondateur',         desc:"Outil B2B de planification d'équipes terrain. 40+ entreprises, ARR à 5 chiffres." },
+  { id:'watchman',   title:'Watchman',       type:'cli', status:'active',   year:'2023', stack:['Go'],                            tags:['monitoring'],          role:'Solo',                 desc:"Daemon de monitoring auto-hébergé. Alertes Discord/Slack/email, footprint minuscule." },
+  { id:'specter',    title:'Specter',        type:'lib', status:'archived', year:'2023', stack:['Python'],                        tags:['ML','viz'],            role:'Solo',                 desc:"Visualisation d'embeddings ML. Réduction dimensionnelle, projections interactives." },
+  { id:'wraith',     title:'Wraith-fmt',     type:'oss', status:'active',   year:'2023', stack:['TypeScript','Prettier'],         tags:['formatter','plugin'],  role:'Contributeur',         desc:"Plugin Prettier pour des langages template peu communs. 800+ ★." },
+  { id:'crypt',      title:'Crypt-router',   type:'lib', status:'active',   year:'2022', stack:['Node'],                          tags:['routing','http'],      role:'Solo',                 desc:"Router HTTP minimaliste pour Node. Zéro dépendance, typage strict des params." },
+  { id:'moonlit',    title:'Moonlit',        type:'app', status:'wip',      year:'2026', stack:['React Native','Expo'],           tags:['mobile','health'],     role:'Solo · Design+Dev',    desc:"App mobile de suivi du sommeil et de l'humeur. Design fait main, sortie sur iOS prévue été 26." },
+  { id:'reliquary',  title:'Reliquary',      type:'xp',  status:'archived', year:'2022', stack:['Three.js'],                      tags:['webgl','art'],         role:'Solo',                 desc:"Galerie 3D de musée imaginaire. Shaders custom, navigation à la souris, partagée 10k fois." },
+  { id:'pyre',       title:'Pyre',           type:'cli', status:'active',   year:'2025', stack:['Python','Bash'],                 tags:['deploy','infra'],      role:'Solo',                 desc:"Wrapper de déploiement pour serveurs nus. Rollback transactionnel, hooks Git." },
+  { id:'sable',      title:'Sable',          type:'oss', status:'active',   year:'2024', stack:['TypeScript','Astro'],            tags:['ssg','content'],       role:'Contributeur',         desc:"Intégration de collections de contenu pour Astro. Schémas Zod, génération typée." },
+  { id:'coven',      title:'Coven',          type:'app', status:'active',   year:'2024', stack:['Svelte','Supabase'],             tags:['social','niche'],      role:'Solo',                 desc:"Réseau social de niche pour collectionneurs de TCG. Communauté de 3k personnes." },
+  { id:'tomb',       title:'Tomb-of-glyphs', type:'xp',  status:'archived', year:'2023', stack:['WebGL','GLSL'],                  tags:['shader','demoscene'], role:'Solo',                 desc:"Démo shader 4k pour Revision 2023. Raymarching, signed distance fields, audio synth." },
+];
+
+const TYPE_META = {
+  app: { label: 'Application',     glyph: '◆', plural: 'Tomes Majeurs',     sub: 'Apps & produits',   color: 'var(--c-app)' },
+  cli: { label: 'Outil CLI',       glyph: '▶', plural: 'Outils du Chasseur', sub: 'Scripts & utilitaires', color: 'var(--c-cli)' },
+  lib: { label: 'Bibliothèque',    glyph: '◉', plural: 'Reliques',           sub: 'Packages publiés',  color: 'var(--c-lib)' },
+  oss: { label: 'Contribution',    glyph: '✦', plural: 'Pactes',             sub: 'Open source externe', color: 'var(--c-oss)' },
+  xp:  { label: 'Expérimentation', glyph: '◬', plural: 'Rêveries',           sub: 'Prototypes & démos', color: 'var(--c-xp)' },
+};
+
+const STATUS_META = {
+  active:   { label: 'Actif',     dot: 'dot-active'   },
+  wip:      { label: 'En cours',  dot: 'dot-wip'      },
+  archived: { label: 'Archivé',   dot: 'dot-archived' },
+};
+
+// Constellation node positions on a 100×70 viewBox
+const NODES = {
+  omnicard:   { x: 22, y: 30 },
+  hexcalibur: { x: 14, y: 47 },
+  moonlit:    { x: 28, y: 16 },
+  coven:      { x: 32, y: 38 },
+
+  penumbra:   { x: 56, y: 14 },
+  watchman:   { x: 70, y: 22 },
+  pyre:       { x: 62, y: 33 },
+
+  vellum:     { x: 84, y: 38 },
+  specter:    { x: 90, y: 56 },
+  crypt:      { x: 76, y: 52 },
+
+  lantern:    { x: 50, y: 56 },
+  wraith:     { x: 60, y: 63 },
+  sable:      { x: 42, y: 62 },
+
+  reliquary:  { x: 18, y: 62 },
+  tomb:       { x: 8,  y: 56 },
+};
+
+// Cluster centers + visual rings
+const CLUSTERS = [
+  { type: 'app', x: 24,  y: 33,  rx: 16, ry: 18 },
+  { type: 'cli', x: 63,  y: 22,  rx: 13, ry: 11 },
+  { type: 'lib', x: 83,  y: 49,  rx: 11, ry: 12 },
+  { type: 'oss', x: 51,  y: 61,  rx: 13, ry: 9  },
+  { type: 'xp',  x: 13,  y: 59,  rx: 9,  ry: 8  },
+];
+
+// Edges: shared stack / theme between projects
+const EDGES = [
+  ['omnicard','hexcalibur'], ['omnicard','coven'], ['omnicard','moonlit'],
+  ['penumbra','watchman'],   ['pyre','watchman'],
+  ['vellum','wraith'],       ['vellum','sable'],   ['vellum','omnicard'],
+  ['lantern','sable'],       ['lantern','crypt'],
+  ['reliquary','tomb'],
+  ['hexcalibur','crypt'],
+  ['wraith','sable'],
+];
+
+// Decorative stars
+const STARS = Array.from({length: 60}, (_, i) => {
+  // deterministic pseudo-random
+  const s = Math.sin(i * 9173.7) * 43758.5453;
+  const a = s - Math.floor(s);
+  const t = Math.sin((i+1) * 1271.3) * 12345.678;
+  const b = t - Math.floor(t);
+  const r = Math.sin((i+2) * 451.9) * 9821.34;
+  const c = r - Math.floor(r);
+  return {
+    x: a * 100,
+    y: b * 70,
+    r: 0.15 + c * 0.35,
+    cls: i % 3 === 0 ? 's2' : (i % 5 === 0 ? 's3' : '')
+  };
+});
+
+const typeColorVar = (t) => `var(--c-${t})`;
+
+// ─────────────────────────────────────────────
+// Components
+// ─────────────────────────────────────────────
+function Constellation({ selectedId, onSelect, filtered, query }) {
+  const byId = useMemo(() => Object.fromEntries(PROJECTS.map(p => [p.id, p])), []);
+
+  // edges to/from selection
+  const connected = useMemo(() => {
+    if (!selectedId) return new Set();
+    const s = new Set();
+    EDGES.forEach(([a,b]) => {
+      if (a === selectedId) s.add(b);
+      else if (b === selectedId) s.add(a);
+    });
+    return s;
+  }, [selectedId]);
+
+  const isMatch = (id) => {
+    const p = byId[id];
+    if (!filtered.has(p.type)) return false;
+    if (!query) return true;
+    const q = query.toLowerCase();
+    return (
+      p.title.toLowerCase().includes(q) ||
+      p.tags.some(t => t.toLowerCase().includes(q)) ||
+      p.stack.some(s => s.toLowerCase().includes(q)) ||
+      p.type.toLowerCase().includes(q)
+    );
+  };
+
+  return (
+    <svg className="constellation" viewBox="0 0 100 70" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <radialGradient id="node-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="currentColor" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+        </radialGradient>
+        <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="0.6" />
+        </filter>
+      </defs>
+
+      {/* stars */}
+      <g aria-hidden="true">
+        {STARS.map((s, i) => (
+          <circle key={i}
+            className={`star ${s.cls}`}
+            cx={s.x} cy={s.y} r={s.r}
+            fill="#d8cba8"
+          />
+        ))}
+      </g>
+
+      {/* cluster rings */}
+      <g aria-hidden="true">
+        {CLUSTERS.map(c => (
+          <ellipse key={c.type}
+            cx={c.x} cy={c.y} rx={c.rx} ry={c.ry}
+            className="cluster-ring"
+            style={{ color: typeColorVar(c.type) }}
+          />
+        ))}
+      </g>
+
+      {/* edges */}
+      <g aria-hidden="true">
+        {EDGES.map(([a, b], i) => {
+          const A = NODES[a], B = NODES[b];
+          if (!A || !B) return null;
+          const isHi = selectedId && (a === selectedId || b === selectedId);
+          const isDim = selectedId && !isHi;
+          return (
+            <line key={i}
+              className={`edge ${isHi ? 'highlight' : ''} ${isDim ? 'dim' : ''}`}
+              x1={A.x} y1={A.y} x2={B.x} y2={B.y}
+              stroke={isHi ? 'var(--blood)' : 'var(--ink-faint)'}
+              strokeWidth={isHi ? 0.5 : 0.3}
+              strokeDasharray={isHi ? null : "0.8 1.4"}
+              strokeOpacity={isHi ? 0.85 : 0.45}
+            />
+          );
+        })}
+      </g>
+
+      {/* cluster labels */}
+      <g aria-hidden="true">
+        {CLUSTERS.map(c => {
+          const meta = TYPE_META[c.type];
+          return (
+            <g key={c.type} style={{ color: typeColorVar(c.type), opacity: 0.55 }}>
+              <text x={c.x} y={c.y - c.ry - 1.2}
+                className="cluster-label"
+                fontSize="1.6"
+                textAnchor="middle">
+                {meta.plural}
+              </text>
+              <text x={c.x} y={c.y - c.ry + 0.5}
+                className="cluster-label sub"
+                fontSize="1.05"
+                textAnchor="middle"
+                opacity="0.7">
+                · {c.type} ·
+              </text>
+            </g>
+          );
+        })}
+      </g>
+
+      {/* nodes */}
+      <g>
+        {PROJECTS.map(p => {
+          const pos = NODES[p.id];
+          if (!pos) return null;
+          const sel = selectedId === p.id;
+          const match = isMatch(p.id);
+          const dim = (selectedId && !sel && !connected.has(p.id)) || !match;
+
+          const color = typeColorVar(p.type);
+          const r = sel ? 1.9 : 1.2;
+
+          // label offset: put label below for top-row clusters, above for bottom-row
+          const labelBelow = pos.y < 40;
+          const labelY = labelBelow ? pos.y + r + 2.3 : pos.y - r - 1.5;
+
+          return (
+            <g key={p.id}
+               className={`node-group ${sel ? 'selected' : ''} ${dim ? 'dimmed' : ''}`}
+               style={{ color }}
+               onClick={() => onSelect(p.id)}
+               role="button"
+               aria-label={`Sélectionner ${p.title}`}
+               tabIndex={0}
+               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSelect(p.id); } }}>
+
+              {/* halo / glow */}
+              {sel && (
+                <>
+                  <circle cx={pos.x} cy={pos.y} r="4" fill="url(#node-glow)" />
+                  <circle cx={pos.x} cy={pos.y} r="1.6" fill="none"
+                    stroke="currentColor" strokeWidth="0.25"
+                    className="selected-pulse" />
+                </>
+              )}
+
+              {/* tap target (invisible, generous) */}
+              <circle className="node-tap" cx={pos.x} cy={pos.y} r="3.4" />
+
+              {/* visible dot */}
+              <circle className="node-dot"
+                cx={pos.x} cy={pos.y} r={r}
+                fill="currentColor"
+                stroke={sel ? 'var(--ink)' : 'none'}
+                strokeWidth={sel ? 0.35 : 0}
+                style={{ filter: sel ? 'drop-shadow(0 0 1.6px currentColor)' : 'drop-shadow(0 0 0.6px currentColor)' }}
+              />
+
+              {/* label */}
+              <text
+                className="node-label"
+                x={pos.x} y={labelY}
+                fontSize="1.5"
+                textAnchor="middle">
+                {p.title}
+              </text>
+
+              {/* status mark for wip */}
+              {p.status === 'wip' && (
+                <circle cx={pos.x + r + 0.4} cy={pos.y - r - 0.2} r="0.45" fill="var(--gold)" />
+              )}
+            </g>
+          );
+        })}
+      </g>
+    </svg>
+  );
+}
+
+function Panel({ project }) {
+  if (!project) {
+    return (
+      <aside className="panel">
+        <div className="panel-kicker">Aucune sélection</div>
+        <p className="empty-panel">
+          Effleurer une étoile pour lire la fiche.<br/><br/>
+          Les traits qui relient les nœuds représentent une stack ou un thème partagé. Cliquer un groupe (Tomes, Outils, Reliques…) dans la légende pour filtrer la carte.
+        </p>
+      </aside>
+    );
+  }
+
+  const meta = TYPE_META[project.type];
+  const statusMeta = STATUS_META[project.status];
+
+  return (
+    <aside className="panel">
+      <div className="panel-kicker">{meta.label}</div>
+      <div className="panel-title-row">
+        <span className="panel-glyph" style={{ color: `var(--c-${project.type})` }}>{meta.glyph}</span>
+        <h2>{project.title}</h2>
+      </div>
+      <div className="panel-meta">{project.year} · {project.role}</div>
+      <div className="status-line">
+        <span className={`dot ${statusMeta.dot}`}></span>
+        {statusMeta.label}
+      </div>
+
+      <p className="panel-desc">{project.desc}</p>
+
+      <div className="chips">
+        {project.stack.map(s => <span key={s} className="chip">{s}</span>)}
+      </div>
+
+      <div className="actions">
+        <a className="btn btn-primary" href="#">↗ Démo</a>
+        <a className="btn" href="#">↗ Code</a>
+        <a className="btn" href="#">Fiche</a>
+      </div>
+
+      <div className="divider"></div>
+
+      <div className="links-section">
+        <h3 className="h3">Liens (stack partagée)</h3>
+        <ul>
+          {(() => {
+            const connectedIds = new Set();
+            EDGES.forEach(([a,b]) => {
+              if (a === project.id) connectedIds.add(b);
+              else if (b === project.id) connectedIds.add(a);
+            });
+            const conn = [...connectedIds].map(id => PROJECTS.find(p => p.id === id)).filter(Boolean);
+            if (!conn.length) return <li className="link-row" style={{cursor:'default'}}>—</li>;
+            return conn.map(p => (
+              <li key={p.id} className="link-row">
+                <span className="arrow">→</span>
+                <span style={{ color: `var(--c-${p.type})`, fontSize: 11, lineHeight: 1 }}>{TYPE_META[p.type].glyph}</span>
+                {p.title}
+              </li>
+            ));
+          })()}
+        </ul>
+      </div>
+    </aside>
+  );
+}
+
+function App() {
+  const [selectedId, setSelectedId] = useState('omnicard');
+  const [filtered, setFiltered] = useState(() => new Set(Object.keys(TYPE_META)));
+  const [query, setQuery] = useState('');
+
+  const selected = useMemo(() => PROJECTS.find(p => p.id === selectedId) || null, [selectedId]);
+
+  // counts per type
+  const counts = useMemo(() => {
+    const c = {};
+    PROJECTS.forEach(p => { c[p.type] = (c[p.type] || 0) + 1; });
+    return c;
+  }, []);
+
+  const toggleType = (type) => {
+    setFiltered(prev => {
+      const next = new Set(prev);
+      if (next.has(type)) next.delete(type);
+      else next.add(type);
+      // ensure at least one stays
+      if (next.size === 0) return new Set(Object.keys(TYPE_META));
+      return next;
+    });
+  };
+
+  // if selected is filtered out, clear
+  useEffect(() => {
+    if (selected && !filtered.has(selected.type)) setSelectedId(null);
+  }, [filtered, selected]);
+
+  return (
+    <div className="page" data-screen-label="Projets · Constellation">
+      <header>
+        <div>
+          <div className="kicker">Portfolio · 2026</div>
+          <h1>Projets <span className="amp">·</span> Constellation</h1>
+          <p className="lede">
+            Quinze projets cartographiés en cinq constellations. Les nœuds reliés partagent une stack ou un thème. Sélectionner une étoile pour ouvrir sa fiche.
+          </p>
+        </div>
+        <div className="header-actions">
+          <label className="search">
+            <span aria-hidden="true">⌕</span>
+            <input
+              placeholder="Chercher…"
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              aria-label="Chercher un projet, un tag, une stack"
+            />
+          </label>
+        </div>
+      </header>
+
+      <main>
+        <div className="map-wrap" role="region" aria-label="Carte des projets">
+          <Constellation
+            selectedId={selectedId}
+            onSelect={(id) => setSelectedId(id === selectedId ? null : id)}
+            filtered={filtered}
+            query={query}
+          />
+
+          {/* legend */}
+          <div className="legend" aria-label="Légende des types">
+            <div className="title-row">Constellations</div>
+            {Object.entries(TYPE_META).map(([k, v]) => {
+              const off = !filtered.has(k);
+              return (
+                <div key={k}
+                  className={`legend-row ${off ? 'off' : ''}`}
+                  onClick={() => toggleType(k)}
+                  role="checkbox"
+                  aria-checked={!off}
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleType(k); } }}>
+                  <span className="legend-dot" style={{ background: typeColorVar(k), color: typeColorVar(k) }}></span>
+                  <span>{v.plural}</span>
+                  <span className="legend-count">{counts[k] || 0}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* controls (hidden mobile) */}
+          <div className="map-controls" aria-hidden="true">
+            <button className="icon-btn" aria-label="Zoom in">+</button>
+            <button className="icon-btn" aria-label="Zoom out">−</button>
+            <button className="icon-btn" aria-label="Recentrer">↻</button>
+          </div>
+
+          <div className="map-meta">{PROJECTS.length} projets · {EDGES.length} liens</div>
+
+          <div className="map-hint">
+            cliquer une<br/>étoile ↓
+          </div>
+        </div>
+
+        <Panel project={selected} />
+      </main>
+
+      <footer>
+        <span className="breadcrumb">Accueil · <strong style={{color:'var(--ink)'}}>Projets</strong> · Notes · Contact</span>
+        <span>
+          <a href="#">Vue liste ↗</a>
+        </span>
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "badge": "// status: 'under construction' (the badge component is 900 lines for a string)",
+  "eyebrow": "var temp = 'Section temporaire'; // temp has been here for 5 years",
+  "title": "/* DO NOT CHANGE THIS STRING. It's referenced by ID in 3 CSS files, 2 test suites, and a Jenkins pipeline that nobody can find. */",
+  "lead": "/* I started writing this page in 2018. The requirements changed 14 times. The designer quit. The PM moved to Bali. I'm still here. The function that renders this text is called renderContent_v2_old_new_FIXED_final(). It takes 23 parameters. 7 are unused. 3 are always null. One is a callback that calls itself. */",
+  "cta.projects": "if(true) goto projects; else goto projects; // both paths go to projects",
+  "cta.home": "window.location = window.location = window.location; // triple redirect for safety",
+  "status.aria": "// accessibility review: 'we'll do it in v2' (we're on v7)",
+  "status.title": "var statusTitle = getTitle(getTitle(getTitle())); // recursive for no reason",
+  "status.value": "// TODO TODO TODO TODO TODO TODO (each TODO was added by a different dev)",
+  "status.structure": "// structure.js: 1 file, 14,000 lines, 0 functions, 1 giant switch statement",
+  "status.visual": "var css = loadCSS(); var css2 = loadCSS(); // loaded twice, breaks if you remove either",
+  "status.content": "content = content || content || content || 'default'; // belt AND suspenders AND duct tape",
+  "pillar.roadmap.title": "// roadmap (see also: roadmap_old, roadmap_new, roadmap_real, roadmap_USE_THIS_ONE)",
+  "pillar.roadmap.description": "/* The roadmap is stored in: 1) a JSON file, 2) a database table, 3) a Google Sheet, 4) Dave's sticky notes, 5) the CEO's dreams. None of them agree. */",
+  "pillar.craft.title": "function presentation() { return presentation(); } // stack overflow speedrun",
+  "pillar.craft.description": "/* Mobile responsive: we added 'overflow: hidden' to body and called it done. The scroll? Gone. The bugs? Also gone. The users? ...also gone. */",
+  "pillar.launch.title": "// launch date: new Date('soon') => Invalid Date",
+  "pillar.launch.description": "/* Deploy checklist: 1. git push to main on Friday at 5pm 2. Close laptop 3. Turn off phone 4. Change name 5. Move to another country 6. The rollback plan is in a file called 'rollback_plan.doc' which is actually an Excel spreadsheet renamed to .doc */"
+}

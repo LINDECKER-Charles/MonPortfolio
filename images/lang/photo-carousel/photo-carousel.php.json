@@ -1,0 +1,9 @@
+{
+  "label": "portraitCarousel.php",
+  "previous": "prev_slide()",
+  "next": "next_slide()",
+  "pause": "pause_ticker()",
+  "play": "resume_ticker()",
+  "go_to": "header('Location: ?slide={index}')",
+  "slide_alt": "Charles Lindecker — portrait n°{index}"
+}

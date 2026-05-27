@@ -12,6 +12,7 @@ import { RouterLink } from '@angular/router';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import { TranslationService } from '../../../../services/translation.service';
+import { computeStats } from '../works.state';
 
 @Component({
   selector: 'app-works-header',
@@ -22,6 +23,7 @@ import { TranslationService } from '../../../../services/translation.service';
 })
 export class WorksHeader implements AfterViewInit {
   protected readonly ts = inject(TranslationService);
+  protected readonly stats = computeStats();
   @ViewChild('hero') private heroRef?: ElementRef<HTMLElement>;
 
   private readonly isBrowser: boolean;

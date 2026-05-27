@@ -1,0 +1,84 @@
+<main class="legal-page">
+  <div class="legal-page__aura" aria-hidden="true"></div>
+
+  <app-legal-layout
+    kickerKey="legal.ck.kicker"
+    titlePreKey="legal.ck.title_pre"
+    titlePostKey="legal.ck.title_post"
+    subtitleKey="legal.ck.sub"
+    [updated]="updated"
+    [tocItems]="toc"
+    [tocLinks]="tocLinks"
+    [crossLinks]="crossLinks">
+
+    <div class="callout">
+      <span class="callout__label">⚜ {{ ts.translate('legal.ck.intro_label') }}</span>
+      <p [innerHTML]="ts.translate('legal.ck.intro')"></p>
+    </div>
+
+    <section id="sans-cookies">
+      <h2><span class="num">I.</span>{{ ts.translate('legal.ck.sans.title') }}</h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.ck.sans.lede')"></p>
+      <p [innerHTML]="ts.translate('legal.ck.sans.p2')"></p>
+    </section>
+
+    <section id="localstorage">
+      <h2>
+        <span class="num">II.</span>{{ ts.translate('legal.ck.local.title') }}
+        <code>localStorage</code>
+      </h2>
+      <p class="lede" [innerHTML]="ts.translate('legal.ck.local.lede')"></p>
+
+      <div class="legal-table-wrap">
+        <table class="ledger">
+          <thead>
+            <tr>
+              <th>{{ ts.translate('legal.ck.local.th_cle') }}</th>
+              <th>{{ ts.translate('legal.ck.local.th_finalite') }}</th>
+              <th>{{ ts.translate('legal.ck.local.th_donnee') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ ts.translate('legal.ck.local.r1_cle') }}</td>
+              <td>{{ ts.translate('legal.ck.local.r1_fin') }}</td>
+              <td [innerHTML]="ts.translate('legal.ck.local.r1_donnee')"></td>
+            </tr>
+            <tr>
+              <td>{{ ts.translate('legal.ck.local.r2_cle') }}</td>
+              <td>{{ ts.translate('legal.ck.local.r2_fin') }}</td>
+              <td>{{ ts.translate('legal.ck.local.r2_donnee') }}</td>
+            </tr>
+            <tr>
+              <td>{{ ts.translate('legal.ck.local.r3_cle') }}</td>
+              <td>{{ ts.translate('legal.ck.local.r3_fin') }}</td>
+              <td>{{ ts.translate('legal.ck.local.r3_donnee') }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p [innerHTML]="ts.translate('legal.ck.local.p_after')"></p>
+    </section>
+
+    <section id="supprimer">
+      <h2><span class="num">III.</span>{{ ts.translate('legal.ck.supprimer.title') }}</h2>
+      <p class="lede">{{ ts.translate('legal.ck.supprimer.lede') }}</p>
+      <p [innerHTML]="ts.translate('legal.ck.supprimer.p2')"></p>
+
+      <div class="callout callout--warn">
+        <span class="callout__label">⚜ {{ ts.translate('legal.ck.supprimer.tip_label') }}</span>
+        <p [innerHTML]="ts.translate('legal.ck.supprimer.tip')"></p>
+      </div>
+    </section>
+
+    <section id="plus-loin">
+      <h2><span class="num">IV.</span>{{ ts.translate('legal.ck.plus.title') }}</h2>
+      <p class="lede">{{ ts.translate('legal.ck.plus.lede') }}</p>
+      <ul>
+        <li [innerHTML]="ts.translate('legal.ck.plus.li_pc')"></li>
+        <li [innerHTML]="ts.translate('legal.ck.plus.li_ml')"></li>
+      </ul>
+    </section>
+  </app-legal-layout>
+</main>

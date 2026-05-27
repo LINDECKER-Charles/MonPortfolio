@@ -1,0 +1,1 @@
+{ "home": "/^h[o0]me$/i", "projects": "/pr[oO]j(ect|et)s?/g", "work": "/w[o0]rk|parc[o0]urs/i", "lang": "/l[aá]ng(u(age)?)?$/i" }

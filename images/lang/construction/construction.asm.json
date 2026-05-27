@@ -1,0 +1,20 @@
+{
+  "badge": "MOV status, WIP",
+  "eyebrow": "NOP ; TEMP_SECTION",
+  "title": "CMP page_status, READY; JNE under_construction",
+  "lead": "PUSH career_v2; CALL prepare_timeline; MOV CX, key_moments; LOOP polish_each; CMP presentation, GOOD_ENOUGH; JL keep_working",
+  "cta.projects": "JMP projects_section",
+  "cta.home": "RET ; HOME",
+  "status.aria": "SEGMENT .build_status",
+  "status.title": "MOV AX, PROGRESS",
+  "status.value": "CMP design, IN_PROGRESS; JE still_cooking",
+  "status.structure": "MOV struct_flag, SET",
+  "status.visual": "LEA SI, visual_direction",
+  "status.content": "CALL refine_content ; NOT DONE YET",
+  "pillar.roadmap.title": "PROC career_narrative",
+  "pillar.roadmap.description": "LEA DI, [evolution]; PUSH pivots; PUSH milestones; CALL build_story; CMP clarity, HIGH; JGE proceed",
+  "pillar.craft.title": "PROC ambitious_render",
+  "pillar.craft.description": "MOV interactions, POLISHED; CALL optimize_mobile; TEST responsive, 0xFF; JNZ ship_ready",
+  "pillar.launch.title": "PROC launch_sequence",
+  "pillar.launch.description": "CMP finalization, COMPLETE; JNE wait_loop; JMP projects_section; OR JMP home ; PICK ONE HUNTER"
+}

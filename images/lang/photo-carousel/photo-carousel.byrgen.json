@@ -1,0 +1,9 @@
+{
+  "label": "Rota imaginum",
+  "previous": "Imago praecedens",
+  "next": "Imago sequens",
+  "pause": "Quiescere rotam",
+  "play": "Reddere rotam",
+  "go_to": "Ad imaginem {index}",
+  "slide_alt": "Vultus Caroli Lindecker — {index}"
+}

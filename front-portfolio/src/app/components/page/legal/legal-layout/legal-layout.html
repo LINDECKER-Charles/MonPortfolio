@@ -1,0 +1,54 @@
+<header class="legal-hero">
+  <div class="legal-hero__head">
+    <p class="legal-hero__kicker text-rune">{{ ts.translate(kickerKey()) }}</p>
+    <h1 class="legal-hero__title text-engraved">
+      <span>{{ ts.translate(titlePreKey()) }}</span>
+      <span class="legal-hero__amp" aria-hidden="true">·</span>
+      <span>{{ ts.translate(titlePostKey()) }}</span>
+    </h1>
+    <p class="legal-hero__sub text-tome">{{ ts.translate(subtitleKey()) }}</p>
+  </div>
+
+  <div class="legal-seal" [attr.aria-label]="ts.translate('legal.common.seal_aria')">
+    <span class="legal-seal__glyph" aria-hidden="true">⚜</span>
+    <span class="legal-seal__label text-tag">{{ ts.translate('legal.common.seal_label') }}</span>
+    <span class="legal-seal__date">{{ updated() }}</span>
+  </div>
+</header>
+
+<div class="legal-layout">
+  <aside class="legal-toc" [attr.aria-label]="ts.translate('legal.common.toc_aria')">
+    <p class="legal-toc__title text-rune">{{ ts.translate('legal.common.toc_title') }}</p>
+    <ol class="legal-toc__list">
+      @for (item of tocItems(); track item.fragment) {
+        <li><a [href]="'#' + item.fragment">{{ ts.translate(item.key) }}</a></li>
+      }
+    </ol>
+
+    @if (tocLinks().length) {
+      <nav class="legal-toc__foot" [attr.aria-label]="ts.translate('legal.common.cross_aria')">
+        @for (link of tocLinks(); track link.path) {
+          <a class="transition-ritual" [routerLink]="link.path">{{ ts.translate(link.key) }}</a>
+        }
+      </nav>
+    }
+  </aside>
+
+  <article class="legal-manuscript">
+    <ng-content></ng-content>
+
+    @if (crossLinks().length) {
+      <nav class="legal-cross" [attr.aria-label]="ts.translate('legal.common.cross_aria')">
+        @for (cl of crossLinks(); track cl.path) {
+          <a class="legal-cross__link surface-crypt transition-ritual" [routerLink]="cl.path">
+            <span class="legal-cross__kicker text-tag">{{ ts.translate(cl.kickerKey) }}</span>
+            <span class="legal-cross__title text-engraved">
+              {{ ts.translate(cl.titleKey) }}
+              <span class="legal-cross__arrow" aria-hidden="true">→</span>
+            </span>
+          </a>
+        }
+      </nav>
+    }
+  </article>
+</div>

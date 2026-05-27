@@ -125,5 +125,21 @@
   "modal.links": "Nexus",
   "modal.demo": "Demonstratio",
   "modal.site": "Situs Web",
-  "today": "Hodie"
+  "today": "Hodie",
+  "gup.shortDescription": "Una linea imperii ad scrutandum et renovandum omnia in machina developatoris — plus quam CXXX administratores fasciculorum, sub uno ordine.",
+  "gup.longDescription": "gup (Global Updater) est instrumentum lineae imperii quod renovationes programmatum in machina unificat, plus quam CXXX fontes congregans: winget, scoop, choco, npm, pnpm, pip, cargo, dotnet tools, helm, kubectl, terraform, WSL et alia. Fragmentationem administratorum sanat per interfaciem unicam, modum interactivum electionis, scrutationem celerem, exitum JSON pro CI/CD, et imperium doctor quod providers detegit ut oculus Byrgenwerthi. Securitas in altum tractatur: executio sine cochlea per execa, HTTPS solum, et analysis statica CodeQL/Semgrep/gitleaks in vigilia.",
+  "gup.highlights.0": "Interfacies unica pro CXXX+ providers (winget, npm, cargo, pip, kubectl…) — eldritch ordo",
+  "gup.highlights.1": "Modus interactivus, scrutatio celeris, exitus JSON et imperium doctor detectionis",
+  "gup.highlights.2": "Securitas in altum: execa sine cochlea, HTTPS solum, CodeQL/Semgrep/gitleaks",
+  "gup.lessonsLearned.0": "Fingere abstractionem communem super decem administratores heterogeneos",
+  "gup.lessonsLearned.1": "Industriam facere CLI probabilem et scriptabilem pro CI/CD",
+  "gup.lessonsLearned.2": "Applicare rationem securitatis in profundum ad instrumentum systematis",
+  "img-convertor.shortDescription": "Conversor imaginum et resizer responsivus celer pro web — WebP, AVIF, JPEG, PNG — acutus ut scalpellum, CLI vel interactivus.",
+  "img-convertor.longDescription": "img-convertor est instrumentum lineae imperii ad praeparanda bona web: conversio inter WebP, AVIF, JPEG et PNG, et generatio variantium responsivarum ad latitudines punctorum fractionis, ratione servata. Praebet CLI politam et consolam interactivam ductam, processum recursivum directoriorum, praesetta punctorum nominata et configurationem persistentem (~/.img-convertor/config.json). Architectura logicam puram (core/) ab interfaciebus separat, usum programmaticum vel solitarium permittens. Nititur sharp, Commander et Inquirer, cum coverage probationum C centesimis et CI GitHub Actions multi-systematis.",
+  "img-convertor.highlights.0": "Conversio WebP / AVIF / JPEG / PNG et resizing responsivum per puncta fractionis",
+  "img-convertor.highlights.1": "CLI polita et consola interactiva, processus recursivus et praesetta configurabilia",
+  "img-convertor.highlights.2": "Architectura core/ pura ab interfacie separata, coverage probationum C centesimis",
+  "img-convertor.lessonsLearned.0": "Separare logicam puram ab interfaciebus CLI et interactivis",
+  "img-convertor.lessonsLearned.1": "Instrumentare praeparationem bonorum web responsivorum a fine ad finem",
+  "img-convertor.lessonsLearned.2": "Tenere coverage probationum exhaustivum in instrumento imaginum"
 }

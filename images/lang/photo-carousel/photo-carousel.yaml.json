@@ -1,0 +1,9 @@
+{
+  "label": "aria: carousel",
+  "previous": "nav: previous",
+  "next": "nav: next",
+  "pause": "state: paused",
+  "play": "state: running",
+  "go_to": "goto: {index}",
+  "slide_alt": "portrait_{index}.alt"
+}

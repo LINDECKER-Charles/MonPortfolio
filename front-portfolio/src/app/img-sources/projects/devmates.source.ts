@@ -1,51 +1,24 @@
-import {ResponsiveSource} from '../../components/assets/responsive-picture/responsive-picture';
-import {ProjectMediaImage} from '../../components/page/projects/projects.state';
+import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import { buildProjectImage } from './project-image.builder';
 
-const buildResponsiveImageSources = (
-  name: string,
-  sizes: Array<{ width: number; height: number }>
-): ResponsiveSource[] => {
-  const sources: ResponsiveSource[] = [];
+export const DEV_MATES_HOME_IMAGE = buildProjectImage('Dev-mates', 'home', 'Dev-Mates home', [
+  { width: 24, height: 25 },
+  { width: 40, height: 42 },
+  { width: 80, height: 85 },
+  { width: 160, height: 171 },
+  { width: 320, height: 343 },
+  { width: 640, height: 686 },
+  { width: 768, height: 823 },
+  { width: 1024, height: 1097 },
+  { width: 1280, height: 1372 },
+  { width: 1536, height: 1646 },
+]);
 
-  for (const size of sizes) {
-    const srcBase = `/project/Dev-mates/${size.width}x${size.height}_${name}`;
-
-    sources.push({
-      src: `${srcBase}.webp`,
-      maxWidth: size.width,
-      type: 'image/webp',
-    });
-  }
-
-  sources.push({
-    src: `/project/Dev-mates/${name}.webp`,
-    type: 'image/webp',
-  });
-
-  return sources;
-};
-
-export const DEV_MATES_HOME_IMAGE: ProjectMediaImage = {
-  alt: 'Dev-Mates home',
-  fallbackSrc: '/project/Dev-mates/home.webp',
-  sources: buildResponsiveImageSources('home', [
-    { width: 24, height: 25 },
-    { width: 40, height: 42 },
-    { width: 80, height: 85 },
-    { width: 160, height: 171 },
-    { width: 320, height: 343 },
-    { width: 640, height: 686 },
-    { width: 768, height: 823 },
-    { width: 1024, height: 1097 },
-    { width: 1280, height: 1372 },
-    { width: 1536, height: 1646 },
-  ]),
-};
-
-export const DEV_MATES_CONTACT_IMAGE: ProjectMediaImage = {
-  alt: 'Dev-Mates contact',
-  fallbackSrc: '/project/Dev-mates/contact.webp',
-  sources: buildResponsiveImageSources('contact', [
+export const DEV_MATES_CONTACT_IMAGE = buildProjectImage(
+  'Dev-mates',
+  'contact',
+  'Dev-Mates contact',
+  [
     { width: 24, height: 26 },
     { width: 40, height: 44 },
     { width: 80, height: 89 },
@@ -56,13 +29,14 @@ export const DEV_MATES_CONTACT_IMAGE: ProjectMediaImage = {
     { width: 1024, height: 1141 },
     { width: 1280, height: 1426 },
     { width: 1536, height: 1711 },
-  ]),
-};
+  ]
+);
 
-export const DEV_MATES_SERVICE_IMAGE: ProjectMediaImage = {
-  alt: 'Dev-Mates service',
-  fallbackSrc: '/project/Dev-mates/service.webp',
-  sources: buildResponsiveImageSources('service', [
+export const DEV_MATES_SERVICE_IMAGE = buildProjectImage(
+  'Dev-mates',
+  'service',
+  'Dev-Mates service',
+  [
     { width: 24, height: 19 },
     { width: 40, height: 32 },
     { width: 80, height: 65 },
@@ -73,13 +47,14 @@ export const DEV_MATES_SERVICE_IMAGE: ProjectMediaImage = {
     { width: 1024, height: 844 },
     { width: 1280, height: 1055 },
     { width: 1536, height: 1266 },
-  ]),
-};
+  ]
+);
 
-export const DEV_MATES_APPLICATION_IMAGE: ProjectMediaImage = {
-  alt: 'Dev-Mates application',
-  fallbackSrc: '/project/Dev-mates/application.webp',
-  sources: buildResponsiveImageSources('application', [
+export const DEV_MATES_APPLICATION_IMAGE = buildProjectImage(
+  'Dev-mates',
+  'application',
+  'Dev-Mates application',
+  [
     { width: 24, height: 22 },
     { width: 40, height: 38 },
     { width: 80, height: 76 },
@@ -90,8 +65,8 @@ export const DEV_MATES_APPLICATION_IMAGE: ProjectMediaImage = {
     { width: 1024, height: 975 },
     { width: 1280, height: 1219 },
     { width: 1536, height: 1463 },
-  ]),
-};
+  ]
+);
 
 export const DEV_MATES_IMAGES: ProjectMediaImage[] = [
   DEV_MATES_HOME_IMAGE,

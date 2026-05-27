@@ -7,6 +7,17 @@
     {{ ts.translate('works.header.description') }}
   </p>
 
+  <ul class="works-hero__stats" role="list">
+    @for (stat of stats; track stat.key) {
+      <li class="works-hero__stat">
+        <span class="works-hero__stat-num">{{ stat.value }}</span>
+        <span class="works-hero__stat-lbl text-sigil">
+          {{ ts.translate('works.header.stats.' + stat.key) }}
+        </span>
+      </li>
+    }
+  </ul>
+
   <div class="works-hero__actions">
     <a class="cta-tome cta-tome--shadow transition-ritual" routerLink="/projects" href="/projects">
       <span class="cta-tome__label">

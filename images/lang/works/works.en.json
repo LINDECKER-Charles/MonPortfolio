@@ -1,0 +1,64 @@
+{
+  "header.eyebrow": "Hunter's log",
+  "header.title": "Journey",
+  "header.description": "Experiences, education and seals earned along the way. Each step forged a piece of the technical arsenal.",
+  "header.cta.top": "Explore",
+  "header.cta.bottom": "My projects",
+
+  "experiences.title": "Experience",
+  "experiences.subtitle": "Roles & missions",
+  "experiences.current": "ongoing",
+  "experiences.duration": "Duration",
+  "experiences.location": "Location",
+  "experiences.mode": "Mode",
+
+  "education.title": "Education",
+  "education.subtitle": "Degrees & programs",
+  "education.period": "Period",
+
+  "certifications.title": "Certifications",
+  "certifications.subtitle": "Earned seals",
+  "certifications.issued": "Issued",
+  "certifications.credential": "Credential",
+  "certifications.link": "View credential",
+
+  "nav.experiences": "Experience",
+  "nav.education": "Education",
+  "nav.certifications": "Certifications",
+
+  "employment.freelance": "Freelance",
+  "employment.internship": "Internship",
+  "employment.volunteer": "Volunteer",
+  "employment.permanent": "Permanent",
+
+  "workMode.onsite": "On-site",
+  "workMode.remote": "Remote",
+  "workMode.hybrid": "Hybrid",
+
+  "sector.social": "Social services",
+  "sector.training": "Training & education",
+  "sector.science": "Science & technology",
+  "sector.consulting": "Services & consulting",
+  "sector.software": "Software publisher",
+
+  "xp.mission-locale-mentor.title": "Mentor & Workshop Host",
+  "xp.mission-locale-mentor.description": "Mentoring young people on a track oriented toward web development careers. The goal is to support their professional integration by working on technical fundamentals, understanding the craft, industry best practices and the mindset expected in a professional environment.\n\nAlongside mentoring, running entry-level web development workshops for beginner audiences to demystify code and spark vocations.",
+
+  "xp.elan-trainer.title": "Web Development Trainer",
+  "xp.elan-trainer.description": "Supporting and training future developers within the Web & Mobile Developer (DWWM) and Application Designer-Developer (CDA) tracks.\n\nPassing on technical fundamentals, professional best practices and the skills needed for a lasting integration into the software development industry.",
+
+  "xp.pvzf-lead.title": "Team Lead — Francophone Pole",
+  "xp.pvzf-lead.description": "As lead of the francophone pole of the PVZ Fusion project, I manage the entire francophone team: a translation pole and a development pole, about a dozen volunteer contributors split between these two axes.\n\nI oversee translation reviews, write and maintain the whole pole's documentation, and build internal tools to ease the team's work. My role includes organization, task distribution and ensuring consistency and sustained quality.",
+
+  "xp.devmates.title": "Full Stack Developer",
+  "xp.devmates.description": "At Dev-Mates, I support companies in their digital transformation as a freelancer. We build custom websites and web applications, offering thorough and human guidance at every step.\n\nWe don't just deliver solutions: we also advise our clients on best practices and ensure quality follow-up throughout the life cycle of their projects. Every collaboration means technical excellence and a lasting relationship of trust.",
+
+  "xp.pvzf-translator.title": "Translator & Developer",
+  "xp.pvzf-translator.description": "In my early days on the PVZ Fusion project, I held the translator role within the francophone pole. Active participation in proofreading, terminology standardization and setting up the first internal tools that seeded the development pole.",
+
+  "xp.atis-internship.title": "Full-Stack Developer Internship — Dolibarr ERP/CRM",
+  "xp.atis-internship.description": "Developing internal modules and tools to optimize management processes in Dolibarr ERP/CRM.\n\nCreation and customization of business modules (time tracking, contract monitoring) that reduced administrative processing time by 30%. Setup of dynamic tables, advanced filters and interactive dashboards letting teams track contracts and products in real time.\n\nErgonomics improvements via JavaScript and CSS, automation of exports and statistics generation. Modular, documented development in PHP OOP, MySQL, ES6, with integration into Dolibarr Core hooks.",
+
+  "edu.elan-dwwm.title": "Web & Mobile Developer",
+  "edu.elan-dwwm.subtitle": "RNCP-5 — Information Technology"
+}

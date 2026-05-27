@@ -1,0 +1,6 @@
+{
+  "sound.aria": "EXPOSE 8080 # sound accessibility port (nobody connected to it)",
+  "sound.label": "docker volume create --name sound-enabled",
+  "skip": "docker stop opening && docker rm opening # skip: just kill the container",
+  "start.aria": "docker-compose up opening -d && docker logs -f opening\n# 'Starting intro sequence...'\n# 'Loading assets...'\n# 'OOMKilled'"
+}

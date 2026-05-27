@@ -1,0 +1,11 @@
+{
+  "subtitle": "MOV role, DEV_TRAINER ; ASP.NET & Angular & Symfony",
+  "nav.home": "MOV AX, HOME",
+  "nav.resume": "MOV BX, RESUME",
+  "nav.projects": "JMP 0x50524F4A",
+  "nav.work": "CALL work_history",
+  "copyright": "DB '(C) 2026 Charles Lindecker'",
+  "made_with": "LINK angular.o ; ASSEMBLED WITH CARE",
+  "aria.nav": "SEGMENT .footer_nav",
+  "aria.socials": "EXTERN social_links[]"
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Hunter's portrait gallery",
+  "previous": "Previous likeness",
+  "next": "Next likeness",
+  "pause": "Stay the hunt",
+  "play": "Resume the hunt",
+  "go_to": "Turn to likeness {index}",
+  "slide_alt": "Hunter's likeness — {index}"
+}

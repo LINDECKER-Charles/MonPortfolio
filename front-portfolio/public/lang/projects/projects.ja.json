@@ -125,5 +125,21 @@
   "modal.links": "リンク",
   "modal.demo": "デモ",
   "modal.site": "サイト",
-  "today": "今日"
+  "today": "今日",
+  "gup.shortDescription": "開発マシンにインストールされたすべてをスキャンして更新する単一のCLI — 130以上のパッケージマネージャに対応。",
+  "gup.longDescription": "gup（Global Updater）は、winget、scoop、choco、npm、pnpm、yarn、bun、pip、pipx、uv、cargo、gem、dotnet tools、helm、kubectl、terraform、VSCode/JetBrains拡張、WSLディストリビューションなど130を超えるソースを集約し、マシン上のソフトウェア更新を統一するコマンドラインツールです。パッケージマネージャの断片化に対し、単一インターフェース、対話的な選択モード、高速スキャン、CI/CDスクリプティング向けのJSON出力、インストール済みプロバイダを検出するdoctorコマンドで対応します。セキュリティは多層的に扱われ、execaによるシェルレス実行（argvベクター）、HTTPS限定、CodeQL/Semgrep/gitleaksによる静的解析、依存関係の自動監査を備えます。",
+  "gup.highlights.0": "130以上のプロバイダ（winget、npm、cargo、pip、kubectl…）を単一インターフェースで更新",
+  "gup.highlights.1": "対話モード、高速スキャン、JSON出力、検出用doctorコマンド",
+  "gup.highlights.2": "多層防御セキュリティ：シェルレスexeca、HTTPS限定、CodeQL/Semgrep/gitleaks",
+  "gup.lessonsLearned.0": "数十の異種パッケージマネージャを共通の抽象でまとめる設計",
+  "gup.lessonsLearned.1": "CI/CDを見据えたテスト可能でスクリプト化可能なCLIの実用化",
+  "gup.lessonsLearned.2": "システムツールに多層防御のセキュリティアプローチを適用する",
+  "img-convertor.shortDescription": "Web向けの高速な画像変換・レスポンシブブレークポイントリサイザー — WebP、AVIF、JPEG、PNG、CLIまたは対話モード。",
+  "img-convertor.longDescription": "img-convertorは、Webアセット準備のためのコマンドラインツールです。WebP、AVIF、JPEG、PNG間の変換に加え、アスペクト比を保ちながらブレークポイント幅でレスポンシブなバリアントを生成します。洗練されたCLIとガイド付きの対話コンソールの両方、ディレクトリの再帰処理、名前付きブレークポイントプリセット、永続的な設定（~/.img-convertor/config.json）を提供します。アーキテクチャは再利用可能な純粋ロジック（core/）をUI層から分離し、プログラム的な利用とスタンドアロン利用の両方を可能にします。エンコードにsharp、CLIにCommander、対話モードにInquirerを採用し、テストカバレッジ100%、マルチOSのGitHub Actions CIを備えます。",
+  "img-convertor.highlights.0": "WebP / AVIF / JPEG / PNG変換とブレークポイント単位のレスポンシブリサイズ",
+  "img-convertor.highlights.1": "洗練されたCLI＋対話コンソール、再帰処理、設定可能なプリセット",
+  "img-convertor.highlights.2": "UIから分離された純粋なcore/アーキテクチャ、テストカバレッジ100%",
+  "img-convertor.lessonsLearned.0": "純粋なビジネスロジックをCLIと対話インターフェースから分離する",
+  "img-convertor.lessonsLearned.1": "レスポンシブWebアセットの準備をエンドツーエンドでツール化する",
+  "img-convertor.lessonsLearned.2": "画像処理ツールで網羅的なテストカバレッジを維持する"
 }

@@ -1,16 +1,27 @@
 name: Deploy - Apache config
 
+# Workflow réutilisable : appelé par les pipelines test/prod après un déploiement réussi,
+# pour réappliquer (idempotent) la config Apache du périmètre concerné. Évite tout drift
+# entre le repo et le VPS. Déclenchable aussi manuellement (apply complet par défaut).
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'config/**'
+  workflow_call:
+    inputs:
+      sites:
+        description: "Vhosts à appliquer (base names, séparés par des espaces)"
+        required: true
+        type: string
   workflow_dispatch:
+    inputs:
+      sites:
+        description: "Vhosts à appliquer (base names, séparés par des espaces)"
+        required: false
+        default: "portfolio portfolio-le-ssl portfolio-test portfolio-test-le-ssl portfolio-images portfolio-images-le-ssl"
+        type: string
 
 permissions:
   contents: read
 
+# Sérialise tous les apply Apache (test + prod) : pas de mutation concurrente de sites-enabled.
 concurrency:
   group: deploy-apache
   cancel-in-progress: false
@@ -34,6 +45,7 @@ jobs:
       - name: Render vhost templates
         working-directory: config
         env:
+          SITES: ${{ inputs.sites }}
           APACHE_PROD_DOMAIN: ${{ secrets.APACHE_PROD_DOMAIN }}
           APACHE_PROD_SSR_PORT: ${{ secrets.APACHE_PROD_SSR_PORT }}
           APACHE_TEST_DOMAIN: ${{ secrets.APACHE_TEST_DOMAIN }}
@@ -47,10 +59,11 @@ jobs:
           # Allowlist explicite : ne JAMAIS substituer ${APACHE_LOG_DIR} (résolu par Apache).
           ALLOW='$APACHE_PROD_DOMAIN $APACHE_PROD_SSR_PORT $APACHE_TEST_DOMAIN $APACHE_TEST_SSR_PORT $APACHE_TEST_REDIRECT_TARGET $APACHE_IMAGES_DOMAIN $APACHE_IMAGES_DOCROOT'
           mkdir -p staging
-          for t in *.conf.template; do
-            out="staging/${t%.template}"
-            envsubst "$ALLOW" < "$t" > "$out"
-            echo "Rendered $out"
+          for base in $SITES; do
+            t="${base}.conf.template"
+            [ -f "$t" ] || { echo "Template introuvable: $t" >&2; exit 1; }
+            envsubst "$ALLOW" < "$t" > "staging/${base}.conf"
+            echo "Rendered staging/${base}.conf"
           done
 
       - name: Copy rendered configs to VPS (staging dir)

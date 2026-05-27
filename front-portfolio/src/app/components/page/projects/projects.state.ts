@@ -9,6 +9,8 @@ import {GLOSSAIRE_QUEST_IMAGES} from '../../../img-sources/projects/glossaireque
 import {PORTFOLIO_IMAGES} from '../../../img-sources/projects/portfolio.source';
 import {PVZF_CONSOLE_MANAGER_IMAGES} from '../../../img-sources/projects/pvzf-console-manager.source';
 import {PVZF_TRADUCTION_IMAGES} from '../../../img-sources/projects/pvzf-traduction.source';
+import {GUP_IMAGES} from '../../../img-sources/projects/gup.source';
+import {IMG_CONVERTOR_IMAGES} from '../../../img-sources/projects/img-convertor.source';
 
 export interface Period {
   dateStart: Date;
@@ -331,6 +333,82 @@ export const PROJECTS_DATA: ProjectItem[] = [
         'Créer des outils simples mais réellement utiles à un workflow existant',
         'Automatiser des tâches répétitives pour fiabiliser la qualité',
         'Penser un utilitaire à partir d’un besoin terrain très concret',
+      ],
+    },
+  },
+  {
+    id: 'gup',
+    title: 'Gup',
+    period: {
+      dateStart: new Date('2026-05-15'),
+      isEnd: false,
+    },
+    shortDescription:
+      'CLI unique pour scanner et mettre à jour tout ce qui est installé sur une machine de dev — plus de 130 gestionnaires de paquets.',
+    longDescription:
+      'gup (Global Updater) est un outil en ligne de commande qui unifie la mise à jour des logiciels installés sur une machine, en agrégeant plus de 130 sources : winget, scoop, choco, npm, pnpm, yarn, bun, pip, pipx, uv, cargo, gem, dotnet tools, helm, kubectl, terraform, extensions VSCode/JetBrains, distributions WSL et bien d’autres. Il répond à la fragmentation des gestionnaires de paquets via une interface unique, un mode interactif de sélection, un scan rapide, une sortie JSON pour le scripting CI/CD et une commande doctor de détection des providers. La sécurité est traitée en profondeur : exécution sans shell via execa (vecteur argv), HTTPS strict, analyse statique CodeQL/Semgrep/gitleaks et audit de dépendances automatisé.',
+    category: 'open_source',
+    status: 'in_progress',
+    stack: ['TypeScript', 'Node.js', 'CLI', 'Vitest', 'execa'],
+    tags: [
+      'Open Source',
+      'CLI',
+      'Outil',
+      'Automatisation',
+      'DevTools',
+      'Sécurité',
+      'Cross-platform',
+    ],
+    links: {
+      github: 'https://github.com/LINDECKER-Charles/gup',
+      website: 'https://www.npmjs.com/package/@charles_lindecker/gup',
+    },
+    highlights: [
+      'Interface unique de mise à jour pour 130+ providers (winget, npm, cargo, pip, kubectl…)',
+      'Mode interactif, scan rapide, sortie JSON et commande doctor de détection',
+      'Sécurité en profondeur : execa sans shell, HTTPS strict, CodeQL/Semgrep/gitleaks',
+    ],
+    detail: {
+      images: GUP_IMAGES,
+      lessonsLearned: [
+        'Concevoir une abstraction commune au-dessus de dizaines de gestionnaires hétérogènes',
+        'Industrialiser une CLI testable et scriptable pensée pour la CI/CD',
+        'Appliquer une approche sécurité défense-en-profondeur à un outil système',
+      ],
+    },
+    featured: true,
+  },
+  {
+    id: 'img-convertor',
+    title: 'Img Convertor',
+    period: {
+      dateStart: new Date('2026-04-20'),
+      dateEnd: new Date('2026-04-20'),
+      isEnd: true,
+    },
+    shortDescription:
+      'Convertisseur d’images et redimensionneur responsive rapide pour le web — WebP, AVIF, JPEG, PNG, en CLI ou mode interactif.',
+    longDescription:
+      'img-convertor est un outil en ligne de commande dédié à la préparation d’assets web : conversion entre WebP, AVIF, JPEG et PNG, et génération de variantes responsives à des largeurs de breakpoints en préservant le ratio. Il propose à la fois une CLI soignée et une console interactive guidée, le traitement récursif de répertoires, des presets de breakpoints nommés et une configuration persistante (~/.img-convertor/config.json). L’architecture sépare une logique pure (core/) réutilisable des couches d’interface, autorisant un usage programmatique comme en standalone. Le projet s’appuie sur sharp pour l’encodage, Commander pour la CLI et Inquirer pour l’interactif, avec une couverture de tests à 100% et une CI GitHub Actions multi-OS.',
+    category: 'open_source',
+    status: 'done',
+    stack: ['TypeScript', 'Node.js', 'sharp', 'Commander', 'Vitest'],
+    tags: ['Open Source', 'CLI', 'Outil', 'Images', 'WebP', 'AVIF', 'Responsive'],
+    links: {
+      github: 'https://github.com/LINDECKER-Charles/Web-Image-Formateur',
+      website: 'https://www.npmjs.com/package/@charles_lindecker/img-convertor',
+    },
+    highlights: [
+      'Conversion WebP / AVIF / JPEG / PNG et redimensionnement responsive par breakpoints',
+      'CLI soignée + console interactive, traitement récursif et presets configurables',
+      'Architecture core/ pure découplée de l’UI, couverture de tests à 100%',
+    ],
+    detail: {
+      images: IMG_CONVERTOR_IMAGES,
+      lessonsLearned: [
+        'Découpler une logique métier pure d’interfaces CLI et interactives',
+        'Outiller la préparation d’assets web responsives de bout en bout',
+        'Tenir une couverture de tests exhaustive sur un outil de traitement d’images',
       ],
     },
   },

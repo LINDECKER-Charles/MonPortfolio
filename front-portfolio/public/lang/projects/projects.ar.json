@@ -125,5 +125,21 @@
   "modal.links": "الروابط",
   "modal.demo": "عرض توضيحي",
   "modal.site": "الموقع",
-  "today": "اليوم"
+  "today": "اليوم",
+  "gup.shortDescription": "واجهة سطر أوامر واحدة لفحص وتحديث كل ما هو مثبَّت على جهاز التطوير — أكثر من 130 مدير حِزم.",
+  "gup.longDescription": "gup (Global Updater) أداة سطر أوامر توحّد تحديثات البرامج على الجهاز عبر تجميع أكثر من 130 مصدرًا: winget وscoop وchoco وnpm وpnpm وyarn وbun وpip وpipx وuv وcargo وgem وأدوات dotnet وhelm وkubectl وterraform وإضافات VSCode/JetBrains وتوزيعات WSL وغيرها الكثير. تعالج تشتُّت مديري الحِزم عبر واجهة موحَّدة، ووضع تفاعلي للاختيار، وفحص سريع، ومخرجات JSON للبرمجة النصية في CI/CD، وأمر doctor لاكتشاف المزوّدين المثبَّتين. تُعالَج الأمان بعمق: تنفيذ بلا صدفة عبر execa (متّجه argv)، وHTTPS حصريًا، وتحليل ثابت بـ CodeQL/Semgrep/gitleaks، وتدقيق آلي للاعتماديات.",
+  "gup.highlights.0": "واجهة تحديث موحَّدة لأكثر من 130 مزوّدًا (winget، npm، cargo، pip، kubectl…)",
+  "gup.highlights.1": "وضع تفاعلي، وفحص سريع، ومخرجات JSON، وأمر doctor للاكتشاف",
+  "gup.highlights.2": "أمان متعدّد الطبقات: execa بلا صدفة، وHTTPS حصريًا، وCodeQL/Semgrep/gitleaks",
+  "gup.lessonsLearned.0": "تصميم تجريد مشترك فوق عشرات من مديري الحِزم المتغايرة",
+  "gup.lessonsLearned.1": "تصنيع واجهة سطر أوامر قابلة للاختبار والبرمجة النصية مهيّأة لـ CI/CD",
+  "gup.lessonsLearned.2": "تطبيق نهج أمان الدفاع في العمق على أداة نظام",
+  "img-convertor.shortDescription": "محوِّل صور وأداة تغيير حجم متجاوبة سريعة للويب — WebP وAVIF وJPEG وPNG، عبر سطر الأوامر أو الوضع التفاعلي.",
+  "img-convertor.longDescription": "img-convertor أداة سطر أوامر لتجهيز أصول الويب: التحويل بين WebP وAVIF وJPEG وPNG، وتوليد نسخ متجاوبة بعروض نقاط التوقف مع الحفاظ على نسبة الأبعاد. توفّر واجهة سطر أوامر متقَنة ووحدةً تفاعلية موجَّهة، ومعالجة تكرارية للمجلدات، وإعدادات مسبقة مسمّاة لنقاط التوقف، وتهيئة دائمة (~/.img-convertor/config.json). تفصل البنية المنطق النقي القابل لإعادة الاستخدام (core/) عن طبقات الواجهة، ما يتيح الاستخدام البرمجي والمستقل. تعتمد على sharp للترميز، وCommander لواجهة الأوامر، وInquirer للوضع التفاعلي، مع تغطية اختبارات 100% وتكامل مستمر عبر GitHub Actions على أنظمة متعددة.",
+  "img-convertor.highlights.0": "تحويل WebP / AVIF / JPEG / PNG وتغيير حجم متجاوب حسب نقاط التوقف",
+  "img-convertor.highlights.1": "واجهة أوامر متقَنة + وحدة تفاعلية، ومعالجة تكرارية وإعدادات مسبقة قابلة للتخصيص",
+  "img-convertor.highlights.2": "بنية core/ نقية منفصلة عن الواجهة، وتغطية اختبارات 100%",
+  "img-convertor.lessonsLearned.0": "فصل المنطق التجاري النقي عن واجهات الأوامر والواجهات التفاعلية",
+  "img-convertor.lessonsLearned.1": "أتمتة تجهيز أصول الويب المتجاوبة من البداية إلى النهاية",
+  "img-convertor.lessonsLearned.2": "الحفاظ على تغطية اختبارات شاملة لأداة معالجة صور"
 }

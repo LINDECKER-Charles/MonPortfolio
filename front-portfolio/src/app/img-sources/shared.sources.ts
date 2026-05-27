@@ -1,4 +1,5 @@
 import { ResponsiveSource } from '../components/assets/responsive-picture/responsive-picture';
+import { imageServerUrl } from './image-server';
 
 export interface ResponsiveImageSet {
   fallbackSrc: string;
@@ -69,15 +70,15 @@ export function createWebpImageSet(
 }
 
 export function createIconSet(name: string): ResponsiveImageSet {
-  return createWebpImageSet('/icon', name, ICON_SIZES, '80x80_');
+  return createWebpImageSet(imageServerUrl('/icon'), name, ICON_SIZES, '80x80_');
 }
 
 export function createStackIconSet(name: string): ResponsiveImageSet {
-  return createWebpImageSet('/icon/stack', name, ICON_SIZES, '80x80_');
+  return createWebpImageSet(imageServerUrl('/icon/stack'), name, ICON_SIZES, '80x80_');
 }
 
 export function createOtherIconSet(name: string): ResponsiveImageSet {
-  return createWebpImageSet('/icon/other', name, OTHER_ICON_SIZES, '80x80_');
+  return createWebpImageSet(imageServerUrl('/icon/other'), name, OTHER_ICON_SIZES, '80x80_');
 }
 
 /** Logos d'organismes (entreprises, écoles, certificateurs) — ratios variables,
@@ -95,7 +96,12 @@ export function createLogoSet(name: string): ResponsiveImageSet {
 }
 
 export function createPhotoSet(name: string): ResponsiveImageSet {
-  return createWebpImageSet('/photos', encodeAssetName(name), PHOTO_SIZES, PHOTO_FALLBACK_PREFIX);
+  return createWebpImageSet(
+    imageServerUrl('/photos'),
+    encodeAssetName(name),
+    PHOTO_SIZES,
+    PHOTO_FALLBACK_PREFIX
+  );
 }
 
 function createPhotoCarousel(baseName: string, count: number): ResponsiveImageSet[] {

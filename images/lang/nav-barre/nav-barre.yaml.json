@@ -1,0 +1,1 @@
+{ "home": "home: true  # DO NOT TOUCH", "projects": "projects:\n  count: ∞", "work": "work:\n  enabled: true  # maybe", "lang": "lang: yaml  # the final boss" }
