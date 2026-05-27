@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'config/**'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,12 +16,9 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  APACHE_SITES_DIR: /etc/apache2/sites-available
+  # Les vhosts sont des fichiers réels dans sites-enabled (pas des symlinks a2ensite).
+  APACHE_SITES_DIR: /etc/apache2/sites-enabled
   REMOTE_STAGING: apache-config-staging
-  APACHE_SITES: >-
-    portfolio portfolio-le-ssl
-    portfolio-test portfolio-test-le-ssl
-    portfolio-images portfolio-images-le-ssl
 
 jobs:
   deploy-apache:
@@ -72,7 +70,7 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: APACHE_SITES_DIR,REMOTE_STAGING,APACHE_SITES
+          envs: APACHE_SITES_DIR,REMOTE_STAGING
           script: |
             set -euo pipefail
             STAGING="$HOME/$REMOTE_STAGING"
@@ -86,9 +84,6 @@ jobs:
             for f in "$STAGING"/*.conf; do
               sudo cp "$f" "$APACHE_SITES_DIR/$(basename "$f")"
             done
-
-            echo "==> Enable sites (idempotent)"
-            sudo a2ensite $APACHE_SITES
 
             echo "==> apache2ctl configtest"
             if ! sudo apache2ctl configtest; then
