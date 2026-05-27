@@ -152,3 +152,10 @@ jobs:
             sudo systemctl restart ${{ env.FRONT_PROCESS }}
             sudo systemctl status ${{ env.FRONT_PROCESS }} --no-pager
 
+  apply-apache-config:
+    needs: deploy-test
+    uses: ./.github/workflows/deploy-apache.yml
+    with:
+      sites: "portfolio-test portfolio-test-le-ssl portfolio-images portfolio-images-le-ssl"
+    secrets: inherit
+
