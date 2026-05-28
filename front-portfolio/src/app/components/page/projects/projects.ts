@@ -1,6 +1,12 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, HostListener, Inject, inject, PLATFORM_ID } from '@angular/core';
-import { ProjectsConstellation } from './projects-constellation/projects-constellation';
+import { Component, computed, HostListener, Inject, inject, PLATFORM_ID } from '@angular/core';
+import { Constellation } from '../../assets/constellation/constellation';
+import { ConstellationItem } from '../../assets/constellation/constellation.model';
+import {
+  buildConstellationCategories,
+  buildConstellationLabels,
+  toConstellationItems,
+} from './projects-constellation.adapter';
 import { ProjectsFilter } from './projects-filter/projects-filter';
 import { ProjectsHeader } from './projects-header/projects-header';
 import { ProjectsModal } from './projects-modal/projects-modal';
@@ -22,7 +28,7 @@ type ProjectsView = 'map' | 'list';
   imports: [
     CommonModule,
     ProjectsHeader,
-    ProjectsConstellation,
+    Constellation,
     ProjectsFilter,
     ProjectsTimeline,
     ProjectsModal,
@@ -34,6 +40,16 @@ export class Projects {
   protected readonly ts = inject(TranslationService);
   protected readonly filters: ProjectFilterItem[] = PROJECT_FILTERS;
   protected readonly projects: ProjectItem[] = PROJECTS_DATA.map((project) => ({ ...project }));
+
+  // Entrées du composant générique « constellation » — recalculées à chaque
+  // changement de langue (lecture de TranslationService dans l'adaptateur).
+  protected readonly constellationItems = computed(() =>
+    toConstellationItems(this.projects, this.ts)
+  );
+  protected readonly constellationCategories = computed(() =>
+    buildConstellationCategories(this.ts)
+  );
+  protected readonly constellationLabels = computed(() => buildConstellationLabels(this.ts));
 
   protected view: ProjectsView = 'map';
 
@@ -121,6 +137,11 @@ export class Projects {
 
   protected setView(view: ProjectsView): void {
     this.view = view;
+  }
+
+  protected onConstellationOpen(item: ConstellationItem): void {
+    const project = this.projects.find((candidate) => candidate.id === item.id);
+    if (project) this.openProject(project);
   }
 
   protected openProject(project: ProjectItem): void {

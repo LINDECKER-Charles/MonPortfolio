@@ -1,13 +1,149 @@
+/* ╔══════════════════════════════════════════════════════════════════════════╗
+   ║  Constellation — feuille autonome.                                        ║
+   ║  Aucune dépendance externe : les tokens et primitives DA sont inlinés     ║
+   ║  ci-dessous. Chaque token est `var(--public, défaut)` → si l'hôte définit ║
+   ║  le token public (ou le `--cst-*`), il prime ; sinon le défaut s'applique. ║
+   ╚══════════════════════════════════════════════════════════════════════════╝ */
+
 :host {
   display: block;
   width: 100%;
 
-  /* Couleur sémantique par constellation (catégorie) — issue des tokens. */
-  --cat-personal: var(--color-ember);
-  --cat-open_source: var(--color-moonlight);
-  --cat-client: var(--color-gold);
+  /* ── Palette (surchargeable : définir le token public OU --cst-* côté hôte) ── */
+  --cst-blood: var(--color-blood, #a60a0a);
+  --cst-ember: var(--color-ember, #ff934d);
+  --cst-gold: var(--color-gold, #a49476);
+  --cst-gold-dim: var(--color-gold-dim, #7e6434);
+  --cst-gold-faint: var(--color-gold-faint, #8f7f5e);
+  --cst-parchment: var(--color-parchment, #d7c09a);
+  --cst-moonlight: var(--color-moonlight, #8eb8ff);
+  --cst-bone: var(--color-bone, #ece7db);
+  --cst-bone-bright: var(--color-bone-bright, #f3f6f7);
+  --cst-ash: var(--color-ash, #bdc1c7);
+  --cst-ash-faint: var(--color-ash-faint, #6b7280);
+
+  /* ── Typographie ── */
+  --cst-font-ui: var(--font-ui, Inter, system-ui, -apple-system, sans-serif);
+  --cst-font-display: var(--font-display, 'Cinzel', 'Trajan Pro', 'Cormorant Garamond', Georgia, serif);
+  --cst-font-body: var(--font-body, 'EB Garamond', Georgia, 'Times New Roman', serif);
+
+  /* ── Tracking ── */
+  --cst-tracking-rune: var(--tracking-rune, 0.22em);
+  --cst-tracking-sigil: var(--tracking-sigil, 0.14em);
+  --cst-tracking-tag: var(--tracking-tag, 0.1em);
+
+  /* ── Rayons ── */
+  --cst-radius-card: var(--radius-card, 16px);
+  --cst-radius-chip: var(--radius-chip, 10px);
+
+  /* ── Motion ── */
+  --cst-dur: var(--duration-base, 180ms);
+  --cst-ease: var(--ease-ritual, cubic-bezier(0.2, 0.7, 0.2, 1));
+
+  /* Accent du panneau quand aucun item n'est sélectionné. */
+  --cst-accent: var(--color-blood, #a60a0a);
 }
 
+/* ── Primitives DA inlinées (scopées au composant, surchargeables via tokens) ── */
+.surface-altar {
+  border: var(--border-ash, 1px solid rgb(189 193 199 / 0.08));
+  background:
+    var(--gradient-glass, linear-gradient(180deg, rgb(48 53 59 / 0.38), rgb(27 28 28 / 0.74))),
+    var(--glow-blood-haze, radial-gradient(circle at top left, rgb(166 10 10 / 0.06), transparent 34%));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-altar, 0 18px 38px rgb(0 0 0 / 0.24), inset 0 1px 0 rgb(255 255 255 / 0.03));
+}
+
+.surface-vignetted {
+  box-shadow:
+    var(--shadow-altar, 0 18px 38px rgb(0 0 0 / 0.24), inset 0 1px 0 rgb(255 255 255 / 0.03)),
+    var(--shadow-vignette-soft, inset 0 0 80px rgb(0 0 0 / 0.28));
+}
+
+.surface-crypt {
+  border: var(--border-gilded, 1px solid rgb(164 148 118 / 0.18));
+  background:
+    var(--gradient-crypt, linear-gradient(180deg, rgb(43 38 31 / 0.97), rgb(18 16 14 / 0.98))),
+    var(--glow-gold-haze, radial-gradient(circle at 20% 0%, rgb(126 100 52 / 0.08), transparent 50%));
+  box-shadow: var(--shadow-crypt,
+    0 32px 64px rgb(0 0 0 / 0.52),
+    0 0 0 1px rgb(164 148 118 / 0.06),
+    inset 0 1px 0 rgb(255 248 220 / 0.04));
+}
+
+.surface-textured {
+  position: relative;
+  overflow: hidden;
+}
+
+.surface-textured::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: var(--texture-parchment, url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.86  0 0 0 0 0.75  0 0 0 0 0.6  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>"));
+  background-size: 320px 320px;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+}
+
+.text-engraved {
+  color: var(--cst-parchment);
+  font-family: var(--cst-font-display);
+  letter-spacing: var(--cst-tracking-sigil);
+}
+
+.text-engraved--carved {
+  text-shadow: var(--text-shadow-engraved, 0 1px 0 rgb(0 0 0 / 0.55), 0 -1px 0 rgb(255 248 220 / 0.08));
+}
+
+.text-rune {
+  color: var(--cst-gold-faint);
+  font-family: var(--cst-font-display);
+  text-transform: uppercase;
+  letter-spacing: var(--cst-tracking-rune);
+  font-size: 0.74rem;
+}
+
+.text-tome {
+  font-family: var(--cst-font-body);
+  color: var(--cst-ash);
+  line-height: 1.7;
+}
+
+.text-sigil {
+  text-transform: uppercase;
+  letter-spacing: var(--cst-tracking-sigil);
+}
+
+.text-tag {
+  text-transform: uppercase;
+  letter-spacing: var(--cst-tracking-tag);
+  white-space: nowrap;
+}
+
+.divider-rune {
+  border-bottom: 1px solid rgb(215 215 215 / 0.09);
+}
+
+.transition-ritual {
+  transition:
+    transform var(--cst-dur) var(--cst-ease),
+    border-color var(--cst-dur) var(--cst-ease),
+    box-shadow var(--cst-dur) var(--cst-ease),
+    color var(--cst-dur) var(--cst-ease),
+    background var(--cst-dur) var(--cst-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transition-ritual {
+    transition: none !important;
+  }
+}
+
+/* ── Layout ── */
 .constellation {
   position: relative;
   display: block;
@@ -41,21 +177,21 @@
 
 /* poussière d'étoiles */
 .constellation__star {
-  fill: var(--color-parchment);
+  fill: var(--cst-parchment);
   opacity: 0.14;
 }
 
 /* teintes ponctuelles — enrichissent la galaxie */
 .constellation__star--gold {
-  fill: var(--color-gold);
+  fill: var(--cst-gold);
   opacity: 0.2;
 }
 .constellation__star--blood {
-  fill: var(--color-blood);
+  fill: var(--cst-blood);
   opacity: 0.22;
 }
 .constellation__star--moon {
-  fill: var(--color-moonlight);
+  fill: var(--cst-moonlight);
   opacity: 0.21;
 }
 
@@ -89,7 +225,7 @@
 
 /* liens */
 .constellation__edge {
-  stroke: var(--color-gold-faint);
+  stroke: var(--cst-gold-faint);
   stroke-width: 0.22;
   stroke-opacity: 0.4;
   stroke-dasharray: 0.8 1.4;
@@ -101,7 +237,7 @@
 }
 
 .constellation__edge--highlight {
-  stroke: var(--color-blood);
+  stroke: var(--cst-blood);
   stroke-width: 0.4;
   stroke-opacity: 0.85;
   stroke-dasharray: none;
@@ -127,12 +263,12 @@
 }
 
 .constellation__wip {
-  fill: var(--color-ember);
+  fill: var(--cst-ember);
 }
 
 .constellation__label {
-  fill: var(--color-gold-faint);
-  font-family: var(--font-ui);
+  fill: var(--cst-gold-faint);
+  font-family: var(--cst-font-ui);
   letter-spacing: 0.04em;
   pointer-events: none;
   transition: fill 0.15s, opacity 0.25s;
@@ -141,11 +277,11 @@
 .constellation__node:hover .constellation__label,
 .constellation__node:focus-visible .constellation__label,
 .constellation__node--selected .constellation__label {
-  fill: var(--color-parchment);
+  fill: var(--cst-parchment);
 }
 
 .constellation__node:focus-visible .constellation__dot {
-  filter: drop-shadow(0 0 2px var(--color-gold));
+  filter: drop-shadow(0 0 2px var(--cst-gold));
 }
 
 .constellation__node--dimmed {
@@ -214,19 +350,19 @@
   gap: 0.5rem;
   padding: 0.45rem 0.75rem;
   width: min(230px, calc(100% - 1.7rem));
-  border: 1px solid var(--color-gold-dim);
+  border: 1px solid var(--cst-gold-dim);
   background: rgb(12 15 19 / 0.66);
   backdrop-filter: blur(4px);
-  color: var(--color-parchment);
+  color: var(--cst-parchment);
   cursor: text;
 }
 
 .constellation__search:focus-within {
-  border-color: var(--color-gold);
+  border-color: var(--cst-gold);
 }
 
 .constellation__search-glyph {
-  color: var(--color-gold);
+  color: var(--cst-gold);
   font-size: 0.9rem;
   line-height: 1;
 }
@@ -237,12 +373,12 @@
   border: 0;
   outline: 0;
   background: transparent;
-  color: var(--color-parchment);
-  font-family: var(--font-ui);
+  color: var(--cst-parchment);
+  font-family: var(--cst-font-ui);
 }
 
 .constellation__search-input::placeholder {
-  color: var(--color-ash-faint);
+  color: var(--cst-ash-faint);
 }
 
 /* contrôles de zoom */
@@ -261,11 +397,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-gold-dim);
+  border: 1px solid var(--cst-gold-dim);
   background: rgb(12 15 19 / 0.66);
   backdrop-filter: blur(4px);
-  color: var(--color-parchment);
-  font-family: var(--font-display);
+  color: var(--cst-parchment);
+  font-family: var(--cst-font-display);
   font-size: 1rem;
   line-height: 1;
   cursor: pointer;
@@ -273,8 +409,8 @@
 
 .constellation__zoom-btn:hover:not(:disabled),
 .constellation__zoom-btn:focus-visible:not(:disabled) {
-  border-color: var(--color-gold);
-  color: var(--color-bone);
+  border-color: var(--cst-gold);
+  color: var(--cst-bone);
   outline: none;
 }
 
@@ -302,7 +438,7 @@
   padding: 0.15rem 0;
   border: 0;
   background: transparent;
-  color: var(--color-ash);
+  color: var(--cst-ash);
   cursor: pointer;
   text-align: left;
   font-size: 0.6rem;
@@ -310,7 +446,7 @@
 
 .constellation__legend-row:hover,
 .constellation__legend-row:focus-visible {
-  color: var(--color-parchment);
+  color: var(--cst-parchment);
   outline: none;
 }
 
@@ -332,9 +468,9 @@
 }
 
 .constellation__legend-count {
-  font-family: var(--font-ui);
+  font-family: var(--cst-font-ui);
   font-size: 0.55rem;
-  color: var(--color-ash-faint);
+  color: var(--cst-ash-faint);
 }
 
 /* méta (bas droite) */
@@ -342,7 +478,7 @@
   position: absolute;
   bottom: 0.85rem;
   right: 0.85rem;
-  color: var(--color-ash-faint);
+  color: var(--cst-ash-faint);
   font-size: 0.55rem;
   opacity: 0.8;
   pointer-events: none;
@@ -362,9 +498,9 @@
   flex-direction: column;
   gap: 0.8rem;
   padding: 1.35rem 1.3rem 1.45rem;
-  color: var(--color-bone);
-  border: var(--border-gilded-strong);
-  border-radius: var(--radius-card);
+  color: var(--cst-bone);
+  border: var(--border-gilded-strong, 1px solid rgb(164 148 118 / 0.28));
+  border-radius: var(--cst-radius-card);
 }
 
 .constellation__panel::before {
@@ -372,14 +508,14 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 2px;
-  border-radius: var(--radius-card) var(--radius-card) 0 0;
-  background: linear-gradient(90deg, var(--panel-accent, var(--color-blood)) 0%, transparent 78%);
+  border-radius: var(--cst-radius-card) var(--cst-radius-card) 0 0;
+  background: linear-gradient(90deg, var(--panel-accent, var(--cst-blood)) 0%, transparent 78%);
 }
 
 .constellation__panel-kicker {
-  color: var(--panel-accent, var(--color-gold));
+  color: var(--panel-accent, var(--cst-gold));
   font-size: 0.64rem;
-  letter-spacing: var(--tracking-rune);
+  letter-spacing: var(--cst-tracking-rune);
 }
 
 .constellation__panel-title {
@@ -389,7 +525,7 @@
 }
 
 .constellation__panel-glyph {
-  font-family: var(--font-display);
+  font-family: var(--cst-font-display);
   font-size: 1.25rem;
   line-height: 1;
 }
@@ -407,7 +543,7 @@
 }
 
 .constellation__period {
-  color: var(--color-gold-faint);
+  color: var(--cst-gold-faint);
   font-size: 0.62rem;
 }
 
@@ -415,37 +551,37 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-family: var(--font-ui);
+  font-family: var(--cst-font-ui);
   font-size: 0.6rem;
-  letter-spacing: var(--tracking-sigil);
+  letter-spacing: var(--cst-tracking-sigil);
   text-transform: uppercase;
-  color: var(--color-ash);
+  color: var(--cst-ash);
 }
 
 .constellation__status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--color-ash);
+  background: var(--cst-ash);
 }
 
-.constellation__status[data-status='in_progress'] .constellation__status-dot {
-  background: var(--color-ember);
-  box-shadow: var(--glow-ember);
+.constellation__status[data-tone='active'] .constellation__status-dot {
+  background: var(--cst-ember);
+  box-shadow: var(--glow-ember, 0 0 12px rgb(255 147 77 / 0.75));
 }
 
-.constellation__status[data-status='done'] .constellation__status-dot {
-  background: var(--color-gold);
+.constellation__status[data-tone='done'] .constellation__status-dot {
+  background: var(--cst-gold);
   box-shadow: 0 0 8px rgb(164 148 118 / 0.6);
 }
 
-.constellation__status[data-status='archived'] .constellation__status-dot {
-  background: var(--color-ash-faint);
+.constellation__status[data-tone='muted'] .constellation__status-dot {
+  background: var(--cst-ash-faint);
 }
 
 .constellation__panel-desc {
   margin: 0;
-  color: var(--color-bone);
+  color: var(--cst-bone);
   font-size: 0.92rem;
   line-height: 1.55;
 }
@@ -456,16 +592,16 @@
   gap: 0.3rem;
 }
 
-/* tags stack — volontairement petits */
+/* tags — volontairement petits */
 .constellation__tag {
   display: inline-flex;
   align-items: center;
   padding: 0.1rem 0.4rem;
-  border-radius: var(--radius-chip);
-  border: var(--border-ash-strong);
+  border-radius: var(--cst-radius-chip);
+  border: var(--border-ash-strong, 1px solid rgb(189 193 199 / 0.12));
   background: rgb(255 255 255 / 0.03);
-  color: var(--color-ash);
-  font-family: var(--font-ui);
+  color: var(--cst-ash);
+  font-family: var(--cst-font-ui);
   font-size: 0.58rem;
   letter-spacing: 0.03em;
   line-height: 1.4;
@@ -486,14 +622,14 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.42rem 0.7rem;
-  border-radius: var(--radius-chip);
-  border: var(--border-gilded-strong);
-  background: var(--gradient-stone-chip);
-  box-shadow: var(--shadow-chip);
-  color: var(--color-bone);
-  font-family: var(--font-ui);
+  border-radius: var(--cst-radius-chip);
+  border: var(--border-gilded-strong, 1px solid rgb(164 148 118 / 0.28));
+  background: var(--gradient-stone-chip, linear-gradient(180deg, rgb(38 42 47 / 0.88), rgb(24 26 29 / 0.94)));
+  box-shadow: var(--shadow-chip, 0 10px 18px rgb(0 0 0 / 0.14), inset 0 1px 0 rgb(255 255 255 / 0.02));
+  color: var(--cst-bone);
+  font-family: var(--cst-font-ui);
   font-size: 0.68rem;
-  letter-spacing: var(--tracking-tag);
+  letter-spacing: var(--cst-tracking-tag);
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
@@ -509,8 +645,11 @@
 .constellation__action:focus-visible {
   transform: translateY(-1px);
   border-color: rgb(164 148 118 / 0.42);
-  color: var(--color-bone-bright);
-  box-shadow: var(--shadow-gilded);
+  color: var(--cst-bone-bright);
+  box-shadow: var(--shadow-gilded,
+    0 14px 26px rgb(0 0 0 / 0.2),
+    0 0 0 1px rgb(164 148 118 / 0.04),
+    inset 0 1px 0 rgb(255 248 220 / 0.05));
   outline: none;
 }
 
@@ -522,7 +661,9 @@
 .constellation__action--primary {
   color: #fff4eb;
   border-color: rgb(255 184 108 / 0.3);
-  background: var(--gradient-ember), var(--glow-ember-haze);
+  background:
+    var(--gradient-ember, linear-gradient(180deg, rgb(124 58 31 / 0.96), rgb(73 36 23 / 0.98))),
+    var(--glow-ember-haze, radial-gradient(circle at top left, rgb(255 147 77 / 0.18), transparent 55%));
 }
 
 .constellation__action--primary:hover,
@@ -536,7 +677,7 @@
 
 .constellation__related-title {
   margin: 0 0 0.5rem;
-  color: var(--color-parchment);
+  color: var(--cst-parchment);
   font-size: 0.66rem;
 }
 
@@ -557,35 +698,35 @@
   padding: 0.28rem 0;
   border: 0;
   background: transparent;
-  color: var(--color-ash);
+  color: var(--cst-ash);
   cursor: pointer;
   text-align: left;
 }
 
 .constellation__related-row:hover,
 .constellation__related-row:focus-visible {
-  color: var(--color-parchment);
+  color: var(--cst-parchment);
   padding-left: 0.25rem;
   outline: none;
 }
 
 .constellation__related-arrow {
-  color: var(--color-gold-dim);
+  color: var(--cst-gold-dim);
 }
 
 .constellation__related-row:hover .constellation__related-arrow {
-  color: var(--color-blood);
+  color: var(--cst-blood);
 }
 
 .constellation__related-glyph {
-  font-family: var(--font-display);
+  font-family: var(--cst-font-display);
   font-size: 0.8rem;
   line-height: 1;
 }
 
 .constellation__empty {
   margin: 0;
-  color: var(--color-ash);
+  color: var(--cst-ash);
   font-size: 0.9rem;
   line-height: 1.6;
 }

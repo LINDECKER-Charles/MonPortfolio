@@ -23,9 +23,11 @@
   </div>
 
   @if (view === 'map') {
-    <app-projects-constellation
-      [projects]="projects"
-      (projectOpened)="openProject($event)" />
+    <app-constellation
+      [items]="constellationItems()"
+      [categories]="constellationCategories()"
+      [labels]="constellationLabels()"
+      (itemOpened)="onConstellationOpen($event)" />
   } @else {
     <app-projects-filter
       [filters]="filters"

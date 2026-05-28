@@ -9,15 +9,16 @@ import {
   signal,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { TranslationService } from '../../../../services/translation.service';
-import { ProjectCategory, ProjectItem } from '../projects.state';
-import { formatProjectPeriod } from '../projects.utils';
+import {
+  ConstellationCategory,
+  ConstellationItem,
+  ConstellationLabels,
+  DEFAULT_CONSTELLATION_LABELS,
+} from './constellation.model';
 import {
   buildClusters,
   buildEdges,
   buildNodes,
-  CATEGORY_GLYPH,
-  CATEGORY_ORDER,
   connectedIds,
   ConstellationEdge,
   ConstellationNode,
@@ -59,28 +60,39 @@ function clampNumber(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
 }
 
+/**
+ * Carte interactive « constellation » : items placés en clusters de catégorie,
+ * reliés par tags partagés, avec pan/zoom, vue galaxie, recherche, légende
+ * filtrante, effet ressort au drag et panneau de détail intégré.
+ *
+ * Autonome : aucune dépendance hors de ce dossier (+ Angular core). i18n via
+ * l'input `labels`, données via les inputs `items` / `categories`.
+ */
 @Component({
-  selector: 'app-projects-constellation',
+  selector: 'app-constellation',
   imports: [],
-  templateUrl: './projects-constellation.html',
-  styleUrl: './projects-constellation.css',
+  templateUrl: './constellation.html',
+  styleUrl: './constellation.css',
 })
-export class ProjectsConstellation implements OnDestroy {
-  protected readonly ts = inject(TranslationService);
+export class Constellation implements OnDestroy {
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
-  readonly projects = input.required<ProjectItem[]>();
-  readonly projectOpened = output<ProjectItem>();
+  readonly items = input.required<ConstellationItem[]>();
+  readonly categories = input.required<ConstellationCategory[]>();
+  readonly labels = input<ConstellationLabels>(DEFAULT_CONSTELLATION_LABELS);
+  readonly itemOpened = output<ConstellationItem>();
 
   protected readonly viewBox = VIEWBOX;
-  protected readonly categoryOrder = CATEGORY_ORDER;
-  protected readonly glyph = CATEGORY_GLYPH;
   protected readonly stars = STARS;
 
+  protected readonly categoryById = computed(
+    () => new Map(this.categories().map((category) => [category.id, category]))
+  );
+
   /** Positions « maison » (déterministes, SSR-safe). */
-  protected readonly nodes = computed(() => buildNodes(this.projects()));
-  protected readonly edges = computed(() => buildEdges(this.projects()));
-  protected readonly clusters = computed(() => buildClusters(this.projects()));
+  protected readonly nodes = computed(() => buildNodes(this.items(), this.categories()));
+  protected readonly edges = computed(() => buildEdges(this.items()));
+  protected readonly clusters = computed(() => buildClusters(this.items(), this.categories()));
 
   /** Déplacements en cours (drag + ressort) ; vide ⇒ tout est à sa place. */
   private readonly displaced = signal<Map<string, Sim>>(new Map());
@@ -107,65 +119,80 @@ export class ProjectsConstellation implements OnDestroy {
       .filter((line): line is PositionedEdge => line !== null);
   });
 
-  protected readonly counts = computed<Record<string, number>>(() => {
-    const tally: Record<string, number> = {};
-    for (const project of this.projects()) {
-      tally[project.category] = (tally[project.category] ?? 0) + 1;
+  protected readonly counts = computed<Map<string, number>>(() => {
+    const tally = new Map<string, number>();
+    for (const item of this.items()) {
+      tally.set(item.category, (tally.get(item.category) ?? 0) + 1);
     }
     return tally;
   });
 
-  /** Sélection utilisateur ; null = on retombe sur le projet par défaut visible. */
+  /** Sélection utilisateur ; null = on retombe sur le premier item visible. */
   private readonly userSelectedId = signal<string | null>(null);
-  private readonly activeCategories = signal<Set<ProjectCategory>>(new Set(CATEGORY_ORDER));
+  /** null ⇒ toutes les catégories actives (évite l'init avant l'input). */
+  private readonly activeCategories = signal<Set<string> | null>(null);
   protected readonly query = signal('');
 
-  /** Projet effectivement affiché dans le panneau (sélection ou repli visible). */
-  protected readonly selectedProject = computed<ProjectItem | null>(() => {
-    const list = this.projects();
+  /** Item effectivement affiché dans le panneau (sélection ou repli visible). */
+  protected readonly selectedItem = computed<ConstellationItem | null>(() => {
+    const list = this.items();
     const id = this.userSelectedId();
 
     if (id) {
-      const picked = list.find((project) => project.id === id);
+      const picked = list.find((item) => item.id === id);
       if (picked && this.isVisible(picked)) return picked;
     }
 
-    return list.find((project) => this.isVisible(project)) ?? null;
+    return list.find((item) => this.isVisible(item)) ?? null;
   });
 
-  protected readonly selectedId = computed(() => this.selectedProject()?.id ?? null);
+  protected readonly selectedId = computed(() => this.selectedItem()?.id ?? null);
 
   private readonly connected = computed(() => connectedIds(this.selectedId(), this.edges()));
 
-  protected readonly relatedProjects = computed<ProjectItem[]>(() => {
+  protected readonly relatedItems = computed<ConstellationItem[]>(() => {
     const ids = this.connected();
     if (!ids.size) return [];
-    const byId = new Map(this.projects().map((project) => [project.id, project]));
-    return [...ids].map((id) => byId.get(id)).filter((project): project is ProjectItem => !!project);
+    const byId = new Map(this.items().map((item) => [item.id, item]));
+    return [...ids].map((id) => byId.get(id)).filter((item): item is ConstellationItem => !!item);
   });
 
-  protected readonly metaLabel = computed(() => {
-    const projectsWord = this.ts.translate('projects.constellation.projects');
-    const linksWord = this.ts.translate('projects.constellation.links');
-    return `${this.projects().length} ${projectsWord} · ${this.edges().length} ${linksWord}`;
-  });
+  protected readonly metaLabel = computed(() =>
+    this.labels()
+      .meta.replace('{count}', String(this.items().length))
+      .replace('{links}', String(this.edges().length))
+  );
 
-  protected isCategoryActive(category: ProjectCategory): boolean {
-    return this.activeCategories().has(category);
+  protected categoryLabel(id: string): string {
+    return this.categoryById().get(id)?.label ?? id;
   }
 
-  protected isVisible(project: ProjectItem): boolean {
-    if (!this.activeCategories().has(project.category)) return false;
+  protected categoryGlyph(id: string): string {
+    return this.categoryById().get(id)?.glyph ?? '';
+  }
+
+  protected categoryColor(id: string): string {
+    return this.categoryById().get(id)?.color ?? 'var(--cst-accent)';
+  }
+
+  protected isCategoryActive(id: string): boolean {
+    const active = this.activeCategories();
+    return active ? active.has(id) : true;
+  }
+
+  protected isVisible(item: ConstellationItem): boolean {
+    if (!this.isCategoryActive(item.category)) return false;
 
     const query = this.query().trim().toLowerCase();
     if (!query) return true;
 
-    return (
-      project.title.toLowerCase().includes(query) ||
-      project.category.toLowerCase().includes(query) ||
-      project.stack.some((item) => item.toLowerCase().includes(query)) ||
-      project.tags.some((tag) => tag.toLowerCase().includes(query))
-    );
+    const haystack = [
+      item.title,
+      this.categoryLabel(item.category),
+      ...item.tags,
+      ...(item.chips ?? []),
+    ];
+    return haystack.some((value) => value.toLowerCase().includes(query));
   }
 
   protected isSelected(node: ConstellationNode): boolean {
@@ -173,7 +200,7 @@ export class ProjectsConstellation implements OnDestroy {
   }
 
   protected isDimmed(node: ConstellationNode): boolean {
-    if (!this.isVisible(node.project)) return true;
+    if (!this.isVisible(node.item)) return true;
 
     const selectedId = this.selectedId();
     if (!selectedId) return false;
@@ -191,23 +218,20 @@ export class ProjectsConstellation implements OnDestroy {
   }
 
   protected nodeColor(node: ConstellationNode): string {
-    return `var(--cat-${node.project.category})`;
-  }
-
-  protected categoryColor(category: ProjectCategory): string {
-    return `var(--cat-${category})`;
+    return this.categoryColor(node.item.category);
   }
 
   protected selectNode(id: string): void {
     this.userSelectedId.set(id);
   }
 
-  protected toggleCategory(category: ProjectCategory): void {
-    const next = new Set(this.activeCategories());
-    if (next.has(category)) next.delete(category);
-    else next.add(category);
-    // Au moins une constellation reste visible.
-    this.activeCategories.set(next.size ? next : new Set(CATEGORY_ORDER));
+  protected toggleCategory(id: string): void {
+    const current = this.activeCategories() ?? new Set(this.categories().map((c) => c.id));
+    const next = new Set(current);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    // Au moins une constellation reste visible (null ⇒ toutes).
+    this.activeCategories.set(next.size ? next : null);
   }
 
   protected onSearch(value: string): void {
@@ -233,10 +257,10 @@ export class ProjectsConstellation implements OnDestroy {
   /** Vue galaxie : très dézoomé, on n'affiche plus que les boules lumineuses. */
   protected readonly galaxyMode = computed(() => this.scale() < GALAXY_SCALE);
 
-  /** Accent de la carte latérale : couleur de la constellation sélectionnée. */
+  /** Accent du panneau : couleur de la constellation sélectionnée. */
   protected readonly panelAccent = computed(() => {
-    const project = this.selectedProject();
-    return project ? `var(--cat-${project.category})` : 'var(--color-blood)';
+    const item = this.selectedItem();
+    return item ? this.categoryColor(item.category) : 'var(--cst-accent)';
   });
 
   private pointerId: number | null = null;
@@ -485,14 +509,9 @@ export class ProjectsConstellation implements OnDestroy {
     this.setCenter(pointerX - (ratioX - 0.5) * newW, pointerY - (ratioY - 0.5) * newH);
   }
 
-
   protected openSelectedDetail(): void {
-    const project = this.selectedProject();
-    if (project) this.projectOpened.emit(project);
-  }
-
-  protected formatPeriod(project: ProjectItem): string {
-    return formatProjectPeriod(project, this.ts.lang(), this.ts.translate('projects.today'));
+    const item = this.selectedItem();
+    if (item) this.itemOpened.emit(item);
   }
 
   protected onNodeKeydown(event: KeyboardEvent, id: string): void {
@@ -501,9 +520,9 @@ export class ProjectsConstellation implements OnDestroy {
     this.selectNode(id);
   }
 
-  protected onLegendKeydown(event: KeyboardEvent, category: ProjectCategory): void {
+  protected onLegendKeydown(event: KeyboardEvent, id: string): void {
     if (event.key !== 'Enter' && event.key !== ' ') return;
     event.preventDefault();
-    this.toggleCategory(category);
+    this.toggleCategory(id);
   }
 }
