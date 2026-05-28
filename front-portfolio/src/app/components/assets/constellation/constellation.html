@@ -1,6 +1,6 @@
 <section class="constellation">
   <div class="constellation__map surface-altar surface-vignetted" role="region"
-       [attr.aria-label]="ts.translate('projects.constellation.aria')">
+       [attr.aria-label]="labels().region">
     <svg class="constellation__svg"
          [class.constellation__svg--grabbing]="isPanning()"
          [class.constellation__svg--galaxy]="galaxyMode()"
@@ -17,9 +17,9 @@
           <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
         </radialGradient>
         <radialGradient id="constellation-haze" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" style="stop-color: var(--color-blood); stop-opacity: 0.13" />
-          <stop offset="40%" style="stop-color: var(--color-gold-dim); stop-opacity: 0.07" />
-          <stop offset="100%" style="stop-color: var(--color-gold-dim); stop-opacity: 0" />
+          <stop offset="0%" style="stop-color: var(--cst-blood); stop-opacity: 0.13" />
+          <stop offset="40%" style="stop-color: var(--cst-gold-dim); stop-opacity: 0.07" />
+          <stop offset="100%" style="stop-color: var(--cst-gold-dim); stop-opacity: 0" />
         </radialGradient>
       </defs>
 
@@ -38,9 +38,9 @@
 
       <!-- anneaux de cluster (sans label : la légende suffit) -->
       <g aria-hidden="true">
-        @for (cluster of clusters(); track cluster.category) {
+        @for (cluster of clusters(); track cluster.id) {
           <ellipse class="constellation__ring"
-                   [style.color]="categoryColor(cluster.category)"
+                   [style.color]="cluster.color"
                    [attr.cx]="cluster.cx" [attr.cy]="cluster.cy"
                    [attr.rx]="cluster.rx" [attr.ry]="cluster.ry" />
         }
@@ -70,7 +70,7 @@
              role="button"
              tabindex="0"
              [attr.aria-pressed]="isSelected(node)"
-             [attr.aria-label]="node.project.title"
+             [attr.aria-label]="node.item.title"
              (keydown)="onNodeKeydown($event, node.id)">
 
             @if (isSelected(node)) {
@@ -87,7 +87,7 @@
                     [attr.r]="isSelected(node) ? 1.9 : 1.2"
                     fill="currentColor" />
 
-            @if (node.project.status === 'in_progress') {
+            @if (node.item.statusTone === 'active') {
               <circle class="constellation__wip"
                       [attr.cx]="node.x + 1.8" [attr.cy]="node.y - 1.8" r="0.5" />
             }
@@ -96,7 +96,7 @@
                   [attr.x]="node.x"
                   [attr.y]="node.labelBelow ? node.y + 3.6 : node.y - 2.4"
                   text-anchor="middle" font-size="1.55">
-              {{ node.project.title }}
+              {{ node.item.title }}
             </text>
           </g>
         }
@@ -111,36 +111,34 @@
         class="constellation__search-input text-tag"
         [value]="query()"
         (input)="onSearch($any($event.target).value)"
-        [placeholder]="ts.translate('projects.constellation.search')"
-        [attr.aria-label]="ts.translate('projects.constellation.search')" />
+        [placeholder]="labels().search"
+        [attr.aria-label]="labels().search" />
     </label>
 
     <!-- contrôles de zoom (haut droite) -->
     <div class="constellation__zoom">
       <button type="button" class="constellation__zoom-btn transition-ritual"
-              (click)="zoomIn()" [attr.aria-label]="ts.translate('projects.constellation.zoom_in')">+</button>
+              (click)="zoomIn()" [attr.aria-label]="labels().zoomIn">+</button>
       <button type="button" class="constellation__zoom-btn transition-ritual"
-              (click)="zoomOut()" [attr.aria-label]="ts.translate('projects.constellation.zoom_out')">−</button>
+              (click)="zoomOut()" [attr.aria-label]="labels().zoomOut">−</button>
       <button type="button" class="constellation__zoom-btn transition-ritual"
               [disabled]="!canReset()"
-              (click)="resetView()" [attr.aria-label]="ts.translate('projects.constellation.reset')">⟳</button>
+              (click)="resetView()" [attr.aria-label]="labels().reset">⟳</button>
     </div>
 
     <!-- légende interactive (bas gauche, compacte) -->
-    <div class="constellation__legend surface-crypt" [attr.aria-label]="ts.translate('projects.constellation.legend')">
-      @for (category of categoryOrder; track category) {
+    <div class="constellation__legend surface-crypt" [attr.aria-label]="labels().legend">
+      @for (category of categories(); track category.id) {
         <button type="button"
                 class="constellation__legend-row transition-ritual"
-                [class.constellation__legend-row--off]="!isCategoryActive(category)"
+                [class.constellation__legend-row--off]="!isCategoryActive(category.id)"
                 role="switch"
-                [attr.aria-checked]="isCategoryActive(category)"
-                (click)="toggleCategory(category)"
-                (keydown)="onLegendKeydown($event, category)">
-          <span class="constellation__legend-dot" [style.color]="categoryColor(category)"></span>
-          <span class="constellation__legend-label text-tag">
-            {{ ts.translate('projects.filter.' + category) }}
-          </span>
-          <span class="constellation__legend-count">{{ counts()[category] ?? 0 }}</span>
+                [attr.aria-checked]="isCategoryActive(category.id)"
+                (click)="toggleCategory(category.id)"
+                (keydown)="onLegendKeydown($event, category.id)">
+          <span class="constellation__legend-dot" [style.color]="category.color"></span>
+          <span class="constellation__legend-label text-tag">{{ category.label }}</span>
+          <span class="constellation__legend-count">{{ counts().get(category.id) ?? 0 }}</span>
         </button>
       }
     </div>
@@ -149,37 +147,43 @@
   </div>
 
   <!-- panneau de détail (overlay flottant à droite en desktop, sous la carte en mobile) -->
-  <aside class="constellation__panel surface-crypt surface-crypt--ornate surface-textured"
+  <aside class="constellation__panel surface-crypt surface-textured"
          [style.--panel-accent]="panelAccent()">
-      @if (selectedProject(); as project) {
+      @if (selectedItem(); as item) {
         <span class="constellation__panel-kicker text-rune">
-          {{ ts.translate('projects.filter.' + project.category) }}
+          {{ categoryLabel(item.category) }}
         </span>
 
         <div class="constellation__panel-title">
-          <span class="constellation__panel-glyph" [style.color]="categoryColor(project.category)">
-            {{ glyph[project.category] }}
+          <span class="constellation__panel-glyph" [style.color]="categoryColor(item.category)">
+            {{ categoryGlyph(item.category) }}
           </span>
-          <h2 class="text-engraved text-engraved--carved">{{ project.title }}</h2>
+          <h2 class="text-engraved text-engraved--carved">{{ item.title }}</h2>
         </div>
 
         <div class="constellation__panel-meta">
-          <span class="constellation__period text-sigil">{{ formatPeriod(project) }}</span>
-          <span class="constellation__status" [attr.data-status]="project.status">
-            <span class="constellation__status-dot"></span>
-            {{ ts.translate('projects.status.' + project.status) }}
-          </span>
-        </div>
-
-        <p class="constellation__panel-desc text-tome">
-          {{ ts.translate('projects.' + project.id + '.shortDescription') }}
-        </p>
-
-        <div class="constellation__chips">
-          @for (item of project.stack; track item) {
-            <span class="constellation__tag">{{ item }}</span>
+          @if (item.period) {
+            <span class="constellation__period text-sigil">{{ item.period }}</span>
+          }
+          @if (item.statusLabel) {
+            <span class="constellation__status" [attr.data-tone]="item.statusTone">
+              <span class="constellation__status-dot"></span>
+              {{ item.statusLabel }}
+            </span>
           }
         </div>
+
+        @if (item.description) {
+          <p class="constellation__panel-desc text-tome">{{ item.description }}</p>
+        }
+
+        @if (item.chips?.length) {
+          <div class="constellation__chips">
+            @for (chip of item.chips; track chip) {
+              <span class="constellation__tag">{{ chip }}</span>
+            }
+          </div>
+        }
 
         <div class="constellation__actions">
           <button type="button"
@@ -191,63 +195,57 @@
               <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
               <circle cx="12" cy="12" r="3" />
             </svg>
-            <span>{{ ts.translate('projects.timeline.detail') }}</span>
+            <span>{{ labels().detail }}</span>
           </button>
 
-          @if (project.links.demo) {
-            <a class="constellation__action transition-ritual" [href]="project.links.demo"
+          @for (action of item.actions ?? []; track action.href) {
+            <a class="constellation__action transition-ritual" [href]="action.href"
                target="_blank" rel="noreferrer noopener">
-              <svg class="constellation__action-icon" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                   stroke-linejoin="round" aria-hidden="true">
-                <path d="M15 3h6v6" />
-                <path d="M10 14 21 3" />
-                <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
-              </svg>
-              <span>{{ ts.translate('projects.modal.demo') }}</span>
-            </a>
-          }
-          @if (project.links.github) {
-            <a class="constellation__action transition-ritual" [href]="project.links.github"
-               target="_blank" rel="noreferrer noopener">
-              <svg class="constellation__action-icon" viewBox="0 0 24 24" fill="currentColor"
-                   aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 2.51-.34c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
-              </svg>
-              <span>GitHub</span>
-            </a>
-          }
-          @if (project.links.website) {
-            <a class="constellation__action transition-ritual" [href]="project.links.website"
-               target="_blank" rel="noreferrer noopener">
-              <svg class="constellation__action-icon" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                   stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M2 12h20" />
-                <path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20Z" />
-              </svg>
-              <span>{{ ts.translate('projects.modal.site') }}</span>
+              @switch (action.icon) {
+                @case ('github') {
+                  <svg class="constellation__action-icon" viewBox="0 0 24 24" fill="currentColor"
+                       aria-hidden="true">
+                    <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05a9.4 9.4 0 0 1 2.51-.34c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z" />
+                  </svg>
+                }
+                @case ('website') {
+                  <svg class="constellation__action-icon" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                       stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12h20" />
+                    <path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20Z" />
+                  </svg>
+                }
+                @default {
+                  <svg class="constellation__action-icon" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                       stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 3h6v6" />
+                    <path d="M10 14 21 3" />
+                    <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+                  </svg>
+                }
+              }
+              <span>{{ action.label }}</span>
             </a>
           }
         </div>
 
-        @if (relatedProjects().length) {
+        @if (relatedItems().length) {
           <div class="divider-rune"></div>
 
           <div class="constellation__related">
-            <h3 class="constellation__related-title text-sigil">
-              {{ ts.translate('projects.constellation.related') }}
-            </h3>
+            <h3 class="constellation__related-title text-sigil">{{ labels().related }}</h3>
             <ul class="constellation__related-list">
-              @for (related of relatedProjects(); track related.id) {
+              @for (related of relatedItems(); track related.id) {
                 <li>
                   <button type="button" class="constellation__related-row transition-ritual"
                           (click)="selectNode(related.id)">
                     <span class="constellation__related-arrow" aria-hidden="true">→</span>
                     <span class="constellation__related-glyph"
                           [style.color]="categoryColor(related.category)">
-                      {{ glyph[related.category] }}
+                      {{ categoryGlyph(related.category) }}
                     </span>
                     <span class="text-tag">{{ related.title }}</span>
                   </button>
@@ -257,12 +255,8 @@
           </div>
         }
       } @else {
-        <span class="constellation__panel-kicker text-rune">
-          {{ ts.translate('projects.constellation.empty_title') }}
-        </span>
-        <p class="constellation__empty text-tome">
-          {{ ts.translate('projects.constellation.empty_text') }}
-        </p>
+        <span class="constellation__panel-kicker text-rune">{{ labels().emptyTitle }}</span>
+        <p class="constellation__empty text-tome">{{ labels().emptyText }}</p>
       }
     </aside>
 </section>

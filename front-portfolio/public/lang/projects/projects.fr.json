@@ -156,5 +156,13 @@
   "img-convertor.highlights.2": "Architecture core/ pure découplée de l’UI, couverture de tests à 100%",
   "img-convertor.lessonsLearned.0": "Découpler une logique métier pure d’interfaces CLI et interactives",
   "img-convertor.lessonsLearned.1": "Outiller la préparation d’assets web responsives de bout en bout",
-  "img-convertor.lessonsLearned.2": "Tenir une couverture de tests exhaustive sur un outil de traitement d’images"
+  "img-convertor.lessonsLearned.2": "Tenir une couverture de tests exhaustive sur un outil de traitement d’images",
+  "lucie-fiquet-albin.shortDescription": "Portfolio sur-mesure pour une étudiante en communication évènementielle, articulé autour d’une carte stellaire des projets.",
+  "lucie-fiquet-albin.longDescription": "Portfolio professionnel conçu pour Lucie Fiquet-Albin, étudiante en BTS Communication à Nice qui se lance en freelance dans la communication évènementielle. Le site met en scène son identité avec une direction artistique sombre, typographique et cinématographique : titre gravé, italiques sang, vignettes lumineuses et navigation entre Projets, Expériences, Photographie et Profil. La section projets s’appuie sur une carte stellaire interactive permettant d’explorer les dossiers (Ink Intention, Hominum Game, COM ça Rouge, Chris Mae Rénovation, SDIS 06…) avec relations entre projets, fiche dédiée, filtres par constellation et recherche. Une page expériences détaille les missions (notamment G-Addiction Jeunesse Citoyenne) et un espace photographie réservé à son travail documentaire complète le dispositif. C’est un projet client qui pousse l’exigence visuelle et narrative, avec composants réutilisés et adaptés depuis mon propre portfolio.",
+  "lucie-fiquet-albin.highlights.0": "Direction artistique sombre, gravée et cinématographique alignée sur l’identité de Lucie",
+  "lucie-fiquet-albin.highlights.1": "Carte stellaire interactive des projets avec relations, filtres et fiche détaillée",
+  "lucie-fiquet-albin.highlights.2": "Architecture front réutilisant et adaptant les composants de mon propre portfolio",
+  "lucie-fiquet-albin.lessonsLearned.0": "Adapter un design system existant à une identité cliente sans le diluer",
+  "lucie-fiquet-albin.lessonsLearned.1": "Industrialiser un composant constellation générique servant deux portfolios",
+  "lucie-fiquet-albin.lessonsLearned.2": "Traduire un univers visuel exigeant en interface lisible et navigable"
 }

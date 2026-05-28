@@ -11,6 +11,7 @@ import {PVZF_CONSOLE_MANAGER_IMAGES} from '../../../img-sources/projects/pvzf-co
 import {PVZF_TRADUCTION_IMAGES} from '../../../img-sources/projects/pvzf-traduction.source';
 import {GUP_IMAGES} from '../../../img-sources/projects/gup.source';
 import {IMG_CONVERTOR_IMAGES} from '../../../img-sources/projects/img-convertor.source';
+import {LUCIE_FIQUET_ALBIN_IMAGES} from '../../../img-sources/projects/lucie-fiquet-albin.source';
 
 export interface Period {
   dateStart: Date;
@@ -296,6 +297,47 @@ export const PROJECTS_DATA: ProjectItem[] = [
         'Assumer une approche plus orientée image sans perdre en rigueur',
       ],
     },
+  },
+  {
+    id: 'lucie-fiquet-albin',
+    title: 'Lucie Fiquet-Albin — Portfolio',
+    period: {
+      dateStart: new Date('2026-04-01'),
+      isEnd: false,
+    },
+    shortDescription:
+      'Portfolio sur-mesure pour une étudiante en communication évènementielle, articulé autour d’une carte stellaire des projets.',
+    longDescription:
+      'Portfolio professionnel conçu pour Lucie Fiquet-Albin, étudiante en BTS Communication à Nice qui se lance en freelance dans la communication évènementielle. Le site met en scène son identité avec une direction artistique sombre, typographique et cinématographique : titre gravé, italiques sang, vignettes lumineuses et navigation entre Projets, Expériences, Photographie et Profil. La section projets s’appuie sur une carte stellaire interactive permettant d’explorer les dossiers (Ink Intention, Hominum Game, COM ça Rouge, Chris Mae Rénovation, SDIS 06…) avec relations entre projets, fiche dédiée, filtres par constellation et recherche. Une page expériences détaille les missions (notamment G-Addiction Jeunesse Citoyenne) et un espace photographie réservé à son travail documentaire complète le dispositif. C’est un projet client qui pousse l’exigence visuelle et narrative, avec composants réutilisés et adaptés depuis mon propre portfolio.',
+    category: 'client',
+    status: 'in_progress',
+    stack: ['Angular', 'TypeScript', 'GSAP', 'SSR', 'CSS'],
+    tags: [
+      'Client',
+      'Portfolio',
+      'Vitrine',
+      'Communication',
+      'Constellation',
+      'Branding',
+      'Animation',
+    ],
+    links: {
+      website: 'https://test.lucie-fiquet-albin.com',
+    },
+    highlights: [
+      'Direction artistique sombre, gravée et cinématographique alignée sur l’identité de Lucie',
+      'Carte stellaire interactive des projets avec relations, filtres et fiche détaillée',
+      'Architecture front réutilisant et adaptant les composants de mon propre portfolio',
+    ],
+    detail: {
+      images: LUCIE_FIQUET_ALBIN_IMAGES,
+      lessonsLearned: [
+        'Adapter un design system existant à une identité cliente sans le diluer',
+        'Industrialiser un composant constellation générique servant deux portfolios',
+        'Traduire un univers visuel exigeant en interface lisible et navigable',
+      ],
+    },
+    featured: true,
   },
   {
     id: 'pvz-fuzion-console-manager',

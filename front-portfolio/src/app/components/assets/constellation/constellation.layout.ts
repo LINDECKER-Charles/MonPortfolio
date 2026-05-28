@@ -1,17 +1,17 @@
-import { ProjectCategory, ProjectItem } from '../projects.state';
+import { ConstellationCategory, ConstellationItem, ConstellationSeed } from './constellation.model';
 
 /**
  * Calculs purs (déterministes, SSR-safe) de la carte « constellation » :
- * placement des nœuds par cluster de catégorie, liens (stack/tags partagés),
+ * placement des nœuds par cluster de catégorie, liens (tags partagés),
  * anneaux de cluster et poussière d'étoiles décorative.
  *
- * Tout est dérivé des données projet — aucune position n'est codée en dur par
- * projet, de sorte que l'ajout/retrait d'un projet recompose la carte.
+ * Tout est dérivé des données — aucune position n'est codée en dur par item,
+ * de sorte que l'ajout/retrait d'un item recompose la carte.
  */
 
 export interface ConstellationNode {
   id: string;
-  project: ProjectItem;
+  item: ConstellationItem;
   x: number;
   y: number;
   /** Place le label sous le point (clusters hauts) plutôt qu'au-dessus. */
@@ -26,8 +26,9 @@ export interface ConstellationEdge {
   b: string;
 }
 
-export interface ConstellationCluster {
-  category: ProjectCategory;
+export interface ConstellationClusterRing {
+  id: string;
+  color: string;
   cx: number;
   cy: number;
   rx: number;
@@ -39,11 +40,11 @@ export interface ConstellationStar {
   y: number;
   r: number;
   variant: '' | 's2' | 's3';
-  /** Teinte ponctuelle pour enrichir la galaxie (la majorité reste parchemin). */
+  /** Teinte ponctuelle pour enrichir la galaxie (la majorité reste neutre). */
   hue: '' | 'gold' | 'blood' | 'moon';
 }
 
-/** Cadre « cœur » : ce que l'on voit au zoom 1 (les clusters de projets). */
+/** Cadre « cœur » : ce que l'on voit au zoom 1 (les clusters d'items). */
 export const VIEWBOX = { w: 100, h: 72 } as const;
 
 /**
@@ -52,35 +53,6 @@ export const VIEWBOX = { w: 100, h: 72 } as const;
  * MIN_SCALE du composant = VIEWBOX.w / UNIVERSE.w.
  */
 export const UNIVERSE = { w: 300, h: 216 } as const;
-
-/** Ordre d'affichage (légende, rendu) et seul jeu de catégories cartographié. */
-export const CATEGORY_ORDER: readonly ProjectCategory[] = [
-  'personal',
-  'open_source',
-  'client',
-] as const;
-
-/** Glyphe décoratif par catégorie (gravure rituelle, neutre côté i18n). */
-export const CATEGORY_GLYPH: Record<ProjectCategory, string> = {
-  personal: '◆',
-  open_source: '✦',
-  client: '◈',
-};
-
-interface ClusterSeed {
-  cx: number;
-  cy: number;
-  /** Rayon nominal de dispersion des nœuds autour du centre. */
-  spread: number;
-  /** Décalage angulaire de départ pour casser l'alignement. */
-  angle: number;
-}
-
-const CLUSTER_SEEDS: Record<ProjectCategory, ClusterSeed> = {
-  personal: { cx: 31, cy: 38, spread: 22, angle: -0.4 },
-  open_source: { cx: 74, cy: 20, spread: 13, angle: 0.8 },
-  client: { cx: 73, cy: 55, spread: 13, angle: 0.2 },
-};
 
 const MARGIN = { x: 7, top: 9, bottom: 63 };
 
@@ -98,21 +70,60 @@ function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
 }
 
-function normalizedTokens(project: ProjectItem): Set<string> {
-  return new Set(
-    [...project.stack, ...project.tags].map((token) => token.toLowerCase().trim())
-  );
+function normalizedTokens(item: ConstellationItem): Set<string> {
+  return new Set(item.tags.map((token) => token.toLowerCase().trim()).filter(Boolean));
 }
 
-export function buildNodes(projects: readonly ProjectItem[]): ConstellationNode[] {
+/**
+ * Résout un seed par catégorie : explicite si fourni, sinon réparti
+ * automatiquement sur une ellipse autour du centre du cœur.
+ */
+export function resolveSeeds(
+  categories: readonly ConstellationCategory[]
+): Map<string, ConstellationSeed> {
+  const count = categories.length;
+  const cx0 = VIEWBOX.w / 2;
+  const cy0 = VIEWBOX.h / 2;
+  const rx = VIEWBOX.w * 0.26;
+  const ry = VIEWBOX.h * 0.28;
+  const seeds = new Map<string, ConstellationSeed>();
+
+  categories.forEach((category, index) => {
+    if (category.seed) {
+      seeds.set(category.id, category.seed);
+      return;
+    }
+    if (count === 1) {
+      seeds.set(category.id, { cx: cx0, cy: cy0 - 4, spread: 20, angle: 0 });
+      return;
+    }
+    const angle = -Math.PI / 2 + (index / count) * Math.PI * 2;
+    seeds.set(category.id, {
+      cx: cx0 + Math.cos(angle) * rx,
+      cy: cy0 + Math.sin(angle) * ry,
+      spread: count <= 3 ? 16 : 12,
+      angle: angle + 0.6,
+    });
+  });
+
+  return seeds;
+}
+
+export function buildNodes(
+  items: readonly ConstellationItem[],
+  categories: readonly ConstellationCategory[]
+): ConstellationNode[] {
+  const seeds = resolveSeeds(categories);
   const nodes: ConstellationNode[] = [];
 
-  for (const category of CATEGORY_ORDER) {
-    const seed = CLUSTER_SEEDS[category];
-    const group = projects.filter((project) => project.category === category);
+  for (const category of categories) {
+    const seed = seeds.get(category.id);
+    if (!seed) continue;
+
+    const group = items.filter((item) => item.category === category.id);
     const count = group.length;
 
-    group.forEach((project, index) => {
+    group.forEach((item, index) => {
       let x: number;
       let y: number;
 
@@ -120,9 +131,9 @@ export function buildNodes(projects: readonly ProjectItem[]): ConstellationNode[
         x = seed.cx;
         y = seed.cy - seed.spread * 0.15;
       } else {
-        const jitter = hash01(project.id);
+        const jitter = hash01(item.id);
         const angle = seed.angle + (index / count) * Math.PI * 2 + (jitter - 0.5) * 0.5;
-        const radius = seed.spread * (0.5 + 0.45 * hash01(`${project.id}#r`));
+        const radius = seed.spread * (0.5 + 0.45 * hash01(`${item.id}#r`));
         x = seed.cx + Math.cos(angle) * radius;
         y = seed.cy + Math.sin(angle) * radius * 0.82;
       }
@@ -131,13 +142,13 @@ export function buildNodes(projects: readonly ProjectItem[]): ConstellationNode[
       y = clamp(y, MARGIN.top, MARGIN.bottom);
 
       nodes.push({
-        id: project.id,
-        project,
+        id: item.id,
+        item,
         x,
         y,
         labelBelow: y < 34,
-        driftDelay: -hash01(`${project.id}#dd`) * 9,
-        driftDur: 6 + hash01(`${project.id}#du`) * 5,
+        driftDelay: -hash01(`${item.id}#dd`) * 9,
+        driftDur: 6 + hash01(`${item.id}#du`) * 5,
       });
     });
   }
@@ -145,35 +156,40 @@ export function buildNodes(projects: readonly ProjectItem[]): ConstellationNode[
   return nodes;
 }
 
-export function buildClusters(projects: readonly ProjectItem[]): ConstellationCluster[] {
-  return CATEGORY_ORDER.filter((category) =>
-    projects.some((project) => project.category === category)
-  ).map((category) => {
-    const seed = CLUSTER_SEEDS[category];
-    return {
-      category,
-      cx: seed.cx,
-      cy: seed.cy,
-      rx: seed.spread * 1.08,
-      ry: seed.spread * 0.92,
-    };
-  });
+export function buildClusters(
+  items: readonly ConstellationItem[],
+  categories: readonly ConstellationCategory[]
+): ConstellationClusterRing[] {
+  const seeds = resolveSeeds(categories);
+  return categories
+    .filter((category) => items.some((item) => item.category === category.id))
+    .map((category) => {
+      const seed = seeds.get(category.id)!;
+      return {
+        id: category.id,
+        color: category.color,
+        cx: seed.cx,
+        cy: seed.cy,
+        rx: seed.spread * 1.08,
+        ry: seed.spread * 0.92,
+      };
+    });
 }
 
 /**
- * Lie chaque projet à ses 2 voisins les plus proches (stack/tags partagés),
+ * Lie chaque item à ses 2 voisins les plus proches (tags partagés),
  * dédupliqué. Graphe creux et stable quel que soit le jeu de données.
  */
-export function buildEdges(projects: readonly ProjectItem[]): ConstellationEdge[] {
-  const tokenSets = new Map(projects.map((project) => [project.id, normalizedTokens(project)]));
+export function buildEdges(items: readonly ConstellationItem[]): ConstellationEdge[] {
+  const tokenSets = new Map(items.map((item) => [item.id, normalizedTokens(item)]));
   const seen = new Set<string>();
   const edges: ConstellationEdge[] = [];
 
-  for (const project of projects) {
-    const own = tokenSets.get(project.id)!;
+  for (const item of items) {
+    const own = tokenSets.get(item.id)!;
 
-    const neighbours = projects
-      .filter((other) => other.id !== project.id)
+    const neighbours = items
+      .filter((other) => other.id !== item.id)
       .map((other) => {
         const otherTokens = tokenSets.get(other.id)!;
         let weight = 0;
@@ -187,7 +203,7 @@ export function buildEdges(projects: readonly ProjectItem[]): ConstellationEdge[
       .slice(0, 2);
 
     for (const neighbour of neighbours) {
-      const key = [project.id, neighbour.id].sort().join('|');
+      const key = [item.id, neighbour.id].sort().join('|');
       if (seen.has(key)) continue;
       seen.add(key);
       const [a, b] = key.split('|');
@@ -198,7 +214,10 @@ export function buildEdges(projects: readonly ProjectItem[]): ConstellationEdge[
   return edges;
 }
 
-export function connectedIds(selectedId: string | null, edges: readonly ConstellationEdge[]): Set<string> {
+export function connectedIds(
+  selectedId: string | null,
+  edges: readonly ConstellationEdge[]
+): Set<string> {
   const result = new Set<string>();
   if (!selectedId) return result;
 
