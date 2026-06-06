@@ -4,7 +4,7 @@ import {
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
 
 import { routes } from './app.routes';
@@ -14,7 +14,10 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes),
+    // Routes chargées à la demande (loadComponent) puis préchargées en idle :
+    // bundle initial allégé sans pénaliser les navigations suivantes.
+    provideRouter(routes, withPreloading(PreloadAllModules)),
+    // Pas de withEventReplay() : contrainte CSP stricte (aucun script inline / replay).
     provideClientHydration(),
     {
       provide: APP_INITIALIZER,
