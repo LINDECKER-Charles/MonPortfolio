@@ -8,6 +8,8 @@
   "filter.tags": "Tags",
   "filter.stack": "Stack",
   "filter.reset": "Reset",
+  "empty.title": "No project found",
+  "empty.text": "No project matches these filters. Adjust your selection or reset the filters.",
   "filter.search_tag": "Search a tag",
   "filter.search_stack": "Search a stack",
   "filter.none_tag": "No tags found.",

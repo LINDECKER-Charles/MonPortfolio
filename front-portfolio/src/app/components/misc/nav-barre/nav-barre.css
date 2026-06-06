@@ -147,16 +147,17 @@
 }
 
 .nav-barre__icon-btn {
-  min-height: 38px;
-  min-width: 38px;
+  /* Cible tactile WCAG 2.5.5 : 44×44 minimum. */
+  min-height: 44px;
+  min-width: 44px;
   padding: 0 0.6rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgb(189 193 199 / 0.12);
-  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(var(--color-ash-rgb) / 0.12);
+  background: rgb(var(--color-white-rgb) / 0.03);
   color: var(--color-ash);
   cursor: pointer;
   box-shadow: none;
@@ -244,7 +245,7 @@
   justify-content: center;
   gap: 0.45rem;
   padding: 0.5rem 0.75rem;
-  min-height: 36px;
+  min-height: 44px;
 }
 
 .nav-barre__popover-mute svg {

@@ -66,6 +66,13 @@
     opacity var(--duration-base) ease;
 }
 
+/* Zone tactile élargie à 44×44 sans grossir le bouton visuel (WCAG 2.5.5). */
+.collapse-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+}
+
 .collapse-toggle:hover {
   background: rgb(48 53 59 / 0.98);
   border-color: rgb(166 10 10 / 0.38);

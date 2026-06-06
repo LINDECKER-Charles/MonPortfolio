@@ -1,5 +1,7 @@
 # Audit UI/UX & propositions d'amélioration
 
+> **MàJ 2026-06-07 — refacto appliqué.** Voir la section [« Corrections appliquées »](#corrections-appliquées) en fin de document pour l'état réel après implémentation (et les findings de l'audit qui se sont révélés surévalués à la vérification).
+
 **Projet** : `front-portfolio` — Portfolio personnel Charles Lindecker (Angular 20 zoneless, SSR Express, Tailwind 4, GSAP — DA Bloodborne)
 **Date** : 2026-06-07
 **Périmètre** : accessibilité, performance/SSR, responsive/mobile, motion, conversion/architecture d'information, cohérence du design system.
@@ -210,3 +212,52 @@ Moyen │ Deep-link proj   focus-trap/lock  aria-labels
 ---
 
 *Audit conduit par lecture statique du code ; les volumétries (385 rgb, 738 KB bundle, 36 z-index, 0 loadComponent) sont issues de grep/build vérifiés. Les ratios de contraste sont estimés et à confirmer par un check automatisé (axe-core / Lighthouse).*
+
+---
+
+## Corrections appliquées
+
+État après implémentation (build vérifié `exit 0`). Plusieurs findings se sont révélés **surévalués** une fois vérifiés dans le détail du code — c'est noté explicitement.
+
+### Performance — ✅ appliqué (gain majeur)
+- **Routes en `loadComponent`** + `withPreloading(PreloadAllModules)` (`app.routes.ts`, `app.config.ts`).
+- Résultat mesuré : **bundle `main` 738 KB → 50 KB** (≈ 11 KB gzip), **initial total ≈ 463 KB**.
+- **GSAP** : passe automatiquement dans un chunk lazy partagé (plus dans l'initial). Le refacto « import dynamique GSAP sur 20 fichiers » devient **inutile** — non réalisé (risque évité).
+- `provideClientHydration()` laissé **sans** `withEventReplay()` (contrainte CSP stricte — volontaire).
+- `aspect-ratio` icônes : non fait (faible valeur, CLS déjà couvert par les conteneurs).
+
+### SEO / conversion — ✅ appliqué (+ findings corrigés)
+- `/works` repassé en **`robots: noindex, nofollow`** tant que la page est en construction.
+- **Persistance du skip d'ouverture** : `Opening` mémorise `opening.seen` en `localStorage`, supporte `?skip-opening`, et bypasse en `prefers-reduced-motion` (`opening.ts`).
+- **État vide projets** (vue liste) : bloc « Aucun projet trouvé » + reset (`projects.html`, clés i18n FR/EN).
+- ⚠️ **Finding corrigé** — « CV/contact absents du hero » : **faux**. Le hero expose déjà 4 CTA (Resume, Replay, Linktree, **Téléchargement CV**) et le footer couvre le contact sur toutes les pages. Aucun CTA redondant ajouté.
+
+### Accessibilité & mobile — ✅ appliqué (+ findings corrigés)
+- **Focus-trap** ajouté à `image-lightbox` (+ `role/aria-modal` déjà présents).
+- **Scroll-lock** ajouté à `image-lightbox` et `lang-modal`, avec **capture/restauration** de `overflow` (gère l'imbrication lightbox-au-dessus-d'un-modal sans déverrouiller le parent).
+- **Reduced-motion** câblé dans `OpeningAnimationService` (les timelines GSAP sautent à l'état final ; plus de flottement infini).
+- **Cibles tactiles** : nav icon-buttons 38 → **44 px**, popover-mute 36 → 44 px ; zones tactiles élargies à 44 px via pseudo-élément sans grossir le visuel (collapse-toggle son, dots carrousel).
+- **Focus visible** : relais halo (or/ember) sur les `outline: none` réellement orphelins (onglets vue projets, dots carrousel).
+- **aria-label** ajouté aux inputs de recherche tags/stack (placeholder ≠ nom accessible).
+- ⚠️ **Findings corrigés** — la majorité des « boutons sans aria-label » signalés (chips de filtre tags/stack) ont en réalité un **texte visible** → nom accessible présent, pas de correctif nécessaire.
+
+### Dette design system — 🟡 groundwork seulement (finding largement surévalué)
+- Ajout des **tokens canaux** dans `tokens.css` (`--color-blood-rgb`, `--color-gold-rgb`, …) : débloque l'écriture propre des variantes alpha `rgb(var(--color-x-rgb) / α)` au lieu de figer la couleur. Pattern démontré sur `nav-barre`.
+- ⚠️ **Finding corrigé — z-index** : les « 36 z-index en dur » sont quasi tous des **contextes d'empilement locaux légitimes** (dialog au-dessus de son backdrop). Les overlays (`lightbox`, `lang-modal`, `projects-modal`, `loading`) utilisent **déjà** `--z-lightbox`/`--z-modal`/`--z-loading` sur leur racine. **Aucun bug réel** ; remplacement par les tokens globaux non fait (ce serait une erreur).
+- ⚠️ **Finding nuancé — 385 couleurs** : en grande partie des **variantes alpha de tokens** contraintes par Tailwind 4 (couleurs `@theme` non décomposées en canaux), pas de l'indiscipline pure. Le **mass-refacto n'a pas été appliqué** : invisible à l'écran, fort risque de régression en une passe, à mener **incrémentalement** fichier par fichier avec les tokens canaux.
+- **Stylelint** anti-couleur/z-index : **recommandé** mais non posé (inonderait l'éditeur de warnings sur l'existant ; à activer en `warn` lors du cleanup incrémental).
+
+### i18n
+- 2 clés ajoutées (`projects.empty.title/text`) en **FR (baseline) + EN**. Les autres locales héritent du fallback FR — comportement **déjà en place** dans le projet (l'audit `npm run audit:i18n` révèle **592 clés pré-existantes** manquantes hors FR, dont `view.*`, `constellation.*`, `lucie-*`). Propager les 22 locales reste un chantier de fond séparé.
+
+### Non réalisé volontairement (trade-offs)
+| Item | Raison |
+|------|--------|
+| Import dynamique GSAP (20 fichiers) | Rendu inutile par le lazy-loading des routes |
+| Mass-refacto 385 couleurs → tokens | Invisible, risqué en une passe ; à faire incrémentalement |
+| Remplacement des z-index locaux | Faux positif : empilement local correct |
+| Propagation i18n 22 locales | Backlog pré-existant (592 clés) ; chantier séparé |
+| Stylelint imposé | Noierait l'existant ; à activer pendant le cleanup |
+| CTA CV/contact navbar/hero | Déjà présents (hero 4 CTA + footer) |
+
+**Build** : `npm run build` → `exit 0`. **Vérif visuelle** restant à faire par toi (`npm start`).
