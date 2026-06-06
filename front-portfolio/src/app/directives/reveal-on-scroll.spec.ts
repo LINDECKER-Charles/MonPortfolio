@@ -1,8 +1,19 @@
-import { RevealOnScroll } from './reveal-on-scroll';
+import { ElementRef, provideZonelessChangeDetection } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 
-describe('RevealOnScroll', () => {
+import { RevealOnScrollDirective } from './reveal-on-scroll';
+
+describe('RevealOnScrollDirective', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [provideZonelessChangeDetection(), 
+        RevealOnScrollDirective,
+        { provide: ElementRef, useValue: new ElementRef(document.createElement('div')) },
+      ],
+    });
+  });
+
   it('should create an instance', () => {
-    const directive = new RevealOnScroll();
-    expect(directive).toBeTruthy();
+    expect(TestBed.inject(RevealOnScrollDirective)).toBeTruthy();
   });
 });

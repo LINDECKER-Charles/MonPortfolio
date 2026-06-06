@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StopAllSound } from './stop-all-sound';
@@ -8,6 +9,7 @@ describe('StopAllSound', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideZonelessChangeDetection()],
       imports: [StopAllSound]
     })
     .compileComponents();

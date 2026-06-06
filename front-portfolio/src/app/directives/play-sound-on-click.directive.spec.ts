@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { AudioService } from '../services/audio-service';
@@ -33,7 +33,7 @@ describe('PlaySoundOnClickDirective', () => {
 
     await TestBed.configureTestingModule({
       imports: [TestHostComponent],
-      providers: [{ provide: AudioService, useValue: audioService }],
+      providers: [provideZonelessChangeDetection(), { provide: AudioService, useValue: audioService }],
     }).compileComponents();
   });
 

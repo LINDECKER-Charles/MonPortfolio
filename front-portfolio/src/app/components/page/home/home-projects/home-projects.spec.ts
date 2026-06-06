@@ -1,3 +1,5 @@
+import { provideZonelessChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeProjects } from './home-projects';
@@ -8,6 +10,7 @@ describe('HomeProjects', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideZonelessChangeDetection(), provideRouter([])],
       imports: [HomeProjects]
     })
     .compileComponents();

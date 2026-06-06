@@ -1,18 +1,20 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Home } from './opening-resume';
+import { OpeningResume } from './opening-resume';
 
-describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+describe('OpeningResume', () => {
+  let component: OpeningResume;
+  let fixture: ComponentFixture<OpeningResume>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Home]
+      providers: [provideZonelessChangeDetection()],
+      imports: [OpeningResume]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Home);
+    fixture = TestBed.createComponent(OpeningResume);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
