@@ -13,10 +13,10 @@
   height: 3px;
   border-radius: var(--radius-pill);
   background: radial-gradient(circle,
-    rgb(255 147 77 / 0.85) 0%,
-    rgb(255 147 77 / 0.2) 60%,
+    rgb(var(--color-ember-rgb) / 0.85) 0%,
+    rgb(var(--color-ember-rgb) / 0.2) 60%,
     transparent 100%);
-  box-shadow: 0 0 6px rgb(255 147 77 / 0.5);
+  box-shadow: 0 0 6px rgb(var(--color-ember-rgb) / 0.5);
   will-change: transform, opacity;
   animation: emberRise 14s linear infinite;
 }

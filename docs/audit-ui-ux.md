@@ -261,3 +261,13 @@ Moyen │ Deep-link proj   focus-trap/lock  aria-labels
 | CTA CV/contact navbar/hero | Déjà présents (hero 4 CTA + footer) |
 
 **Build** : `npm run build` → `exit 0`. **Vérif visuelle** restant à faire par toi (`npm start`).
+
+### Seconde passe (même jour) — lot a11y restant, stylelint, couleurs, i18n
+
+- **A11y/mobile complémentaire** : carousel nav 44 px (desktop + mobile) ; lang-modal close 44 px + contraste `ash-dim` + focus-visible ; chips/options/reset de filtre → focus-visible doré (absent) ; constellation zoom-btn → zone tactile 44 px (pseudo) + halo focus ; legend-row → halo focus. Chips filtre laissés compacts visuellement (trade-off DA assumé, focus indicator ajouté).
+- **Stylelint (garde-fou)** : `stylelint` 17 + `stylelint-declaration-strict-value`. Config `.stylelintrc.json` : warn sur hex et `rgb()` littéral pour `color/fill/stroke/background-color/border-color`, accepte `var(--…)` et `rgb(var(--…-rgb) / α)`, exempte `src/styles/`. Script `npm run lint:css`. **z-index volontairement non couvert** (faux positifs locaux). Baseline 208 → **153 warnings** après migration.
+- **Migration couleurs** : **286 littéraux `rgb()`** de la palette convertis en `rgb(var(--color-*-rgb) / α)` sur tout `src/app` (substitution canal-exact = rendu strictement identique). Tokens canaux étendus (`gold-dim`, `stone`, `stone-abyss`, `stone-elevated`, `stone-raised`). Les **153 warnings restants** = teintes one-off hors palette (gris 215, browns…) et fallbacks hex intentionnels (constellation auto-contenue) → décisions design, pas du mécanique.
+- **i18n** : `en/es/de/it/pt` complétés — footer (+4 clés × 5 : liens légaux) et projects (+8 en : `lucie-*` ; +25 es/de/it/pt : `empty.*`, `view.*`, `constellation.*`, `lucie-*`), traductions complètes. Audit : **592 → 464 clés manquantes** ; le reliquat (variantes thématiques + ar/ja/zh/ru) reste sur fallback FR par décision.
+- **Décisions produit confirmées** : bypass d'ouverture conservé tel quel ; migration couleurs incrémentale ; locales thématiques sur fallback.
+
+**Build final** : `exit 0`, initial total ≈ 464 kB (gzip ≈ 127 kB).

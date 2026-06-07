@@ -104,6 +104,11 @@
   --color-moonlight-rgb: 142 184 255;
   --color-moonlight-dim-rgb: 125 171 255;
   --color-ash-rgb: 189 193 199;
+  --color-gold-dim-rgb: 126 100 52;
+  --color-stone-rgb: 27 28 28;
+  --color-stone-abyss-rgb: 12 15 19;
+  --color-stone-elevated-rgb: 37 40 45;
+  --color-stone-raised-rgb: 48 53 59;
   --color-white-rgb: 255 255 255;
 
   /* ── BORDURES RITUELLES ─────────────────────────────────────────────────── */

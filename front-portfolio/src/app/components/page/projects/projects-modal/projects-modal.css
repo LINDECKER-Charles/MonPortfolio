@@ -32,7 +32,7 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgb(189 193 199 / 0.1);
+  border: 1px solid rgb(var(--color-ash-rgb) / 0.1);
   background: var(--gradient-stone-chip);
   color: #d8dde4;
   cursor: pointer;
@@ -46,7 +46,7 @@
 
 .projects-modal__close:hover {
   transform: translateY(-1px);
-  border-color: rgb(166 10 10 / 0.16);
+  border-color: rgb(var(--color-blood-rgb) / 0.16);
   box-shadow: var(--shadow-blood-halo);
 }
 
@@ -88,11 +88,11 @@
   overflow: hidden;
   aspect-ratio: 16 / 10;
   background: var(--color-stone);
-  border: 1px solid rgb(189 193 199 / 0.06);
+  border: 1px solid rgb(var(--color-ash-rgb) / 0.06);
 }
 
 .projects-modal__carousel-image:hover {
-  border-color: rgb(236 231 219 / 0.2);
+  border-color: rgb(var(--color-bone-rgb) / 0.2);
 }
 
 .projects-modal__carousel-image app-responsive-picture {
@@ -120,7 +120,7 @@
 
 .projects-modal__carousel-button:hover {
   transform: translateY(-0.5px);
-  border-color: rgb(166 10 10 / 0.14);
+  border-color: rgb(var(--color-blood-rgb) / 0.14);
   box-shadow: var(--shadow-blood-halo);
 }
 
@@ -196,14 +196,14 @@
 
 .projects-modal__chip--tag {
   color: #d6cab5;
-  background: rgb(166 10 10 / 0.05);
-  border: 1px solid rgb(166 10 10 / 0.08);
+  background: rgb(var(--color-blood-rgb) / 0.05);
+  border: 1px solid rgb(var(--color-blood-rgb) / 0.08);
 }
 
 .projects-modal__chip--stack {
   color: #c7ccd3;
-  background: rgb(255 255 255 / 0.03);
-  border: 1px solid rgb(189 193 199 / 0.06);
+  background: rgb(var(--color-white-rgb) / 0.03);
+  border: 1px solid rgb(var(--color-ash-rgb) / 0.06);
 }
 
 .projects-modal__list {

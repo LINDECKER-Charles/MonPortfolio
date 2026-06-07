@@ -1,0 +1,39 @@
+{
+  "plugins": ["stylelint-declaration-strict-value"],
+  "rules": {
+    "color-no-hex": [
+      true,
+      {
+        "severity": "warning",
+        "message": "Couleur hex en dur — utiliser un token (tokens.css) ou rgb(var(--color-*-rgb) / a)."
+      }
+    ],
+    "scale-unlimited/declaration-strict-value": [
+      ["color", "fill", "stroke", "background-color", "border-color"],
+      {
+        "ignoreFunctions": false,
+        "ignoreValues": [
+          "transparent",
+          "currentColor",
+          "inherit",
+          "unset",
+          "initial",
+          "none",
+          "/^var\\(/",
+          "/^rgba?\\(var\\(/"
+        ],
+        "severity": "warning",
+        "message": "Couleur en dur — passer par un token / rgb(var(--color-*-rgb) / a)."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/styles/**/*.css"],
+      "rules": {
+        "color-no-hex": null,
+        "scale-unlimited/declaration-strict-value": null
+      }
+    }
+  ]
+}
