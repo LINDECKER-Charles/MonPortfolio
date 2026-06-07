@@ -14,7 +14,7 @@
 .page-transition__rune {
   width: 96px;
   height: 96px;
-  filter: drop-shadow(0 0 12px rgb(164 148 118 / 0.35));
+  filter: drop-shadow(0 0 12px rgb(var(--color-gold-rgb) / 0.35));
   will-change: transform, opacity;
 }
 

@@ -67,12 +67,12 @@
 
 .works-cert__filter:hover {
   color: var(--color-bone);
-  border-color: rgb(166 10 10 / 0.18);
+  border-color: rgb(var(--color-blood-rgb) / 0.18);
 }
 
 .works-cert__filter.is-active {
   color: var(--color-parchment);
-  border-color: rgb(164 148 118 / 0.28);
+  border-color: rgb(var(--color-gold-rgb) / 0.28);
   background: var(--gradient-gold-chip);
   box-shadow: var(--shadow-gilded);
 }
@@ -120,7 +120,7 @@
 }
 
 .works-cert__row--link:hover {
-  background: rgb(255 255 255 / 0.03);
+  background: rgb(var(--color-white-rgb) / 0.03);
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
@@ -140,7 +140,7 @@
   height: 34px;
   border-radius: var(--radius-pill);
   border: var(--border-gilded);
-  background: radial-gradient(circle at center, rgb(255 255 255 / 0.06) 0%, rgb(12 10 8 / 0.6) 100%);
+  background: radial-gradient(circle at center, rgb(var(--color-white-rgb) / 0.06) 0%, rgb(12 10 8 / 0.6) 100%);
   display: grid;
   place-items: center;
   padding: 5px;

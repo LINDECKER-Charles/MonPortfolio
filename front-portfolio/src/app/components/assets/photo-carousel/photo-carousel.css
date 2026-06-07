@@ -14,7 +14,7 @@
 }
 
 .photo-carousel:focus-visible {
-  box-shadow: var(--shadow-gilded), 0 0 0 2px rgb(164 148 118 / 0.45);
+  box-shadow: var(--shadow-gilded), 0 0 0 2px rgb(var(--color-gold-rgb) / 0.45);
 }
 
 .photo-carousel--bare {
@@ -92,12 +92,12 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   border-radius: 999px;
-  background: rgb(12 15 19 / 0.56);
+  background: rgb(var(--color-stone-abyss-rgb) / 0.56);
   color: var(--color-parchment);
   font-family: var(--font-display);
   font-size: 1.6rem;
@@ -111,7 +111,7 @@
 .photo-carousel__nav:focus-visible {
   background: rgb(43 38 31 / 0.86);
   color: var(--color-ember-soft);
-  border-color: rgb(164 148 118 / 0.45);
+  border-color: rgb(var(--color-gold-rgb) / 0.45);
   box-shadow: var(--shadow-gilded);
   outline: none;
 }
@@ -130,7 +130,7 @@
   right: 0;
   top: 0;
   height: 3px;
-  background: rgb(12 15 19 / 0.42);
+  background: rgb(var(--color-stone-abyss-rgb) / 0.42);
   border-bottom: 1px solid rgb(0 0 0 / 0.28);
   z-index: 3;
   overflow: hidden;
@@ -142,11 +142,11 @@
   transform-origin: left center;
   background: linear-gradient(
     90deg,
-    rgb(164 148 118 / 0.55),
+    rgb(var(--color-gold-rgb) / 0.55),
     var(--color-ember-soft) 55%,
     var(--color-ember)
   );
-  box-shadow: 0 0 10px rgb(255 147 77 / 0.55);
+  box-shadow: 0 0 10px rgb(var(--color-ember-rgb) / 0.55);
   animation: photo-carousel-progress var(--progress-duration, 5000ms) linear forwards;
 }
 
@@ -192,7 +192,7 @@
 .photo-carousel--bare .photo-carousel__dots {
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: rgb(12 15 19 / 0.42);
+  background: rgb(var(--color-stone-abyss-rgb) / 0.42);
   backdrop-filter: blur(6px);
   flex: none;
   margin: 0 auto;
@@ -207,20 +207,32 @@
 }
 
 .photo-carousel__dot {
+  position: relative;
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  border: 1px solid rgb(164 148 118 / 0.35);
+  border: 1px solid rgb(var(--color-gold-rgb) / 0.35);
   background: rgb(18 16 14 / 0.6);
   cursor: pointer;
   padding: 0;
 }
 
+/* Zone tactile élargie sans grossir la pastille visuelle (WCAG 2.5.5). */
+.photo-carousel__dot::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+}
+
 .photo-carousel__dot:hover,
 .photo-carousel__dot:focus-visible {
-  border-color: rgb(255 184 108 / 0.55);
-  background: rgb(255 147 77 / 0.16);
+  border-color: rgb(var(--color-ember-soft-rgb) / 0.55);
+  background: rgb(var(--color-ember-rgb) / 0.16);
+}
+
+.photo-carousel__dot:focus-visible {
   outline: none;
+  box-shadow: 0 0 0 2px var(--color-ember-soft);
 }
 
 .photo-carousel__dot--active {
@@ -236,7 +248,7 @@
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: rgb(27 28 28 / 0.7);
+  background: rgb(var(--color-stone-rgb) / 0.7);
   color: var(--color-parchment);
   border: var(--border-gilded);
   cursor: pointer;
@@ -246,7 +258,7 @@
 .photo-carousel__toggle:hover,
 .photo-carousel__toggle:focus-visible {
   color: var(--color-ember-soft);
-  border-color: rgb(164 148 118 / 0.45);
+  border-color: rgb(var(--color-gold-rgb) / 0.45);
   background: rgb(43 38 31 / 0.86);
   outline: none;
 }
@@ -262,8 +274,8 @@
   }
 
   .photo-carousel__nav {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     font-size: 1.35rem;
   }
 

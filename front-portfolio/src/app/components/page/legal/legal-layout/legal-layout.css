@@ -82,7 +82,7 @@
   color: var(--color-bone);
   transform: rotate(-6deg);
   background:
-    radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.08), transparent 50%),
+    radial-gradient(circle at 35% 30%, rgb(var(--color-white-rgb) / 0.08), transparent 50%),
     radial-gradient(
       circle at center,
       var(--color-blood-dim) 0%,
@@ -100,7 +100,7 @@
   content: '';
   position: absolute;
   inset: 12px;
-  border: 1px dashed rgb(236 231 219 / 0.3);
+  border: 1px dashed rgb(var(--color-bone-rgb) / 0.3);
   border-radius: 50%;
 }
 
@@ -108,7 +108,7 @@
   font-size: 1.75rem;
   line-height: 1;
   color: var(--color-parchment);
-  text-shadow: 0 0 12px rgb(126 100 52 / 0.5);
+  text-shadow: 0 0 12px rgb(var(--color-gold-dim-rgb) / 0.5);
 }
 
 .legal-seal__label {
@@ -201,7 +201,7 @@
   flex-direction: column;
   margin-top: 1.25rem;
   padding-top: 0.9rem;
-  border-top: 1px dashed rgb(164 148 118 / 0.2);
+  border-top: 1px dashed rgb(var(--color-gold-rgb) / 0.2);
 }
 
 .legal-toc__foot a {

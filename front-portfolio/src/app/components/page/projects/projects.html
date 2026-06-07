@@ -39,9 +39,19 @@
       (stackToggled)="toggleStack($event)"
       (reset)="clearFilters()" />
 
-    <app-projects-timeline
-      [projects]="filteredProjects"
-      (projectSelected)="openProject($event)" />
+    @if (filteredProjects.length > 0) {
+      <app-projects-timeline
+        [projects]="filteredProjects"
+        (projectSelected)="openProject($event)" />
+    } @else {
+      <div class="projects-empty surface-crypt" role="status">
+        <p class="projects-empty__title text-engraved">{{ ts.translate('projects.empty.title') }}</p>
+        <p class="projects-empty__text text-tome">{{ ts.translate('projects.empty.text') }}</p>
+        <button type="button" class="chip chip--gilded transition-ritual" (click)="clearFilters()">
+          {{ ts.translate('projects.filter.reset') }}
+        </button>
+      </div>
+    }
   }
 
   @if (selectedProject; as project) {

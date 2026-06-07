@@ -19,6 +19,20 @@ export class OpeningAnimationService {
   private soundLabelIdleTween?: gsap.core.Tween;
   private openingIdleTween?: gsap.core.Tween;
 
+  /**
+   * Respect de `prefers-reduced-motion` : on conserve la mécanique d'étapes
+   * (clics requis) mais sans timeline ni flottement infini — les éléments sont
+   * posés directement dans leur état final visible. Évalué paresseusement et
+   * protégé SSR.
+   */
+  private get reducedMotion(): boolean {
+    return (
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    );
+  }
+
   prepareInitialState(refs: OpeningAnimationRefs): void {
     gsap.set(refs.audioState, {
       autoAlpha: 1,
@@ -62,6 +76,13 @@ export class OpeningAnimationService {
     this.stopSoundIdle();
 
     gsap.killTweensOf([refs.audioState, refs.soundButton, refs.soundLabel]);
+
+    if (this.reducedMotion) {
+      gsap.set(refs.audioState, { autoAlpha: 1, y: 0, scale: 1, filter: 'blur(0px)' });
+      gsap.set(refs.soundButton, { autoAlpha: 1, scale: 1, rotate: 0 });
+      gsap.set(refs.soundLabel, { autoAlpha: 0.85, y: 0, opacity: 1 });
+      return;
+    }
 
     const tl = gsap.timeline();
 
@@ -110,6 +131,12 @@ export class OpeningAnimationService {
   launchBgMusicTransition(refs: OpeningAnimationRefs, onComplete: () => void): void {
     this.stopSoundIdle();
 
+    if (this.reducedMotion) {
+      gsap.set([refs.audioState, refs.soundLabel], { autoAlpha: 0 });
+      onComplete();
+      return;
+    }
+
     const tl = gsap.timeline({ onComplete });
 
     tl.to(refs.soundButton, {
@@ -148,6 +175,12 @@ export class OpeningAnimationService {
       scale: 0.88,
       y: 0,
     });
+
+    if (this.reducedMotion) {
+      gsap.set(refs.openingState, { autoAlpha: 1, y: 0, scale: 1, filter: 'blur(0px)' });
+      gsap.set(refs.openingButton, { autoAlpha: 1, scale: 1, y: 0 });
+      return;
+    }
 
     const tl = gsap.timeline();
 
@@ -188,6 +221,12 @@ export class OpeningAnimationService {
 
     gsap.killTweensOf(refs.openingButton);
     gsap.killTweensOf(refs.openingState);
+
+    if (this.reducedMotion) {
+      gsap.set(refs.openingState, { autoAlpha: 0, clearProps: 'transform,filter' });
+      onComplete();
+      return;
+    }
 
     const tl = gsap.timeline({
       onComplete: () => {

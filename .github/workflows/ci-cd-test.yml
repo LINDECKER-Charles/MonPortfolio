@@ -30,6 +30,7 @@ jobs:
         with:
           sparse-checkout: |
             ${{ env.FRONT_DIR }}
+            .github
           sparse-checkout-cone-mode: true
 
       - name: Setup Node
@@ -46,6 +47,25 @@ jobs:
       - name: Run linter
         working-directory: ${{ env.FRONT_DIR }}
         run: npm run lint --if-present
+
+      # shell: bash => pipefail : l'échec de ng test fait échouer le step malgré le tee
+      - name: Run unit tests + coverage
+        working-directory: ${{ env.FRONT_DIR }}
+        shell: bash
+        run: npx ng test --no-watch --code-coverage --browsers=ChromeHeadless 2>&1 | tee karma.log
+
+      - name: Publish test & coverage summary
+        if: always()
+        working-directory: ${{ env.FRONT_DIR }}
+        run: node "$GITHUB_WORKSPACE/.github/scripts/test-summary.mjs" karma.log >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: coverage-report
+          path: ${{ env.FRONT_DIR }}/coverage
+          if-no-files-found: ignore
 
       - name: Build Angular app
         working-directory: ${{ env.FRONT_DIR }}

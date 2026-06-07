@@ -1,6 +1,7 @@
 <div class="image-lightbox" (click)="close.emit()">
   <div
     class="image-lightbox__dialog"
+    appFocusTrap
     role="dialog"
     aria-modal="true"
     [attr.aria-label]="ts.translate('common.lightbox.aria')"

@@ -76,12 +76,12 @@
 
 .works-tl__chip:hover {
   color: var(--color-bone);
-  border-color: rgb(166 10 10 / 0.18);
+  border-color: rgb(var(--color-blood-rgb) / 0.18);
 }
 
 .works-tl__chip.is-active {
   color: var(--color-parchment);
-  border-color: rgb(164 148 118 / 0.28);
+  border-color: rgb(var(--color-gold-rgb) / 0.28);
   background: var(--gradient-gold-chip);
   box-shadow: var(--shadow-gilded);
 }
@@ -108,12 +108,12 @@
   background: linear-gradient(
     to bottom,
     transparent 0,
-    rgb(126 100 52 / 0.5) 5%,
-    rgb(166 10 10 / 0.42) 50%,
-    rgb(126 100 52 / 0.5) 95%,
+    rgb(var(--color-gold-dim-rgb) / 0.5) 5%,
+    rgb(var(--color-blood-rgb) / 0.42) 50%,
+    rgb(var(--color-gold-dim-rgb) / 0.5) 95%,
     transparent 100%
   );
-  box-shadow: 0 0 14px rgb(166 10 10 / 0.12);
+  box-shadow: 0 0 14px rgb(var(--color-blood-rgb) / 0.12);
 }
 
 /* ── Marqueur d'année ─────────────────────────────────────────────────────── */
@@ -154,14 +154,14 @@
   top: 50%;
   width: 28px;
   height: 1px;
-  background: rgb(164 148 118 / 0.5);
+  background: rgb(var(--color-gold-rgb) / 0.5);
   transform: translateY(-50%);
 }
 
 .works-tl__year-line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, rgb(164 148 118 / 0.4), transparent);
+  background: linear-gradient(to right, rgb(var(--color-gold-rgb) / 0.4), transparent);
   opacity: 0.6;
 }
 
@@ -187,14 +187,14 @@
   border-radius: var(--radius-pill);
   background: var(--color-stone-deep);
   border: 2px solid var(--color-blood);
-  box-shadow: 0 0 14px rgb(166 10 10 / 0.4);
+  box-shadow: 0 0 14px rgb(var(--color-blood-rgb) / 0.4);
   z-index: 1;
 }
 
 /* Bénévolat — teinte moonlight sur le point d'axe */
 .works-tl__node--volunteer::before {
-  border-color: rgb(125 171 255 / 0.7);
-  box-shadow: 0 0 14px rgb(125 171 255 / 0.32);
+  border-color: rgb(var(--color-moonlight-dim-rgb) / 0.7);
+  box-shadow: 0 0 14px rgb(var(--color-moonlight-dim-rgb) / 0.32);
 }
 
 /* Formation — losange doré intercalé */
@@ -203,7 +203,7 @@
   height: 15px;
   border-radius: 2px;
   border-color: var(--color-gold);
-  box-shadow: 0 0 16px rgb(126 100 52 / 0.42);
+  box-shadow: 0 0 16px rgb(var(--color-gold-dim-rgb) / 0.42);
   transform: rotate(45deg);
 }
 
@@ -226,7 +226,7 @@
   top: 2rem;
   width: 1.25rem;
   height: 1px;
-  background: linear-gradient(270deg, transparent, rgb(164 148 118 / 0.5));
+  background: linear-gradient(270deg, transparent, rgb(var(--color-gold-rgb) / 0.5));
   pointer-events: none;
 }
 
@@ -250,12 +250,12 @@
   height: 52px;
   border-radius: var(--radius-pill);
   border: var(--border-gilded-strong);
-  background: radial-gradient(circle at center, rgb(255 255 255 / 0.06) 0%, rgb(12 10 8 / 0.6) 100%);
+  background: radial-gradient(circle at center, rgb(var(--color-white-rgb) / 0.06) 0%, rgb(12 10 8 / 0.6) 100%);
   display: grid;
   place-items: center;
   padding: 7px;
   overflow: hidden;
-  box-shadow: inset 0 1px 0 rgb(255 248 220 / 0.08), 0 0 12px rgb(164 148 118 / 0.14);
+  box-shadow: inset 0 1px 0 rgb(255 248 220 / 0.08), 0 0 12px rgb(var(--color-gold-rgb) / 0.14);
 }
 
 .works-tl__seal app-responsive-picture,
@@ -268,7 +268,7 @@
 }
 
 .works-tl__node--volunteer .works-tl__seal {
-  border-color: rgb(125 171 255 / 0.3);
+  border-color: rgb(var(--color-moonlight-dim-rgb) / 0.3);
 }
 
 .works-tl__monogram {
@@ -315,7 +315,7 @@
 }
 
 .works-tl__card--formation .works-tl__badge {
-  border-color: rgb(164 148 118 / 0.28);
+  border-color: rgb(var(--color-gold-rgb) / 0.28);
   color: var(--color-gold-faint);
 }
 

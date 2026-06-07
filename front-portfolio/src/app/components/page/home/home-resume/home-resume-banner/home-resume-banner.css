@@ -5,14 +5,14 @@
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1.2rem;
-  border: 1px solid rgb(189 193 199 / 0.1);
+  border: 1px solid rgb(var(--color-ash-rgb) / 0.1);
   border-radius: var(--radius-pill);
   background:
-    linear-gradient(180deg, rgb(48 53 59 / 0.36), rgb(27 28 28 / 0.6)),
-    radial-gradient(circle at center, rgb(166 10 10 / 0.06), transparent 55%);
+    linear-gradient(180deg, rgb(var(--color-stone-raised-rgb) / 0.36), rgb(var(--color-stone-rgb) / 0.6)),
+    radial-gradient(circle at center, rgb(var(--color-blood-rgb) / 0.06), transparent 55%);
   box-shadow:
     0 12px 34px rgb(0 0 0 / 0.24),
-    inset 0 1px 0 rgb(255 255 255 / 0.03);
+    inset 0 1px 0 rgb(var(--color-white-rgb) / 0.03);
   overflow: hidden;
 }
 
@@ -40,7 +40,7 @@
 
 .home-resume__banner-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(189 193 199 / 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--color-ash-rgb) / 0.2), transparent);
 }
 
 .home-resume__banner p {

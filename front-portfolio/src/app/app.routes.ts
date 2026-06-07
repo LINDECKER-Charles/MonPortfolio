@@ -1,16 +1,8 @@
 import { Routes } from '@angular/router';
-import { OpeningHome } from './components/misc/opening-home/opening-home';
-import { OpeningResume } from './components/misc/opening-resume/opening-resume';
-import { Resum } from './components/misc/opening-resume/resum/resum';
-import { Home } from './components/page/home/home';
+// Seul PROJECTS_DATA reste un import statique : c'est de la donnée (utilisée pour le
+// JSON-LD ItemList ci-dessous), pas un composant. Tous les composants de page sont
+// chargés à la demande via loadComponent pour alléger le bundle initial.
 import { PROJECTS_DATA } from './components/page/projects/projects.state';
-import { Projects } from './components/page/projects/projects';
-import { Works } from './components/page/works/works';
-import { Linktree } from './components/page/linktree/linktree';
-import { MentionsLegales } from './components/page/legal/mentions-legales/mentions-legales';
-import { PolitiqueConfidentialite } from './components/page/legal/politique-confidentialite/politique-confidentialite';
-import { PolitiqueCookies } from './components/page/legal/politique-cookies/politique-cookies';
-import { NotFound } from './components/page/not-found/not-found';
 import { imageServerUrl } from './img-sources/image-server';
 
 const SITE_URL = 'https://charles-lindecker.com';
@@ -89,7 +81,8 @@ const projectsItemList = {
 export const routes: Routes = [
   {
     path: 'opening-resume',
-    component: OpeningResume,
+    loadComponent: () =>
+      import('./components/misc/opening-resume/opening-resume').then((m) => m.OpeningResume),
     title: 'Charles Lindecker - Developpeur Web & Solutions sur mesure',
     data: {
       description:
@@ -120,7 +113,8 @@ export const routes: Routes = [
   },
   {
     path: 'opening-home',
-    component: OpeningHome,
+    loadComponent: () =>
+      import('./components/misc/opening-home/opening-home').then((m) => m.OpeningHome),
     title: 'Animation d ouverture - Charles Lindecker',
     data: {
       description:
@@ -151,7 +145,8 @@ export const routes: Routes = [
   },
   {
     path: 'resume',
-    component: Resum,
+    loadComponent: () =>
+      import('./components/misc/opening-resume/resum/resum').then((m) => m.Resum),
     title: 'Charles Lindecker - CV & Parcours Developpeur Web',
     data: {
       description:
@@ -188,7 +183,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: Home,
+    loadComponent: () => import('./components/page/home/home').then((m) => m.Home),
     title: 'Charles Lindecker - Portfolio Developpeur Full Stack',
     data: {
       description:
@@ -224,7 +219,7 @@ export const routes: Routes = [
   },
   {
     path: 'projects',
-    component: Projects,
+    loadComponent: () => import('./components/page/projects/projects').then((m) => m.Projects),
     title: 'Projets - Charles Lindecker',
     data: {
       description:
@@ -262,13 +257,15 @@ export const routes: Routes = [
   },
   {
     path: 'works',
-    component: Works,
+    loadComponent: () => import('./components/page/works/works').then((m) => m.Works),
     title: 'Parcours - Charles Lindecker',
     data: {
       description:
         'Page parcours de Charles Lindecker actuellement en preparation, avec une presentation bientot disponible.',
       canonical: `${SITE_URL}/works`,
-      robots: 'index, follow',
+      // En construction : on ne laisse pas Google indexer une page sans contenu.
+      // Repasser en 'index, follow' une fois la timeline parcours remplie.
+      robots: 'noindex, nofollow',
       ogTitle: 'Parcours - Charles Lindecker',
       ogDescription:
         'Section parcours professionnel actuellement en cours de construction.',
@@ -299,7 +296,7 @@ export const routes: Routes = [
   },
   {
     path: 'linktree',
-    component: Linktree,
+    loadComponent: () => import('./components/page/linktree/linktree').then((m) => m.Linktree),
     title: 'Linktree - Charles Lindecker',
     data: {
       description:
@@ -336,7 +333,10 @@ export const routes: Routes = [
   },
   {
     path: 'mentions-legales',
-    component: MentionsLegales,
+    loadComponent: () =>
+      import('./components/page/legal/mentions-legales/mentions-legales').then(
+        (m) => m.MentionsLegales
+      ),
     title: 'Mentions legales - Charles Lindecker',
     data: {
       description:
@@ -372,7 +372,10 @@ export const routes: Routes = [
   },
   {
     path: 'politique-confidentialite',
-    component: PolitiqueConfidentialite,
+    loadComponent: () =>
+      import('./components/page/legal/politique-confidentialite/politique-confidentialite').then(
+        (m) => m.PolitiqueConfidentialite
+      ),
     title: 'Politique de confidentialite - Charles Lindecker',
     data: {
       description:
@@ -408,7 +411,10 @@ export const routes: Routes = [
   },
   {
     path: 'politique-cookies',
-    component: PolitiqueCookies,
+    loadComponent: () =>
+      import('./components/page/legal/politique-cookies/politique-cookies').then(
+        (m) => m.PolitiqueCookies
+      ),
     title: 'Politique de cookies - Charles Lindecker',
     data: {
       description:
@@ -444,7 +450,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    component: NotFound,
+    loadComponent: () => import('./components/page/not-found/not-found').then((m) => m.NotFound),
     title: 'Page introuvable - Charles Lindecker',
     data: {
       description: 'Page 404 : la ressource demandée est introuvable.',

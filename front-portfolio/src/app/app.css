@@ -44,8 +44,8 @@ body {
 .bg-moon {
   background:
     radial-gradient(circle at 88% 12%,
-      rgb(142 184 255 / 0.07) 0%,
-      rgb(125 171 255 / 0.035) 18%,
+      rgb(var(--color-moonlight-rgb) / 0.07) 0%,
+      rgb(var(--color-moonlight-dim-rgb) / 0.035) 18%,
       transparent 42%);
 }
 
@@ -53,8 +53,8 @@ body {
 .bg-mist {
   background:
     radial-gradient(ellipse 60% 40% at 40% 60%,
-      rgb(166 10 10 / 0.06) 0%,
-      rgb(126 100 52 / 0.04) 35%,
+      rgb(var(--color-blood-rgb) / 0.06) 0%,
+      rgb(var(--color-gold-dim-rgb) / 0.04) 35%,
       transparent 70%);
   animation: mistDrift 40s ease-in-out infinite;
   will-change: transform, opacity;

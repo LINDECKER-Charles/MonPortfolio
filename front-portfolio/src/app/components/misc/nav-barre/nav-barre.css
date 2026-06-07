@@ -47,7 +47,7 @@
   border-radius: var(--radius-pill);
   border: var(--border-ash);
   background: radial-gradient(circle at 30% 30%,
-              rgb(48 53 59 / 0.95), rgb(27 28 28 / 0.96));
+              rgb(var(--color-stone-raised-rgb) / 0.95), rgb(var(--color-stone-rgb) / 0.96));
   box-shadow: var(--shadow-chip);
 }
 
@@ -123,8 +123,8 @@
   height: 26px;
   background: linear-gradient(180deg,
     transparent,
-    rgb(164 148 118 / 0.35) 20%,
-    rgb(164 148 118 / 0.35) 80%,
+    rgb(var(--color-gold-rgb) / 0.35) 20%,
+    rgb(var(--color-gold-rgb) / 0.35) 80%,
     transparent);
   flex: 0 0 auto;
 }
@@ -147,16 +147,17 @@
 }
 
 .nav-barre__icon-btn {
-  min-height: 38px;
-  min-width: 38px;
+  /* Cible tactile WCAG 2.5.5 : 44×44 minimum. */
+  min-height: 44px;
+  min-width: 44px;
   padding: 0 0.6rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgb(189 193 199 / 0.12);
-  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(var(--color-ash-rgb) / 0.12);
+  background: rgb(var(--color-white-rgb) / 0.03);
   color: var(--color-ash);
   cursor: pointer;
   box-shadow: none;
@@ -171,8 +172,8 @@
 
 .nav-barre__icon-btn:hover {
   color: var(--color-bone);
-  border-color: rgb(164 148 118 / 0.32);
-  background: rgb(255 255 255 / 0.06);
+  border-color: rgb(var(--color-gold-rgb) / 0.32);
+  background: rgb(var(--color-white-rgb) / 0.06);
   transform: translateY(-1px);
 }
 
@@ -183,19 +184,19 @@
 /* État ouvert (popover) — teinte or patiné */
 .nav-barre__icon-btn.is-open {
   color: var(--color-parchment);
-  border-color: rgb(164 148 118 / 0.48);
-  background: rgb(126 100 52 / 0.12);
+  border-color: rgb(var(--color-gold-rgb) / 0.48);
+  background: rgb(var(--color-gold-dim-rgb) / 0.12);
 }
 
 /* État muet — accent sang */
 .nav-barre__icon-btn.is-muted {
   color: #d58c8c;
-  border-color: rgb(166 10 10 / 0.32);
+  border-color: rgb(var(--color-blood-rgb) / 0.32);
 }
 
 .nav-barre__icon-btn.is-muted:hover {
   color: #ffbfbf;
-  border-color: rgb(166 10 10 / 0.5);
+  border-color: rgb(var(--color-blood-rgb) / 0.5);
 }
 
 /* Bouton langue : drapeau + code, toujours visible */
@@ -244,7 +245,7 @@
   justify-content: center;
   gap: 0.45rem;
   padding: 0.5rem 0.75rem;
-  min-height: 36px;
+  min-height: 44px;
 }
 
 .nav-barre__popover-mute svg {
@@ -254,7 +255,7 @@
 
 .nav-barre__popover-mute.is-active {
   color: #d58c8c;
-  border-color: rgb(166 10 10 / 0.32);
+  border-color: rgb(var(--color-blood-rgb) / 0.32);
 }
 
 .nav-barre__popover-volume {

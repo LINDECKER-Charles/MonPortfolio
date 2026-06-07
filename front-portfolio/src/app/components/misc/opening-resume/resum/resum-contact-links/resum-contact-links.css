@@ -69,7 +69,7 @@
   inset: 50% 10%;
   height: 1px;
   transform: translateY(-50%);
-  background: rgb(255 255 255 / 0.05);
+  background: rgb(var(--color-white-rgb) / 0.05);
 }
 
 /* Halo doré au hover — évocation runique */

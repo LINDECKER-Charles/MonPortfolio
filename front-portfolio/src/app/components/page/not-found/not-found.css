@@ -25,7 +25,7 @@
 .not-found__rune {
   width: clamp(96px, 12vw, 140px);
   height: clamp(96px, 12vw, 140px);
-  filter: drop-shadow(0 0 20px rgb(166 10 10 / 0.18));
+  filter: drop-shadow(0 0 20px rgb(var(--color-blood-rgb) / 0.18));
   animation: glowPulse 8s ease-in-out infinite;
 }
 
