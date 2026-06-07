@@ -90,4 +90,37 @@ describe('PlaySoundOnClickDirective', () => {
     expect(audioService.play).not.toHaveBeenCalled();
     expect(audioService.playOnce).not.toHaveBeenCalled();
   });
+
+  it('does nothing when the sound key is empty', () => {
+    const fixture = TestBed.createComponent(TestHostComponent);
+    fixture.componentInstance.soundKey = '';
+    fixture.detectChanges();
+
+    fixture.debugElement.query(By.css('button')).triggerEventHandler('click');
+
+    expect(audioService.play).not.toHaveBeenCalled();
+    expect(audioService.playOnce).not.toHaveBeenCalled();
+  });
+
+  it('does not play on mouseenter when trigger is click', () => {
+    const fixture = TestBed.createComponent(TestHostComponent);
+    fixture.detectChanges();
+
+    fixture.debugElement.query(By.css('button')).triggerEventHandler('mouseenter');
+
+    expect(audioService.play).not.toHaveBeenCalled();
+    expect(audioService.playOnce).not.toHaveBeenCalled();
+  });
+
+  it('plays the persistent sound on hover when both are set', () => {
+    const fixture = TestBed.createComponent(TestHostComponent);
+    fixture.componentInstance.trigger = 'hover';
+    fixture.componentInstance.mode = 'persistent';
+    fixture.detectChanges();
+
+    fixture.debugElement.query(By.css('button')).triggerEventHandler('mouseenter');
+
+    expect(audioService.play).toHaveBeenCalledWith('getItem');
+    expect(audioService.playOnce).not.toHaveBeenCalled();
+  });
 });

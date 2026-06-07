@@ -22,4 +22,10 @@ describe('OpeningResume', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('hides the resume until the opening finishes', () => {
+    expect(component.showResume).toBeFalse();
+    component.onOpeningFinished();
+    expect(component.showResume).toBeTrue();
+  });
 });
