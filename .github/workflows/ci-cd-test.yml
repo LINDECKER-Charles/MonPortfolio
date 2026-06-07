@@ -30,6 +30,7 @@ jobs:
         with:
           sparse-checkout: |
             ${{ env.FRONT_DIR }}
+            .github
           sparse-checkout-cone-mode: true
 
       - name: Setup Node
@@ -56,7 +57,7 @@ jobs:
       - name: Publish test & coverage summary
         if: always()
         working-directory: ${{ env.FRONT_DIR }}
-        run: node scripts/test-summary.mjs karma.log >> "$GITHUB_STEP_SUMMARY"
+        run: node "$GITHUB_WORKSPACE/.github/scripts/test-summary.mjs" karma.log >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload coverage report
         if: always()
