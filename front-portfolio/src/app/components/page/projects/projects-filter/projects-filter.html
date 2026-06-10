@@ -33,6 +33,7 @@
           <input
             type="text"
             class="projects-filters__search"
+            [attr.aria-label]="ts.translate('projects.filter.search_tag')"
             [placeholder]="ts.translate('projects.filter.search_tag')"
             [value]="tagQuery"
             (input)="tagQuery = $any($event.target).value" />
@@ -91,6 +92,7 @@
           <input
             type="text"
             class="projects-filters__search"
+            [attr.aria-label]="ts.translate('projects.filter.search_stack')"
             [placeholder]="ts.translate('projects.filter.search_stack')"
             [value]="stackQuery"
             (input)="stackQuery = $any($event.target).value" />

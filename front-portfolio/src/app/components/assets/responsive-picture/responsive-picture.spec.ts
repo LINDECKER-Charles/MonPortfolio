@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResponsivePicture } from './responsive-picture';
@@ -8,6 +9,7 @@ describe('ResponsivePicture', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideZonelessChangeDetection()],
       imports: [ResponsivePicture]
     })
     .compileComponents();

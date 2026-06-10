@@ -62,3 +62,7 @@ config/README.md
 
 # Spec fonctionnelle (non versionnée)
 FUNCTIONAL_SPEC.md
+
+graphify-out
+CLAUDE.md
+.claude

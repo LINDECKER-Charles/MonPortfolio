@@ -11,7 +11,7 @@
   position: absolute;
   inset: auto 0 0 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(166 10 10 / 0.22), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--color-blood-rgb) / 0.22), transparent);
 }
 
 .hero__veil {
@@ -19,8 +19,8 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(135deg, rgb(255 255 255 / 0.015), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgb(166 10 10 / 0.06), transparent 24%);
+    linear-gradient(135deg, rgb(var(--color-white-rgb) / 0.015), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgb(var(--color-blood-rgb) / 0.06), transparent 24%);
 }
 
 .hero__content {
@@ -49,9 +49,9 @@
   flex: 0 0 auto;
   padding: 0.35rem;
   border-radius: var(--radius-pill);
-  background: linear-gradient(180deg, rgb(189 193 199 / 0.15), rgb(189 193 199 / 0.04));
+  background: linear-gradient(180deg, rgb(var(--color-ash-rgb) / 0.15), rgb(var(--color-ash-rgb) / 0.04));
   box-shadow:
-    0 0 0 1px rgb(189 193 199 / 0.05),
+    0 0 0 1px rgb(var(--color-ash-rgb) / 0.05),
     0 12px 24px rgb(0 0 0 / 0.24);
 }
 
@@ -61,7 +61,7 @@
   border-radius: var(--radius-pill);
   display: grid;
   place-items: center;
-  background: radial-gradient(circle at 30% 30%, rgb(48 53 59 / 0.95), rgb(27 28 28 / 0.96));
+  background: radial-gradient(circle at 30% 30%, rgb(var(--color-stone-raised-rgb) / 0.95), rgb(var(--color-stone-rgb) / 0.96));
   border: var(--border-ash);
 }
 
@@ -128,49 +128,49 @@
 
 .hero__cta:hover {
   transform: translateY(-2px);
-  border-color: rgb(164 148 118 / 0.34);
+  border-color: rgb(var(--color-gold-rgb) / 0.34);
   box-shadow:
     0 18px 38px rgb(0 0 0 / 0.34),
-    0 0 14px rgb(126 100 52 / 0.12),
+    0 0 14px rgb(var(--color-gold-dim-rgb) / 0.12),
     inset 0 1px 0 rgb(255 248 220 / 0.08);
   filter: brightness(1.02);
 }
 
 .hero__cta--secondary {
   color: #f1f4f6;
-  border-color: rgb(189 193 199 / 0.14);
+  border-color: rgb(var(--color-ash-rgb) / 0.14);
   background:
     linear-gradient(180deg, rgb(40 44 49 / 0.94), rgb(20 22 25 / 0.98)),
-    radial-gradient(circle at top left, rgb(166 10 10 / 0.14), transparent 55%);
+    radial-gradient(circle at top left, rgb(var(--color-blood-rgb) / 0.14), transparent 55%);
 }
 
 .hero__cta--secondary:hover {
-  border-color: rgb(236 231 219 / 0.2);
+  border-color: rgb(var(--color-bone-rgb) / 0.2);
   box-shadow:
     0 18px 38px rgb(0 0 0 / 0.34),
-    0 0 0 1px rgb(166 10 10 / 0.08);
+    0 0 0 1px rgb(var(--color-blood-rgb) / 0.08);
 }
 
 .hero__cta--tertiary {
   color: var(--color-moonlight-soft);
-  border-color: rgb(125 171 255 / 0.22);
+  border-color: rgb(var(--color-moonlight-dim-rgb) / 0.22);
   background:
     linear-gradient(180deg, rgb(29 47 78 / 0.78), rgb(18 24 37 / 0.92)),
-    radial-gradient(circle at top left, rgb(125 171 255 / 0.14), transparent 55%);
+    radial-gradient(circle at top left, rgb(var(--color-moonlight-dim-rgb) / 0.14), transparent 55%);
 }
 
 .hero__cta--tertiary:hover {
-  border-color: rgb(125 171 255 / 0.38);
+  border-color: rgb(var(--color-moonlight-dim-rgb) / 0.38);
   box-shadow:
     0 18px 38px rgb(0 0 0 / 0.34),
-    0 0 0 1px rgb(125 171 255 / 0.14);
+    0 0 0 1px rgb(var(--color-moonlight-dim-rgb) / 0.14);
 }
 
 .hero__cta-icon-frame--tome {
-  background: linear-gradient(180deg, rgb(125 171 255 / 0.22), rgb(40 54 82 / 0.22));
+  background: linear-gradient(180deg, rgb(var(--color-moonlight-dim-rgb) / 0.22), rgb(40 54 82 / 0.22));
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.08),
-    0 0 0 1px rgb(125 171 255 / 0.14);
+    inset 0 1px 0 rgb(var(--color-white-rgb) / 0.08),
+    0 0 0 1px rgb(var(--color-moonlight-dim-rgb) / 0.14);
 }
 
 .hero__cta-icon--tome {
@@ -191,24 +191,24 @@
 
 .hero__cta--quaternary {
   color: #f5dfc5;
-  border-color: rgb(201 77 34 / 0.28);
+  border-color: rgb(var(--color-ember-deep-rgb) / 0.28);
   background:
     linear-gradient(180deg, rgb(60 24 14 / 0.92), rgb(28 14 10 / 0.96)),
-    radial-gradient(circle at top left, rgb(255 147 77 / 0.18), transparent 55%);
+    radial-gradient(circle at top left, rgb(var(--color-ember-rgb) / 0.18), transparent 55%);
 }
 
 .hero__cta--quaternary:hover {
-  border-color: rgb(255 147 77 / 0.42);
+  border-color: rgb(var(--color-ember-rgb) / 0.42);
   box-shadow:
     0 18px 38px rgb(0 0 0 / 0.34),
-    0 0 14px rgb(201 77 34 / 0.2);
+    0 0 14px rgb(var(--color-ember-deep-rgb) / 0.2);
 }
 
 .hero__cta-icon-frame--scroll {
-  background: linear-gradient(180deg, rgb(255 147 77 / 0.24), rgb(87 45 27 / 0.24));
+  background: linear-gradient(180deg, rgb(var(--color-ember-rgb) / 0.24), rgb(87 45 27 / 0.24));
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.08),
-    0 0 0 1px rgb(201 77 34 / 0.18);
+    inset 0 1px 0 rgb(var(--color-white-rgb) / 0.08),
+    0 0 0 1px rgb(var(--color-ember-deep-rgb) / 0.18);
 }
 
 .hero__cta-icon--scroll {
@@ -238,14 +238,14 @@
   background: linear-gradient(180deg, rgb(151 136 104 / 0.22), rgb(58 51 41 / 0.22));
   box-shadow:
     inset 0 1px 0 rgb(255 248 220 / 0.08),
-    0 0 0 1px rgb(164 148 118 / 0.08);
+    0 0 0 1px rgb(var(--color-gold-rgb) / 0.08);
 }
 
 .hero__cta-icon-frame--play {
   background: linear-gradient(180deg, rgb(176 180 187 / 0.18), rgb(58 61 66 / 0.18));
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.08),
-    0 0 0 1px rgb(189 193 199 / 0.08);
+    inset 0 1px 0 rgb(var(--color-white-rgb) / 0.08),
+    0 0 0 1px rgb(var(--color-ash-rgb) / 0.08);
 }
 
 .hero__cta-icon {

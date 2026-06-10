@@ -8,6 +8,8 @@
   "filter.tags": "Tags",
   "filter.stack": "Stack",
   "filter.reset": "Reset",
+  "empty.title": "No project found",
+  "empty.text": "No project matches these filters. Adjust your selection or reset the filters.",
   "filter.search_tag": "Search a tag",
   "filter.search_stack": "Search a stack",
   "filter.none_tag": "No tags found.",
@@ -156,5 +158,13 @@
   "img-convertor.highlights.2": "Pure core/ architecture decoupled from the UI, 100% test coverage",
   "img-convertor.lessonsLearned.0": "Decoupling pure business logic from CLI and interactive interfaces",
   "img-convertor.lessonsLearned.1": "Tooling end-to-end responsive web asset preparation",
-  "img-convertor.lessonsLearned.2": "Maintaining exhaustive test coverage on an image-processing tool"
+  "img-convertor.lessonsLearned.2": "Maintaining exhaustive test coverage on an image-processing tool",
+  "lucie-fiquet-albin.shortDescription": "Tailor-made portfolio for an event-communication student, built around a stellar map of her projects.",
+  "lucie-fiquet-albin.longDescription": "Professional portfolio designed for Lucie Fiquet-Albin, a Communication student in Nice launching a freelance career in event communication. The site stages her identity with a dark, typographic and cinematic art direction: engraved title, blood-red italics, glowing vignettes and navigation between Projects, Experiences, Photography and Profile. The projects section relies on an interactive stellar map to explore the cases (Ink Intention, Hominum Game, COM ça Rouge, Chris Mae Rénovation, SDIS 06…) with relations between projects, a dedicated sheet, constellation filters and search. An experiences page details the missions (notably G-Addiction Jeunesse Citoyenne) and a photography space dedicated to her documentary work completes the setup. It is a client project that pushes visual and narrative standards, reusing and adapting components from my own portfolio.",
+  "lucie-fiquet-albin.highlights.0": "Dark, engraved and cinematic art direction aligned with Lucie's identity",
+  "lucie-fiquet-albin.highlights.1": "Interactive stellar map of projects with relations, filters and a detailed sheet",
+  "lucie-fiquet-albin.highlights.2": "Front-end architecture reusing and adapting components from my own portfolio",
+  "lucie-fiquet-albin.lessonsLearned.0": "Adapting an existing design system to a client identity without diluting it",
+  "lucie-fiquet-albin.lessonsLearned.1": "Industrializing a generic constellation component serving two portfolios",
+  "lucie-fiquet-albin.lessonsLearned.2": "Translating a demanding visual world into a legible, navigable interface"
 }

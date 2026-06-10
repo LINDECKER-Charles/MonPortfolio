@@ -41,6 +41,9 @@ export class Opening implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
 
+  /** Mémorise qu'une séquence d'ouverture a déjà été vue/skippée. */
+  private static readonly SEEN_KEY = 'opening.seen';
+
   @Output() finished = new EventEmitter<void>();
 
   @ViewChild('audioState') audioStateRef!: ElementRef<HTMLDivElement>;
@@ -71,6 +74,13 @@ export class Opening implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
 
+    // Visiteur récurrent (ou lien partagé `?skip-opening`) : on ne rejoue pas la
+    // séquence cinématique, on bascule directement sur la destination.
+    if (this.shouldBypass()) {
+      this.finishOpening();
+      return;
+    }
+
     this.animationService.prepareInitialState(this.refs);
     this.animationService.enterSoundState(this.refs);
   }
@@ -100,8 +110,7 @@ export class Opening implements AfterViewInit, OnDestroy {
     this.state = moveToIntroLeaving(this.state);
 
     this.animationService.playVoiceTransition(this.refs, () => {
-      this.state = moveToFinished();
-      this.finished.emit();
+      this.finishOpening();
     });
   }
 
@@ -109,8 +118,31 @@ export class Opening implements AfterViewInit, OnDestroy {
     if (!this.isBrowser || !canSkipOpening(this.state)) return;
 
     this.animationService.stopAllTweens(this.refs);
+    this.finishOpening();
+  }
+
+  /** Termine la séquence et mémorise qu'elle a été vue (bypass aux prochaines visites). */
+  private finishOpening(): void {
     this.state = moveToFinished();
+    try {
+      localStorage.setItem(Opening.SEEN_KEY, '1');
+    } catch {
+      /* localStorage indisponible (mode privé / SSR) : non bloquant. */
+    }
     this.finished.emit();
+  }
+
+  /** Bypass si la séquence a déjà été vue, si `?skip-opening` est présent, ou en reduced-motion. */
+  private shouldBypass(): boolean {
+    try {
+      if (localStorage.getItem(Opening.SEEN_KEY) === '1') return true;
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('skip-opening')) return true;
+      if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return true;
+    } catch {
+      /* environnement contraint : on joue la séquence par défaut. */
+    }
+    return false;
   }
 
   public onSoundHoverEnter(): void {

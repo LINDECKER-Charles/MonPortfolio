@@ -1,3 +1,4 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeResumeBanner } from './home-resume-banner';
@@ -8,6 +9,7 @@ describe('HomeResumeBanner', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideZonelessChangeDetection()],
       imports: [HomeResumeBanner]
     })
     .compileComponents();

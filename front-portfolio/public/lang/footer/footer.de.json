@@ -7,5 +7,9 @@
   "copyright": "© 2026 Charles Lindecker",
   "made_with": "Erstellt mit Angular",
   "aria.nav": "Footer-Navigation",
-  "aria.socials": "Externe Links"
+  "aria.socials": "Externe Links",
+  "aria.legal": "Rechtliche Links",
+  "legal.mentions": "Impressum",
+  "legal.privacy": "Datenschutz",
+  "legal.cookies": "Cookies"
 }

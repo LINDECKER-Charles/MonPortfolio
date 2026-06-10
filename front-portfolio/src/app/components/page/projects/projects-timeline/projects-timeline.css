@@ -25,11 +25,11 @@
   background:
     linear-gradient(180deg,
       transparent 0%,
-      rgb(166 10 10 / 0.18) 8%,
-      rgb(164 148 118 / 0.28) 50%,
-      rgb(166 10 10 / 0.18) 92%,
+      rgb(var(--color-blood-rgb) / 0.18) 8%,
+      rgb(var(--color-gold-rgb) / 0.28) 50%,
+      rgb(var(--color-blood-rgb) / 0.18) 92%,
       transparent 100%);
-  box-shadow: 0 0 12px rgb(166 10 10 / 0.12);
+  box-shadow: 0 0 12px rgb(var(--color-blood-rgb) / 0.12);
 }
 
 .projects-timeline::after {
@@ -40,7 +40,7 @@
   left: 18px;
   width: 4px;
   background: radial-gradient(ellipse at center,
-    rgb(166 10 10 / 0.04) 0%,
+    rgb(var(--color-blood-rgb) / 0.04) 0%,
     transparent 70%);
   pointer-events: none;
 }
@@ -65,15 +65,15 @@
   left: 0;
   width: 40px;
   height: 40px;
-  filter: drop-shadow(0 0 8px rgb(166 10 10 / 0.35));
+  filter: drop-shadow(0 0 8px rgb(var(--color-blood-rgb) / 0.35));
   transform-origin: center;
   animation: sealBreath 5s ease-in-out infinite;
 }
 
 /* Featured : halo plus marqué, légère augmentation de l'échelle */
 .projects-timeline__item--featured .projects-timeline__seal {
-  filter: drop-shadow(0 0 14px rgb(255 147 77 / 0.45))
-          drop-shadow(0 0 4px rgb(166 10 10 / 0.3));
+  filter: drop-shadow(0 0 14px rgb(var(--color-ember-rgb) / 0.45))
+          drop-shadow(0 0 4px rgb(var(--color-blood-rgb) / 0.3));
   animation-duration: 3.5s;
 }
 
@@ -91,8 +91,8 @@
 .project-card {
   border: var(--border-ash);
   border-radius: var(--radius-panel);
-  background: linear-gradient(180deg, rgb(48 53 59 / 0.18), rgb(27 28 28 / 0.52));
-  box-shadow: 0 16px 36px rgb(0 0 0 / 0.18), inset 0 1px 0 rgb(255 255 255 / 0.02);
+  background: linear-gradient(180deg, rgb(var(--color-stone-raised-rgb) / 0.18), rgb(var(--color-stone-rgb) / 0.52));
+  box-shadow: 0 16px 36px rgb(0 0 0 / 0.18), inset 0 1px 0 rgb(var(--color-white-rgb) / 0.02);
   overflow: hidden;
   transition:
     transform var(--duration-slow) ease,
@@ -102,8 +102,8 @@
 
 .projects-timeline__item:hover .project-card {
   transform: translateY(-2px);
-  border-color: rgb(166 10 10 / 0.12);
-  box-shadow: 0 20px 40px rgb(0 0 0 / 0.22), 0 0 0 1px rgb(166 10 10 / 0.04);
+  border-color: rgb(var(--color-blood-rgb) / 0.12);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.22), 0 0 0 1px rgb(var(--color-blood-rgb) / 0.04);
 }
 
 .project-card__top,
@@ -140,12 +140,12 @@
 
 .project-card__period {
   color: #8f98a3;
-  background: rgb(255 255 255 / 0.03);
+  background: rgb(var(--color-white-rgb) / 0.03);
 }
 
 .project-card__badge {
   color: #d3d8de;
-  background: rgb(255 255 255 / 0.04);
+  background: rgb(var(--color-white-rgb) / 0.04);
 }
 
 .project-card__badge--status {
@@ -155,7 +155,7 @@
 .project-card__featured {
   color: var(--color-bone);
   background: var(--gradient-gold-chip);
-  border: 1px solid rgb(164 148 118 / 0.16);
+  border: 1px solid rgb(var(--color-gold-rgb) / 0.16);
   white-space: nowrap;
 }
 
@@ -193,7 +193,7 @@
   cursor: pointer;
   box-shadow:
     0 10px 24px rgb(0 0 0 / 0.28),
-    inset 0 1px 0 rgb(255 255 255 / 0.03);
+    inset 0 1px 0 rgb(var(--color-white-rgb) / 0.03);
 }
 
 .project-card__preview::after {
@@ -202,7 +202,7 @@
   inset: 0;
   background:
     radial-gradient(ellipse at center, transparent 40%, rgb(0 0 0 / 0.35) 100%),
-    linear-gradient(180deg, transparent 55%, rgb(166 10 10 / 0.12) 100%);
+    linear-gradient(180deg, transparent 55%, rgb(var(--color-blood-rgb) / 0.12) 100%);
   pointer-events: none;
   opacity: 0.85;
   transition: opacity var(--duration-slow) ease;
@@ -231,10 +231,10 @@
 }
 
 .project-card__preview:hover {
-  border-color: rgb(166 10 10 / 0.22);
+  border-color: rgb(var(--color-blood-rgb) / 0.22);
   box-shadow:
     0 14px 32px rgb(0 0 0 / 0.32),
-    0 0 0 1px rgb(166 10 10 / 0.1),
+    0 0 0 1px rgb(var(--color-blood-rgb) / 0.1),
     var(--shadow-blood-halo);
 }
 
@@ -282,7 +282,7 @@
     inset 0 -3px 5px rgb(0 0 0 / 0.45),
     inset 0 0 0 1px rgb(40 4 4 / 0.6),
     0 3px 8px rgb(0 0 0 / 0.5),
-    0 0 14px rgb(166 10 10 / 0.4);
+    0 0 14px rgb(var(--color-blood-rgb) / 0.4);
   z-index: 3;
   pointer-events: none;
 }
@@ -336,14 +336,14 @@
 
 .project-card__stack-chip {
   color: #c7ccd3;
-  background: rgb(255 255 255 / 0.03);
-  border: 1px solid rgb(189 193 199 / 0.06);
+  background: rgb(var(--color-white-rgb) / 0.03);
+  border: 1px solid rgb(var(--color-ash-rgb) / 0.06);
 }
 
 .project-card__tag-chip {
   color: #d6cab5;
-  background: rgb(166 10 10 / 0.05);
-  border: 1px solid rgb(166 10 10 / 0.08);
+  background: rgb(var(--color-blood-rgb) / 0.05);
+  border: 1px solid rgb(var(--color-blood-rgb) / 0.08);
 }
 
 .project-card__actions {
@@ -363,7 +363,7 @@
 
 .project-card__toggle:hover {
   transform: translateY(-1px);
-  border-color: rgb(166 10 10 / 0.14);
+  border-color: rgb(var(--color-blood-rgb) / 0.14);
   box-shadow: var(--shadow-blood-halo);
 }
 

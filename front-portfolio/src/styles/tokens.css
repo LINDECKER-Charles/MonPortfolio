@@ -87,6 +87,30 @@
    ╚══════════════════════════════════════════════════════════════════════════╝ */
 
 :root {
+  /* ── CANAUX RVB DES TOKENS COULEUR ──────────────────────────────────────── */
+  /* Tailwind 4 @theme expose les couleurs en hex non décomposé : impossible d'en
+     dériver une variante alpha sans les recopier. Ces tokens « canaux » lèvent la
+     contrainte — écrire `rgb(var(--color-blood-rgb) / 0.18)` au lieu de figer
+     `rgb(166 10 10 / 0.18)` en dur. Source de vérité unique : si une couleur de la
+     palette change, son canal change ici aussi. À privilégier pour tout nouvel usage
+     alpha ; la migration des usages existants se fait fichier par fichier. */
+  --color-blood-rgb: 166 10 10;
+  --color-ember-rgb: 255 147 77;
+  --color-ember-soft-rgb: 255 184 108;
+  --color-ember-deep-rgb: 201 77 34;
+  --color-gold-rgb: 164 148 118;
+  --color-parchment-rgb: 215 192 154;
+  --color-bone-rgb: 236 231 219;
+  --color-moonlight-rgb: 142 184 255;
+  --color-moonlight-dim-rgb: 125 171 255;
+  --color-ash-rgb: 189 193 199;
+  --color-gold-dim-rgb: 126 100 52;
+  --color-stone-rgb: 27 28 28;
+  --color-stone-abyss-rgb: 12 15 19;
+  --color-stone-elevated-rgb: 37 40 45;
+  --color-stone-raised-rgb: 48 53 59;
+  --color-white-rgb: 255 255 255;
+
   /* ── BORDURES RITUELLES ─────────────────────────────────────────────────── */
 
   --border-ash: 1px solid rgb(189 193 199 / 0.08);

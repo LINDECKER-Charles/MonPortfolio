@@ -23,8 +23,8 @@
   z-index: 0;
   filter: blur(20px);
   background:
-    radial-gradient(ellipse at 50% 0%, rgb(166 10 10 / 0.08), transparent 55%),
-    radial-gradient(ellipse at 15% 20%, rgb(126 100 52 / 0.08), transparent 60%);
+    radial-gradient(ellipse at 50% 0%, rgb(var(--color-blood-rgb) / 0.08), transparent 55%),
+    radial-gradient(ellipse at 15% 20%, rgb(var(--color-gold-dim-rgb) / 0.08), transparent 60%);
 }
 
 .legal-page > app-legal-layout {
@@ -292,7 +292,7 @@
 
 .legal-page .ledger td {
   padding: 0.7rem 1rem;
-  border-bottom: 1px dashed rgb(164 148 118 / 0.18);
+  border-bottom: 1px dashed rgb(var(--color-gold-rgb) / 0.18);
   color: var(--color-bone);
   vertical-align: top;
   line-height: 1.5;

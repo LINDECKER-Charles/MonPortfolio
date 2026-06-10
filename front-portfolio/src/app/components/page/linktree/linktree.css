@@ -19,9 +19,9 @@
   height: 620px;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 0%, rgb(166 10 10 / 0.09), transparent 55%),
-    radial-gradient(ellipse at 18% 25%, rgb(126 100 52 / 0.1), transparent 60%),
-    radial-gradient(ellipse at 82% 35%, rgb(125 171 255 / 0.06), transparent 60%);
+    radial-gradient(ellipse at 50% 0%, rgb(var(--color-blood-rgb) / 0.09), transparent 55%),
+    radial-gradient(ellipse at 18% 25%, rgb(var(--color-gold-dim-rgb) / 0.1), transparent 60%),
+    radial-gradient(ellipse at 82% 35%, rgb(var(--color-moonlight-dim-rgb) / 0.06), transparent 60%);
   filter: blur(22px);
   z-index: 0;
 }
@@ -58,14 +58,14 @@
   position: absolute;
   inset: -16px;
   border-radius: 50%;
-  border: 1px solid rgb(164 148 118 / 0.22);
+  border: 1px solid rgb(var(--color-gold-rgb) / 0.22);
   background:
     conic-gradient(from 210deg,
-      rgb(164 148 118 / 0.18),
-      rgb(166 10 10 / 0.1),
-      rgb(164 148 118 / 0.18),
-      rgb(125 171 255 / 0.08),
-      rgb(164 148 118 / 0.18));
+      rgb(var(--color-gold-rgb) / 0.18),
+      rgb(var(--color-blood-rgb) / 0.1),
+      rgb(var(--color-gold-rgb) / 0.18),
+      rgb(var(--color-moonlight-dim-rgb) / 0.08),
+      rgb(var(--color-gold-rgb) / 0.18));
   mask: radial-gradient(circle, transparent 62%, #000 63%, #000 100%);
   -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%, #000 100%);
   animation: linktree-halo 22s linear infinite;
@@ -77,7 +77,7 @@
   inset: 0;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid rgb(164 148 118 / 0.28);
+  border: 1px solid rgb(var(--color-gold-rgb) / 0.28);
   box-shadow:
     inset 0 0 0 1px rgb(255 248 220 / 0.04),
     inset 0 0 30px rgb(0 0 0 / 0.5),
@@ -167,7 +167,7 @@
 
 .linktree-chapter__rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(164 148 118 / 0.26), rgb(164 148 118 / 0.26), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--color-gold-rgb) / 0.26), rgb(var(--color-gold-rgb) / 0.26), transparent);
 }
 
 .linktree-chapter__numeral {
@@ -179,7 +179,7 @@
 
 .linktree-chapter__mark {
   font-family: var(--font-display);
-  color: rgb(164 148 118 / 0.9);
+  color: rgb(var(--color-gold-rgb) / 0.9);
   font-size: 0.8rem;
   transform: translateY(-1px);
 }
@@ -243,7 +243,7 @@
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-size: 0.55rem;
-  color: rgb(164 148 118 / 0.28);
+  color: rgb(var(--color-gold-rgb) / 0.28);
   pointer-events: none;
   transition: color 480ms var(--ease-emerge), transform 480ms var(--ease-emerge);
 }
@@ -272,8 +272,8 @@
   border-radius: inherit;
   background:
     radial-gradient(ellipse at 6% 50%,
-      rgb(126 100 52 / 0.22) 0%,
-      rgb(126 100 52 / 0.08) 32%,
+      rgb(var(--color-gold-dim-rgb) / 0.22) 0%,
+      rgb(var(--color-gold-dim-rgb) / 0.08) 32%,
       transparent 60%);
   opacity: 0;
   pointer-events: none;
@@ -290,7 +290,7 @@
   position: absolute;
   inset: 4px;
   border-radius: 10px;
-  border: 1px solid rgb(164 148 118 / 0.6);
+  border: 1px solid rgb(var(--color-gold-rgb) / 0.6);
   pointer-events: none;
 }
 
@@ -314,8 +314,8 @@
   inset: 2px;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 55%,
-    rgb(255 184 108 / 0.14) 0%,
-    rgb(126 100 52 / 0.1) 38%,
+    rgb(var(--color-ember-soft-rgb) / 0.14) 0%,
+    rgb(var(--color-gold-dim-rgb) / 0.1) 38%,
     rgb(18 20 24 / 0.55) 72%,
     transparent 100%);
   opacity: 0.5;
@@ -332,7 +332,7 @@
   position: absolute;
   inset: -2px;
   border-radius: 50%;
-  border: 1px solid rgb(164 148 118 / 0);
+  border: 1px solid rgb(var(--color-gold-rgb) / 0);
   box-shadow: 0 0 0 1px rgb(255 248 220 / 0) inset;
   opacity: 0;
   transform: scale(0.92) rotate(0deg);
@@ -446,7 +446,7 @@
   right: 18%;
   bottom: 0.35rem;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(164 148 118 / 0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--color-gold-rgb) / 0.7), transparent);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 620ms var(--ease-emerge);
@@ -471,8 +471,8 @@
 
   .linktree-row__link:hover .linktree-row__icon::after {
     opacity: 1;
-    border-color: rgb(164 148 118 / 0.55);
-    box-shadow: 0 0 0 1px rgb(255 248 220 / 0.05) inset, 0 0 22px rgb(126 100 52 / 0.32);
+    border-color: rgb(var(--color-gold-rgb) / 0.55);
+    box-shadow: 0 0 0 1px rgb(255 248 220 / 0.05) inset, 0 0 22px rgb(var(--color-gold-dim-rgb) / 0.32);
     transform: scale(1) rotate(40deg);
   }
 
@@ -511,7 +511,7 @@
 
   .linktree-row:has(.linktree-row__link:hover) + .linktree-row::before,
   .linktree-row:has(.linktree-row__link:hover)::before {
-    color: rgb(164 148 118 / 0);
+    color: rgb(var(--color-gold-rgb) / 0);
   }
 }
 
@@ -531,13 +531,13 @@
   content: "";
   width: 120px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(164 148 118 / 0.38), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--color-gold-rgb) / 0.38), transparent);
   margin-bottom: 0.75rem;
 }
 
 .linktree-outro__mark {
   font-family: var(--font-display);
-  color: rgb(164 148 118 / 0.85);
+  color: rgb(var(--color-gold-rgb) / 0.85);
   font-size: 0.85rem;
 }
 
