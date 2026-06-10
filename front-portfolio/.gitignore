@@ -49,3 +49,8 @@ scripts
 
 lh-d.json
 lh-m.json
+
+# Playwright / Lighthouse CI
+/test-results
+/playwright-report
+/.lighthouseci
