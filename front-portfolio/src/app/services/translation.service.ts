@@ -1,5 +1,14 @@
-import { effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { effect, inject, Injectable, InjectionToken, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+
+/**
+ * Baseline FR fournie au rendu serveur (SSR / prerender) : sans elle, le HTML
+ * serveur contient les clés brutes et leur remplacement à l'hydratation
+ * provoque un layout shift global (CLS ~0.30 sur toutes les routes).
+ */
+export const SERVER_TRANSLATIONS = new InjectionToken<Record<string, Record<string, string>>>(
+  'SERVER_TRANSLATIONS'
+);
 
 export interface Language {
   code: string;
@@ -47,6 +56,8 @@ export class TranslationService {
 
   private readonly cache: TranslationCache = new Map();
 
+  private readonly serverTranslations = inject(SERVER_TRANSLATIONS, { optional: true });
+
   private readonly _lang = signal<string>(DEFAULT_LANG);
   readonly lang = this._lang.asReadonly();
 
@@ -70,7 +81,15 @@ export class TranslationService {
 
   /** Appelé par APP_INITIALIZER avant le premier rendu */
   async initialize(): Promise<void> {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser) {
+      // Rendu serveur : baseline FR embarquée dans le bundle serveur, pour que
+      // le HTML initial soit déjà traduit (zéro re-render texte à l'hydratation).
+      if (this.serverTranslations) {
+        this.cache.set(DEFAULT_LANG, this.serverTranslations);
+        this.applyMerge(DEFAULT_LANG);
+      }
+      return;
+    }
 
     const queryLang = this.getLangFromUrl();
     const stored = localStorage.getItem(STORAGE_KEY);
