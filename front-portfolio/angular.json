@@ -28,6 +28,14 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
+            },
+            "security": {
+              "allowedHosts": [
+                "charles-lindecker.com",
+                "test.charles-lindecker.com",
+                "localhost",
+                "127.0.0.1"
+              ]
             }
           },
           "configurations": {
