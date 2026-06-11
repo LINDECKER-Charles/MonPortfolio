@@ -201,41 +201,50 @@
 .photo-carousel__dots {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  /* Faible gap : les boutons font déjà 24px, la pastille visuelle 10px. */
+  gap: 0.15rem;
   flex: 1;
   justify-content: center;
 }
 
+/* Cible tactile ≥ 24px (WCAG 2.5.8 / audit target-size, qui ignore les zones
+   en pseudo-élément) : le bouton porte la taille, la pastille visuelle de 10px
+   vit dans ::before. */
 .photo-carousel__dot {
   position: relative;
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  border: 1px solid rgb(var(--color-gold-rgb) / 0.35);
-  background: rgb(18 16 14 / 0.6);
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
   cursor: pointer;
   padding: 0;
 }
 
-/* Zone tactile élargie sans grossir la pastille visuelle (WCAG 2.5.5). */
 .photo-carousel__dot::before {
   content: '';
   position: absolute;
-  inset: -10px;
+  inset: 7px;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--color-gold-rgb) / 0.35);
+  background: rgb(18 16 14 / 0.6);
+  transition: inherit;
 }
 
-.photo-carousel__dot:hover,
-.photo-carousel__dot:focus-visible {
+.photo-carousel__dot:hover::before,
+.photo-carousel__dot:focus-visible::before {
   border-color: rgb(var(--color-ember-soft-rgb) / 0.55);
   background: rgb(var(--color-ember-rgb) / 0.16);
 }
 
 .photo-carousel__dot:focus-visible {
   outline: none;
+}
+
+.photo-carousel__dot:focus-visible::before {
   box-shadow: 0 0 0 2px var(--color-ember-soft);
 }
 
-.photo-carousel__dot--active {
+.photo-carousel__dot--active::before {
   background: var(--color-ember);
   border-color: var(--color-ember-soft);
   box-shadow: var(--glow-ember);

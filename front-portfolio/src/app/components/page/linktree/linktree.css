@@ -98,6 +98,13 @@
   filter: saturate(0.92) contrast(1.02) brightness(0.96);
 }
 
+/* Stagger de l'entrance rituelle du hero (classe .emerge-ritual, cf. ornaments.css) */
+.linktree__portrait { --emerge-delay: 0s; }
+.linktree__eyebrow { --emerge-delay: 0.09s; }
+.linktree__title { --emerge-delay: 0.18s; }
+.linktree__role { --emerge-delay: 0.27s; }
+.linktree__intro-text { --emerge-delay: 0.36s; }
+
 .linktree__eyebrow {
   font-size: 0.72rem;
   color: #a49476;

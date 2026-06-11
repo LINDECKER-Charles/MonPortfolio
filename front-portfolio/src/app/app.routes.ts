@@ -3,68 +3,18 @@ import { Routes } from '@angular/router';
 // JSON-LD ItemList ci-dessous), pas un composant. Tous les composants de page sont
 // chargés à la demande via loadComponent pour alléger le bundle initial.
 import { PROJECTS_DATA } from './components/page/projects/projects.state';
-import { imageServerUrl } from './img-sources/image-server';
-
-const SITE_URL = 'https://charles-lindecker.com';
-const LOGO_URL = `${SITE_URL}/logo/80x80_logo_white.webp`;
-const SOCIAL_IMAGE_URL = `${SITE_URL}/meta/logo1.webp`;
-
-const personSchema = {
-  '@type': 'Person',
-  '@id': `${SITE_URL}/#charles-lindecker`,
-  name: 'Charles Lindecker',
-  url: SITE_URL,
-  image: imageServerUrl('/photos/640x960_me-1.webp'),
-  jobTitle: 'Developpeur Full Stack',
-  knowsAbout: [
-    '.NET',
-    'Angular',
-    'Symfony',
-    'TypeScript',
-    'PostgreSQL',
-    'Architecture logicielle',
-  ],
-  sameAs: [
-    'https://github.com/LINDECKER-Charles',
-    'https://www.linkedin.com/in/charles-lindecker/',
-  ],
-};
-
-const websiteSchema = {
-  '@type': 'WebSite',
-  '@id': `${SITE_URL}/#website`,
-  url: SITE_URL,
-  name: 'Charles Lindecker',
-  description:
-    'Portfolio de Charles Lindecker, developpeur full stack .NET, Angular et Symfony.',
-  publisher: {
-    '@id': `${SITE_URL}/#charles-lindecker`,
-  },
-  inLanguage: 'fr-FR',
-};
-
-const organizationSchema = {
-  '@type': 'Organization',
-  '@id': `${SITE_URL}/#organization`,
-  name: 'Charles Lindecker',
-  url: SITE_URL,
-  logo: {
-    '@type': 'ImageObject',
-    url: LOGO_URL,
-  },
-};
-
-const breadcrumb = (
-  items: Array<{ name: string; url: string }>
-): Record<string, unknown> => ({
-  '@type': 'BreadcrumbList',
-  itemListElement: items.map((item, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    name: item.name,
-    item: item.url,
-  })),
-});
+import {
+  LOGO_URL,
+  SITE_URL,
+  breadcrumb,
+  buildRouteMeta,
+  organizationSchema,
+  personRef,
+  personSchema,
+  webPage,
+  websiteRef,
+  websiteSchema,
+} from './seo/route-meta';
 
 const projectsItemList = {
   '@type': 'ItemList',
@@ -84,7 +34,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/misc/opening-resume/opening-resume').then((m) => m.OpeningResume),
     title: 'Charles Lindecker - Developpeur Web & Solutions sur mesure',
-    data: {
+    data: buildRouteMeta({
       description:
         'Developpeur web specialise en .NET, Angular et Symfony. Conception de webapps performantes, architecture back-end solide et solutions sur mesure.',
       canonical: SITE_URL,
@@ -92,31 +42,18 @@ export const routes: Routes = [
       ogTitle: 'Charles Lindecker - Developpeur Web',
       ogDescription:
         'Developpement web moderne, architecture robuste et solutions sur mesure en .NET, Angular et Symfony.',
-      ogImage: LOGO_URL,
-      ogUrl: SITE_URL,
-      ogType: 'website',
-      twitterCard: 'summary_large_image',
-      twitterTitle: 'Charles Lindecker - Developpeur Web',
       twitterDescription:
         'Webapps performantes et solutions sur mesure avec .NET, Angular et Symfony.',
-      twitterImage: SOCIAL_IMAGE_URL,
-      structuredData: [
-        {
-          '@type': 'WebPage',
-          name: 'Opening Resume',
-          url: `${SITE_URL}/opening-resume`,
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-        },
-      ],
+      structuredData: [webPage('Opening Resume', `${SITE_URL}/opening-resume`)],
       showFooter: false,
-    },
+    }),
   },
   {
     path: 'opening-home',
     loadComponent: () =>
       import('./components/misc/opening-home/opening-home').then((m) => m.OpeningHome),
     title: 'Animation d ouverture - Charles Lindecker',
-    data: {
+    data: buildRouteMeta({
       description:
         "Sequence d'ouverture du portfolio de Charles Lindecker avant redirection vers l'accueil.",
       canonical: SITE_URL,
@@ -124,45 +61,24 @@ export const routes: Routes = [
       ogTitle: 'Animation d ouverture - Charles Lindecker',
       ogDescription:
         "Sequence d'ouverture du portfolio avant redirection vers la page d'accueil.",
-      ogImage: LOGO_URL,
-      ogUrl: SITE_URL,
-      ogType: 'website',
-      twitterCard: 'summary_large_image',
-      twitterTitle: 'Animation d ouverture - Charles Lindecker',
-      twitterDescription:
-        "Sequence d'ouverture du portfolio avant redirection vers la page d'accueil.",
-      twitterImage: SOCIAL_IMAGE_URL,
-      structuredData: [
-        {
-          '@type': 'WebPage',
-          name: "Animation d'ouverture",
-          url: `${SITE_URL}/opening-home`,
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-        },
-      ],
+      structuredData: [webPage("Animation d'ouverture", `${SITE_URL}/opening-home`)],
       showFooter: false,
-    },
+    }),
   },
   {
     path: 'resume',
     loadComponent: () =>
       import('./components/misc/opening-resume/resum/resum').then((m) => m.Resum),
     title: 'Charles Lindecker - CV & Parcours Developpeur Web',
-    data: {
+    data: buildRouteMeta({
       description:
         'Decouvrez le parcours, les competences et les experiences de Charles Lindecker, developpeur web specialise en back-end et architectures modernes.',
       canonical: `${SITE_URL}/resume`,
-      robots: 'index, follow',
       ogTitle: 'CV - Charles Lindecker',
       ogDescription:
         'Competences en .NET, Angular, Symfony, PostgreSQL et architecture back-end.',
-      ogImage: LOGO_URL,
-      ogUrl: `${SITE_URL}/resume`,
       ogType: 'profile',
-      twitterCard: 'summary_large_image',
-      twitterTitle: 'CV - Charles Lindecker',
       twitterDescription: 'Parcours, competences et stack technique.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [
         personSchema,
         organizationSchema,
@@ -170,81 +86,57 @@ export const routes: Routes = [
           '@type': 'ProfilePage',
           name: 'CV - Charles Lindecker',
           url: `${SITE_URL}/resume`,
-          mainEntity: { '@id': `${SITE_URL}/#charles-lindecker` },
-          isPartOf: { '@id': `${SITE_URL}/#website` },
+          mainEntity: personRef,
+          isPartOf: websiteRef,
         },
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
           { name: 'Resume', url: `${SITE_URL}/resume` },
         ]),
       ],
-      showFooter: true,
-    },
+    }),
   },
   {
     path: '',
     loadComponent: () => import('./components/page/home/home').then((m) => m.Home),
     title: 'Charles Lindecker - Portfolio Developpeur Full Stack',
-    data: {
+    data: buildRouteMeta({
       description:
         'Portfolio de Charles Lindecker, developpeur full stack .NET, Angular et Symfony, avec projets, resume, animations et interfaces modernes.',
       canonical: SITE_URL,
-      robots: 'index, follow',
       ogTitle: 'Charles Lindecker - Portfolio Developpeur Full Stack',
       ogDescription:
         'Portfolio personnel avec projets, resume, branding technique et experiences web modernes.',
-      ogImage: LOGO_URL,
-      ogUrl: SITE_URL,
-      ogType: 'website',
-      twitterCard: 'summary_large_image',
-      twitterTitle: 'Charles Lindecker - Portfolio Developpeur Full Stack',
-      twitterDescription:
-        'Portfolio personnel avec projets, resume, branding technique et experiences web modernes.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [
         websiteSchema,
         organizationSchema,
         personSchema,
-        {
-          '@type': 'WebPage',
-          name: 'Accueil - Charles Lindecker',
-          url: SITE_URL,
-          about: { '@id': `${SITE_URL}/#charles-lindecker` },
-          isPartOf: { '@id': `${SITE_URL}/#website` },
+        webPage('Accueil - Charles Lindecker', SITE_URL, {
+          about: personRef,
           primaryImageOfPage: LOGO_URL,
-        },
+        }),
       ],
-      showFooter: true,
-    },
+    }),
   },
   {
     path: 'projects',
     loadComponent: () => import('./components/page/projects/projects').then((m) => m.Projects),
     title: 'Projets - Charles Lindecker',
-    data: {
+    data: buildRouteMeta({
       description:
         'Selection de projets personnels, open source et clients de Charles Lindecker, avec filtres par categorie, tags, stack et details techniques.',
       canonical: `${SITE_URL}/projects`,
-      robots: 'index, follow',
       ogTitle: 'Projets - Charles Lindecker',
       ogDescription:
         'Travaux personnels, open source et clients presentes avec approche technique, stack et resultats.',
-      ogImage: LOGO_URL,
-      ogUrl: `${SITE_URL}/projects`,
-      ogType: 'website',
-      twitterCard: 'summary_large_image',
-      twitterTitle: 'Projets - Charles Lindecker',
-      twitterDescription:
-        'Travaux personnels, open source et clients presentes avec approche technique, stack et resultats.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [
         personSchema,
         {
           '@type': 'CollectionPage',
           name: 'Projets - Charles Lindecker',
           url: `${SITE_URL}/projects`,
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-          about: { '@id': `${SITE_URL}/#charles-lindecker` },
+          isPartOf: websiteRef,
+          about: personRef,
         },
         projectsItemList,
         breadcrumb([
@@ -252,14 +144,13 @@ export const routes: Routes = [
           { name: 'Projets', url: `${SITE_URL}/projects` },
         ]),
       ],
-      showFooter: true,
-    },
+    }),
   },
   {
     path: 'works',
     loadComponent: () => import('./components/page/works/works').then((m) => m.Works),
     title: 'Parcours - Charles Lindecker',
-    data: {
+    data: buildRouteMeta({
       description:
         'Page parcours de Charles Lindecker actuellement en preparation, avec une presentation bientot disponible.',
       canonical: `${SITE_URL}/works`,
@@ -269,67 +160,38 @@ export const routes: Routes = [
       ogTitle: 'Parcours - Charles Lindecker',
       ogDescription:
         'Section parcours professionnel actuellement en cours de construction.',
-      ogImage: LOGO_URL,
-      ogUrl: `${SITE_URL}/works`,
-      ogType: 'website',
-      twitterCard: 'summary_large_image',
-      twitterTitle: 'Parcours - Charles Lindecker',
-      twitterDescription:
-        'Section parcours professionnel actuellement en cours de construction.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [
         personSchema,
-        {
-          '@type': 'WebPage',
-          name: 'Parcours - Charles Lindecker',
-          url: `${SITE_URL}/works`,
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-          about: { '@id': `${SITE_URL}/#charles-lindecker` },
-        },
+        webPage('Parcours - Charles Lindecker', `${SITE_URL}/works`, { about: personRef }),
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
           { name: 'Parcours', url: `${SITE_URL}/works` },
         ]),
       ],
-      showFooter: true,
-    },
+    }),
   },
   {
     path: 'linktree',
     loadComponent: () => import('./components/page/linktree/linktree').then((m) => m.Linktree),
     title: 'Linktree - Charles Lindecker',
-    data: {
+    data: buildRouteMeta({
       description:
         'Tous les liens de Charles Lindecker : LinkedIn, GitHub, Discord, plateformes de code et contact direct rassembles sur une seule page.',
       canonical: `${SITE_URL}/linktree`,
-      robots: 'index, follow',
       ogTitle: 'Linktree - Charles Lindecker',
       ogDescription:
         'LinkedIn, GitHub, Discord, Frontend Mentor, freeCodeCamp, Root-Me, npm, email et plus : tous mes liens reunis.',
-      ogImage: LOGO_URL,
-      ogUrl: `${SITE_URL}/linktree`,
-      ogType: 'website',
-      twitterCard: 'summary_large_image',
-      twitterTitle: 'Linktree - Charles Lindecker',
       twitterDescription:
         'Tous les liens de Charles Lindecker reunis : reseaux, plateformes de pratique et contact direct.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [
         personSchema,
-        {
-          '@type': 'WebPage',
-          name: 'Linktree - Charles Lindecker',
-          url: `${SITE_URL}/linktree`,
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-          about: { '@id': `${SITE_URL}/#charles-lindecker` },
-        },
+        webPage('Linktree - Charles Lindecker', `${SITE_URL}/linktree`, { about: personRef }),
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
           { name: 'Linktree', url: `${SITE_URL}/linktree` },
         ]),
       ],
-      showFooter: true,
-    },
+    }),
   },
   {
     path: 'mentions-legales',
@@ -338,37 +200,26 @@ export const routes: Routes = [
         (m) => m.MentionsLegales
       ),
     title: 'Mentions legales - Charles Lindecker',
-    data: {
+    data: buildRouteMeta({
       description:
         'Mentions legales du site de Charles Lindecker : editeur, directeur de publication, hebergeur, propriete intellectuelle et droit applicable.',
       canonical: `${SITE_URL}/mentions-legales`,
-      robots: 'index, follow',
       ogTitle: 'Mentions legales - Charles Lindecker',
       ogDescription:
         'Editeur, hebergeur, propriete intellectuelle et droit applicable du site charles-lindecker.com.',
-      ogImage: LOGO_URL,
-      ogUrl: `${SITE_URL}/mentions-legales`,
-      ogType: 'website',
       twitterCard: 'summary',
-      twitterTitle: 'Mentions legales - Charles Lindecker',
       twitterDescription:
         'Editeur, hebergeur, propriete intellectuelle et droit applicable du site.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [
-        {
-          '@type': 'WebPage',
-          name: 'Mentions legales - Charles Lindecker',
-          url: `${SITE_URL}/mentions-legales`,
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-          about: { '@id': `${SITE_URL}/#charles-lindecker` },
-        },
+        webPage('Mentions legales - Charles Lindecker', `${SITE_URL}/mentions-legales`, {
+          about: personRef,
+        }),
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
           { name: 'Mentions legales', url: `${SITE_URL}/mentions-legales` },
         ]),
       ],
-      showFooter: true,
-    },
+    }),
   },
   {
     path: 'politique-confidentialite',
@@ -377,37 +228,28 @@ export const routes: Routes = [
         (m) => m.PolitiqueConfidentialite
       ),
     title: 'Politique de confidentialite - Charles Lindecker',
-    data: {
+    data: buildRouteMeta({
       description:
         'Politique de confidentialite du site de Charles Lindecker : donnees traitees, finalites, durees de conservation et droits RGPD des utilisateurs.',
       canonical: `${SITE_URL}/politique-confidentialite`,
-      robots: 'index, follow',
       ogTitle: 'Politique de confidentialite - Charles Lindecker',
       ogDescription:
         'Traitement des donnees personnelles, finalites, conservation et droits RGPD sur charles-lindecker.com.',
-      ogImage: LOGO_URL,
-      ogUrl: `${SITE_URL}/politique-confidentialite`,
-      ogType: 'website',
       twitterCard: 'summary',
-      twitterTitle: 'Politique de confidentialite - Charles Lindecker',
       twitterDescription:
         'Donnees traitees, finalites, conservation et droits RGPD des utilisateurs.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [
-        {
-          '@type': 'WebPage',
-          name: 'Politique de confidentialite - Charles Lindecker',
-          url: `${SITE_URL}/politique-confidentialite`,
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-          about: { '@id': `${SITE_URL}/#charles-lindecker` },
-        },
+        webPage(
+          'Politique de confidentialite - Charles Lindecker',
+          `${SITE_URL}/politique-confidentialite`,
+          { about: personRef }
+        ),
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
           { name: 'Politique de confidentialite', url: `${SITE_URL}/politique-confidentialite` },
         ]),
       ],
-      showFooter: true,
-    },
+    }),
   },
   {
     path: 'politique-cookies',
@@ -416,57 +258,41 @@ export const routes: Routes = [
         (m) => m.PolitiqueCookies
       ),
     title: 'Politique de cookies - Charles Lindecker',
-    data: {
+    data: buildRouteMeta({
       description:
         'Politique de cookies et de stockage local du site de Charles Lindecker : aucun cookie ni traceur, seules des preferences fonctionnelles en localStorage.',
       canonical: `${SITE_URL}/politique-cookies`,
-      robots: 'index, follow',
       ogTitle: 'Politique de cookies - Charles Lindecker',
       ogDescription:
         'Aucun cookie ni traceur : seules des preferences fonctionnelles (langue, audio) en stockage local.',
-      ogImage: LOGO_URL,
-      ogUrl: `${SITE_URL}/politique-cookies`,
-      ogType: 'website',
       twitterCard: 'summary',
-      twitterTitle: 'Politique de cookies - Charles Lindecker',
       twitterDescription:
         'Aucun cookie ni traceur : seules des preferences fonctionnelles en stockage local.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [
-        {
-          '@type': 'WebPage',
-          name: 'Politique de cookies - Charles Lindecker',
-          url: `${SITE_URL}/politique-cookies`,
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-          about: { '@id': `${SITE_URL}/#charles-lindecker` },
-        },
+        webPage('Politique de cookies - Charles Lindecker', `${SITE_URL}/politique-cookies`, {
+          about: personRef,
+        }),
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
           { name: 'Politique de cookies', url: `${SITE_URL}/politique-cookies` },
         ]),
       ],
-      showFooter: true,
-    },
+    }),
   },
   {
     path: '**',
     loadComponent: () => import('./components/page/not-found/not-found').then((m) => m.NotFound),
     title: 'Page introuvable - Charles Lindecker',
-    data: {
+    data: buildRouteMeta({
       description: 'Page 404 : la ressource demandée est introuvable.',
       canonical: `${SITE_URL}/404`,
       robots: 'noindex, nofollow',
       ogTitle: 'Page introuvable - Charles Lindecker',
       ogDescription: 'Vous avez été banni de ces terres.',
-      ogImage: LOGO_URL,
       ogUrl: SITE_URL,
-      ogType: 'website',
       twitterCard: 'summary',
       twitterTitle: 'Page introuvable',
-      twitterDescription: 'Vous avez été banni de ces terres.',
-      twitterImage: SOCIAL_IMAGE_URL,
       structuredData: [],
-      showFooter: true,
-    },
+    }),
   },
 ];

@@ -1,12 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TranslationService } from '../../../../services/translation.service';
-import {
-  LegalCrossLink,
-  LegalLayout,
-  LegalSideLink,
-  LegalTocItem,
-} from '../legal-layout/legal-layout';
-import { LEGAL_PATHS, LEGAL_UPDATED } from '../legal.constants';
+import { LegalLayout, LegalTocItem } from '../legal-layout/legal-layout';
+import { LEGAL_UPDATED, otherLegalLinks } from '../legal.constants';
 
 @Component({
   selector: 'app-mentions-legales',
@@ -30,21 +25,7 @@ export class MentionsLegales {
     { fragment: 'droit', key: 'legal.ml.toc.droit' },
   ];
 
-  protected readonly tocLinks: LegalSideLink[] = [
-    { path: LEGAL_PATHS.privacy, key: 'legal.cross.confidentialite_title' },
-    { path: LEGAL_PATHS.cookies, key: 'legal.cross.cookies_title' },
-  ];
-
-  protected readonly crossLinks: LegalCrossLink[] = [
-    {
-      path: LEGAL_PATHS.privacy,
-      kickerKey: 'legal.cross.confidentialite_kicker',
-      titleKey: 'legal.cross.confidentialite_title',
-    },
-    {
-      path: LEGAL_PATHS.cookies,
-      kickerKey: 'legal.cross.cookies_kicker',
-      titleKey: 'legal.cross.cookies_title',
-    },
-  ];
+  private readonly links = otherLegalLinks('mentions');
+  protected readonly tocLinks = this.links.tocLinks;
+  protected readonly crossLinks = this.links.crossLinks;
 }

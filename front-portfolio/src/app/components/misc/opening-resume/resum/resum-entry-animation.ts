@@ -1,10 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
 import { AfterViewInit, Directive, ElementRef, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
 import gsap from 'gsap';
+import { NavigationContextService } from '../../../../services/navigation-context.service';
 
 @Directive()
 export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly navigationContext = inject(NavigationContextService);
   protected readonly isBrowser = isPlatformBrowser(this.platformId);
   protected readonly hostRef = inject(ElementRef<HTMLElement>);
   protected isEntryAnimationComplete = !this.isBrowser;
@@ -19,6 +21,17 @@ export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
+
+    // Rendu initial (SSR déjà peint) ou reduced-motion : ne pas re-masquer le
+    // contenu — flash visuel + candidat LCP repoussé à l'hydratation. L'entrée
+    // staggerée ne joue que sur les navigations client.
+    if (
+      !this.navigationContext.hasNavigated() ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      this.isEntryAnimationComplete = true;
+      return;
+    }
 
     this.ctx = gsap.context(() => {
       const targets = this.hostRef.nativeElement.querySelectorAll(this.animationSelectors);

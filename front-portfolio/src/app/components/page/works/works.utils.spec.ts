@@ -9,8 +9,8 @@ describe('formatMonthYear', () => {
     expect(formatMonthYear('2025-12', 'en')).toBe('Dec 2025');
   });
 
-  it('replie toute langue non-en sur fr', () => {
-    expect(formatMonthYear('2025-01', 'de')).toBe('janv. 2025');
+  it('formate les autres locales supportées via Intl (plus de fallback fr)', () => {
+    expect(formatMonthYear('2025-01', 'de')).toBe('Jan. 2025');
   });
 
   it('renvoie la chaîne brute si format invalide', () => {

@@ -13,6 +13,7 @@ import { CSSPlugin } from 'gsap/CSSPlugin';
 
 import { ResponsivePicture } from '../../assets/responsive-picture/responsive-picture';
 import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
+import { NavigationContextService } from '../../../services/navigation-context.service';
 import { TranslationService } from '../../../services/translation.service';
 import { LINKTREE_SECTIONS, LinktreeLink, LinktreeSection } from './linktree.state';
 
@@ -25,13 +26,13 @@ import { LINKTREE_SECTIONS, LinktreeLink, LinktreeSection } from './linktree.sta
 })
 export class Linktree implements AfterViewInit {
   protected readonly ts = inject(TranslationService);
+  private readonly navigationContext = inject(NavigationContextService);
 
   protected readonly sections: LinktreeSection[] = LINKTREE_SECTIONS;
 
   protected readonly photoSources = SHARED_IMAGES.photo.me.sources;
   protected readonly photoFallback = SHARED_IMAGES.photo.me.fallbackSrc;
 
-  @ViewChild('heroRef') private heroRef?: ElementRef<HTMLElement>;
   @ViewChild('sectionsRef') private sectionsRef?: ElementRef<HTMLElement>;
 
   private readonly isBrowser: boolean;
@@ -46,42 +47,31 @@ export class Linktree implements AfterViewInit {
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
 
-    const heroNode = this.heroRef?.nativeElement;
-    if (heroNode) {
-      const heroTargets = heroNode.querySelectorAll(
-        '.linktree__portrait, .linktree__eyebrow, .linktree__title, .linktree__role, .linktree__intro-text'
-      );
-
-      gsap.fromTo(
-        heroTargets,
-        { autoAlpha: 0, y: 22, filter: 'blur(10px)' },
-        {
-          autoAlpha: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          duration: 0.85,
-          ease: 'power3.out',
-          stagger: 0.09,
-          clearProps: 'filter',
-        }
-      );
-    }
-
+    // L'entrance du hero est en CSS pur (.emerge-ritual) : ne jamais re-masquer
+    // ici du contenu SSR déjà peint (flash + candidat LCP repoussé à l'hydratation).
     const sectionsNode = this.sectionsRef?.nativeElement;
     if (!sectionsNode) return;
 
-    const prefersReduced =
-      typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Reduced motion : le contenu reste tel que rendu, sans masquage ni reveal.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const blocks = sectionsNode.querySelectorAll('.linktree-chapter');
     blocks.forEach((block) => {
+      // Même règle que pour le hero : au rendu initial, un chapitre déjà
+      // visible (peint en SSR) ne doit pas être re-masqué en attendant
+      // l'IntersectionObserver. Après une navigation client, l'entrance joue.
+      if (!this.navigationContext.hasNavigated()) {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) return;
+      }
+
       const label = block.querySelector('.linktree-chapter__label');
       const intro = block.querySelector('.linktree-chapter__intro');
       const items = block.querySelectorAll('.linktree-row');
       const targets = [label, intro, ...Array.from(items)].filter(Boolean) as Element[];
       if (!targets.length) return;
 
-      gsap.set(targets, { autoAlpha: 0, y: prefersReduced ? 0 : 16 });
+      gsap.set(targets, { autoAlpha: 0, y: 16 });
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -90,9 +80,9 @@ export class Linktree implements AfterViewInit {
             gsap.to(targets, {
               autoAlpha: 1,
               y: 0,
-              duration: prefersReduced ? 0.2 : 0.7,
+              duration: 0.7,
               ease: 'power2.out',
-              stagger: prefersReduced ? 0 : 0.06,
+              stagger: 0.06,
               overwrite: 'auto',
             });
             observer.disconnect();

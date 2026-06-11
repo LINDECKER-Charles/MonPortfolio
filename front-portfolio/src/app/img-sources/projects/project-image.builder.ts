@@ -1,5 +1,7 @@
 import { ResponsiveSource } from '../../components/assets/responsive-picture/responsive-picture';
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+// Import type direct vers projects.types : évite le cycle runtime
+// projects.data → *.sources → builder → projects.state (→ projects.data).
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { imageServerUrl } from '../image-server';
 
 interface ProjectImageSize {

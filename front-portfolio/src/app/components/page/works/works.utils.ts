@@ -1,17 +1,9 @@
 /**
  * Helpers de formatage pour la page Works.
- * Se base sur la langue active (`ts.lang()`) pour les noms de mois.
+ * Se base sur la langue active (`ts.lang()`) pour les noms de mois (via Intl).
  */
 
-const MONTHS_FR = [
-  'janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin',
-  'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.',
-];
-
-const MONTHS_EN = [
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-];
+import { formatMonthYearDate } from '../../../utils/date-format';
 
 /** Parse "YYYY-MM" → { year, monthIdx (0..11) } ou null si invalide. */
 function parse(ym: string): { year: number; monthIdx: number } | null {
@@ -23,12 +15,11 @@ function parse(ym: string): { year: number; monthIdx: number } | null {
   return { year, monthIdx };
 }
 
-/** "2025-12" → "déc. 2025" (fr) ou "Dec 2025" (en). */
+/** "2025-12" → "déc. 2025" (fr) ou "Dec 2025" (en), dans la langue active. */
 export function formatMonthYear(ym: string, lang: string): string {
   const p = parse(ym);
   if (!p) return ym;
-  const months = lang === 'en' ? MONTHS_EN : MONTHS_FR;
-  return `${months[p.monthIdx]} ${p.year}`;
+  return formatMonthYearDate(new Date(p.year, p.monthIdx, 1), lang);
 }
 
 /** Période : "déc. 2025 — aujourd'hui" ou "avr. 2025 — oct. 2025". */

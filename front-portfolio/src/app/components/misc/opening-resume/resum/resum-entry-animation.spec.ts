@@ -1,7 +1,8 @@
-import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { Component, provideZonelessChangeDetection, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import gsap from 'gsap';
 
+import { NavigationContextService } from '../../../../services/navigation-context.service';
 import { ResumEntryAnimation } from './resum-entry-animation';
 
 @Component({ selector: 'app-entry-host', template: '<span class="anim">a</span><span class="anim">b</span>' })
@@ -28,15 +29,29 @@ describe('ResumEntryAnimation', () => {
     });
   });
 
-  function build<T extends ResumEntryAnimation>(type: any): ComponentFixture<T> {
+  function build<T extends ResumEntryAnimation>(
+    type: any,
+    hasNavigated = true
+  ): ComponentFixture<T> {
     TestBed.configureTestingModule({
-      providers: [provideZonelessChangeDetection()],
+      providers: [
+        provideZonelessChangeDetection(),
+        // L'entrée ne joue que sur les navigations client (cf. directive).
+        { provide: NavigationContextService, useValue: { hasNavigated: signal(hasNavigated) } },
+      ],
       imports: [type],
     });
     const fixture = TestBed.createComponent<T>(type);
     fixture.detectChanges();
     return fixture;
   }
+
+  it('skips the animation on the initial SSR render', () => {
+    const fixture = build<EntryHost>(EntryHost, false);
+    expect(setSpy).not.toHaveBeenCalled();
+    expect(toSpy).not.toHaveBeenCalled();
+    expect((fixture.componentInstance as any).isEntryAnimationComplete).toBeTrue();
+  });
 
   it('sets targets, tweens them and marks completion when targets exist', () => {
     const fixture = build<EntryHost>(EntryHost);

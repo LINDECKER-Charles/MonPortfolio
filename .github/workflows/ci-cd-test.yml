@@ -71,6 +71,39 @@ jobs:
         working-directory: ${{ env.FRONT_DIR }}
         run: npm run build
 
+      - name: Install Playwright browsers
+        working-directory: ${{ env.FRONT_DIR }}
+        run: npx playwright install --with-deps chromium
+
+      - name: Run e2e + a11y tests (Playwright)
+        working-directory: ${{ env.FRONT_DIR }}
+        env:
+          # / et /linktree timeout sur les runners GitHub : leurs assets eager du
+          # serveur d'images n'aboutissent pas et l'event `load` n'est jamais émis.
+          # Couverture complète conservée en local (npm run e2e sans la variable).
+          E2E_EXCLUDE_ROUTES: "/,/linktree"
+        run: npm run e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: playwright-report
+          path: ${{ env.FRONT_DIR }}/playwright-report
+          if-no-files-found: ignore
+
+      - name: Run Lighthouse CI
+        working-directory: ${{ env.FRONT_DIR }}
+        run: npm run lighthouse
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: lighthouse-reports
+          path: ${{ env.FRONT_DIR }}/.lighthouseci
+          if-no-files-found: ignore
+
       - name: Upload Angular dist artifact
         uses: actions/upload-artifact@v6
         with:

@@ -47,6 +47,8 @@ class FakeIntersectionObserver {
   imports: [RevealOnScrollDirective],
   template: `
     <div
+      [style.position]="'fixed'"
+      [style.top]="top"
       appRevealOnScroll
       [revealDelay]="delay"
       [revealDuration]="duration"
@@ -62,6 +64,9 @@ class FakeIntersectionObserver {
   `,
 })
 class HostComponent {
+  /* Hors viewport par défaut : la directive ne re-masque jamais un élément
+     déjà visible au premier paint, il faut donc le placer sous la ligne. */
+  top = '200vh';
   delay = 0;
   duration = 0.7;
   y = 24;
@@ -217,16 +222,26 @@ describe('RevealOnScrollDirective', () => {
     expect(gsap.timeline).toHaveBeenCalled();
   });
 
-  it('skips the ember flash when prefers-reduced-motion is set', () => {
+  it('leaves the element untouched when prefers-reduced-motion is set', () => {
     spyOn(window, 'matchMedia').and.returnValue({ matches: true } as MediaQueryList);
     configure();
     const fixture = TestBed.createComponent(HostComponent);
     fixture.componentInstance.glow = true;
     fixture.detectChanges();
 
-    FakeIntersectionObserver.last!.fire(true, FakeIntersectionObserver.last!.observed[0]);
-
+    expect(gsap.set).not.toHaveBeenCalled();
     expect(gsap.timeline).not.toHaveBeenCalled();
+    expect(FakeIntersectionObserver.last).toBeNull();
+  });
+
+  it('does not re-hide an element already inside the initial viewport', () => {
+    configure();
+    const fixture = TestBed.createComponent(HostComponent);
+    fixture.componentInstance.top = '0px';
+    fixture.detectChanges();
+
+    expect(gsap.set).not.toHaveBeenCalled();
+    expect(FakeIntersectionObserver.last).toBeNull();
   });
 
   it('does not create an observer on the server platform', () => {

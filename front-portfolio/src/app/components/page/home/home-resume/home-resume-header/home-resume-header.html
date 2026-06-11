@@ -1,4 +1,4 @@
-<header class="hero surface-altar surface-altar--ornate surface-textured" #hero>
+<header class="hero surface-altar surface-altar--ornate surface-textured emerge-ritual">
   <div class="hero__veil"></div>
 
   <div class="hero__content">
@@ -42,11 +42,12 @@
         </span>
       </a>
 
+      <!-- Pas d'aria-label : le nom accessible doit contenir le texte visible
+           (WCAG 2.5.3) — les spans label-top/bottom suffisent. -->
       <a
         class="hero__cta hero__cta--secondary transition-ritual"
         routerLink="/opening-home"
-        href="/opening-home"
-        [attr.aria-label]="ts.translate('home-resume.header.cta.replay.top')">
+        href="/opening-home">
         <span class="hero__cta-icon-frame hero__cta-icon-frame--play">
           <span class="hero__cta-icon hero__cta-icon--play" aria-hidden="true"></span>
         </span>
@@ -60,8 +61,7 @@
       <a
         class="hero__cta hero__cta--tertiary transition-ritual"
         routerLink="/linktree"
-        href="/linktree"
-        [attr.aria-label]="ts.translate('home-resume.header.cta.linktree.aria')">
+        href="/linktree">
         <span class="hero__cta-icon-frame hero__cta-icon-frame--tome">
           <span class="hero__cta-icon hero__cta-icon--tome" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -80,8 +80,7 @@
       <a
         class="hero__cta hero__cta--quaternary transition-ritual"
         href="/CV-FR-FR-DESIGN.pdf"
-        download
-        [attr.aria-label]="ts.translate('common.cv.download.aria')">
+        download>
         <span class="hero__cta-icon-frame hero__cta-icon-frame--scroll">
           <span class="hero__cta-icon hero__cta-icon--scroll" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">

@@ -11,6 +11,7 @@ import {LangModal} from './components/assets/lang-modal/lang-modal';
 import {EmberParticles} from './components/assets/ember-particles/ember-particles';
 import {PageTransition} from './components/assets/page-transition/page-transition';
 import {TranslationService} from './services/translation.service';
+import {NavigationContextService} from './services/navigation-context.service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,8 @@ export class App {
 
   public audio = inject(AudioService);
   protected readonly ts = inject(TranslationService);
+  // Construit avant la navigation initiale pour un comptage fiable (cf. service).
+  private readonly navigationContext = inject(NavigationContextService);
   constructor() {
     this.audio.registerMany({
       bgMusic: {

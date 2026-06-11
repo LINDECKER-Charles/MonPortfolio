@@ -111,7 +111,7 @@
         type="button"
         class="nav-barre__icon-btn nav-barre__icon-btn--lang transition-ritual"
         (click)="ts.openModal()"
-        [attr.aria-label]="ts.translate('nav-barre.lang')">
+        [attr.aria-label]="(currentLang().code | uppercase) + ' — ' + ts.translate('nav-barre.lang')">
         <span class="nav-barre__lang-flag" aria-hidden="true">{{ currentLang().flag }}</span>
         <span class="nav-barre__lang-code text-tag">{{ currentLang().code | uppercase }}</span>
       </button>
