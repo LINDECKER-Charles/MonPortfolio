@@ -4,7 +4,7 @@ import {
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
 
 import { routes } from './app.routes';
@@ -14,9 +14,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    // Routes chargées à la demande (loadComponent) puis préchargées en idle :
-    // bundle initial allégé sans pénaliser les navigations suivantes.
-    provideRouter(routes, withPreloading(PreloadAllModules)),
+    // Routes chargées à la demande (loadComponent), sans préchargement eager :
+    // avec la compression HTTP un chunk de route pèse 5-30 KiB et son fetch est
+    // masqué par la page-transition. Le preload de toutes les routes au
+    // bootstrap retardait le network-quiet et gonflait TTI/LCP (Lighthouse).
+    provideRouter(routes),
     // Pas de withEventReplay() : contrainte CSP stricte (aucun script inline / replay).
     provideClientHydration(),
     {

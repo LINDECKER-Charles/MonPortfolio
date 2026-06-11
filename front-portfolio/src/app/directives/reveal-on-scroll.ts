@@ -6,10 +6,12 @@ import {
   Input,
   OnDestroy,
   PLATFORM_ID,
+  inject,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
+import { NavigationContextService } from '../services/navigation-context.service';
 
 @Directive({
   selector: '[appRevealOnScroll]',
@@ -31,6 +33,7 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
 
   private observer?: IntersectionObserver;
   private readonly isBrowser: boolean;
+  private readonly navigationContext = inject(NavigationContextService);
 
   constructor(
     private readonly elementRef: ElementRef<HTMLElement>,
@@ -47,6 +50,18 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
 
     const element = this.elementRef.nativeElement;
+
+    // Reduced motion : le contenu reste visible tel quel, sans reveal.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Au rendu initial (HTML SSR déjà peint), ne jamais re-masquer un élément
+    // visible dans le viewport : le hide à l'hydratation provoque un flash et
+    // repousse le candidat LCP au chargement des scripts. Après une navigation
+    // client le contenu est neuf — l'entrance reste légitime.
+    if (!this.navigationContext.hasNavigated()) {
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) return;
+    }
 
     const initialProps: gsap.TweenVars = {
       autoAlpha: 0,
@@ -102,9 +117,6 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
 
   /** Flash ember : on pose temporairement une box-shadow chaude qui s'éteint. */
   private playEmberFlash(element: HTMLElement): void {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion) return;
-
     const originalShadow = element.style.boxShadow;
     const flash = '0 0 48px rgb(255 147 77 / 0.28), 0 0 16px rgb(166 10 10 / 0.22)';
 

@@ -1,12 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TranslationService } from '../../../../services/translation.service';
-import {
-  LegalCrossLink,
-  LegalLayout,
-  LegalSideLink,
-  LegalTocItem,
-} from '../legal-layout/legal-layout';
-import { LEGAL_PATHS, LEGAL_UPDATED } from '../legal.constants';
+import { LegalLayout, LegalTocItem } from '../legal-layout/legal-layout';
+import { LEGAL_UPDATED, otherLegalLinks } from '../legal.constants';
 
 @Component({
   selector: 'app-politique-cookies',
@@ -26,21 +21,7 @@ export class PolitiqueCookies {
     { fragment: 'plus-loin', key: 'legal.ck.toc.plus' },
   ];
 
-  protected readonly tocLinks: LegalSideLink[] = [
-    { path: LEGAL_PATHS.mentions, key: 'legal.cross.mentions_title' },
-    { path: LEGAL_PATHS.privacy, key: 'legal.cross.confidentialite_title' },
-  ];
-
-  protected readonly crossLinks: LegalCrossLink[] = [
-    {
-      path: LEGAL_PATHS.mentions,
-      kickerKey: 'legal.cross.mentions_kicker',
-      titleKey: 'legal.cross.mentions_title',
-    },
-    {
-      path: LEGAL_PATHS.privacy,
-      kickerKey: 'legal.cross.confidentialite_kicker',
-      titleKey: 'legal.cross.confidentialite_title',
-    },
-  ];
+  private readonly links = otherLegalLinks('cookies');
+  protected readonly tocLinks = this.links.tocLinks;
+  protected readonly crossLinks = this.links.crossLinks;
 }

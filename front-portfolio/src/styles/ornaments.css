@@ -175,9 +175,16 @@
     animation: goldBreath 6s ease-in-out infinite;
   }
 
+  /* Entrance rituelle au premier paint — à poser statiquement dans le template
+     (donc présente dès le HTML SSR). Décalage de stagger via --emerge-delay. */
+  .emerge-ritual {
+    animation: ritualEmerge 0.75s var(--ease-emerge) var(--emerge-delay, 0s) backwards;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .flicker-candle,
-    .breath-gold {
+    .breath-gold,
+    .emerge-ritual {
       animation: none !important;
     }
   }

@@ -1,5 +1,5 @@
-<section class="home-projects surface-altar" #ctaBlock>
-  <div class="home-projects__intro">
+<section class="home-projects surface-altar">
+  <div class="home-projects__intro emerge-ritual">
     <span class="home-projects__eyebrow text-rune">{{ ts.translate('home-projects.eyebrow') }}</span>
 
     <h2 class="text-engraved text-engraved--deep">{{ ts.translate('home-projects.title') }}</h2>
@@ -8,7 +8,7 @@
 
     <div class="home-projects__stack" [attr.aria-label]="ts.translate('home-projects.stack.aria')">
       @for (icon of stackIcons; track icon.fallback) {
-        <span class="home-projects__stack-item transition-ritual" [attr.title]="icon.alt">
+        <span class="home-projects__stack-item transition-ritual emerge-ritual" [attr.title]="icon.alt">
           <app-responsive-picture
             [sources]="icon.sources"
             [fallbackSrc]="icon.fallback"
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="home-projects__actions">
+  <div class="home-projects__actions emerge-ritual">
     <a class="cta-tome cta-tome--gilded transition-ritual breath-gold" routerLink="/projects" href="/projects">
       <span class="cta-tome__icon">
         <app-responsive-picture

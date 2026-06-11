@@ -1,4 +1,3 @@
-import gsap from 'gsap';
 import { PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -37,8 +36,6 @@ describe('ProjectsFilter', () => {
   const baseState = (): ProjectFiltersState => ({ category: 'all', tags: [], stack: [] });
 
   beforeEach(async () => {
-    // évite de jouer les animations GSAP réelles dans ngAfterViewInit
-    spyOn(gsap, 'fromTo').and.callThrough();
     fixture = await createFixture(baseState());
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -48,10 +45,8 @@ describe('ProjectsFilter', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngAfterViewInit', () => {
-    it('déclenche les animations GSAP côté browser', () => {
-      expect(gsap.fromTo).toHaveBeenCalled();
-    });
+  it("porte la classe d'entrance rituelle (CSS-first paint, pas de tween JS)", () => {
+    expect((fixture.nativeElement as HTMLElement).classList).toContain('emerge-ritual');
   });
 
   describe('toggleTagsPanel / toggleStackPanel', () => {
@@ -157,13 +152,12 @@ describe('ProjectsFilter', () => {
 });
 
 describe('ProjectsFilter (serveur / non-browser)', () => {
-  it('ngAfterViewInit ne joue aucune animation côté serveur', async () => {
-    const spy = spyOn(gsap, 'fromTo').and.callThrough();
+  it('rend la barre avec la classe d\'entrance côté serveur (aucun JS requis)', async () => {
     const fixture = await createFixture(
       { category: 'all', tags: [], stack: [] },
       'server'
     );
     fixture.detectChanges();
-    expect(spy).not.toHaveBeenCalled();
+    expect((fixture.nativeElement as HTMLElement).classList).toContain('emerge-ritual');
   });
 });

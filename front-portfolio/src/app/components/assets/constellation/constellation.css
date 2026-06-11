@@ -444,9 +444,14 @@
 }
 
 .constellation__legend-row {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.45rem;
+  /* Cible tactile réelle ≥ 24px (WCAG 2.5.8) : axe mesure le boundingClientRect,
+     un pseudo-élément seul ne suffit donc pas ici (lignes adjacentes). Le rendu
+     du texte et du point reste identique, centré dans la hauteur. */
+  min-height: 24px;
   padding: 0.15rem 0;
   border: 0;
   background: transparent;
@@ -454,6 +459,14 @@
   cursor: pointer;
   text-align: left;
   font-size: 0.6rem;
+}
+
+/* Zone de confort latérale dans le padding opaque de la légende, sans
+   chevauchement entre lignes ni interception de clics hors du panneau. */
+.constellation__legend-row::before {
+  content: '';
+  position: absolute;
+  inset: 0 -0.55rem;
 }
 
 .constellation__legend-row:hover,

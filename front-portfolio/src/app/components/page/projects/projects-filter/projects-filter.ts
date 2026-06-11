@@ -1,18 +1,12 @@
-import { isPlatformBrowser } from '@angular/common';
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
   HostListener,
   inject,
-  Inject,
   Input,
   Output,
-  PLATFORM_ID,
 } from '@angular/core';
-import gsap from 'gsap';
-import { CSSPlugin } from 'gsap/CSSPlugin';
 import {
   ProjectCategory,
   ProjectFilterItem,
@@ -25,9 +19,13 @@ import { TranslationService } from '../../../../services/translation.service';
   imports: [],
   templateUrl: './projects-filter.html',
   styleUrl: './projects-filter.css',
+  // Entrance rituelle au premier paint (cf. ornaments.css) — pas de tween JS
+  // à l'hydratation, qui re-masquerait la barre rendue en SSR.
+  host: { class: 'emerge-ritual' },
 })
-export class ProjectsFilter implements AfterViewInit {
+export class ProjectsFilter {
   protected readonly ts = inject(TranslationService);
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   @Input({ required: true }) filters: ProjectFilterItem[] = [];
   @Input({ required: true }) filtersState!: ProjectFiltersState;
   @Input({ required: true }) availableTags: string[] = [];
@@ -42,55 +40,6 @@ export class ProjectsFilter implements AfterViewInit {
   protected isStackPanelOpen = false;
   protected tagQuery = '';
   protected stackQuery = '';
-
-  private readonly isBrowser: boolean;
-
-  constructor(
-    private readonly elementRef: ElementRef<HTMLElement>,
-    @Inject(PLATFORM_ID) platformId: object
-  ) {
-    this.isBrowser = isPlatformBrowser(platformId);
-    if (this.isBrowser) {
-      gsap.registerPlugin(CSSPlugin);
-    }
-  }
-
-  ngAfterViewInit(): void {
-    if (!this.isBrowser) return;
-
-    const host = this.elementRef.nativeElement;
-    const items = host.querySelectorAll(
-      '.projects-filters__group, .projects-filters__actions'
-    );
-
-    gsap.fromTo(
-      host,
-      { autoAlpha: 0, y: 24, filter: 'blur(10px)' },
-      {
-        autoAlpha: 1,
-        y: 0,
-        filter: 'blur(0px)',
-        duration: 0.62,
-        ease: 'power3.out',
-        clearProps: 'filter',
-      }
-    );
-
-    if (items.length) {
-      gsap.fromTo(
-        items,
-        { autoAlpha: 0, y: 10 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.42,
-          ease: 'power2.out',
-          stagger: 0.05,
-          delay: 0.12,
-        }
-      );
-    }
-  }
 
   protected get filteredTags(): string[] {
     return this.filterItems(this.availableTags, this.tagQuery);

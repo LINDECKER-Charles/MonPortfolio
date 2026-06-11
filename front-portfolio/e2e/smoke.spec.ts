@@ -20,6 +20,7 @@ for (const route of PUBLIC_ROUTES) {
 }
 
 test('la route inconnue renvoie la page 404 dédiée', async ({ page }) => {
-  await page.goto('/cette-route-n-existe-pas');
+  const response = await page.goto('/cette-route-n-existe-pas');
+  expect(response?.status()).toBe(404);
   await expect(page).toHaveTitle(/Page introuvable/);
 });

@@ -23,9 +23,19 @@ import {
   ConstellationEdge,
   ConstellationNode,
   STARS,
-  UNIVERSE,
   VIEWBOX,
 } from './constellation.layout';
+import {
+  clampCenter,
+  clampNumber,
+  clientToViewBox as toViewBox,
+  GALAXY_SCALE,
+  MAX_SCALE,
+  MIN_SCALE,
+  viewBoxAttr as toViewBoxAttr,
+  zoomTowardTarget,
+} from './constellation.viewport';
+import { Sim, simStep } from './constellation.physics';
 
 interface PositionedEdge {
   edge: ConstellationEdge;
@@ -35,30 +45,7 @@ interface PositionedEdge {
   y2: number;
 }
 
-/** Position dynamique d'une sphère pendant l'effet ressort. */
-interface Sim {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-}
-
-/** Au scale mini, le viewBox couvre tout l'univers d'étoiles (vue galaxie). */
-const MIN_SCALE = VIEWBOX.w / UNIVERSE.w;
-const MAX_SCALE = 4.5;
-/** En dessous de ce scale, on bascule en « vue galaxie » (labels masqués). */
-const GALAXY_SCALE = 0.8;
 const DRAG_THRESHOLD_PX = 3;
-
-/* Constantes du système de ressorts (par frame ~60 fps). */
-const K_ANCHOR = 0.018; // rappel vers la position d'origine
-const K_EDGE = 0.05; // tension des liens (propagation)
-const DAMP = 0.86; // amortissement
-const REST_ENERGY = 1e-4; // seuil d'arrêt de la boucle
-
-function clampNumber(value: number, min: number, max: number): number {
-  return Math.min(max, Math.max(min, value));
-}
 
 /**
  * Carte interactive « constellation » : items placés en clusters de catégorie,
@@ -86,7 +73,7 @@ export class Constellation implements OnDestroy {
   protected readonly stars = STARS;
 
   protected readonly categoryById = computed(
-    () => new Map(this.categories().map((category) => [category.id, category]))
+    () => new Map(this.categories().map((category) => [category.id, category])),
   );
 
   /** Positions « maison » (déterministes, SSR-safe). */
@@ -160,7 +147,7 @@ export class Constellation implements OnDestroy {
   protected readonly metaLabel = computed(() =>
     this.labels()
       .meta.replace('{count}', String(this.items().length))
-      .replace('{links}', String(this.edges().length))
+      .replace('{links}', String(this.edges().length)),
   );
 
   protected categoryLabel(id: string): string {
@@ -243,15 +230,11 @@ export class Constellation implements OnDestroy {
   private readonly center = signal({ x: VIEWBOX.w / 2, y: VIEWBOX.h / 2 });
   protected readonly isPanning = signal(false);
 
-  protected readonly viewBoxAttr = computed(() => {
-    const w = VIEWBOX.w / this.scale();
-    const h = VIEWBOX.h / this.scale();
-    const { x, y } = this.center();
-    return `${(x - w / 2).toFixed(3)} ${(y - h / 2).toFixed(3)} ${w.toFixed(3)} ${h.toFixed(3)}`;
-  });
+  protected readonly viewBoxAttr = computed(() => toViewBoxAttr(this.scale(), this.center()));
 
   protected readonly canReset = computed(
-    () => this.scale() !== 1 || this.center().x !== VIEWBOX.w / 2 || this.center().y !== VIEWBOX.h / 2
+    () =>
+      this.scale() !== 1 || this.center().x !== VIEWBOX.w / 2 || this.center().y !== VIEWBOX.h / 2,
   );
 
   /** Vue galaxie : très dézoomé, on n'affiche plus que les boules lumineuses. */
@@ -278,23 +261,9 @@ export class Constellation implements OnDestroy {
   private rafId: number | null = null;
   private readonly stepBound = (): void => this.step();
 
-  /**
-   * Borne le centre pour que la fenêtre visible reste dans l'univers d'étoiles.
-   * Gère le cas scale < 1 (fenêtre plus large que le contenu) en recentrant.
-   */
+  /** Borne le centre via la géométrie pure (cf. {@link clampCenter}). */
   private setCenter(x: number, y: number): void {
-    const halfW = VIEWBOX.w / this.scale() / 2;
-    const halfH = VIEWBOX.h / this.scale() / 2;
-    const cx = VIEWBOX.w / 2;
-    const cy = VIEWBOX.h / 2;
-    const minX = cx - UNIVERSE.w / 2 + halfW;
-    const maxX = cx + UNIVERSE.w / 2 - halfW;
-    const minY = cy - UNIVERSE.h / 2 + halfH;
-    const maxY = cy + UNIVERSE.h / 2 - halfH;
-    this.center.set({
-      x: minX <= maxX ? clampNumber(x, minX, maxX) : cx,
-      y: minY <= maxY ? clampNumber(y, minY, maxY) : cy,
-    });
+    this.center.set(clampCenter(x, y, this.scale()));
   }
 
   protected onPointerDown(event: PointerEvent): void {
@@ -306,7 +275,8 @@ export class Constellation implements OnDestroy {
     this.movedDuringDrag = false;
 
     const target = event.target as Element | null;
-    this.candidateNodeId = target?.closest?.('[data-node-id]')?.getAttribute('data-node-id') ?? null;
+    this.candidateNodeId =
+      target?.closest?.('[data-node-id]')?.getAttribute('data-node-id') ?? null;
 
     svg.setPointerCapture(event.pointerId);
   }
@@ -366,13 +336,7 @@ export class Constellation implements OnDestroy {
 
   /** Convertit des coordonnées écran en coordonnées du viewBox courant. */
   private clientToViewBox(clientX: number, clientY: number): { x: number; y: number } {
-    const rect = this.svgRect!;
-    const w = VIEWBOX.w / this.scale();
-    const h = VIEWBOX.h / this.scale();
-    const { x, y } = this.center();
-    const ratioX = (clientX - rect.left) / rect.width;
-    const ratioY = (clientY - rect.top) / rect.height;
-    return { x: x - w / 2 + ratioX * w, y: y - h / 2 + ratioY * h };
+    return toViewBox(clientX, clientY, this.svgRect!, this.scale(), this.center());
   }
 
   private ensureLoop(): void {
@@ -382,75 +346,18 @@ export class Constellation implements OnDestroy {
   }
 
   /**
-   * Une itération du système masse-ressort : chaque sphère est rappelée vers sa
-   * position d'origine (ancre) et reliée à ses voisines (arêtes). La sphère
-   * tirée est épinglée sur le pointeur et entraîne les autres de proche en proche.
+   * Applique une itération de la simulation (cf. {@link simStep}) au signal
+   * `displaced`, et replanifie une frame tant que le système n'est pas au repos.
    */
   private step(): void {
-    const homes = this.nodes();
-    const homeById = new Map(homes.map((n) => [n.id, n]));
-    const moved = this.displaced();
-
-    // Positions courantes (maison si non déplacée), sphère tirée épinglée.
-    const cur = new Map<string, Sim>();
-    for (const n of homes) {
-      const p = moved.get(n.id);
-      cur.set(n.id, p ? { ...p } : { x: n.x, y: n.y, vx: 0, vy: 0 });
-    }
-    if (this.draggingId) {
-      const c = cur.get(this.draggingId);
-      if (c) {
-        c.x = this.dragTarget.x;
-        c.y = this.dragTarget.y;
-        c.vx = 0;
-        c.vy = 0;
-      }
-    }
-
-    // Forces : ancrage + tension des liens.
-    const force = new Map<string, { x: number; y: number }>();
-    for (const id of cur.keys()) force.set(id, { x: 0, y: 0 });
-
-    for (const [id, p] of cur) {
-      const home = homeById.get(id)!;
-      const f = force.get(id)!;
-      f.x += (home.x - p.x) * K_ANCHOR;
-      f.y += (home.y - p.y) * K_ANCHOR;
-    }
-
-    for (const edge of this.edges()) {
-      const a = cur.get(edge.a);
-      const b = cur.get(edge.b);
-      const ha = homeById.get(edge.a);
-      const hb = homeById.get(edge.b);
-      if (!a || !b || !ha || !hb) continue;
-      const rest = Math.hypot(ha.x - hb.x, ha.y - hb.y);
-      const dx = b.x - a.x;
-      const dy = b.y - a.y;
-      const dist = Math.hypot(dx, dy) || 1e-4;
-      const k = ((dist - rest) / dist) * K_EDGE;
-      force.get(edge.a)!.x += dx * k;
-      force.get(edge.a)!.y += dy * k;
-      force.get(edge.b)!.x -= dx * k;
-      force.get(edge.b)!.y -= dy * k;
-    }
-
-    // Intégration (Euler amorti) ; la sphère tirée reste épinglée.
-    let energy = 0;
-    const next = new Map<string, Sim>();
-    for (const [id, p] of cur) {
-      if (id === this.draggingId) {
-        next.set(id, { x: p.x, y: p.y, vx: 0, vy: 0 });
-        continue;
-      }
-      const f = force.get(id)!;
-      const vx = (p.vx + f.x) * DAMP;
-      const vy = (p.vy + f.y) * DAMP;
-      energy += vx * vx + vy * vy;
-      next.set(id, { x: p.x + vx, y: p.y + vy, vx, vy });
-    }
-
-    if (this.draggingId !== null || energy > REST_ENERGY) {
+    const { next, settled } = simStep(
+      this.nodes(),
+      this.edges(),
+      this.displaced(),
+      this.draggingId,
+      this.dragTarget,
+    );
+    if (!settled) {
       this.displaced.set(next);
       this.rafId = requestAnimationFrame(this.stepBound);
     } else {
@@ -493,20 +400,9 @@ export class Constellation implements OnDestroy {
 
   /** Zoom en gardant fixe le point sous le curseur. */
   private zoomToward(target: number, clientX: number, clientY: number, rect: DOMRect): void {
-    const w = VIEWBOX.w / this.scale();
-    const h = VIEWBOX.h / this.scale();
-    const { x, y } = this.center();
-    const ratioX = (clientX - rect.left) / rect.width;
-    const ratioY = (clientY - rect.top) / rect.height;
-    const pointerX = x - w / 2 + ratioX * w;
-    const pointerY = y - h / 2 + ratioY * h;
-
-    const next = clampNumber(target, MIN_SCALE, MAX_SCALE);
-    this.scale.set(next);
-
-    const newW = VIEWBOX.w / next;
-    const newH = VIEWBOX.h / next;
-    this.setCenter(pointerX - (ratioX - 0.5) * newW, pointerY - (ratioY - 0.5) * newH);
+    const next = zoomTowardTarget(target, clientX, clientY, rect, this.scale(), this.center());
+    this.scale.set(next.scale);
+    this.center.set(next.center);
   }
 
   protected openSelectedDetail(): void {

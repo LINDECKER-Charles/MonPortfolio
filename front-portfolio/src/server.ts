@@ -4,6 +4,7 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+import compression from 'compression';
 import express from 'express';
 import { join } from 'node:path';
 
@@ -11,6 +12,10 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+
+// Compression gzip de toutes les réponses texte (HTML SSR, JS, CSS, JSON i18n).
+// Sans elle, ~680 KiB transitent non compressés et plombent FCP/LCP.
+app.use(compression());
 
 app.get('/robots.txt', (_req, res) => {
   res.sendFile(join(browserDistFolder, 'robots.txt'));
