@@ -9,9 +9,8 @@ import {
   inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import gsap from 'gsap';
-import { CSSPlugin } from 'gsap/CSSPlugin';
 import { TranslationService } from '../../../../services/translation.service';
+import { revealHero } from '../../shared/hero-reveal';
 import { computeStats } from '../works.state';
 
 @Component({
@@ -30,23 +29,11 @@ export class WorksHeader implements AfterViewInit {
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
-    if (this.isBrowser) gsap.registerPlugin(CSSPlugin);
   }
 
   ngAfterViewInit(): void {
     if (!this.isBrowser || !this.heroRef?.nativeElement) return;
 
-    gsap.fromTo(
-      this.heroRef.nativeElement,
-      { autoAlpha: 0, y: 28, filter: 'blur(12px)' },
-      {
-        autoAlpha: 1,
-        y: 0,
-        filter: 'blur(0px)',
-        duration: 0.8,
-        ease: 'power3.out',
-        clearProps: 'filter',
-      }
-    );
+    revealHero(this.heroRef.nativeElement, 0.8);
   }
 }
