@@ -19,7 +19,9 @@ module.exports = {
       startServerCommand: 'node dist/front-portfolio/server/server.mjs',
       startServerReadyPattern: 'listening on',
       url: ROUTES.map((r) => `${ORIGIN}${r}`),
-      numberOfRuns: 1,
+      // 3 runs par route : les assertions portent sur le run médian, ce qui
+      // absorbe le bruit de mesure (±100 ms observés sur FCP/LCP).
+      numberOfRuns: 3,
       settings: {
         preset: 'desktop',
         // Les assets lourds viennent d'images.charles-lindecker.com : la perf
@@ -37,7 +39,7 @@ module.exports = {
           assertions: {
             'categories:accessibility': ['error', { minScore: 0.95 }],
             'categories:best-practices': ['error', { minScore: 0.9 }],
-            'categories:performance': ['warn', { minScore: 0.8 }],
+            'categories:performance': ['warn', { minScore: 0.95 }],
           },
         },
         {
@@ -46,7 +48,7 @@ module.exports = {
             'categories:accessibility': ['error', { minScore: 0.95 }],
             'categories:best-practices': ['error', { minScore: 0.9 }],
             'categories:seo': ['error', { minScore: 0.95 }],
-            'categories:performance': ['warn', { minScore: 0.8 }],
+            'categories:performance': ['warn', { minScore: 0.95 }],
           },
         },
       ],
