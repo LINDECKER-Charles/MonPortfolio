@@ -11,6 +11,7 @@ import { PVZF_TRADUCTION_IMAGES } from '../../../img-sources/projects/pvzf-tradu
 import { GUP_IMAGES } from '../../../img-sources/projects/gup.source';
 import { IMG_CONVERTOR_IMAGES } from '../../../img-sources/projects/img-convertor.source';
 import { LUCIE_FIQUET_ALBIN_IMAGES } from '../../../img-sources/projects/lucie-fiquet-albin.source';
+import { FUSION_DOCS_IMAGES } from '../../../img-sources/projects/fusiondocs.source';
 import { ProjectFilterItem, ProjectItem } from './projects.types';
 
 export const PROJECT_FILTERS: ProjectFilterItem[] = [
@@ -105,6 +106,56 @@ export const PROJECTS_DATA: ProjectItem[] = [
         'Piloter un travail collaboratif avec une exigence de cohérence',
         'Formaliser des standards de traduction et de validation',
         'Travailler la qualité dans un contexte communautaire évolutif',
+      ],
+    },
+    featured: true,
+  },
+  {
+    id: 'fusion-docs',
+    title: 'FusionDocs',
+    period: {
+      dateStart: new Date('2026-06-07'),
+      isEnd: false,
+    },
+    shortDescription:
+      'Plateforme communautaire full stack pour le modding de PVZ Fusion : curriculum de tutoriels multilingue, forum modéré et messagerie temps réel.',
+    longDescription:
+      'FusionDocs est une plateforme communautaire complète dédiée au modding de Plants vs. Zombies Fusion. Elle articule trois piliers : apprendre via un curriculum de tutoriels versionné et structuré en blocs de contenu (markdown, code, vidéo, galeries, comparaisons avant/après) avec suivi de progression par utilisateur ; échanger sur un forum modéré multilingue avec catégories, tags, réactions et réponses acceptées ; se connecter grâce aux profils, amis, messagerie privée et notifications temps réel via SignalR. Le back-end .NET 10 suit une clean architecture avec une hiérarchie de rôles stricte, une authentification JWT en cookies HTTP-only et un back-office d’administration complet (modération, audit, analytics, dons Stripe). Le front Angular 20 est servi en SSR zoneless avec un traitement SEO multilingue de bout en bout.',
+    category: 'personal',
+    status: 'in_progress',
+    stack: [
+      'Angular',
+      'ASP.NET Core',
+      '.NET 10',
+      'C#',
+      'PostgreSQL',
+      'SignalR',
+      'TypeScript',
+    ],
+    tags: [
+      'Full Stack',
+      'Communauté',
+      'Tutoriels',
+      'Forum',
+      'Temps réel',
+      'i18n',
+      'SEO',
+    ],
+    links: {
+      github: 'https://github.com/LINDECKER-Charles/PVZ-Modding-Tutorial-Web',
+      website: 'https://modding.pvzf-almanac.com',
+    },
+    highlights: [
+      'Curriculum de tutoriels versionné par blocs de contenu avec progression par utilisateur',
+      'Forum modéré multilingue, messagerie privée et présence temps réel via SignalR',
+      'Back-office complet : rôles hiérarchisés, modération, audit, analytics et dons Stripe',
+    ],
+    detail: {
+      images: FUSION_DOCS_IMAGES,
+      lessonsLearned: [
+        'Structurer une clean architecture .NET autour d’une hiérarchie de rôles stricte',
+        'Industrialiser la qualité avec un gate de couverture fail-closed et des tests e2e/a11y/perf',
+        'Mener un SEO multilingue SSR de bout en bout (hreflang, JSON-LD, sitemap dynamique)',
       ],
     },
     featured: true,
@@ -588,53 +639,5 @@ export const PROJECTS_DATA: ProjectItem[] = [
       ],
     },
     featured: true,
-  },
-  {
-    id: 'symfony-session',
-    title: 'SymfonySession',
-    period: {
-      dateStart: new Date('2025-06-01'),
-      dateEnd: new Date('2025-06-30'),
-      isEnd: true,
-    },
-    shortDescription:
-      'Application Symfony complète orientée gestion de sessions, sécurité web et administration.',
-    longDescription:
-      'SymfonySession est une application web développée pour illustrer des cas concrets de gestion de sessions, de sécurité applicative et d’administration. Le projet sert de base solide pour des outils de back-office ou des plateformes de formation, avec un accent fort sur la sécurité, la maintenabilité et l’expérience utilisateur. Il intègre à la fois des fonctionnalités métier complètes et plusieurs mécanismes de protection contre les abus.',
-    category: 'personal',
-    status: 'done',
-    stack: [
-      'Symfony 6',
-      'PHP',
-      'Doctrine ORM',
-      'Tailwind CSS',
-      'FullCalendar.js',
-      'DomPDF',
-    ],
-    tags: [
-      'Sécurité',
-      'Session',
-      'Back-office',
-      'CRUD',
-      'PDF',
-      'Calendrier',
-      'Administration',
-    ],
-    links: {
-      github: 'https://github.com/LINDECKER-Charles/SymfonySession',
-    },
-    highlights: [
-      'Captcha Google v3, honeypot et rate limiter',
-      'CRUD complet pour utilisateurs, stagiaires, modules et programmes',
-      'Génération de PDF et visualisation dynamique via FullCalendar',
-    ],
-    detail: {
-      images: [],
-      lessonsLearned: [
-        'Renforcer une application Symfony avec plusieurs couches de sécurité',
-        'Structurer une base de code MVC claire sur un projet administratif complet',
-        'Mieux articuler ergonomie front et logique de gestion côté serveur',
-      ],
-    },
   },
 ];
