@@ -1,0 +1,53 @@
+import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import { buildProjectImage } from './project-image.builder';
+
+export const FUSION_DOCS_IMAGES: ProjectMediaImage[] = [
+  buildProjectImage('FusionDocs', 'home-1', 'Page d’accueil de FusionDocs', [
+    { width: 24, height: 19 },
+    { width: 40, height: 32 },
+    { width: 80, height: 64 },
+    { width: 160, height: 129 },
+    { width: 320, height: 257 },
+    { width: 640, height: 514 },
+    { width: 768, height: 617 },
+    { width: 1024, height: 823 },
+    { width: 1280, height: 1029 },
+    { width: 1536, height: 1234 },
+  ]),
+  buildProjectImage('FusionDocs', 'home-2', 'Sections curriculum et communauté de FusionDocs', [
+    { width: 24, height: 18 },
+    { width: 40, height: 31 },
+    { width: 80, height: 61 },
+    { width: 160, height: 122 },
+    { width: 320, height: 244 },
+    { width: 640, height: 488 },
+    { width: 768, height: 586 },
+    { width: 1024, height: 781 },
+    { width: 1280, height: 976 },
+    { width: 1536, height: 1171 },
+  ]),
+  buildProjectImage('FusionDocs', 'tutorial', 'Leçon de tutoriel FusionDocs avec blocs de contenu', [
+    { width: 24, height: 18 },
+    { width: 40, height: 30 },
+    { width: 80, height: 61 },
+    { width: 160, height: 121 },
+    { width: 320, height: 242 },
+    { width: 640, height: 485 },
+    { width: 768, height: 582 },
+    { width: 1024, height: 776 },
+    { width: 1280, height: 970 },
+    { width: 1536, height: 1164 },
+  ]),
+  buildProjectImage('FusionDocs', 'profil', 'Profil utilisateur FusionDocs avec progression', [
+    { width: 24, height: 15 },
+    { width: 40, height: 25 },
+    { width: 80, height: 49 },
+    { width: 160, height: 98 },
+    { width: 320, height: 197 },
+    { width: 640, height: 394 },
+    { width: 768, height: 472 },
+    { width: 1024, height: 630 },
+    { width: 1280, height: 787 },
+    { width: 1536, height: 945 },
+  ]),
+];
