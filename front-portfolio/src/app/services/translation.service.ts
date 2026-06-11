@@ -1,4 +1,13 @@
-import { effect, inject, Injectable, InjectionToken, PLATFORM_ID, signal } from '@angular/core';
+import {
+  effect,
+  inject,
+  Injectable,
+  InjectionToken,
+  makeStateKey,
+  PLATFORM_ID,
+  signal,
+  TransferState,
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 /**
@@ -43,6 +52,15 @@ export const AVAILABLE_LANGUAGES: Language[] = [
 
 const NAMESPACES = ['nav-barre', 'home-resume', 'home-projects', 'home-work', 'photo-carousel', 'projects', 'works', 'footer', 'construction', 'opening', 'common', 'resum', 'linktree', 'legal'] as const;
 const DEFAULT_LANG = 'fr';
+
+/**
+ * Baseline FR sérialisée dans le HTML SSR (script ng-state, type
+ * application/json — non exécutable, donc compatible CSP `script-src 'self'`).
+ * Évite au client de re-fetch les 14 namespaces que le serveur a déjà rendus.
+ */
+const TRANSLATIONS_STATE_KEY = makeStateKey<Record<string, Record<string, string>>>(
+  'translations-fr'
+);
 const STORAGE_KEY = 'lang';
 const QUERY_PARAM = 'lang';
 
@@ -57,6 +75,7 @@ export class TranslationService {
   private readonly cache: TranslationCache = new Map();
 
   private readonly serverTranslations = inject(SERVER_TRANSLATIONS, { optional: true });
+  private readonly transferState = inject(TransferState, { optional: true });
 
   private readonly _lang = signal<string>(DEFAULT_LANG);
   readonly lang = this._lang.asReadonly();
@@ -86,9 +105,16 @@ export class TranslationService {
       // le HTML initial soit déjà traduit (zéro re-render texte à l'hydratation).
       if (this.serverTranslations) {
         this.cache.set(DEFAULT_LANG, this.serverTranslations);
+        this.transferState?.set(TRANSLATIONS_STATE_KEY, this.serverTranslations);
         this.applyMerge(DEFAULT_LANG);
       }
       return;
+    }
+
+    // Baseline FR transférée depuis le SSR : épargne 14 fetchs à l'hydratation.
+    const transferred = this.transferState?.get(TRANSLATIONS_STATE_KEY, null);
+    if (transferred) {
+      this.cache.set(DEFAULT_LANG, transferred);
     }
 
     const queryLang = this.getLangFromUrl();
