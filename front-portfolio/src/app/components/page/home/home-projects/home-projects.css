@@ -13,6 +13,15 @@
   border-radius: 28px;
 }
 
+/* Stagger de l'entrance rituelle (.emerge-ritual, cf. ornaments.css) */
+.home-projects__intro { --emerge-delay: 0s; }
+.home-projects__actions { --emerge-delay: 0.08s; }
+.home-projects__stack-item:nth-child(1) { --emerge-delay: 0.16s; }
+.home-projects__stack-item:nth-child(2) { --emerge-delay: 0.24s; }
+.home-projects__stack-item:nth-child(3) { --emerge-delay: 0.32s; }
+.home-projects__stack-item:nth-child(4) { --emerge-delay: 0.4s; }
+.home-projects__stack-item:nth-child(5) { --emerge-delay: 0.48s; }
+
 .home-projects__intro {
   display: flex;
   flex-direction: column;

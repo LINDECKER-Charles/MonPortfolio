@@ -41,6 +41,23 @@ describe('Linktree', () => {
     }).compileComponents();
   }
 
+  /** Place tous les éléments sous le viewport initial (la garde anti-flash
+      du composant ne masque que le contenu non encore peint). */
+  function stubRectsBelowViewport(inViewport = false) {
+    const top = inViewport ? 0 : window.innerHeight * 2;
+    spyOn(Element.prototype, 'getBoundingClientRect').and.returnValue({
+      top,
+      bottom: top + 120,
+      left: 0,
+      right: 100,
+      width: 100,
+      height: 120,
+      x: 0,
+      y: top,
+      toJSON: () => ({}),
+    } as DOMRect);
+  }
+
   beforeEach(() => {
     originalIO = window.IntersectionObserver;
     FakeIntersectionObserver.instances = [];
@@ -67,18 +84,41 @@ describe('Linktree', () => {
     expect(chapters.length).toBe(LINKTREE_SECTIONS.length);
   });
 
-  it('animates the hero and registers an observer per chapter in the browser', async () => {
+  it('registers an observer per below-fold chapter without touching the hero', async () => {
     await configure('browser');
+    stubRectsBelowViewport();
     const fixture = TestBed.createComponent(Linktree);
     fixture.detectChanges();
 
     expect(gsap.registerPlugin).toHaveBeenCalled();
-    expect(gsap.fromTo).toHaveBeenCalled(); // hero stagger
+    expect(gsap.fromTo).not.toHaveBeenCalled(); // entrance du hero en CSS pur
     expect(FakeIntersectionObserver.instances.length).toBe(LINKTREE_SECTIONS.length);
+  });
+
+  it('does not re-hide chapters already inside the initial viewport', async () => {
+    await configure('browser');
+    stubRectsBelowViewport(true);
+    const fixture = TestBed.createComponent(Linktree);
+    fixture.detectChanges();
+
+    expect(gsap.set).not.toHaveBeenCalled();
+    expect(FakeIntersectionObserver.instances.length).toBe(0);
+  });
+
+  it('leaves chapters untouched when prefers-reduced-motion is set', async () => {
+    spyOn(window, 'matchMedia').and.returnValue({ matches: true } as MediaQueryList);
+    await configure('browser');
+    stubRectsBelowViewport();
+    const fixture = TestBed.createComponent(Linktree);
+    fixture.detectChanges();
+
+    expect(gsap.set).not.toHaveBeenCalled();
+    expect(FakeIntersectionObserver.instances.length).toBe(0);
   });
 
   it('reveals a chapter and disconnects its observer when intersecting', async () => {
     await configure('browser');
+    stubRectsBelowViewport();
     const fixture = TestBed.createComponent(Linktree);
     fixture.detectChanges();
 

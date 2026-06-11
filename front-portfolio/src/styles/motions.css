@@ -14,6 +14,17 @@
 @keyframes ritualFadeIn  { from { opacity: 0; } to { opacity: 1; } }
 @keyframes ritualFadeOut { from { opacity: 1; } to { opacity: 0; } }
 
+/* Émergence rituelle d'un hero — fondu + remontée + déflou. Jouée au premier
+   paint via CSS : un tween JS posé à l'hydratation re-masquerait le rendu SSR
+   (flash + candidat LCP retardé jusqu'au chargement des scripts).
+   Départ à 0.01 et non 0 : Chrome ignore les paints à opacité nulle et, la
+   transition étant compositée, ne ré-émettrait le candidat LCP qu'à la fin
+   de l'animation. */
+@keyframes ritualEmerge {
+  from { opacity: 0.01; transform: translateY(24px); filter: blur(10px); }
+  to   { opacity: 1;    transform: translateY(0);    filter: blur(0);    }
+}
+
 /* Émergence d'un panel (modals, lightbox) */
 @keyframes panelEmerge {
   from { opacity: 0; transform: scale(0.95) translateY(8px); }

@@ -1,5 +1,5 @@
-<section class="home-work surface-altar" #ctaBlock>
-  <div class="home-work__actions">
+<section class="home-work surface-altar">
+  <div class="home-work__actions emerge-ritual">
     <a class="cta-tome cta-tome--gilded transition-ritual breath-gold" routerLink="/works" href="/works">
       <span class="cta-tome__icon">
         <app-responsive-picture
@@ -39,7 +39,7 @@
     </a>
   </div>
 
-  <div class="home-work__intro">
+  <div class="home-work__intro emerge-ritual">
     <span class="home-work__eyebrow text-rune">{{ ts.translate('home-work.eyebrow') }}</span>
 
     <h2 class="text-engraved text-engraved--deep">{{ ts.translate('home-work.title') }}</h2>
@@ -48,7 +48,7 @@
 
     <div class="home-work__rail" [attr.aria-label]="ts.translate('home-work.aria.landmarks')">
       @for (icon of railIcons; track icon.fallback) {
-        <span class="home-work__rail-item transition-ritual" [attr.title]="icon.alt">
+        <span class="home-work__rail-item transition-ritual emerge-ritual" [attr.title]="icon.alt">
           <app-responsive-picture
             [sources]="icon.sources"
             [fallbackSrc]="icon.fallback"
