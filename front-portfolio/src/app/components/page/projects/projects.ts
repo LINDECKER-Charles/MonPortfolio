@@ -12,6 +12,7 @@ import { ProjectsHeader } from './projects-header/projects-header';
 import { ProjectsModal } from './projects-modal/projects-modal';
 import { ProjectsTimeline } from './projects-timeline/projects-timeline';
 import { TranslationService } from '../../../services/translation.service';
+import { wrapIndex } from '../../../utils/math';
 import {
   PROJECT_FILTERS,
   PROJECTS_DATA,
@@ -168,15 +169,14 @@ export class Projects {
     const images = this.selectedProject?.detail?.images ?? [];
     if (!images.length) return;
 
-    this.currentImageIndex = (this.currentImageIndex + 1) % images.length;
+    this.currentImageIndex = wrapIndex(this.currentImageIndex + 1, images.length);
   }
 
   protected previousImage(): void {
     const images = this.selectedProject?.detail?.images ?? [];
     if (!images.length) return;
 
-    this.currentImageIndex =
-      (this.currentImageIndex - 1 + images.length) % images.length;
+    this.currentImageIndex = wrapIndex(this.currentImageIndex - 1, images.length);
   }
 
   @HostListener('document:keydown.escape')
