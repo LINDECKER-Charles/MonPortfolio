@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import gsap from 'gsap';
+import { prefersReducedMotion } from '../../../../utils/motion';
 
 export interface OpeningAnimationRefs {
   audioState: HTMLDivElement;
@@ -26,11 +27,7 @@ export class OpeningAnimationService {
    * protégé SSR.
    */
   private get reducedMotion(): boolean {
-    return (
-      typeof window !== 'undefined' &&
-      typeof window.matchMedia === 'function' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    );
+    return prefersReducedMotion();
   }
 
   prepareInitialState(refs: OpeningAnimationRefs): void {

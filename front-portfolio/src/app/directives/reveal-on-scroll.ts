@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
+import { prefersReducedMotion } from '../utils/motion';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import { NavigationContextService } from '../services/navigation-context.service';
 
@@ -52,7 +53,7 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
     const element = this.elementRef.nativeElement;
 
     // Reduced motion : le contenu reste visible tel quel, sans reveal.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
 
     // Au rendu initial (HTML SSR déjà peint), ne jamais re-masquer un élément
     // visible dans le viewport : le hide à l'hydratation provoque un flash et

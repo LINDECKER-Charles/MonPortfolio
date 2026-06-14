@@ -24,38 +24,18 @@ export class ResumContactLinks extends ResumEntryAnimation {
   protected override animationStagger = 0.04;
 
   onHoverEnter(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const row = event.currentTarget as HTMLElement | null;
-    if (!row) return;
-
-    animateContactHoverIn(row);
+    this.animateOnEvent(event, animateContactHoverIn);
   }
 
   onHoverLeave(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const row = event.currentTarget as HTMLElement | null;
-    if (!row) return;
-
-    animateContactHoverOut(row);
+    this.animateOnEvent(event, animateContactHoverOut);
   }
 
   onPress(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const row = event.currentTarget as HTMLElement | null;
-    if (!row) return;
-
-    animateContactPress(row);
+    this.animateOnEvent(event, animateContactPress);
   }
 
   onRelease(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const row = event.currentTarget as HTMLElement | null;
-    if (!row) return;
-
-    animateContactRelease(row);
+    this.animateOnEvent(event, animateContactRelease);
   }
 }

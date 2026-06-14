@@ -24,38 +24,18 @@ export class ResumActiveProjects extends ResumEntryAnimation {
   protected override animationStagger = 0.045;
 
   onProjectHoverEnter(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const link = event.currentTarget as HTMLElement | null;
-    if (!link) return;
-
-    animateProjectHoverIn(link);
+    this.animateOnEvent(event, animateProjectHoverIn);
   }
 
   onProjectHoverLeave(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const link = event.currentTarget as HTMLElement | null;
-    if (!link) return;
-
-    animateProjectHoverOut(link);
+    this.animateOnEvent(event, animateProjectHoverOut);
   }
 
   onProjectPress(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const link = event.currentTarget as HTMLElement | null;
-    if (!link) return;
-
-    animateProjectPress(link);
+    this.animateOnEvent(event, animateProjectPress);
   }
 
   onProjectRelease(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const link = event.currentTarget as HTMLElement | null;
-    if (!link) return;
-
-    animateProjectRelease(link);
+    this.animateOnEvent(event, animateProjectRelease);
   }
 }

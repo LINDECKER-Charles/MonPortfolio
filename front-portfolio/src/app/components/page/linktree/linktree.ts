@@ -1,4 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { prefersReducedMotion } from '../../../utils/motion';
 import {
   AfterViewInit,
   Component,
@@ -53,7 +54,7 @@ export class Linktree implements AfterViewInit {
     if (!sectionsNode) return;
 
     // Reduced motion : le contenu reste tel que rendu, sans masquage ni reveal.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (prefersReducedMotion()) return;
 
     const blocks = sectionsNode.querySelectorAll('.linktree-chapter');
     blocks.forEach((block) => {
