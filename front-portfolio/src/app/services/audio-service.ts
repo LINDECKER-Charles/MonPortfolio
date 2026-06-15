@@ -1,5 +1,6 @@
 import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { clamp01 } from '../utils/math';
 
 type AudioKey = string;
 
@@ -199,7 +200,7 @@ export class AudioService {
   }
 
   setMasterVolume(volume: number): void {
-    const clamped = Math.max(0, Math.min(1, volume));
+    const clamped = clamp01(volume);
     this._masterVolume.set(clamped);
     this.saveVolumePreference(clamped);
 
@@ -228,7 +229,7 @@ export class AudioService {
   }
 
   private computeVolume(localVolume: number): number {
-    return Math.max(0, Math.min(1, localVolume * this._masterVolume()));
+    return clamp01(localVolume * this._masterVolume());
   }
 
   private refreshPlayingCount(): void {
@@ -252,7 +253,7 @@ export class AudioService {
     if (storedVolume !== null) {
       const parsedVolume = Number(storedVolume);
       if (!Number.isNaN(parsedVolume)) {
-        this._masterVolume.set(Math.max(0, Math.min(1, parsedVolume)));
+        this._masterVolume.set(clamp01(parsedVolume));
       }
     }
 

@@ -16,6 +16,7 @@ import {
   ResponsiveSource,
 } from '../responsive-picture/responsive-picture';
 import { TranslationService } from '../../../services/translation.service';
+import { wrapIndex } from '../../../utils/math';
 
 export interface PhotoCarouselSlide {
   sources: ResponsiveSource[];
@@ -85,8 +86,7 @@ export class PhotoCarousel implements OnInit, OnDestroy {
 
   protected goTo(index: number): void {
     if (!this.slides.length) return;
-    const total = this.slides.length;
-    this.currentIndex.set(((index % total) + total) % total);
+    this.currentIndex.set(wrapIndex(index, this.slides.length));
     this.restart();
   }
 
