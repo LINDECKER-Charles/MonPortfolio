@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "品質と責任",
   "header.cta.linktree.top": "全リンク",
   "header.cta.linktree.aria": "Linktree — 全リンク",
-  "header.cta.linktree.bottom": "Linktree"
+  "header.cta.linktree.bottom": "Linktree",
+  "header.cta.veille.top": "閲覧する",
+  "header.cta.veille.bottom": "技術ウォッチ"
 }

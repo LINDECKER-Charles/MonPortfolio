@@ -227,6 +227,44 @@
 .hero__cta--quaternary .hero__cta-label-top { color: #d49a75; }
 .hero__cta--quaternary .hero__cta-label-bottom { color: #f5dfc5; }
 
+.hero__cta--quinary {
+  color: var(--color-parchment);
+  border-color: rgb(var(--color-parchment-rgb) / 0.24);
+  background:
+    linear-gradient(180deg, rgb(46 50 40 / 0.92), rgb(22 26 20 / 0.96)),
+    radial-gradient(circle at top left, rgb(var(--color-parchment-rgb) / 0.14), transparent 55%);
+}
+
+.hero__cta--quinary:hover {
+  border-color: rgb(var(--color-parchment-rgb) / 0.4);
+  box-shadow:
+    0 18px 38px rgb(0 0 0 / 0.34),
+    0 0 0 1px rgb(var(--color-parchment-rgb) / 0.14);
+}
+
+.hero__cta-icon-frame--watch {
+  background: linear-gradient(180deg, rgb(var(--color-parchment-rgb) / 0.2), rgb(58 62 48 / 0.22));
+  box-shadow:
+    inset 0 1px 0 rgb(var(--color-white-rgb) / 0.08),
+    0 0 0 1px rgb(var(--color-parchment-rgb) / 0.14);
+}
+
+.hero__cta-icon--watch {
+  display: grid;
+  place-items: center;
+  color: var(--color-parchment);
+  background: radial-gradient(circle at 30% 30%, rgb(56 62 44 / 0.96), rgb(20 24 16 / 0.98));
+}
+
+.hero__cta-icon--watch svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.hero__cta--quinary .hero__cta-label-top { color: #b9bda0; }
+.hero__cta--quinary .hero__cta-label-bottom { color: var(--color-parchment); }
+
 .hero__cta-icon-frame {
   width: 48px;
   height: 48px;

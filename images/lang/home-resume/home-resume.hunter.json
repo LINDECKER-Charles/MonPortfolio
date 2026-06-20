@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "Workshop's honour",
   "header.cta.linktree.top": "Hunter's links",
   "header.cta.linktree.aria": "Linktree — the hunter's links",
-  "header.cta.linktree.bottom": "Hunter's nexus"
+  "header.cta.linktree.bottom": "Hunter's nexus",
+  "header.cta.veille.top": "Inspect",
+  "header.cta.veille.bottom": "The Hunter's Vigil"
 }

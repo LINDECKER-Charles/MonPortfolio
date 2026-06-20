@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "Qualidade e responsabilidade",
   "header.cta.linktree.top": "Todos os links",
   "header.cta.linktree.aria": "Linktree — todos os links",
-  "header.cta.linktree.bottom": "Linktree"
+  "header.cta.linktree.bottom": "Linktree",
+  "header.cta.veille.top": "Consultar",
+  "header.cta.veille.bottom": "Minha curadoria tech"
 }
