@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "Качество и ответственность",
   "header.cta.linktree.top": "Все мои ссылки",
   "header.cta.linktree.aria": "Linktree — все мои ссылки",
-  "header.cta.linktree.bottom": "Linktree"
+  "header.cta.linktree.bottom": "Linktree",
+  "header.cta.veille.top": "Просмотреть",
+  "header.cta.veille.bottom": "Тех-обзор"
 }

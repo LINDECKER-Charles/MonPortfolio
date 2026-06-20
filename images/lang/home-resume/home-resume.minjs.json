@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "q&&r",
   "header.cta.linktree.top": "l.all()",
   "header.cta.linktree.aria": "lt.all()",
-  "header.cta.linktree.bottom": "lt"
+  "header.cta.linktree.bottom": "lt",
+  "header.cta.veille.top": "v.watch()",
+  "header.cta.veille.bottom": "v"
 }

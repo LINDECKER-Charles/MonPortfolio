@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "Qualitas et responsabilitas ipsum",
   "header.cta.linktree.top": "Omnia vincula",
   "header.cta.linktree.aria": "Linktree — omnia vincula mea",
-  "header.cta.linktree.bottom": "Nexus"
+  "header.cta.linktree.bottom": "Nexus",
+  "header.cta.veille.top": "Consultare",
+  "header.cta.veille.bottom": "Vigilia Ipsum"
 }

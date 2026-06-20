@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "quality: 9000",
   "header.cta.linktree.top": "links: all",
   "header.cta.linktree.aria": "linktree:\n  links: all",
-  "header.cta.linktree.bottom": "ns: linktree"
+  "header.cta.linktree.bottom": "ns: linktree",
+  "header.cta.veille.top": "feed: tech",
+  "header.cta.veille.bottom": "ns: veille"
 }

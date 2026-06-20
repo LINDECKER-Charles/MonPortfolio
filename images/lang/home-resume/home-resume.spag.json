@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "// quality: 'works on my machine'",
   "header.cta.linktree.top": "// todos links",
   "header.cta.linktree.aria": "// spaghetti linktree links",
-  "header.cta.linktree.bottom": "LinkTree_v2_FINAL"
+  "header.cta.linktree.bottom": "LinkTree_v2_FINAL",
+  "header.cta.veille.top": "// ma veille",
+  "header.cta.veille.bottom": "Veille_FINAL_v3"
 }

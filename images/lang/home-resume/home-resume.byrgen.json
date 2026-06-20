@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "Qualitas et officium",
   "header.cta.linktree.top": "Omnes nexus",
   "header.cta.linktree.aria": "Linktree — omnes nexus mei",
-  "header.cta.linktree.bottom": "Nexus arcanus"
+  "header.cta.linktree.bottom": "Nexus arcanus",
+  "header.cta.veille.top": "Inspicere",
+  "header.cta.veille.bottom": "Vigilia Arcana"
 }
