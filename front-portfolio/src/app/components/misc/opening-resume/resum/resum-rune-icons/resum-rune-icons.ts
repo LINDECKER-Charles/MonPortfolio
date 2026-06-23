@@ -24,38 +24,18 @@ export class ResumRuneIcons extends ResumEntryAnimation {
   protected override animationStagger = 0.05;
 
   onHoverEnter(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const rune = event.currentTarget as HTMLElement | null;
-    if (!rune) return;
-
-    animateRuneHoverIn(rune);
+    this.animateOnEvent(event, animateRuneHoverIn);
   }
 
   onHoverLeave(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const rune = event.currentTarget as HTMLElement | null;
-    if (!rune) return;
-
-    animateRuneHoverOut(rune);
+    this.animateOnEvent(event, animateRuneHoverOut);
   }
 
   onPress(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const rune = event.currentTarget as HTMLElement | null;
-    if (!rune) return;
-
-    animateRunePress(rune);
+    this.animateOnEvent(event, animateRunePress);
   }
 
   onRelease(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const rune = event.currentTarget as HTMLElement | null;
-    if (!rune) return;
-
-    animateRuneRelease(rune);
+    this.animateOnEvent(event, animateRuneRelease);
   }
 }

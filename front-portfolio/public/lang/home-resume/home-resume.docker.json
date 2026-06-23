@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "LABEL quality=\"high\"",
   "header.cta.linktree.top": "links: all",
   "header.cta.linktree.aria": "service: linktree | links: all",
-  "header.cta.linktree.bottom": "linktree:latest"
+  "header.cta.linktree.bottom": "linktree:latest",
+  "header.cta.veille.top": "watch: enabled",
+  "header.cta.veille.bottom": "veille:latest"
 }

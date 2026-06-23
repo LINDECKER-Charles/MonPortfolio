@@ -9,6 +9,7 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { prefersReducedMotion } from '../utils/motion';
 
 /**
  * Tilt 3D subtil suivant le curseur — effet "objet précieux encadré".
@@ -52,8 +53,7 @@ export class TiltDirective implements AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
 
     const supportsFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    this.enabled = supportsFinePointer && !reducedMotion;
+    this.enabled = supportsFinePointer && !prefersReducedMotion();
 
     if (!this.enabled) return;
 

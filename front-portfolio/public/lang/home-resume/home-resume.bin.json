@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "0x5155414C 0x52455350",
   "header.cta.linktree.top": "01001100 01001001 01001110 01001011",
   "header.cta.linktree.aria": "0x4C494E4B54524545 PTR_ALL",
-  "header.cta.linktree.bottom": "0x4C494E4B5452"
+  "header.cta.linktree.bottom": "0x4C494E4B5452",
+  "header.cta.veille.top": "01010110 01000101 01001001 01001100",
+  "header.cta.veille.bottom": "veille.bin"
 }

@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { AfterViewInit, Directive, ElementRef, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
 import gsap from 'gsap';
 import { NavigationContextService } from '../../../../services/navigation-context.service';
+import { prefersReducedMotion } from '../../../../utils/motion';
 
 @Directive()
 export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
@@ -25,10 +26,7 @@ export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
     // Rendu initial (SSR déjà peint) ou reduced-motion : ne pas re-masquer le
     // contenu — flash visuel + candidat LCP repoussé à l'hydratation. L'entrée
     // staggerée ne joue que sur les navigations client.
-    if (
-      !this.navigationContext.hasNavigated() ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
+    if (!this.navigationContext.hasNavigated() || prefersReducedMotion()) {
       this.isEntryAnimationComplete = true;
       return;
     }
@@ -65,5 +63,16 @@ export abstract class ResumEntryAnimation implements AfterViewInit, OnDestroy {
     this.isEntryAnimationComplete = true;
     this.tween?.kill();
     this.ctx?.revert();
+  }
+
+  /**
+   * Garde commune aux interactions hover/press des sous-composants : ne joue
+   * l'animation que côté navigateur et une fois l'entrée terminée, sur la cible
+   * courante de l'événement.
+   */
+  protected animateOnEvent(event: Event, animate: (element: HTMLElement) => void): void {
+    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
+    const element = event.currentTarget as HTMLElement | null;
+    if (element) animate(element);
   }
 }

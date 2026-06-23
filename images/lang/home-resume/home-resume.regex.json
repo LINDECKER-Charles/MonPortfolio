@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "/(?:qual|resp)(?:ity|ibilit)/i",
   "header.cta.linktree.top": "/links?/gi",
   "header.cta.linktree.aria": "Linktree -> /links?/gi",
-  "header.cta.linktree.bottom": "/linktree/i"
+  "header.cta.linktree.bottom": "/linktree/i",
+  "header.cta.veille.top": "/veille|watch/i",
+  "header.cta.veille.bottom": "/veille/i"
 }

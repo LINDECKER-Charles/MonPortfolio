@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "DB 'quality'",
   "header.cta.linktree.top": "MOV LINKS, ALL",
   "header.cta.linktree.aria": "CALL linktree_ptr ; all links",
-  "header.cta.linktree.bottom": "linktree.bss"
+  "header.cta.linktree.bottom": "linktree.bss",
+  "header.cta.veille.top": "MOV WATCH, ON",
+  "header.cta.veille.bottom": "veille.sys"
 }

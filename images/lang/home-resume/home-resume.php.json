@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "// tests? we ship on prod",
   "header.cta.linktree.top": "get_all_links()",
   "header.cta.linktree.aria": "// Linktree: get_all_links()",
-  "header.cta.linktree.bottom": "$linktree"
+  "header.cta.linktree.bottom": "$linktree",
+  "header.cta.veille.top": "include('veille.php'); // scrapes 200 RSS feeds on every page load. no cache.",
+  "header.cta.veille.bottom": "$tech_watch"
 }

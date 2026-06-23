@@ -27,5 +27,7 @@
   "snippets.quality.icon_alt": "Qualität und Verantwortung",
   "header.cta.linktree.top": "Alle meine Links",
   "header.cta.linktree.aria": "Linktree — alle meine Links",
-  "header.cta.linktree.bottom": "Linktree"
+  "header.cta.linktree.bottom": "Linktree",
+  "header.cta.veille.top": "Ansehen",
+  "header.cta.veille.bottom": "Mein Tech-Radar"
 }

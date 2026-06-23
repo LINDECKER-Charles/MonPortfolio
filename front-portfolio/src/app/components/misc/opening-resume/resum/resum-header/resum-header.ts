@@ -27,56 +27,26 @@ export class ResumHeader extends ResumEntryAnimation {
   protected override animationDelay = 0.05;
 
   onRowHoverEnter(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const row = event.currentTarget as HTMLElement | null;
-    if (!row) return;
-
-    animateResumRowHoverIn(row);
+    this.animateOnEvent(event, animateResumRowHoverIn);
   }
 
   onRowHoverLeave(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const row = event.currentTarget as HTMLElement | null;
-    if (!row) return;
-
-    animateResumRowHoverOut(row);
+    this.animateOnEvent(event, animateResumRowHoverOut);
   }
 
   onTitleHoverEnter(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const link = event.currentTarget as HTMLElement | null;
-    if (!link) return;
-
-    animateResumTitleHoverIn(link);
+    this.animateOnEvent(event, animateResumTitleHoverIn);
   }
 
   onTitleHoverLeave(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const link = event.currentTarget as HTMLElement | null;
-    if (!link) return;
-
-    animateResumTitleHoverOut(link);
+    this.animateOnEvent(event, animateResumTitleHoverOut);
   }
 
   onTitlePress(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const link = event.currentTarget as HTMLElement | null;
-    if (!link) return;
-
-    animateResumTitlePress(link);
+    this.animateOnEvent(event, animateResumTitlePress);
   }
 
   onTitleRelease(event: Event): void {
-    if (!this.isBrowser || !this.isEntryAnimationComplete) return;
-
-    const link = event.currentTarget as HTMLElement | null;
-    if (!link) return;
-
-    animateResumTitleRelease(link);
+    this.animateOnEvent(event, animateResumTitleRelease);
   }
 }
