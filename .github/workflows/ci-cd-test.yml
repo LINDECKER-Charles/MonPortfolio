@@ -92,17 +92,8 @@ jobs:
           path: ${{ env.FRONT_DIR }}/playwright-report
           if-no-files-found: ignore
 
-      - name: Run Lighthouse CI
-        working-directory: ${{ env.FRONT_DIR }}
-        run: npm run lighthouse
-
-      - name: Upload Lighthouse reports
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: lighthouse-reports
-          path: ${{ env.FRONT_DIR }}/.lighthouseci
-          if-no-files-found: ignore
+      # Lighthouse CI retiré de la pipeline (trop long) : exécution manuelle
+      # en local via `npm run lighthouse`.
 
       - name: Upload Angular dist artifact
         uses: actions/upload-artifact@v6
