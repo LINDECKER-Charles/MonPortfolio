@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import {
   Component,
   DOCUMENT,
@@ -24,7 +24,7 @@ import { lockBodyScroll } from '../../../../utils/scroll-lock';
 
 @Component({
   selector: 'app-projects-modal',
-  imports: [CommonModule, ResponsivePicture, ImageLightbox, FocusTrapDirective],
+  imports: [ResponsivePicture, ImageLightbox, FocusTrapDirective],
   templateUrl: './projects-modal.html',
   styleUrl: './projects-modal.css',
 })

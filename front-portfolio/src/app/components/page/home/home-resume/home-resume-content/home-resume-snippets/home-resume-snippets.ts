@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -23,7 +23,7 @@ interface HomeResumeSnippet {
 
 @Component({
   selector: 'app-home-resume-snippets',
-  imports: [CommonModule, ResponsivePicture],
+  imports: [ResponsivePicture],
   templateUrl: './home-resume-snippets.html',
   styleUrl: './home-resume-snippets.css',
 })

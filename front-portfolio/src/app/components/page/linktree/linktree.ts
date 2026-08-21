@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { shouldSkipEntrance } from '../../../utils/motion';
 import {
   AfterViewInit,
@@ -20,7 +20,7 @@ import { LINKTREE_SECTIONS, LinktreeLink, LinktreeSection } from './linktree.sta
 @Component({
   selector: 'app-linktree',
   standalone: true,
-  imports: [CommonModule, ResponsivePicture],
+  imports: [ResponsivePicture],
   templateUrl: './linktree.html',
   styleUrl: './linktree.css',
 })
