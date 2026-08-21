@@ -130,7 +130,7 @@ describe('Projects', () => {
   });
 
   describe('openProject / closeProject', () => {
-    it('ouvre un projet, bloque le scroll body et remet l\'index à zéro', async () => {
+    it("ouvre un projet, bloque le scroll body et remet l'index à zéro", async () => {
       api(component).currentImageIndex = 5;
       api(component).openProject(PROJECTS_DATA[0]);
       expect(api(component).selectedProject).toBe(PROJECTS_DATA[0]);
@@ -189,7 +189,7 @@ describe('Projects', () => {
   });
 
   describe('onConstellationOpen', () => {
-    it('ouvre le projet correspondant à l\'id', () => {
+    it("ouvre le projet correspondant à l'id", () => {
       const target = PROJECTS_DATA[1];
       api(component).onConstellationOpen({ id: target.id });
       expect(api(component).selectedProject?.id).toBe(target.id);

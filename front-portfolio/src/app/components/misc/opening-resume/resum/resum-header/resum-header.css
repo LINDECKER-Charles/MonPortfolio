@@ -1,4 +1,6 @@
-:host { display: contents; }
+:host {
+  display: contents;
+}
 
 .title {
   margin: 0 0 1rem;
@@ -64,8 +66,13 @@
 }
 
 @media (max-width: 768px) {
-  .title { font-size: 1.55rem; }
-  .row { min-height: 40px; font-size: 0.95rem; }
+  .title {
+    font-size: 1.55rem;
+  }
+  .row {
+    min-height: 40px;
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -75,7 +82,11 @@
     margin-bottom: 0.75rem;
   }
 
-  .row { gap: 0.6rem; min-height: 38px; font-size: 0.88rem; }
+  .row {
+    gap: 0.6rem;
+    min-height: 38px;
+    font-size: 0.88rem;
+  }
 
   .label {
     gap: 0.45rem;
@@ -85,27 +96,54 @@
 
   .label app-responsive-picture,
   .label picture,
-  .label img { width: 18px; height: 18px; }
+  .label img {
+    width: 18px;
+    height: 18px;
+  }
 
-  .value { font-size: 0.85rem; }
+  .value {
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 360px) {
-  .title { font-size: 1.15rem; }
-  .row { gap: 0.45rem; min-height: 36px; font-size: 0.8rem; }
+  .title {
+    font-size: 1.15rem;
+  }
+  .row {
+    gap: 0.45rem;
+    min-height: 36px;
+    font-size: 0.8rem;
+  }
 
-  .label { gap: 0.4rem; font-size: 0.82rem; }
+  .label {
+    gap: 0.4rem;
+    font-size: 0.82rem;
+  }
 
   .label app-responsive-picture,
   .label picture,
-  .label img { width: 16px; height: 16px; }
+  .label img {
+    width: 16px;
+    height: 16px;
+  }
 
-  .value { font-size: 0.78rem; }
+  .value {
+    font-size: 0.78rem;
+  }
 }
 
 @media (max-width: 320px) {
-  .title { font-size: 1.05rem; }
-  .row { font-size: 0.76rem; }
-  .label { font-size: 0.78rem; }
-  .value { font-size: 0.72rem; }
+  .title {
+    font-size: 1.05rem;
+  }
+  .row {
+    font-size: 0.76rem;
+  }
+  .label {
+    font-size: 0.78rem;
+  }
+  .value {
+    font-size: 0.72rem;
+  }
 }

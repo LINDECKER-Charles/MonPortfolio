@@ -41,7 +41,7 @@ export class WorksTimeline {
   protected readonly counts = timelineCounts();
 
   protected readonly rows = computed<TimelineRow[]>(() =>
-    buildTimeline(this.order(), this.scope())
+    buildTimeline(this.order(), this.scope()),
   );
 
   protected setOrder(order: TimelineOrder): void {
@@ -107,9 +107,7 @@ export class WorksTimeline {
 
   /** `remote` est un slug ⇒ même clé que workMode ; sinon adresse littérale. */
   protected locationLabel(exp: Experience): string {
-    return exp.location === 'remote'
-      ? this.ts.translate('works.workMode.remote')
-      : exp.location;
+    return exp.location === 'remote' ? this.ts.translate('works.workMode.remote') : exp.location;
   }
 
   protected xpPeriod(exp: Experience): string {
@@ -117,7 +115,7 @@ export class WorksTimeline {
       exp.start,
       exp.end,
       this.ts.lang(),
-      this.ts.translate('works.experiences.current')
+      this.ts.translate('works.experiences.current'),
     );
   }
 

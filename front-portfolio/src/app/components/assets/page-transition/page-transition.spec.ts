@@ -24,10 +24,7 @@ describe('PageTransition', () => {
     setSpy = spyOn(gsap, 'set').and.stub();
 
     await TestBed.configureTestingModule({
-      providers: [
-        provideZonelessChangeDetection(),
-        { provide: Router, useValue: { events } },
-      ],
+      providers: [provideZonelessChangeDetection(), { provide: Router, useValue: { events } }],
       imports: [PageTransition],
     }).compileComponents();
 

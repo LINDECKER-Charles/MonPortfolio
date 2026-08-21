@@ -14,9 +14,7 @@ export class MetaService {
   }
 
   updateCanonical(url: string) {
-    let link = this.document.querySelector<HTMLLinkElement>(
-      "link[rel='canonical']"
-    );
+    let link = this.document.querySelector<HTMLLinkElement>("link[rel='canonical']");
 
     if (!link) {
       link = this.document.createElement('link');

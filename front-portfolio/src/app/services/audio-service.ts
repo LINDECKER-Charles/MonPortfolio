@@ -18,7 +18,7 @@ interface PlayingInstance {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AudioService {
   private readonly STORAGE_VOLUME_KEY = 'audio.masterVolume';
@@ -75,7 +75,7 @@ export class AudioService {
     audio.volume = this.computeVolume(config.volume);
     audio.muted = this._muted();
 
-    audio.play().catch(err => {
+    audio.play().catch((err) => {
       console.warn(`[AudioService] Impossible de lire "${key}"`, err);
     });
 
@@ -104,7 +104,7 @@ export class AudioService {
     audio.addEventListener('ended', cleanup);
     this.playingInstances.set(id, { id, key, audio });
 
-    audio.play().catch(err => {
+    audio.play().catch((err) => {
       console.warn(`[AudioService] Impossible de lire "${key}"`, err);
       cleanup();
     });
@@ -133,7 +133,7 @@ export class AudioService {
     const audio = this.persistentPlayers.get(key);
     if (!audio) return;
 
-    audio.play().catch(err => {
+    audio.play().catch((err) => {
       console.warn(`[AudioService] Impossible de reprendre "${key}"`, err);
     });
 

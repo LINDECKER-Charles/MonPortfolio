@@ -42,7 +42,7 @@ export const LIS_PARTENAIRES_IMAGE = buildProjectImage(
     { width: 1024, height: 1084 },
     { width: 1280, height: 1355 },
     { width: 1536, height: 1626 },
-  ]
+  ],
 );
 
 export const LIS_SERVICE_IMAGE = buildProjectImage('LIS-Web', 'service', 'LIS Web service', [

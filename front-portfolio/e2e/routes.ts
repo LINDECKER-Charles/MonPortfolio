@@ -30,9 +30,9 @@ const EXCLUDED_ROUTES = new Set(
   (process.env['E2E_EXCLUDE_ROUTES'] ?? '')
     .split(',')
     .map((path) => path.trim())
-    .filter(Boolean)
+    .filter(Boolean),
 );
 
 export const PUBLIC_ROUTES: PublicRoute[] = ALL_ROUTES.filter(
-  (route) => !EXCLUDED_ROUTES.has(route.path)
+  (route) => !EXCLUDED_ROUTES.has(route.path),
 );

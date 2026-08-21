@@ -34,10 +34,30 @@ export class HomeProjects {
   };
 
   protected readonly stackIcons: CtaIconSet[] = [
-    { alt: '.NET', sources: SHARED_IMAGES.stack.dotnet.sources, fallback: SHARED_IMAGES.stack.dotnet.fallbackSrc },
-    { alt: 'Angular', sources: SHARED_IMAGES.stack.angular.sources, fallback: SHARED_IMAGES.stack.angular.fallbackSrc },
-    { alt: 'Symfony', sources: SHARED_IMAGES.stack.symfony.sources, fallback: SHARED_IMAGES.stack.symfony.fallbackSrc },
-    { alt: 'PostgreSQL', sources: SHARED_IMAGES.stack.postgre.sources, fallback: SHARED_IMAGES.stack.postgre.fallbackSrc },
-    { alt: 'Python', sources: SHARED_IMAGES.stack.python.sources, fallback: SHARED_IMAGES.stack.python.fallbackSrc },
+    {
+      alt: '.NET',
+      sources: SHARED_IMAGES.stack.dotnet.sources,
+      fallback: SHARED_IMAGES.stack.dotnet.fallbackSrc,
+    },
+    {
+      alt: 'Angular',
+      sources: SHARED_IMAGES.stack.angular.sources,
+      fallback: SHARED_IMAGES.stack.angular.fallbackSrc,
+    },
+    {
+      alt: 'Symfony',
+      sources: SHARED_IMAGES.stack.symfony.sources,
+      fallback: SHARED_IMAGES.stack.symfony.fallbackSrc,
+    },
+    {
+      alt: 'PostgreSQL',
+      sources: SHARED_IMAGES.stack.postgre.sources,
+      fallback: SHARED_IMAGES.stack.postgre.fallbackSrc,
+    },
+    {
+      alt: 'Python',
+      sources: SHARED_IMAGES.stack.python.sources,
+      fallback: SHARED_IMAGES.stack.python.fallbackSrc,
+    },
   ];
 }

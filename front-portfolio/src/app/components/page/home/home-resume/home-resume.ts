@@ -60,10 +60,8 @@ export class HomeResume {
     HOME_RESUME_PHOTO_CAROUSEL.map((set, i) => ({
       sources: set.sources,
       fallbackSrc: set.fallbackSrc,
-      alt: this.ts
-        .translate('photo-carousel.slide_alt')
-        .replace('{index}', String(i + 1)),
-    }))
+      alt: this.ts.translate('photo-carousel.slide_alt').replace('{index}', String(i + 1)),
+    })),
   );
 
   protected readonly luciditySources = HOME_RESUME_LUCIDITY_SOURCES;
@@ -72,9 +70,7 @@ export class HomeResume {
   protected readonly levelSources = HOME_RESUME_LEVEL_SOURCES;
   protected readonly levelFallback = HOME_RESUME_LEVEL_FALLBACK;
 
-  protected readonly bannerLabel = computed(() =>
-    this.ts.translate('home-resume.banner.label')
-  );
+  protected readonly bannerLabel = computed(() => this.ts.translate('home-resume.banner.label'));
 
   protected readonly snippets = HOME_RESUME_SNIPPETS.map((snippet) => ({ ...snippet }));
 }

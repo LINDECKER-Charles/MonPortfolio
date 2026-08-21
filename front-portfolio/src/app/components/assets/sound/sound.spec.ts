@@ -10,9 +10,8 @@ describe('Sound', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection()],
-      imports: [Sound]
-    })
-    .compileComponents();
+      imports: [Sound],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Sound);
     component = fixture.componentInstance;

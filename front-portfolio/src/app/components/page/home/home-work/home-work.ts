@@ -34,9 +34,25 @@ export class HomeWork {
   };
 
   protected readonly railIcons: WorkIconSet[] = [
-    { alt: 'Symfony', sources: SHARED_IMAGES.stack.symfony.sources, fallback: SHARED_IMAGES.stack.symfony.fallbackSrc },
-    { alt: 'PostgreSQL', sources: SHARED_IMAGES.stack.postgre.sources, fallback: SHARED_IMAGES.stack.postgre.fallbackSrc },
-    { alt: 'Python', sources: SHARED_IMAGES.stack.python.sources, fallback: SHARED_IMAGES.stack.python.fallbackSrc },
-    { alt: 'GitHub', sources: SHARED_IMAGES.stack.github.sources, fallback: SHARED_IMAGES.stack.github.fallbackSrc },
+    {
+      alt: 'Symfony',
+      sources: SHARED_IMAGES.stack.symfony.sources,
+      fallback: SHARED_IMAGES.stack.symfony.fallbackSrc,
+    },
+    {
+      alt: 'PostgreSQL',
+      sources: SHARED_IMAGES.stack.postgre.sources,
+      fallback: SHARED_IMAGES.stack.postgre.fallbackSrc,
+    },
+    {
+      alt: 'Python',
+      sources: SHARED_IMAGES.stack.python.sources,
+      fallback: SHARED_IMAGES.stack.python.fallbackSrc,
+    },
+    {
+      alt: 'GitHub',
+      sources: SHARED_IMAGES.stack.github.sources,
+      fallback: SHARED_IMAGES.stack.github.fallbackSrc,
+    },
   ];
 }

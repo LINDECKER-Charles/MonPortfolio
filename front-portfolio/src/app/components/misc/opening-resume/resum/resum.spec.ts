@@ -10,9 +10,8 @@ describe('Resum', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection()],
-      imports: [Resum]
-    })
-    .compileComponents();
+      imports: [Resum],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Resum);
     component = fixture.componentInstance;

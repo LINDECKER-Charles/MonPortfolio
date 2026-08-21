@@ -101,9 +101,7 @@ describe('app routes', () => {
   it('hides the footer only on the opening sequences', () => {
     routes.forEach((route) => {
       const expectFooter = route.path !== 'opening-resume' && route.path !== 'opening-home';
-      expect(route.data!['showFooter'])
-        .withContext(`route "${route.path}"`)
-        .toBe(expectFooter);
+      expect(route.data!['showFooter']).withContext(`route "${route.path}"`).toBe(expectFooter);
     });
   });
 

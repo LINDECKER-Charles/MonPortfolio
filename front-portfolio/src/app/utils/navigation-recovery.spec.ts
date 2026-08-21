@@ -13,7 +13,9 @@ function navigationError(url: string, error: unknown): NavigationError {
 describe('isStaleChunkError', () => {
   it('matches the dynamic-import failure messages of the three engines', () => {
     for (const message of [CHROMIUM_MESSAGE, FIREFOX_MESSAGE, SAFARI_MESSAGE]) {
-      expect(isStaleChunkError(new TypeError(message))).withContext(message).toBeTrue();
+      expect(isStaleChunkError(new TypeError(message)))
+        .withContext(message)
+        .toBeTrue();
     }
   });
 

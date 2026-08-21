@@ -68,7 +68,7 @@ export function buildConstellationLabels(ts: TranslationService): ConstellationL
 
 export function toConstellationItems(
   projects: readonly ProjectItem[],
-  ts: TranslationService
+  ts: TranslationService,
 ): ConstellationItem[] {
   const lang = ts.lang();
   const today = ts.translate('projects.today');

@@ -14,7 +14,9 @@
 }
 
 .photo-carousel:focus-visible {
-  box-shadow: var(--shadow-gilded), 0 0 0 2px rgb(var(--color-gold-rgb) / 0.45);
+  box-shadow:
+    var(--shadow-gilded),
+    0 0 0 2px rgb(var(--color-gold-rgb) / 0.45);
 }
 
 .photo-carousel--bare {
@@ -151,8 +153,12 @@
 }
 
 @keyframes photo-carousel-progress {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -288,8 +294,12 @@
     font-size: 1.35rem;
   }
 
-  .photo-carousel__nav--prev { left: 0.5rem; }
-  .photo-carousel__nav--next { right: 0.5rem; }
+  .photo-carousel__nav--prev {
+    left: 0.5rem;
+  }
+  .photo-carousel__nav--next {
+    right: 0.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

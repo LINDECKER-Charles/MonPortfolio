@@ -24,7 +24,7 @@ describe('formatProjectPeriod', () => {
     const result = formatProjectPeriod(
       projectWith({ dateStart: new Date('2026-03-01'), isEnd: false }),
       'fr',
-      TODAY
+      TODAY,
     );
     expect(result).toContain(`- ${TODAY}`);
   });
@@ -33,7 +33,7 @@ describe('formatProjectPeriod', () => {
     const result = formatProjectPeriod(
       projectWith({ dateStart: new Date('2026-03-01'), isEnd: true }),
       'fr',
-      TODAY
+      TODAY,
     );
     expect(result).toContain(`- ${TODAY}`);
   });
@@ -46,7 +46,7 @@ describe('formatProjectPeriod', () => {
         isEnd: true,
       }),
       'fr',
-      TODAY
+      TODAY,
     );
     expect(result).not.toContain(TODAY);
     expect(result).toMatch(/.+ - .+/);
@@ -56,7 +56,7 @@ describe('formatProjectPeriod', () => {
     const result = formatProjectPeriod(
       projectWith({ dateStart: new Date('2025-01-15'), isEnd: false }),
       'fr',
-      TODAY
+      TODAY,
     );
     // janv. en français
     expect(result.toLowerCase()).toContain('janv');
@@ -66,7 +66,7 @@ describe('formatProjectPeriod', () => {
     const result = formatProjectPeriod(
       projectWith({ dateStart: new Date('2025-01-15'), isEnd: false }),
       'zh',
-      TODAY
+      TODAY,
     );
     expect(result).toContain(`- ${TODAY}`);
   });
@@ -75,7 +75,7 @@ describe('formatProjectPeriod', () => {
     const result = formatProjectPeriod(
       projectWith({ dateStart: new Date('2025-01-15'), isEnd: false }),
       'ar',
-      TODAY
+      TODAY,
     );
     expect(typeof result).toBe('string');
   });
@@ -84,12 +84,12 @@ describe('formatProjectPeriod', () => {
     const unknown = formatProjectPeriod(
       projectWith({ dateStart: new Date('2025-01-15'), isEnd: false }),
       'xx',
-      TODAY
+      TODAY,
     );
     const en = formatProjectPeriod(
       projectWith({ dateStart: new Date('2025-01-15'), isEnd: false }),
       'en',
-      TODAY
+      TODAY,
     );
     expect(unknown).toBe(en);
   });

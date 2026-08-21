@@ -16,7 +16,7 @@ export const GLOSSAIRE_QUEST_HOME_IMAGE = buildProjectImage(
     { width: 1024, height: 1095 },
     { width: 1280, height: 1369 },
     { width: 1536, height: 1642 },
-  ]
+  ],
 );
 
 export const GLOSSAIRE_QUEST_CREATE_QUIZZ_IMAGE = buildProjectImage(
@@ -33,7 +33,7 @@ export const GLOSSAIRE_QUEST_CREATE_QUIZZ_IMAGE = buildProjectImage(
     { width: 768, height: 623 },
     { width: 1024, height: 831 },
     { width: 1280, height: 1039 },
-  ]
+  ],
 );
 
 export const GLOSSAIRE_QUEST_PROFIL_IMAGE = buildProjectImage(
@@ -49,7 +49,7 @@ export const GLOSSAIRE_QUEST_PROFIL_IMAGE = buildProjectImage(
     { width: 640, height: 903 },
     { width: 768, height: 1084 },
     { width: 1024, height: 1445 },
-  ]
+  ],
 );
 
 export const GLOSSAIRE_QUEST_IMAGES: ProjectMediaImage[] = [

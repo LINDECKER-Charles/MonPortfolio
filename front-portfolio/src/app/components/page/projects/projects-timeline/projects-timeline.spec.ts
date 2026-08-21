@@ -28,7 +28,7 @@ describe('ProjectsTimeline', () => {
     expect(component).toBeTruthy();
   });
 
-  it('trackByProjectId renvoie l\'id du projet', () => {
+  it("trackByProjectId renvoie l'id du projet", () => {
     expect(api(component).trackByProjectId(0, PROJECTS_DATA[0])).toBe(PROJECTS_DATA[0].id);
   });
 

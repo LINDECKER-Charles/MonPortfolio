@@ -35,23 +35,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Omnicard est un projet personnel ambitieux centré sur la création d’un jeu de cartes stratégique complet, avec un moteur métier dédié, une logique de règles complexe et une architecture pensée pour durer. Le projet me permet de travailler la modélisation métier, la gestion des effets, la synchronisation temps réel, ainsi que l’articulation entre un back-end structuré et une interface moderne. C’est un terrain d’expérimentation très riche, à la croisée du game design, de l’architecture logicielle et du développement full stack.',
     category: 'personal',
     status: 'in_progress',
-    stack: [
-      'C#',
-      '.NET',
-      'Angular',
-      'SignalR',
-      'PostgreSQL',
-      'TypeScript',
-      'XUnit'
-    ],
-    tags: [
-      'Architecture',
-      'Jeu',
-      'Temps réel',
-      'DDD',
-      'Moteur métier',
-      'Full Stack',
-    ],
+    stack: ['C#', '.NET', 'Angular', 'SignalR', 'PostgreSQL', 'TypeScript', 'XUnit'],
+    tags: ['Architecture', 'Jeu', 'Temps réel', 'DDD', 'Moteur métier', 'Full Stack'],
     links: {
       demo: 'https://test.omnicard.fr',
     },
@@ -84,14 +69,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: 'open_source',
     status: 'in_progress',
     stack: ['GitHub', 'Localisation', 'Workflow'],
-    tags: [
-      'Open Source',
-      'Traduction',
-      'Lead',
-      'Coordination',
-      'Qualité',
-      'Communauté',
-    ],
+    tags: ['Open Source', 'Traduction', 'Lead', 'Coordination', 'Qualité', 'Communauté'],
     links: {
       github: 'https://github.com/LINDECKER-Charles/PVZF-Translation-fr',
     },
@@ -123,24 +101,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'FusionDocs est une plateforme communautaire complète dédiée au modding de Plants vs. Zombies Fusion. Elle articule trois piliers : apprendre via un curriculum de tutoriels versionné et structuré en blocs de contenu (markdown, code, vidéo, galeries, comparaisons avant/après) avec suivi de progression par utilisateur ; échanger sur un forum modéré multilingue avec catégories, tags, réactions et réponses acceptées ; se connecter grâce aux profils, amis, messagerie privée et notifications temps réel via SignalR. Le back-end .NET 10 suit une clean architecture avec une hiérarchie de rôles stricte, une authentification JWT en cookies HTTP-only et un back-office d’administration complet (modération, audit, analytics, dons Stripe). Le front Angular 20 est servi en SSR zoneless avec un traitement SEO multilingue de bout en bout.',
     category: 'personal',
     status: 'in_progress',
-    stack: [
-      'Angular',
-      'ASP.NET Core',
-      '.NET 10',
-      'C#',
-      'PostgreSQL',
-      'SignalR',
-      'TypeScript',
-    ],
-    tags: [
-      'Full Stack',
-      'Communauté',
-      'Tutoriels',
-      'Forum',
-      'Temps réel',
-      'i18n',
-      'SEO',
-    ],
+    stack: ['Angular', 'ASP.NET Core', '.NET 10', 'C#', 'PostgreSQL', 'SignalR', 'TypeScript'],
+    tags: ['Full Stack', 'Communauté', 'Tutoriels', 'Forum', 'Temps réel', 'i18n', 'SEO'],
     links: {
       github: 'https://github.com/LINDECKER-Charles/PVZ-Modding-Tutorial-Web',
       website: 'https://modding.pvzf-almanac.com',
@@ -173,22 +135,8 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'Ce portfolio a été conçu comme bien plus qu’un simple site vitrine : il s’agit d’une démonstration technique complète de mon approche du développement front-end moderne. L’objectif était de créer une expérience immersive et hautement qualitative, capable de refléter mon niveau technique, ma sensibilité produit ainsi que mon attention au détail. L’ensemble de l’interface repose sur une architecture Angular moderne avec SSR, animations avancées, composants responsives réutilisables et optimisation poussée des performances.',
     category: 'personal',
     status: 'in_progress',
-    stack: [
-      'Angular',
-      'TypeScript',
-      'GSAP',
-      'SSR',
-      'CSS',
-      'Zoneless'
-    ],
-    tags: [
-      'Frontend',
-      'Animation',
-      'UX',
-      'Architecture UI',
-      'Branding',
-      'Performance',
-    ],
+    stack: ['Angular', 'TypeScript', 'GSAP', 'SSR', 'CSS', 'Zoneless'],
+    tags: ['Frontend', 'Animation', 'UX', 'Architecture UI', 'Branding', 'Performance'],
     links: {
       github: 'https://github.com/LINDECKER-Charles/MonPortfolio',
       website: 'https://charles-lindecker.com',
@@ -218,20 +166,13 @@ export const PROJECTS_DATA: ProjectItem[] = [
       dateEnd: new Date('2025-11-01'),
       isEnd: true,
     },
-    shortDescription:
-      'Projet professionnel orienté présence web, vitrine et prestation réelle.',
+    shortDescription: 'Projet professionnel orienté présence web, vitrine et prestation réelle.',
     longDescription:
       'LIS Web représente un projet professionnel concret, pensé comme une solution web réelle et exploitable. Ce type de projet me permet de confronter les exigences techniques à des attentes de communication, de lisibilité, de clarté de contenu et de crédibilité de présence en ligne. Au-delà du développement pur, il s’agit aussi de produire une interface cohérente avec une identité et des besoins métier précis.',
     category: 'client',
     status: 'done',
     stack: ['Web', 'Front-end', 'Back-end'],
-    tags: [
-      'Professionnel',
-      'Vitrine',
-      'Client',
-      'Présence web',
-      'Communication',
-    ],
+    tags: ['Professionnel', 'Vitrine', 'Client', 'Présence web', 'Communication'],
     links: {
       website: 'https://lis-web.com',
     },
@@ -264,13 +205,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: 'client',
     status: 'done',
     stack: ['Web', 'Front-end', 'Branding'],
-    tags: [
-      'Société',
-      'Vitrine',
-      'Branding',
-      'Communication',
-      'Professionnel',
-    ],
+    tags: ['Société', 'Vitrine', 'Branding', 'Communication', 'Professionnel'],
     links: {
       website: 'https://dev-mates.com',
     },
@@ -343,14 +278,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: 'open_source',
     status: 'in_progress',
     stack: ['Console', 'Python', 'GitHub'],
-    tags: [
-      'Open Source',
-      'Outil',
-      'Console',
-      'Automatisation',
-      'Traduction',
-      'Qualité',
-    ],
+    tags: ['Open Source', 'Outil', 'Console', 'Automatisation', 'Traduction', 'Qualité'],
     links: {
       github: 'https://github.com/LINDECKER-Charles/PVZ-Fuzion-ConsolManager',
     },
@@ -459,14 +387,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: 'personal',
     status: 'done',
     stack: ['HTML', 'Tailwind', 'CSS', 'JavaScript'],
-    tags: [
-      'Troll',
-      'Expérimentation',
-      'Front-end',
-      'UI',
-      'Humour',
-      'Concept',
-    ],
+    tags: ['Troll', 'Expérimentation', 'Front-end', 'UI', 'Humour', 'Concept'],
     links: {
       github: 'https://github.com/LINDECKER-Charles/ShrekSophone',
       website: 'https://shrek.charles-lindecker.com',
@@ -493,8 +414,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       dateEnd: new Date('2025-11-30'),
       isEnd: true,
     },
-    shortDescription:
-      'Application web de quiz pédagogiques avec Angular et ASP.NET Core.',
+    shortDescription: 'Application web de quiz pédagogiques avec Angular et ASP.NET Core.',
     longDescription:
       'GlossaireQuest est une application web moderne développée avec Angular côté front-end et ASP.NET Core côté back-end. Elle permet aux utilisateurs de participer à des quiz interactifs sur différents thèmes pédagogiques, tout en proposant des statistiques, un suivi des résultats et une gestion d’administration pour la création de contenus. Le projet met en avant une architecture claire, une authentification sécurisée et une interface responsive pensée pour l’usage réel.',
     category: 'personal',
@@ -509,17 +429,10 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'PostgreSQL',
       'JWT',
     ],
-    tags: [
-      'Quiz',
-      'Pédagogie',
-      'Authentification',
-      'Statistiques',
-      'Responsive',
-      'API REST',
-    ],
+    tags: ['Quiz', 'Pédagogie', 'Authentification', 'Statistiques', 'Responsive', 'API REST'],
     links: {
       github: 'https://github.com/LINDECKER-Charles/GlossaireQuest',
-      website: 'https://glossaire.bloodsouls-mail.com/home'
+      website: 'https://glossaire.bloodsouls-mail.com/home',
     },
     highlights: [
       'Authentification sécurisée via JWT',
@@ -550,15 +463,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'League of Data Base est une application web conçue pour centraliser, stocker et afficher les données de League of Legends via une interface claire, responsive et rapide. Le projet répond à un besoin concret : accéder facilement aux informations du jeu, dans la langue et la version souhaitées, sans dépendre d’outils dispersés ou incomplets. L’application a été pensée comme une base extensible, capable de gérer champions, objets, runes et autres ressources tout en restant maintenable dans le temps.',
     category: 'personal',
     status: 'done',
-    stack: [
-      'Symfony 7',
-      'PHP 8.3',
-      'Twig',
-      'Tailwind CSS',
-      'Riot API',
-      'JavaScript',
-      'Linux',
-    ],
+    stack: ['Symfony 7', 'PHP 8.3', 'Twig', 'Tailwind CSS', 'Riot API', 'JavaScript', 'Linux'],
     tags: [
       'API',
       'Architecture',
@@ -595,8 +500,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       dateEnd: new Date('2025-09-31'),
       isEnd: true,
     },
-    shortDescription:
-      'Plateforme web de gestion et de partage de collections d’add-ons Blender.',
+    shortDescription: 'Plateforme web de gestion et de partage de collections d’add-ons Blender.',
     longDescription:
       'Blender Collection est une application web pensée pour centraliser, organiser et partager des add-ons Blender. L’objectif est de permettre aux utilisateurs de créer leurs propres collections, de les rendre publiques ou privées, puis de télécharger leurs extensions en un seul fichier. Le projet met l’accent sur la gestion communautaire, les rôles, la supervision administrative et une expérience fluide malgré la manipulation de fichiers potentiellement volumineux.',
     category: 'personal',

@@ -59,8 +59,7 @@ export const routes: Routes = [
       canonical: SITE_URL,
       robots: 'noindex, nofollow',
       ogTitle: 'Animation d ouverture - Charles Lindecker',
-      ogDescription:
-        "Sequence d'ouverture du portfolio avant redirection vers la page d'accueil.",
+      ogDescription: "Sequence d'ouverture du portfolio avant redirection vers la page d'accueil.",
       structuredData: [webPage("Animation d'ouverture", `${SITE_URL}/opening-home`)],
       showFooter: false,
     }),
@@ -75,8 +74,7 @@ export const routes: Routes = [
         'Decouvrez le parcours, les competences et les experiences de Charles Lindecker, developpeur web specialise en back-end et architectures modernes.',
       canonical: `${SITE_URL}/resume`,
       ogTitle: 'CV - Charles Lindecker',
-      ogDescription:
-        'Competences en .NET, Angular, Symfony, PostgreSQL et architecture back-end.',
+      ogDescription: 'Competences en .NET, Angular, Symfony, PostgreSQL et architecture back-end.',
       ogType: 'profile',
       twitterDescription: 'Parcours, competences et stack technique.',
       structuredData: [
@@ -158,8 +156,7 @@ export const routes: Routes = [
       // Repasser en 'index, follow' une fois la timeline parcours remplie.
       robots: 'noindex, nofollow',
       ogTitle: 'Parcours - Charles Lindecker',
-      ogDescription:
-        'Section parcours professionnel actuellement en cours de construction.',
+      ogDescription: 'Section parcours professionnel actuellement en cours de construction.',
       structuredData: [
         personSchema,
         webPage('Parcours - Charles Lindecker', `${SITE_URL}/works`, { about: personRef }),
@@ -197,7 +194,7 @@ export const routes: Routes = [
     path: 'mentions-legales',
     loadComponent: () =>
       import('./components/page/legal/mentions-legales/mentions-legales').then(
-        (m) => m.MentionsLegales
+        (m) => m.MentionsLegales,
       ),
     title: 'Mentions legales - Charles Lindecker',
     data: buildRouteMeta({
@@ -225,7 +222,7 @@ export const routes: Routes = [
     path: 'politique-confidentialite',
     loadComponent: () =>
       import('./components/page/legal/politique-confidentialite/politique-confidentialite').then(
-        (m) => m.PolitiqueConfidentialite
+        (m) => m.PolitiqueConfidentialite,
       ),
     title: 'Politique de confidentialite - Charles Lindecker',
     data: buildRouteMeta({
@@ -242,7 +239,7 @@ export const routes: Routes = [
         webPage(
           'Politique de confidentialite - Charles Lindecker',
           `${SITE_URL}/politique-confidentialite`,
-          { about: personRef }
+          { about: personRef },
         ),
         breadcrumb([
           { name: 'Accueil', url: SITE_URL },
@@ -255,7 +252,7 @@ export const routes: Routes = [
     path: 'politique-cookies',
     loadComponent: () =>
       import('./components/page/legal/politique-cookies/politique-cookies').then(
-        (m) => m.PolitiqueCookies
+        (m) => m.PolitiqueCookies,
       ),
     title: 'Politique de cookies - Charles Lindecker',
     data: buildRouteMeta({

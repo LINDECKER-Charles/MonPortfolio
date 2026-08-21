@@ -23,7 +23,7 @@ class FakeIntersectionObserver {
   fire(target: Element): void {
     this.cb(
       [{ isIntersecting: true, target } as unknown as IntersectionObserverEntry],
-      this as unknown as IntersectionObserver
+      this as unknown as IntersectionObserver,
     );
   }
 }
@@ -34,10 +34,7 @@ describe('Linktree', () => {
   function configure(platform: 'browser' | 'server' = 'browser') {
     return TestBed.configureTestingModule({
       imports: [Linktree],
-      providers: [
-        provideZonelessChangeDetection(),
-        { provide: PLATFORM_ID, useValue: platform },
-      ],
+      providers: [provideZonelessChangeDetection(), { provide: PLATFORM_ID, useValue: platform }],
     }).compileComponents();
   }
 

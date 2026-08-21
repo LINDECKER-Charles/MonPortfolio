@@ -19,14 +19,11 @@ import {
   moveToIntroReady,
   OpeningState,
 } from './opening.state';
-import {
-  OpeningAnimationRefs,
-  OpeningAnimationService,
-} from './opening-animation.service';
-import {AudioService} from '../../../../services/audio-service';
-import {ResponsivePicture} from '../../../assets/responsive-picture/responsive-picture';
-import {OPENING_FALLBACK_SRC, OPENING_SOURCES} from '../../../../img-sources/opening.sources';
-import {TranslationService} from '../../../../services/translation.service';
+import { OpeningAnimationRefs, OpeningAnimationService } from './opening-animation.service';
+import { AudioService } from '../../../../services/audio-service';
+import { ResponsivePicture } from '../../../assets/responsive-picture/responsive-picture';
+import { OPENING_FALLBACK_SRC, OPENING_SOURCES } from '../../../../img-sources/opening.sources';
+import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'app-opening',

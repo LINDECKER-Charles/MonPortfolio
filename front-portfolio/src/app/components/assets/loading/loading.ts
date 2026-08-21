@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TranslationService } from '../../../services/translation.service';
 
-
 @Component({
   selector: 'app-loading',
   imports: [],
@@ -10,5 +9,5 @@ import { TranslationService } from '../../../services/translation.service';
 })
 export class Loading {
   protected readonly ts = inject(TranslationService);
-  public isLoading: boolean = false;
+  public isLoading = false;
 }

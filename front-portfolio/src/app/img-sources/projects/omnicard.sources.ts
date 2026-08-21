@@ -15,7 +15,7 @@ export const OMNICARD_ADMIN_VIEW_IMAGE = buildProjectImage(
     { width: 768, height: 902 },
     { width: 1024, height: 1203 },
     { width: 1280, height: 1504 },
-  ]
+  ],
 );
 
 export const OMNICARD_COLLECTION_IMAGE = buildProjectImage(
@@ -33,7 +33,7 @@ export const OMNICARD_COLLECTION_IMAGE = buildProjectImage(
     { width: 1024, height: 960 },
     { width: 1280, height: 1200 },
     { width: 1536, height: 1440 },
-  ]
+  ],
 );
 
 export const OMNICARD_DECK_BUILDING_IMAGE = buildProjectImage(
@@ -51,7 +51,7 @@ export const OMNICARD_DECK_BUILDING_IMAGE = buildProjectImage(
     { width: 1024, height: 963 },
     { width: 1280, height: 1204 },
     { width: 1536, height: 1444 },
-  ]
+  ],
 );
 
 export const OMNICARD_FRIENDS_SYSTEM_IMAGE = buildProjectImage(
@@ -69,7 +69,7 @@ export const OMNICARD_FRIENDS_SYSTEM_IMAGE = buildProjectImage(
     { width: 1024, height: 567 },
     { width: 1280, height: 708 },
     { width: 1536, height: 850 },
-  ]
+  ],
 );
 
 export const OMNICARD_HOME_PAGE_IMAGE = buildProjectImage(
@@ -87,7 +87,7 @@ export const OMNICARD_HOME_PAGE_IMAGE = buildProjectImage(
     { width: 1024, height: 878 },
     { width: 1280, height: 1098 },
     { width: 1536, height: 1318 },
-  ]
+  ],
 );
 
 export const OMNICARD_PACKET_OPENING_1_IMAGE = buildProjectImage(
@@ -104,7 +104,7 @@ export const OMNICARD_PACKET_OPENING_1_IMAGE = buildProjectImage(
     { width: 768, height: 548 },
     { width: 1024, height: 730 },
     { width: 1280, height: 913 },
-  ]
+  ],
 );
 
 export const OMNICARD_PACKET_OPENING_2_IMAGE = buildProjectImage(
@@ -122,7 +122,7 @@ export const OMNICARD_PACKET_OPENING_2_IMAGE = buildProjectImage(
     { width: 1024, height: 845 },
     { width: 1280, height: 1056 },
     { width: 1536, height: 1268 },
-  ]
+  ],
 );
 
 export const OMNICARD_PROFILE_IMAGE = buildProjectImage('Omnicard', 'profil', 'Omnicard profile', [

@@ -23,17 +23,18 @@ describe('NavBarre', () => {
   });
 
   // typed access to protected members for testing
-  const api = () => component as unknown as {
-    soundPopoverOpen: () => boolean;
-    volumePercent: () => number;
-    navItems: () => Array<{ key: string; label: string }>;
-    currentLang: () => { code: string };
-    toggleSoundPopover: () => void;
-    toggleMute: () => void;
-    onVolumeInput: (e: Event) => void;
-    onDocumentClick: (e: MouseEvent) => void;
-    onEscape: () => void;
-  };
+  const api = () =>
+    component as unknown as {
+      soundPopoverOpen: () => boolean;
+      volumePercent: () => number;
+      navItems: () => { key: string; label: string }[];
+      currentLang: () => { code: string };
+      toggleSoundPopover: () => void;
+      toggleMute: () => void;
+      onVolumeInput: (e: Event) => void;
+      onDocumentClick: (e: MouseEvent) => void;
+      onEscape: () => void;
+    };
 
   it('should create', () => {
     expect(component).toBeTruthy();

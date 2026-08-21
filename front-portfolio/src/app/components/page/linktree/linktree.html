@@ -11,32 +11,49 @@
           sizes="(max-width: 640px) 108px, 148px"
           [alt]="ts.translate('linktree.intro.photo_alt')"
           loading="eager"
-          decoding="async">
+          decoding="async"
+        >
         </app-responsive-picture>
       </span>
     </div>
 
-    <span class="linktree__eyebrow text-rune emerge-ritual">{{ ts.translate('linktree.intro.eyebrow') }}</span>
+    <span class="linktree__eyebrow text-rune emerge-ritual">{{
+      ts.translate('linktree.intro.eyebrow')
+    }}</span>
     <h1 class="linktree__title emerge-ritual">{{ ts.translate('linktree.intro.title') }}</h1>
     <p class="linktree__role text-tag emerge-ritual">{{ ts.translate('linktree.intro.role') }}</p>
 
-    <p class="linktree__intro-text emerge-ritual">{{ ts.translate('linktree.intro.description') }}</p>
+    <p class="linktree__intro-text emerge-ritual">
+      {{ ts.translate('linktree.intro.description') }}
+    </p>
   </header>
 
   <div class="linktree-chapters" #sectionsRef>
     @for (section of sections; track trackSection($index, section)) {
       <section class="linktree-chapter" [id]="section.id">
         <header class="linktree-chapter__label">
-          <span class="linktree-chapter__rule linktree-chapter__rule--left" aria-hidden="true"></span>
+          <span
+            class="linktree-chapter__rule linktree-chapter__rule--left"
+            aria-hidden="true"
+          ></span>
           <span class="linktree-chapter__numeral">{{ section.numeral }}</span>
           <span class="linktree-chapter__mark" aria-hidden="true">❖</span>
-          <span class="linktree-chapter__heading">{{ ts.translate('linktree.section.' + section.id + '.eyebrow') }}</span>
-          <span class="linktree-chapter__rule linktree-chapter__rule--right" aria-hidden="true"></span>
+          <span class="linktree-chapter__heading">{{
+            ts.translate('linktree.section.' + section.id + '.eyebrow')
+          }}</span>
+          <span
+            class="linktree-chapter__rule linktree-chapter__rule--right"
+            aria-hidden="true"
+          ></span>
         </header>
 
         <div class="linktree-chapter__intro">
-          <h2 class="linktree-chapter__title">{{ ts.translate('linktree.section.' + section.id + '.title') }}</h2>
-          <p class="linktree-chapter__description">{{ ts.translate('linktree.section.' + section.id + '.description') }}</p>
+          <h2 class="linktree-chapter__title">
+            {{ ts.translate('linktree.section.' + section.id + '.title') }}
+          </h2>
+          <p class="linktree-chapter__description">
+            {{ ts.translate('linktree.section.' + section.id + '.description') }}
+          </p>
         </div>
 
         <ul class="linktree-chapter__list" role="list">
@@ -48,7 +65,8 @@
                 [attr.target]="link.external ? '_blank' : null"
                 [attr.rel]="link.external ? 'noreferrer noopener' : null"
                 [attr.download]="link.download ? '' : null"
-                [attr.aria-label]="ts.translate('linktree.action.open_aria') + ' — ' + link.label">
+                [attr.aria-label]="ts.translate('linktree.action.open_aria') + ' — ' + link.label"
+              >
                 <span class="linktree-row__icon">
                   @switch (link.icon.kind) {
                     @case ('picture') {
@@ -58,38 +76,59 @@
                           [fallbackSrc]="link.icon.fallback"
                           [alt]="link.label"
                           loading="lazy"
-                          decoding="async">
+                          decoding="async"
+                        >
                         </app-responsive-picture>
                       }
                     }
                     @case ('svg') {
                       @switch (link.icon.svg) {
                         @case ('discord') {
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M7.5 7.5a14 14 0 015-1.1 14 14 0 015 1.1"/>
-                            <path d="M5 9c-.8 2.5-.8 5.5 0 8 .8 1.5 3 2.6 5 3l.8-2"/>
-                            <path d="M19 9c.8 2.5.8 5.5 0 8-.8 1.5-3 2.6-5 3l-.8-2"/>
-                            <circle cx="9.2" cy="13" r="1.1"/>
-                            <circle cx="14.8" cy="13" r="1.1"/>
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M7.5 7.5a14 14 0 015-1.1 14 14 0 015 1.1" />
+                            <path d="M5 9c-.8 2.5-.8 5.5 0 8 .8 1.5 3 2.6 5 3l.8-2" />
+                            <path d="M19 9c.8 2.5.8 5.5 0 8-.8 1.5-3 2.6-5 3l-.8-2" />
+                            <circle cx="9.2" cy="13" r="1.1" />
+                            <circle cx="14.8" cy="13" r="1.1" />
                           </svg>
                         }
                         @case ('npm') {
                           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M3 8h18v8h-9v1.5H8V16H3V8zm2 6h2V10h1v4h1v-4h1v4h1V10h-5v4zm7-4v5h2v-1h2v-4h-4zm2 1h.9v2H14v-2zm3 3h2v-3h1v3h1V10h-4v4z"/>
+                            <path
+                              d="M3 8h18v8h-9v1.5H8V16H3V8zm2 6h2V10h1v4h1v-4h1v4h1V10h-5v4zm7-4v5h2v-1h2v-4h-4zm2 1h.9v2H14v-2zm3 3h2v-3h1v3h1V10h-4v4z"
+                            />
                           </svg>
                         }
                         @case ('scroll') {
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/>
-                            <path d="M14 3v5h5"/>
-                            <path d="M12 12v6"/>
-                            <path d="M9 15l3 3 3-3"/>
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" />
+                            <path d="M14 3v5h5" />
+                            <path d="M12 12v6" />
+                            <path d="M9 15l3 3 3-3" />
                           </svg>
                         }
                       }
                     }
                     @case ('emoji') {
-                      <span class="linktree-row__emoji" aria-hidden="true">{{ link.icon.emoji }}</span>
+                      <span class="linktree-row__emoji" aria-hidden="true">{{
+                        link.icon.emoji
+                      }}</span>
                     }
                   }
                 </span>
@@ -100,11 +139,20 @@
                 </span>
 
                 <span class="linktree-row__cta">
-                  <span class="linktree-row__cta-word text-rune">{{ ts.translate('linktree.action.open') }}</span>
+                  <span class="linktree-row__cta-word text-rune">{{
+                    ts.translate('linktree.action.open')
+                  }}</span>
                   <span class="linktree-row__cta-arrow" aria-hidden="true">
-                    <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M4 9h10"/>
-                      <path d="M10 4l5 5-5 5"/>
+                    <svg
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M4 9h10" />
+                      <path d="M10 4l5 5-5 5" />
                     </svg>
                   </span>
                 </span>

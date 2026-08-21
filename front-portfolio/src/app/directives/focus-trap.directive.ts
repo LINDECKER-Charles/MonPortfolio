@@ -4,9 +4,9 @@ import {
   Directive,
   ElementRef,
   HostListener,
-  Inject,
   OnDestroy,
   PLATFORM_ID,
+  inject,
 } from '@angular/core';
 
 /**
@@ -23,6 +23,8 @@ import {
   standalone: true,
 })
 export class FocusTrapDirective implements AfterViewInit, OnDestroy {
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
   private readonly isBrowser: boolean;
   private previousActive: HTMLElement | null = null;
 
@@ -35,10 +37,9 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
     '[tabindex]:not([tabindex="-1"])',
   ].join(', ');
 
-  constructor(
-    private readonly host: ElementRef<HTMLElement>,
-    @Inject(PLATFORM_ID) platformId: object
-  ) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -81,7 +82,7 @@ export class FocusTrapDirective implements AfterViewInit, OnDestroy {
 
   private getFocusables(): HTMLElement[] {
     return Array.from(
-      this.host.nativeElement.querySelectorAll<HTMLElement>(this.FOCUSABLE_SELECTOR)
+      this.host.nativeElement.querySelectorAll<HTMLElement>(this.FOCUSABLE_SELECTOR),
     ).filter((el) => !el.hasAttribute('disabled') && el.offsetParent !== null);
   }
 

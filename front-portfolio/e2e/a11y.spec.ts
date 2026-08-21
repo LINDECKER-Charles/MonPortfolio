@@ -25,15 +25,13 @@ for (const route of PUBLIC_ROUTES) {
       });
     }
 
-    const blocking = results.violations.filter(
-      (v) => v.impact && BLOCKING_IMPACTS.has(v.impact)
-    );
+    const blocking = results.violations.filter((v) => v.impact && BLOCKING_IMPACTS.has(v.impact));
     expect(
       blocking.map((v) => ({
         id: v.id,
         impact: v.impact,
         nodes: v.nodes.map((n) => n.target.join(' ')),
-      }))
+      })),
     ).toEqual([]);
   });
 }

@@ -36,7 +36,7 @@ export class StopAllSound implements AfterViewInit {
         filter: 'blur(0px)',
         duration: 0.7,
         ease: 'power3.out',
-      }
+      },
     );
   }
 

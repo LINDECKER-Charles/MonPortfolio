@@ -14,12 +14,24 @@
 }
 
 /* Stagger de l'entrance rituelle (.emerge-ritual, cf. ornaments.css) */
-.home-work__intro { --emerge-delay: 0s; }
-.home-work__actions { --emerge-delay: 0.08s; }
-.home-work__rail-item:nth-child(1) { --emerge-delay: 0.16s; }
-.home-work__rail-item:nth-child(2) { --emerge-delay: 0.24s; }
-.home-work__rail-item:nth-child(3) { --emerge-delay: 0.32s; }
-.home-work__rail-item:nth-child(4) { --emerge-delay: 0.4s; }
+.home-work__intro {
+  --emerge-delay: 0s;
+}
+.home-work__actions {
+  --emerge-delay: 0.08s;
+}
+.home-work__rail-item:nth-child(1) {
+  --emerge-delay: 0.16s;
+}
+.home-work__rail-item:nth-child(2) {
+  --emerge-delay: 0.24s;
+}
+.home-work__rail-item:nth-child(3) {
+  --emerge-delay: 0.32s;
+}
+.home-work__rail-item:nth-child(4) {
+  --emerge-delay: 0.4s;
+}
 
 .home-work__actions {
   display: flex;
@@ -98,7 +110,9 @@
 }
 
 @media (max-width: 980px) {
-  .home-work { grid-template-columns: 1fr; }
+  .home-work {
+    grid-template-columns: 1fr;
+  }
 
   .home-work__actions {
     order: 2;
@@ -108,7 +122,9 @@
     border-top: var(--border-ash);
   }
 
-  .home-work__intro { order: 1; }
+  .home-work__intro {
+    order: 1;
+  }
 }
 
 @media (max-width: 640px) {
@@ -118,7 +134,9 @@
     gap: 1.2rem;
   }
 
-  .home-work__actions .cta-tome { width: 100%; }
+  .home-work__actions .cta-tome {
+    width: 100%;
+  }
 
   .home-work__rail-item {
     width: 34px;

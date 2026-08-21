@@ -14,7 +14,7 @@ export const PVZF_CONSOLE_MANAGER_IMAGE = buildProjectImage(
     { width: 640, height: 484 },
     { width: 768, height: 581 },
     { width: 1024, height: 775 },
-  ]
+  ],
 );
 
 export const PVZF_CONSOLE_MANAGER_IMAGES: ProjectMediaImage[] = [PVZF_CONSOLE_MANAGER_IMAGE];

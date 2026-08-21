@@ -16,32 +16,35 @@
 }
 
 .projects-timeline::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0.6rem;
   bottom: 0.6rem;
   left: 19px;
   width: 2px;
-  background:
-    linear-gradient(180deg,
-      transparent 0%,
-      rgb(var(--color-blood-rgb) / 0.18) 8%,
-      rgb(var(--color-gold-rgb) / 0.28) 50%,
-      rgb(var(--color-blood-rgb) / 0.18) 92%,
-      transparent 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(var(--color-blood-rgb) / 0.18) 8%,
+    rgb(var(--color-gold-rgb) / 0.28) 50%,
+    rgb(var(--color-blood-rgb) / 0.18) 92%,
+    transparent 100%
+  );
   box-shadow: 0 0 12px rgb(var(--color-blood-rgb) / 0.12);
 }
 
 .projects-timeline::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   left: 18px;
   width: 4px;
-  background: radial-gradient(ellipse at center,
+  background: radial-gradient(
+    ellipse at center,
     rgb(var(--color-blood-rgb) / 0.04) 0%,
-    transparent 70%);
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -73,17 +76,26 @@
 /* Featured : halo plus marqué, légère augmentation de l'échelle */
 .projects-timeline__item--featured .projects-timeline__seal {
   filter: drop-shadow(0 0 14px rgb(var(--color-ember-rgb) / 0.45))
-          drop-shadow(0 0 4px rgb(var(--color-blood-rgb) / 0.3));
+    drop-shadow(0 0 4px rgb(var(--color-blood-rgb) / 0.3));
   animation-duration: 3.5s;
 }
 
 @keyframes sealBreath {
-  0%, 100% { transform: scale(1);    opacity: 0.95; }
-  50%      { transform: scale(1.08); opacity: 1; }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .projects-timeline__seal { animation: none; }
+  .projects-timeline__seal {
+    animation: none;
+  }
 }
 
 /* ── PROJECT CARD ─────────────────────────────────────────────────────────── */
@@ -91,8 +103,14 @@
 .project-card {
   border: var(--border-ash);
   border-radius: var(--radius-panel);
-  background: linear-gradient(180deg, rgb(var(--color-stone-raised-rgb) / 0.18), rgb(var(--color-stone-rgb) / 0.52));
-  box-shadow: 0 16px 36px rgb(0 0 0 / 0.18), inset 0 1px 0 rgb(var(--color-white-rgb) / 0.02);
+  background: linear-gradient(
+    180deg,
+    rgb(var(--color-stone-raised-rgb) / 0.18),
+    rgb(var(--color-stone-rgb) / 0.52)
+  );
+  box-shadow:
+    0 16px 36px rgb(0 0 0 / 0.18),
+    inset 0 1px 0 rgb(var(--color-white-rgb) / 0.02);
   overflow: hidden;
   transition:
     transform var(--duration-slow) ease,
@@ -103,7 +121,9 @@
 .projects-timeline__item:hover .project-card {
   transform: translateY(-2px);
   border-color: rgb(var(--color-blood-rgb) / 0.12);
-  box-shadow: 0 20px 40px rgb(0 0 0 / 0.22), 0 0 0 1px rgb(var(--color-blood-rgb) / 0.04);
+  box-shadow:
+    0 20px 40px rgb(0 0 0 / 0.22),
+    0 0 0 1px rgb(var(--color-blood-rgb) / 0.04);
 }
 
 .project-card__top,
@@ -197,7 +217,7 @@
 }
 
 .project-card__preview::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background:
@@ -216,7 +236,9 @@
 }
 
 .project-card__preview :is(picture, img) {
-  transition: transform var(--duration-slow) ease, filter var(--duration-slow) ease;
+  transition:
+    transform var(--duration-slow) ease,
+    filter var(--duration-slow) ease;
   filter: saturate(0.55) contrast(1.1) brightness(0.82) sepia(0.1);
 }
 
@@ -253,10 +275,26 @@
   opacity: 0.85;
 }
 
-.project-card__preview-corner--tl { top: 6px;    left: 6px;   transform: rotate(0deg); }
-.project-card__preview-corner--tr { top: 6px;    right: 6px;  transform: rotate(90deg); }
-.project-card__preview-corner--br { bottom: 6px; right: 6px;  transform: rotate(180deg); }
-.project-card__preview-corner--bl { bottom: 6px; left: 6px;   transform: rotate(270deg); }
+.project-card__preview-corner--tl {
+  top: 6px;
+  left: 6px;
+  transform: rotate(0deg);
+}
+.project-card__preview-corner--tr {
+  top: 6px;
+  right: 6px;
+  transform: rotate(90deg);
+}
+.project-card__preview-corner--br {
+  bottom: 6px;
+  right: 6px;
+  transform: rotate(180deg);
+}
+.project-card__preview-corner--bl {
+  bottom: 6px;
+  left: 6px;
+  transform: rotate(270deg);
+}
 
 .project-card__preview:hover .project-card__preview-corner {
   opacity: 1;
@@ -271,12 +309,13 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 32% 28%,
-      rgb(230 80 68 / 0.95) 0%,
-      rgb(186 20 20 / 0.95) 35%,
-      rgb(120 8 8 / 0.96) 70%,
-      rgb(60 4 4 / 0.98) 100%);
+  background: radial-gradient(
+    circle at 32% 28%,
+    rgb(230 80 68 / 0.95) 0%,
+    rgb(186 20 20 / 0.95) 35%,
+    rgb(120 8 8 / 0.96) 70%,
+    rgb(60 4 4 / 0.98) 100%
+  );
   box-shadow:
     inset 0 2px 3px rgb(255 160 130 / 0.35),
     inset 0 -3px 5px rgb(0 0 0 / 0.45),
@@ -288,7 +327,7 @@
 }
 
 .project-card__preview-count::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 5px;
   border-radius: 50%;
@@ -377,8 +416,12 @@
     gap: 0.75rem;
   }
 
-  .projects-timeline::before { left: 15px; }
-  .projects-timeline::after  { left: 14px; }
+  .projects-timeline::before {
+    left: 15px;
+  }
+  .projects-timeline::after {
+    left: 14px;
+  }
 
   .projects-timeline__seal {
     width: 32px;
@@ -386,7 +429,9 @@
     top: 0.6rem;
   }
 
-  .project-card { border-radius: 20px; }
+  .project-card {
+    border-radius: 20px;
+  }
 
   .project-card__top,
   .project-card__head,
@@ -402,7 +447,9 @@
     align-items: flex-start;
   }
 
-  .project-card__actions { padding-bottom: 1rem; }
+  .project-card__actions {
+    padding-bottom: 1rem;
+  }
 
   .project-card__preview {
     margin: 0.85rem 1rem 0;
@@ -429,7 +476,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-card { transition: none !important; }
-  .project-card__preview :is(picture, img) { transition: none !important; }
-  .project-card__preview:hover :is(picture, img) { transform: none; }
+  .project-card {
+    transition: none !important;
+  }
+  .project-card__preview :is(picture, img) {
+    transition: none !important;
+  }
+  .project-card__preview:hover :is(picture, img) {
+    transform: none;
+  }
 }

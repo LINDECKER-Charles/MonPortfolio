@@ -5,7 +5,10 @@ import gsap from 'gsap';
 import { NavigationContextService } from '../../../../services/navigation-context.service';
 import { ResumEntryAnimation } from './resum-entry-animation';
 
-@Component({ selector: 'app-entry-host', template: '<span class="anim">a</span><span class="anim">b</span>' })
+@Component({
+  selector: 'app-entry-host',
+  template: '<span class="anim">a</span><span class="anim">b</span>',
+})
 class EntryHost extends ResumEntryAnimation {
   protected readonly animationSelectors = '.anim';
 }
@@ -31,7 +34,7 @@ describe('ResumEntryAnimation', () => {
 
   function build<T extends ResumEntryAnimation>(
     type: any,
-    hasNavigated = true
+    hasNavigated = true,
   ): ComponentFixture<T> {
     TestBed.configureTestingModule({
       providers: [

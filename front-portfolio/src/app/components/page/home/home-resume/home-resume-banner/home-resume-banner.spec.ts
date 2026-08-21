@@ -10,9 +10,8 @@ describe('HomeResumeBanner', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection()],
-      imports: [HomeResumeBanner]
-    })
-    .compileComponents();
+      imports: [HomeResumeBanner],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeResumeBanner);
     component = fixture.componentInstance;

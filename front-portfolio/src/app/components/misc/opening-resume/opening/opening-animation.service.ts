@@ -97,7 +97,7 @@ export class OpeningAnimationService {
         filter: 'blur(0px)',
         duration: 0.9,
         ease: 'power3.out',
-      }
+      },
     )
       .to(
         refs.soundButton,
@@ -108,7 +108,7 @@ export class OpeningAnimationService {
           duration: 0.6,
           ease: 'back.out(1.8)',
         },
-        '-=0.48'
+        '-=0.48',
       )
       .to(
         refs.soundLabel,
@@ -118,7 +118,7 @@ export class OpeningAnimationService {
           duration: 0.45,
           ease: 'power2.out',
         },
-        '-=0.34'
+        '-=0.34',
       )
       .add(() => {
         this.startSoundIdle(refs);
@@ -151,7 +151,7 @@ export class OpeningAnimationService {
         ease: 'power3.inOut',
         overwrite: 'auto',
       },
-      0
+      0,
     );
   }
 
@@ -196,7 +196,7 @@ export class OpeningAnimationService {
         duration: 1.05,
         ease: 'power3.out',
         clearProps: 'filter',
-      }
+      },
     )
       .to(
         refs.openingButton,
@@ -206,7 +206,7 @@ export class OpeningAnimationService {
           duration: 0.8,
           ease: 'power3.out',
         },
-        '-=0.62'
+        '-=0.62',
       )
       .add(() => {
         this.startOpeningIdle(refs);
@@ -294,7 +294,7 @@ export class OpeningAnimationService {
         yoyo: true,
         repeat: 1,
         overwrite: 'auto',
-      }
+      },
     );
   }
 
@@ -327,7 +327,7 @@ export class OpeningAnimationService {
         yoyo: true,
         repeat: 1,
         overwrite: 'auto',
-      }
+      },
     );
   }
 

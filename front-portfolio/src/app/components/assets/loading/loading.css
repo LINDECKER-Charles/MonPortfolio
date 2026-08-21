@@ -36,16 +36,37 @@
   pointer-events: none;
 }
 
-.frame-1 { animation-delay: 0s; }
-.frame-2 { animation-delay: 1.2s; }
-.frame-3 { animation-delay: 2.4s; }
+.frame-1 {
+  animation-delay: 0s;
+}
+.frame-2 {
+  animation-delay: 1.2s;
+}
+.frame-3 {
+  animation-delay: 2.4s;
+}
 
 @keyframes loadingScale {
-  0%   { opacity: 0; transform: scale(0.6); }
-  20%  { opacity: 1; transform: scale(1); }
-  45%  { opacity: 1; transform: scale(1); }
-  70%  { opacity: 0; transform: scale(0); }
-  100% { opacity: 0; transform: scale(0); }
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -55,5 +76,7 @@
     padding: 0;
   }
 
-  .loading-frames { width: 140px; }
+  .loading-frames {
+    width: 140px;
+  }
 }

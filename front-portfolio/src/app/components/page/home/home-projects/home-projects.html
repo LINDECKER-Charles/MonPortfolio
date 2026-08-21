@@ -1,6 +1,8 @@
 <section class="home-projects surface-altar">
   <div class="home-projects__intro emerge-ritual">
-    <span class="home-projects__eyebrow text-rune">{{ ts.translate('home-projects.eyebrow') }}</span>
+    <span class="home-projects__eyebrow text-rune">{{
+      ts.translate('home-projects.eyebrow')
+    }}</span>
 
     <h2 class="text-engraved text-engraved--deep">{{ ts.translate('home-projects.title') }}</h2>
 
@@ -8,13 +10,17 @@
 
     <div class="home-projects__stack" [attr.aria-label]="ts.translate('home-projects.stack.aria')">
       @for (icon of stackIcons; track icon.fallback) {
-        <span class="home-projects__stack-item transition-ritual emerge-ritual" [attr.title]="icon.alt">
+        <span
+          class="home-projects__stack-item transition-ritual emerge-ritual"
+          [attr.title]="icon.alt"
+        >
           <app-responsive-picture
             [sources]="icon.sources"
             [fallbackSrc]="icon.fallback"
             [alt]="icon.alt"
             loading="lazy"
-            decoding="async">
+            decoding="async"
+          >
           </app-responsive-picture>
         </span>
       }
@@ -22,14 +28,19 @@
   </div>
 
   <div class="home-projects__actions emerge-ritual">
-    <a class="cta-tome cta-tome--gilded transition-ritual breath-gold" routerLink="/projects" href="/projects">
+    <a
+      class="cta-tome cta-tome--gilded transition-ritual breath-gold"
+      routerLink="/projects"
+      href="/projects"
+    >
       <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="projectsIcon.sources"
           [fallbackSrc]="projectsIcon.fallback"
           [alt]="ts.translate('home-projects.cta.primary.icon_alt')"
           loading="eager"
-          decoding="async">
+          decoding="async"
+        >
         </app-responsive-picture>
       </span>
 
@@ -43,20 +54,24 @@
       class="cta-tome cta-tome--shadow transition-ritual"
       href="https://github.com/"
       target="_blank"
-      rel="noreferrer noopener">
+      rel="noreferrer noopener"
+    >
       <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="githubIcon.sources"
           [fallbackSrc]="githubIcon.fallback"
           [alt]="githubIcon.alt"
           loading="eager"
-          decoding="async">
+          decoding="async"
+        >
         </app-responsive-picture>
       </span>
 
       <span class="cta-tome__label">
         <span class="cta-tome__top">{{ ts.translate('home-projects.cta.secondary.top') }}</span>
-        <span class="cta-tome__bottom">{{ ts.translate('home-projects.cta.secondary.bottom') }}</span>
+        <span class="cta-tome__bottom">{{
+          ts.translate('home-projects.cta.secondary.bottom')
+        }}</span>
       </span>
     </a>
   </div>

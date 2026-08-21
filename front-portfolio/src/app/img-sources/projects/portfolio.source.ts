@@ -27,7 +27,7 @@ export const PORTFOLIO_OPENING_1_IMAGE = buildProjectImage(
     { width: 768, height: 964 },
     { width: 1024, height: 1285 },
     { width: 1280, height: 1606 },
-  ]
+  ],
 );
 
 export const PORTFOLIO_OPENING_2_IMAGE = buildProjectImage(
@@ -44,7 +44,7 @@ export const PORTFOLIO_OPENING_2_IMAGE = buildProjectImage(
     { width: 768, height: 919 },
     { width: 1024, height: 1225 },
     { width: 1280, height: 1531 },
-  ]
+  ],
 );
 
 export const PORTFOLIO_PROJECT_IMAGE = buildProjectImage(
@@ -61,7 +61,7 @@ export const PORTFOLIO_PROJECT_IMAGE = buildProjectImage(
     { width: 768, height: 923 },
     { width: 1024, height: 1231 },
     { width: 1280, height: 1539 },
-  ]
+  ],
 );
 
 export const PORTFOLIO_RESUME_IMAGE = buildProjectImage(
@@ -79,7 +79,7 @@ export const PORTFOLIO_RESUME_IMAGE = buildProjectImage(
     { width: 1024, height: 708 },
     { width: 1280, height: 884 },
     { width: 1536, height: 1061 },
-  ]
+  ],
 );
 
 export const PORTFOLIO_WORK_IMAGE = buildProjectImage(
@@ -96,7 +96,7 @@ export const PORTFOLIO_WORK_IMAGE = buildProjectImage(
     { width: 768, height: 895 },
     { width: 1024, height: 1193 },
     { width: 1280, height: 1491 },
-  ]
+  ],
 );
 
 export const PORTFOLIO_IMAGES: ProjectMediaImage[] = [

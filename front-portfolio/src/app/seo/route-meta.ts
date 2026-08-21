@@ -45,9 +45,7 @@ export const organizationSchema = {
   },
 };
 
-export const breadcrumb = (
-  items: Array<{ name: string; url: string }>
-): Record<string, unknown> => ({
+export const breadcrumb = (items: { name: string; url: string }[]): Record<string, unknown> => ({
   '@type': 'BreadcrumbList',
   itemListElement: items.map((item, index) => ({
     '@type': 'ListItem',
@@ -61,7 +59,7 @@ export const breadcrumb = (
 export const webPage = (
   name: string,
   url: string,
-  extra?: Record<string, unknown>
+  extra?: Record<string, unknown>,
 ): Record<string, unknown> => ({
   '@type': 'WebPage',
   name,

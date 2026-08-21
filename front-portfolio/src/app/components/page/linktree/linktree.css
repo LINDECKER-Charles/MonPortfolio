@@ -59,13 +59,14 @@
   inset: -16px;
   border-radius: 50%;
   border: 1px solid rgb(var(--color-gold-rgb) / 0.22);
-  background:
-    conic-gradient(from 210deg,
-      rgb(var(--color-gold-rgb) / 0.18),
-      rgb(var(--color-blood-rgb) / 0.1),
-      rgb(var(--color-gold-rgb) / 0.18),
-      rgb(var(--color-moonlight-dim-rgb) / 0.08),
-      rgb(var(--color-gold-rgb) / 0.18));
+  background: conic-gradient(
+    from 210deg,
+    rgb(var(--color-gold-rgb) / 0.18),
+    rgb(var(--color-blood-rgb) / 0.1),
+    rgb(var(--color-gold-rgb) / 0.18),
+    rgb(var(--color-moonlight-dim-rgb) / 0.08),
+    rgb(var(--color-gold-rgb) / 0.18)
+  );
   mask: radial-gradient(circle, transparent 62%, #000 63%, #000 100%);
   -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%, #000 100%);
   animation: linktree-halo 22s linear infinite;
@@ -99,11 +100,21 @@
 }
 
 /* Stagger de l'entrance rituelle du hero (classe .emerge-ritual, cf. ornaments.css) */
-.linktree__portrait { --emerge-delay: 0s; }
-.linktree__eyebrow { --emerge-delay: 0.09s; }
-.linktree__title { --emerge-delay: 0.18s; }
-.linktree__role { --emerge-delay: 0.27s; }
-.linktree__intro-text { --emerge-delay: 0.36s; }
+.linktree__portrait {
+  --emerge-delay: 0s;
+}
+.linktree__eyebrow {
+  --emerge-delay: 0.09s;
+}
+.linktree__title {
+  --emerge-delay: 0.18s;
+}
+.linktree__role {
+  --emerge-delay: 0.27s;
+}
+.linktree__intro-text {
+  --emerge-delay: 0.36s;
+}
 
 .linktree__eyebrow {
   font-size: 0.72rem;
@@ -174,7 +185,13 @@
 
 .linktree-chapter__rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgb(var(--color-gold-rgb) / 0.26), rgb(var(--color-gold-rgb) / 0.26), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--color-gold-rgb) / 0.26),
+    rgb(var(--color-gold-rgb) / 0.26),
+    transparent
+  );
 }
 
 .linktree-chapter__numeral {
@@ -243,7 +260,7 @@
 
 /* Fleuron discret entre les lignes — remplace la règle horizontale */
 .linktree-row + .linktree-row::before {
-  content: "◈";
+  content: '◈';
   position: absolute;
   top: 0;
   left: 50%;
@@ -252,7 +269,9 @@
   font-size: 0.55rem;
   color: rgb(var(--color-gold-rgb) / 0.28);
   pointer-events: none;
-  transition: color 480ms var(--ease-emerge), transform 480ms var(--ease-emerge);
+  transition:
+    color 480ms var(--ease-emerge),
+    transform 480ms var(--ease-emerge);
 }
 
 .linktree-row__link {
@@ -273,15 +292,16 @@
 
 /* Aura latérale qui s'allume à la droite de l'icône sur hover */
 .linktree-row__link::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background:
-    radial-gradient(ellipse at 6% 50%,
-      rgb(var(--color-gold-dim-rgb) / 0.22) 0%,
-      rgb(var(--color-gold-dim-rgb) / 0.08) 32%,
-      transparent 60%);
+  background: radial-gradient(
+    ellipse at 6% 50%,
+    rgb(var(--color-gold-dim-rgb) / 0.22) 0%,
+    rgb(var(--color-gold-dim-rgb) / 0.08) 32%,
+    transparent 60%
+  );
   opacity: 0;
   pointer-events: none;
   transition: opacity 480ms var(--ease-emerge);
@@ -293,7 +313,7 @@
 }
 
 .linktree-row__link:focus-visible::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 4px;
   border-radius: 10px;
@@ -316,15 +336,17 @@
 
 /* Halo de bougie derrière le glyphe — présent mais discret, bloom au hover */
 .linktree-row__icon::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 2px;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 55%,
+  background: radial-gradient(
+    circle at 50% 55%,
     rgb(var(--color-ember-soft-rgb) / 0.14) 0%,
     rgb(var(--color-gold-dim-rgb) / 0.1) 38%,
     rgb(18 20 24 / 0.55) 72%,
-    transparent 100%);
+    transparent 100%
+  );
   opacity: 0.5;
   transform: scale(0.85);
   transition:
@@ -335,7 +357,7 @@
 
 /* Anneau filigrane doré — apparaît au hover, rotation lente */
 .linktree-row__icon::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: -2px;
   border-radius: 50%;
@@ -378,7 +400,9 @@
   font-size: 1.55rem;
   line-height: 1;
   filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.5));
-  transition: filter 420ms var(--ease-emerge), transform 520ms var(--ease-emerge);
+  transition:
+    filter 420ms var(--ease-emerge),
+    transform 520ms var(--ease-emerge);
 }
 
 /* ── Texte ───────────────────────────────────────────────────────────────── */
@@ -397,7 +421,9 @@
   color: var(--color-bone-bright);
   text-transform: uppercase;
   text-shadow: 0 1px 0 rgb(0 0 0 / 0.45);
-  transition: color var(--duration-slow) var(--ease-ritual), letter-spacing 520ms var(--ease-emerge);
+  transition:
+    color var(--duration-slow) var(--ease-ritual),
+    letter-spacing 520ms var(--ease-emerge);
 }
 
 .linktree-row__handle {
@@ -479,7 +505,9 @@
   .linktree-row__link:hover .linktree-row__icon::after {
     opacity: 1;
     border-color: rgb(var(--color-gold-rgb) / 0.55);
-    box-shadow: 0 0 0 1px rgb(255 248 220 / 0.05) inset, 0 0 22px rgb(var(--color-gold-dim-rgb) / 0.32);
+    box-shadow:
+      0 0 0 1px rgb(255 248 220 / 0.05) inset,
+      0 0 22px rgb(var(--color-gold-dim-rgb) / 0.32);
     transform: scale(1) rotate(40deg);
   }
 
@@ -535,7 +563,7 @@
 }
 
 .linktree-outro::before {
-  content: "";
+  content: '';
   width: 120px;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgb(var(--color-gold-rgb) / 0.38), transparent);
@@ -561,12 +589,18 @@
 /* ── Animations ──────────────────────────────────────────────────────────── */
 
 @keyframes linktree-halo {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .linktree__portrait-halo { animation: none; }
+  .linktree__portrait-halo {
+    animation: none;
+  }
   .linktree-row__link,
   .linktree-row__link::before,
   .linktree-row__icon,
@@ -588,9 +622,14 @@
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
-  .linktree__portrait { width: 124px; height: 124px; }
+  .linktree__portrait {
+    width: 124px;
+    height: 124px;
+  }
 
-  .linktree-chapter { gap: 1.25rem; }
+  .linktree-chapter {
+    gap: 1.25rem;
+  }
 
   .linktree-chapter__label {
     grid-template-columns: auto auto auto;
@@ -598,7 +637,9 @@
     gap: 0.5rem;
   }
 
-  .linktree-chapter__rule { display: none; }
+  .linktree-chapter__rule {
+    display: none;
+  }
 
   .linktree-row__link {
     grid-template-columns: auto 1fr auto;
@@ -606,20 +647,40 @@
     padding: 0.95rem 0.4rem;
   }
 
-  .linktree-row__icon { width: 48px; height: 48px; }
+  .linktree-row__icon {
+    width: 48px;
+    height: 48px;
+  }
 
   .linktree-row__icon app-responsive-picture,
   .linktree-row__icon picture,
-  .linktree-row__icon img { width: 28px; height: 28px; }
+  .linktree-row__icon img {
+    width: 28px;
+    height: 28px;
+  }
 
-  .linktree-row__icon svg { width: 24px; height: 24px; }
+  .linktree-row__icon svg {
+    width: 24px;
+    height: 24px;
+  }
 
-  .linktree-row__emoji { font-size: 1.35rem; }
+  .linktree-row__emoji {
+    font-size: 1.35rem;
+  }
 
-  .linktree-row__label { font-size: 0.98rem; }
-  .linktree-row__handle { font-size: 0.82rem; }
+  .linktree-row__label {
+    font-size: 0.98rem;
+  }
+  .linktree-row__handle {
+    font-size: 0.82rem;
+  }
 
-  .linktree-row__cta-word { display: none; }
+  .linktree-row__cta-word {
+    display: none;
+  }
 
-  .linktree-row__underline { left: 10%; right: 10%; }
+  .linktree-row__underline {
+    left: 10%;
+    right: 10%;
+  }
 }

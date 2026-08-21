@@ -21,7 +21,9 @@
     <p class="legal-toc__title text-rune">{{ ts.translate('legal.common.toc_title') }}</p>
     <ol class="legal-toc__list">
       @for (item of tocItems(); track item.fragment) {
-        <li><a [href]="'#' + item.fragment">{{ ts.translate(item.key) }}</a></li>
+        <li>
+          <a [href]="'#' + item.fragment">{{ ts.translate(item.key) }}</a>
+        </li>
       }
     </ol>
 

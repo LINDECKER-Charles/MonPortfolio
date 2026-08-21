@@ -10,9 +10,8 @@ describe('HomeSkillsPassion', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection()],
-      imports: [HomeSkillsPassion]
-    })
-    .compileComponents();
+      imports: [HomeSkillsPassion],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeSkillsPassion);
     component = fixture.componentInstance;

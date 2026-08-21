@@ -140,7 +140,11 @@
   height: 34px;
   border-radius: var(--radius-pill);
   border: var(--border-gilded);
-  background: radial-gradient(circle at center, rgb(var(--color-white-rgb) / 0.06) 0%, rgb(12 10 8 / 0.6) 100%);
+  background: radial-gradient(
+    circle at center,
+    rgb(var(--color-white-rgb) / 0.06) 0%,
+    rgb(12 10 8 / 0.6) 100%
+  );
   display: grid;
   place-items: center;
   padding: 5px;

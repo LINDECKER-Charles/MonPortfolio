@@ -24,10 +24,7 @@ describe('TiltDirective', () => {
   function configure(platform: 'browser' | 'server' = 'browser') {
     TestBed.configureTestingModule({
       imports: [HostComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-        { provide: PLATFORM_ID, useValue: platform },
-      ],
+      providers: [provideZonelessChangeDetection(), { provide: PLATFORM_ID, useValue: platform }],
     });
   }
 
@@ -41,7 +38,7 @@ describe('TiltDirective', () => {
       (query: string) =>
         ({
           matches: query.includes('hover') ? finePointer : reducedMotion,
-        }) as MediaQueryList
+        }) as MediaQueryList,
     );
   }
 

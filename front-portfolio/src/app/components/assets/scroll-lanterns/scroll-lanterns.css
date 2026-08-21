@@ -49,13 +49,16 @@
 
 .scroll-lanterns__lantern.is-lit .scroll-lanterns__flame {
   background: var(--color-ember);
-  box-shadow: 0 0 8px rgb(var(--color-ember-rgb) / 0.75),
-              0 0 2px rgb(255 211 114 / 0.9);
+  box-shadow:
+    0 0 8px rgb(var(--color-ember-rgb) / 0.75),
+    0 0 2px rgb(255 211 114 / 0.9);
   animation: candleFlicker 3.8s ease-in-out infinite;
 }
 
 @media (max-width: 1024px) {
-  .scroll-lanterns { display: none; }
+  .scroll-lanterns {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

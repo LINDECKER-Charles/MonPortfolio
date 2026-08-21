@@ -4,7 +4,9 @@ import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { MetaService } from './services/meta-service';
 
-type FooterAccess = { showFooter: () => boolean };
+interface FooterAccess {
+  showFooter: () => boolean;
+}
 
 @Component({ selector: 'app-stub', template: 'stub' })
 class StubComponent {}

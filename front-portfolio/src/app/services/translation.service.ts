@@ -16,7 +16,7 @@ import { isPlatformBrowser } from '@angular/common';
  * provoque un layout shift global (CLS ~0.30 sur toutes les routes).
  */
 export const SERVER_TRANSLATIONS = new InjectionToken<Record<string, Record<string, string>>>(
-  'SERVER_TRANSLATIONS'
+  'SERVER_TRANSLATIONS',
 );
 
 export interface Language {
@@ -26,31 +26,46 @@ export interface Language {
 }
 
 export const AVAILABLE_LANGUAGES: Language[] = [
-  { code: 'fr', label: 'Français',              flag: '🇫🇷' },
-  { code: 'en', label: 'English',               flag: '🇬🇧' },
-  { code: 'es', label: 'Español',               flag: '🇪🇸' },
-  { code: 'de', label: 'Deutsch',               flag: '🇩🇪' },
-  { code: 'it', label: 'Italiano',              flag: '🇮🇹' },
-  { code: 'pt', label: 'Português',             flag: '🇵🇹' },
-  { code: 'ja', label: '日本語',                 flag: '🇯🇵' },
-  { code: 'zh', label: '中文',                   flag: '🇨🇳' },
-  { code: 'ar', label: 'العربية',                flag: '🇸🇦' },
-  { code: 'ru', label: 'Русский',               flag: '🇷🇺' },
-  { code: 'bin', label: 'Binary',               flag: 'BI' },
-  { code: 'lorem', label: 'Lorem Ipsum',        flag: 'LO' },
-  { code: 'elden', label: 'Elden Script',       flag: 'EL' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷' },
+  { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'es', label: 'Español', flag: '🇪🇸' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+  { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+  { code: 'pt', label: 'Português', flag: '🇵🇹' },
+  { code: 'ja', label: '日本語', flag: '🇯🇵' },
+  { code: 'zh', label: '中文', flag: '🇨🇳' },
+  { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+  { code: 'ru', label: 'Русский', flag: '🇷🇺' },
+  { code: 'bin', label: 'Binary', flag: 'BI' },
+  { code: 'lorem', label: 'Lorem Ipsum', flag: 'LO' },
+  { code: 'elden', label: 'Elden Script', flag: 'EL' },
   { code: 'byrgen', label: 'Byrgenwerth Latin', flag: 'BY' },
-  { code: 'hunter', label: "Hunter's Tongue",   flag: 'HU' },
-  { code: 'asm', label: 'Machine Code',         flag: 'MC' },
-  { code: 'php', label: 'Legacy PHP',           flag: 'PH' },
-  { code: 'docker', label: 'Docker Compose',    flag: 'DK' },
-  { code: 'regex', label: 'Regex',              flag: 'RX' },
-  { code: 'minjs', label: 'Minified JS',        flag: 'MJ' },
-  { code: 'yaml', label: 'YAML sacré',          flag: 'YA' },
-  { code: 'spag', label: 'Spaghetti Code',      flag: 'SP' },
+  { code: 'hunter', label: "Hunter's Tongue", flag: 'HU' },
+  { code: 'asm', label: 'Machine Code', flag: 'MC' },
+  { code: 'php', label: 'Legacy PHP', flag: 'PH' },
+  { code: 'docker', label: 'Docker Compose', flag: 'DK' },
+  { code: 'regex', label: 'Regex', flag: 'RX' },
+  { code: 'minjs', label: 'Minified JS', flag: 'MJ' },
+  { code: 'yaml', label: 'YAML sacré', flag: 'YA' },
+  { code: 'spag', label: 'Spaghetti Code', flag: 'SP' },
 ];
 
-const NAMESPACES = ['nav-barre', 'home-resume', 'home-projects', 'home-work', 'photo-carousel', 'projects', 'works', 'footer', 'construction', 'opening', 'common', 'resum', 'linktree', 'legal'] as const;
+const NAMESPACES = [
+  'nav-barre',
+  'home-resume',
+  'home-projects',
+  'home-work',
+  'photo-carousel',
+  'projects',
+  'works',
+  'footer',
+  'construction',
+  'opening',
+  'common',
+  'resum',
+  'linktree',
+  'legal',
+] as const;
 const DEFAULT_LANG = 'fr';
 
 /**
@@ -58,9 +73,8 @@ const DEFAULT_LANG = 'fr';
  * application/json — non exécutable, donc compatible CSP `script-src 'self'`).
  * Évite au client de re-fetch les 14 namespaces que le serveur a déjà rendus.
  */
-const TRANSLATIONS_STATE_KEY = makeStateKey<Record<string, Record<string, string>>>(
-  'translations-fr'
-);
+const TRANSLATIONS_STATE_KEY =
+  makeStateKey<Record<string, Record<string, string>>>('translations-fr');
 const STORAGE_KEY = 'lang';
 const QUERY_PARAM = 'lang';
 
@@ -120,9 +134,9 @@ export class TranslationService {
     const queryLang = this.getLangFromUrl();
     const stored = localStorage.getItem(STORAGE_KEY);
     const initialLang =
-      (queryLang && AVAILABLE_LANGUAGES.some((l) => l.code === queryLang) ? queryLang : null)
-      ?? (stored && AVAILABLE_LANGUAGES.some((l) => l.code === stored) ? stored : null)
-      ?? DEFAULT_LANG;
+      (queryLang && AVAILABLE_LANGUAGES.some((l) => l.code === queryLang) ? queryLang : null) ??
+      (stored && AVAILABLE_LANGUAGES.some((l) => l.code === stored) ? stored : null) ??
+      DEFAULT_LANG;
 
     await this.loadLang(DEFAULT_LANG);
     if (initialLang !== DEFAULT_LANG) {
@@ -146,12 +160,16 @@ export class TranslationService {
     const dot = key.indexOf('.');
     if (dot === -1) return key;
     const ns = key.substring(0, dot);
-    const k  = key.substring(dot + 1);
+    const k = key.substring(dot + 1);
     return this._merged()[ns]?.[k] ?? key;
   }
 
-  openModal():  void { this._isModalOpen.set(true);  }
-  closeModal(): void { this._isModalOpen.set(false); }
+  openModal(): void {
+    this._isModalOpen.set(true);
+  }
+  closeModal(): void {
+    this._isModalOpen.set(false);
+  }
 
   // ── Privé ──────────────────────────────────────────────────────────────────
 
@@ -173,7 +191,7 @@ export class TranslationService {
         } catch {
           result[ns] = {};
         }
-      })
+      }),
     );
     this.cache.set(lang, result);
   }
@@ -196,11 +214,13 @@ export class TranslationService {
         url.searchParams.set(QUERY_PARAM, code);
       }
       window.history.replaceState(null, '', url.toString());
-    } catch { /* SSR / security guard */ }
+    } catch {
+      /* SSR / security guard */
+    }
   }
 
   private applyMerge(lang: string): void {
-    const fr   = this.cache.get(DEFAULT_LANG) ?? {};
+    const fr = this.cache.get(DEFAULT_LANG) ?? {};
     const curr = lang === DEFAULT_LANG ? fr : (this.cache.get(lang) ?? {});
 
     const merged: Record<string, Record<string, string>> = {};

@@ -28,15 +28,18 @@ class HostComponent {
 
 /** offsetParent vaut null en jsdom/headless invisible : on le force pour le filtre. */
 function makeVisible(fixture: ComponentFixture<HostComponent>): void {
-  fixture.nativeElement
-    .querySelectorAll('button, [appFocusTrap]')
-    .forEach((el: HTMLElement) => {
-      Object.defineProperty(el, 'offsetParent', { value: document.body, configurable: true });
-    });
+  fixture.nativeElement.querySelectorAll('button, [appFocusTrap]').forEach((el: HTMLElement) => {
+    Object.defineProperty(el, 'offsetParent', { value: document.body, configurable: true });
+  });
 }
 
 function dispatchTab(host: HTMLElement, shiftKey: boolean): KeyboardEvent {
-  const event = new KeyboardEvent('keydown', { key: 'Tab', shiftKey, bubbles: true, cancelable: true });
+  const event = new KeyboardEvent('keydown', {
+    key: 'Tab',
+    shiftKey,
+    bubbles: true,
+    cancelable: true,
+  });
   host.dispatchEvent(event);
   return event;
 }
@@ -45,10 +48,7 @@ describe('FocusTrapDirective', () => {
   function configure(platform: 'browser' | 'server' = 'browser') {
     TestBed.configureTestingModule({
       imports: [HostComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-        { provide: PLATFORM_ID, useValue: platform },
-      ],
+      providers: [provideZonelessChangeDetection(), { provide: PLATFORM_ID, useValue: platform }],
     });
   }
 

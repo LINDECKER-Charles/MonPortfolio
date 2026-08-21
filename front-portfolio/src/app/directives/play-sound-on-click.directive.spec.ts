@@ -33,7 +33,10 @@ describe('PlaySoundOnClickDirective', () => {
 
     await TestBed.configureTestingModule({
       imports: [TestHostComponent],
-      providers: [provideZonelessChangeDetection(), { provide: AudioService, useValue: audioService }],
+      providers: [
+        provideZonelessChangeDetection(),
+        { provide: AudioService, useValue: audioService },
+      ],
     }).compileComponents();
   });
 

@@ -1,9 +1,4 @@
-import {
-  CACHE_DEFAULT,
-  CACHE_IMMUTABLE,
-  CACHE_SHORT,
-  cacheControlFor,
-} from './static-cache';
+import { CACHE_DEFAULT, CACHE_IMMUTABLE, CACHE_SHORT, cacheControlFor } from './static-cache';
 
 describe('cacheControlFor', () => {
   it('marks build-hashed files as immutable', () => {

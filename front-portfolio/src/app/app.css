@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -35,34 +36,37 @@ body {
 }
 
 .bg-gradient {
-  background: radial-gradient(circle at 50% 40%,
-              var(--color-stone-raised) 0%,
-              var(--color-stone-elevated) 60%);
+  background: radial-gradient(
+    circle at 50% 40%,
+    var(--color-stone-raised) 0%,
+    var(--color-stone-elevated) 60%
+  );
 }
 
 /* Lune implicite — halo froid en haut à droite, rappelle le moonlight */
 .bg-moon {
-  background:
-    radial-gradient(circle at 88% 12%,
-      rgb(var(--color-moonlight-rgb) / 0.07) 0%,
-      rgb(var(--color-moonlight-dim-rgb) / 0.035) 18%,
-      transparent 42%);
+  background: radial-gradient(
+    circle at 88% 12%,
+    rgb(var(--color-moonlight-rgb) / 0.07) 0%,
+    rgb(var(--color-moonlight-dim-rgb) / 0.035) 18%,
+    transparent 42%
+  );
 }
 
 /* Brume qui dérive — blob radial chaud qui flotte en 40 s */
 .bg-mist {
-  background:
-    radial-gradient(ellipse 60% 40% at 40% 60%,
-      rgb(var(--color-blood-rgb) / 0.06) 0%,
-      rgb(var(--color-gold-dim-rgb) / 0.04) 35%,
-      transparent 70%);
+  background: radial-gradient(
+    ellipse 60% 40% at 40% 60%,
+    rgb(var(--color-blood-rgb) / 0.06) 0%,
+    rgb(var(--color-gold-dim-rgb) / 0.04) 35%,
+    transparent 70%
+  );
   animation: mistDrift 40s ease-in-out infinite;
   will-change: transform, opacity;
 }
 
 .bg-glow {
-  background: radial-gradient(circle at 50% 50%,
-              rgb(226 164 17 / 0.05), transparent 60%);
+  background: radial-gradient(circle at 50% 50%, rgb(226 164 17 / 0.05), transparent 60%);
   animation: glowPulse 6s ease-in-out infinite;
 }
 

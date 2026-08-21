@@ -20,7 +20,7 @@ export function buildProjectImage(
   folder: string,
   name: string,
   alt: string,
-  sizes: ProjectImageSize[]
+  sizes: ProjectImageSize[],
 ): ProjectMediaImage {
   const dir = `/project/${folder}`;
 

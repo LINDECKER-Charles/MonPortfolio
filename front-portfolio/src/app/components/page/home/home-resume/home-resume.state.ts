@@ -16,13 +16,15 @@ export const HOME_RESUME_LUCIDITY_SOURCES: ResponsiveSource[] = SHARED_IMAGES.ic
 export const HOME_RESUME_LUCIDITY_FALLBACK = SHARED_IMAGES.icon.lucidity.fallbackSrc;
 export const HOME_RESUME_LEVEL_SOURCES: ResponsiveSource[] = SHARED_IMAGES.icon.level.sources;
 export const HOME_RESUME_LEVEL_FALLBACK = SHARED_IMAGES.icon.level.fallbackSrc;
-export const HOME_RESUME_ESO_RESIST_SOURCES: ResponsiveSource[] = SHARED_IMAGES.icon.esoResist.sources;
+export const HOME_RESUME_ESO_RESIST_SOURCES: ResponsiveSource[] =
+  SHARED_IMAGES.icon.esoResist.sources;
 export const HOME_RESUME_ESO_RESIST_FALLBACK = SHARED_IMAGES.icon.esoResist.fallbackSrc;
 export const HOME_RESUME_FIRE_SOURCES: ResponsiveSource[] = SHARED_IMAGES.icon.fire.sources;
 export const HOME_RESUME_FIRE_FALLBACK = SHARED_IMAGES.icon.fire.fallbackSrc;
 export const HOME_RESUME_PHYSIQUE_SOURCES: ResponsiveSource[] = SHARED_IMAGES.icon.physique.sources;
 export const HOME_RESUME_PHYSIQUE_FALLBACK = SHARED_IMAGES.icon.physique.fallbackSrc;
-export const HOME_RESUME_POUSSE_RES_SOURCES: ResponsiveSource[] = SHARED_IMAGES.icon.pousseRes.sources;
+export const HOME_RESUME_POUSSE_RES_SOURCES: ResponsiveSource[] =
+  SHARED_IMAGES.icon.pousseRes.sources;
 export const HOME_RESUME_POUSSE_RES_FALLBACK = SHARED_IMAGES.icon.pousseRes.fallbackSrc;
 export const HOME_RESUME_DEX_SOURCES: ResponsiveSource[] = SHARED_IMAGES.icon.dex.sources;
 export const HOME_RESUME_DEX_FALLBACK = SHARED_IMAGES.icon.dex.fallbackSrc;

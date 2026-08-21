@@ -10,9 +10,8 @@ describe('ResponsivePicture', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection()],
-      imports: [ResponsivePicture]
-    })
-    .compileComponents();
+      imports: [ResponsivePicture],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ResponsivePicture);
     component = fixture.componentInstance;

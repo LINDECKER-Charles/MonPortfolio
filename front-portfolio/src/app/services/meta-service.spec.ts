@@ -45,7 +45,7 @@ describe('MetaService', () => {
   });
 
   describe('standard + OG + Twitter meta tags', () => {
-    const cases: Array<{ method: keyof MetaService; selector: string; value: string }> = [
+    const cases: { method: keyof MetaService; selector: string; value: string }[] = [
       { method: 'updateDescription', selector: "meta[name='description']", value: 'desc' },
       { method: 'updateRobots', selector: "meta[name='robots']", value: 'noindex' },
       { method: 'updateOgTitle', selector: "meta[property='og:title']", value: 'OG Title' },
@@ -54,9 +54,17 @@ describe('MetaService', () => {
       { method: 'updateOgImage', selector: "meta[property='og:image']", value: 'https://x/i.png' },
       { method: 'updateOgType', selector: "meta[property='og:type']", value: 'website' },
       { method: 'updateTwitterTitle', selector: "meta[name='twitter:title']", value: 'T Title' },
-      { method: 'updateTwitterDescription', selector: "meta[name='twitter:description']", value: 'T D' },
+      {
+        method: 'updateTwitterDescription',
+        selector: "meta[name='twitter:description']",
+        value: 'T D',
+      },
       { method: 'updateTwitterCard', selector: "meta[name='twitter:card']", value: 'summary' },
-      { method: 'updateTwitterImage', selector: "meta[name='twitter:image']", value: 'https://x/t.png' },
+      {
+        method: 'updateTwitterImage',
+        selector: "meta[name='twitter:image']",
+        value: 'https://x/t.png',
+      },
     ];
 
     for (const { method, selector, value } of cases) {

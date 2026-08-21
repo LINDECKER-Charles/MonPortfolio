@@ -31,11 +31,11 @@ class FakeIO {
   }
 }
 
-type Internals = {
+interface Internals {
   activeIndex(): number;
   hasTargets(): boolean;
   scrollTo(e: MouseEvent, sel: string): void;
-};
+}
 
 /** App zoneless → pas de fakeAsync ; on laisse filer microtask + setTimeout(0). */
 const flushTimers = () => new Promise<void>((r) => setTimeout(r, 5));
