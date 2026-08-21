@@ -274,3 +274,53 @@ Sous-lots **à fichiers disjoints**, exécutables dans cet ordre (du plus mécan
 ### Après ces lots : migration Angular 20 → 22
 
 Prérequis couverts par le plan : Node pinné (I4), cycle d'import cassé (F2/S3), lint réel avec `ng update` intégré (T1), Prettier (diff schematics propre), audit à zéro high (T3), e2e prouvant le SSR (T4), specs contrat images (F10). Option à activer pendant la migration : `verbatimModuleSyntax`.
+
+---
+
+# Rapport d'architecture — état APRÈS (exécution du 2026-08-21/22)
+
+Tous les lots du plan §5 ont été exécutés, plus la migration Angular 22. Vérification finale : build AOT vert, **580/580 specs** (contre 541 avant, 5 specs supprimés avec le code mort), coverage **97.5 % st / 90.5 % br / 98.9 % fn / 99.1 % li** (seuils bloquants 95/80/95/95), **lint 0 erreur** (2 warnings max-lines tolérés §2), Prettier 100 %, **e2e 30/30** (17 avant), image docker dev fonctionnelle.
+
+## Correctifs freeze prod (hors plan, cf. docs/investigations/2026-08-21)
+
+| Correctif | Commit |
+|---|---|
+| Overlay page-transition rabattu sur NavigationError/Cancel/Skipped + failsafe 8 s (RC3) | `fix(front): retablit la navigation apres un deploiement` |
+| `withNavigationErrorHandler` : rechargement anti-boucle sur chunk périmé (RC3) | idem |
+| `/health`, garde d'extension (404 text/plain, plus jamais de HTML pour un asset — RC2), cache différencié, error handler, arrêt gracieux | `fix(front/ssr): durcit le serveur SSR` |
+| Déploiement atomique releases+symlink, health-check, rollback, chunks N-1 conservés (RC2/RC3) | `ci(deploy): deploiement atomique…` |
+| Vérification post-deploy `build-info.json` + marqueur `ssg` sur l'origine publique (RC1) | idem |
+
+## Exécution par lot
+
+| Lot | Contenu appliqué | Écarts vs plan |
+|---|---|---|
+| 0 HYGIÈNE | .gitignore racine réécrit (Node/Angular), scripts front versionnés (audit-i18n, self-host-fonts, debug-lcp), one-shots supprimés, README monorepo réécrit | `config/README.md` reste non versionné (valeurs réelles, repo public) — la mécanique est dans `docs/deploiement.md` |
+| OUTILLAGE | angular-eslint (lint CI réel), Prettier + format:check, seuils karma bloquants, `.nvmrc` 24 + engines, dependabot npm+actions, `npm update` + sharp 0.35 (0 vuln prod), test.ps1 délègue à test-summary.mjs, analytics off | engines `>=22.18 <25` (Node local 22.23), pas d'engine-strict ; 10 vulns dev restantes toutes transitives sous `@lhci/cli` (dernière version, outil local) |
+| CONFIG | `.env.example` racine + `gen-env.mjs` (hooks npm, fail-fast), façade `environments/env.ts`, SITE_URL/IMAGE_SERVER_URL injectés, robots/sitemap **générés** depuis le manifeste, metas mortes d'index.html retirées, preconnect piloté par l'ENV, manifeste unique `site-routes.json` (D1), tests C6 | **C5 (catalogue identité/liens sociaux) NON exécuté** — reporté (6 templates + state, valeur moindre que le reste) ; `google-site-verification` reste en dur dans index.html ; `allowedHosts` build conservés (NG_ALLOWED_HOSTS runtime documenté en complément) |
+| INFRA/CI | Workflows réutilisables ci.yml/deploy-ssr.yml, déploiement atomique + vérification origine publique, Apache : template SSL unique + table par site, logs séparés, X-Robots-Tag test, page maintenance 502/503, vhost :80 minimal ; unit systemd en template ; `images/` purgé (~10 Mo) + README contrat ; e2e serveur (preuve SSG sans JS) + stub images (couverture complète, E2E_EXCLUDE_ROUTES supprimé) | GitHub Environments/vars (I4) non créés — documenté, à faire dans les settings du repo ; `merge-test` conservé tel quel |
+| FRONT | F1 code mort (X1/X2/X3/D4), F2 cycle d'import (S3), F3 catalogue audio typé (D3), F4 contrat RouteMeta (D2), F5 scroll-lock + cascade Escape corrigée (D6) + modal langue (S2), F6 LabeledImageSet + purge triplets CSS (D7/D8), F7 animations resum (D5), F8 Projects en signals (S1), F9 gardes d'entrance (D9), F10 specs contrat images, F11 storage sûr | — |
+| DOCKER DEV | `compose.yaml` (front node:24 + nginx images local), `Dockerfile.dev`, `IMAGE_SERVER_URL` bascule automatiquement en local, `docs/dev-docker.md` — validé (front 200, images 200, hot-reload) | dev uniquement, comme demandé |
+| Angular 22 | 20.3 → 21.2 → 22.1 + TS 6.0, angular-eslint 22, typescript-eslint 8.67, @types/node 24 ; SSG vérifié post-upgrade (marqueur `ssg`, ~160 Ko) | stratégie CD `Eager` figée par la migration officielle — généralisation OnPush = chantier dédié (règle lint off, justifiée) ; migrations optionnelles Karma→Vitest et application-builder non prises |
+
+## Changements de comportement volontaires (à connaître)
+
+1. **`/works` passe en `index, follow`** + entrée sitemap (la timeline est remplie — le commentaire du code le prévoyait) ; pages légales ajoutées au sitemap.
+2. **Escape dans la lightbox ne ferme plus le modal projet** (correction du bug de cascade — c'était l'intention codée dans projects-modal).
+3. **`twitter:image`/`SOCIAL_IMAGE_URL` → `/logo/logo.png`** (l'ancien `/meta/logo1.webp` était un 404) ; og:image d'index.html supprimé (posé par route).
+4. **Cache des JSON i18n : 5 min + SWR** au lieu d'un an (les traductions non-FR suivaient les déploiements avec un an de retard).
+5. Vhost test servi avec `X-Robots-Tag: noindex`.
+
+## Actions restantes côté VPS / repo settings (non automatisables d'ici)
+
+1. **Diagnostic RC1 (5 min, lecture seule)** — la prod servait l'arbre test au 2026-08-21 : dérouler §5 du rapport d'investigation, corriger unit/vhost ou relancer le workflow prod selon la table de décision.
+2. **Migration layout atomique** (une fois par env) : `docs/deploiement.md` — releases/ + shared/.env + unit systemd depuis `config/systemd/`. Jusque-là, les deploys échouent au health-check **sans toucher au site en ligne**.
+3. Optionnel : GitHub Environments test/prod + migration des valeurs non secrètes en `vars`.
+
+## Recommandations suivantes (non exécutées)
+
+- C5 : catalogue `site.config.ts` des liens identité (GitHub/LinkedIn/email) — 6 templates + linktree.state + sameAs.
+- Généralisation `ChangeDetectionStrategy.OnPush` (zoneless + signals désormais partout dans Projects).
+- Chantier i18n des textes en dur restants (`works.data.ts`, `linktree.state.ts`, `PROJECTS_DATA`) — dette actée en juin.
+- Migration Karma → Vitest (builder officiel v22) quand l'écosystème de specs sera prêt.
+- Budgets CSS composants (9 warnings build) si un nettoyage visuel est souhaité.
