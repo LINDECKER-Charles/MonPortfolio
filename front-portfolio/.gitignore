@@ -53,3 +53,8 @@ lh-m.json
 /test-results
 /playwright-report
 /.lighthouseci
+
+# Genere par scripts/gen-env.mjs (depuis le .env racine)
+/src/environments/env.generated.ts
+/public/robots.txt
+/public/sitemap.xml

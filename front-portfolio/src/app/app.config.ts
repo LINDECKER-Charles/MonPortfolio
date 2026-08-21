@@ -10,10 +10,13 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { routes } from './app.routes';
 import { TranslationService } from './services/translation.service';
 import { recoverFromStaleChunk } from './utils/navigation-recovery';
+import { provideImageServerPreconnect } from './seo/preconnect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    // Preconnect vers le serveur d'images — suit IMAGE_SERVER_URL (.env racine).
+    provideImageServerPreconnect(),
     provideZonelessChangeDetection(),
     // Routes chargées à la demande (loadComponent), sans préchargement eager :
     // avec la compression HTTP un chunk de route pèse 5-30 KiB et son fetch est

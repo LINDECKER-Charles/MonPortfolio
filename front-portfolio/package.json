@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "gen:env": "node scripts/gen-env.mjs",
+    "postinstall": "node scripts/gen-env.mjs",
+    "prestart": "node scripts/gen-env.mjs",
+    "prebuild": "node scripts/gen-env.mjs",
+    "pretest": "node scripts/gen-env.mjs",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

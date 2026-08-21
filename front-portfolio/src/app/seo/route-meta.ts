@@ -1,10 +1,13 @@
 import { Data } from '@angular/router';
 
 import { imageServerUrl } from '../img-sources/image-server';
+import { ENV } from '../../environments/env';
 
-export const SITE_URL = 'https://charles-lindecker.com';
+/** Origine canonique — injectée depuis le .env racine (cf. environments/env.ts). */
+export const SITE_URL = ENV.siteUrl;
 export const LOGO_URL = `${SITE_URL}/logo/80x80_logo_white.webp`;
-export const SOCIAL_IMAGE_URL = `${SITE_URL}/meta/logo1.webp`;
+// /logo/logo.png : seul visuel social existant (l'ancien /meta/logo1.webp était un 404).
+export const SOCIAL_IMAGE_URL = `${SITE_URL}/logo/logo.png`;
 
 /** Références JSON-LD partagées vers les entités déclarées une seule fois. */
 export const personRef = { '@id': `${SITE_URL}/#charles-lindecker` };
