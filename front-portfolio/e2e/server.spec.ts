@@ -51,9 +51,7 @@ test.describe('serveur SSR', () => {
     expect(response.headers()['cache-control']).toContain('max-age=300');
   });
 
-  test('robots.txt et sitemap.xml sont servis et cohérents avec l’origine', async ({
-    request,
-  }) => {
+  test('robots.txt et sitemap.xml sont servis et cohérents avec l’origine', async ({ request }) => {
     const robots = await request.get('/robots.txt');
     expect(robots.status()).toBe(200);
     expect(await robots.text()).toContain('Sitemap:');
