@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import gsap from 'gsap';
 
 import { RevealOnScrollDirective } from './reveal-on-scroll';
+import { NavigationContextService } from '../services/navigation-context.service';
 
 /** Fake IntersectionObserver capturant le callback pour le piloter à la main. */
 class FakeIntersectionObserver {
@@ -239,6 +240,17 @@ describe('RevealOnScrollDirective', () => {
 
     expect(gsap.set).not.toHaveBeenCalled();
     expect(FakeIntersectionObserver.last).toBeNull();
+  });
+
+  it('re-hides a visible element after a client navigation (entrance légitime)', () => {
+    configure();
+    TestBed.inject(NavigationContextService).hasNavigated.set(true);
+    const fixture = TestBed.createComponent(HostComponent);
+    fixture.componentInstance.top = '0px';
+    fixture.detectChanges();
+
+    expect(gsap.set).toHaveBeenCalledTimes(1);
+    expect(FakeIntersectionObserver.last).not.toBeNull();
   });
 
   it('does not create an observer on the server platform', () => {

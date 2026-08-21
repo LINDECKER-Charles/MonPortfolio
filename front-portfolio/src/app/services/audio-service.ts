@@ -1,10 +1,12 @@
 import { Injectable, signal, computed, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { clamp01 } from '../utils/math';
+import { safeGet, safeSet } from '../utils/storage';
 
 type AudioKey = string;
 
-interface RegisteredSound {
+/** Configuration d'un son du catalogue (cf. audio/sound-catalog.ts). */
+export interface RegisteredSound {
   src: string;
   volume: number;
   loop: boolean;
@@ -249,7 +251,7 @@ export class AudioService {
   private restorePreferences(): void {
     if (!this.isBrowser) return;
 
-    const storedVolume = localStorage.getItem(this.STORAGE_VOLUME_KEY);
+    const storedVolume = safeGet(this.STORAGE_VOLUME_KEY);
     if (storedVolume !== null) {
       const parsedVolume = Number(storedVolume);
       if (!Number.isNaN(parsedVolume)) {
@@ -257,7 +259,7 @@ export class AudioService {
       }
     }
 
-    const storedMuted = localStorage.getItem(this.STORAGE_MUTED_KEY);
+    const storedMuted = safeGet(this.STORAGE_MUTED_KEY);
     if (storedMuted !== null) {
       this._muted.set(storedMuted === 'true');
     }
@@ -265,11 +267,11 @@ export class AudioService {
 
   private saveVolumePreference(volume: number): void {
     if (!this.isBrowser) return;
-    localStorage.setItem(this.STORAGE_VOLUME_KEY, String(volume));
+    safeSet(this.STORAGE_VOLUME_KEY, String(volume));
   }
 
   private saveMutedPreference(muted: boolean): void {
     if (!this.isBrowser) return;
-    localStorage.setItem(this.STORAGE_MUTED_KEY, String(muted));
+    safeSet(this.STORAGE_MUTED_KEY, String(muted));
   }
 }

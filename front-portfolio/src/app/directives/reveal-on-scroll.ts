@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import gsap from 'gsap';
-import { prefersReducedMotion } from '../utils/motion';
+import { shouldSkipEntrance } from '../utils/motion';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import { NavigationContextService } from '../services/navigation-context.service';
 
@@ -52,17 +52,9 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
 
     const element = this.elementRef.nativeElement;
 
-    // Reduced motion : le contenu reste visible tel quel, sans reveal.
-    if (prefersReducedMotion()) return;
-
-    // Au rendu initial (HTML SSR déjà peint), ne jamais re-masquer un élément
-    // visible dans le viewport : le hide à l'hydratation provoque un flash et
-    // repousse le candidat LCP au chargement des scripts. Après une navigation
-    // client le contenu est neuf — l'entrance reste légitime.
-    if (!this.navigationContext.hasNavigated()) {
-      const rect = element.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) return;
-    }
+    // Politique d'entrance partagée (utils/motion.ts) : reduced-motion, ou
+    // élément SSR déjà visible au rendu initial — ne jamais le re-masquer.
+    if (shouldSkipEntrance(element, this.navigationContext)) return;
 
     const initialProps: gsap.TweenVars = {
       autoAlpha: 0,

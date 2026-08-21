@@ -13,7 +13,7 @@
   <!-- Navigation (z-index: --z-nav via sticky) -->
   @if (showFooter()) {
     <div class="app-layer">
-      <app-nav-barre></app-nav-barre>
+      <app-nav-barre (langModalRequested)="langModalOpen.set(true)"></app-nav-barre>
     </div>
   }
 
@@ -32,7 +32,7 @@
   <app-loading></app-loading>
   <app-page-transition></app-page-transition>
 
-  @if (ts.isLangModalOpen()) {
-    <app-lang-modal (closed)="ts.closeModal()" />
+  @if (langModalOpen()) {
+    <app-lang-modal (closed)="langModalOpen.set(false)" />
   }
 </div>

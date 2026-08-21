@@ -21,10 +21,15 @@ import { Subscription, filter } from 'rxjs';
 import gsap from 'gsap';
 
 import { TRANSITION_EXCLUDED_PREFIXES } from '../../../seo/site-routes';
+import { NavigationContextService } from '../../../services/navigation-context.service';
 
 /**
  * Transitions de page ritualisées — fade-to-black + rune qui apparaît, puis
  * fade-in à l'arrivée sur la nouvelle route. Lié aux events Angular Router.
+ *
+ * Le rendu initial (HTML SSR hydraté) ne joue aucune transition :
+ * `NavigationContextService.hasNavigated()` ne passe à `true` qu'à partir de
+ * la première navigation client.
  *
  * Routes exclues : opening-home / opening-resume (elles ont leurs propres
  * séquences GSAP, pas besoin de double-animation).
@@ -50,10 +55,10 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   @ViewChild('overlay', { static: true }) private overlayRef!: ElementRef<HTMLElement>;
 
   private readonly router = inject(Router);
+  private readonly navigationContext = inject(NavigationContextService);
   private readonly isBrowser: boolean;
 
   private subscription?: Subscription;
-  private firstNavigation = true;
 
   /**
    * Garde-fou : si aucun événement terminal (End/Error/Cancel/Skipped) n'arrive
@@ -107,7 +112,7 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   }
 
   private onNavigationStart(url: string, overlay: HTMLElement, rune: SVGElement): void {
-    if (this.firstNavigation || this.isExcluded(url)) return;
+    if (!this.navigationContext.hasNavigated() || this.isExcluded(url)) return;
 
     this.armFailsafe(overlay, rune);
     gsap.to(overlay, { autoAlpha: 1, duration: 0.22, ease: 'power2.in' });
@@ -123,12 +128,7 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   private onNavigationEnd(url: string, overlay: HTMLElement, rune: SVGElement): void {
     this.disarmFailsafe();
 
-    if (this.firstNavigation) {
-      this.firstNavigation = false;
-      return;
-    }
-
-    if (this.isExcluded(url)) return;
+    if (!this.navigationContext.hasNavigated() || this.isExcluded(url)) return;
 
     /* Le son newLocation est joué par UiSoundService au clic sur le chip
        de nav (feedback immédiat). Ici on ne gère que le visuel pour
@@ -139,7 +139,7 @@ export class PageTransition implements AfterViewInit, OnDestroy {
 
   private onNavigationAborted(overlay: HTMLElement, rune: SVGElement): void {
     this.disarmFailsafe();
-    if (this.firstNavigation) return;
+    if (!this.navigationContext.hasNavigated()) return;
     this.hideOverlay(overlay, rune);
   }
 

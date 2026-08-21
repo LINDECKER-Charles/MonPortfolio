@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
+import { safeGet, safeSet } from '../utils/storage';
+
 /**
  * Baseline FR fournie au rendu serveur (SSR / prerender) : sans elle, le HTML
  * serveur contient les clés brutes et leur remplacement à l'hydratation
@@ -59,19 +61,21 @@ const NAMESPACES = [
   'projects',
   'works',
   'footer',
-  'construction',
   'opening',
   'common',
   'resum',
   'linktree',
   'legal',
 ] as const;
+
+/** Garde-fou de compilation : `SERVER_FR_TRANSLATIONS` doit couvrir chaque namespace. */
+export type Namespace = (typeof NAMESPACES)[number];
 const DEFAULT_LANG = 'fr';
 
 /**
  * Baseline FR sérialisée dans le HTML SSR (script ng-state, type
  * application/json — non exécutable, donc compatible CSP `script-src 'self'`).
- * Évite au client de re-fetch les 14 namespaces que le serveur a déjà rendus.
+ * Évite au client de re-fetch les 13 namespaces que le serveur a déjà rendus.
  */
 const TRANSLATIONS_STATE_KEY =
   makeStateKey<Record<string, Record<string, string>>>('translations-fr');
@@ -99,9 +103,6 @@ export class TranslationService {
   // Merged translations: current lang overrides FR baseline
   private readonly _merged = signal<Record<string, Record<string, string>>>({});
 
-  private readonly _isModalOpen = signal(false);
-  readonly isLangModalOpen = this._isModalOpen.asReadonly();
-
   constructor() {
     // Met à jour l'attribut lang du document en réaction au signal
     effect(() => {
@@ -125,14 +126,14 @@ export class TranslationService {
       return;
     }
 
-    // Baseline FR transférée depuis le SSR : épargne 14 fetchs à l'hydratation.
+    // Baseline FR transférée depuis le SSR : épargne 13 fetchs à l'hydratation.
     const transferred = this.transferState?.get(TRANSLATIONS_STATE_KEY, null);
     if (transferred) {
       this.cache.set(DEFAULT_LANG, transferred);
     }
 
     const queryLang = this.getLangFromUrl();
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = safeGet(STORAGE_KEY);
     const initialLang =
       (queryLang && AVAILABLE_LANGUAGES.some((l) => l.code === queryLang) ? queryLang : null) ??
       (stored && AVAILABLE_LANGUAGES.some((l) => l.code === stored) ? stored : null) ??
@@ -144,13 +145,13 @@ export class TranslationService {
     }
     this._lang.set(initialLang);
     this.applyMerge(initialLang);
-    if (this.isBrowser) localStorage.setItem(STORAGE_KEY, initialLang);
+    if (this.isBrowser) safeSet(STORAGE_KEY, initialLang);
   }
 
   setLang(code: string): void {
     if (!AVAILABLE_LANGUAGES.some((l) => l.code === code)) return;
     if (this.isBrowser) {
-      localStorage.setItem(STORAGE_KEY, code);
+      safeSet(STORAGE_KEY, code);
       this.syncUrlParam(code);
     }
     void this.loadAndApply(code);
@@ -162,13 +163,6 @@ export class TranslationService {
     const ns = key.substring(0, dot);
     const k = key.substring(dot + 1);
     return this._merged()[ns]?.[k] ?? key;
-  }
-
-  openModal(): void {
-    this._isModalOpen.set(true);
-  }
-  closeModal(): void {
-    this._isModalOpen.set(false);
   }
 
   // ── Privé ──────────────────────────────────────────────────────────────────

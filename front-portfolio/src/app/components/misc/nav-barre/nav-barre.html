@@ -142,7 +142,7 @@
       <button
         type="button"
         class="nav-barre__icon-btn nav-barre__icon-btn--lang transition-ritual"
-        (click)="ts.openModal()"
+        (click)="langModalRequested.emit()"
         [attr.aria-label]="
           (currentLang().code | uppercase) + ' — ' + ts.translate('nav-barre.lang')
         "

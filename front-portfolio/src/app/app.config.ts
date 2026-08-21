@@ -1,13 +1,19 @@
 import {
   APP_INITIALIZER,
   ApplicationConfig,
+  inject,
+  provideAppInitializer,
   provideBrowserGlobalErrorListeners,
+  provideEnvironmentInitializer,
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withNavigationErrorHandler } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
 
 import { routes } from './app.routes';
+import { SOUND_CATALOG } from './audio/sound-catalog';
+import { AudioService } from './services/audio-service';
+import { NavigationContextService } from './services/navigation-context.service';
 import { TranslationService } from './services/translation.service';
 import { recoverFromStaleChunk } from './utils/navigation-recovery';
 import { provideImageServerPreconnect } from './seo/preconnect';
@@ -28,6 +34,13 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withNavigationErrorHandler(recoverFromStaleChunk)),
     // Pas de withEventReplay() : contrainte CSP stricte (aucun script inline / replay).
     provideClientHydration(),
+    // Instancié avant la navigation initiale pour un comptage NavigationStart
+    // fiable — consommé par les entrances (shouldSkipEntrance) et la page-transition.
+    provideEnvironmentInitializer(() => void inject(NavigationContextService)),
+    // Catalogue audio déclaré hors du composant racine — clés typées SoundKey.
+    provideAppInitializer(() => {
+      inject(AudioService).registerMany(SOUND_CATALOG);
+    }),
     {
       provide: APP_INITIALIZER,
       useFactory: (ts: TranslationService) => () => ts.initialize(),

@@ -10,6 +10,8 @@ import {
   inject,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { prefersReducedMotion } from '../../../../utils/motion';
+import { safeGet, safeSet } from '../../../../utils/storage';
 import {
   canEnableSound,
   canSkipOpening,
@@ -121,25 +123,21 @@ export class Opening implements AfterViewInit, OnDestroy {
   /** Termine la séquence et mémorise qu'elle a été vue (bypass aux prochaines visites). */
   private finishOpening(): void {
     this.state = moveToFinished();
-    try {
-      localStorage.setItem(Opening.SEEN_KEY, '1');
-    } catch {
-      /* localStorage indisponible (mode privé / SSR) : non bloquant. */
-    }
+    // Best-effort : stockage indisponible (mode privé) = simplement non persisté.
+    safeSet(Opening.SEEN_KEY, '1');
     this.finished.emit();
   }
 
   /** Bypass si la séquence a déjà été vue, si `?skip-opening` est présent, ou en reduced-motion. */
   private shouldBypass(): boolean {
+    if (safeGet(Opening.SEEN_KEY) === '1') return true;
     try {
-      if (localStorage.getItem(Opening.SEEN_KEY) === '1') return true;
       const params = new URLSearchParams(window.location.search);
       if (params.has('skip-opening')) return true;
-      if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return true;
     } catch {
       /* environnement contraint : on joue la séquence par défaut. */
     }
-    return false;
+    return prefersReducedMotion();
   }
 
   public onSoundHoverEnter(): void {

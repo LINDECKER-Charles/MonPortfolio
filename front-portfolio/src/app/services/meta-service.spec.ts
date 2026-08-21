@@ -2,9 +2,28 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Meta } from '@angular/platform-browser';
 
+import { RouteMeta } from '../seo/route-meta';
 import { MetaService } from './meta-service';
 
 const STRUCTURED_DATA_ID = 'app-structured-data';
+
+/** Bloc RouteMeta complet — chaque clé du contrat porte une valeur distincte. */
+const FULL_META: RouteMeta = {
+  description: 'desc',
+  canonical: 'https://example.test/page',
+  robots: 'noindex',
+  ogTitle: 'OG Title',
+  ogDescription: 'OG Desc',
+  ogImage: 'https://x/i.png',
+  ogUrl: 'https://x.test',
+  ogType: 'website',
+  twitterCard: 'summary',
+  twitterTitle: 'T Title',
+  twitterDescription: 'T Desc',
+  twitterImage: 'https://x/t.png',
+  structuredData: [{ '@type': 'WebPage', name: 'Page' }],
+  showFooter: true,
+};
 
 describe('MetaService', () => {
   let service: MetaService;
@@ -44,44 +63,60 @@ describe('MetaService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('standard + OG + Twitter meta tags', () => {
-    const cases: { method: keyof MetaService; selector: string; value: string }[] = [
-      { method: 'updateDescription', selector: "meta[name='description']", value: 'desc' },
-      { method: 'updateRobots', selector: "meta[name='robots']", value: 'noindex' },
-      { method: 'updateOgTitle', selector: "meta[property='og:title']", value: 'OG Title' },
-      { method: 'updateOgDescription', selector: "meta[property='og:description']", value: 'OG D' },
-      { method: 'updateOgUrl', selector: "meta[property='og:url']", value: 'https://x.test' },
-      { method: 'updateOgImage', selector: "meta[property='og:image']", value: 'https://x/i.png' },
-      { method: 'updateOgType', selector: "meta[property='og:type']", value: 'website' },
-      { method: 'updateTwitterTitle', selector: "meta[name='twitter:title']", value: 'T Title' },
-      {
-        method: 'updateTwitterDescription',
-        selector: "meta[name='twitter:description']",
-        value: 'T D',
-      },
-      { method: 'updateTwitterCard', selector: "meta[name='twitter:card']", value: 'summary' },
-      {
-        method: 'updateTwitterImage',
-        selector: "meta[name='twitter:image']",
-        value: 'https://x/t.png',
-      },
+  describe('applyRouteMeta()', () => {
+    /**
+     * Table d'attendus couvrant l'intégralité du contrat RouteMeta rendu en
+     * balises `<meta>` (canonical et structuredData vérifiés à part).
+     */
+    const expectedTags: { selector: string; value: string }[] = [
+      { selector: "meta[name='description']", value: FULL_META.description },
+      { selector: "meta[name='robots']", value: FULL_META.robots },
+      { selector: "meta[property='og:title']", value: FULL_META.ogTitle },
+      { selector: "meta[property='og:description']", value: FULL_META.ogDescription },
+      { selector: "meta[property='og:image']", value: FULL_META.ogImage },
+      { selector: "meta[property='og:url']", value: FULL_META.ogUrl },
+      { selector: "meta[property='og:type']", value: FULL_META.ogType },
+      { selector: "meta[name='twitter:card']", value: FULL_META.twitterCard },
+      { selector: "meta[name='twitter:title']", value: FULL_META.twitterTitle },
+      { selector: "meta[name='twitter:description']", value: FULL_META.twitterDescription },
+      { selector: "meta[name='twitter:image']", value: FULL_META.twitterImage },
     ];
 
-    for (const { method, selector, value } of cases) {
-      it(`${method} injects ${selector}`, () => {
-        (service[method] as (v: string) => void)(value);
+    it('renders every meta tag of the RouteMeta contract in one call', () => {
+      service.applyRouteMeta(FULL_META);
+
+      for (const { selector, value } of expectedTags) {
         const el = document.head.querySelector<HTMLMetaElement>(selector);
         expect(el).withContext(selector).not.toBeNull();
-        expect(el!.getAttribute('content')).toBe(value);
-      });
-    }
+        expect(el!.getAttribute('content')).withContext(selector).toBe(value);
+      }
+    });
 
-    it('updateDescription replaces the existing tag instead of duplicating', () => {
-      service.updateDescription('first');
-      service.updateDescription('second');
+    it('sets the canonical link and the JSON-LD block through the same call', () => {
+      service.applyRouteMeta(FULL_META);
+
+      const link = document.head.querySelector<HTMLLinkElement>("link[rel='canonical']");
+      expect(link).not.toBeNull();
+      expect(link!.getAttribute('href')).toBe(FULL_META.canonical);
+
+      const script = document.getElementById(STRUCTURED_DATA_ID) as HTMLScriptElement;
+      expect(script).not.toBeNull();
+      expect(JSON.parse(script.text)).toEqual({
+        '@context': 'https://schema.org',
+        '@graph': FULL_META.structuredData,
+      });
+    });
+
+    it('replaces existing tags on re-apply instead of duplicating them', () => {
+      service.applyRouteMeta(FULL_META);
+      service.applyRouteMeta({ ...FULL_META, description: 'second', ogTitle: 'OG 2' });
+
       const all = document.head.querySelectorAll("meta[name='description']");
       expect(all.length).toBe(1);
       expect(all[0].getAttribute('content')).toBe('second');
+      expect(
+        document.head.querySelector("meta[property='og:title']")!.getAttribute('content'),
+      ).toBe('OG 2');
     });
   });
 

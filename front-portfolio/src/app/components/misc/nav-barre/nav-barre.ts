@@ -1,4 +1,12 @@
-import { Component, computed, ElementRef, HostListener, inject, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  ElementRef,
+  HostListener,
+  inject,
+  output,
+  signal,
+} from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -49,6 +57,9 @@ export class NavBarre {
   protected readonly ts = inject(TranslationService);
   protected readonly audio = inject(AudioService);
   private readonly host = inject(ElementRef<HTMLElement>);
+
+  /** Demande d'ouverture du modal de langue — l'état vit dans le shell (App). */
+  readonly langModalRequested = output<void>();
 
   protected readonly logoSources = SHARED_IMAGES.logo.white.sources;
   protected readonly logoFallback = SHARED_IMAGES.logo.white.fallbackSrc;
