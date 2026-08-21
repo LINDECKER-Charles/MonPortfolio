@@ -3,7 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { ProjectsModal } from './projects-modal';
-import { PROJECTS_DATA, ProjectItem } from '../projects.state';
+import { PROJECTS_DATA } from '../projects.data';
+import type { ProjectItem } from '../projects.types';
 
 function api(component: ProjectsModal): any {
   return component as any;
@@ -42,8 +43,20 @@ describe('ProjectsModal', () => {
     component = fixture.componentInstance;
   });
 
+  afterEach(() => {
+    document.body.style.overflow = '';
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('verrou de scroll', () => {
+    it('verrouille le body au montage et restaure la valeur précédente à la destruction', () => {
+      expect(document.body.style.overflow).toBe('hidden');
+      fixture.destroy();
+      expect(document.body.style.overflow).toBe('');
+    });
   });
 
   describe('currentImage', () => {

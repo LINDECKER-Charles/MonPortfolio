@@ -545,3 +545,12 @@ export const PROJECTS_DATA: ProjectItem[] = [
     featured: true,
   },
 ];
+
+const uniqueSorted = (values: string[]): string[] =>
+  [...new Set(values)].sort((a, b) => a.localeCompare(b));
+
+/** Tags proposés par le filtre — dérivés une seule fois au chargement du module. */
+export const PROJECT_TAGS: string[] = uniqueSorted(PROJECTS_DATA.flatMap((p) => p.tags));
+
+/** Technologies proposées par le filtre — dérivées une seule fois au chargement du module. */
+export const PROJECT_STACK: string[] = uniqueSorted(PROJECTS_DATA.flatMap((p) => p.stack));

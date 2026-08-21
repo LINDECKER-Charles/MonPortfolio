@@ -6,8 +6,8 @@
       type="button"
       role="tab"
       class="projects-view__tab transition-ritual"
-      [class.projects-view__tab--active]="view === 'map'"
-      [attr.aria-selected]="view === 'map'"
+      [class.projects-view__tab--active]="view() === 'map'"
+      [attr.aria-selected]="view() === 'map'"
       (click)="setView('map')"
     >
       {{ ts.translate('projects.view.map') }}
@@ -16,15 +16,15 @@
       type="button"
       role="tab"
       class="projects-view__tab transition-ritual"
-      [class.projects-view__tab--active]="view === 'list'"
-      [attr.aria-selected]="view === 'list'"
+      [class.projects-view__tab--active]="view() === 'list'"
+      [attr.aria-selected]="view() === 'list'"
       (click)="setView('list')"
     >
       {{ ts.translate('projects.view.list') }}
     </button>
   </div>
 
-  @if (view === 'map') {
+  @if (view() === 'map') {
     <app-constellation
       [items]="constellationItems()"
       [categories]="constellationCategories()"
@@ -34,7 +34,7 @@
   } @else {
     <app-projects-filter
       [filters]="filters"
-      [filtersState]="filtersState"
+      [filtersState]="filtersState()"
       [availableTags]="availableTags"
       [availableStack]="availableStack"
       (categorySelected)="selectCategory($event)"
@@ -43,9 +43,9 @@
       (resetRequested)="clearFilters()"
     />
 
-    @if (filteredProjects.length > 0) {
+    @if (filteredProjects().length > 0) {
       <app-projects-timeline
-        [projects]="filteredProjects"
+        [projects]="filteredProjects()"
         (projectSelected)="openProject($event)"
       />
     } @else {
@@ -61,10 +61,10 @@
     }
   }
 
-  @if (selectedProject; as project) {
+  @if (selectedProject(); as project) {
     <app-projects-modal
       [project]="project"
-      [currentImageIndex]="currentImageIndex"
+      [currentImageIndex]="currentImageIndex()"
       (closed)="closeProject()"
       (nextImage)="nextImage()"
       (previousImage)="previousImage()"

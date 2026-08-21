@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
   Component,
+  DOCUMENT,
   EventEmitter,
   HostListener,
   inject,
@@ -13,6 +14,7 @@ import {
 import { ResponsivePicture, ResponsiveSource } from '../responsive-picture/responsive-picture';
 import { FocusTrapDirective } from '../../../directives/focus-trap.directive';
 import { TranslationService } from '../../../services/translation.service';
+import { lockBodyScroll } from '../../../utils/scroll-lock';
 
 @Component({
   selector: 'app-image-lightbox',
@@ -23,9 +25,10 @@ import { TranslationService } from '../../../services/translation.service';
 export class ImageLightbox implements OnInit, OnDestroy {
   protected readonly ts = inject(TranslationService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-  // On capture/restaure la valeur précédente plutôt que de forcer '' : la
-  // lightbox peut s'ouvrir au-dessus d'un modal qui a déjà verrouillé le scroll.
-  private previousBodyOverflow = '';
+  private readonly document = inject(DOCUMENT);
+  // Sauvegarde/restauration : la lightbox peut s'ouvrir au-dessus d'un modal
+  // qui a déjà verrouillé le scroll (déverrouillage LIFO, cf. scroll-lock.ts).
+  private unlockBodyScroll: (() => void) | null = null;
   @Input({ required: true }) sources: ResponsiveSource[] = [];
   @Input({ required: true }) fallbackSrc = '';
   @Input({ required: true }) alt = '';
@@ -37,13 +40,12 @@ export class ImageLightbox implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (!this.isBrowser) return;
-    this.previousBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    this.unlockBodyScroll = lockBodyScroll(this.document);
   }
 
   ngOnDestroy(): void {
-    if (!this.isBrowser) return;
-    document.body.style.overflow = this.previousBodyOverflow;
+    this.unlockBodyScroll?.();
+    this.unlockBodyScroll = null;
   }
 
   @HostListener('document:keydown.escape')
