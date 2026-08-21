@@ -1,6 +1,12 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { Subject } from 'rxjs';
 import gsap from 'gsap';
 
@@ -8,7 +14,7 @@ import { PageTransition } from './page-transition';
 
 describe('PageTransition', () => {
   let fixture: ComponentFixture<PageTransition>;
-  let events: Subject<NavigationStart | NavigationEnd>;
+  let events: Subject<NavigationStart | NavigationEnd | NavigationError | NavigationCancel>;
   let toSpy: jasmine.Spy;
   let setSpy: jasmine.Spy;
 
@@ -75,6 +81,33 @@ describe('PageTransition', () => {
     // A non-Start/End event must be filtered out before reaching the handlers.
     events.next({ id: 3 } as unknown as NavigationEnd);
     expect(toSpy).not.toHaveBeenCalled();
+  });
+
+  it('hides the overlay when a navigation fails (stale chunk after a deploy)', () => {
+    events.next(new NavigationEnd(1, '/home', '/home')); // consume first nav
+    events.next(new NavigationStart(2, '/projects'));
+    toSpy.calls.reset();
+    events.next(new NavigationError(2, '/projects', new TypeError('Failed to fetch module')));
+    expect(toSpy).toHaveBeenCalledTimes(2); // rune out + overlay out
+  });
+
+  it('hides the overlay when a navigation is cancelled', () => {
+    events.next(new NavigationEnd(1, '/home', '/home'));
+    events.next(new NavigationStart(2, '/projects'));
+    toSpy.calls.reset();
+    events.next(new NavigationCancel(2, '/projects', 'guard rejected'));
+    expect(toSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('arms a failsafe on NavigationStart and disarms it on NavigationEnd', () => {
+    const delayedCallSpy = spyOn(gsap, 'delayedCall').and.callThrough();
+    events.next(new NavigationEnd(1, '/home', '/home'));
+    events.next(new NavigationStart(2, '/projects'));
+    expect(delayedCallSpy).toHaveBeenCalledTimes(1);
+    const tween = delayedCallSpy.calls.mostRecent().returnValue;
+    const killSpy = spyOn(tween, 'kill').and.callThrough();
+    events.next(new NavigationEnd(2, '/projects', '/projects'));
+    expect(killSpy).toHaveBeenCalled();
   });
 
   it('unsubscribes from router events on destroy', () => {

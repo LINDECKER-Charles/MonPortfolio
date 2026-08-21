@@ -10,7 +10,14 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationSkipped,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import gsap from 'gsap';
 
@@ -47,6 +54,14 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   private subscription?: Subscription;
   private firstNavigation = true;
 
+  /**
+   * Garde-fou : si aucun événement terminal (End/Error/Cancel/Skipped) n'arrive
+   * — chunk lazy disparu après un déploiement, promesse d'import jamais résolue —
+   * l'overlay est rabattu de force après ce délai plutôt que de rester en écran noir.
+   */
+  private static readonly FAILSAFE_DELAY_S = 8;
+  private failsafe?: gsap.core.Tween;
+
   /** Routes dont on zappe la transition (séquences d'intro autonomes). */
   private readonly EXCLUDED = ['/opening-home', '/opening-resume'];
 
@@ -65,12 +80,25 @@ export class PageTransition implements AfterViewInit, OnDestroy {
     gsap.set(rune, { autoAlpha: 0, scale: 0.8, rotation: -10 });
 
     this.subscription = this.router.events
-      .pipe(filter((e) => e instanceof NavigationStart || e instanceof NavigationEnd))
+      .pipe(
+        filter(
+          (e) =>
+            e instanceof NavigationStart ||
+            e instanceof NavigationEnd ||
+            e instanceof NavigationError ||
+            e instanceof NavigationCancel ||
+            e instanceof NavigationSkipped,
+        ),
+      )
       .subscribe((event) => {
         if (event instanceof NavigationStart) {
           this.onNavigationStart(event.url, overlay, rune);
         } else if (event instanceof NavigationEnd) {
           this.onNavigationEnd(event.urlAfterRedirects, overlay, rune);
+        } else {
+          // Navigation avortée (NavigationError / Cancel / Skipped) : sans
+          // NavigationEnd, l'overlay resterait affiché indéfiniment.
+          this.onNavigationAborted(overlay, rune);
         }
       });
   }
@@ -78,6 +106,7 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   private onNavigationStart(url: string, overlay: HTMLElement, rune: SVGElement): void {
     if (this.firstNavigation || this.isExcluded(url)) return;
 
+    this.armFailsafe(overlay, rune);
     gsap.to(overlay, { autoAlpha: 1, duration: 0.22, ease: 'power2.in' });
     gsap.to(rune, {
       autoAlpha: 1,
@@ -89,6 +118,8 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   }
 
   private onNavigationEnd(url: string, overlay: HTMLElement, rune: SVGElement): void {
+    this.disarmFailsafe();
+
     if (this.firstNavigation) {
       this.firstNavigation = false;
       return;
@@ -100,6 +131,16 @@ export class PageTransition implements AfterViewInit, OnDestroy {
        de nav (feedback immédiat). Ici on ne gère que le visuel pour
        éviter la double lecture à l'arrivée. */
 
+    this.hideOverlay(overlay, rune);
+  }
+
+  private onNavigationAborted(overlay: HTMLElement, rune: SVGElement): void {
+    this.disarmFailsafe();
+    if (this.firstNavigation) return;
+    this.hideOverlay(overlay, rune);
+  }
+
+  private hideOverlay(overlay: HTMLElement, rune: SVGElement): void {
     gsap.to(rune, {
       autoAlpha: 0,
       scale: 1.15,
@@ -114,11 +155,24 @@ export class PageTransition implements AfterViewInit, OnDestroy {
     });
   }
 
+  private armFailsafe(overlay: HTMLElement, rune: SVGElement): void {
+    this.disarmFailsafe();
+    this.failsafe = gsap.delayedCall(PageTransition.FAILSAFE_DELAY_S, () =>
+      this.hideOverlay(overlay, rune),
+    );
+  }
+
+  private disarmFailsafe(): void {
+    this.failsafe?.kill();
+    this.failsafe = undefined;
+  }
+
   private isExcluded(url: string): boolean {
     return this.EXCLUDED.some((path) => url.startsWith(path));
   }
 
   ngOnDestroy(): void {
+    this.disarmFailsafe();
     this.subscription?.unsubscribe();
   }
 }
