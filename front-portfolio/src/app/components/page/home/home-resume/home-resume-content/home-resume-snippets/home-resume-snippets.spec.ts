@@ -50,7 +50,11 @@ describe('HomeResumeSnippets', () => {
     fixture.detectChanges(); // builds the @for refs + runs ngAfterViewInit
   }
 
-  const api = () => component as unknown as { toggleSnippet: (id: string) => void };
+  const api = () =>
+    component as unknown as {
+      toggleSnippet: (id: string) => void;
+      openId: () => string | null;
+    };
 
   beforeEach(() => {
     originalMatchMedia = window.matchMedia;
@@ -60,11 +64,11 @@ describe('HomeResumeSnippets', () => {
     window.matchMedia = originalMatchMedia;
   });
 
-  it('should create and expose the five snippets', async () => {
+  it('should create and expose the five snippets collapsed', async () => {
     await setup(false);
     expect(component).toBeTruthy();
     expect(component.snippets.length).toBe(5);
-    expect(component.snippets.every((s) => !s.isOpen)).toBeTrue();
+    expect(api().openId()).toBeNull();
   });
 
   it('initializes the accordion collapsed and runs the intro (full motion)', async () => {
@@ -86,11 +90,11 @@ describe('HomeResumeSnippets', () => {
     const id = component.snippets[0].id;
 
     api().toggleSnippet(id);
-    expect(component.snippets[0].isOpen).toBeTrue();
+    expect(api().openId()).toBe(id);
     expect(gsap.fromTo).toHaveBeenCalled();
 
     api().toggleSnippet(id);
-    expect(component.snippets[0].isOpen).toBeFalse();
+    expect(api().openId()).toBeNull();
   });
 
   it('opening one snippet collapses any other open snippet', async () => {
@@ -98,11 +102,10 @@ describe('HomeResumeSnippets', () => {
     const [first, second] = component.snippets;
 
     api().toggleSnippet(first.id);
-    expect(first.isOpen).toBeTrue();
+    expect(api().openId()).toBe(first.id);
 
     api().toggleSnippet(second.id);
-    expect(second.isOpen).toBeTrue();
-    expect(first.isOpen).toBeFalse();
+    expect(api().openId()).toBe(second.id);
   });
 
   it('toggles state without animation tweens under reduced motion', async () => {
@@ -110,11 +113,11 @@ describe('HomeResumeSnippets', () => {
     const id = component.snippets[0].id;
 
     api().toggleSnippet(id);
-    expect(component.snippets[0].isOpen).toBeTrue();
+    expect(api().openId()).toBe(id);
     // simple-motion path uses gsap.set only, never fromTo/to
     expect(gsap.fromTo).not.toHaveBeenCalled();
 
     api().toggleSnippet(id);
-    expect(component.snippets[0].isOpen).toBeFalse();
+    expect(api().openId()).toBeNull();
   });
 });

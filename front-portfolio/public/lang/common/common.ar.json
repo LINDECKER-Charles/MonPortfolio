@@ -2,8 +2,6 @@
   "lang_modal.aria": "اختيار اللغة",
   "lang_modal.close": "إغلاق",
   "lang_modal.title": "— اللغة —",
-  "audio.show": "إظهار عناصر التحكم في الصوت",
-  "audio.hide": "إخفاء عناصر التحكم في الصوت",
   "audio.toggle": "كتم الصوت أو إلغاء كتمه",
   "audio.volume": "ضبط مستوى الصوت",
   "lightbox.aria": "معاينة بملء الشاشة",

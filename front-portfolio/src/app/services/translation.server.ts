@@ -1,10 +1,11 @@
 /**
  * Baseline FR embarquée au build dans le bundle serveur uniquement
  * (importé par app.config.server.ts — jamais référencé côté browser).
- * Doit couvrir tous les namespaces de NAMESPACES (translation.service.ts).
+ * Le `satisfies Record<Namespace, …>` garantit à la compilation la couverture
+ * de tous les namespaces de NAMESPACES (translation.service.ts).
  */
+import type { Namespace } from './translation.service';
 import common from '../../../public/lang/common/common.fr.json';
-import construction from '../../../public/lang/construction/construction.fr.json';
 import footer from '../../../public/lang/footer/footer.fr.json';
 import homeProjects from '../../../public/lang/home-projects/home-projects.fr.json';
 import homeResume from '../../../public/lang/home-resume/home-resume.fr.json';
@@ -18,9 +19,8 @@ import projects from '../../../public/lang/projects/projects.fr.json';
 import resum from '../../../public/lang/resum/resum.fr.json';
 import works from '../../../public/lang/works/works.fr.json';
 
-export const SERVER_FR_TRANSLATIONS: Record<string, Record<string, string>> = {
+export const SERVER_FR_TRANSLATIONS = {
   common,
-  construction,
   footer,
   'home-projects': homeProjects,
   'home-resume': homeResume,
@@ -33,4 +33,4 @@ export const SERVER_FR_TRANSLATIONS: Record<string, Record<string, string>> = {
   projects,
   resum,
   works,
-};
+} satisfies Record<Namespace, Record<string, string>>;

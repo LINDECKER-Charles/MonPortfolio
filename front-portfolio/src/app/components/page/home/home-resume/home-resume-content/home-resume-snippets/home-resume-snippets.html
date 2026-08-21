@@ -1,18 +1,18 @@
 <div class="about__content">
   @for (snippet of snippets; track snippet.id) {
-    <article class="about-snippet" [class.is-open]="snippet.isOpen" #snippetCard>
+    <article class="about-snippet" [class.is-open]="openId() === snippet.id" #snippetCard>
       <button
         type="button"
         class="about-snippet__trigger"
-        [attr.aria-expanded]="snippet.isOpen"
+        [attr.aria-expanded]="openId() === snippet.id"
         [attr.aria-controls]="'snippet-content-' + snippet.id"
         (click)="toggleSnippet(snippet.id)"
       >
         <span class="about-snippet__heading">
           <span class="about-snippet__icon-media">
             <app-responsive-picture
-              [sources]="snippet.iconSources"
-              [fallbackSrc]="snippet.iconFallback"
+              [sources]="snippet.icon.sources"
+              [fallbackSrc]="snippet.icon.fallbackSrc"
               [alt]="ts.translate('home-resume.snippets.' + snippet.id + '.icon_alt')"
               loading="lazy"
               decoding="async"
@@ -24,7 +24,7 @@
           <h3>{{ ts.translate('home-resume.snippets.' + snippet.id + '.title') }}</h3>
         </span>
 
-        <span class="about-snippet__icon" [class.is-open]="snippet.isOpen">
+        <span class="about-snippet__icon" [class.is-open]="openId() === snippet.id">
           <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M4 6L8 10L12 6"

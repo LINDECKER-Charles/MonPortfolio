@@ -2,8 +2,6 @@
   "lang_modal.aria": "LABEL accessibility.modal=\"lang-selector\"",
   "lang_modal.close": "docker stop lang-modal # close = stop, obviously",
   "lang_modal.title": "ENV MODAL_TITLE=\"--- Language ---\"",
-  "audio.show": "docker exec audio-service sh -c 'echo show > /proc/1/fd/1'",
-  "audio.hide": "docker exec audio-service kill -STOP 1 # pause = hide, right?",
   "audio.toggle": "docker pause audio-service || docker unpause audio-service",
   "audio.volume": "docker update --cpus=0.5 audio-service # less CPU = quieter, trust me",
   "lightbox.aria": "docker run -d --name lightbox --privileged=true fullscreen:latest # privileged for fullscreen",
