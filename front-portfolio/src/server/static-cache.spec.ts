@@ -16,6 +16,7 @@ describe('cacheControlFor', () => {
     expect(cacheControlFor('/robots.txt')).toBe(CACHE_SHORT);
     expect(cacheControlFor('/sitemap.xml')).toBe(CACHE_SHORT);
     expect(cacheControlFor('/site.webmanifest')).toBe(CACHE_SHORT);
+    expect(cacheControlFor('/build-info.json')).toBe(CACHE_SHORT);
   });
 
   it('falls back to the default policy for stable media', () => {

@@ -18,7 +18,7 @@ const HASHED_FILE = /-[A-Z0-9]{8,}\.[a-z0-9]+$/;
 const FONT_FILE = /^\/fonts\/[^/]+\.woff2?$/;
 
 /** Assets non hashés susceptibles de changer à chaque déploiement. */
-const SHORT_LIVED = /^\/(?:lang\/|robots\.txt$|sitemap\.xml$|site\.webmanifest$)/;
+const SHORT_LIVED = /^\/(?:lang\/|robots\.txt$|sitemap\.xml$|site\.webmanifest$|build-info\.json$)/;
 
 export const CACHE_IMMUTABLE = 'public, max-age=31536000, immutable';
 export const CACHE_SHORT = 'public, max-age=300, stale-while-revalidate=3600';
