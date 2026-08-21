@@ -20,6 +20,8 @@ import {
 import { Subscription, filter } from 'rxjs';
 import gsap from 'gsap';
 
+import { TRANSITION_EXCLUDED_PREFIXES } from '../../../seo/site-routes';
+
 /**
  * Transitions de page ritualisées — fade-to-black + rune qui apparaît, puis
  * fade-in à l'arrivée sur la nouvelle route. Lié aux events Angular Router.
@@ -61,8 +63,8 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   private static readonly FAILSAFE_DELAY_S = 8;
   private failsafe?: gsap.core.Tween;
 
-  /** Routes dont on zappe la transition (séquences d'intro autonomes). */
-  private readonly EXCLUDED = ['/opening-home', '/opening-resume'];
+  /** Routes sans transition (séquences d'intro autonomes) — cf. site-routes.json. */
+  private readonly EXCLUDED = TRANSITION_EXCLUDED_PREFIXES;
 
   constructor() {
     const platformId = inject(PLATFORM_ID);

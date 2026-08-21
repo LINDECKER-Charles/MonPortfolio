@@ -15,6 +15,7 @@ import {
   websiteRef,
   websiteSchema,
 } from './seo/route-meta';
+import { routeTitle } from './seo/site-routes';
 
 const projectsItemList = {
   '@type': 'ItemList',
@@ -33,7 +34,7 @@ export const routes: Routes = [
     path: 'opening-resume',
     loadComponent: () =>
       import('./components/misc/opening-resume/opening-resume').then((m) => m.OpeningResume),
-    title: 'Charles Lindecker - Developpeur Web & Solutions sur mesure',
+    title: routeTitle('opening-resume'),
     data: buildRouteMeta({
       description:
         'Developpeur web specialise en .NET, Angular et Symfony. Conception de webapps performantes, architecture back-end solide et solutions sur mesure.',
@@ -52,7 +53,7 @@ export const routes: Routes = [
     path: 'opening-home',
     loadComponent: () =>
       import('./components/misc/opening-home/opening-home').then((m) => m.OpeningHome),
-    title: 'Animation d ouverture - Charles Lindecker',
+    title: routeTitle('opening-home'),
     data: buildRouteMeta({
       description:
         "Sequence d'ouverture du portfolio de Charles Lindecker avant redirection vers l'accueil.",
@@ -68,7 +69,7 @@ export const routes: Routes = [
     path: 'resume',
     loadComponent: () =>
       import('./components/misc/opening-resume/resum/resum').then((m) => m.Resum),
-    title: 'Charles Lindecker - CV & Parcours Developpeur Web',
+    title: routeTitle('resume'),
     data: buildRouteMeta({
       description:
         'Decouvrez le parcours, les competences et les experiences de Charles Lindecker, developpeur web specialise en back-end et architectures modernes.',
@@ -97,7 +98,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./components/page/home/home').then((m) => m.Home),
-    title: 'Charles Lindecker - Portfolio Developpeur Full Stack',
+    title: routeTitle(''),
     data: buildRouteMeta({
       description:
         'Portfolio de Charles Lindecker, developpeur full stack .NET, Angular et Symfony, avec projets, resume, animations et interfaces modernes.',
@@ -119,7 +120,7 @@ export const routes: Routes = [
   {
     path: 'projects',
     loadComponent: () => import('./components/page/projects/projects').then((m) => m.Projects),
-    title: 'Projets - Charles Lindecker',
+    title: routeTitle('projects'),
     data: buildRouteMeta({
       description:
         'Selection de projets personnels, open source et clients de Charles Lindecker, avec filtres par categorie, tags, stack et details techniques.',
@@ -147,16 +148,13 @@ export const routes: Routes = [
   {
     path: 'works',
     loadComponent: () => import('./components/page/works/works').then((m) => m.Works),
-    title: 'Parcours - Charles Lindecker',
+    title: routeTitle('works'),
     data: buildRouteMeta({
       description:
-        'Page parcours de Charles Lindecker actuellement en preparation, avec une presentation bientot disponible.',
+        'Parcours professionnel de Charles Lindecker : timeline des experiences, formations et certifications de developpeur full stack.',
       canonical: `${SITE_URL}/works`,
-      // En construction : on ne laisse pas Google indexer une page sans contenu.
-      // Repasser en 'index, follow' une fois la timeline parcours remplie.
-      robots: 'noindex, nofollow',
       ogTitle: 'Parcours - Charles Lindecker',
-      ogDescription: 'Section parcours professionnel actuellement en cours de construction.',
+      ogDescription: 'Timeline des experiences, formations et certifications.',
       structuredData: [
         personSchema,
         webPage('Parcours - Charles Lindecker', `${SITE_URL}/works`, { about: personRef }),
@@ -170,7 +168,7 @@ export const routes: Routes = [
   {
     path: 'linktree',
     loadComponent: () => import('./components/page/linktree/linktree').then((m) => m.Linktree),
-    title: 'Linktree - Charles Lindecker',
+    title: routeTitle('linktree'),
     data: buildRouteMeta({
       description:
         'Tous les liens de Charles Lindecker : LinkedIn, GitHub, Discord, plateformes de code et contact direct rassembles sur une seule page.',
@@ -196,7 +194,7 @@ export const routes: Routes = [
       import('./components/page/legal/mentions-legales/mentions-legales').then(
         (m) => m.MentionsLegales,
       ),
-    title: 'Mentions legales - Charles Lindecker',
+    title: routeTitle('mentions-legales'),
     data: buildRouteMeta({
       description:
         'Mentions legales du site de Charles Lindecker : editeur, directeur de publication, hebergeur, propriete intellectuelle et droit applicable.',
@@ -224,7 +222,7 @@ export const routes: Routes = [
       import('./components/page/legal/politique-confidentialite/politique-confidentialite').then(
         (m) => m.PolitiqueConfidentialite,
       ),
-    title: 'Politique de confidentialite - Charles Lindecker',
+    title: routeTitle('politique-confidentialite'),
     data: buildRouteMeta({
       description:
         'Politique de confidentialite du site de Charles Lindecker : donnees traitees, finalites, durees de conservation et droits RGPD des utilisateurs.',
@@ -254,7 +252,7 @@ export const routes: Routes = [
       import('./components/page/legal/politique-cookies/politique-cookies').then(
         (m) => m.PolitiqueCookies,
       ),
-    title: 'Politique de cookies - Charles Lindecker',
+    title: routeTitle('politique-cookies'),
     data: buildRouteMeta({
       description:
         'Politique de cookies et de stockage local du site de Charles Lindecker : aucun cookie ni traceur, seules des preferences fonctionnelles en localStorage.',
