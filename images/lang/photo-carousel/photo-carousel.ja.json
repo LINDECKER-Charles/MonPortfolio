@@ -1,9 +1,0 @@
-{
-  "label": "ポートレートカルーセル",
-  "previous": "前のポートレート",
-  "next": "次のポートレート",
-  "pause": "カルーセルを一時停止",
-  "play": "カルーセルを再開",
-  "go_to": "ポートレート {index} へ移動",
-  "slide_alt": "Charles Lindecker のポートレート — {index}"
-}
