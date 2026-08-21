@@ -11,9 +11,12 @@
     "e2e:a11y": "playwright test e2e/a11y.spec.ts",
     "lighthouse": "lhci autorun",
     "serve:ssr:front-portfolio": "node dist/front-portfolio/server/server.mjs",
-    "optimize:photos": "node scripts/optimize-photos.mjs",
     "audit:i18n": "node scripts/audit-i18n.mjs",
-    "lint:css": "stylelint \"src/**/*.css\""
+    "fonts:self-host": "node scripts/self-host-fonts.mjs",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "format": "prettier --write \"src/**/*.{ts,css,html}\" \"e2e/**/*.ts\" \"scripts/*.mjs\"",
+    "format:check": "prettier --check \"src/**/*.{ts,css,html}\" \"e2e/**/*.ts\" \"scripts/*.mjs\"",
+    "lint": "ng lint && npm run lint:css"
   },
   "prettier": {
     "printWidth": 100,
@@ -28,6 +31,9 @@
     ]
   },
   "private": true,
+  "engines": {
+    "node": ">=22.18 <25"
+  },
   "dependencies": {
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
@@ -57,16 +63,21 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "angular-eslint": "20.7.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
     "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "sharp": "^0.34.5",
+    "prettier": "^3.9.6",
+    "sharp": "^0.35.3",
     "stylelint": "^17.13.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-declaration-strict-value": "^1.11.1",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "typescript-eslint": "8.46.4"
   }
 }
