@@ -42,6 +42,9 @@ jobs:
           sparse-checkout: config
           sparse-checkout-cone-mode: true
 
+      # Chaque site est rendu depuis un template GÉNÉRIQUE (site-ssl,
+      # site-http-redirect) paramétré par une table site → variables :
+      # les vhosts SSL prod et test ne divergent plus jamais.
       - name: Render vhost templates
         working-directory: config
         env:
@@ -57,14 +60,40 @@ jobs:
           set -euo pipefail
           command -v envsubst >/dev/null || sudo apt-get install -y gettext-base
           # Allowlist explicite : ne JAMAIS substituer ${APACHE_LOG_DIR} (résolu par Apache).
-          ALLOW='$APACHE_PROD_DOMAIN $APACHE_PROD_SSR_PORT $APACHE_TEST_DOMAIN $APACHE_TEST_SSR_PORT $APACHE_TEST_REDIRECT_TARGET $APACHE_IMAGES_DOMAIN $APACHE_IMAGES_DOCROOT'
+          ALLOW='$SITE_DOMAIN $SITE_SSR_PORT $SITE_LOG $SITE_EXTRA_HEADERS $APACHE_TEST_DOMAIN $APACHE_TEST_REDIRECT_TARGET $APACHE_IMAGES_DOMAIN $APACHE_IMAGES_DOCROOT'
+          NOINDEX='Header always set X-Robots-Tag "noindex, nofollow"'
           mkdir -p staging
+
+          render() { # $1 = base name, $2 = template
+            envsubst "$ALLOW" < "$2" > "staging/$1.conf"
+            echo "Rendered staging/$1.conf <- $2"
+          }
+
           for base in $SITES; do
-            t="${base}.conf.template"
-            [ -f "$t" ] || { echo "Template introuvable: $t" >&2; exit 1; }
-            envsubst "$ALLOW" < "$t" > "staging/${base}.conf"
-            echo "Rendered staging/${base}.conf"
+            case "$base" in
+              portfolio)
+                SITE_DOMAIN="$APACHE_PROD_DOMAIN" SITE_LOG=portfolio \
+                  render "$base" site-http-redirect.conf.template ;;
+              portfolio-le-ssl)
+                SITE_DOMAIN="$APACHE_PROD_DOMAIN" SITE_SSR_PORT="$APACHE_PROD_SSR_PORT" \
+                SITE_LOG=portfolio SITE_EXTRA_HEADERS='' \
+                  render "$base" site-ssl.conf.template ;;
+              portfolio-test)
+                render "$base" portfolio-test.conf.template ;;
+              portfolio-test-le-ssl)
+                # X-Robots-Tag : l'environnement de test ne doit pas être indexé.
+                SITE_DOMAIN="$APACHE_TEST_DOMAIN" SITE_SSR_PORT="$APACHE_TEST_SSR_PORT" \
+                SITE_LOG=portfolio-test SITE_EXTRA_HEADERS="$NOINDEX" \
+                  render "$base" site-ssl.conf.template ;;
+              portfolio-images|portfolio-images-le-ssl)
+                render "$base" "$base.conf.template" ;;
+              *)
+                echo "Site inconnu : $base" >&2; exit 1 ;;
+            esac
           done
+
+          # Page de maintenance (ErrorDocument 502/503 des vhosts SSL).
+          cp maintenance.html staging/maintenance.html
 
       - name: Copy rendered configs to VPS (staging dir)
         uses: appleboy/scp-action@v1
@@ -72,7 +101,7 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "config/staging/*.conf"
+          source: "config/staging/*"
           target: ${{ env.REMOTE_STAGING }}
           strip_components: 2
           rm: true
@@ -92,6 +121,12 @@ jobs:
 
             echo "==> Backup $APACHE_SITES_DIR -> $BACKUP"
             sudo cp -a "$APACHE_SITES_DIR" "$BACKUP"
+
+            echo "==> Deploy maintenance page"
+            if [ -f "$STAGING/maintenance.html" ]; then
+              sudo cp "$STAGING/maintenance.html" /var/www/maintenance.html
+              rm -f "$STAGING/maintenance.html"
+            fi
 
             echo "==> Deploy rendered vhosts"
             for f in "$STAGING"/*.conf; do
