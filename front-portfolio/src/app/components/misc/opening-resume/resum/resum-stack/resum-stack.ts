@@ -1,10 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
-import {
-  animateResumRowHoverIn,
-  animateResumRowHoverOut,
-} from '../resum-row-hover.animations';
-import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
+import { animateResumRowHoverIn, animateResumRowHoverOut } from '../resum-row-hover.animations';
+import { ResponsivePicture } from '../../../../assets/responsive-picture/responsive-picture';
+import { ResumImages } from '../../../../../img-sources/resum.sources';
 
 @Component({
   selector: 'app-resum-stack',
@@ -13,7 +11,7 @@ import {ResponsivePicture} from '../../../../assets/responsive-picture/responsiv
   styleUrl: './resum-stack.css',
 })
 export class ResumStack extends ResumEntryAnimation {
-  @Input({ required: true }) images!: any;
+  @Input({ required: true }) images!: ResumImages;
   protected readonly animationSelectors = '.row';
   protected override animationDelay = 0.12;
 

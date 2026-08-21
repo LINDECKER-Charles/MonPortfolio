@@ -21,7 +21,7 @@ const CLOSE_DURATION_MS = 200;
   styleUrl: './lang-modal.css',
 })
 export class LangModal implements OnInit, OnDestroy {
-  readonly close = output<void>();
+  readonly closed = output<void>();
 
   protected readonly ts = inject(TranslationService);
   protected readonly languages = AVAILABLE_LANGUAGES;
@@ -49,7 +49,7 @@ export class LangModal implements OnInit, OnDestroy {
   protected requestClose(): void {
     if (this.isClosing) return;
     this.isClosing = true;
-    setTimeout(() => this.close.emit(), CLOSE_DURATION_MS);
+    setTimeout(() => this.closed.emit(), CLOSE_DURATION_MS);
   }
 
   protected select(code: string): void {

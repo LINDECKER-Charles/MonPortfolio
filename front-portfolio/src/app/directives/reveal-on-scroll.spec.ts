@@ -1,5 +1,5 @@
 import { Component, PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import gsap from 'gsap';
 
@@ -16,7 +16,7 @@ class FakeIntersectionObserver {
 
   constructor(
     private readonly callback: IntersectionObserverCallback,
-    options?: IntersectionObserverInit
+    options?: IntersectionObserverInit,
   ) {
     this.options = options;
     FakeIntersectionObserver.last = this;
@@ -38,7 +38,7 @@ class FakeIntersectionObserver {
   fire(isIntersecting: boolean, target: Element): void {
     this.callback(
       [{ isIntersecting, target } as unknown as IntersectionObserverEntry],
-      this as unknown as IntersectionObserver
+      this as unknown as IntersectionObserver,
     );
   }
 }
@@ -83,10 +83,7 @@ describe('RevealOnScrollDirective', () => {
   function configure(platform: 'browser' | 'server' = 'browser') {
     TestBed.configureTestingModule({
       imports: [HostComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-        { provide: PLATFORM_ID, useValue: platform },
-      ],
+      providers: [provideZonelessChangeDetection(), { provide: PLATFORM_ID, useValue: platform }],
     });
   }
 

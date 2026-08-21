@@ -1,16 +1,22 @@
-<div class="projects-modal" (click)="close.emit()">
+<!-- Fermeture au clic sur le fond : redondance pointeur — le clavier a Échap + le bouton fermer. -->
+<!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
+<div class="projects-modal" (click)="closed.emit()">
+  <!-- Bouclier de propagation (clic dans le dialog ne ferme pas) : element non interactif. -->
+  <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
   <div
     class="projects-modal__dialog surface-crypt surface-crypt--ornate surface-textured"
     role="dialog"
     aria-modal="true"
     aria-labelledby="project-modal-title"
     appFocusTrap
-    (click)="$event.stopPropagation()">
+    (click)="$event.stopPropagation()"
+  >
     <button
       type="button"
       class="projects-modal__close transition-ritual"
-      (click)="close.emit()"
-      [attr.aria-label]="ts.translate('projects.modal.close')">
+      (click)="closed.emit()"
+      [attr.aria-label]="ts.translate('projects.modal.close')"
+    >
       &times;
     </button>
 
@@ -25,14 +31,16 @@
                     type="button"
                     class="projects-modal__carousel-image"
                     (click)="openImageLightbox()"
-                    [attr.aria-label]="ts.translate('projects.modal.image_fullscreen')">
+                    [attr.aria-label]="ts.translate('projects.modal.image_fullscreen')"
+                  >
                     <app-responsive-picture
                       [sources]="image.sources"
                       [fallbackSrc]="image.fallbackSrc"
                       [alt]="image.alt"
                       loading="eager"
                       decoding="async"
-                      objectFit="cover">
+                      objectFit="cover"
+                    >
                     </app-responsive-picture>
                   </button>
                 }
@@ -42,7 +50,8 @@
                     <button
                       type="button"
                       class="projects-modal__carousel-button transition-ritual"
-                      (click)="previousImage.emit()">
+                      (click)="previousImage.emit()"
+                    >
                       {{ ts.translate('projects.modal.previous') }}
                     </button>
 
@@ -53,7 +62,8 @@
                     <button
                       type="button"
                       class="projects-modal__carousel-button transition-ritual"
-                      (click)="nextImage.emit()">
+                      (click)="nextImage.emit()"
+                    >
                       {{ ts.translate('projects.modal.next') }}
                     </button>
                   </div>
@@ -68,8 +78,17 @@
                 [src]="videoUrl"
                 [title]="ts.translate('projects.modal.video_title')"
                 loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
+                allow="
+                  accelerometer;
+                  autoplay;
+                  clipboard-write;
+                  encrypted-media;
+                  gyroscope;
+                  picture-in-picture;
+                  web-share;
+                "
+                allowfullscreen
+              >
               </iframe>
             </div>
           }
@@ -79,7 +98,9 @@
       <div class="projects-modal__content">
         <div class="projects-modal__header">
           <span class="projects-modal__period text-sigil">{{ formatPeriod() }}</span>
-          <h2 id="project-modal-title" class="text-engraved text-engraved--carved">{{ project.title }}</h2>
+          <h2 id="project-modal-title" class="text-engraved text-engraved--carved">
+            {{ project.title }}
+          </h2>
         </div>
 
         <div class="projects-modal__group">
@@ -104,7 +125,9 @@
 
         <div class="projects-modal__group">
           <h3 class="text-sigil">{{ ts.translate('projects.modal.description') }}</h3>
-          <p class="text-tome text-tome--drop-cap">{{ ts.translate('projects.' + project.id + '.longDescription') }}</p>
+          <p class="text-tome text-tome--drop-cap">
+            {{ ts.translate('projects.' + project.id + '.longDescription') }}
+          </p>
         </div>
 
         @if (project.detail?.lessonsLearned?.length) {
@@ -141,7 +164,8 @@
                   class="chip chip--gilded transition-ritual"
                   [href]="project.links.github"
                   target="_blank"
-                  rel="noreferrer noopener">
+                  rel="noreferrer noopener"
+                >
                   <span class="projects-modal__link-icon">
                     <app-responsive-picture
                       [sources]="githubIcon.sources"
@@ -149,7 +173,8 @@
                       [alt]="githubIcon.alt"
                       loading="eager"
                       decoding="async"
-                      objectFit="contain">
+                      objectFit="contain"
+                    >
                     </app-responsive-picture>
                   </span>
 
@@ -162,7 +187,8 @@
                   class="chip chip--gilded transition-ritual"
                   [href]="project.links.demo"
                   target="_blank"
-                  rel="noreferrer noopener">
+                  rel="noreferrer noopener"
+                >
                   <span class="text-tag">{{ ts.translate('projects.modal.demo') }}</span>
                 </a>
               }
@@ -172,7 +198,8 @@
                   class="chip chip--gilded transition-ritual"
                   [href]="project.links.website"
                   target="_blank"
-                  rel="noreferrer noopener">
+                  rel="noreferrer noopener"
+                >
                   <span class="text-tag">{{ ts.translate('projects.modal.site') }}</span>
                 </a>
               }
@@ -193,6 +220,7 @@
     [total]="project.detail?.images?.length ?? 1"
     (previous)="previousImage.emit()"
     (next)="nextImage.emit()"
-    (close)="closeImageLightbox()">
+    (closed)="closeImageLightbox()"
+  >
   </app-image-lightbox>
 }

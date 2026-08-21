@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, computed, HostListener, Inject, inject, PLATFORM_ID } from '@angular/core';
+import { Component, computed, HostListener, inject, PLATFORM_ID } from '@angular/core';
 import { Constellation } from '../../assets/constellation/constellation';
 import { ConstellationItem } from '../../assets/constellation/constellation.model';
 import {
@@ -45,10 +45,10 @@ export class Projects {
   // Entrées du composant générique « constellation » — recalculées à chaque
   // changement de langue (lecture de TranslationService dans l'adaptateur).
   protected readonly constellationItems = computed(() =>
-    toConstellationItems(this.projects, this.ts)
+    toConstellationItems(this.projects, this.ts),
   );
   protected readonly constellationCategories = computed(() =>
-    buildConstellationCategories(this.ts)
+    buildConstellationCategories(this.ts),
   );
   protected readonly constellationLabels = computed(() => buildConstellationLabels(this.ts));
 
@@ -65,15 +65,16 @@ export class Projects {
 
   private readonly isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
   protected get filteredProjects(): ProjectItem[] {
     return this.projects.filter((project) => {
       const categoryMatch =
-        this.filtersState.category === 'all' ||
-        project.category === this.filtersState.category;
+        this.filtersState.category === 'all' || project.category === this.filtersState.category;
 
       const tagsMatch =
         this.filtersState.tags.length === 0 ||
@@ -89,13 +90,13 @@ export class Projects {
 
   protected get availableTags(): string[] {
     return [...new Set(this.projects.flatMap((project) => project.tags))].sort((a, b) =>
-      a.localeCompare(b)
+      a.localeCompare(b),
     );
   }
 
   protected get availableStack(): string[] {
     return [...new Set(this.projects.flatMap((project) => project.stack))].sort((a, b) =>
-      a.localeCompare(b)
+      a.localeCompare(b),
     );
   }
 

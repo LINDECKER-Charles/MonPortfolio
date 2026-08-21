@@ -8,7 +8,8 @@
       class="projects-view__tab transition-ritual"
       [class.projects-view__tab--active]="view === 'map'"
       [attr.aria-selected]="view === 'map'"
-      (click)="setView('map')">
+      (click)="setView('map')"
+    >
       {{ ts.translate('projects.view.map') }}
     </button>
     <button
@@ -17,7 +18,8 @@
       class="projects-view__tab transition-ritual"
       [class.projects-view__tab--active]="view === 'list'"
       [attr.aria-selected]="view === 'list'"
-      (click)="setView('list')">
+      (click)="setView('list')"
+    >
       {{ ts.translate('projects.view.list') }}
     </button>
   </div>
@@ -27,7 +29,8 @@
       [items]="constellationItems()"
       [categories]="constellationCategories()"
       [labels]="constellationLabels()"
-      (itemOpened)="onConstellationOpen($event)" />
+      (itemOpened)="onConstellationOpen($event)"
+    />
   } @else {
     <app-projects-filter
       [filters]="filters"
@@ -37,15 +40,19 @@
       (categorySelected)="selectCategory($event)"
       (tagToggled)="toggleTag($event)"
       (stackToggled)="toggleStack($event)"
-      (reset)="clearFilters()" />
+      (resetRequested)="clearFilters()"
+    />
 
     @if (filteredProjects.length > 0) {
       <app-projects-timeline
         [projects]="filteredProjects"
-        (projectSelected)="openProject($event)" />
+        (projectSelected)="openProject($event)"
+      />
     } @else {
       <div class="projects-empty surface-crypt" role="status">
-        <p class="projects-empty__title text-engraved">{{ ts.translate('projects.empty.title') }}</p>
+        <p class="projects-empty__title text-engraved">
+          {{ ts.translate('projects.empty.title') }}
+        </p>
         <p class="projects-empty__text text-tome">{{ ts.translate('projects.empty.text') }}</p>
         <button type="button" class="chip chip--gilded transition-ritual" (click)="clearFilters()">
           {{ ts.translate('projects.filter.reset') }}
@@ -58,8 +65,9 @@
     <app-projects-modal
       [project]="project"
       [currentImageIndex]="currentImageIndex"
-      (close)="closeProject()"
+      (closed)="closeProject()"
       (nextImage)="nextImage()"
-      (previousImage)="previousImage()" />
+      (previousImage)="previousImage()"
+    />
   }
 </main>

@@ -1,16 +1,22 @@
-<div class="image-lightbox" (click)="close.emit()">
+<!-- Fermeture au clic sur le fond : redondance pointeur — le clavier a Échap + le bouton fermer. -->
+<!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
+<div class="image-lightbox" (click)="closed.emit()">
+  <!-- Bouclier de propagation (clic dans le dialog ne ferme pas) : element non interactif. -->
+  <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
   <div
     class="image-lightbox__dialog"
     appFocusTrap
     role="dialog"
     aria-modal="true"
     [attr.aria-label]="ts.translate('common.lightbox.aria')"
-    (click)="$event.stopPropagation()">
+    (click)="$event.stopPropagation()"
+  >
     <button
       type="button"
       class="image-lightbox__close"
-      (click)="close.emit()"
-      [attr.aria-label]="ts.translate('common.lightbox.close')">
+      (click)="closed.emit()"
+      [attr.aria-label]="ts.translate('common.lightbox.close')"
+    >
       &times;
     </button>
 
@@ -19,7 +25,8 @@
         type="button"
         class="image-lightbox__nav image-lightbox__nav--previous"
         (click)="previous.emit()"
-        [attr.aria-label]="ts.translate('common.lightbox.previous')">
+        [attr.aria-label]="ts.translate('common.lightbox.previous')"
+      >
         <span aria-hidden="true">&#8249;</span>
       </button>
 
@@ -27,7 +34,8 @@
         type="button"
         class="image-lightbox__nav image-lightbox__nav--next"
         (click)="next.emit()"
-        [attr.aria-label]="ts.translate('common.lightbox.next')">
+        [attr.aria-label]="ts.translate('common.lightbox.next')"
+      >
         <span aria-hidden="true">&#8250;</span>
       </button>
     }
@@ -40,7 +48,8 @@
         loading="eager"
         decoding="async"
         objectFit="contain"
-        sizes="100vw">
+        sizes="100vw"
+      >
       </app-responsive-picture>
     </div>
 

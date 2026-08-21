@@ -1,5 +1,4 @@
 <div class="app-root">
-
   <!-- Skip link — focus-visible uniquement, pour lecteurs d'écran et navigation clavier -->
   <a class="skip-link" href="#main-content">{{ ts.translate('common.skip_to_content') }}</a>
 
@@ -34,7 +33,6 @@
   <app-page-transition></app-page-transition>
 
   @if (ts.isLangModalOpen()) {
-    <app-lang-modal (close)="ts.closeModal()" />
+    <app-lang-modal (closed)="ts.closeModal()" />
   }
-
 </div>

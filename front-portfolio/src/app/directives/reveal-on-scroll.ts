@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
-  Inject,
   Input,
   OnDestroy,
   PLATFORM_ID,
@@ -19,6 +18,8 @@ import { NavigationContextService } from '../services/navigation-context.service
   standalone: true,
 })
 export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
   @Input() revealDelay = 0;
   @Input() revealDuration = 0.7;
   @Input() revealY = 24;
@@ -36,10 +37,9 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
   private readonly isBrowser: boolean;
   private readonly navigationContext = inject(NavigationContextService);
 
-  constructor(
-    private readonly elementRef: ElementRef<HTMLElement>,
-    @Inject(PLATFORM_ID) platformId: object
-  ) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
 
     if (this.isBrowser) {
@@ -110,7 +110,7 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
         root: null,
         rootMargin: this.revealStart,
         threshold: 0.01,
-      }
+      },
     );
 
     this.observer.observe(element);
@@ -121,7 +121,8 @@ export class RevealOnScrollDirective implements AfterViewInit, OnDestroy {
     const originalShadow = element.style.boxShadow;
     const flash = '0 0 48px rgb(255 147 77 / 0.28), 0 0 16px rgb(166 10 10 / 0.22)';
 
-    gsap.timeline({ delay: this.revealDelay + 0.1 })
+    gsap
+      .timeline({ delay: this.revealDelay + 0.1 })
       .to(element, {
         duration: 0.4,
         boxShadow: flash,

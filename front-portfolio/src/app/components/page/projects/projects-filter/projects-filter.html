@@ -8,7 +8,8 @@
           type="button"
           class="projects-filters__chip"
           [class.is-active]="filtersState.category === filter.id"
-          (click)="categorySelected.emit(filter.id)">
+          (click)="categorySelected.emit(filter.id)"
+        >
           {{ ts.translate('projects.filter.' + filter.id) }}
         </button>
       }
@@ -23,12 +24,15 @@
         type="button"
         class="projects-filters__chip projects-filters__picker-trigger"
         [class.is-active]="isTagsPanelOpen || filtersState.tags.length > 0"
-        (click)="toggleTagsPanel()">
+        (click)="toggleTagsPanel()"
+      >
         {{ ts.translate('projects.filter.tags') }}
         <span class="projects-filters__picker-count">{{ filtersState.tags.length }}</span>
       </button>
 
       @if (isTagsPanelOpen) {
+        <!-- Bouclier de propagation (fermeture au clic exterieur) : element non interactif. -->
+        <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
         <div class="projects-filters__panel" (click)="$event.stopPropagation()">
           <input
             type="text"
@@ -36,7 +40,8 @@
             [attr.aria-label]="ts.translate('projects.filter.search_tag')"
             [placeholder]="ts.translate('projects.filter.search_tag')"
             [value]="tagQuery"
-            (input)="tagQuery = $any($event.target).value" />
+            (input)="tagQuery = $any($event.target).value"
+          />
 
           <div class="projects-filters__panel-list">
             @for (tag of filteredTags; track tag) {
@@ -44,7 +49,8 @@
                 type="button"
                 class="projects-filters__option"
                 [class.is-selected]="isTagSelected(tag)"
-                (click)="tagToggled.emit(tag)">
+                (click)="tagToggled.emit(tag)"
+              >
                 <span>{{ tag }}</span>
                 @if (isTagSelected(tag)) {
                   <span>{{ ts.translate('projects.filter.selected') }}</span>
@@ -66,7 +72,8 @@
           <button
             type="button"
             class="projects-filters__chip projects-filters__chip--tag is-active"
-            (click)="tagToggled.emit(tag)">
+            (click)="tagToggled.emit(tag)"
+          >
             {{ tag }} ×
           </button>
         }
@@ -82,12 +89,15 @@
         type="button"
         class="projects-filters__chip projects-filters__picker-trigger"
         [class.is-active]="isStackPanelOpen || filtersState.stack.length > 0"
-        (click)="toggleStackPanel()">
+        (click)="toggleStackPanel()"
+      >
         {{ ts.translate('projects.filter.stack') }}
         <span class="projects-filters__picker-count">{{ filtersState.stack.length }}</span>
       </button>
 
       @if (isStackPanelOpen) {
+        <!-- Bouclier de propagation (fermeture au clic exterieur) : element non interactif. -->
+        <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
         <div class="projects-filters__panel" (click)="$event.stopPropagation()">
           <input
             type="text"
@@ -95,7 +105,8 @@
             [attr.aria-label]="ts.translate('projects.filter.search_stack')"
             [placeholder]="ts.translate('projects.filter.search_stack')"
             [value]="stackQuery"
-            (input)="stackQuery = $any($event.target).value" />
+            (input)="stackQuery = $any($event.target).value"
+          />
 
           <div class="projects-filters__panel-list">
             @for (stackItem of filteredStack; track stackItem) {
@@ -103,7 +114,8 @@
                 type="button"
                 class="projects-filters__option"
                 [class.is-selected]="isStackSelected(stackItem)"
-                (click)="stackToggled.emit(stackItem)">
+                (click)="stackToggled.emit(stackItem)"
+              >
                 <span>{{ stackItem }}</span>
                 @if (isStackSelected(stackItem)) {
                   <span>{{ ts.translate('projects.filter.selected') }}</span>
@@ -125,7 +137,8 @@
           <button
             type="button"
             class="projects-filters__chip projects-filters__chip--stack is-active"
-            (click)="stackToggled.emit(stackItem)">
+            (click)="stackToggled.emit(stackItem)"
+          >
             {{ stackItem }} ×
           </button>
         }
@@ -135,7 +148,7 @@
 
   @if (hasActiveFilters()) {
     <div class="projects-filters__actions">
-      <button type="button" class="projects-filters__reset" (click)="reset.emit()">
+      <button type="button" class="projects-filters__reset" (click)="resetRequested.emit()">
         {{ ts.translate('projects.filter.reset') }}
       </button>
     </div>

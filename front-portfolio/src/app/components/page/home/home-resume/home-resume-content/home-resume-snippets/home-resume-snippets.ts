@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   inject,
-  Inject,
   PLATFORM_ID,
   QueryList,
   ViewChildren,
@@ -98,7 +97,9 @@ export class HomeResumeSnippets implements AfterViewInit {
 
   private readonly isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
 
     if (this.isBrowser) {
@@ -155,7 +156,7 @@ export class HomeResumeSnippets implements AfterViewInit {
                 clearProps: 'opacity',
               });
             },
-          }
+          },
         );
 
         return;
@@ -219,10 +220,7 @@ export class HomeResumeSnippets implements AfterViewInit {
     });
   }
 
-  private setExpandedState(
-    contentEl: HTMLElement,
-    isExpanded: boolean
-  ): void {
+  private setExpandedState(contentEl: HTMLElement, isExpanded: boolean): void {
     gsap.killTweensOf(contentEl);
     const state = isExpanded
       ? {
@@ -242,7 +240,7 @@ export class HomeResumeSnippets implements AfterViewInit {
 
   private shouldUseSimpleMotion(): boolean {
     return window.matchMedia(
-      '(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse), (max-width: 767px)'
+      '(prefers-reduced-motion: reduce), (hover: none), (pointer: coarse), (max-width: 767px)',
     ).matches;
   }
 }

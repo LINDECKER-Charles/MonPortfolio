@@ -41,8 +41,6 @@ const picture = (set: { sources: ResponsiveSource[]; fallbackSrc: string }): Lin
 
 const svg = (key: LinktreeSvgKey): LinktreeIcon => ({ kind: 'svg', svg: key });
 
-const emoji = (value: string): LinktreeIcon => ({ kind: 'emoji', emoji: value });
-
 export const LINKTREE_SECTIONS: LinktreeSection[] = [
   {
     id: 'network',

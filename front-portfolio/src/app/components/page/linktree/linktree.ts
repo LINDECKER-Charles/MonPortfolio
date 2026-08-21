@@ -4,7 +4,6 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  Inject,
   PLATFORM_ID,
   ViewChild,
   inject,
@@ -38,7 +37,9 @@ export class Linktree implements AfterViewInit {
 
   private readonly isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
     if (this.isBrowser) {
       gsap.registerPlugin(CSSPlugin);
@@ -89,7 +90,7 @@ export class Linktree implements AfterViewInit {
             observer.disconnect();
           });
         },
-        { rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
+        { rootMargin: '0px 0px -12% 0px', threshold: 0.08 },
       );
 
       observer.observe(block);

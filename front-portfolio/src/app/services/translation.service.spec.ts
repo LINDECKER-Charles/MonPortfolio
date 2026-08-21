@@ -46,7 +46,7 @@ describe('TranslationService', () => {
   });
 
   it('reflects current lang onto document.documentElement.lang via effect', async () => {
-    const service = createService();
+    createService();
     TestBed.tick();
     expect(document.documentElement.lang).toBe('fr');
   });

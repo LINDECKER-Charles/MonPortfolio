@@ -7,11 +7,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {
-  ProjectCategory,
-  ProjectFilterItem,
-  ProjectFiltersState,
-} from '../projects.state';
+import { ProjectCategory, ProjectFilterItem, ProjectFiltersState } from '../projects.state';
 import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
@@ -34,7 +30,7 @@ export class ProjectsFilter {
   @Output() categorySelected = new EventEmitter<ProjectCategory | 'all'>();
   @Output() tagToggled = new EventEmitter<string>();
   @Output() stackToggled = new EventEmitter<string>();
-  @Output() reset = new EventEmitter<void>();
+  @Output() resetRequested = new EventEmitter<void>();
 
   protected isTagsPanelOpen = false;
   protected isStackPanelOpen = false;

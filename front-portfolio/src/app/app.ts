@@ -1,25 +1,25 @@
-import {Component, inject, signal} from '@angular/core';
-import {Loading} from './components/assets/loading/loading';
-import {AudioService} from './services/audio-service';
-import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import {MetaService} from './services/meta-service';
-import {filter, map, mergeMap} from 'rxjs';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {Footer} from './components/misc/footer/footer';
-import {NavBarre} from './components/misc/nav-barre/nav-barre';
-import {LangModal} from './components/assets/lang-modal/lang-modal';
-import {EmberParticles} from './components/assets/ember-particles/ember-particles';
-import {PageTransition} from './components/assets/page-transition/page-transition';
-import {TranslationService} from './services/translation.service';
-import {NavigationContextService} from './services/navigation-context.service';
+import { Component, inject, signal, OnInit } from '@angular/core';
+import { Loading } from './components/assets/loading/loading';
+import { AudioService } from './services/audio-service';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { MetaService } from './services/meta-service';
+import { filter, map, mergeMap } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Footer } from './components/misc/footer/footer';
+import { NavBarre } from './components/misc/nav-barre/nav-barre';
+import { LangModal } from './components/assets/lang-modal/lang-modal';
+import { EmberParticles } from './components/assets/ember-particles/ember-particles';
+import { PageTransition } from './components/assets/page-transition/page-transition';
+import { TranslationService } from './services/translation.service';
+import { NavigationContextService } from './services/navigation-context.service';
 
 @Component({
   selector: 'app-root',
   imports: [Loading, RouterOutlet, Footer, NavBarre, LangModal, EmberParticles, PageTransition],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('front-portfolio');
 
   public audio = inject(AudioService);
@@ -32,56 +32,56 @@ export class App {
         src: './song/hunters_dream.mp3',
         loop: true,
         volume: 0.7,
-        preload: 'auto'
+        preload: 'auto',
       },
       pouperVoice: {
         src: './song/pouper_welcome.mp3',
         loop: false,
         volume: 0.9,
-        preload: 'auto'
+        preload: 'auto',
       },
       getItem: {
         src: './song/get_item.mp3',
         loop: false,
         volume: 0.4,
-        preload: 'auto'
+        preload: 'auto',
       },
       bloodVial: {
         src: './song/blood_vial.mp3',
         loop: false,
         volume: 0.15,
-        preload: 'auto'
+        preload: 'auto',
       },
       getEcho: {
         src: './song/get_echo.mp3',
         loop: false,
         volume: 0.15,
-        preload: 'auto'
+        preload: 'auto',
       },
       getbackEcho: {
         src: './song/getback_echo.mp3',
         loop: false,
         volume: 0.15,
-        preload: 'auto'
+        preload: 'auto',
       },
       messagerLaught: {
         src: './song/messager_laught.mp3',
         loop: false,
         volume: 0.15,
-        preload: 'auto'
+        preload: 'auto',
       },
       smallBell: {
         src: './song/small_bell.mp3',
         loop: false,
         volume: 0.15,
-        preload: 'auto'
+        preload: 'auto',
       },
       newLocation: {
         src: './song/new_location.mp3',
         loop: false,
         volume: 0.3,
-        preload: 'auto'
-      }
+        preload: 'auto',
+      },
     });
   }
 
@@ -100,22 +100,23 @@ export class App {
         }
 
         return route?.snapshot.data['showFooter'] ?? true;
-      })
+      }),
     ),
-    { initialValue: true }
+    { initialValue: true },
   );
 
   async ngOnInit() {
-    this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map(() => this.activatedRoute),
-      map((route) => {
-        while (route.firstChild) route = route.firstChild;
-        return route;
-      }),
-      filter((route) => route.outlet === 'primary'),
-      mergeMap((route) => route.data)
-    )
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data),
+      )
       .subscribe((event) => {
         this.metaService.updateDescription(event['description']);
         this.metaService.updateCanonical(event['canonical']);
@@ -133,6 +134,5 @@ export class App {
         this.metaService.updateTwitterImage(event['twitterImage']);
         this.metaService.updateStructuredData(event['structuredData']);
       });
-
   }
 }

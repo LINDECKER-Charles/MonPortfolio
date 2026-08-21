@@ -6,9 +6,10 @@ import {
   animateRunePress,
   animateRuneRelease,
 } from './resum-rune-icons.animations';
-import {PlaySoundOnClickDirective} from '../../../../../directives/play-sound-on-click.directive';
-import {ResponsivePicture} from '../../../../assets/responsive-picture/responsive-picture';
+import { PlaySoundOnClickDirective } from '../../../../../directives/play-sound-on-click.directive';
+import { ResponsivePicture } from '../../../../assets/responsive-picture/responsive-picture';
 import { TranslationService } from '../../../../../services/translation.service';
+import { ResumImages } from '../../../../../img-sources/resum.sources';
 
 @Component({
   selector: 'app-resum-rune-icons',
@@ -18,7 +19,7 @@ import { TranslationService } from '../../../../../services/translation.service'
 })
 export class ResumRuneIcons extends ResumEntryAnimation {
   protected readonly ts = inject(TranslationService);
-  @Input({ required: true }) images!: any;
+  @Input({ required: true }) images!: ResumImages;
   protected readonly animationSelectors = '.rune';
   protected override animationDelay = 0.2;
   protected override animationStagger = 0.05;

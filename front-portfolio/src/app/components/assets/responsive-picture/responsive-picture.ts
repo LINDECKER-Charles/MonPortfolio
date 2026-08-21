@@ -1,4 +1,4 @@
-import { Component, Input, computed, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface ResponsiveSource {
   src: string;
@@ -37,7 +37,9 @@ export class ResponsivePicture {
   }
 
   get sourceTypes(): string[] {
-    return [...new Set(this.sortedSources.map((source) => source.type).filter(Boolean) as string[])];
+    return [
+      ...new Set(this.sortedSources.map((source) => source.type).filter(Boolean) as string[]),
+    ];
   }
 
   buildMedia(maxWidth?: number): string | null {

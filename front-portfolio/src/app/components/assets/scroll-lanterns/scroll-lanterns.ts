@@ -3,7 +3,6 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  Inject,
   OnDestroy,
   PLATFORM_ID,
   inject,
@@ -40,7 +39,8 @@ interface Lantern {
             class="scroll-lanterns__lantern"
             [class.is-lit]="activeIndex() === idx"
             [attr.aria-label]="ts.translate(lantern.label)"
-            (click)="scrollTo($event, lantern.targetSelector)">
+            (click)="scrollTo($event, lantern.targetSelector)"
+          >
             <span class="scroll-lanterns__flame"></span>
           </a>
         }
@@ -54,9 +54,9 @@ export class ScrollLanterns implements AfterViewInit, OnDestroy {
      Les pages qui n'ont pas ces ids laisseront simplement les lanternes
      éteintes (pas d'erreur). */
   protected readonly lanterns: Lantern[] = [
-    { targetSelector: '#hero',     label: 'common.nav.home' },
+    { targetSelector: '#hero', label: 'common.nav.home' },
     { targetSelector: '#projects', label: 'common.nav.projects' },
-    { targetSelector: '#work',     label: 'common.nav.work' },
+    { targetSelector: '#work', label: 'common.nav.work' },
   ];
 
   protected activeIndex = signal(0);
@@ -68,7 +68,9 @@ export class ScrollLanterns implements AfterViewInit, OnDestroy {
   private routerSub?: Subscription;
   private readonly isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -113,7 +115,7 @@ export class ScrollLanterns implements AfterViewInit, OnDestroy {
            qui intersectent — c'est celle dans laquelle on vient d'entrer
            en scrollant vers le bas, donc la section "courante". */
         const sorted = intersecting.sort(
-          (a, b) => b.boundingClientRect.top - a.boundingClientRect.top
+          (a, b) => b.boundingClientRect.top - a.boundingClientRect.top,
         );
         const first = sorted[0];
         const found = elements.find(({ el }) => el === first.target);
@@ -124,7 +126,7 @@ export class ScrollLanterns implements AfterViewInit, OnDestroy {
            y compris la dernière quand on est en fin de page. */
         rootMargin: '0px 0px -70% 0px',
         threshold: 0,
-      }
+      },
     );
 
     for (const { el } of elements) {

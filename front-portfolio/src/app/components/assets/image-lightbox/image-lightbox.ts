@@ -10,10 +10,7 @@ import {
   Output,
   PLATFORM_ID,
 } from '@angular/core';
-import {
-  ResponsivePicture,
-  ResponsiveSource,
-} from '../responsive-picture/responsive-picture';
+import { ResponsivePicture, ResponsiveSource } from '../responsive-picture/responsive-picture';
 import { FocusTrapDirective } from '../../../directives/focus-trap.directive';
 import { TranslationService } from '../../../services/translation.service';
 
@@ -34,7 +31,7 @@ export class ImageLightbox implements OnInit, OnDestroy {
   @Input({ required: true }) alt = '';
   @Input() currentIndex = 0;
   @Input() total = 1;
-  @Output() close = new EventEmitter<void>();
+  @Output() closed = new EventEmitter<void>();
   @Output() previous = new EventEmitter<void>();
   @Output() next = new EventEmitter<void>();
 
@@ -51,7 +48,7 @@ export class ImageLightbox implements OnInit, OnDestroy {
 
   @HostListener('document:keydown.escape')
   protected onEscape(): void {
-    this.close.emit();
+    this.closed.emit();
   }
 
   @HostListener('document:keydown.arrowleft')

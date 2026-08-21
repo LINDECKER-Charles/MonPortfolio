@@ -4,7 +4,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Inject,
   OnDestroy,
   PLATFORM_ID,
   ViewChild,
@@ -36,10 +35,10 @@ import gsap from 'gsap';
     <div class="page-transition" #overlay aria-hidden="true">
       <svg class="page-transition__rune" viewBox="0 0 80 80" fill="none">
         <!-- Cercle rituel + croix gravée. Simple mais lisible à l'échelle. -->
-        <circle cx="40" cy="40" r="32" stroke="#a49476" stroke-width="1" opacity="0.6"/>
-        <circle cx="40" cy="40" r="22" stroke="#a49476" stroke-width="0.6" opacity="0.4"/>
-        <path d="M40 12 L40 68 M12 40 L68 40" stroke="#a49476" stroke-width="0.6" opacity="0.35"/>
-        <circle cx="40" cy="40" r="3" fill="#a49476" opacity="0.8"/>
+        <circle cx="40" cy="40" r="32" stroke="#a49476" stroke-width="1" opacity="0.6" />
+        <circle cx="40" cy="40" r="22" stroke="#a49476" stroke-width="0.6" opacity="0.4" />
+        <path d="M40 12 L40 68 M12 40 L68 40" stroke="#a49476" stroke-width="0.6" opacity="0.35" />
+        <circle cx="40" cy="40" r="3" fill="#a49476" opacity="0.8" />
       </svg>
     </div>
   `,
@@ -65,7 +64,9 @@ export class PageTransition implements AfterViewInit, OnDestroy {
   /** Routes dont on zappe la transition (séquences d'intro autonomes). */
   private readonly EXCLUDED = ['/opening-home', '/opening-resume'];
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
   }
 

@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, HostListener, inject, Input, Output, SecurityContext } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  inject,
+  Input,
+  Output,
+  SecurityContext,
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ImageLightbox } from '../../../assets/image-lightbox/image-lightbox';
 import {
@@ -25,11 +33,13 @@ interface ProjectIconSet {
   styleUrl: './projects-modal.css',
 })
 export class ProjectsModal {
+  private readonly sanitizer = inject(DomSanitizer);
+
   protected readonly ts = inject(TranslationService);
 
   @Input({ required: true }) project!: ProjectItem;
   @Input() currentImageIndex = 0;
-  @Output() close = new EventEmitter<void>();
+  @Output() closed = new EventEmitter<void>();
   @Output() nextImage = new EventEmitter<void>();
   @Output() previousImage = new EventEmitter<void>();
   protected isImageLightboxOpen = false;
@@ -40,15 +50,13 @@ export class ProjectsModal {
     fallback: SHARED_IMAGES.stack.github.fallbackSrc,
   };
 
-  constructor(private readonly sanitizer: DomSanitizer) {}
-
   @HostListener('document:keydown.escape')
   protected onEscape(): void {
     if (this.isImageLightboxOpen) {
       this.closeImageLightbox();
       return;
     }
-    this.close.emit();
+    this.closed.emit();
   }
 
   protected get currentImage() {
