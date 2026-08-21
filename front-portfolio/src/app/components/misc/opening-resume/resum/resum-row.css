@@ -1,3 +1,5 @@
+/* Rangée label/valeur partagée par les panneaux du résumé (header, stats, stack). */
+
 :host {
   display: contents;
 }
@@ -38,9 +40,16 @@
   height: 20px;
   display: block;
   flex-shrink: 0;
+  border-radius: 0;
+  will-change: transform;
+}
+
+/* Variante « sceau rond » (stack) : icônes en pastille. */
+.label--round app-responsive-picture,
+.label--round picture,
+.label--round img {
   border-radius: var(--radius-pill);
   overflow: hidden;
-  will-change: transform;
 }
 
 .label img {

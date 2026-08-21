@@ -8,7 +8,7 @@ import { ResumImages } from '../../../../../img-sources/resum.sources';
   selector: 'app-resum-stack',
   imports: [ResponsivePicture],
   templateUrl: './resum-stack.html',
-  styleUrl: './resum-stack.css',
+  styleUrl: '../resum-row.css',
 })
 export class ResumStack extends ResumEntryAnimation {
   @Input({ required: true }) images!: ResumImages;

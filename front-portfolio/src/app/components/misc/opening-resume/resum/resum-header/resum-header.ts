@@ -16,7 +16,7 @@ import { ResumImages } from '../../../../../img-sources/resum.sources';
   selector: 'app-resum-header',
   imports: [ResponsivePicture, PlaySoundOnClickDirective],
   templateUrl: './resum-header.html',
-  styleUrl: './resum-header.css',
+  styleUrls: ['../resum-row.css', './resum-header.css'],
 })
 export class ResumHeader extends ResumEntryAnimation {
   protected readonly ts = inject(TranslationService);

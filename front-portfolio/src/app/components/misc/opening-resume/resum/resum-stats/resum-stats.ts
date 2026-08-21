@@ -9,7 +9,7 @@ import { ResumImages } from '../../../../../img-sources/resum.sources';
   selector: 'app-resum-stats',
   imports: [ResponsivePicture],
   templateUrl: './resum-stats.html',
-  styleUrl: './resum-stats.css',
+  styleUrl: '../resum-row.css',
 })
 export class ResumStats extends ResumEntryAnimation {
   protected readonly ts = inject(TranslationService);
