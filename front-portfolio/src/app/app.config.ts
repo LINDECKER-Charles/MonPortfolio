@@ -8,7 +8,7 @@ import {
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withNavigationErrorHandler } from '@angular/router';
-import { provideClientHydration } from '@angular/platform-browser';
+import { provideClientHydration, withNoIncrementalHydration } from '@angular/platform-browser';
 
 import { routes } from './app.routes';
 import { SOUND_CATALOG } from './audio/sound-catalog';
@@ -33,7 +33,7 @@ export const appConfig: ApplicationConfig = {
     // cible au lieu de laisser la navigation échouer en silence (freeze).
     provideRouter(routes, withNavigationErrorHandler(recoverFromStaleChunk)),
     // Pas de withEventReplay() : contrainte CSP stricte (aucun script inline / replay).
-    provideClientHydration(),
+    provideClientHydration(withNoIncrementalHydration()),
     // Instancié avant la navigation initiale pour un comptage NavigationStart
     // fiable — consommé par les entrances (shouldSkipEntrance) et la page-transition.
     provideEnvironmentInitializer(() => void inject(NavigationContextService)),

@@ -1,4 +1,9 @@
-import { Component, PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
+import {
+  Component,
+  PLATFORM_ID,
+  provideZonelessChangeDetection,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import gsap from 'gsap';
@@ -46,6 +51,7 @@ class FakeIntersectionObserver {
 
 @Component({
   imports: [RevealOnScrollDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div
       [style.position]="'fixed'"

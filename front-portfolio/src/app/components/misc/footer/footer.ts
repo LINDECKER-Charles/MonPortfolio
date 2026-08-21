@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ResponsivePicture } from '../../assets/responsive-picture/responsive-picture';
 import { labeled, SHARED_IMAGES } from '../../../img-sources/shared.sources';
@@ -8,6 +8,7 @@ import { TranslationService } from '../../../services/translation.service';
   selector: 'app-footer',
   imports: [RouterLink, ResponsivePicture],
   templateUrl: './footer.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './footer.css',
 })
 export class Footer {

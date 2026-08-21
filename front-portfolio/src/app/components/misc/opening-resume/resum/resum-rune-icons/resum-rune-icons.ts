@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateRuneHoverIn,
@@ -15,6 +15,7 @@ import { ResumImages } from '../../../../../img-sources/resum.sources';
   selector: 'app-resum-rune-icons',
   imports: [ResponsivePicture, PlaySoundOnClickDirective],
   templateUrl: './resum-rune-icons.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './resum-rune-icons.css',
 })
 export class ResumRuneIcons extends ResumEntryAnimation {

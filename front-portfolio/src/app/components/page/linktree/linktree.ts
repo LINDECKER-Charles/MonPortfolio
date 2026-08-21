@@ -7,6 +7,7 @@ import {
   PLATFORM_ID,
   ViewChild,
   inject,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
@@ -22,6 +23,7 @@ import { LINKTREE_SECTIONS, LinktreeLink, LinktreeSection } from './linktree.sta
   standalone: true,
   imports: [ResponsivePicture],
   templateUrl: './linktree.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './linktree.css',
 })
 export class Linktree implements AfterViewInit {

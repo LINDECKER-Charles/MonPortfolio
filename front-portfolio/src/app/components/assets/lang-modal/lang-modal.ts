@@ -9,6 +9,7 @@ import {
   OnInit,
   output,
   PLATFORM_ID,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { AVAILABLE_LANGUAGES, TranslationService } from '../../../services/translation.service';
 import { FocusTrapDirective } from '../../../directives/focus-trap.directive';
@@ -20,6 +21,7 @@ const CLOSE_DURATION_MS = 200;
   selector: 'app-lang-modal',
   imports: [FocusTrapDirective],
   templateUrl: './lang-modal.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './lang-modal.css',
 })
 export class LangModal implements OnInit, OnDestroy {

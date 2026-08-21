@@ -1,4 +1,4 @@
-import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { Component, provideZonelessChangeDetection, ChangeDetectionStrategy } from '@angular/core';
 import { provideRouter, Router } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -10,7 +10,11 @@ interface AppAccess {
   langModalOpen: { (): boolean; set(value: boolean): void };
 }
 
-@Component({ selector: 'app-stub', template: 'stub' })
+@Component({
+  selector: 'app-stub',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  template: 'stub',
+})
 class StubComponent {}
 
 describe('App', () => {

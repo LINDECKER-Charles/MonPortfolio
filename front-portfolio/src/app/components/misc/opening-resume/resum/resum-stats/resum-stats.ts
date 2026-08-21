@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import { animateResumRowHoverIn, animateResumRowHoverOut } from '../resum-row-hover.animations';
 import { ResponsivePicture } from '../../../../assets/responsive-picture/responsive-picture';
@@ -9,6 +9,7 @@ import { ResumImages } from '../../../../../img-sources/resum.sources';
   selector: 'app-resum-stats',
   imports: [ResponsivePicture],
   templateUrl: './resum-stats.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: '../resum-row.css',
 })
 export class ResumStats extends ResumEntryAnimation {

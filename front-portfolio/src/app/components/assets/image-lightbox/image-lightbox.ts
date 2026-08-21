@@ -10,6 +10,7 @@ import {
   OnInit,
   Output,
   PLATFORM_ID,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { ResponsivePicture, ResponsiveSource } from '../responsive-picture/responsive-picture';
 import { FocusTrapDirective } from '../../../directives/focus-trap.directive';
@@ -20,6 +21,7 @@ import { lockBodyScroll } from '../../../utils/scroll-lock';
   selector: 'app-image-lightbox',
   imports: [ResponsivePicture, FocusTrapDirective],
   templateUrl: './image-lightbox.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './image-lightbox.css',
 })
 export class ImageLightbox implements OnInit, OnDestroy {

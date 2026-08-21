@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../directives/reveal-on-scroll';
 import {
   ResponsivePicture,
@@ -30,6 +30,7 @@ import { formatDuration, formatPeriod } from '../works.utils';
   standalone: true,
   imports: [RevealOnScrollDirective, ResponsivePicture],
   templateUrl: './works-timeline.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './works-timeline.css',
 })
 export class WorksTimeline {

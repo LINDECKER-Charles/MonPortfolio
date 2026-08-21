@@ -8,6 +8,7 @@ import {
   computed,
   inject,
   signal,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ResponsivePicture } from '../responsive-picture/responsive-picture';
@@ -22,6 +23,7 @@ export type PhotoCarouselSlide = LabeledImageSet;
   selector: 'app-photo-carousel',
   imports: [ResponsivePicture],
   templateUrl: './photo-carousel.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './photo-carousel.css',
 })
 export class PhotoCarousel implements OnInit, OnDestroy {

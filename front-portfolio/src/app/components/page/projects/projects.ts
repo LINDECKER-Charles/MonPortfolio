@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Constellation } from '../../assets/constellation/constellation';
 import { ConstellationItem } from '../../assets/constellation/constellation.model';
 import {
@@ -33,6 +33,7 @@ const EMPTY_FILTERS: ProjectFiltersState = {
   selector: 'app-projects',
   imports: [ProjectsHeader, Constellation, ProjectsFilter, ProjectsTimeline, ProjectsModal],
   templateUrl: './projects.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './projects.css',
 })
 export class Projects {

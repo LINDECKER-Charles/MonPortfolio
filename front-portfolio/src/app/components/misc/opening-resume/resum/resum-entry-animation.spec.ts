@@ -1,4 +1,9 @@
-import { Component, provideZonelessChangeDetection, signal } from '@angular/core';
+import {
+  Component,
+  provideZonelessChangeDetection,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import gsap from 'gsap';
 
@@ -7,13 +12,18 @@ import { ResumEntryAnimation } from './resum-entry-animation';
 
 @Component({
   selector: 'app-entry-host',
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: '<span class="anim">a</span><span class="anim">b</span>',
 })
 class EntryHost extends ResumEntryAnimation {
   protected readonly animationSelectors = '.anim';
 }
 
-@Component({ selector: 'app-entry-empty-host', template: '<span>nothing</span>' })
+@Component({
+  selector: 'app-entry-empty-host',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  template: '<span>nothing</span>',
+})
 class EntryEmptyHost extends ResumEntryAnimation {
   protected readonly animationSelectors = '.missing';
 }

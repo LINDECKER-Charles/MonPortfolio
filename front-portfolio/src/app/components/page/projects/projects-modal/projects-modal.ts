@@ -11,6 +11,7 @@ import {
   Output,
   PLATFORM_ID,
   SecurityContext,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ImageLightbox } from '../../../assets/image-lightbox/image-lightbox';
@@ -26,6 +27,7 @@ import { lockBodyScroll } from '../../../../utils/scroll-lock';
   selector: 'app-projects-modal',
   imports: [ResponsivePicture, ImageLightbox, FocusTrapDirective],
   templateUrl: './projects-modal.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './projects-modal.css',
 })
 export class ProjectsModal implements OnInit, OnDestroy {

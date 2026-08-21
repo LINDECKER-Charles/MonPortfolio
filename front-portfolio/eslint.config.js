@@ -43,6 +43,9 @@ module.exports = tseslint.config(
       ],
       // Garde-fou de taille (cf. docs/architecture-report.md) — warn, pas error.
       'max-lines': ['warn', { max: 300, skipBlankLines: true, skipComments: true }],
+      // La migration v22 a fige la strategie actuelle (Eager) pour preserver le
+      // comportement ; la generalisation d'OnPush est un chantier dedie.
+      '@angular-eslint/prefer-on-push-component-change-detection': 'off',
     },
   },
   {

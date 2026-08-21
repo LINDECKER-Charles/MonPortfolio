@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateProjectHoverIn,
@@ -15,6 +15,7 @@ import { ResumImages } from '../../../../../img-sources/resum.sources';
   selector: 'app-resum-active-projects',
   imports: [ResponsivePicture, PlaySoundOnClickDirective],
   templateUrl: './resum-active-projects.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './resum-active-projects.css',
 })
 export class ResumActiveProjects extends ResumEntryAnimation {

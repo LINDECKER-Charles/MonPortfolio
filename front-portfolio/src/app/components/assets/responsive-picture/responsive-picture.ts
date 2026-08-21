@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 export interface ResponsiveSource {
   src: string;
@@ -28,6 +28,7 @@ export interface ResponsiveSource {
   selector: 'app-responsive-picture',
   imports: [],
   templateUrl: './responsive-picture.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './responsive-picture.css',
 })
 export class ResponsivePicture {

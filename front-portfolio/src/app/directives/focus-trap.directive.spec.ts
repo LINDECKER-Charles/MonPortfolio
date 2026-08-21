@@ -1,4 +1,9 @@
-import { Component, PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
+import {
+  Component,
+  PLATFORM_ID,
+  provideZonelessChangeDetection,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -6,6 +11,7 @@ import { FocusTrapDirective } from './focus-trap.directive';
 
 @Component({
   imports: [FocusTrapDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <button id="outside" type="button">outside</button>
     @if (showTrap) {

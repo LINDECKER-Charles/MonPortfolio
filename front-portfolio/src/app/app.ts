@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Data, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, filter, map, mergeMap, share } from 'rxjs';
@@ -17,6 +17,7 @@ import { TranslationService } from './services/translation.service';
   selector: 'app-root',
   imports: [Loading, RouterOutlet, Footer, NavBarre, LangModal, EmberParticles, PageTransition],
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.css',
 })
 export class App implements OnInit {

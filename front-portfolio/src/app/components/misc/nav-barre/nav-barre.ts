@@ -6,6 +6,7 @@ import {
   inject,
   output,
   signal,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -51,6 +52,7 @@ const NAV_ITEMS_DEF: NavItemDef[] = [
   selector: 'app-nav-barre',
   imports: [RouterLink, RouterLinkActive, ResponsivePicture, UpperCasePipe],
   templateUrl: './nav-barre.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './nav-barre.css',
 })
 export class NavBarre {

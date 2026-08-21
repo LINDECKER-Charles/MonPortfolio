@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ResumActiveProjects } from './resum-active-projects/resum-active-projects';
 import { ResumContactLinks } from './resum-contact-links/resum-contact-links';
 import { ResumHeader } from './resum-header/resum-header';
@@ -20,6 +20,7 @@ import { RESUM_IMAGES } from '../../../../img-sources/resum.sources';
     ResumActiveProjects,
   ],
   templateUrl: './resum.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './resum.css',
 })
 export class Resum {

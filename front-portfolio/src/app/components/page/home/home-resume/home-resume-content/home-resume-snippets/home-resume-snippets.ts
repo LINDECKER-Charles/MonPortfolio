@@ -8,6 +8,7 @@ import {
   QueryList,
   signal,
   ViewChildren,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { TranslationService } from '../../../../../../services/translation.service';
 import gsap from 'gsap';
@@ -25,6 +26,7 @@ interface HomeResumeSnippet {
   selector: 'app-home-resume-snippets',
   imports: [ResponsivePicture],
   templateUrl: './home-resume-snippets.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home-resume-snippets.css',
 })
 export class HomeResumeSnippets implements AfterViewInit {

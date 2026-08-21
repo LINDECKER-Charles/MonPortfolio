@@ -8,6 +8,7 @@ import {
   PLATFORM_ID,
   ViewChild,
   inject,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { prefersReducedMotion } from '../../../../utils/motion';
@@ -31,6 +32,7 @@ import { TranslationService } from '../../../../services/translation.service';
   selector: 'app-opening',
   imports: [ResponsivePicture],
   templateUrl: './opening.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './opening.css',
 })
 export class Opening implements AfterViewInit, OnDestroy {

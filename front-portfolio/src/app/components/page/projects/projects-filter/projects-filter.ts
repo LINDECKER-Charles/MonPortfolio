@@ -6,6 +6,7 @@ import {
   inject,
   Input,
   Output,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import type { ProjectCategory, ProjectFilterItem, ProjectFiltersState } from '../projects.types';
 import { TranslationService } from '../../../../services/translation.service';
@@ -17,6 +18,7 @@ import { TranslationService } from '../../../../services/translation.service';
   styleUrl: './projects-filter.css',
   // Entrance rituelle au premier paint (cf. ornaments.css) — pas de tween JS
   // à l'hydratation, qui re-masquerait la barre rendue en SSR.
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: { class: 'emerge-ritual' },
 })
 export class ProjectsFilter {

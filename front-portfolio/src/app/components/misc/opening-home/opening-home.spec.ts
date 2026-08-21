@@ -1,11 +1,21 @@
-import { Component, EventEmitter, Output, provideZonelessChangeDetection } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  provideZonelessChangeDetection,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 
 import { OpeningHome } from './opening-home';
 
 /** Stub léger : même sélecteur que le vrai Opening, expose l'output `finished`. */
-@Component({ selector: 'app-opening', template: '' })
+@Component({
+  selector: 'app-opening',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  template: '',
+})
 class OpeningStub {
   @Output() finished = new EventEmitter<void>();
 }

@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import { animateResumRowHoverIn, animateResumRowHoverOut } from '../resum-row-hover.animations';
 import {
@@ -16,6 +16,7 @@ import { ResumImages } from '../../../../../img-sources/resum.sources';
   selector: 'app-resum-header',
   imports: [ResponsivePicture, PlaySoundOnClickDirective],
   templateUrl: './resum-header.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['../resum-row.css', './resum-header.css'],
 })
 export class ResumHeader extends ResumEntryAnimation {

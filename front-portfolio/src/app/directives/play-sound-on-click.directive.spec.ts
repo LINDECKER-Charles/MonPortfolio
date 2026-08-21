@@ -1,4 +1,4 @@
-import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { Component, provideZonelessChangeDetection, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SoundKey } from '../audio/sound-catalog';
@@ -7,6 +7,7 @@ import { PlaySoundOnClickDirective } from './play-sound-on-click.directive';
 
 @Component({
   imports: [PlaySoundOnClickDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <button
       [appPlaySoundOnClick]="soundKey"

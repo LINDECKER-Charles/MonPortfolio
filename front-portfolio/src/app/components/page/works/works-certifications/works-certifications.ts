@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { RevealOnScrollDirective } from '../../../../directives/reveal-on-scroll';
 import {
@@ -29,6 +29,7 @@ type Filter = CertCategory | 'all';
   standalone: true,
   imports: [RevealOnScrollDirective, ResponsivePicture, NgTemplateOutlet],
   templateUrl: './works-certifications.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './works-certifications.css',
 })
 export class WorksCertifications {

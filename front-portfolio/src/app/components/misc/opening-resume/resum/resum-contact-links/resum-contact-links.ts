@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ResumEntryAnimation } from '../resum-entry-animation';
 import {
   animateContactHoverIn,
@@ -15,6 +15,7 @@ import { ResumImages } from '../../../../../img-sources/resum.sources';
   selector: 'app-resum-contact-links',
   imports: [ResponsivePicture, PlaySoundOnClickDirective],
   templateUrl: './resum-contact-links.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './resum-contact-links.css',
 })
 export class ResumContactLinks extends ResumEntryAnimation {

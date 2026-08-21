@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, ChangeDetectionStrategy } from '@angular/core';
 import { HomeResumeBanner } from './home-resume-banner/home-resume-banner';
 import { HomeResumeHeader } from './home-resume-header/home-resume-header';
 import { HomeResumeContent } from './home-resume-content/home-resume-content';
@@ -10,6 +10,7 @@ import { SHARED_IMAGES } from '../../../../img-sources/shared.sources';
   selector: 'app-home-resume',
   imports: [HomeResumeBanner, HomeResumeHeader, HomeResumeContent],
   templateUrl: './home-resume.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home-resume.css',
 })
 export class HomeResume {
