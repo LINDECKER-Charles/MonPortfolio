@@ -2,7 +2,8 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectsTimeline } from './projects-timeline';
-import { PROJECTS_DATA, ProjectItem } from '../projects.state';
+import { PROJECTS_DATA } from '../projects.data';
+import type { ProjectItem } from '../projects.types';
 
 function api(component: ProjectsTimeline): any {
   return component as any;

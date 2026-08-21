@@ -264,15 +264,6 @@
     0 0 12px rgb(var(--color-gold-rgb) / 0.14);
 }
 
-.works-tl__seal app-responsive-picture,
-.works-tl__seal picture,
-.works-tl__seal img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .works-tl__node--volunteer .works-tl__seal {
   border-color: rgb(var(--color-moonlight-dim-rgb) / 0.3);
 }

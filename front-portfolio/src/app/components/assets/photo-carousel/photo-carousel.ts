@@ -10,15 +10,13 @@ import {
   signal,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ResponsivePicture, ResponsiveSource } from '../responsive-picture/responsive-picture';
+import { ResponsivePicture } from '../responsive-picture/responsive-picture';
+import type { LabeledImageSet } from '../../../img-sources/shared.sources';
 import { TranslationService } from '../../../services/translation.service';
 import { wrapIndex } from '../../../utils/math';
 
-export interface PhotoCarouselSlide {
-  sources: ResponsiveSource[];
-  fallbackSrc: string;
-  alt: string;
-}
+/** Alias sémantique : une diapositive est un set responsive étiqueté. */
+export type PhotoCarouselSlide = LabeledImageSet;
 
 @Component({
   selector: 'app-photo-carousel',

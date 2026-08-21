@@ -2,7 +2,8 @@ import { PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectsFilter } from './projects-filter';
-import { PROJECT_FILTERS, ProjectFiltersState } from '../projects.state';
+import { PROJECT_FILTERS } from '../projects.data';
+import type { ProjectFiltersState } from '../projects.types';
 
 function api(component: ProjectsFilter): any {
   return component as any;

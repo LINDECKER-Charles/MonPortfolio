@@ -107,15 +107,6 @@
   display: block;
 }
 
-.footer__social-icon app-responsive-picture,
-.footer__social-icon picture,
-.footer__social-icon img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .footer__bottom {
   display: flex;
   align-items: center;

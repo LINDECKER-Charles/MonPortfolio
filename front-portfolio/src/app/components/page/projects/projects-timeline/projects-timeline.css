@@ -228,13 +228,6 @@
   transition: opacity var(--duration-slow) ease;
 }
 
-.project-card__preview app-responsive-picture,
-.project-card__preview :is(picture, img) {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .project-card__preview :is(picture, img) {
   transition:
     transform var(--duration-slow) ease,

@@ -100,15 +100,6 @@
   box-shadow: var(--shadow-blood-halo);
 }
 
-.home-work__rail-item app-responsive-picture,
-.home-work__rail-item picture,
-.home-work__rail-item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 @media (max-width: 980px) {
   .home-work {
     grid-template-columns: 1fr;

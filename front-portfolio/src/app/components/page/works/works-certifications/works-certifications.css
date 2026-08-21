@@ -151,15 +151,6 @@
   overflow: hidden;
 }
 
-.works-cert__medal app-responsive-picture,
-.works-cert__medal picture,
-.works-cert__medal img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 /* ── Textes ───────────────────────────────────────────────────────────────── */
 
 .works-cert__info {

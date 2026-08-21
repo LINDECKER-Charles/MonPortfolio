@@ -68,14 +68,6 @@
   height: 100%;
 }
 
-.portrait-card__inner app-responsive-picture,
-.portrait-card__inner picture,
-.portrait-card__inner img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .portrait-card__inner img {
   object-fit: cover;
   object-position: center 18%;

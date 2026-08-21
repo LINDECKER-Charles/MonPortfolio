@@ -27,7 +27,7 @@ describe('LINKTREE_SECTIONS', () => {
       .filter((l) => l.icon.kind === 'picture')
       .forEach((l) => {
         expect(l.icon.sources?.length).toBeGreaterThan(0);
-        expect(l.icon.fallback).toBeTruthy();
+        expect(l.icon.fallbackSrc).toBeTruthy();
       });
   });
 

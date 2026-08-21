@@ -6,6 +6,18 @@ export interface ResponsiveImageSet {
   sources: ResponsiveSource[];
 }
 
+/** Set responsive accompagné de son texte alternatif, prêt à lier sur
+    `app-responsive-picture` ([sources]/[fallbackSrc]/[alt]) sans remappage. */
+export interface LabeledImageSet extends ResponsiveImageSet {
+  alt: string;
+}
+
+/** Étiquette un {@link ResponsiveImageSet} avec son `alt` (non traduit : noms
+    propres et marques — sinon passer par TranslationService côté composant). */
+export function labeled(set: ResponsiveImageSet, alt: string): LabeledImageSet {
+  return { ...set, alt };
+}
+
 const ICON_SIZES = [
   { filePrefix: '24x24_', width: 24 },
   { filePrefix: '40x40_', width: 40 },

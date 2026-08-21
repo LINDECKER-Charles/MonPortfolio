@@ -85,14 +85,6 @@
     0 20px 44px rgb(0 0 0 / 0.45);
 }
 
-.linktree__portrait-frame app-responsive-picture,
-.linktree__portrait-frame picture,
-.linktree__portrait-frame img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .linktree__portrait-frame img {
   object-fit: cover;
   object-position: center 18%;

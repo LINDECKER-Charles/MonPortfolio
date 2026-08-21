@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 export const DEV_MATES_HOME_IMAGE = buildProjectImage('Dev-mates', 'home', 'Dev-Mates home', [

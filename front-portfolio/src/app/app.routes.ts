@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 // Seul PROJECTS_DATA reste un import statique : c'est de la donnée (utilisée pour le
 // JSON-LD ItemList ci-dessous), pas un composant. Tous les composants de page sont
 // chargés à la demande via loadComponent pour alléger le bundle initial.
-import { PROJECTS_DATA } from './components/page/projects/projects.state';
+import { PROJECTS_DATA } from './components/page/projects/projects.data';
 import {
   LOGO_URL,
   SITE_URL,

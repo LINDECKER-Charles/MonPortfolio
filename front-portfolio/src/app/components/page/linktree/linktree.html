@@ -70,10 +70,10 @@
                 <span class="linktree-row__icon">
                   @switch (link.icon.kind) {
                     @case ('picture') {
-                      @if (link.icon.sources && link.icon.fallback) {
+                      @if (link.icon.sources && link.icon.fallbackSrc) {
                         <app-responsive-picture
                           [sources]="link.icon.sources"
-                          [fallbackSrc]="link.icon.fallback"
+                          [fallbackSrc]="link.icon.fallbackSrc"
                           [alt]="link.label"
                           loading="lazy"
                           decoding="async"

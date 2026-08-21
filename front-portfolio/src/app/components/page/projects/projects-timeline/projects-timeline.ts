@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../directives/reveal-on-scroll';
 import { ResponsivePicture } from '../../../assets/responsive-picture/responsive-picture';
-import { ProjectItem, ProjectMediaImage } from '../projects.state';
+import type { ProjectItem, ProjectMediaImage } from '../projects.types';
 import { formatProjectPeriod } from '../projects.utils';
 import { TranslationService } from '../../../../services/translation.service';
 

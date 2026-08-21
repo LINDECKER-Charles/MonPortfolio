@@ -9,14 +9,14 @@
     <p class="text-tome">{{ ts.translate('home-projects.description') }}</p>
 
     <div class="home-projects__stack" [attr.aria-label]="ts.translate('home-projects.stack.aria')">
-      @for (icon of stackIcons; track icon.fallback) {
+      @for (icon of stackIcons; track icon.fallbackSrc) {
         <span
           class="home-projects__stack-item transition-ritual emerge-ritual"
           [attr.title]="icon.alt"
         >
           <app-responsive-picture
             [sources]="icon.sources"
-            [fallbackSrc]="icon.fallback"
+            [fallbackSrc]="icon.fallbackSrc"
             [alt]="icon.alt"
             loading="lazy"
             decoding="async"
@@ -36,7 +36,7 @@
       <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="projectsIcon.sources"
-          [fallbackSrc]="projectsIcon.fallback"
+          [fallbackSrc]="projectsIcon.fallbackSrc"
           [alt]="ts.translate('home-projects.cta.primary.icon_alt')"
           loading="eager"
           decoding="async"
@@ -59,7 +59,7 @@
       <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="githubIcon.sources"
-          [fallbackSrc]="githubIcon.fallback"
+          [fallbackSrc]="githubIcon.fallbackSrc"
           [alt]="githubIcon.alt"
           loading="eager"
           decoding="async"

@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 // All LoDB captures are 16:10 hero shots (matching the modal carousel), so the

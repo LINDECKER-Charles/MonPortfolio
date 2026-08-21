@@ -94,15 +94,6 @@
   box-shadow: var(--shadow-blood-halo);
 }
 
-.home-projects__stack-item app-responsive-picture,
-.home-projects__stack-item picture,
-.home-projects__stack-item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .home-projects__actions {
   display: flex;
   flex-direction: column;

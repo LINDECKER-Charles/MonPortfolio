@@ -1,6 +1,6 @@
 import { ResponsiveSource } from '../../components/assets/responsive-picture/responsive-picture';
-// Import type direct vers projects.types : évite le cycle runtime
-// projects.data → *.sources → builder → projects.state (→ projects.data).
+// Import type vers projects.types (module de types purs) : garantit l'absence de
+// cycle runtime projects.data → *.source(s) → builder, même sans élision esbuild.
 import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { imageServerUrl } from '../image-server';
 

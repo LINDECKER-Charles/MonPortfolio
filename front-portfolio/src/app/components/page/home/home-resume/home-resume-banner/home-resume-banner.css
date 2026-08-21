@@ -33,15 +33,6 @@
   filter: grayscale(0.15) brightness(0.95);
 }
 
-.home-resume__banner-icon app-responsive-picture,
-.home-resume__banner-icon picture,
-.home-resume__banner-icon img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .home-resume__banner-line {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgb(var(--color-ash-rgb) / 0.2), transparent);

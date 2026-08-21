@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 export const PVZF_CONSOLE_MANAGER_IMAGE = buildProjectImage(

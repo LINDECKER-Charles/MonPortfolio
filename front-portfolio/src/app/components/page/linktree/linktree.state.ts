@@ -1,5 +1,5 @@
 import { ResponsiveSource } from '../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
+import { ResponsiveImageSet, SHARED_IMAGES } from '../../../img-sources/shared.sources';
 
 export type LinktreeIconKind = 'picture' | 'svg' | 'emoji';
 
@@ -8,7 +8,7 @@ export type LinktreeSvgKey = 'discord' | 'npm' | 'scroll';
 export interface LinktreeIcon {
   kind: LinktreeIconKind;
   sources?: ResponsiveSource[];
-  fallback?: string;
+  fallbackSrc?: string;
   svg?: LinktreeSvgKey;
   emoji?: string;
 }
@@ -33,11 +33,7 @@ export interface LinktreeSection {
   links: LinktreeLink[];
 }
 
-const picture = (set: { sources: ResponsiveSource[]; fallbackSrc: string }): LinktreeIcon => ({
-  kind: 'picture',
-  sources: set.sources,
-  fallback: set.fallbackSrc,
-});
+const picture = (set: ResponsiveImageSet): LinktreeIcon => ({ kind: 'picture', ...set });
 
 const svg = (key: LinktreeSvgKey): LinktreeIcon => ({ kind: 'svg', svg: key });
 

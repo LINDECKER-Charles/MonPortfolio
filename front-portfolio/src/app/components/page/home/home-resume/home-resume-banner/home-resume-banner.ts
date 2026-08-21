@@ -1,14 +1,6 @@
 import { Component, Input } from '@angular/core';
-import {
-  ResponsivePicture,
-  ResponsiveSource,
-} from '../../../../assets/responsive-picture/responsive-picture';
-
-interface BannerIcon {
-  sources: ResponsiveSource[];
-  fallbackSrc: string;
-  alt: string;
-}
+import { ResponsivePicture } from '../../../../assets/responsive-picture/responsive-picture';
+import type { LabeledImageSet } from '../../../../../img-sources/shared.sources';
 
 @Component({
   selector: 'app-home-resume-banner',
@@ -17,7 +9,7 @@ interface BannerIcon {
   styleUrl: './home-resume-banner.css',
 })
 export class HomeResumeBanner {
-  @Input({ required: true }) leftIcons: BannerIcon[] = [];
-  @Input({ required: true }) rightIcons: BannerIcon[] = [];
+  @Input({ required: true }) leftIcons: LabeledImageSet[] = [];
+  @Input({ required: true }) rightIcons: LabeledImageSet[] = [];
   @Input({ required: true }) label = '';
 }

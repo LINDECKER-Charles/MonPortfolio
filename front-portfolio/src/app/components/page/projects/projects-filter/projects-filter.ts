@@ -7,7 +7,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { ProjectCategory, ProjectFilterItem, ProjectFiltersState } from '../projects.state';
+import type { ProjectCategory, ProjectFilterItem, ProjectFiltersState } from '../projects.types';
 import { TranslationService } from '../../../../services/translation.service';
 
 @Component({

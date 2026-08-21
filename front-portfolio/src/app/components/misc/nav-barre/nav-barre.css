@@ -54,15 +54,6 @@
   box-shadow: var(--shadow-chip);
 }
 
-.nav-barre__brand-logo app-responsive-picture,
-.nav-barre__brand-logo picture,
-.nav-barre__brand-logo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .nav-barre__brand-text {
   min-width: 0;
   display: flex;
@@ -101,15 +92,6 @@
   height: 18px;
   flex: 0 0 auto;
   display: block;
-}
-
-.nav-barre__link-icon app-responsive-picture,
-.nav-barre__link-icon picture,
-.nav-barre__link-icon img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .nav-barre__link-label {

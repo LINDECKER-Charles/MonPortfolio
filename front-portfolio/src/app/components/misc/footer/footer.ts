@@ -1,17 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {
-  ResponsivePicture,
-  ResponsiveSource,
-} from '../../assets/responsive-picture/responsive-picture';
-import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
+import { ResponsivePicture } from '../../assets/responsive-picture/responsive-picture';
+import { labeled, SHARED_IMAGES } from '../../../img-sources/shared.sources';
 import { TranslationService } from '../../../services/translation.service';
-
-interface FooterIconSet {
-  sources: ResponsiveSource[];
-  fallback: string;
-  alt: string;
-}
 
 @Component({
   selector: 'app-footer',
@@ -21,19 +12,7 @@ interface FooterIconSet {
 })
 export class Footer {
   protected readonly ts = inject(TranslationService);
-  protected readonly githubIcon: FooterIconSet = {
-    alt: 'GitHub',
-    sources: SHARED_IMAGES.stack.github.sources,
-    fallback: SHARED_IMAGES.stack.github.fallbackSrc,
-  };
-  protected readonly linkedinIcon: FooterIconSet = {
-    alt: 'LinkedIn',
-    sources: SHARED_IMAGES.stack.linkedin.sources,
-    fallback: SHARED_IMAGES.stack.linkedin.fallbackSrc,
-  };
-  protected readonly mailIcon: FooterIconSet = {
-    alt: 'Email',
-    sources: SHARED_IMAGES.stack.mail.sources,
-    fallback: SHARED_IMAGES.stack.mail.fallbackSrc,
-  };
+  protected readonly githubIcon = labeled(SHARED_IMAGES.stack.github, 'GitHub');
+  protected readonly linkedinIcon = labeled(SHARED_IMAGES.stack.linkedin, 'LinkedIn');
+  protected readonly mailIcon = labeled(SHARED_IMAGES.stack.mail, 'Email');
 }

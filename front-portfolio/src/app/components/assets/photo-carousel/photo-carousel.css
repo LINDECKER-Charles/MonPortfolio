@@ -74,14 +74,6 @@
   pointer-events: none;
 }
 
-.photo-carousel__slide app-responsive-picture,
-.photo-carousel__slide :where(picture, img) {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .photo-carousel__slide--active {
   opacity: 1;
   transform: scale(1);
