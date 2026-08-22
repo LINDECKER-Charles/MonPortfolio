@@ -1,10 +1,16 @@
+# Les PRs ciblent `dev` (flux dev → test → main) : jamais `main` directement.
+# Préfixes de commit alignés sur la carte des scopes du CLAUDE.md
+# (.github/** → ci, front-portfolio → front).
 version: 2
 updates:
   - package-ecosystem: npm
     directory: /front-portfolio
+    target-branch: dev
     schedule:
       interval: weekly
       day: monday
+    commit-message:
+      prefix: "build(front)"
     groups:
       angular:
         patterns:
@@ -16,10 +22,27 @@ updates:
         dependency-type: development
         exclude-patterns:
           - "@angular/*"
+    ignore:
+      # TypeScript : majeur piloté par Angular (peer >=6.0 <6.1 en 22.1.x) ;
+      # TS 7 ne livre pas d'API JS (compiler-cli inutilisable). À lever avec
+      # la montée d'Angular qui l'accepte.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      # @types/node : le majeur doit suivre le runtime (.nvmrc / engines).
+      # Lever cette règle en même temps que la montée de Node.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # jasmine-core 7 abandonne la compatibilité karma-jasmine ; Angular CLI
+      # 22.1.x épingle ~6.3.0. À lever avec la migration vers le builder Vitest.
+      - dependency-name: "jasmine-core"
+        update-types: ["version-update:semver-major"]
     open-pull-requests-limit: 5
 
   - package-ecosystem: github-actions
     directory: /
+    target-branch: dev
     schedule:
       interval: weekly
       day: monday
+    commit-message:
+      prefix: "build(ci)"
