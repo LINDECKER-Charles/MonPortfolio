@@ -1,0 +1,696 @@
+<title>Codex Yharnam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Shippori+Mincho+B1:wght@500;600;700&display=swap">
+<style>
+  /* ═══ CODEX YHARNAM — design system fidèle à la DA Bloodborne ═══
+     Thème unique assumé (monde nocturne) : toutes les couleurs sont explicites.
+     Deux registres : chrome austère (panneaux noirs, filets 1px, coins droits)
+     et « monde » (hero, en-têtes de section : brume, lune, grain). */
+
+  :root{
+    --abyss:#131718;        /* fond de page — noir bleuté sourcé */
+    --soot:#1a1512;         /* noir-brun chaud */
+    --stone:#26221f;        /* surface élevée */
+    --stone-2:#34302f;      /* charbon brun sourcé */
+    --hairline:rgba(219,217,213,.14);
+    --hairline-strong:rgba(219,217,213,.26);
+    --gold-line:rgba(156,124,74,.35);
+    --bone:#dbd9d5;         /* texte principal — vérifié */
+    --ash:#9d9d9d;          /* texte secondaire — vérifié */
+    --parchment:#c9bfa8;    /* texte « lore » */
+    --oxblood:#8a0303;      /* accent primaire — rare */
+    --oxblood-deep:#480707;
+    --ember:#d9822b;        /* accent chaud de travail */
+    --ember-core:#ffb45c;   /* cœurs lumineux uniquement */
+    --gold:#9c7c4a;         /* laiton patiné */
+    --moonlight:#b0d1ea;    /* accent froid */
+    --mist:#90d0a6;         /* vert spectral — validation */
+    --plum:#632b58;
+    --display:'Shippori Mincho B1','Yu Mincho',Georgia,serif;
+    --body:'Spectral','Noto Serif JP',Georgia,serif;
+    --mono:ui-monospace,'Cascadia Mono','JetBrains Mono',Consolas,monospace;
+    --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--abyss);
+    color:var(--bone);
+    font-family:var(--body);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.65;
+    letter-spacing:.01em;
+  }
+  ::selection{background:rgba(138,3,3,.55);color:#f0ede8}
+
+  /* ── typographie ── */
+  h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance}
+  .eyebrow{
+    font-family:var(--body);font-weight:500;font-size:.72rem;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+  }
+  a{color:var(--ember);text-decoration:none;border-bottom:1px solid rgba(217,130,43,.35);transition:color .18s,border-color .18s}
+  a:hover{color:var(--ember-core);border-color:var(--ember-core)}
+  a:focus-visible,button:focus-visible{outline:1px solid var(--moonlight);outline-offset:3px;box-shadow:0 0 14px rgba(176,209,234,.35)}
+  em{color:var(--parchment)}
+  strong{font-weight:500;color:#ece9e4}
+
+  /* ── structure ── */
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  section{padding:84px 0 64px;border-top:1px solid var(--hairline)}
+  .cols{display:grid;grid-template-columns:190px 1fr;gap:48px;align-items:start}
+  @media(max-width:860px){.cols{grid-template-columns:1fr;gap:20px}}
+  .section-mark{position:sticky;top:24px}
+  .section-mark .num{font-family:var(--display);font-size:1.05rem;color:var(--gold);letter-spacing:.14em}
+  .section-mark .cross{width:44px;height:1px;background:var(--hairline-strong);position:relative;margin:14px 0 12px}
+  .section-mark .cross::after{content:'';position:absolute;left:14px;top:-7px;width:1px;height:15px;background:var(--hairline-strong)}
+  .section-title{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:.05em;margin-bottom:8px}
+  .section-sub{color:var(--ash);font-size:.98rem;max-width:62ch;margin-bottom:36px}
+  .prose{max-width:68ch}
+  .prose p{margin-bottom:1em}
+
+  /* ── hero : registre « monde » ── */
+  header.hero{
+    position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;
+    text-align:center;overflow:hidden;
+    background:
+      radial-gradient(circle 260px at 50% 30%, rgba(232,230,216,.16), transparent 65%),
+      radial-gradient(circle 150px at 50% 30%, rgba(232,230,216,.22), transparent 70%),
+      radial-gradient(ellipse 140% 90% at 50% 118%, #060707 30%, transparent 70%),
+      linear-gradient(180deg,#10181e 0%,#131718 45%,#0d0d0c 100%);
+  }
+  .hero .moon{
+    position:absolute;top:calc(30% - 62px);left:calc(50% - 62px);width:124px;height:124px;border-radius:50%;
+    background:radial-gradient(circle at 42% 38%, #eceadf 0%, #d6d3c4 55%, #b8b5a6 100%);
+    box-shadow:0 0 60px rgba(232,230,216,.28),0 0 140px rgba(232,230,216,.12);
+    opacity:.9;
+  }
+  .hero .fog{position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 70% 22% at 24% 76%, rgba(107,99,90,.14), transparent 70%),
+      radial-gradient(ellipse 60% 18% at 78% 64%, rgba(107,99,90,.10), transparent 70%),
+      radial-gradient(ellipse 90% 26% at 50% 96%, rgba(70,64,58,.22), transparent 75%);
+    animation:mist 26s ease-in-out infinite alternate;
+  }
+  @keyframes mist{from{transform:translateX(-1.5%) }to{transform:translateX(1.5%)}}
+  .hero .vignette,.grained::after{content:'';position:absolute;inset:0;pointer-events:none}
+  .hero .vignette{box-shadow:inset 0 0 180px rgba(0,0,0,.72)}
+  .hero .grain{position:absolute;inset:0;background-image:var(--grain);background-size:300px;opacity:.05;pointer-events:none}
+  .hero-inner{position:relative;padding:120px 24px 90px}
+  .hero .eyebrow{color:var(--parchment);opacity:.85}
+  .hero h1{
+    font-size:clamp(2.6rem,8vw,5rem);font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;transform:scaleY(.92);margin:18px 0 22px;color:#e6e3dc;
+    text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 26px rgba(201,191,168,.18),0 0 70px rgba(201,191,168,.10);
+  }
+  .hero p.lede{color:var(--ash);max-width:56ch;margin:0 auto;font-size:1.02rem}
+  .hero .plate{
+    display:inline-block;margin-top:34px;padding:10px 22px;
+    background:rgba(0,0,0,.5);border:1px solid var(--hairline);
+    font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--parchment);
+  }
+
+  /* ── nav ── */
+  nav.toc{
+    position:sticky;top:0;z-index:40;background:rgba(10,11,11,.82);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hairline);
+  }
+  nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding:0 24px}
+  nav.toc a{
+    border:0;padding:13px 13px;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ash);white-space:nowrap;transition:color .18s;
+  }
+  nav.toc a:hover{color:var(--ember-core)}
+
+  /* ── règles (I–X) ── */
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+  .rule{background:var(--abyss);padding:22px 22px 20px}
+  .rule .rn{font-family:var(--display);color:var(--oxblood);font-size:1rem;letter-spacing:.1em}
+  .rule h3{font-size:1.02rem;letter-spacing:.03em;margin:8px 0 6px;color:#e8e5df}
+  .rule p{font-size:.9rem;color:var(--ash);line-height:1.55}
+
+  /* ── palette ── */
+  .swatch-group{margin-bottom:38px}
+  .swatch-group h3{font-size:1.05rem;letter-spacing:.06em;margin-bottom:4px}
+  .swatch-group .note{font-size:.85rem;color:var(--ash);margin-bottom:14px;max-width:70ch}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .sw{
+    border:1px solid var(--hairline);background:var(--soot);cursor:pointer;text-align:left;
+    font-family:var(--body);color:var(--bone);padding:0;transition:border-color .18s,transform .18s;
+  }
+  .sw:hover{border-color:var(--gold-line);transform:translateY(-2px)}
+  .sw .chip{height:58px;border-bottom:1px solid rgba(0,0,0,.4)}
+  .sw .meta{padding:9px 11px 10px}
+  .sw .name{display:block;font-size:.8rem;letter-spacing:.05em;color:#e3e0da}
+  .sw .hex{font-family:var(--mono);font-size:.72rem;color:var(--ash)}
+  .sw .role{display:block;font-size:.72rem;color:var(--ash);margin-top:3px;line-height:1.4}
+  .ratio-bar{display:flex;height:34px;border:1px solid var(--hairline);overflow:hidden;margin:10px 0 8px}
+  .ratio-bar div{height:100%}
+  .ratio-legend{display:flex;gap:22px;flex-wrap:wrap;font-size:.8rem;color:var(--ash)}
+  .ratio-legend b{color:var(--parchment);font-weight:500}
+
+  /* ── ciel ── */
+  .sky-demo{border:1px solid var(--hairline)}
+  .sky-canvas{position:relative;height:230px;transition:background 1.1s ease;overflow:hidden}
+  .sky-canvas .sky-moon{position:absolute;top:34px;left:calc(50% - 34px);width:68px;height:68px;border-radius:50%;transition:background 1.1s ease,box-shadow 1.1s ease}
+  .sky-canvas .ground{position:absolute;bottom:0;left:0;right:0;height:58px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.85))}
+  .sky-canvas .spires{position:absolute;bottom:0;left:0;right:0;height:92px;
+    background:
+      linear-gradient(90deg, transparent 0 6%, #0a0a09 6% 8%, transparent 8% 14%, #0a0a09 14% 15.2%, transparent 15.2% 26%, #0a0a09 26% 30%, transparent 30% 41%, #0a0a09 41% 42.4%, transparent 42.4% 55%, #0a0a09 55% 58%, transparent 58% 70%, #0a0a09 70% 71.6%, transparent 71.6% 82%, #0a0a09 82% 86%, transparent 86% 94%, #0a0a09 94% 95.4%, transparent 95.4%);
+    -webkit-mask:linear-gradient(180deg,transparent 0,#000 30%);mask:linear-gradient(180deg,transparent 0,#000 30%);
+  }
+  .sky-canvas .sky-vignette{position:absolute;inset:0;box-shadow:inset 0 0 90px rgba(0,0,0,.5)}
+  .sky-tabs{display:flex;flex-wrap:wrap;border-top:1px solid var(--hairline)}
+  .sky-tabs button{
+    flex:1;min-width:120px;background:rgba(0,0,0,.4);border:0;border-right:1px solid var(--hairline);
+    color:var(--ash);font-family:var(--body);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:12px 8px;cursor:pointer;transition:color .18s,background .18s;
+  }
+  .sky-tabs button:last-child{border-right:0}
+  .sky-tabs button:hover{color:var(--ember-core)}
+  .sky-tabs button[aria-pressed="true"]{color:#efe9df;background:rgba(156,124,74,.14);box-shadow:inset 0 -1px 0 var(--gold)}
+  .sky-caption{padding:14px 16px;font-size:.88rem;color:var(--ash);border-top:1px solid var(--hairline);min-height:74px}
+  .sky-caption b{color:var(--parchment);font-weight:500}
+
+  /* ── typo ── */
+  .spec{border:1px solid var(--hairline);margin-bottom:14px;background:rgba(0,0,0,.28)}
+  .spec .label{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:8px 14px;border-bottom:1px solid var(--hairline);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash)}
+  .spec .demo{padding:26px 22px}
+  .spec .demo .big{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,4.4vw,2.6rem);letter-spacing:.045em;text-transform:uppercase;transform:scaleY(.92);transform-origin:left center;color:#e8e5de}
+  .spec .demo .body-demo{max-width:62ch;font-weight:300;font-size:1.05rem}
+  .spec .demo .ui-demo{font-size:.95rem}
+  .verdicts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+  @media(max-width:720px){.verdicts{grid-template-columns:1fr}}
+  .verdict{background:var(--abyss);padding:18px 20px}
+  .verdict h4{font-family:var(--body);font-weight:500;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+  .verdict.oui h4{color:var(--mist)}
+  .verdict.non h4{color:var(--oxblood);filter:brightness(1.7)}
+  .verdict ul{list-style:none}
+  .verdict li{padding:7px 0;border-top:1px solid rgba(219,217,213,.07);font-size:.9rem;color:var(--ash)}
+  .verdict li b{color:#e3e0da;font-weight:500}
+
+  /* you died */
+  .died-stage{position:relative;height:200px;background:linear-gradient(180deg,#101314,#0a0b0b);border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .died-band{position:absolute;left:0;right:0;top:calc(50% - 44px);height:88px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.75) 30%,rgba(0,0,0,.75) 70%,transparent);opacity:0}
+  .died-text{
+    position:relative;font-family:var(--display);font-weight:500;font-size:clamp(2rem,7vw,3.6rem);
+    letter-spacing:.045em;transform:scaleY(.922);text-transform:uppercase;
+    color:rgba(255,0,0,.32);opacity:0;
+    text-shadow:0 0 22px rgba(149,24,24,.9),0 0 44px rgba(149,24,24,.6),0 0 80px rgba(149,24,24,.35);
+  }
+  .died-stage.playing .died-band{animation:diedband 3.4s ease forwards}
+  .died-stage.playing .died-text{animation:diedtext 3.4s ease forwards}
+  @keyframes diedband{0%{opacity:0}18%{opacity:1}80%{opacity:1}100%{opacity:0}}
+  @keyframes diedtext{0%{opacity:0}22%{opacity:1}78%{opacity:1}100%{opacity:0;transform:scaleY(.922) scale(1.015)}}
+  .btn{
+    display:inline-block;background:rgba(0,0,0,.5);border:1px solid var(--gold-line);color:var(--ember);
+    font-family:var(--body);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:11px 22px;cursor:pointer;transition:color .18s,border-color .18s,box-shadow .18s;
+  }
+  .btn:hover{color:var(--ember-core);border-color:var(--ember);box-shadow:0 0 16px rgba(217,130,43,.18)}
+
+  /* ── UI demos ── */
+  .ui-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .panel{background:rgba(0,0,0,.55);border:1px solid var(--hairline);padding:18px}
+  .panel h4{font-family:var(--body);font-weight:500;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ash);margin-bottom:14px}
+  .bar{height:8px;background:rgba(255,255,255,.06);border:1px solid rgba(219,217,213,.22);position:relative;margin-bottom:10px}
+  .bar::before{content:'';position:absolute;left:-4px;top:-3px;width:3px;height:12px;background:rgba(219,217,213,.4)}
+  .bar .fill{height:100%;display:block}
+  .bar.hp .fill{width:62%;background:linear-gradient(180deg,#9e1b1b,#6e0f0f)}
+  .bar.hp .rally{position:absolute;top:0;left:62%;width:14%;height:100%;background:rgba(201,122,43,.75)}
+  .bar.st .fill{width:78%;background:linear-gradient(180deg,#6e8f3b,#4c6428)}
+  .bosswrap{margin-top:16px}
+  .bossname{font-size:.9rem;color:#c0c0bd;letter-spacing:.04em;margin-bottom:5px}
+  .bar.boss{height:6px}
+  .bar.boss .fill{width:43%;background:linear-gradient(180deg,#8a0303,#5e0505)}
+  .bar.boss::after{content:'';position:absolute;right:-4px;top:-3px;width:3px;height:12px;background:rgba(219,217,213,.4)}
+  .counters{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .counter{background:rgba(0,0,0,.5);border:1px solid var(--hairline);padding:6px 12px;font-variant-numeric:tabular-nums;font-size:.95rem;color:#dbd9d5;display:flex;gap:10px;align-items:center}
+  .counter .sig{color:var(--ash);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+  .slots{display:flex;gap:10px;flex-wrap:wrap}
+  .slot{
+    width:64px;height:64px;border:1px solid var(--hairline);
+    background:radial-gradient(circle at 50% 42%, #2b2118 0%, #14100c 78%);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;
+    transition:border-color .18s,box-shadow .18s,filter .18s;
+  }
+  .slot svg{width:34px;height:34px;fill:none;stroke:#c9bfa8;stroke-width:1.4;opacity:.85}
+  .slot:hover{filter:brightness(1.25)}
+  .slot.selected{border-color:rgba(176,209,234,.65);box-shadow:0 0 12px rgba(176,209,234,.28),inset 0 0 10px rgba(176,209,234,.10);filter:brightness(1.3)}
+  .slot .qty{position:absolute;right:4px;bottom:2px;font-size:.68rem;color:#dbd9d5;font-variant-numeric:tabular-nums}
+  .kv{width:100%;border-collapse:collapse;font-size:.92rem}
+  .kv td{padding:7px 0;border-top:1px solid rgba(219,217,213,.08)}
+  .kv td:last-child{text-align:right;color:#e3e0da;font-variant-numeric:tabular-nums}
+  .kv td:first-child{color:var(--ash)}
+
+  /* ── motifs ── */
+  .motifs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+  .motif{background:var(--abyss);padding:16px 16px 14px}
+  .motif b{display:block;font-weight:500;color:#e6e3dc;font-size:.95rem;letter-spacing:.02em}
+  .motif span{font-size:.82rem;color:var(--ash);line-height:1.5}
+
+  /* ── écart ── */
+  .gap-table{width:100%;border-collapse:collapse;font-size:.9rem}
+  .gap-table th{font-family:var(--body);font-weight:500;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);text-align:left;padding:10px 12px;border-bottom:1px solid var(--hairline-strong)}
+  .gap-table td{padding:11px 12px;border-bottom:1px solid rgba(219,217,213,.08);vertical-align:top}
+  .gap-table td:first-child{color:var(--parchment)}
+  .gap-table code{font-family:var(--mono);font-size:.78rem;color:var(--moonlight);background:rgba(176,209,234,.07);padding:1px 5px}
+  .tag{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border:1px solid}
+  .tag.keep{color:var(--mist);border-color:rgba(144,208,166,.4)}
+  .tag.adjust{color:var(--ember);border-color:rgba(217,130,43,.4)}
+  .tag.change{color:#c9736f;border-color:rgba(201,80,74,.45)}
+  .scrollbox{overflow-x:auto}
+
+  /* ── ressources ── */
+  .res-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+  .res{border:1px solid var(--hairline);padding:18px 20px;background:rgba(0,0,0,.25)}
+  .res h4{font-family:var(--body);font-weight:500;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .res ul{list-style:none}
+  .res li{padding:6px 0;border-top:1px solid rgba(219,217,213,.06);font-size:.88rem;color:var(--ash)}
+  .res li b{color:#e0ddd7;font-weight:500}
+
+  footer{border-top:1px solid var(--hairline);padding:44px 0 60px;color:var(--ash);font-size:.85rem}
+  footer .wrap{display:flex;flex-direction:column;gap:10px}
+  footer .legal{max-width:75ch}
+
+  /* toast « acquisition » */
+  #toast{
+    position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);
+    background:rgba(0,0,0,.85);border:1px solid var(--gold-line);color:var(--parchment);
+    padding:11px 26px;font-size:.85rem;letter-spacing:.08em;opacity:0;pointer-events:none;
+    transition:opacity .3s,transform .3s;z-index:60;
+  }
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  #toast b{color:#ece9e2;font-weight:500}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero .fog{animation:none}
+    html{scroll-behavior:auto}
+    .died-stage.playing .died-band,.died-stage.playing .died-text{animation-duration:.01s}
+    .sw:hover{transform:none}
+  }
+</style>
+
+<header class="hero">
+  <div class="moon" aria-hidden="true"></div>
+  <div class="fog" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Direction artistique · recherche graphique</p>
+    <h1>Codex Yharnam</h1>
+    <p class="lede">Référence visuelle de la direction artistique de Bloodborne — palette, lumière, typographie, interface, motifs — pour une charte graphique fidèle. Cette page applique elle-même les règles qu'elle documente.</p>
+    <p class="plate">Nuit froide · points chauds · saturation rare</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sommaire">
+  <div class="wrap">
+    <a href="#regles">Les règles</a>
+    <a href="#palette">Palette</a>
+    <a href="#ciel">Le ciel</a>
+    <a href="#typo">Typographie</a>
+    <a href="#ui">Interface</a>
+    <a href="#motifs">Motifs</a>
+    <a href="#ecart">L'écart</a>
+    <a href="#ressources">Ressources</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="regles">
+  <div class="wrap cols">
+    <div class="section-mark"><div class="num">I</div><div class="cross"></div><p class="eyebrow">Canon</p></div>
+    <div>
+      <h2 class="section-title">Les dix règles d'or</h2>
+      <p class="section-sub">Le test de fidélité à appliquer à chaque décision — synthèse de toute la recherche (interviews de Miyazaki, analyses, recréations pixel-fidèles).</p>
+      <div class="rules">
+        <div class="rule"><span class="rn">I</span><h3>La valeur avant la teinte</h3><p>Le contraste est un clair-obscur — ombres denses contre halos de lumière. ~70–80 % de l'image est sombre et neutre.</p></div>
+        <div class="rule"><span class="rn">II</span><h3>Saturation basse, accents rares</h3><p>La variété chromatique est volontairement pauvre ; un accent saturé occupe quelques pourcents de la surface, jamais plus.</p></div>
+        <div class="rule"><span class="rn">III</span><h3>Le rouge n'est jamais vif</h3><p>Sang oxblood tirant vers le brun — « symbolique et pictural » selon Miyazaki, pas un vermillon agressif.</p></div>
+        <div class="rule"><span class="rn">IV</span><h3>Une seule famille serif</h3><p>Tout le jeu tient dans une serif à fort contraste (le latin d'un Minchō). Hiérarchie par taille, casse, opacité — jamais par le gras, jamais de sans-serif.</p></div>
+        <div class="rule"><span class="rn">V</span><h3>Le chrome UI est austère</h3><p>Panneaux noirs translucides, filets de 1 px, coins droits. L'ornement vit dans le monde et les icônes, pas dans l'interface.</p></div>
+        <div class="rule"><span class="rn">VI</span><h3>Nuit froide, points chauds</h3><p>Base froide (lune, pierre, brume) réchauffée localement par lanternes et braises qui guident l'œil.</p></div>
+        <div class="rule"><span class="rn">VII</span><h3>Matières mates</h3><p>Pierre, feutre, cuir absorbent la lumière ; le spéculaire est rare (pavés humides, laiton près des flammes) — donc précieux.</p></div>
+        <div class="rule"><span class="rn">VIII</span><h3>Vignette, brume, grain</h3><p>Le rendu passe par le post-process : vignettage, brouillard qui étage la profondeur, grain de film, aberration chromatique discrète.</p></div>
+        <div class="rule"><span class="rn">IX</span><h3>Glyphes organiques, asymétriques</h3><p>Runes Caryll : traits d'encre à épaisseur variable, boucles et croissants — jamais de géométrie régulière ni de symétrie.</p></div>
+        <div class="rule"><span class="rn">X</span><h3>La beauté déchue</h3><p>Opulence victorienne + usure, toujours ensemble. « La tristesse d'une chose magnifique condamnée à la ruine », pas le dégoût.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="palette">
+  <div class="wrap cols">
+    <div class="section-mark"><div class="num">II</div><div class="cross"></div><p class="eyebrow">Couleur</p></div>
+    <div>
+      <h2 class="section-title">Palette</h2>
+      <p class="section-sub">Cliquer une teinte pour copier son code. Valeurs sourcées de palettes communautaires, de recréations fidèles (texte UI) et d'estimations d'après captures — le détail est dans <em>02-couleur-lumiere-matieres.md</em>.</p>
+
+      <div class="swatch-group">
+        <h3>Répartition — la règle la plus importante</h3>
+        <p class="note">L'écart le plus fréquent n'est pas dans les teintes mais dans la <strong>surface</strong> qu'occupent les accents.</p>
+        <div class="ratio-bar" role="img" aria-label="Répartition : 75 % sombre neutre, 18 % tons moyens froids, 7 % accents">
+          <div style="width:75%;background:linear-gradient(90deg,#131718,#26221f)"></div>
+          <div style="width:18%;background:linear-gradient(90deg,#3d4750,#57626e)"></div>
+          <div style="width:4%;background:#8a0303"></div>
+          <div style="width:3%;background:#d9822b"></div>
+        </div>
+        <div class="ratio-legend"><span><b>~75 %</b> sombre neutre</span><span><b>~18 %</b> moyens froids</span><span><b>≤ 7 %</b> accents</span></div>
+      </div>
+
+      <div class="swatch-group">
+        <h3>Fonds &amp; pierre</h3>
+        <div class="swatches">
+          <button class="sw" data-hex="#1A0B06"><span class="chip" style="background:#1a0b06"></span><span class="meta"><span class="name">Brun quasi-noir</span><span class="hex">#1A0B06</span><span class="role">Ombres profondes — sourcé</span></span></button>
+          <button class="sw" data-hex="#131718"><span class="chip" style="background:#131718"></span><span class="meta"><span class="name">Noir bleuté</span><span class="hex">#131718</span><span class="role">Fond de scène — sourcé</span></span></button>
+          <button class="sw" data-hex="#34302F"><span class="chip" style="background:#34302f"></span><span class="meta"><span class="name">Charbon brun</span><span class="hex">#34302F</span><span class="role">Surfaces — sourcé</span></span></button>
+          <button class="sw" data-hex="#3E3A36"><span class="chip" style="background:#3e3a36"></span><span class="meta"><span class="name">Pierre de Yharnam</span><span class="hex">#3E3A36</span><span class="role">Pierre sombre — estimation</span></span></button>
+          <button class="sw" data-hex="#57504A"><span class="chip" style="background:#57504a"></span><span class="meta"><span class="name">Pierre claire</span><span class="hex">#57504A</span><span class="role">Pierre éclairée — estimation</span></span></button>
+          <button class="sw" data-hex="#C9BFA8"><span class="chip" style="background:#c9bfa8"></span><span class="meta"><span class="name">Parchemin</span><span class="hex">#C9BFA8</span><span class="role">Papier, texte lore</span></span></button>
+        </div>
+      </div>
+
+      <div class="swatch-group">
+        <h3>Accents sémantiques</h3>
+        <p class="note">Chaque accent a un rôle dans le jeu — les garder attachés à leur sens rend l'hommage lisible.</p>
+        <div class="swatches">
+          <button class="sw" data-hex="#8A0303"><span class="chip" style="background:#8a0303"></span><span class="meta"><span class="name">Oxblood</span><span class="hex">#8A0303</span><span class="role">Sang, critique, passion — jamais vif</span></span></button>
+          <button class="sw" data-hex="#480707"><span class="chip" style="background:#480707"></span><span class="meta"><span class="name">Sang profond</span><span class="hex">#480707</span><span class="role">Fonds, bordures sanglantes</span></span></button>
+          <button class="sw" data-hex="#D9822B"><span class="chip" style="background:#d9822b"></span><span class="meta"><span class="name">Lanterne</span><span class="hex">#D9822B</span><span class="role">Point d'intérêt, action — l'orange de travail</span></span></button>
+          <button class="sw" data-hex="#FFB45C"><span class="chip" style="background:#ffb45c"></span><span class="meta"><span class="name">Cœur de flamme</span><span class="hex">#FFB45C</span><span class="role">Glows uniquement — petites surfaces</span></span></button>
+          <button class="sw" data-hex="#9C7C4A"><span class="chip" style="background:#9c7c4a"></span><span class="meta"><span class="name">Laiton patiné</span><span class="hex">#9C7C4A</span><span class="role">Actif, précieux, filets</span></span></button>
+          <button class="sw" data-hex="#B0D1EA"><span class="chip" style="background:#b0d1ea"></span><span class="meta"><span class="name">Clair de lune</span><span class="hex">#B0D1EA</span><span class="role">Info, insight, focus — désaturé</span></span></button>
+          <button class="sw" data-hex="#7FD4C1"><span class="chip" style="background:#7fd4c1"></span><span class="meta"><span class="name">Arcane</span><span class="hex">#7FD4C1</span><span class="role">Turquoise Holy Moonlight — très rare</span></span></button>
+          <button class="sw" data-hex="#90D0A6"><span class="chip" style="background:#90d0a6"></span><span class="meta"><span class="name">Brume spectrale</span><span class="hex">#90D0A6</span><span class="role">« Prey Slaughtered » — succès</span></span></button>
+          <button class="sw" data-hex="#632B58"><span class="chip" style="background:#632b58"></span><span class="meta"><span class="name">Prune</span><span class="hex">#632B58</span><span class="role">Lune de sang, échos volés</span></span></button>
+          <button class="sw" data-hex="#E8E4D8"><span class="chip" style="background:#e8e4d8"></span><span class="meta"><span class="name">Blanc os</span><span class="hex">#E8E4D8</span><span class="role">Fleurs, robes de l'Église — sacré ambigu</span></span></button>
+        </div>
+      </div>
+
+      <div class="swatch-group">
+        <h3>Texte UI — valeurs vérifiées</h3>
+        <p class="note">Extraites du code de recréations fidèles (save editor avec police extraite du jeu, image macro creator).</p>
+        <div class="swatches">
+          <button class="sw" data-hex="#DBD9D5"><span class="chip" style="background:#dbd9d5"></span><span class="meta"><span class="name">Texte principal</span><span class="hex">#DBD9D5</span><span class="role">Blanc os — vérifié</span></span></button>
+          <button class="sw" data-hex="#9D9D9D"><span class="chip" style="background:#9d9d9d"></span><span class="meta"><span class="name">Texte secondaire</span><span class="hex">#9D9D9D</span><span class="role">Vérifié</span></span></button>
+          <button class="sw" data-hex="#CACBCA"><span class="chip" style="background:#cacbca"></span><span class="meta"><span class="name">Nom de zone</span><span class="hex">#CACBCA</span><span class="role">Vérifié</span></span></button>
+          <button class="sw" data-hex="#C0C0BD"><span class="chip" style="background:#c0c0bd"></span><span class="meta"><span class="name">Nom de boss</span><span class="hex">#C0C0BD</span><span class="role">Vérifié</span></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ciel">
+  <div class="wrap cols">
+    <div class="section-mark"><div class="num">III</div><div class="cross"></div><p class="eyebrow">Lumière</p></div>
+    <div>
+      <h2 class="section-title">Le ciel — un cadran narratif</h2>
+      <p class="section-sub">La partie tient sur une seule nuit. Chaque phase re-éclaire les mêmes décors : les états du ciel sont la timeline du récit.</p>
+      <div class="sky-demo">
+        <div class="sky-canvas" id="skyCanvas">
+          <div class="sky-moon" id="skyMoon"></div>
+          <div class="spires" aria-hidden="true"></div>
+          <div class="ground" aria-hidden="true"></div>
+          <div class="sky-vignette" aria-hidden="true"></div>
+        </div>
+        <div class="sky-tabs" role="group" aria-label="Phases de la nuit">
+          <button data-sky="0" aria-pressed="true">Soir gris</button>
+          <button data-sky="1" aria-pressed="false">Crépuscule</button>
+          <button data-sky="2" aria-pressed="false">Nuit</button>
+          <button data-sky="3" aria-pressed="false">Lune de sang</button>
+        </div>
+        <div class="sky-caption" id="skyCaption"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="typo">
+  <div class="wrap cols">
+    <div class="section-mark"><div class="num">IV</div><div class="cross"></div><p class="eyebrow">Typographie</p></div>
+    <div>
+      <h2 class="section-title">Une serif, pas un Garamond</h2>
+      <p class="section-sub">La police du jeu est le latin d'un Minchō japonais (Morisawa Reimin, identification communautaire doublement corroborée) : contraste élevé, empattements fins et aigus, axe vertical. Les équivalents libres validés sont utilisés sur cette page même.</p>
+
+      <div class="spec">
+        <div class="label"><span>Titrage — Shippori Mincho B1 · 600 · caps · 0.045em · scaleY(.92)</span><span>grands moments</span></div>
+        <div class="demo"><div class="big">Crains le vieux sang</div></div>
+      </div>
+      <div class="spec">
+        <div class="label"><span>Corps — Spectral · 300–400 · title case</span><span>lore, narration</span></div>
+        <div class="demo"><p class="body-demo">Nous sommes nés du sang, faits hommes par le sang, défaits par le sang. La nuit est longue à Yharnam, et la lune est proche — les lanternes brûlent comme de brèves promesses dans la brume.</p></div>
+      </div>
+      <div class="spec">
+        <div class="label"><span>UI — Spectral · 400 · hiérarchie par taille et opacité</span><span>menus, labels</span></div>
+        <div class="demo ui-demo">
+          <table class="kv"><tbody>
+            <tr><td>Échos de sang</td><td>48 750</td></tr>
+            <tr><td>Insight</td><td>12</td></tr>
+            <tr><td>Fioles de sang</td><td>18 / 20</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div class="spec">
+        <div class="label"><span>« You Died » — valeurs authentiques (rouge 30 % + halos #951818 empilés)</span><span>démo</span></div>
+        <div class="demo">
+          <div class="died-stage" id="diedStage">
+            <div class="died-band" aria-hidden="true"></div>
+            <div class="died-text">You Died</div>
+          </div>
+          <p style="margin-top:14px"><button class="btn" id="diedBtn">Mourir</button></p>
+        </div>
+      </div>
+
+      <div class="verdicts" style="margin-top:22px">
+        <div class="verdict oui"><h4>Fidèle</h4><ul>
+          <li><b>Spectral</b> 300–400 — corps &amp; UI (proxy validé)</li>
+          <li><b>Shippori Mincho B1</b> / Zen Old Mincho — titrage</li>
+          <li><b>Noto Serif JP</b> — fallback</li>
+          <li>Title Case · caps espacées .045em · opacité pour hiérarchiser</li>
+        </ul></div>
+        <div class="verdict non"><h4>À écarter</h4><ul>
+          <li><b>Cinzel</b> — Trajan-like : ni le logo, ni l'UI</li>
+          <li><b>EB Garamond</b> — c'est Dark Souls</li>
+          <li><b>IM Fell</b> — patine « vieux livre » : l'UI du jeu est nette</li>
+          <li><b>Toute sans-serif</b> — n'existe nulle part dans le jeu</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ui">
+  <div class="wrap cols">
+    <div class="section-mark"><div class="num">V</div><div class="cross"></div><p class="eyebrow">Interface</p></div>
+    <div>
+      <h2 class="section-title">Le chrome austère</h2>
+      <p class="section-sub">Le verdict central de la recherche : l'UI du jeu est minimale. Noir translucide, filets de 1 px, coins droits ; la sélection est un état lumineux froid, pas un ornement. Démos ci-dessous aux valeurs relevées.</p>
+      <div class="ui-grid">
+        <div class="panel">
+          <h4>Jauges — haut-gauche</h4>
+          <div class="bar hp"><span class="fill"></span><span class="rally" title="Fenêtre de Rally"></span></div>
+          <div class="bar st"><span class="fill"></span></div>
+          <p style="font-size:.8rem;color:var(--ash)">PV rouge sombre + portion <em>Rally</em> orange ; endurance vert mousse. Barres fines, cadre discret, micro-terminaison à gauche.</p>
+          <div class="bosswrap">
+            <div class="bossname">Vicaire Amelia</div>
+            <div class="bar boss"><span class="fill"></span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h4>Compteurs — haut-droite</h4>
+          <div class="counters">
+            <div class="counter"><span class="sig">Échos</span> 48 750</div>
+            <div class="counter"><span class="sig">Insight</span> 12</div>
+          </div>
+          <p style="font-size:.8rem;color:var(--ash);margin-top:12px">Plaques sombres translucides, liseré fin, chiffres serif tabulaires alignés à droite. (Échos en haut à droite, insight dessous — position vérifiée, différente de Dark Souls.)</p>
+        </div>
+        <div class="panel">
+          <h4>Slots — sélection lumineuse</h4>
+          <div class="slots" id="slots">
+            <button class="slot selected" aria-pressed="true" title="Lanterne"><svg viewBox="0 0 24 24"><path d="M12 3v2m-4 2h8l-1 12h-6zM9 7c0-2 6-2 6 0m-5 4h4"/></svg><span class="qty">1</span></button>
+            <button class="slot" aria-pressed="false" title="Fiole"><svg viewBox="0 0 24 24"><path d="M10 3h4m-3 0v4l-3 4v9h8v-9l-3-4V3m-4 12h6"/></svg><span class="qty">18</span></button>
+            <button class="slot" aria-pressed="false" title="Rune"><svg viewBox="0 0 24 24"><path d="M12 4c-4 3-5 7-3 10s6 4 8 1M9 9c2 2 6 2 7 6m-9 3c1-1 2-1 3 0"/></svg></button>
+            <button class="slot" aria-pressed="false" title="Œil"><svg viewBox="0 0 24 24"><path d="M3 12c3-4 7-6 9-6s6 2 9 6c-3 4-7 6-9 6s-6-2-9-6z"/><circle cx="12" cy="12" r="2.4"/></svg></button>
+          </div>
+          <p style="font-size:.8rem;color:var(--ash);margin-top:12px">Slots carrés, fond vignetté radial (le pattern « icône d'objet »), sélection = éclaircissement + halo froid pâle. Excellent gabarit de <code style="font-family:var(--mono);font-size:.75rem">:focus-visible</code>.</p>
+        </div>
+        <div class="panel">
+          <h4>Ce que le chrome ne fait jamais</h4>
+          <table class="kv"><tbody>
+            <tr><td>Coins arrondis</td><td>0–2 px max</td></tr>
+            <tr><td>Volutes sur les cadres</td><td>aucune</td></tr>
+            <tr><td>Textures de panneau</td><td>aucune</td></tr>
+            <tr><td>Gras pour hiérarchiser</td><td>taille + opacité</td></tr>
+            <tr><td>Ornement</td><td>réservé au « monde »</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="motifs">
+  <div class="wrap cols">
+    <div class="section-mark"><div class="num">VI</div><div class="cross"></div><p class="eyebrow">Iconographie</p></div>
+    <div>
+      <h2 class="section-title">Motifs &amp; glyphes</h2>
+      <p class="section-sub">Le vocabulaire de l'univers, avec ce que chaque motif signifie — pour nommer les composants, choisir les icônes et briefer les illustrations. Les runes se redessinent « à la manière de » : traits d'encre, asymétrie, boucles — version serment en oxblood.</p>
+      <div class="motifs">
+        <div class="motif"><b>La lune</b><span>Le rêve, la Moon Presence, la folie — le cadran du récit</span></div>
+        <div class="motif"><b>Les yeux</b><span>« Grant us eyes » — savoir interdit, Insight ; voir plus rend plus fou</span></div>
+        <div class="motif"><b>La lanterne</b><span>Havre, checkpoint — et son double corrompu (Winter Lanterns)</span></div>
+        <div class="motif"><b>Les Messengers</b><span>L'interface incarnée : messages, boutique — nom parfait pour les toasts</span></div>
+        <div class="motif"><b>Le sang</b><span>Baptême, monnaie, soin, sacrement, malédiction — tout à la fois</span></div>
+        <div class="motif"><b>La scie</b><span>Brutalité artisanale anti-bête — la silhouette-signature</span></div>
+        <div class="motif"><b>Tricorne &amp; manteau</b><span>LA silhouette du chasseur — victorien décalé</span></div>
+        <div class="motif"><b>Les corbeaux</b><span>Charognards, psychopompe (Eileen the Crow)</span></div>
+        <div class="motif"><b>L'encens</b><span>Masque l'odeur du sang, éloigne les bêtes — le refuge</span></div>
+        <div class="motif"><b>Cercueils enchaînés</b><span>La mort mal contenue</span></div>
+        <div class="motif"><b>Les fleurs</b><span>Lys funéraires du Dream, lumenflowers — deuil doux</span></div>
+        <div class="motif"><b>Tentacules</b><span>Le glissement du gothique (poil, griffe) au cosmique (mollusque)</span></div>
+        <div class="motif"><b>La Poupée</b><span>Douceur maternelle dans le cauchemar</span></div>
+        <div class="motif"><b>Bougies</b><span>Lumière votive dérisoire face à la nuit</span></div>
+        <div class="motif"><b>Araignées</b><span>Gardien et dissimulation du savoir (Rom)</span></div>
+        <div class="motif"><b>Runes Caryll</b><span>Langage des Grands Anciens — encre, asymétrie, jamais de géométrie</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ecart">
+  <div class="wrap cols">
+    <div class="section-mark"><div class="num">VII</div><div class="cross"></div><p class="eyebrow">Application</p></div>
+    <div>
+      <h2 class="section-title">L'écart avec les tokens actuels</h2>
+      <p class="section-sub">Synthèse de l'analyse détaillée (<em>06-application-portfolio.md</em>) — l'essentiel de ce qui rapprocherait le portfolio du jeu.</p>
+      <div class="scrollbox">
+      <table class="gap-table">
+        <thead><tr><th>Sujet</th><th>Actuel</th><th>Référence jeu</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>Fond de scène</td><td><code>#0c0f13</code> / <code>#121010</code></td><td><code>#131718</code> / <code>#1A0B06</code> — juste</td><td><span class="tag keep">garder</span></td></tr>
+          <tr><td>Vignettes, grain, brume, filets fins</td><td>déjà en place</td><td>exactement le langage du jeu</td><td><span class="tag keep">garder</span></td></tr>
+          <tr><td>Ember</td><td><code>#ff934d</code> en CTA pleins</td><td>orange en <strong>points chauds</strong> only — travail <code>#D9822B</code>, vif réservé aux glows</td><td><span class="tag adjust">ajuster</span></td></tr>
+          <tr><td>Moonlight</td><td><code>#8eb8ff</code> saturé</td><td><code>#B0D1EA</code> pâle et désaturé</td><td><span class="tag adjust">ajuster</span></td></tr>
+          <tr><td>Blood</td><td><code>#a60a0a</code></td><td><code>#8A0303</code> — un cran plus sombre</td><td><span class="tag adjust">ajuster</span></td></tr>
+          <tr><td>Display</td><td>Cinzel</td><td>Shippori Mincho B1 (Cinzel = registre romain, écarté)</td><td><span class="tag change">repenser</span></td></tr>
+          <tr><td>Corps</td><td>EB Garamond</td><td>Spectral (EB Garamond = Dark Souls)</td><td><span class="tag change">repenser</span></td></tr>
+          <tr><td>UI</td><td>Inter (sans)</td><td>même serif partout — aucune sans dans le jeu</td><td><span class="tag change">repenser</span></td></tr>
+          <tr><td>Rayons</td><td>panneaux 24–32 px, pills</td><td>coins droits (0–4 px), slots carrés</td><td><span class="tag change">repenser</span></td></tr>
+          <tr><td>Panneaux chrome</td><td>gradients bruns texturés</td><td>noir translucide .63–.75 sans texture — le chaud passe au registre « monde »</td><td><span class="tag adjust">ajuster</span></td></tr>
+          <tr><td>Focus / sélection</td><td>halo doré</td><td>éclaircissement + halo froid pâle</td><td><span class="tag adjust">ajuster</span></td></tr>
+          <tr><td>Tracking titres</td><td>0.22em</td><td>0.02–0.05em (0.043 sur You Died)</td><td><span class="tag adjust">ajuster</span></td></tr>
+          <tr><td>Motion</td><td>150–220 ms</td><td>+ registre théâtral ~1.2 s pour les grands moments</td><td><span class="tag adjust">ajuster</span></td></tr>
+          <tr><td>Lexique (rune, lanterne, braise…)</td><td>déjà exemplaire</td><td>conforté par la recherche</td><td><span class="tag keep">garder</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ressources">
+  <div class="wrap cols">
+    <div class="section-mark"><div class="num">VIII</div><div class="cross"></div><p class="eyebrow">Arsenal</p></div>
+    <div>
+      <h2 class="section-title">Ressources libres</h2>
+      <p class="section-sub">Vérifiées au 22/08/2026 — listes complètes, noms d'icônes exacts et mots-clés de recherche dans <em>07-ressources-recherche-assets.md</em>.</p>
+      <div class="res-groups">
+        <div class="res"><h4>Icônes</h4><ul>
+          <li><b><a href="https://game-icons.net">game-icons.net</a></b> — CC BY 3.0 · Moon, Third eye, Lantern, Raven, Bird mask, Coffin, Hand saw, Werewolf, Tentacles skull, Jeweled chalice…</li>
+          <li>Absents (à dessiner) : tricorne, encensoir, messenger</li>
+        </ul></div>
+        <div class="res"><h4>Gravures &amp; ornements (domaine public)</h4><ul>
+          <li><b><a href="https://www.oldbookillustrations.com">Old Book Illustrations</a></b> — dont Viollet-le-Duc (remplages, gargouilles)</li>
+          <li><b><a href="https://www.flickr.com/photos/britishlibrary">British Library Flickr</a></b> — +1 M d'images XVIIe–XIXe</li>
+          <li><b><a href="https://www.rawpixel.com/search/william%20morris%20patterns">Rawpixel</a></b> — papiers peints William Morris (fonds « Cainhurst »)</li>
+          <li><b><a href="https://www.heritagetype.com/pages/free-vintage-illustrations">Heritage Library</a></b>, FreeSVG, SVG Silh</li>
+        </ul></div>
+        <div class="res"><h4>Textures &amp; polices</h4><ul>
+          <li><b><a href="https://ambientcg.com">ambientCG</a></b>, <b><a href="https://polyhaven.com">Poly Haven</a></b> — CC0 (papier, pierre, cuir)</li>
+          <li><b>Spectral</b>, <b>Shippori Mincho B1</b>, Zen Old Mincho, Noto Serif JP — Google Fonts, self-host OK</li>
+          <li>Grain : SVG <span style="font-family:var(--mono);font-size:.78rem">feTurbulence</span> inline — zéro asset</li>
+        </ul></div>
+        <div class="res"><h4>Références UI</h4><ul>
+          <li><b><a href="https://rezuaq.be/new-area/image-creator/">FromSoft Image Macro Creator</a></b> — valeurs pixel-fidèles</li>
+          <li><b><a href="https://github.com/Noxde/Bloodborne-save-editor">Bloodborne Save Editor</a></b> — couleurs UI extraites</li>
+          <li><b><a href="https://www.figma.com/community/file/1324779949340768558/bloodborne-ui-case-study">Bloodborne UI Case Study</a></b> — Figma communautaire</li>
+          <li><b><a href="https://interfaceingame.com/games/bloodborne/">Interface In Game</a></b>, <b><a href="https://www.gameuidatabase.com/gameData.php?id=33">Game UI Database</a></b> — captures</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="legal"><strong>Garde-fous.</strong> Bloodborne est une IP de Sony Interactive Entertainment (dév. FromSoftware). S'inspirer du style est licite ; réutiliser logo, artworks, captures ou assets extraits du jeu ne l'est pas. Runes et glyphes : créer des originaux « à la manière de ». Ressources CC BY : créditer l'auteur.</p>
+    <p>Codex compilé le 22 août 2026 — recherche sourcée (interviews Miyazaki, wikis, recréations pixel-fidèles, banques d'assets). Dossier complet : <span style="font-family:var(--mono);font-size:.8rem">docs/direction-artistique/</span> du repo MonPortfolio.</p>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  'use strict';
+  /* — copie des teintes, toast « acquisition » — */
+  var toast=document.getElementById('toast'),tt;
+  function showToast(html){toast.innerHTML=html;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},1800)}
+  document.querySelectorAll('.sw').forEach(function(b){
+    b.addEventListener('click',function(){
+      var hex=b.getAttribute('data-hex');
+      function ok(){showToast('Teinte obtenue — <b>'+hex+'</b>')}
+      try{
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(hex).then(ok,ok)}else{ok()}
+      }catch(e){ok()}
+    });
+  });
+
+  /* — phases du ciel — */
+  var skies=[
+    {bg:'linear-gradient(180deg,#8a8578 0%,#6e6a5f 45%,#3d3a33 100%)',moon:'radial-gradient(circle at 40% 38%,#d9d5c6,#b5b1a2)',glow:'0 0 30px rgba(217,213,198,.25)',
+     cap:'<b>Soir gris</b> — ciel couvert gris-brun, lumière terne. Le monde est encore « normal » : c’est la seule lumière de jour du jeu.'},
+    {bg:'linear-gradient(180deg,#c97b3a 0%,#8a5a3a 50%,#3a2c22 100%)',moon:'radial-gradient(circle at 40% 38%,#e39a4c,#b56f30)',glow:'0 0 34px rgba(227,154,76,.4)',
+     cap:'<b>Crépuscule</b> (après Gascoigne) — lune teintée orange, ciel réchauffé. Les PNJ tiennent encore.'},
+    {bg:'linear-gradient(180deg,#1c2430 0%,#232e3c 55%,#0d1013 100%)',moon:'radial-gradient(circle at 40% 38%,#e8e6d8,#c4c2b2)',glow:'0 0 40px rgba(232,230,216,.35)',
+     cap:'<b>Nuit</b> (après Vicar Amelia) — le ciel « paleblood » : « un bleu très pâle, comme un corps vidé de son sang » (Miyazaki). La lune paraît plus proche.'},
+    {bg:'linear-gradient(180deg,#6e1f1f 0%,#4a1518 55%,#1c0909 100%)',moon:'radial-gradient(circle at 40% 38%,#c4483c,#8a2e24)',glow:'0 0 44px rgba(196,72,60,.5)',
+     cap:'<b>Lune de sang</b> (après Rom) — ciel rouge profond, lune écarlate immense et basse. Les Amygdalas deviennent visibles pour tous.'}
+  ];
+  var canvas=document.getElementById('skyCanvas'),moon=document.getElementById('skyMoon'),cap=document.getElementById('skyCaption');
+  var tabs=document.querySelectorAll('.sky-tabs button');
+  function setSky(i){
+    canvas.style.background=skies[i].bg;
+    moon.style.background=skies[i].moon;
+    moon.style.boxShadow=skies[i].glow;
+    cap.innerHTML=skies[i].cap;
+    tabs.forEach(function(t,j){t.setAttribute('aria-pressed',String(i===j))});
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){setSky(+t.getAttribute('data-sky'))})});
+  setSky(0);
+
+  /* — You Died — */
+  var stage=document.getElementById('diedStage');
+  document.getElementById('diedBtn').addEventListener('click',function(){
+    stage.classList.remove('playing');
+    void stage.offsetWidth;
+    stage.classList.add('playing');
+  });
+
+  /* — slots : sélection — */
+  document.querySelectorAll('#slots .slot').forEach(function(s){
+    s.addEventListener('click',function(){
+      document.querySelectorAll('#slots .slot').forEach(function(o){o.classList.remove('selected');o.setAttribute('aria-pressed','false')});
+      s.classList.add('selected');s.setAttribute('aria-pressed','true');
+    });
+  });
+})();
+</script>
