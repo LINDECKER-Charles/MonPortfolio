@@ -63,7 +63,7 @@ jobs:
 
       - name: Upload coverage report
         if: always() && inputs.upload-coverage
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-report
           path: ${{ env.FRONT_DIR }}/coverage
@@ -100,14 +100,14 @@ jobs:
 
       - name: Upload Playwright report
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report
           path: ${{ env.FRONT_DIR }}/playwright-report
           if-no-files-found: ignore
 
       - name: Upload Angular dist artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: angular-dist
           path: ${{ env.FRONT_DIR }}/dist
