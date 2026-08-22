@@ -4,7 +4,6 @@
    ╚══════════════════════════════════════════════════════════════════════════╝ */
 
 @layer utilities {
-
   /* Transition rituelle standard — à mettre sur tout élément interactif
      qui change de couleur/bordure/ombre/transform au hover. */
   .transition-ritual {

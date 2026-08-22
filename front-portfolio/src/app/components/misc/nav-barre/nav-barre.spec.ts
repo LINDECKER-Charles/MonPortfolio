@@ -23,17 +23,18 @@ describe('NavBarre', () => {
   });
 
   // typed access to protected members for testing
-  const api = () => component as unknown as {
-    soundPopoverOpen: () => boolean;
-    volumePercent: () => number;
-    navItems: () => Array<{ key: string; label: string }>;
-    currentLang: () => { code: string };
-    toggleSoundPopover: () => void;
-    toggleMute: () => void;
-    onVolumeInput: (e: Event) => void;
-    onDocumentClick: (e: MouseEvent) => void;
-    onEscape: () => void;
-  };
+  const api = () =>
+    component as unknown as {
+      soundPopoverOpen: () => boolean;
+      volumePercent: () => number;
+      navItems: () => { key: string; label: string }[];
+      currentLang: () => { code: string };
+      toggleSoundPopover: () => void;
+      toggleMute: () => void;
+      onVolumeInput: (e: Event) => void;
+      onDocumentClick: (e: MouseEvent) => void;
+      onEscape: () => void;
+    };
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -122,5 +123,18 @@ describe('NavBarre', () => {
 
   it('currentLang falls back to the first available language for unknown codes', () => {
     expect(api().currentLang().code).toBe('fr');
+  });
+
+  it('emits langModalRequested when the lang button is clicked', () => {
+    const emitted = jasmine.createSpy('langModalRequested');
+    component.langModalRequested.subscribe(emitted);
+
+    const button = (fixture.nativeElement as HTMLElement).querySelector<HTMLButtonElement>(
+      '.nav-barre__icon-btn--lang',
+    );
+    expect(button).not.toBeNull();
+    button!.click();
+
+    expect(emitted).toHaveBeenCalledTimes(1);
   });
 });

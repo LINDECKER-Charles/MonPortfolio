@@ -2,8 +2,6 @@
   "lang_modal.aria": "SEGMENT .lang_select",
   "lang_modal.close": "POP; RET ; CLOSE",
   "lang_modal.title": "-- LANG --",
-  "audio.show": "MOV audio_ctl, VISIBLE",
-  "audio.hide": "MOV audio_ctl, HIDDEN",
   "audio.toggle": "XOR sound, MUTE",
   "audio.volume": "MOV volume, [slider]",
   "lightbox.aria": "CALL fullscreen_view",

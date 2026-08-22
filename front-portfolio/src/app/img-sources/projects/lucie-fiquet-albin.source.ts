@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 export const LUCIE_FIQUET_ALBIN_HOME_IMAGE = buildProjectImage(
@@ -16,7 +16,7 @@ export const LUCIE_FIQUET_ALBIN_HOME_IMAGE = buildProjectImage(
     { width: 1024, height: 632 },
     { width: 1280, height: 790 },
     { width: 1536, height: 949 },
-  ]
+  ],
 );
 
 export const LUCIE_FIQUET_ALBIN_PROFIL_IMAGE = buildProjectImage(
@@ -34,7 +34,7 @@ export const LUCIE_FIQUET_ALBIN_PROFIL_IMAGE = buildProjectImage(
     { width: 1024, height: 727 },
     { width: 1280, height: 909 },
     { width: 1536, height: 1091 },
-  ]
+  ],
 );
 
 export const LUCIE_FIQUET_ALBIN_PROJECT_IMAGE = buildProjectImage(
@@ -52,7 +52,7 @@ export const LUCIE_FIQUET_ALBIN_PROJECT_IMAGE = buildProjectImage(
     { width: 1024, height: 589 },
     { width: 1280, height: 737 },
     { width: 1536, height: 884 },
-  ]
+  ],
 );
 
 export const LUCIE_FIQUET_ALBIN_XP_IMAGE = buildProjectImage(
@@ -70,7 +70,7 @@ export const LUCIE_FIQUET_ALBIN_XP_IMAGE = buildProjectImage(
     { width: 1024, height: 598 },
     { width: 1280, height: 747 },
     { width: 1536, height: 897 },
-  ]
+  ],
 );
 
 export const LUCIE_FIQUET_ALBIN_PHOTO_IMAGE = buildProjectImage(
@@ -88,7 +88,7 @@ export const LUCIE_FIQUET_ALBIN_PHOTO_IMAGE = buildProjectImage(
     { width: 1024, height: 624 },
     { width: 1280, height: 780 },
     { width: 1536, height: 936 },
-  ]
+  ],
 );
 
 export const LUCIE_FIQUET_ALBIN_IMAGES: ProjectMediaImage[] = [

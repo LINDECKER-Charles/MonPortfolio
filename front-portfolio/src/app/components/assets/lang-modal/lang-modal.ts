@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
   Component,
+  DOCUMENT,
   HostBinding,
   HostListener,
   inject,
@@ -8,9 +9,11 @@ import {
   OnInit,
   output,
   PLATFORM_ID,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { AVAILABLE_LANGUAGES, TranslationService } from '../../../services/translation.service';
 import { FocusTrapDirective } from '../../../directives/focus-trap.directive';
+import { lockBodyScroll } from '../../../utils/scroll-lock';
 
 const CLOSE_DURATION_MS = 200;
 
@@ -18,27 +21,28 @@ const CLOSE_DURATION_MS = 200;
   selector: 'app-lang-modal',
   imports: [FocusTrapDirective],
   templateUrl: './lang-modal.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './lang-modal.css',
 })
 export class LangModal implements OnInit, OnDestroy {
-  readonly close = output<void>();
+  readonly closed = output<void>();
 
   protected readonly ts = inject(TranslationService);
   protected readonly languages = AVAILABLE_LANGUAGES;
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-  private previousBodyOverflow = '';
+  private readonly document = inject(DOCUMENT);
+  private unlockBodyScroll: (() => void) | null = null;
 
   @HostBinding('class.is-closing') isClosing = false;
 
   ngOnInit(): void {
     if (!this.isBrowser) return;
-    this.previousBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    this.unlockBodyScroll = lockBodyScroll(this.document);
   }
 
   ngOnDestroy(): void {
-    if (!this.isBrowser) return;
-    document.body.style.overflow = this.previousBodyOverflow;
+    this.unlockBodyScroll?.();
+    this.unlockBodyScroll = null;
   }
 
   @HostListener('document:keydown.escape')
@@ -49,7 +53,7 @@ export class LangModal implements OnInit, OnDestroy {
   protected requestClose(): void {
     if (this.isClosing) return;
     this.isClosing = true;
-    setTimeout(() => this.close.emit(), CLOSE_DURATION_MS);
+    setTimeout(() => this.closed.emit(), CLOSE_DURATION_MS);
   }
 
   protected select(code: string): void {

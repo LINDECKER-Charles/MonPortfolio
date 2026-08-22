@@ -1,4 +1,6 @@
-:host { display: contents; }
+:host {
+  display: contents;
+}
 
 .contact-block {
   margin-top: 1rem;
@@ -23,7 +25,9 @@
     text-shadow var(--duration-base) ease;
 }
 
-.contact-row:last-child { border-bottom: none; }
+.contact-row:last-child {
+  border-bottom: none;
+}
 
 .contact-label {
   display: inline-flex;
@@ -78,10 +82,12 @@
   position: absolute;
   inset: 0;
   opacity: 0;
-  background: radial-gradient(ellipse at center,
+  background: radial-gradient(
+    ellipse at center,
     rgb(188 132 43 / 0.22) 0%,
     rgb(188 132 43 / 0.08) 40%,
-    transparent 70%);
+    transparent 70%
+  );
   transition: opacity var(--duration-base) ease;
 }
 
@@ -92,15 +98,25 @@
     0 0 20px rgb(188 132 43 / 0.15);
 }
 
-.contact-row:hover::after { opacity: 1; }
+.contact-row:hover::after {
+  opacity: 1;
+}
 
 @media (max-width: 768px) {
-  .contact-row { min-height: 50px; padding: 0.5rem 0.75rem; }
-  .contact-label { font-size: 1rem; }
+  .contact-row {
+    min-height: 50px;
+    padding: 0.5rem 0.75rem;
+  }
+  .contact-label {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .contact-row { min-height: 46px; padding: 0.45rem 0.5rem; }
+  .contact-row {
+    min-height: 46px;
+    padding: 0.45rem 0.5rem;
+  }
 
   .contact-label {
     gap: 0.55rem;
@@ -112,20 +128,35 @@
 
   .contact-label app-responsive-picture,
   .contact-label picture,
-  .contact-label img { width: 18px; height: 18px; }
+  .contact-label img {
+    width: 18px;
+    height: 18px;
+  }
 
-  .contact-row::before { inset: 50% 6%; }
+  .contact-row::before {
+    inset: 50% 6%;
+  }
 }
 
 @media (max-width: 360px) {
-  .contact-row { min-height: 42px; }
-  .contact-label { gap: 0.4rem; font-size: 0.85rem; }
+  .contact-row {
+    min-height: 42px;
+  }
+  .contact-label {
+    gap: 0.4rem;
+    font-size: 0.85rem;
+  }
 
   .contact-label app-responsive-picture,
   .contact-label picture,
-  .contact-label img { width: 16px; height: 16px; }
+  .contact-label img {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 @media (max-width: 320px) {
-  .contact-label { font-size: 0.78rem; }
+  .contact-label {
+    font-size: 0.78rem;
+  }
 }

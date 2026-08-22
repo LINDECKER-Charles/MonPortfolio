@@ -55,7 +55,7 @@ describe('WorksCertifications', () => {
     it('compte chaque catégorie', () => {
       for (const cat of CERT_CATEGORY_ORDER) {
         expect(api(component).count(cat)).toBe(
-          CERTIFICATIONS.filter((c) => c.category === cat).length
+          CERTIFICATIONS.filter((c) => c.category === cat).length,
         );
       }
     });
@@ -76,7 +76,7 @@ describe('WorksCertifications', () => {
       expect(api(component).logoSources('pvzf')).toEqual([]);
     });
 
-    it('logoFallback renvoie \'\' pour un organisme sans logo', () => {
+    it("logoFallback renvoie '' pour un organisme sans logo", () => {
       expect(api(component).logoFallback('pvzf')).toBe('');
     });
 
@@ -93,7 +93,7 @@ describe('WorksCertifications', () => {
     expect(api(component).organismName('microsoft')).toBe(ORGANISM_NAMES['microsoft']);
   });
 
-  it('issuedYear extrait l\'année', () => {
+  it("issuedYear extrait l'année", () => {
     const cert: Certification = CERTIFICATIONS[0];
     expect(api(component).issuedYear(cert)).toBe(cert.issuedAt.slice(0, 4));
   });
@@ -102,7 +102,7 @@ describe('WorksCertifications', () => {
     expect(api(component).issuedAt(CERTIFICATIONS[0])).toBeTruthy();
   });
 
-  it('trackById renvoie l\'id', () => {
+  it("trackById renvoie l'id", () => {
     expect(api(component).trackById(0, CERTIFICATIONS[0])).toBe(CERTIFICATIONS[0].id);
   });
 });

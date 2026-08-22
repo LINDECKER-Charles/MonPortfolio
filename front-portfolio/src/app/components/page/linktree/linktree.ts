@@ -1,13 +1,13 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { prefersReducedMotion } from '../../../utils/motion';
+import { isPlatformBrowser } from '@angular/common';
+import { shouldSkipEntrance } from '../../../utils/motion';
 import {
   AfterViewInit,
   Component,
   ElementRef,
-  Inject,
   PLATFORM_ID,
   ViewChild,
   inject,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
@@ -21,8 +21,9 @@ import { LINKTREE_SECTIONS, LinktreeLink, LinktreeSection } from './linktree.sta
 @Component({
   selector: 'app-linktree',
   standalone: true,
-  imports: [CommonModule, ResponsivePicture],
+  imports: [ResponsivePicture],
   templateUrl: './linktree.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './linktree.css',
 })
 export class Linktree implements AfterViewInit {
@@ -38,7 +39,9 @@ export class Linktree implements AfterViewInit {
 
   private readonly isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
     if (this.isBrowser) {
       gsap.registerPlugin(CSSPlugin);
@@ -53,18 +56,12 @@ export class Linktree implements AfterViewInit {
     const sectionsNode = this.sectionsRef?.nativeElement;
     if (!sectionsNode) return;
 
-    // Reduced motion : le contenu reste tel que rendu, sans masquage ni reveal.
-    if (prefersReducedMotion()) return;
-
     const blocks = sectionsNode.querySelectorAll('.linktree-chapter');
     blocks.forEach((block) => {
-      // Même règle que pour le hero : au rendu initial, un chapitre déjà
-      // visible (peint en SSR) ne doit pas être re-masqué en attendant
-      // l'IntersectionObserver. Après une navigation client, l'entrance joue.
-      if (!this.navigationContext.hasNavigated()) {
-        const rect = block.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) return;
-      }
+      // Politique d'entrance partagée (utils/motion.ts) : reduced-motion, ou
+      // chapitre déjà peint en SSR et visible au rendu initial — l'entrance ne
+      // joue qu'après une navigation client.
+      if (shouldSkipEntrance(block, this.navigationContext)) return;
 
       const label = block.querySelector('.linktree-chapter__label');
       const intro = block.querySelector('.linktree-chapter__intro');
@@ -89,7 +86,7 @@ export class Linktree implements AfterViewInit {
             observer.disconnect();
           });
         },
-        { rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
+        { rootMargin: '0px 0px -12% 0px', threshold: 0.08 },
       );
 
       observer.observe(block);

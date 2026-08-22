@@ -1,22 +1,20 @@
 // Lighthouse CI — audite le build SSR (dist/) ; `npm run build` requis avant.
-// Le serveur Express écoute sur son port par défaut (4000).
-const ORIGIN = 'http://localhost:4000';
+// Routes dérivées du manifeste unique src/app/seo/site-routes.json.
+const PORT = Number(process.env.E2E_PORT ?? 4000);
+// Propagé au serveur SSR lancé par startServerCommand (env hérité du process LHCI).
+process.env.PORT = String(PORT);
+const ORIGIN = `http://localhost:${PORT}`;
 
-const ROUTES = [
-  '/',
-  '/projects',
-  '/works',
-  '/resume',
-  '/linktree',
-  '/mentions-legales',
-  '/politique-confidentialite',
-  '/politique-cookies',
-];
+const ROUTES = require('./src/app/seo/site-routes.json')
+  .routes.filter((route) => route.e2e)
+  .map((route) => (route.path === '' ? '/' : `/${route.path}`));
 
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'node dist/front-portfolio/server/server.mjs',
+      // PORT transmis au serveur SSR pour s'aligner sur E2E_PORT.
+      startServerCommand: `node dist/front-portfolio/server/server.mjs`,
+      startServerReadyTimeout: 30000,
       startServerReadyPattern: 'listening on',
       url: ROUTES.map((r) => `${ORIGIN}${r}`),
       // 3 runs par route : les assertions portent sur le run médian, ce qui
@@ -30,28 +28,12 @@ module.exports = {
       },
     },
     assert: {
-      assertMatrix: [
-        {
-          // /works est volontairement noindex (page en construction, cf.
-          // app.routes.ts) : l'audit is-crawlable plombe le score SEO.
-          // Réintégrer la route dans le groupe standard au passage en index.
-          matchingUrlPattern: '.*/works$',
-          assertions: {
-            'categories:accessibility': ['error', { minScore: 0.95 }],
-            'categories:best-practices': ['error', { minScore: 0.9 }],
-            'categories:performance': ['warn', { minScore: 0.95 }],
-          },
-        },
-        {
-          matchingUrlPattern: '^(?!.*/works$).*',
-          assertions: {
-            'categories:accessibility': ['error', { minScore: 0.95 }],
-            'categories:best-practices': ['error', { minScore: 0.9 }],
-            'categories:seo': ['error', { minScore: 0.95 }],
-            'categories:performance': ['warn', { minScore: 0.95 }],
-          },
-        },
-      ],
+      assertions: {
+        'categories:accessibility': ['error', { minScore: 0.95 }],
+        'categories:best-practices': ['error', { minScore: 0.9 }],
+        'categories:seo': ['error', { minScore: 0.95 }],
+        'categories:performance': ['warn', { minScore: 0.95 }],
+      },
     },
     upload: {
       target: 'filesystem',

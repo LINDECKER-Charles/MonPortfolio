@@ -1,33 +1,27 @@
-import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { Component, provideZonelessChangeDetection, ChangeDetectionStrategy } from '@angular/core';
 import { provideRouter, Router } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { App } from './app';
 import { MetaService } from './services/meta-service';
 
-type FooterAccess = { showFooter: () => boolean };
+interface AppAccess {
+  showFooter: () => boolean;
+  langModalOpen: { (): boolean; set(value: boolean): void };
+}
 
-@Component({ selector: 'app-stub', template: 'stub' })
+@Component({
+  selector: 'app-stub',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  template: 'stub',
+})
 class StubComponent {}
 
 describe('App', () => {
   let metaSpy: jasmine.SpyObj<MetaService>;
 
   beforeEach(async () => {
-    metaSpy = jasmine.createSpyObj<MetaService>('MetaService', [
-      'updateDescription',
-      'updateCanonical',
-      'updateRobots',
-      'updateOgTitle',
-      'updateOgDescription',
-      'updateOgImage',
-      'updateOgUrl',
-      'updateOgType',
-      'updateTwitterTitle',
-      'updateTwitterDescription',
-      'updateTwitterCard',
-      'updateTwitterImage',
-      'updateStructuredData',
-    ]);
+    metaSpy = jasmine.createSpyObj<MetaService>('MetaService', ['applyRouteMeta']);
 
     await TestBed.configureTestingModule({
       imports: [App],
@@ -47,6 +41,8 @@ describe('App', () => {
     }).compileComponents();
   });
 
+  const access = (component: App): AppAccess => component as unknown as AppAccess;
+
   it('should create the app', () => {
     const fixture = TestBed.createComponent(App);
     expect(fixture.componentInstance).toBeTruthy();
@@ -54,8 +50,7 @@ describe('App', () => {
 
   it('defaults showFooter to true before any navigation', () => {
     const fixture = TestBed.createComponent(App);
-    const showFooter = (fixture.componentInstance as unknown as FooterAccess).showFooter;
-    expect(showFooter()).toBeTrue();
+    expect(access(fixture.componentInstance).showFooter()).toBeTrue();
   });
 
   it('keeps footer visible on a route with showFooter:true', async () => {
@@ -63,8 +58,7 @@ describe('App', () => {
     appFixture.detectChanges();
     await TestBed.inject(Router).navigateByUrl('/');
     appFixture.detectChanges();
-    const showFooter = (appFixture.componentInstance as unknown as FooterAccess).showFooter;
-    expect(showFooter()).toBeTrue();
+    expect(access(appFixture.componentInstance).showFooter()).toBeTrue();
   });
 
   it('hides footer on a route with showFooter:false', async () => {
@@ -72,8 +66,7 @@ describe('App', () => {
     appFixture.detectChanges();
     await TestBed.inject(Router).navigateByUrl('/hidden');
     appFixture.detectChanges();
-    const showFooter = (appFixture.componentInstance as unknown as FooterAccess).showFooter;
-    expect(showFooter()).toBeFalse();
+    expect(access(appFixture.componentInstance).showFooter()).toBeFalse();
   });
 
   it('falls back to footer visible when route data omits showFooter', async () => {
@@ -81,19 +74,54 @@ describe('App', () => {
     appFixture.detectChanges();
     await TestBed.inject(Router).navigateByUrl('/no-flag');
     appFixture.detectChanges();
-    const showFooter = (appFixture.componentInstance as unknown as FooterAccess).showFooter;
-    expect(showFooter()).toBeTrue();
+    expect(access(appFixture.componentInstance).showFooter()).toBeTrue();
   });
 
-  it('pushes route meta data through MetaService on navigation (ngOnInit pipeline)', async () => {
+  it('applies the deepest route data through MetaService on navigation (flux partagé)', async () => {
     const appFixture = TestBed.createComponent(App);
-    appFixture.componentInstance.ngOnInit();
+    appFixture.detectChanges(); // déclenche ngOnInit (abonnement métas sur le flux partagé)
+    await TestBed.inject(Router).navigateByUrl('/hidden');
     appFixture.detectChanges();
-    const router = TestBed.inject(Router);
-    await router.navigateByUrl('/hidden');
-    appFixture.detectChanges();
-    expect(metaSpy.updateDescription).toHaveBeenCalledWith('hidden');
-    expect(metaSpy.updateCanonical).toHaveBeenCalledWith('c');
-    expect(metaSpy.updateStructuredData).toHaveBeenCalled();
+    expect(metaSpy.applyRouteMeta).toHaveBeenCalledWith(
+      jasmine.objectContaining({ description: 'hidden', canonical: 'c' }),
+    );
+  });
+
+  describe('language modal (état local au shell)', () => {
+    it('is closed by default', () => {
+      const appFixture = TestBed.createComponent(App);
+      appFixture.detectChanges();
+      expect(access(appFixture.componentInstance).langModalOpen()).toBeFalse();
+      expect((appFixture.nativeElement as HTMLElement).querySelector('app-lang-modal')).toBeNull();
+    });
+
+    it('opens when the nav barre requests it', () => {
+      const appFixture = TestBed.createComponent(App);
+      appFixture.detectChanges();
+
+      const langButton = (appFixture.nativeElement as HTMLElement).querySelector<HTMLButtonElement>(
+        '.nav-barre__icon-btn--lang',
+      );
+      expect(langButton).not.toBeNull();
+      langButton!.click();
+      appFixture.detectChanges();
+
+      expect(access(appFixture.componentInstance).langModalOpen()).toBeTrue();
+      expect(
+        (appFixture.nativeElement as HTMLElement).querySelector('app-lang-modal'),
+      ).not.toBeNull();
+    });
+
+    it('closes on the modal closed output', () => {
+      const appFixture = TestBed.createComponent(App);
+      access(appFixture.componentInstance).langModalOpen.set(true);
+      appFixture.detectChanges();
+
+      appFixture.debugElement.query(By.css('app-lang-modal')).triggerEventHandler('closed');
+      appFixture.detectChanges();
+
+      expect(access(appFixture.componentInstance).langModalOpen()).toBeFalse();
+      expect((appFixture.nativeElement as HTMLElement).querySelector('app-lang-modal')).toBeNull();
+    });
   });
 });

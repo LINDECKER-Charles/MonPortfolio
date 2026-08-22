@@ -45,7 +45,9 @@
   font-size: 0.85rem;
   cursor: pointer;
   z-index: 2;
-  transition: color var(--duration-fast) ease, background var(--duration-fast) ease;
+  transition:
+    color var(--duration-fast) ease,
+    background var(--duration-fast) ease;
 }
 
 .lang-modal__close:hover {
@@ -105,7 +107,9 @@
 }
 
 @media (max-width: 360px) {
-  .lang-modal__list { grid-template-columns: 1fr; }
+  .lang-modal__list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .lang-modal__item {

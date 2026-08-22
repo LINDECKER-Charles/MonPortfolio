@@ -33,22 +33,19 @@
 }
 
 *::-webkit-scrollbar-track {
-  background:
-    linear-gradient(180deg, rgb(12 15 19 / 0.8), rgb(6 8 10 / 0.9));
+  background: linear-gradient(180deg, rgb(12 15 19 / 0.8), rgb(6 8 10 / 0.9));
   border-left: 1px solid rgb(164 148 118 / 0.06);
 }
 
 *::-webkit-scrollbar-thumb {
-  background:
-    linear-gradient(180deg, rgb(164 148 118 / 0.4), rgb(126 100 52 / 0.5));
+  background: linear-gradient(180deg, rgb(164 148 118 / 0.4), rgb(126 100 52 / 0.5));
   border-radius: 999px;
   border: 2px solid rgb(12 15 19 / 0.9);
   box-shadow: inset 0 0 0 1px rgb(215 192 154 / 0.08);
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background:
-    linear-gradient(180deg, rgb(215 192 154 / 0.55), rgb(164 148 118 / 0.65));
+  background: linear-gradient(180deg, rgb(215 192 154 / 0.55), rgb(164 148 118 / 0.65));
   box-shadow:
     inset 0 0 0 1px rgb(255 248 220 / 0.14),
     0 0 8px rgb(164 148 118 / 0.3);
@@ -133,8 +130,8 @@ button:focus-visible:where(.nav-barre__lang-btn, .sound-button, .collapse-toggle
    traitée, sans modifier le composant qui l'affiche.
    ──────────────────────────────────────────────────────────────────────── */
 
-img[src*="/icon/stack/"],
-picture source[srcset*="/icon/stack/"] + img {
+img[src*='/icon/stack/'],
+picture source[srcset*='/icon/stack/'] + img {
   border-radius: 999px;
   overflow: hidden;
 }
@@ -146,13 +143,13 @@ picture source[srcset*="/icon/stack/"] + img {
    ──────────────────────────────────────────────────────────────────────── */
 
 button,
-[role="button"] {
+[role='button'] {
   cursor: pointer;
 }
 
 a:not([href]),
 button:disabled,
-[aria-disabled="true"] {
+[aria-disabled='true'] {
   cursor: not-allowed;
 }
 
@@ -167,8 +164,9 @@ button:disabled,
   text-decoration-color: rgb(164 148 118 / 0.4);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  transition: color var(--duration-base) ease,
-              text-decoration-color var(--duration-base) ease;
+  transition:
+    color var(--duration-base) ease,
+    text-decoration-color var(--duration-base) ease;
 }
 
 .text-tome a:hover {

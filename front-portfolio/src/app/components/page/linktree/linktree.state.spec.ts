@@ -27,14 +27,12 @@ describe('LINKTREE_SECTIONS', () => {
       .filter((l) => l.icon.kind === 'picture')
       .forEach((l) => {
         expect(l.icon.sources?.length).toBeGreaterThan(0);
-        expect(l.icon.fallback).toBeTruthy();
+        expect(l.icon.fallbackSrc).toBeTruthy();
       });
   });
 
   it('provides an svg key for every svg icon', () => {
-    allLinks
-      .filter((l) => l.icon.kind === 'svg')
-      .forEach((l) => expect(l.icon.svg).toBeTruthy());
+    allLinks.filter((l) => l.icon.kind === 'svg').forEach((l) => expect(l.icon.svg).toBeTruthy());
   });
 
   it('marks the CV link as a local download and not external', () => {

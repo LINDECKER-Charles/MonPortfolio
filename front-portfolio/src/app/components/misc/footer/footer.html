@@ -12,15 +12,21 @@
       <a routerLink="/resume" href="/resume">{{ ts.translate('footer.nav.resume') }}</a>
       <a routerLink="/projects" href="/projects">{{ ts.translate('footer.nav.projects') }}</a>
       <a routerLink="/works" href="/works">{{ ts.translate('footer.nav.work') }}</a>
-      <a
-        class="footer__cv-link transition-ritual"
-        href="/CV-FR-FR-DESIGN.pdf"
-        download>
-        <svg class="footer__cv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/>
-          <path d="M14 3v5h5"/>
-          <path d="M12 12v6"/>
-          <path d="M9 15l3 3 3-3"/>
+      <a class="footer__cv-link transition-ritual" href="/CV-FR-FR-DESIGN.pdf" download>
+        <svg
+          class="footer__cv-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" />
+          <path d="M14 3v5h5" />
+          <path d="M12 12v6" />
+          <path d="M9 15l3 3 3-3" />
         </svg>
         <span>{{ ts.translate('common.cv.download.label') }}</span>
       </a>
@@ -32,14 +38,16 @@
         href="https://github.com/LINDECKER-Charles"
         target="_blank"
         rel="noreferrer noopener"
-        aria-label="GitHub">
+        aria-label="GitHub"
+      >
         <span class="footer__social-icon">
           <app-responsive-picture
             [sources]="githubIcon.sources"
-            [fallbackSrc]="githubIcon.fallback"
+            [fallbackSrc]="githubIcon.fallbackSrc"
             [alt]="githubIcon.alt"
             loading="lazy"
-            decoding="async">
+            decoding="async"
+          >
           </app-responsive-picture>
         </span>
       </a>
@@ -49,14 +57,16 @@
         href="https://www.linkedin.com/in/charles-lindecker/"
         target="_blank"
         rel="noreferrer noopener"
-        aria-label="LinkedIn">
+        aria-label="LinkedIn"
+      >
         <span class="footer__social-icon">
           <app-responsive-picture
             [sources]="linkedinIcon.sources"
-            [fallbackSrc]="linkedinIcon.fallback"
+            [fallbackSrc]="linkedinIcon.fallbackSrc"
             [alt]="linkedinIcon.alt"
             loading="lazy"
-            decoding="async">
+            decoding="async"
+          >
           </app-responsive-picture>
         </span>
       </a>
@@ -64,14 +74,16 @@
       <a
         class="footer__social transition-ritual"
         href="mailto:charles.lindecker@outlook.fr"
-        aria-label="Email">
+        aria-label="Email"
+      >
         <span class="footer__social-icon">
           <app-responsive-picture
             [sources]="mailIcon.sources"
-            [fallbackSrc]="mailIcon.fallback"
+            [fallbackSrc]="mailIcon.fallbackSrc"
             [alt]="mailIcon.alt"
             loading="lazy"
-            decoding="async">
+            decoding="async"
+          >
           </app-responsive-picture>
         </span>
       </a>
@@ -85,8 +97,14 @@
   </div>
 
   <nav class="footer__legal" [attr.aria-label]="ts.translate('footer.aria.legal')">
-    <a routerLink="/mentions-legales" href="/mentions-legales">{{ ts.translate('footer.legal.mentions') }}</a>
-    <a routerLink="/politique-confidentialite" href="/politique-confidentialite">{{ ts.translate('footer.legal.privacy') }}</a>
-    <a routerLink="/politique-cookies" href="/politique-cookies">{{ ts.translate('footer.legal.cookies') }}</a>
+    <a routerLink="/mentions-legales" href="/mentions-legales">{{
+      ts.translate('footer.legal.mentions')
+    }}</a>
+    <a routerLink="/politique-confidentialite" href="/politique-confidentialite">{{
+      ts.translate('footer.legal.privacy')
+    }}</a>
+    <a routerLink="/politique-cookies" href="/politique-cookies">{{
+      ts.translate('footer.legal.cookies')
+    }}</a>
   </nav>
 </footer>

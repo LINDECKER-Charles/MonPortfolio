@@ -11,9 +11,8 @@ describe('ProjectsHeader', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection(), provideRouter([])],
-      imports: [ProjectsHeader]
-    })
-    .compileComponents();
+      imports: [ProjectsHeader],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ProjectsHeader);
     component = fixture.componentInstance;

@@ -6,6 +6,18 @@ export interface ResponsiveImageSet {
   sources: ResponsiveSource[];
 }
 
+/** Set responsive accompagné de son texte alternatif, prêt à lier sur
+    `app-responsive-picture` ([sources]/[fallbackSrc]/[alt]) sans remappage. */
+export interface LabeledImageSet extends ResponsiveImageSet {
+  alt: string;
+}
+
+/** Étiquette un {@link ResponsiveImageSet} avec son `alt` (non traduit : noms
+    propres et marques — sinon passer par TranslationService côté composant). */
+export function labeled(set: ResponsiveImageSet, alt: string): LabeledImageSet {
+  return { ...set, alt };
+}
+
 const ICON_SIZES = [
   { filePrefix: '24x24_', width: 24 },
   { filePrefix: '40x40_', width: 40 },
@@ -47,7 +59,7 @@ function encodeAssetName(name: string): string {
 function buildWebpSources(
   pathPrefix: string,
   baseName: string,
-  sizes: ReadonlyArray<{ filePrefix: string; width?: number; maxWidth?: number }>
+  sizes: readonly { filePrefix: string; width?: number; maxWidth?: number }[],
 ): ResponsiveSource[] {
   return sizes.map(({ filePrefix, width, maxWidth }) => ({
     src: `${pathPrefix}/${filePrefix}${baseName}.webp`,
@@ -60,8 +72,8 @@ function buildWebpSources(
 export function createWebpImageSet(
   pathPrefix: string,
   baseName: string,
-  sizes: ReadonlyArray<{ filePrefix: string; width?: number; maxWidth?: number }>,
-  fallbackPrefix: string
+  sizes: readonly { filePrefix: string; width?: number; maxWidth?: number }[],
+  fallbackPrefix: string,
 ): ResponsiveImageSet {
   return {
     sources: buildWebpSources(pathPrefix, baseName, sizes),
@@ -85,8 +97,8 @@ export function createOtherIconSet(name: string): ResponsiveImageSet {
     on fournit les tailles disponibles par organisme via sizes spécifiques. */
 export function createOrganismSet(
   name: string,
-  sizes: ReadonlyArray<{ filePrefix: string; width?: number; maxWidth?: number }>,
-  fallbackPrefix: string
+  sizes: readonly { filePrefix: string; width?: number; maxWidth?: number }[],
+  fallbackPrefix: string,
 ): ResponsiveImageSet {
   return createWebpImageSet('/logo/organisme', name, sizes, fallbackPrefix);
 }
@@ -100,7 +112,7 @@ export function createPhotoSet(name: string): ResponsiveImageSet {
     imageServerUrl('/photos'),
     encodeAssetName(name),
     PHOTO_SIZES,
-    PHOTO_FALLBACK_PREFIX
+    PHOTO_FALLBACK_PREFIX,
   );
 }
 
@@ -143,39 +155,59 @@ export const SHARED_IMAGES = {
     white: createLogoSet('logo_white'),
   },
   organism: {
-    elanformation: createOrganismSet('elanformation', [
-      { filePrefix: '24x19_', width: 24 },
-      { filePrefix: '40x32_', width: 40 },
-      { filePrefix: '80x64_', width: 80 },
-      { filePrefix: '160x128_', width: 160 },
-    ], '80x64_'),
-    devmates: createOrganismSet('devmates', [
-      { filePrefix: '24x26_', width: 24 },
-      { filePrefix: '40x44_', width: 40 },
-      { filePrefix: '80x88_', width: 80 },
-      { filePrefix: '160x176_', width: 160 },
-      { filePrefix: '320x353_', width: 320 },
-    ], '80x88_'),
-    atis: createOrganismSet('atis', [
-      { filePrefix: '24x13_', width: 24 },
-      { filePrefix: '40x23_', width: 40 },
-      { filePrefix: '80x46_', width: 80 },
-      { filePrefix: '160x92_', width: 160 },
-    ], '80x46_'),
-    microsoft: createOrganismSet('Microsoft', [
-      { filePrefix: '24x24_', width: 24 },
-      { filePrefix: '40x40_', width: 40 },
-      { filePrefix: '80x80_', width: 80 },
-      { filePrefix: '160x160_', width: 160 },
-      { filePrefix: '320x320_', width: 320 },
-    ], '80x80_'),
-    freecodecamp: createOrganismSet('freecodecamp', [
-      { filePrefix: '24x24_', width: 24 },
-      { filePrefix: '40x40_', width: 40 },
-      { filePrefix: '80x80_', width: 80 },
-      { filePrefix: '160x160_', width: 160 },
-      { filePrefix: '320x320_', width: 320 },
-    ], '80x80_'),
+    elanformation: createOrganismSet(
+      'elanformation',
+      [
+        { filePrefix: '24x19_', width: 24 },
+        { filePrefix: '40x32_', width: 40 },
+        { filePrefix: '80x64_', width: 80 },
+        { filePrefix: '160x128_', width: 160 },
+      ],
+      '80x64_',
+    ),
+    devmates: createOrganismSet(
+      'devmates',
+      [
+        { filePrefix: '24x26_', width: 24 },
+        { filePrefix: '40x44_', width: 40 },
+        { filePrefix: '80x88_', width: 80 },
+        { filePrefix: '160x176_', width: 160 },
+        { filePrefix: '320x353_', width: 320 },
+      ],
+      '80x88_',
+    ),
+    atis: createOrganismSet(
+      'atis',
+      [
+        { filePrefix: '24x13_', width: 24 },
+        { filePrefix: '40x23_', width: 40 },
+        { filePrefix: '80x46_', width: 80 },
+        { filePrefix: '160x92_', width: 160 },
+      ],
+      '80x46_',
+    ),
+    microsoft: createOrganismSet(
+      'Microsoft',
+      [
+        { filePrefix: '24x24_', width: 24 },
+        { filePrefix: '40x40_', width: 40 },
+        { filePrefix: '80x80_', width: 80 },
+        { filePrefix: '160x160_', width: 160 },
+        { filePrefix: '320x320_', width: 320 },
+      ],
+      '80x80_',
+    ),
+    freecodecamp: createOrganismSet(
+      'freecodecamp',
+      [
+        { filePrefix: '24x24_', width: 24 },
+        { filePrefix: '40x40_', width: 40 },
+        { filePrefix: '80x80_', width: 80 },
+        { filePrefix: '160x160_', width: 160 },
+        { filePrefix: '320x320_', width: 320 },
+      ],
+      '80x80_',
+    ),
   },
   photo: {
     me: createPhotoSet('me-1'),

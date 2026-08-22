@@ -1,9 +1,10 @@
-import { provideZonelessChangeDetection, SecurityContext } from '@angular/core';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { ProjectsModal } from './projects-modal';
-import { PROJECTS_DATA, ProjectItem } from '../projects.state';
+import { PROJECTS_DATA } from '../projects.data';
+import type { ProjectItem } from '../projects.types';
 
 function api(component: ProjectsModal): any {
   return component as any;
@@ -11,15 +12,13 @@ function api(component: ProjectsModal): any {
 
 async function createFixture(
   project: ProjectItem,
-  sanitizerOverride?: Partial<DomSanitizer>
+  sanitizerOverride?: Partial<DomSanitizer>,
 ): Promise<ComponentFixture<ProjectsModal>> {
   TestBed.resetTestingModule();
   await TestBed.configureTestingModule({
     providers: [
       provideZonelessChangeDetection(),
-      ...(sanitizerOverride
-        ? [{ provide: DomSanitizer, useValue: sanitizerOverride }]
-        : []),
+      ...(sanitizerOverride ? [{ provide: DomSanitizer, useValue: sanitizerOverride }] : []),
     ],
     imports: [ProjectsModal],
   }).compileComponents();
@@ -44,8 +43,20 @@ describe('ProjectsModal', () => {
     component = fixture.componentInstance;
   });
 
+  afterEach(() => {
+    document.body.style.overflow = '';
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('verrou de scroll', () => {
+    it('verrouille le body au montage et restaure la valeur précédente à la destruction', () => {
+      expect(document.body.style.overflow).toBe('hidden');
+      fixture.destroy();
+      expect(document.body.style.overflow).toBe('');
+    });
   });
 
   describe('currentImage', () => {
@@ -59,13 +70,15 @@ describe('ProjectsModal', () => {
       expect(api(f.componentInstance).currentImage).toBeNull();
     });
 
-    it('renvoie l\'image à l\'index courant', () => {
+    it("renvoie l'image à l'index courant", () => {
       const img = api(component).currentImage;
       expect(img).toBe(PROJECTS_DATA[0].detail!.images![0]);
     });
 
     it('renvoie null si index hors bornes', async () => {
-      const f = await createFixture(projectWith({ images: [{ alt: '', fallbackSrc: '', sources: [] }] }));
+      const f = await createFixture(
+        projectWith({ images: [{ alt: '', fallbackSrc: '', sources: [] }] }),
+      );
       f.componentRef.setInput('currentImageIndex', 99);
       f.detectChanges();
       expect(api(f.componentInstance).currentImage).toBeNull();
@@ -88,17 +101,12 @@ describe('ProjectsModal', () => {
         sanitize: () => null,
         bypassSecurityTrustResourceUrl: () => 'should-not-be-called' as never,
       };
-      const f = await createFixture(
-        projectWith({ video: 'https://example.com/video' }),
-        sanitizer
-      );
+      const f = await createFixture(projectWith({ video: 'https://example.com/video' }), sanitizer);
       expect(api(f.componentInstance).safeVideoUrl).toBeNull();
     });
 
     it('renvoie une URL sûre pour une video valide', async () => {
-      const f = await createFixture(
-        projectWith({ video: 'https://www.youtube.com/embed/abc' })
-      );
+      const f = await createFixture(projectWith({ video: 'https://www.youtube.com/embed/abc' }));
       expect(api(f.componentInstance).safeVideoUrl).not.toBeNull();
     });
   });
@@ -110,7 +118,7 @@ describe('ProjectsModal', () => {
 
     it('vrai avec une video seule', async () => {
       const f = await createFixture(
-        projectWith({ images: [], video: 'https://www.youtube.com/embed/abc' })
+        projectWith({ images: [], video: 'https://www.youtube.com/embed/abc' }),
       );
       expect(api(f.componentInstance).hasMedia).toBeTrue();
     });
@@ -148,7 +156,7 @@ describe('ProjectsModal', () => {
 
   describe('onEscape', () => {
     it('ferme la lightbox si ouverte sans émettre close', () => {
-      const closeSpy = spyOn(component.close, 'emit');
+      const closeSpy = spyOn(component.closed, 'emit');
       api(component).openImageLightbox();
       api(component).onEscape();
       expect(api(component).isImageLightboxOpen).toBeFalse();
@@ -156,7 +164,7 @@ describe('ProjectsModal', () => {
     });
 
     it('émet close si la lightbox est fermée', () => {
-      const closeSpy = spyOn(component.close, 'emit');
+      const closeSpy = spyOn(component.closed, 'emit');
       api(component).onEscape();
       expect(closeSpy).toHaveBeenCalled();
     });

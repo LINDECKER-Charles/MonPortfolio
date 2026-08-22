@@ -34,9 +34,8 @@ describe('MentionsLegales', () => {
 
   it('cross-links point to the sibling legal pages', () => {
     const fixture = TestBed.createComponent(MentionsLegales);
-    const crossLinks = (
-      fixture.componentInstance as unknown as { crossLinks: Array<{ path: string }> }
-    ).crossLinks;
+    const crossLinks = (fixture.componentInstance as unknown as { crossLinks: { path: string }[] })
+      .crossLinks;
     const paths = crossLinks.map((c) => c.path);
     expect(paths).toContain(LEGAL_PATHS.privacy);
     expect(paths).toContain(LEGAL_PATHS.cookies);

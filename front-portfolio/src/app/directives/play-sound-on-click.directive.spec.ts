@@ -1,11 +1,13 @@
-import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { Component, provideZonelessChangeDetection, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { SoundKey } from '../audio/sound-catalog';
 import { AudioService } from '../services/audio-service';
 import { PlaySoundOnClickDirective } from './play-sound-on-click.directive';
 
 @Component({
   imports: [PlaySoundOnClickDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <button
       [appPlaySoundOnClick]="soundKey"
@@ -19,7 +21,7 @@ import { PlaySoundOnClickDirective } from './play-sound-on-click.directive';
   `,
 })
 class TestHostComponent {
-  soundKey = 'getItem';
+  soundKey: SoundKey = 'getItem';
   mode: 'once' | 'persistent' = 'once';
   trigger: 'click' | 'hover' = 'click';
   disabled = false;
@@ -33,7 +35,10 @@ describe('PlaySoundOnClickDirective', () => {
 
     await TestBed.configureTestingModule({
       imports: [TestHostComponent],
-      providers: [provideZonelessChangeDetection(), { provide: AudioService, useValue: audioService }],
+      providers: [
+        provideZonelessChangeDetection(),
+        { provide: AudioService, useValue: audioService },
+      ],
     }).compileComponents();
   });
 
@@ -93,7 +98,8 @@ describe('PlaySoundOnClickDirective', () => {
 
   it('does nothing when the sound key is empty', () => {
     const fixture = TestBed.createComponent(TestHostComponent);
-    fixture.componentInstance.soundKey = '';
+    // Cast volontaire : le contrat SoundKey interdit la clé vide, on teste la garde runtime.
+    fixture.componentInstance.soundKey = '' as SoundKey;
     fixture.detectChanges();
 
     fixture.debugElement.query(By.css('button')).triggerEventHandler('click');

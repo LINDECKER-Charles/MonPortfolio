@@ -1,9 +1,15 @@
-import { Component, PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  Component,
+  PLATFORM_ID,
+  provideZonelessChangeDetection,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import gsap from 'gsap';
 
 import { RevealOnScrollDirective } from './reveal-on-scroll';
+import { NavigationContextService } from '../services/navigation-context.service';
 
 /** Fake IntersectionObserver capturant le callback pour le piloter à la main. */
 class FakeIntersectionObserver {
@@ -16,7 +22,7 @@ class FakeIntersectionObserver {
 
   constructor(
     private readonly callback: IntersectionObserverCallback,
-    options?: IntersectionObserverInit
+    options?: IntersectionObserverInit,
   ) {
     this.options = options;
     FakeIntersectionObserver.last = this;
@@ -38,13 +44,14 @@ class FakeIntersectionObserver {
   fire(isIntersecting: boolean, target: Element): void {
     this.callback(
       [{ isIntersecting, target } as unknown as IntersectionObserverEntry],
-      this as unknown as IntersectionObserver
+      this as unknown as IntersectionObserver,
     );
   }
 }
 
 @Component({
   imports: [RevealOnScrollDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div
       [style.position]="'fixed'"
@@ -83,10 +90,7 @@ describe('RevealOnScrollDirective', () => {
   function configure(platform: 'browser' | 'server' = 'browser') {
     TestBed.configureTestingModule({
       imports: [HostComponent],
-      providers: [
-        provideZonelessChangeDetection(),
-        { provide: PLATFORM_ID, useValue: platform },
-      ],
+      providers: [provideZonelessChangeDetection(), { provide: PLATFORM_ID, useValue: platform }],
     });
   }
 
@@ -242,6 +246,17 @@ describe('RevealOnScrollDirective', () => {
 
     expect(gsap.set).not.toHaveBeenCalled();
     expect(FakeIntersectionObserver.last).toBeNull();
+  });
+
+  it('re-hides a visible element after a client navigation (entrance légitime)', () => {
+    configure();
+    TestBed.inject(NavigationContextService).hasNavigated.set(true);
+    const fixture = TestBed.createComponent(HostComponent);
+    fixture.componentInstance.top = '0px';
+    fixture.detectChanges();
+
+    expect(gsap.set).toHaveBeenCalledTimes(1);
+    expect(FakeIntersectionObserver.last).not.toBeNull();
   });
 
   it('does not create an observer on the server platform', () => {

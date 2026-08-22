@@ -6,12 +6,9 @@ import {
   inject,
   Input,
   Output,
+  ChangeDetectionStrategy,
 } from '@angular/core';
-import {
-  ProjectCategory,
-  ProjectFilterItem,
-  ProjectFiltersState,
-} from '../projects.state';
+import type { ProjectCategory, ProjectFilterItem, ProjectFiltersState } from '../projects.types';
 import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
@@ -21,6 +18,7 @@ import { TranslationService } from '../../../../services/translation.service';
   styleUrl: './projects-filter.css',
   // Entrance rituelle au premier paint (cf. ornaments.css) — pas de tween JS
   // à l'hydratation, qui re-masquerait la barre rendue en SSR.
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: { class: 'emerge-ritual' },
 })
 export class ProjectsFilter {
@@ -34,7 +32,7 @@ export class ProjectsFilter {
   @Output() categorySelected = new EventEmitter<ProjectCategory | 'all'>();
   @Output() tagToggled = new EventEmitter<string>();
   @Output() stackToggled = new EventEmitter<string>();
-  @Output() reset = new EventEmitter<void>();
+  @Output() resetRequested = new EventEmitter<void>();
 
   protected isTagsPanelOpen = false;
   protected isStackPanelOpen = false;

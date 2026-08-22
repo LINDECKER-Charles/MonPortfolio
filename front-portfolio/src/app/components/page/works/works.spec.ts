@@ -11,9 +11,8 @@ describe('Works', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection(), provideRouter([])],
-      imports: [Works]
-    })
-    .compileComponents();
+      imports: [Works],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Works);
     component = fixture.componentInstance;

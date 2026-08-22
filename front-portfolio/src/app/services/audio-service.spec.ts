@@ -388,4 +388,27 @@ describe('AudioService', () => {
       expect(() => service.setMasterVolume(0.5)).not.toThrow();
     });
   });
+
+  describe('stockage indisponible (mode privé)', () => {
+    it('falls back to defaults when localStorage.getItem throws', () => {
+      spyOn(Storage.prototype, 'getItem').and.throwError('SecurityError');
+      stubMediaElement();
+      const service = createService();
+
+      expect(service.masterVolume()).toBe(1);
+      expect(service.muted()).toBeFalse();
+    });
+
+    it('setMasterVolume and muteAll still update state when setItem throws', () => {
+      stubMediaElement();
+      const service = createService();
+      spyOn(Storage.prototype, 'setItem').and.throwError('SecurityError');
+
+      service.setMasterVolume(0.5);
+      service.muteAll();
+
+      expect(service.masterVolume()).toBe(0.5);
+      expect(service.muted()).toBeTrue();
+    });
+  });
 });

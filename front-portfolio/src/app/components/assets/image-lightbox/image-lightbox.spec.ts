@@ -15,19 +15,18 @@ describe('ImageLightbox', () => {
 
     fixture = TestBed.createComponent(ImageLightbox);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('sources', [
-      { srcset: 'a.webp', type: 'image/webp' },
-    ]);
+    fixture.componentRef.setInput('sources', [{ srcset: 'a.webp', type: 'image/webp' }]);
     fixture.componentRef.setInput('fallbackSrc', 'a.jpg');
     fixture.componentRef.setInput('alt', 'photo');
   });
 
-  const api = () => component as unknown as {
-    canNavigate: boolean;
-    onEscape: () => void;
-    onArrowLeft: () => void;
-    onArrowRight: () => void;
-  };
+  const api = () =>
+    component as unknown as {
+      canNavigate: boolean;
+      onEscape: () => void;
+      onArrowLeft: () => void;
+      onArrowRight: () => void;
+    };
 
   afterEach(() => {
     document.body.style.overflow = '';
@@ -49,7 +48,7 @@ describe('ImageLightbox', () => {
   it('emits close on escape', () => {
     fixture.detectChanges();
     const spy = jasmine.createSpy('close');
-    component.close.subscribe(spy);
+    component.closed.subscribe(spy);
     api().onEscape();
     expect(spy).toHaveBeenCalledTimes(1);
   });

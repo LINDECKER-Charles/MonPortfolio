@@ -18,15 +18,9 @@ export interface ProjectDetail {
   lessonsLearned?: string[];
 }
 
-export type ProjectCategory =
-  | 'personal'
-  | 'open_source'
-  | 'client';
+export type ProjectCategory = 'personal' | 'open_source' | 'client';
 
-export type ProjectStatus =
-  | 'done'
-  | 'in_progress'
-  | 'archived';
+export type ProjectStatus = 'done' | 'in_progress' | 'archived';
 
 export interface ProjectLinkSet {
   github?: string;

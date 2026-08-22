@@ -1,0 +1,17 @@
+# syntax=docker/dockerfile:1
+# Image de DEV uniquement — le déploiement prod reste le build CI + VPS
+# (cf. docs/deploiement.md). Alignée sur .nvmrc (Node 24).
+FROM node:24-alpine
+
+WORKDIR /app
+
+# Couche dépendances cacheable ; le code arrive par bind-mount (compose.yaml).
+COPY package.json package-lock.json ./
+COPY scripts ./scripts
+COPY src/app/seo/site-routes.json ./src/app/seo/site-routes.json
+RUN mkdir -p src/environments public && npm ci
+
+EXPOSE 4200
+
+# --poll : les événements filesystem ne traversent pas les bind-mounts Windows.
+CMD ["npm", "start", "--", "--host", "0.0.0.0", "--port", "4200", "--poll", "2000"]

@@ -6,23 +6,29 @@
       appRevealOnScroll
       [revealDelay]="idx * 0.06"
       [revealY]="28"
-      [revealBlur]="10">
+      [revealBlur]="10"
+    >
       <div class="projects-timeline__line">
         <svg class="projects-timeline__seal" viewBox="0 0 40 40" fill="none" aria-hidden="true">
           <!-- Cercle externe doré -->
-          <circle cx="20" cy="20" r="18" stroke="#a49476" stroke-width="0.7" opacity="0.45"/>
+          <circle cx="20" cy="20" r="18" stroke="#a49476" stroke-width="0.7" opacity="0.45" />
           <!-- Anneau rituel -->
-          <circle cx="20" cy="20" r="13" stroke="#a49476" stroke-width="0.5" opacity="0.7"/>
+          <circle cx="20" cy="20" r="13" stroke="#a49476" stroke-width="0.5" opacity="0.7" />
           <!-- Marques cardinales -->
-          <path d="M20 4 L20 8 M20 32 L20 36 M4 20 L8 20 M32 20 L36 20" stroke="#a49476" stroke-width="0.6" opacity="0.5"/>
+          <path
+            d="M20 4 L20 8 M20 32 L20 36 M4 20 L8 20 M32 20 L36 20"
+            stroke="#a49476"
+            stroke-width="0.6"
+            opacity="0.5"
+          />
           <!-- Cœur rouge rituel -->
-          <circle cx="20" cy="20" r="4" fill="url(#sealGlow)"/>
-          <circle cx="20" cy="20" r="2.2" fill="#a60a0a"/>
+          <circle cx="20" cy="20" r="4" fill="url(#sealGlow)" />
+          <circle cx="20" cy="20" r="2.2" fill="#a60a0a" />
           <defs>
             <radialGradient id="sealGlow">
-              <stop offset="0%" stop-color="#ff934d" stop-opacity="0.9"/>
-              <stop offset="60%" stop-color="#a60a0a" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#a60a0a" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#ff934d" stop-opacity="0.9" />
+              <stop offset="60%" stop-color="#a60a0a" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#a60a0a" stop-opacity="0" />
             </radialGradient>
           </defs>
         </svg>
@@ -32,20 +38,26 @@
         <div class="project-card__top">
           <div class="project-card__meta">
             <span class="project-card__period">{{ formatPeriod(project) }}</span>
-            <span class="project-card__badge">{{ ts.translate('projects.filter.' + project.category) }}</span>
+            <span class="project-card__badge">{{
+              ts.translate('projects.filter.' + project.category)
+            }}</span>
             <span class="project-card__badge project-card__badge--status">
               {{ ts.translate('projects.status.' + project.status) }}
             </span>
           </div>
 
           @if (project.featured) {
-            <span class="project-card__featured">{{ ts.translate('projects.timeline.featured') }}</span>
+            <span class="project-card__featured">{{
+              ts.translate('projects.timeline.featured')
+            }}</span>
           }
         </div>
 
         <div class="project-card__head">
           <h2 class="text-engraved text-engraved--carved">{{ project.title }}</h2>
-          <p class="text-tome">{{ ts.translate('projects.' + project.id + '.shortDescription') }}</p>
+          <p class="text-tome">
+            {{ ts.translate('projects.' + project.id + '.shortDescription') }}
+          </p>
         </div>
 
         @if (previewImage(project); as preview) {
@@ -53,38 +65,57 @@
             type="button"
             class="project-card__preview transition-ritual"
             (click)="projectSelected.emit(project)"
-            [attr.aria-label]="ts.translate('projects.timeline.detail')">
+            [attr.aria-label]="ts.translate('projects.timeline.detail')"
+          >
             <app-responsive-picture
               [sources]="preview.sources"
               [fallbackSrc]="preview.fallbackSrc"
               [alt]="preview.alt"
               loading="lazy"
               decoding="async"
-              objectFit="cover">
+              objectFit="cover"
+            >
             </app-responsive-picture>
 
-            @for (corner of ['tl','tr','br','bl']; track corner) {
+            @for (corner of ['tl', 'tr', 'br', 'bl']; track corner) {
               <svg
                 class="project-card__preview-corner project-card__preview-corner--{{ corner }}"
                 viewBox="0 0 24 24"
                 fill="none"
-                aria-hidden="true">
-                <path d="M2 15 L2 4 L13 4" stroke="#a49476" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
-                <path d="M5 11 L5 7 L9 7" stroke="#a49476" stroke-width="0.6" stroke-linecap="round" opacity="0.3"/>
-                <circle cx="2" cy="4" r="1.1" fill="#a49476" opacity="0.75"/>
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 15 L2 4 L13 4"
+                  stroke="#a49476"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  opacity="0.7"
+                />
+                <path
+                  d="M5 11 L5 7 L9 7"
+                  stroke="#a49476"
+                  stroke-width="0.6"
+                  stroke-linecap="round"
+                  opacity="0.3"
+                />
+                <circle cx="2" cy="4" r="1.1" fill="#a49476" opacity="0.75" />
               </svg>
             }
 
             @if (previewCount(project) > 1) {
               <span class="project-card__preview-count" aria-hidden="true">
-                <span class="project-card__preview-count-value">+{{ previewCount(project) - 1 }}</span>
+                <span class="project-card__preview-count-value"
+                  >+{{ previewCount(project) - 1 }}</span
+                >
               </span>
             }
           </button>
         }
 
         <div class="project-card__section">
-          <span class="project-card__section-label">{{ ts.translate('projects.filter.stack') }}</span>
+          <span class="project-card__section-label">{{
+            ts.translate('projects.filter.stack')
+          }}</span>
 
           <div class="project-card__stack">
             @for (item of project.stack; track item) {
@@ -94,7 +125,9 @@
         </div>
 
         <div class="project-card__section">
-          <span class="project-card__section-label">{{ ts.translate('projects.filter.tags') }}</span>
+          <span class="project-card__section-label">{{
+            ts.translate('projects.filter.tags')
+          }}</span>
 
           <div class="project-card__tags">
             @for (tag of project.tags; track tag) {
@@ -104,7 +137,11 @@
         </div>
 
         <div class="project-card__actions">
-          <button type="button" class="project-card__toggle transition-ritual" (click)="projectSelected.emit(project)">
+          <button
+            type="button"
+            class="project-card__toggle transition-ritual"
+            (click)="projectSelected.emit(project)"
+          >
             {{ ts.translate('projects.timeline.detail') }}
           </button>
         </div>

@@ -2,13 +2,7 @@
     Certaines clés (pvzf, missionLocale) n'ont pas encore de logo : un monogramme
     est affiché à la place dans l'UI via getOrganismMonogram(). */
 export type OrganismKey =
-  | 'elanformation'
-  | 'devmates'
-  | 'atis'
-  | 'microsoft'
-  | 'freecodecamp'
-  | 'pvzf'
-  | 'missionLocale';
+  'elanformation' | 'devmates' | 'atis' | 'microsoft' | 'freecodecamp' | 'pvzf' | 'missionLocale';
 
 /* ─────────────────────────────────────────────────────────────────────────
    EXPÉRIENCES — poste professionnel ou bénévolat, avec période + description.
@@ -19,14 +13,14 @@ export interface Experience {
   id: string;
   title: string;
   organism: OrganismKey;
-  employment: string;      // Freelance / CDI / Stage / Alternance / Bénévole
-  sector?: string;         // Secteur d'activité (optionnel)
+  employment: string; // Freelance / CDI / Stage / Alternance / Bénévole
+  sector?: string; // Secteur d'activité (optionnel)
   location: string;
-  workMode: string;        // Sur site / À distance / Hybride
-  start: string;           // YYYY-MM
-  end: string | null;      // null ⇒ en poste
-  description: string;     // paragraphes séparés par \n\n
-  volunteer?: boolean;     // teinte visuelle distincte si true
+  workMode: string; // Sur site / À distance / Hybride
+  start: string; // YYYY-MM
+  end: string | null; // null ⇒ en poste
+  description: string; // paragraphes séparés par \n\n
+  volunteer?: boolean; // teinte visuelle distincte si true
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -64,12 +58,9 @@ export interface Certification {
    ─────────────────────────────────────────────────────────────────────── */
 
 export type TimelineNode =
-  | { kind: 'experience'; exp: Experience }
-  | { kind: 'education'; edu: Education };
+  { kind: 'experience'; exp: Experience } | { kind: 'education'; edu: Education };
 
-export type TimelineRow =
-  | { type: 'year'; year: string }
-  | { type: 'node'; node: TimelineNode };
+export type TimelineRow = { type: 'year'; year: string } | { type: 'node'; node: TimelineNode };
 
 export type TimelineOrder = 'recent' | 'old';
 

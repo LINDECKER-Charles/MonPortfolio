@@ -1,6 +1,8 @@
 import { Route } from '@angular/router';
 
 import { routes } from './app.routes';
+import { SITE_URL } from './seo/route-meta';
+import { PRERENDERED_PATHS, SITE_ROUTES } from './seo/site-routes';
 
 /** Champs SEO attendus dans `data` de chaque route. */
 const SEO_KEYS = [
@@ -83,11 +85,11 @@ describe('app routes', () => {
     });
   });
 
-  it('marks opening and works/404 routes as noindex', () => {
+  it('marks opening and 404 routes as noindex', () => {
     const byPath = (p: string) => routes.find((r) => r.path === p)!;
     expect(byPath('opening-resume').data!['robots']).toContain('noindex');
     expect(byPath('opening-home').data!['robots']).toContain('noindex');
-    expect(byPath('works').data!['robots']).toContain('noindex');
+    // /works est indexable depuis que la timeline parcours est remplie (2026-08).
     expect(byPath('**').data!['robots']).toContain('noindex');
   });
 
@@ -101,17 +103,44 @@ describe('app routes', () => {
   it('hides the footer only on the opening sequences', () => {
     routes.forEach((route) => {
       const expectFooter = route.path !== 'opening-resume' && route.path !== 'opening-home';
-      expect(route.data!['showFooter'])
-        .withContext(`route "${route.path}"`)
-        .toBe(expectFooter);
+      expect(route.data!['showFooter']).withContext(`route "${route.path}"`).toBe(expectFooter);
     });
   });
 
-  it('uses canonical URLs under the production origin', () => {
+  it('uses canonical URLs under the configured site origin', () => {
     routes.forEach((route) => {
-      expect(route.data!['canonical'] as string)
-        .withContext(`route "${route.path}"`)
-        .toMatch(/^https:\/\/charles-lindecker\.com/);
+      expect((route.data!['canonical'] as string).startsWith(SITE_URL))
+        .withContext(`route "${route.path}" : ${route.data!['canonical']}`)
+        .toBeTrue();
     });
+  });
+
+  it('stays in sync with the site-routes manifest (paths and titles)', () => {
+    const manifestByPath = new Map(SITE_ROUTES.map((route) => [route.path, route]));
+    const concreteRoutes = routes.filter((route) => route.path !== '**');
+
+    // Chaque route Angular concrète est déclarée dans le manifeste, avec le même titre.
+    concreteRoutes.forEach((route) => {
+      const manifest = manifestByPath.get(route.path!);
+      expect(manifest).withContext(`route "${route.path}" absente du manifeste`).toBeDefined();
+      expect(route.title).withContext(`titre de "${route.path}"`).toBe(manifest!.title);
+      // Cohérence indexable <-> robots.
+      const robots = (route.data?.['robots'] as string | undefined) ?? 'index, follow';
+      expect(robots.includes('noindex'))
+        .withContext(`robots de "${route.path}"`)
+        .toBe(!manifest!.indexable);
+    });
+
+    // Et réciproquement : pas d'entrée fantôme dans le manifeste.
+    SITE_ROUTES.forEach((manifest) => {
+      expect(concreteRoutes.some((route) => route.path === manifest.path))
+        .withContext(`entrée manifeste "${manifest.path}" sans route Angular`)
+        .toBeTrue();
+    });
+
+    // Le prerender couvre exactement les routes du manifeste marquées prerender.
+    expect(new Set(PRERENDERED_PATHS)).toEqual(
+      new Set(SITE_ROUTES.filter((route) => route.prerender).map((route) => route.path)),
+    );
   });
 });

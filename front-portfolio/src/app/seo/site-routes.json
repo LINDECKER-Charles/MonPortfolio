@@ -1,0 +1,95 @@
+{
+  "$comment": "Source unique des routes publiques. Consommé par : app.routes.ts (titres), app.routes.server.ts (prerender), e2e/routes.ts, lighthouserc.cjs, page-transition (transitions exclues), scripts/gen-env.mjs (robots.txt + sitemap.xml). Un spec d'égalité (app.routes.spec.ts) verrouille la cohérence avec les routes Angular.",
+  "routes": [
+    {
+      "path": "",
+      "title": "Charles Lindecker - Portfolio Developpeur Full Stack",
+      "indexable": true,
+      "prerender": true,
+      "transition": true,
+      "e2e": true,
+      "sitemap": { "priority": 1.0, "changefreq": "weekly" }
+    },
+    {
+      "path": "resume",
+      "title": "Charles Lindecker - CV & Parcours Developpeur Web",
+      "indexable": true,
+      "prerender": true,
+      "transition": true,
+      "e2e": true,
+      "sitemap": { "priority": 0.8, "changefreq": "monthly" }
+    },
+    {
+      "path": "projects",
+      "title": "Projets - Charles Lindecker",
+      "indexable": true,
+      "prerender": true,
+      "transition": true,
+      "e2e": true,
+      "sitemap": { "priority": 0.9, "changefreq": "weekly" }
+    },
+    {
+      "path": "works",
+      "title": "Parcours - Charles Lindecker",
+      "indexable": true,
+      "prerender": true,
+      "transition": true,
+      "e2e": true,
+      "sitemap": { "priority": 0.6, "changefreq": "monthly" }
+    },
+    {
+      "path": "linktree",
+      "title": "Linktree - Charles Lindecker",
+      "indexable": true,
+      "prerender": true,
+      "transition": true,
+      "e2e": true,
+      "sitemap": { "priority": 0.7, "changefreq": "monthly" }
+    },
+    {
+      "path": "mentions-legales",
+      "title": "Mentions legales - Charles Lindecker",
+      "indexable": true,
+      "prerender": true,
+      "transition": true,
+      "e2e": true,
+      "sitemap": { "priority": 0.3, "changefreq": "yearly" }
+    },
+    {
+      "path": "politique-confidentialite",
+      "title": "Politique de confidentialite - Charles Lindecker",
+      "indexable": true,
+      "prerender": true,
+      "transition": true,
+      "e2e": true,
+      "sitemap": { "priority": 0.3, "changefreq": "yearly" }
+    },
+    {
+      "path": "politique-cookies",
+      "title": "Politique de cookies - Charles Lindecker",
+      "indexable": true,
+      "prerender": true,
+      "transition": true,
+      "e2e": true,
+      "sitemap": { "priority": 0.3, "changefreq": "yearly" }
+    },
+    {
+      "path": "opening-home",
+      "title": "Animation d ouverture - Charles Lindecker",
+      "indexable": false,
+      "prerender": true,
+      "transition": false,
+      "e2e": false,
+      "sitemap": null
+    },
+    {
+      "path": "opening-resume",
+      "title": "Charles Lindecker - Developpeur Web & Solutions sur mesure",
+      "indexable": false,
+      "prerender": true,
+      "transition": false,
+      "e2e": false,
+      "sitemap": null
+    }
+  ]
+}

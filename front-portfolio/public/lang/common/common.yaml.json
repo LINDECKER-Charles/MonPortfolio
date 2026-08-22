@@ -2,8 +2,6 @@
   "lang_modal.aria": "modal:\n  type: lang_selection  # i18n is pain",
   "lang_modal.close": "action: close  # escape also works",
   "lang_modal.title": "# --- Language Selection ---\ntitle: Langue",
-  "audio.show": "audio_controls:\n  visibility: show  # brace yourself",
-  "audio.hide": "audio_controls:\n  visibility: hidden  # peace at last",
   "audio.toggle": "sound:\n  toggle: true  # mute/unmute, pick one",
   "audio.volume": "volume:\n  adjustable: true  # slider goes brrrr",
   "lightbox.aria": "lightbox:\n  mode: fullscreen  # maximum zoom",

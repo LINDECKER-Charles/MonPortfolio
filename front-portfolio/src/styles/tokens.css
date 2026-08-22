@@ -55,9 +55,9 @@
 
   /* ── TRACKING (letter-spacing) ──────────────────────────────────────────── */
 
-  --tracking-rune: 0.22em;    /* titres gravés, eyebrows */
-  --tracking-sigil: 0.14em;   /* labels uppercase */
-  --tracking-tag: 0.10em;     /* boutons, liens */
+  --tracking-rune: 0.22em; /* titres gravés, eyebrows */
+  --tracking-sigil: 0.14em; /* labels uppercase */
+  --tracking-tag: 0.1em; /* boutons, liens */
 
   /* ── RAYONS ─────────────────────────────────────────────────────────────── */
 
@@ -132,18 +132,16 @@
 
   /* Modals / crypt */
   --shadow-crypt:
-    0 32px 64px rgb(0 0 0 / 0.52),
-    0 0 0 1px rgb(164 148 118 / 0.06),
+    0 32px 64px rgb(0 0 0 / 0.52), 0 0 0 1px rgb(164 148 118 / 0.06),
     inset 0 1px 0 rgb(255 248 220 / 0.04);
 
   /* Halo actif (or) */
-  --shadow-gilded: 0 14px 26px rgb(0 0 0 / 0.2),
-                   0 0 0 1px rgb(164 148 118 / 0.04),
-                   inset 0 1px 0 rgb(255 248 220 / 0.05);
+  --shadow-gilded:
+    0 14px 26px rgb(0 0 0 / 0.2), 0 0 0 1px rgb(164 148 118 / 0.04),
+    inset 0 1px 0 rgb(255 248 220 / 0.05);
 
   /* Halo hover (sang) */
-  --shadow-blood-halo: 0 14px 24px rgb(0 0 0 / 0.18),
-                       0 0 0 1px rgb(166 10 10 / 0.04);
+  --shadow-blood-halo: 0 14px 24px rgb(0 0 0 / 0.18), 0 0 0 1px rgb(166 10 10 / 0.04);
 
   /* Glow ember ponctuel (dots, focus) */
   --glow-ember: 0 0 12px rgb(255 147 77 / 0.75);
@@ -151,19 +149,13 @@
   /* ── GRAVURE (text-shadow) ──────────────────────────────────────────────── */
 
   /* Gravé sur pierre : ombre profonde descendante + filet clair ascendant */
-  --text-shadow-engraved:
-    0 1px 0 rgb(0 0 0 / 0.55),
-    0 -1px 0 rgb(255 248 220 / 0.08);
+  --text-shadow-engraved: 0 1px 0 rgb(0 0 0 / 0.55), 0 -1px 0 rgb(255 248 220 / 0.08);
 
   --text-shadow-engraved-deep:
-    0 2px 0 rgb(0 0 0 / 0.65),
-    0 -1px 0 rgb(255 248 220 / 0.1),
-    0 0 18px rgb(126 100 52 / 0.16);
+    0 2px 0 rgb(0 0 0 / 0.65), 0 -1px 0 rgb(255 248 220 / 0.1), 0 0 18px rgb(126 100 52 / 0.16);
 
   /* Halo rituel pour chair/feu — auréole chaude derrière un titre */
-  --text-shadow-ritual:
-    0 0 20px rgb(166 10 10 / 0.25),
-    0 0 40px rgb(166 10 10 / 0.12);
+  --text-shadow-ritual: 0 0 20px rgb(166 10 10 / 0.25), 0 0 40px rgb(166 10 10 / 0.12);
 
   /* ── TEXTURES (SVG noise inline) ────────────────────────────────────────── */
 
@@ -177,8 +169,7 @@
 
   /* Vignette inset — centre lumineux, bords plongés dans l'ombre */
   --shadow-vignette-soft: inset 0 0 80px rgb(0 0 0 / 0.28);
-  --shadow-vignette-deep: inset 0 0 120px rgb(0 0 0 / 0.45),
-                          inset 0 0 24px rgb(0 0 0 / 0.28);
+  --shadow-vignette-deep: inset 0 0 120px rgb(0 0 0 / 0.45), inset 0 0 24px rgb(0 0 0 / 0.28);
 
   /* ── OVERLAYS / GRADIENTS ───────────────────────────────────────────────── */
 
@@ -202,16 +193,15 @@
 
   /* ── LUEURS D'AMBIANCE (radial) ─────────────────────────────────────────── */
 
-  --glow-blood-haze: radial-gradient(circle at top left,
-    rgb(166 10 10 / 0.06), transparent 34%);
-  --glow-gold-haze: radial-gradient(circle at 20% 0%,
-    rgb(126 100 52 / 0.08), transparent 50%);
-  --glow-gold-side: radial-gradient(circle at 20% 50%,
-    rgb(126 100 52 / 0.12), transparent 38%);
-  --glow-ember-haze: radial-gradient(circle at top left,
-    rgb(255 147 77 / 0.18), transparent 55%);
-  --glow-moonlight-haze: radial-gradient(circle at top right,
-    rgb(125 171 255 / 0.1), transparent 42%);
+  --glow-blood-haze: radial-gradient(circle at top left, rgb(166 10 10 / 0.06), transparent 34%);
+  --glow-gold-haze: radial-gradient(circle at 20% 0%, rgb(126 100 52 / 0.08), transparent 50%);
+  --glow-gold-side: radial-gradient(circle at 20% 50%, rgb(126 100 52 / 0.12), transparent 38%);
+  --glow-ember-haze: radial-gradient(circle at top left, rgb(255 147 77 / 0.18), transparent 55%);
+  --glow-moonlight-haze: radial-gradient(
+    circle at top right,
+    rgb(125 171 255 / 0.1),
+    transparent 42%
+  );
 
   /* ── Z-INDEX (conservé) ─────────────────────────────────────────────────── */
 

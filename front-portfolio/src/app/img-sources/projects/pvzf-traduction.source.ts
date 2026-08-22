@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 export const PVZF_TRADUCTION_GITHUB_IMAGE = buildProjectImage(
@@ -16,7 +16,7 @@ export const PVZF_TRADUCTION_GITHUB_IMAGE = buildProjectImage(
     { width: 1024, height: 721 },
     { width: 1280, height: 902 },
     { width: 1536, height: 1082 },
-  ]
+  ],
 );
 
 export const PVZF_TRADUCTION_CONTRIBUTION_IMAGE = buildProjectImage(
@@ -34,7 +34,7 @@ export const PVZF_TRADUCTION_CONTRIBUTION_IMAGE = buildProjectImage(
     { width: 1024, height: 848 },
     { width: 1280, height: 1059 },
     { width: 1536, height: 1271 },
-  ]
+  ],
 );
 
 export const PVZF_TRADUCTION_P1_IMAGE = buildProjectImage(
@@ -50,7 +50,7 @@ export const PVZF_TRADUCTION_P1_IMAGE = buildProjectImage(
     { width: 640, height: 360 },
     { width: 768, height: 432 },
     { width: 1024, height: 576 },
-  ]
+  ],
 );
 
 export const PVZF_TRADUCTION_IMAGES: ProjectMediaImage[] = [

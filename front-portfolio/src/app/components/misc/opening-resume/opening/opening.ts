@@ -8,8 +8,11 @@ import {
   PLATFORM_ID,
   ViewChild,
   inject,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { prefersReducedMotion } from '../../../../utils/motion';
+import { safeGet, safeSet } from '../../../../utils/storage';
 import {
   canEnableSound,
   canSkipOpening,
@@ -19,19 +22,17 @@ import {
   moveToIntroReady,
   OpeningState,
 } from './opening.state';
-import {
-  OpeningAnimationRefs,
-  OpeningAnimationService,
-} from './opening-animation.service';
-import {AudioService} from '../../../../services/audio-service';
-import {ResponsivePicture} from '../../../assets/responsive-picture/responsive-picture';
-import {OPENING_FALLBACK_SRC, OPENING_SOURCES} from '../../../../img-sources/opening.sources';
-import {TranslationService} from '../../../../services/translation.service';
+import { OpeningAnimationRefs, OpeningAnimationService } from './opening-animation.service';
+import { AudioService } from '../../../../services/audio-service';
+import { ResponsivePicture } from '../../../assets/responsive-picture/responsive-picture';
+import { OPENING_FALLBACK_SRC, OPENING_SOURCES } from '../../../../img-sources/opening.sources';
+import { TranslationService } from '../../../../services/translation.service';
 
 @Component({
   selector: 'app-opening',
   imports: [ResponsivePicture],
   templateUrl: './opening.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './opening.css',
 })
 export class Opening implements AfterViewInit, OnDestroy {
@@ -124,25 +125,21 @@ export class Opening implements AfterViewInit, OnDestroy {
   /** Termine la séquence et mémorise qu'elle a été vue (bypass aux prochaines visites). */
   private finishOpening(): void {
     this.state = moveToFinished();
-    try {
-      localStorage.setItem(Opening.SEEN_KEY, '1');
-    } catch {
-      /* localStorage indisponible (mode privé / SSR) : non bloquant. */
-    }
+    // Best-effort : stockage indisponible (mode privé) = simplement non persisté.
+    safeSet(Opening.SEEN_KEY, '1');
     this.finished.emit();
   }
 
   /** Bypass si la séquence a déjà été vue, si `?skip-opening` est présent, ou en reduced-motion. */
   private shouldBypass(): boolean {
+    if (safeGet(Opening.SEEN_KEY) === '1') return true;
     try {
-      if (localStorage.getItem(Opening.SEEN_KEY) === '1') return true;
       const params = new URLSearchParams(window.location.search);
       if (params.has('skip-opening')) return true;
-      if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return true;
     } catch {
       /* environnement contraint : on joue la séquence par défaut. */
     }
-    return false;
+    return prefersReducedMotion();
   }
 
   public onSoundHoverEnter(): void {

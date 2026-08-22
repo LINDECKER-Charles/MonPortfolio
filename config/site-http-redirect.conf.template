@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+    ServerName ${SITE_DOMAIN}
+    ServerAlias www.${SITE_DOMAIN}
+
+    # Vhost :80 minimal : redirection HTTPS uniquement — aucun contenu servi ici.
+    RewriteEngine On
+    RewriteCond %{SERVER_NAME} =www.${SITE_DOMAIN} [OR]
+    RewriteCond %{SERVER_NAME} =${SITE_DOMAIN}
+    RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+
+    ErrorLog ${APACHE_LOG_DIR}/${SITE_LOG}_error.log
+    CustomLog ${APACHE_LOG_DIR}/${SITE_LOG}_access.log combined
+</VirtualHost>

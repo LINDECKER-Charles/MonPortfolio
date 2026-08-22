@@ -11,7 +11,7 @@ const serverConfig: ApplicationConfig = {
     // Baseline FR au rendu serveur : le HTML prerendu contient le texte final,
     // l'hydratation ne re-rend aucune chaîne → zéro layout shift (CLS).
     { provide: SERVER_TRANSLATIONS, useValue: SERVER_FR_TRANSLATIONS },
-  ]
+  ],
 };
 
 export const config = mergeApplicationConfig(appConfig, serverConfig);

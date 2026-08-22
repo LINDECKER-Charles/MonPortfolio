@@ -46,7 +46,7 @@ describe('TranslationService', () => {
   });
 
   it('reflects current lang onto document.documentElement.lang via effect', async () => {
-    const service = createService();
+    createService();
     TestBed.tick();
     expect(document.documentElement.lang).toBe('fr');
   });
@@ -151,6 +151,16 @@ describe('TranslationService', () => {
 
       expect(document.documentElement.lang).toBe('it');
     });
+
+    it('survives a throwing localStorage (stockage refusé) and falls back to fr', async () => {
+      installFetch(() => ({ ok: true, body: {} }));
+      spyOn(Storage.prototype, 'getItem').and.throwError('SecurityError');
+      spyOn(Storage.prototype, 'setItem').and.throwError('SecurityError');
+      const service = createService();
+
+      await expectAsync(service.initialize()).toBeResolved();
+      expect(service.lang()).toBe('fr');
+    });
   });
 
   describe('setLang()', () => {
@@ -188,6 +198,18 @@ describe('TranslationService', () => {
 
       expect(new URL(window.location.href).searchParams.has('lang')).toBeFalse();
       expect(localStorage.getItem(STORAGE_KEY)).toBe('fr');
+    });
+
+    it('still applies the language when localStorage.setItem throws', async () => {
+      installFetch(() => ({ ok: true, body: {} }));
+      const service = createService();
+      spyOn(Storage.prototype, 'setItem').and.throwError('SecurityError');
+
+      service.setLang('en');
+      await flush();
+      TestBed.tick();
+
+      expect(service.lang()).toBe('en');
     });
   });
 
@@ -230,19 +252,6 @@ describe('TranslationService', () => {
       await service.initialize();
 
       expect(service.translate('nav-barre.title')).toBe('nav-barre.title');
-    });
-  });
-
-  describe('modal state', () => {
-    it('opens and closes the language modal', () => {
-      const service = createService();
-      expect(service.isLangModalOpen()).toBeFalse();
-
-      service.openModal();
-      expect(service.isLangModalOpen()).toBeTrue();
-
-      service.closeModal();
-      expect(service.isLangModalOpen()).toBeFalse();
     });
   });
 

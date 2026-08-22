@@ -8,7 +8,7 @@ import {
 } from './works.state';
 
 describe('buildTimeline', () => {
-  it('insère un marqueur d\'année en tête puis les nœuds (ordre récent)', () => {
+  it("insère un marqueur d'année en tête puis les nœuds (ordre récent)", () => {
     const rows = buildTimeline('recent', 'all');
     expect(rows[0].type).toBe('year');
     const nodeCount = rows.filter((r) => r.type === 'node').length;
@@ -49,17 +49,13 @@ describe('buildTimeline', () => {
     const nodes = rows.filter((r) => r.type === 'node');
     const expectedExp = EXPERIENCES.filter((e) => !e.volunteer).length;
     expect(nodes.length).toBe(expectedExp + EDUCATIONS.length);
-    const hasEducation = nodes.some(
-      (r) => r.type === 'node' && r.node.kind === 'education'
-    );
+    const hasEducation = nodes.some((r) => r.type === 'node' && r.node.kind === 'education');
     expect(hasEducation).toBeTrue();
   });
 
   it('scope « volunteer » exclut les formations', () => {
     const rows = buildTimeline('recent', 'volunteer');
-    const hasEducation = rows.some(
-      (r) => r.type === 'node' && r.node.kind === 'education'
-    );
+    const hasEducation = rows.some((r) => r.type === 'node' && r.node.kind === 'education');
     expect(hasEducation).toBeFalse();
   });
 

@@ -6,7 +6,7 @@ import {
   ConstellationStatusTone,
 } from '../../assets/constellation/constellation.model';
 import { TranslationService } from '../../../services/translation.service';
-import { ProjectItem, ProjectStatus } from './projects.state';
+import type { ProjectItem, ProjectStatus } from './projects.types';
 import { formatProjectPeriod } from './projects.utils';
 
 /**
@@ -68,7 +68,7 @@ export function buildConstellationLabels(ts: TranslationService): ConstellationL
 
 export function toConstellationItems(
   projects: readonly ProjectItem[],
-  ts: TranslationService
+  ts: TranslationService,
 ): ConstellationItem[] {
   const lang = ts.lang();
   const today = ts.translate('projects.today');

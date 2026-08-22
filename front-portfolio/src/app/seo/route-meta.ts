@@ -1,10 +1,13 @@
 import { Data } from '@angular/router';
 
 import { imageServerUrl } from '../img-sources/image-server';
+import { ENV } from '../../environments/env';
 
-export const SITE_URL = 'https://charles-lindecker.com';
+/** Origine canonique — injectée depuis le .env racine (cf. environments/env.ts). */
+export const SITE_URL = ENV.siteUrl;
 export const LOGO_URL = `${SITE_URL}/logo/80x80_logo_white.webp`;
-export const SOCIAL_IMAGE_URL = `${SITE_URL}/meta/logo1.webp`;
+// /logo/logo.png : seul visuel social existant (l'ancien /meta/logo1.webp était un 404).
+export const SOCIAL_IMAGE_URL = `${SITE_URL}/logo/logo.png`;
 
 /** Références JSON-LD partagées vers les entités déclarées une seule fois. */
 export const personRef = { '@id': `${SITE_URL}/#charles-lindecker` };
@@ -45,9 +48,7 @@ export const organizationSchema = {
   },
 };
 
-export const breadcrumb = (
-  items: Array<{ name: string; url: string }>
-): Record<string, unknown> => ({
+export const breadcrumb = (items: { name: string; url: string }[]): Record<string, unknown> => ({
   '@type': 'BreadcrumbList',
   itemListElement: items.map((item, index) => ({
     '@type': 'ListItem',
@@ -61,7 +62,7 @@ export const breadcrumb = (
 export const webPage = (
   name: string,
   url: string,
-  extra?: Record<string, unknown>
+  extra?: Record<string, unknown>,
 ): Record<string, unknown> => ({
   '@type': 'WebPage',
   name,
@@ -69,6 +70,28 @@ export const webPage = (
   isPartOf: websiteRef,
   ...extra,
 });
+
+/**
+ * Contrat typé des métas portées par le `data` d'une route — construit par
+ * `buildRouteMeta`, appliqué d'un bloc par `MetaService.applyRouteMeta`.
+ * `showFooter` est consommé par le shell (App), pas par MetaService.
+ */
+export interface RouteMeta {
+  description: string;
+  canonical: string;
+  robots: string;
+  ogTitle: string;
+  ogDescription: string;
+  ogImage: string;
+  ogUrl: string;
+  ogType: string;
+  twitterCard: string;
+  twitterTitle: string;
+  twitterDescription: string;
+  twitterImage: string;
+  structuredData: Record<string, unknown>[];
+  showFooter: boolean;
+}
 
 export interface RouteMetaConfig {
   description: string;
@@ -88,7 +111,7 @@ export interface RouteMetaConfig {
 }
 
 /** Construit le bloc `data` SEO complet d'une route, avec les defaults du site. */
-export const buildRouteMeta = (config: RouteMetaConfig): Data => {
+export const buildRouteMeta = (config: RouteMetaConfig): RouteMeta & Data => {
   const ogDescription = config.ogDescription ?? config.description;
   return {
     description: config.description,

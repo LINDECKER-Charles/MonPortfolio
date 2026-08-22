@@ -23,7 +23,12 @@ export function formatMonthYear(ym: string, lang: string): string {
 }
 
 /** Période : "déc. 2025 — aujourd'hui" ou "avr. 2025 — oct. 2025". */
-export function formatPeriod(start: string, end: string | null, lang: string, todayLabel: string): string {
+export function formatPeriod(
+  start: string,
+  end: string | null,
+  lang: string,
+  todayLabel: string,
+): string {
   const startStr = formatMonthYear(start, lang);
   const endStr = end ? formatMonthYear(end, lang) : todayLabel;
   return `${startStr} — ${endStr}`;

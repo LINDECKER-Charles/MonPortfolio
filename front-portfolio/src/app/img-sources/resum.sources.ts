@@ -59,3 +59,6 @@ export const RESUM_IMAGES = {
     secondW2: createWebpImageSet(ICON_PROJECT, 'second_w_2', PROJECT_SIZES, '160x160_'),
   },
 } as const;
+
+/** Forme complète du catalogue — consommée par les sous-composants du CV. */
+export type ResumImages = typeof RESUM_IMAGES;

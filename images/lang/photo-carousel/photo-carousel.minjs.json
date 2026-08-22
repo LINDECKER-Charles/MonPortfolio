@@ -1,9 +1,0 @@
-{
-  "label": "c.car",
-  "previous": "p.prev()",
-  "next": "p.next()",
-  "pause": "p.stop()",
-  "play": "p.run()",
-  "go_to": "p.go({index})",
-  "slide_alt": "p[{index}].alt"
-}

@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, ChangeDetectionStrategy } from '@angular/core';
 import {
   PhotoCarousel,
   PhotoCarouselSlide,
@@ -10,6 +10,7 @@ import { TiltDirective } from '../../../../../../directives/tilt.directive';
   selector: 'app-home-resume-photo',
   imports: [PhotoCarousel, TiltDirective],
   templateUrl: './home-resume-photo.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home-resume-photo.css',
 })
 export class HomeResumePhoto {

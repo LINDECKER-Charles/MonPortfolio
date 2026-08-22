@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslationService } from '../../../../services/translation.service';
 
@@ -31,6 +31,7 @@ export interface LegalCrossLink {
   standalone: true,
   imports: [RouterLink],
   templateUrl: './legal-layout.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './legal-layout.css',
 })
 export class LegalLayout {

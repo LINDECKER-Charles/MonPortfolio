@@ -5,8 +5,15 @@
   role="dialog"
   aria-modal="true"
   appFocusTrap
-  [attr.aria-label]="ts.translate('common.lang_modal.aria')">
-  <button class="lang-modal__close" (click)="requestClose()" [attr.aria-label]="ts.translate('common.lang_modal.close')">✕</button>
+  [attr.aria-label]="ts.translate('common.lang_modal.aria')"
+>
+  <button
+    class="lang-modal__close"
+    (click)="requestClose()"
+    [attr.aria-label]="ts.translate('common.lang_modal.close')"
+  >
+    ✕
+  </button>
 
   <p class="lang-modal__title text-smallcaps">{{ ts.translate('common.lang_modal.title') }}</p>
   <div class="divider-ornate" aria-hidden="true"></div>
@@ -19,7 +26,8 @@
           [class.is-active]="ts.lang() === lang.code"
           (click)="select(lang.code)"
           [attr.aria-pressed]="ts.lang() === lang.code"
-          [attr.lang]="lang.code">
+          [attr.lang]="lang.code"
+        >
           <span class="lang-modal__flag" aria-hidden="true">{{ lang.flag }}</span>
           <span class="lang-modal__label">{{ lang.label }}</span>
         </button>

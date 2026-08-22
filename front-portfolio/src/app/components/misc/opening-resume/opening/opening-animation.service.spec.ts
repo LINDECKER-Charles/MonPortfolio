@@ -6,7 +6,7 @@ import { OpeningAnimationRefs, OpeningAnimationService } from './opening-animati
 
 /** Timeline factice : enregistre les `.add(cb)` et exécute les callbacks à la demande. */
 function makeTimelineMock() {
-  const added: Array<() => void> = [];
+  const added: (() => void)[] = [];
   const tl: any = {
     added,
     fromTo: jasmine.createSpy('fromTo').and.callFake(() => tl),

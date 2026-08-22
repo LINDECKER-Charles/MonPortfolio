@@ -1,4 +1,4 @@
-import { Component, Input, computed, input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 export interface ResponsiveSource {
   src: string;
@@ -7,10 +7,28 @@ export interface ResponsiveSource {
   type?: string;
 }
 
+/**
+ * Contrat de rendu — à la charge du composant, ne pas redéclarer côté parent :
+ *
+ * - Dimensions : `:host`, `picture` et `img` posent déjà `display: block` et
+ *   `width/height: 100%` (voir `responsive-picture.css`). Le parent dimensionne
+ *   uniquement son conteneur (ou l'hôte `app-responsive-picture` lui-même) ;
+ *   les triplets `X app-responsive-picture, X picture, X img { width/height... }`
+ *   sont redondants — et leurs parties `picture`/`img` sont de toute façon
+ *   inertes sous l'encapsulation émulée.
+ * - Cadrage : `object-fit`/`object-position` sont posés en style inline sur
+ *   l'`<img>` depuis les inputs `objectFit` (défaut `cover`) et
+ *   `objectPosition` (défaut `center`). Tout `object-fit` déclaré par un
+ *   parent sur l'image est écrasé : passer par les inputs.
+ * - Sources : triées par largeur croissante ; descripteurs `w` groupés par
+ *   `type` quand toutes les sources portent `width`, sinon une `<source>` par
+ *   entrée avec `media="(max-width: …px)"` dérivé de `maxWidth`.
+ */
 @Component({
   selector: 'app-responsive-picture',
   imports: [],
   templateUrl: './responsive-picture.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './responsive-picture.css',
 })
 export class ResponsivePicture {
@@ -37,7 +55,9 @@ export class ResponsivePicture {
   }
 
   get sourceTypes(): string[] {
-    return [...new Set(this.sortedSources.map((source) => source.type).filter(Boolean) as string[])];
+    return [
+      ...new Set(this.sortedSources.map((source) => source.type).filter(Boolean) as string[]),
+    ];
   }
 
   buildMedia(maxWidth?: number): string | null {

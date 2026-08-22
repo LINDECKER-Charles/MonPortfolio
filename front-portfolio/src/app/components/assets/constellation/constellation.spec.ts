@@ -34,7 +34,7 @@ const ITEMS: ConstellationItem[] = [
 ];
 
 /** Accès aux membres protégés/privés sans `any` qui pollue tout le fichier. */
-type Internals = {
+interface Internals {
   // protected
   isVisible(item: ConstellationItem): boolean;
   isDimmed(node: { id: string; item: ConstellationItem }): boolean;
@@ -70,7 +70,7 @@ type Internals = {
   displaced(): Map<string, unknown>;
   draggingId: string | null;
   rafId: number | null;
-};
+}
 
 const asInternals = (c: Constellation) => c as unknown as Internals;
 
@@ -78,7 +78,7 @@ const asInternals = (c: Constellation) => c as unknown as Internals;
 function pointer(
   type: string,
   svg: SVGSVGElement,
-  init: Partial<PointerEvent> & { target?: Element } = {}
+  init: Partial<PointerEvent> & { target?: Element } = {},
 ): PointerEvent {
   const ev = {
     type,
@@ -359,9 +359,7 @@ describe('Constellation', () => {
     };
     api.step();
     const moved = api.displaced();
-    expect(moved.get('one')).toEqual(
-      jasmine.objectContaining({ x: 60, y: 40, vx: 0, vy: 0 })
-    );
+    expect(moved.get('one')).toEqual(jasmine.objectContaining({ x: 60, y: 40, vx: 0, vy: 0 }));
     expect(rafSpy).toHaveBeenCalled();
   });
 

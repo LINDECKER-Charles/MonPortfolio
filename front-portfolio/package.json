@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "gen:env": "node scripts/gen-env.mjs",
+    "postinstall": "node scripts/gen-env.mjs",
+    "prestart": "node scripts/gen-env.mjs",
+    "prebuild": "node scripts/gen-env.mjs",
+    "pretest": "node scripts/gen-env.mjs",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -11,9 +16,12 @@
     "e2e:a11y": "playwright test e2e/a11y.spec.ts",
     "lighthouse": "lhci autorun",
     "serve:ssr:front-portfolio": "node dist/front-portfolio/server/server.mjs",
-    "optimize:photos": "node scripts/optimize-photos.mjs",
     "audit:i18n": "node scripts/audit-i18n.mjs",
-    "lint:css": "stylelint \"src/**/*.css\""
+    "fonts:self-host": "node scripts/self-host-fonts.mjs",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "format": "prettier --write \"src/**/*.{ts,css,html}\" \"e2e/**/*.ts\" \"scripts/*.mjs\"",
+    "format:check": "prettier --check \"src/**/*.{ts,css,html}\" \"e2e/**/*.ts\" \"scripts/*.mjs\"",
+    "lint": "ng lint && npm run lint:css"
   },
   "prettier": {
     "printWidth": 100,
@@ -28,15 +36,18 @@
     ]
   },
   "private": true,
+  "engines": {
+    "node": ">=22.18 <25"
+  },
   "dependencies": {
-    "@angular/common": "^20.3.0",
-    "@angular/compiler": "^20.3.0",
-    "@angular/core": "^20.3.0",
-    "@angular/forms": "^20.3.0",
-    "@angular/platform-browser": "^20.3.0",
-    "@angular/platform-server": "^20.3.0",
-    "@angular/router": "^20.3.0",
-    "@angular/ssr": "^20.3.4",
+    "@angular/common": "^22.1.3",
+    "@angular/compiler": "^22.1.3",
+    "@angular/core": "^22.1.3",
+    "@angular/forms": "^22.1.3",
+    "@angular/platform-browser": "^22.1.3",
+    "@angular/platform-server": "^22.1.3",
+    "@angular/router": "^22.1.3",
+    "@angular/ssr": "^22.1.5",
     "@tailwindcss/postcss": "^4.2.2",
     "compression": "^1.8.1",
     "express": "^5.1.0",
@@ -47,26 +58,32 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "^20.3.4",
-    "@angular/cli": "^20.3.4",
-    "@angular/compiler-cli": "^20.3.0",
+    "@angular/build": "^22.1.5",
+    "@angular/cli": "^22.1.5",
+    "@angular/compiler-cli": "^22.1.3",
     "@axe-core/playwright": "^4.11.3",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.60.0",
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
-    "@types/node": "^20.17.19",
+    "@types/node": "^24.13.3",
+    "angular-eslint": "^22.1.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "istanbul-lib-instrument": "^6.0.3",
     "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "sharp": "^0.34.5",
+    "prettier": "^3.9.6",
+    "sharp": "^0.35.3",
     "stylelint": "^17.13.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-declaration-strict-value": "^1.11.1",
-    "typescript": "~5.9.2"
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.67.0"
   }
 }

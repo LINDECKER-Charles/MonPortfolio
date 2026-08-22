@@ -1,6 +1,12 @@
 import { SHARED_IMAGES } from '../../../img-sources/shared.sources';
 import type { ResponsiveImageSet } from '../../../img-sources/shared.sources';
-import type { CertCategory, Certification, Education, Experience, OrganismKey } from './works.types';
+import type {
+  CertCategory,
+  Certification,
+  Education,
+  Experience,
+  OrganismKey,
+} from './works.types';
 
 /** Partial : les organismes sans asset logo ne figurent pas ici. */
 export const ORGANISM_LOGOS: Partial<Record<OrganismKey, ResponsiveImageSet>> = {
@@ -32,7 +38,7 @@ export const ORGANISM_MONOGRAMS: Partial<Record<OrganismKey, string>> = {
 export const EXPERIENCES: Experience[] = [
   {
     id: 'mission-locale-mentor',
-    title: 'Mentor & Animateur d\'ateliers',
+    title: "Mentor & Animateur d'ateliers",
     organism: 'missionLocale',
     employment: 'volunteer',
     sector: 'social',
@@ -42,7 +48,7 @@ export const EXPERIENCES: Experience[] = [
     end: null,
     volunteer: true,
     description:
-      "Accompagnement de jeunes dans un parcours de mentorat orienté vers les métiers du développement web. " +
+      'Accompagnement de jeunes dans un parcours de mentorat orienté vers les métiers du développement web. ' +
       "L'objectif est de faciliter leur insertion professionnelle en travaillant sur les bases techniques, la compréhension du métier, les bonnes pratiques du secteur et la posture attendue en environnement professionnel.\n\n" +
       "En parallèle, animation d'ateliers d'initiation au développement web auprès de publics débutants pour démystifier le code et susciter des vocations.",
   },
@@ -58,7 +64,7 @@ export const EXPERIENCES: Experience[] = [
     end: null,
     description:
       "Accompagnement et formation de futurs développeurs dans le cadre des parcours Développeur Web et Web Mobile (DWWM) et Concepteur Développeur d'Applications (CDA).\n\n" +
-      "Transmission des fondamentaux techniques, des bonnes pratiques professionnelles et des compétences nécessaires à une insertion durable dans les métiers du développement logiciel.",
+      'Transmission des fondamentaux techniques, des bonnes pratiques professionnelles et des compétences nécessaires à une insertion durable dans les métiers du développement logiciel.',
   },
   {
     id: 'pvzf-lead',
@@ -133,8 +139,8 @@ export const EDUCATIONS: Education[] = [
 
 /** Glyphe rituel par catégorie — affiché dans les puces de filtre du rail. */
 export const CERT_CATEGORIES: Record<CertCategory, { glyph: string }> = {
-  dev:  { glyph: '◆' },
-  web:  { glyph: '❖' },
+  dev: { glyph: '◆' },
+  web: { glyph: '❖' },
   data: { glyph: '◉' },
   lang: { glyph: '✦' },
 };
@@ -143,16 +149,99 @@ export const CERT_CATEGORIES: Record<CertCategory, { glyph: string }> = {
 export const CERT_CATEGORY_ORDER: CertCategory[] = ['dev', 'web', 'data', 'lang'];
 
 export const CERTIFICATIONS: Certification[] = [
-  { id: 'fcc-js',         title: 'JavaScript',                                        organism: 'freecodecamp', issuedAt: '2026-03', category: 'dev',  credentialId: 'hexanti-jsv9' },
-  { id: 'fcc-py',         title: 'Python',                                            organism: 'freecodecamp', issuedAt: '2026-03', category: 'dev',  credentialId: 'hexanti-pyv9' },
-  { id: 'fcc-b1-efd',     title: 'B1 English for Developers',                         organism: 'freecodecamp', issuedAt: '2026-03', category: 'lang', credentialId: 'hexanti-b1efd' },
-  { id: 'fcc-rdv9',       title: 'Relational Database',                               organism: 'freecodecamp', issuedAt: '2026-03', category: 'data', credentialId: 'hexanti-rdv9' },
-  { id: 'fcc-rd-v8',      title: 'Relational Database V8',                            organism: 'freecodecamp', issuedAt: '2026-03', category: 'data', credentialId: 'hexanti-rd' },
-  { id: 'fcc-a2-efd',     title: 'A2 English for Developers',                         organism: 'freecodecamp', issuedAt: '2026-03', category: 'lang', credentialId: 'hexanti-a2efd' },
-  { id: 'fcc-rwd-v9',     title: 'Responsive Web Design',                             organism: 'freecodecamp', issuedAt: '2026-03', category: 'web',  credentialId: 'hexanti-rwdv9' },
-  { id: 'fcc-legacy-jads',title: 'Legacy JavaScript Algorithms and Data Structures V7', organism: 'freecodecamp', issuedAt: '2025-11', category: 'dev', credentialId: 'hexanti-ljaads' },
-  { id: 'ms-csharp',      title: 'Foundational C# with Microsoft',                    organism: 'microsoft',    issuedAt: '2025-11', category: 'dev',  credentialId: 'hexanti-fcswm' },
-  { id: 'fcc-backend',    title: 'Back End Development and APIs',                     organism: 'freecodecamp', issuedAt: '2025-06', category: 'web' },
-  { id: 'fcc-jads',       title: 'JavaScript Algorithms and Data Structures',         organism: 'freecodecamp', issuedAt: '2025-06', category: 'dev',  credentialId: 'hexanti-jaads' },
-  { id: 'fcc-rwd',        title: 'Responsive Web Design',                             organism: 'freecodecamp', issuedAt: '2024-11', category: 'web',  credentialId: 'hexanti-rwd' },
+  {
+    id: 'fcc-js',
+    title: 'JavaScript',
+    organism: 'freecodecamp',
+    issuedAt: '2026-03',
+    category: 'dev',
+    credentialId: 'hexanti-jsv9',
+  },
+  {
+    id: 'fcc-py',
+    title: 'Python',
+    organism: 'freecodecamp',
+    issuedAt: '2026-03',
+    category: 'dev',
+    credentialId: 'hexanti-pyv9',
+  },
+  {
+    id: 'fcc-b1-efd',
+    title: 'B1 English for Developers',
+    organism: 'freecodecamp',
+    issuedAt: '2026-03',
+    category: 'lang',
+    credentialId: 'hexanti-b1efd',
+  },
+  {
+    id: 'fcc-rdv9',
+    title: 'Relational Database',
+    organism: 'freecodecamp',
+    issuedAt: '2026-03',
+    category: 'data',
+    credentialId: 'hexanti-rdv9',
+  },
+  {
+    id: 'fcc-rd-v8',
+    title: 'Relational Database V8',
+    organism: 'freecodecamp',
+    issuedAt: '2026-03',
+    category: 'data',
+    credentialId: 'hexanti-rd',
+  },
+  {
+    id: 'fcc-a2-efd',
+    title: 'A2 English for Developers',
+    organism: 'freecodecamp',
+    issuedAt: '2026-03',
+    category: 'lang',
+    credentialId: 'hexanti-a2efd',
+  },
+  {
+    id: 'fcc-rwd-v9',
+    title: 'Responsive Web Design',
+    organism: 'freecodecamp',
+    issuedAt: '2026-03',
+    category: 'web',
+    credentialId: 'hexanti-rwdv9',
+  },
+  {
+    id: 'fcc-legacy-jads',
+    title: 'Legacy JavaScript Algorithms and Data Structures V7',
+    organism: 'freecodecamp',
+    issuedAt: '2025-11',
+    category: 'dev',
+    credentialId: 'hexanti-ljaads',
+  },
+  {
+    id: 'ms-csharp',
+    title: 'Foundational C# with Microsoft',
+    organism: 'microsoft',
+    issuedAt: '2025-11',
+    category: 'dev',
+    credentialId: 'hexanti-fcswm',
+  },
+  {
+    id: 'fcc-backend',
+    title: 'Back End Development and APIs',
+    organism: 'freecodecamp',
+    issuedAt: '2025-06',
+    category: 'web',
+  },
+  {
+    id: 'fcc-jads',
+    title: 'JavaScript Algorithms and Data Structures',
+    organism: 'freecodecamp',
+    issuedAt: '2025-06',
+    category: 'dev',
+    credentialId: 'hexanti-jaads',
+  },
+  {
+    id: 'fcc-rwd',
+    title: 'Responsive Web Design',
+    organism: 'freecodecamp',
+    issuedAt: '2024-11',
+    category: 'web',
+    credentialId: 'hexanti-rwd',
+  },
 ];

@@ -50,7 +50,7 @@ describe('LangModal', () => {
 
     it('requestClose marks closing and emits close after the animation delay', () => {
       const spy = jasmine.createSpy('close');
-      component.close.subscribe(spy);
+      component.closed.subscribe(spy);
 
       api().requestClose();
       expect(api().isClosing).toBeTrue();
@@ -62,7 +62,7 @@ describe('LangModal', () => {
 
     it('requestClose is idempotent while already closing', () => {
       const spy = jasmine.createSpy('close');
-      component.close.subscribe(spy);
+      component.closed.subscribe(spy);
 
       api().requestClose();
       api().requestClose(); // ignored
@@ -72,7 +72,7 @@ describe('LangModal', () => {
 
     it('escape triggers the close sequence', () => {
       const spy = jasmine.createSpy('close');
-      component.close.subscribe(spy);
+      component.closed.subscribe(spy);
       api().onEscape();
       jasmine.clock().tick(200);
       expect(spy).toHaveBeenCalledTimes(1);
@@ -81,7 +81,7 @@ describe('LangModal', () => {
     it('select delegates to TranslationService.setLang then closes', () => {
       const setLang = spyOn(ts, 'setLang');
       const spy = jasmine.createSpy('close');
-      component.close.subscribe(spy);
+      component.closed.subscribe(spy);
 
       api().select('en');
       expect(setLang).toHaveBeenCalledWith('en');
@@ -92,8 +92,6 @@ describe('LangModal', () => {
   });
 
   it('exposes the available languages list', () => {
-    expect(
-      (component as unknown as { languages: unknown[] }).languages.length
-    ).toBeGreaterThan(10);
+    expect((component as unknown as { languages: unknown[] }).languages.length).toBeGreaterThan(10);
   });
 });

@@ -2,8 +2,6 @@
   "lang_modal.aria": "Selección de idioma",
   "lang_modal.close": "Cerrar",
   "lang_modal.title": "— Idioma —",
-  "audio.show": "Mostrar controles de audio",
-  "audio.hide": "Ocultar controles de audio",
   "audio.toggle": "Activar o desactivar el sonido",
   "audio.volume": "Ajustar volumen",
   "lightbox.aria": "Vista previa en pantalla completa",

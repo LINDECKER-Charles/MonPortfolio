@@ -18,11 +18,12 @@ const cat = (id: string, seed?: ConstellationCategory['seed']): ConstellationCat
   seed,
 });
 
-const item = (
-  id: string,
-  category: string,
-  tags: string[] = []
-): ConstellationItem => ({ id, title: id, category, tags });
+const item = (id: string, category: string, tags: string[] = []): ConstellationItem => ({
+  id,
+  title: id,
+  category,
+  tags,
+});
 
 describe('constellation.layout', () => {
   describe('resolveSeeds', () => {
@@ -54,7 +55,10 @@ describe('constellation.layout', () => {
 
   describe('buildNodes', () => {
     it('places a lone node in its cluster at the seed', () => {
-      const nodes = buildNodes([item('x', 'a')], [cat('a', { cx: 40, cy: 30, spread: 10, angle: 0 })]);
+      const nodes = buildNodes(
+        [item('x', 'a')],
+        [cat('a', { cx: 40, cy: 30, spread: 10, angle: 0 })],
+      );
       expect(nodes.length).toBe(1);
       expect(nodes[0].x).toBe(40);
       expect(nodes[0].y).toBeCloseTo(30 - 10 * 0.15, 5);
@@ -73,7 +77,10 @@ describe('constellation.layout', () => {
     });
 
     it('sets labelBelow for high (small-y) nodes', () => {
-      const nodes = buildNodes([item('hi', 'a')], [cat('a', { cx: 50, cy: 15, spread: 4, angle: 0 })]);
+      const nodes = buildNodes(
+        [item('hi', 'a')],
+        [cat('a', { cx: 50, cy: 15, spread: 4, angle: 0 })],
+      );
       expect(nodes[0].labelBelow).toBeTrue();
     });
 
@@ -102,10 +109,7 @@ describe('constellation.layout', () => {
 
   describe('buildEdges', () => {
     it('links items sharing a tag, deduplicated', () => {
-      const edges = buildEdges([
-        item('one', 'a', ['x', 'y']),
-        item('two', 'b', ['y', 'z']),
-      ]);
+      const edges = buildEdges([item('one', 'a', ['x', 'y']), item('two', 'b', ['y', 'z'])]);
       expect(edges.length).toBe(1);
       expect([edges[0].a, edges[0].b].sort()).toEqual(['one', 'two']);
     });

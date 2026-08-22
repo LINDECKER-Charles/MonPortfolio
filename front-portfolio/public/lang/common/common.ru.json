@@ -2,8 +2,6 @@
   "lang_modal.aria": "Выбор языка",
   "lang_modal.close": "Закрыть",
   "lang_modal.title": "— Язык —",
-  "audio.show": "Показать управление аудио",
-  "audio.hide": "Скрыть управление аудио",
   "audio.toggle": "Включить или выключить звук",
   "audio.volume": "Настроить громкость",
   "lightbox.aria": "Полноэкранный просмотр",

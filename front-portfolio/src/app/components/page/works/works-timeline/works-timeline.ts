@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RevealOnScrollDirective } from '../../../../directives/reveal-on-scroll';
 import {
   ResponsivePicture,
@@ -30,6 +30,7 @@ import { formatDuration, formatPeriod } from '../works.utils';
   standalone: true,
   imports: [RevealOnScrollDirective, ResponsivePicture],
   templateUrl: './works-timeline.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './works-timeline.css',
 })
 export class WorksTimeline {
@@ -41,7 +42,7 @@ export class WorksTimeline {
   protected readonly counts = timelineCounts();
 
   protected readonly rows = computed<TimelineRow[]>(() =>
-    buildTimeline(this.order(), this.scope())
+    buildTimeline(this.order(), this.scope()),
   );
 
   protected setOrder(order: TimelineOrder): void {
@@ -107,9 +108,7 @@ export class WorksTimeline {
 
   /** `remote` est un slug ⇒ même clé que workMode ; sinon adresse littérale. */
   protected locationLabel(exp: Experience): string {
-    return exp.location === 'remote'
-      ? this.ts.translate('works.workMode.remote')
-      : exp.location;
+    return exp.location === 'remote' ? this.ts.translate('works.workMode.remote') : exp.location;
   }
 
   protected xpPeriod(exp: Experience): string {
@@ -117,7 +116,7 @@ export class WorksTimeline {
       exp.start,
       exp.end,
       this.ts.lang(),
-      this.ts.translate('works.experiences.current')
+      this.ts.translate('works.experiences.current'),
     );
   }
 
