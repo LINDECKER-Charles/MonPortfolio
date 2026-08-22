@@ -10,7 +10,7 @@ import { GENERATED_ENV } from './env.generated';
 export interface AppEnv {
   /** Origine publique canonique du site (sans slash final). */
   readonly siteUrl: string;
-  /** Origine du serveur d'images statique (sans slash final). */
+  /** Préfixe des images : chemin absolu `/img` (prod, dev) ou origine http(s) externe — sans slash final. */
   readonly imageServerUrl: string;
 }
 

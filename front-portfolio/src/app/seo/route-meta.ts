@@ -1,6 +1,6 @@
 import { Data } from '@angular/router';
 
-import { imageServerUrl } from '../img-sources/image-server';
+import { absoluteImageServerUrl } from '../img-sources/image-server';
 import { ENV } from '../../environments/env';
 
 /** Origine canonique — injectée depuis le .env racine (cf. environments/env.ts). */
@@ -18,7 +18,7 @@ export const personSchema = {
   '@id': `${SITE_URL}/#charles-lindecker`,
   name: 'Charles Lindecker',
   url: SITE_URL,
-  image: imageServerUrl('/photos/640x960_me-1.webp'),
+  image: absoluteImageServerUrl('/photos/640x960_me-1.webp'),
   jobTitle: 'Developpeur Full Stack',
   knowsAbout: ['.NET', 'Angular', 'Symfony', 'TypeScript', 'PostgreSQL', 'Architecture logicielle'],
   sameAs: [
