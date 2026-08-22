@@ -10,9 +10,8 @@ describe('HomeResumePhoto', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection()],
-      imports: [HomeResumePhoto]
-    })
-    .compileComponents();
+      imports: [HomeResumePhoto],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeResumePhoto);
     component = fixture.componentInstance;

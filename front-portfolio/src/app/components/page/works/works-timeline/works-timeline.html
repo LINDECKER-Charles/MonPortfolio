@@ -9,26 +9,33 @@
       <div
         class="works-tl__scope"
         role="group"
-        [attr.aria-label]="ts.translate('works.timeline.scopeLabel')">
+        [attr.aria-label]="ts.translate('works.timeline.scopeLabel')"
+      >
         @for (s of scopes; track s) {
           <button
             type="button"
             class="works-tl__chip text-tag transition-ritual"
             [class.is-active]="scope() === s"
             [attr.aria-pressed]="scope() === s"
-            (click)="setScope(s)">
+            (click)="setScope(s)"
+          >
             {{ scopeLabel(s) }} · {{ scopeCount(s) }}
           </button>
         }
       </div>
 
-      <div class="works-tl__sort" role="group" [attr.aria-label]="ts.translate('works.timeline.sortLabel')">
+      <div
+        class="works-tl__sort"
+        role="group"
+        [attr.aria-label]="ts.translate('works.timeline.sortLabel')"
+      >
         <button
           type="button"
           class="works-tl__chip text-tag transition-ritual"
           [class.is-active]="order() === 'recent'"
           [attr.aria-pressed]="order() === 'recent'"
-          (click)="setOrder('recent')">
+          (click)="setOrder('recent')"
+        >
           <span class="works-tl__sort-arrow" aria-hidden="true">↑</span>
           {{ ts.translate('works.timeline.sortRecent') }}
         </button>
@@ -37,7 +44,8 @@
           class="works-tl__chip text-tag transition-ritual"
           [class.is-active]="order() === 'old'"
           [attr.aria-pressed]="order() === 'old'"
-          (click)="setOrder('old')">
+          (click)="setOrder('old')"
+        >
           <span class="works-tl__sort-arrow" aria-hidden="true">↓</span>
           {{ ts.translate('works.timeline.sortOld') }}
         </button>
@@ -62,12 +70,14 @@
             appRevealOnScroll
             [revealDelay]="i * 0.04"
             [revealY]="28"
-            [revealBlur]="10">
+            [revealBlur]="10"
+          >
             <article class="works-tl__card surface-altar">
               <div class="works-tl__card-top">
                 <span
                   class="works-tl__seal"
-                  [class.works-tl__seal--mono]="!hasLogo(row.node.exp.organism)">
+                  [class.works-tl__seal--mono]="!hasLogo(row.node.exp.organism)"
+                >
                   @if (hasLogo(row.node.exp.organism)) {
                     <app-responsive-picture
                       [sources]="logoSources(row.node.exp.organism)"
@@ -75,12 +85,14 @@
                       [alt]="organismName(row.node.exp.organism)"
                       loading="lazy"
                       decoding="async"
-                      objectFit="contain">
+                      objectFit="contain"
+                    >
                     </app-responsive-picture>
                   } @else {
                     <span
                       class="works-tl__monogram"
-                      [attr.aria-label]="organismName(row.node.exp.organism)">
+                      [attr.aria-label]="organismName(row.node.exp.organism)"
+                    >
                       {{ monogram(row.node.exp.organism) }}
                     </span>
                   }
@@ -89,7 +101,9 @@
                 <div class="works-tl__heading">
                   <div class="works-tl__period-row">
                     <span class="works-tl__period text-sigil">{{ xpPeriod(row.node.exp) }}</span>
-                    <span class="works-tl__badge text-tag">{{ employmentLabel(row.node.exp) }}</span>
+                    <span class="works-tl__badge text-tag">{{
+                      employmentLabel(row.node.exp)
+                    }}</span>
                   </div>
 
                   <h3 class="works-tl__role text-engraved text-engraved--carved">
@@ -130,7 +144,8 @@
             appRevealOnScroll
             [revealDelay]="i * 0.04"
             [revealY]="28"
-            [revealBlur]="10">
+            [revealBlur]="10"
+          >
             <article class="works-tl__card works-tl__card--formation">
               <div class="works-tl__card-top">
                 <span class="works-tl__seal">
@@ -140,7 +155,8 @@
                     [alt]="organismName(row.node.edu.organism)"
                     loading="lazy"
                     decoding="async"
-                    objectFit="contain">
+                    objectFit="contain"
+                  >
                   </app-responsive-picture>
                 </span>
 

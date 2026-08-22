@@ -2,8 +2,6 @@
   "lang_modal.aria": "Language selection",
   "lang_modal.close": "Close",
   "lang_modal.title": "— Language —",
-  "audio.show": "Show audio controls",
-  "audio.hide": "Hide audio controls",
   "audio.toggle": "Mute or unmute sound",
   "audio.volume": "Adjust volume",
   "lightbox.aria": "Full screen preview",

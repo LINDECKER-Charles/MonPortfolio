@@ -66,5 +66,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .not-found__rune { animation: none; }
+  .not-found__rune {
+    animation: none;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslationService } from '../../../../services/translation.service';
 import { computeStats } from '../works.state';
@@ -8,6 +8,7 @@ import { computeStats } from '../works.state';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './works-header.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './works-header.css',
 })
 export class WorksHeader {

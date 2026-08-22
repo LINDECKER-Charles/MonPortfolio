@@ -1,4 +1,5 @@
 import { Directive, HostListener, Input, inject } from '@angular/core';
+import { SoundKey } from '../audio/sound-catalog';
 import { AudioService } from '../services/audio-service';
 
 type PlaySoundMode = 'once' | 'persistent';
@@ -11,7 +12,8 @@ type PlaySoundTrigger = 'click' | 'hover';
 export class PlaySoundOnClickDirective {
   private readonly audioService = inject(AudioService);
 
-  @Input({ required: true }) appPlaySoundOnClick!: string;
+  /** Clé du catalogue (`SoundKey`) : vérifiée à la compilation par strictTemplates. */
+  @Input({ required: true }) appPlaySoundOnClick!: SoundKey;
   @Input() appPlaySoundMode: PlaySoundMode = 'once';
   @Input() appPlaySoundTrigger: PlaySoundTrigger = 'click';
   @Input() appPlaySoundDisabled = false;

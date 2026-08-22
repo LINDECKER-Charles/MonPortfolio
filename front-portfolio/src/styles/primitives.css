@@ -7,7 +7,6 @@
    ╚══════════════════════════════════════════════════════════════════════════╝ */
 
 @layer components {
-
   /* ── SURFACES ─────────────────────────────────────────────────────────────
      Des "plaques" empilables, du plus léger au plus profond.
      ──────────────────────────────────────────────────────────────────────── */
@@ -31,8 +30,9 @@
   /* Panel hero — grande carte principale */
   .surface-sanctum {
     border: var(--border-ash);
-    background: var(--gradient-sanctum),
-                radial-gradient(circle at top left, rgb(201 77 34 / 0.11), transparent 35%);
+    background:
+      var(--gradient-sanctum),
+      radial-gradient(circle at top left, rgb(201 77 34 / 0.11), transparent 35%);
     box-shadow: var(--shadow-sanctum);
   }
 
@@ -98,8 +98,9 @@
   .chip--moonlight {
     color: var(--color-moonlight-soft);
     border-color: rgb(125 171 255 / 0.18);
-    background: linear-gradient(180deg, rgb(29 47 78 / 0.78), rgb(18 24 37 / 0.9)),
-                radial-gradient(circle at top left, rgb(125 171 255 / 0.12), transparent 55%);
+    background:
+      linear-gradient(180deg, rgb(29 47 78 / 0.78), rgb(18 24 37 / 0.9)),
+      radial-gradient(circle at top left, rgb(125 171 255 / 0.12), transparent 55%);
     box-shadow: var(--shadow-chip);
   }
 
@@ -140,15 +141,6 @@
     flex: 0 0 auto;
     display: grid;
     place-items: center;
-  }
-
-  .cta-tome__icon app-responsive-picture,
-  .cta-tome__icon picture,
-  .cta-tome__icon img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
 
   .cta-tome__label {
@@ -209,7 +201,9 @@
       0 0 0 1px rgb(189 193 199 / 0.04);
   }
 
-  .cta-tome--shadow .cta-tome__top { color: #8f98a3; }
+  .cta-tome--shadow .cta-tome__top {
+    color: #8f98a3;
+  }
 
   /* Chip "ghost" — lien secondaire très discret */
   .chip--ghost {

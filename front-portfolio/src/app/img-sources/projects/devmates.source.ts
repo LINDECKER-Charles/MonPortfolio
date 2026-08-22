@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 export const DEV_MATES_HOME_IMAGE = buildProjectImage('Dev-mates', 'home', 'Dev-Mates home', [
@@ -29,7 +29,7 @@ export const DEV_MATES_CONTACT_IMAGE = buildProjectImage(
     { width: 1024, height: 1141 },
     { width: 1280, height: 1426 },
     { width: 1536, height: 1711 },
-  ]
+  ],
 );
 
 export const DEV_MATES_SERVICE_IMAGE = buildProjectImage(
@@ -47,7 +47,7 @@ export const DEV_MATES_SERVICE_IMAGE = buildProjectImage(
     { width: 1024, height: 844 },
     { width: 1280, height: 1055 },
     { width: 1536, height: 1266 },
-  ]
+  ],
 );
 
 export const DEV_MATES_APPLICATION_IMAGE = buildProjectImage(
@@ -65,7 +65,7 @@ export const DEV_MATES_APPLICATION_IMAGE = buildProjectImage(
     { width: 1024, height: 975 },
     { width: 1280, height: 1219 },
     { width: 1536, height: 1463 },
-  ]
+  ],
 );
 
 export const DEV_MATES_IMAGES: ProjectMediaImage[] = [

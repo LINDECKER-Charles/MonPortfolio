@@ -3,10 +3,10 @@ import {
   Directive,
   ElementRef,
   HostListener,
-  Inject,
   Input,
   OnDestroy,
   PLATFORM_ID,
+  inject,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { prefersReducedMotion } from '../utils/motion';
@@ -29,6 +29,8 @@ import { prefersReducedMotion } from '../utils/motion';
   standalone: true,
 })
 export class TiltDirective implements AfterViewInit, OnDestroy {
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
   /** Angle max (en degrés) sur chaque axe — 3-5 est subtil, 10 est exagéré. */
   @Input() tiltMax = 4;
 
@@ -42,10 +44,9 @@ export class TiltDirective implements AfterViewInit, OnDestroy {
   private enabled = false;
   private rafId: number | null = null;
 
-  constructor(
-    private readonly host: ElementRef<HTMLElement>,
-    @Inject(PLATFORM_ID) platformId: object
-  ) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
   }
 

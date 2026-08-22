@@ -1,4 +1,13 @@
-import { Component, computed, ElementRef, HostListener, inject, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  ElementRef,
+  HostListener,
+  inject,
+  output,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { UpperCasePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -10,7 +19,7 @@ import { AudioService } from '../../../services/audio-service';
 import { AVAILABLE_LANGUAGES, TranslationService } from '../../../services/translation.service';
 
 interface NavItemDef {
-  key: string;   // clef de traduction nav-barre.*
+  key: string; // clef de traduction nav-barre.*
   href: string;
   exact?: boolean;
   iconSources: ResponsiveSource[];
@@ -18,21 +27,41 @@ interface NavItemDef {
 }
 
 const NAV_ITEMS_DEF: NavItemDef[] = [
-  { key: 'home',     href: '/', exact: true,   iconSources: SHARED_IMAGES.icon.lucidity.sources, iconFallback: SHARED_IMAGES.icon.lucidity.fallbackSrc },
-  { key: 'projects', href: '/projects',         iconSources: SHARED_IMAGES.icon.discover.sources, iconFallback: SHARED_IMAGES.icon.discover.fallbackSrc },
-  { key: 'work',     href: '/works',            iconSources: SHARED_IMAGES.icon.strenght.sources, iconFallback: SHARED_IMAGES.icon.strenght.fallbackSrc },
+  {
+    key: 'home',
+    href: '/',
+    exact: true,
+    iconSources: SHARED_IMAGES.icon.lucidity.sources,
+    iconFallback: SHARED_IMAGES.icon.lucidity.fallbackSrc,
+  },
+  {
+    key: 'projects',
+    href: '/projects',
+    iconSources: SHARED_IMAGES.icon.discover.sources,
+    iconFallback: SHARED_IMAGES.icon.discover.fallbackSrc,
+  },
+  {
+    key: 'work',
+    href: '/works',
+    iconSources: SHARED_IMAGES.icon.strenght.sources,
+    iconFallback: SHARED_IMAGES.icon.strenght.fallbackSrc,
+  },
 ];
 
 @Component({
   selector: 'app-nav-barre',
   imports: [RouterLink, RouterLinkActive, ResponsivePicture, UpperCasePipe],
   templateUrl: './nav-barre.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './nav-barre.css',
 })
 export class NavBarre {
   protected readonly ts = inject(TranslationService);
   protected readonly audio = inject(AudioService);
   private readonly host = inject(ElementRef<HTMLElement>);
+
+  /** Demande d'ouverture du modal de langue — l'état vit dans le shell (App). */
+  readonly langModalRequested = output<void>();
 
   protected readonly logoSources = SHARED_IMAGES.logo.white.sources;
   protected readonly logoFallback = SHARED_IMAGES.logo.white.fallbackSrc;
@@ -46,7 +75,7 @@ export class NavBarre {
     NAV_ITEMS_DEF.map((def) => ({
       ...def,
       label: this.ts.translate(`nav-barre.${def.key}`),
-    }))
+    })),
   );
 
   protected readonly currentLang = computed(() => {

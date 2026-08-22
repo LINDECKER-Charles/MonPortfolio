@@ -1,13 +1,18 @@
 <section class="home-work surface-altar">
   <div class="home-work__actions emerge-ritual">
-    <a class="cta-tome cta-tome--gilded transition-ritual breath-gold" routerLink="/works" href="/works">
+    <a
+      class="cta-tome cta-tome--gilded transition-ritual breath-gold"
+      routerLink="/works"
+      href="/works"
+    >
       <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="workIcon.sources"
-          [fallbackSrc]="workIcon.fallback"
+          [fallbackSrc]="workIcon.fallbackSrc"
           [alt]="ts.translate('home-work.cta.primary.icon_alt')"
           loading="eager"
-          decoding="async">
+          decoding="async"
+        >
         </app-responsive-picture>
       </span>
 
@@ -21,14 +26,16 @@
       class="cta-tome cta-tome--shadow transition-ritual"
       href="https://www.linkedin.com/in/charles-lindecker/"
       target="_blank"
-      rel="noreferrer noopener">
+      rel="noreferrer noopener"
+    >
       <span class="cta-tome__icon">
         <app-responsive-picture
           [sources]="linkedinIcon.sources"
-          [fallbackSrc]="linkedinIcon.fallback"
+          [fallbackSrc]="linkedinIcon.fallbackSrc"
           [alt]="linkedinIcon.alt"
           loading="eager"
-          decoding="async">
+          decoding="async"
+        >
         </app-responsive-picture>
       </span>
 
@@ -47,14 +54,15 @@
     <p class="text-tome">{{ ts.translate('home-work.description') }}</p>
 
     <div class="home-work__rail" [attr.aria-label]="ts.translate('home-work.aria.landmarks')">
-      @for (icon of railIcons; track icon.fallback) {
+      @for (icon of railIcons; track icon.fallbackSrc) {
         <span class="home-work__rail-item transition-ritual emerge-ritual" [attr.title]="icon.alt">
           <app-responsive-picture
             [sources]="icon.sources"
-            [fallbackSrc]="icon.fallback"
+            [fallbackSrc]="icon.fallbackSrc"
             [alt]="icon.alt"
             loading="lazy"
-            decoding="async">
+            decoding="async"
+          >
           </app-responsive-picture>
         </span>
       }

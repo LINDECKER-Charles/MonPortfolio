@@ -148,7 +148,7 @@
 
 /* Filet horizontal reliant la pastille à l'axe */
 .works-tl__year-pill::before {
-  content: "";
+  content: '';
   position: absolute;
   left: -42px;
   top: 50%;
@@ -178,7 +178,7 @@
 
 /* Sceau sur l'axe — point sang par défaut */
 .works-tl__node::before {
-  content: "";
+  content: '';
   position: absolute;
   left: -52px;
   top: 1.7rem;
@@ -220,7 +220,7 @@
 
 /* Trait de liaison carte ⇄ axe */
 .works-tl__card::after {
-  content: "";
+  content: '';
   position: absolute;
   left: -1.25rem;
   top: 2rem;
@@ -250,21 +250,18 @@
   height: 52px;
   border-radius: var(--radius-pill);
   border: var(--border-gilded-strong);
-  background: radial-gradient(circle at center, rgb(var(--color-white-rgb) / 0.06) 0%, rgb(12 10 8 / 0.6) 100%);
+  background: radial-gradient(
+    circle at center,
+    rgb(var(--color-white-rgb) / 0.06) 0%,
+    rgb(12 10 8 / 0.6) 100%
+  );
   display: grid;
   place-items: center;
   padding: 7px;
   overflow: hidden;
-  box-shadow: inset 0 1px 0 rgb(255 248 220 / 0.08), 0 0 12px rgb(var(--color-gold-rgb) / 0.14);
-}
-
-.works-tl__seal app-responsive-picture,
-.works-tl__seal picture,
-.works-tl__seal img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  box-shadow:
+    inset 0 1px 0 rgb(255 248 220 / 0.08),
+    0 0 12px rgb(var(--color-gold-rgb) / 0.14);
 }
 
 .works-tl__node--volunteer .works-tl__seal {

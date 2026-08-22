@@ -7,6 +7,7 @@ import {
   output,
   PLATFORM_ID,
   signal,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import {
@@ -59,6 +60,7 @@ const DRAG_THRESHOLD_PX = 3;
   selector: 'app-constellation',
   imports: [],
   templateUrl: './constellation.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './constellation.css',
 })
 export class Constellation implements OnDestroy {

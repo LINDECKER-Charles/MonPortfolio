@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 export const SHREK_HOME_IMAGE = buildProjectImage('Shrek', 'home', 'Shreksophone home', [
@@ -29,7 +29,7 @@ export const SHREK_HOME_2_IMAGE = buildProjectImage(
     { width: 1024, height: 1015 },
     { width: 1280, height: 1268 },
     { width: 1536, height: 1522 },
-  ]
+  ],
 );
 
 export const SHREK_HOME_3_IMAGE = buildProjectImage(
@@ -47,7 +47,7 @@ export const SHREK_HOME_3_IMAGE = buildProjectImage(
     { width: 1024, height: 954 },
     { width: 1280, height: 1193 },
     { width: 1536, height: 1432 },
-  ]
+  ],
 );
 
 export const SHREK_IMAGES: ProjectMediaImage[] = [

@@ -2,8 +2,6 @@
   "lang_modal.aria": "document.querySelector('#lang-modal')",
   "lang_modal.close": "modal.close()",
   "lang_modal.title": "--lang--",
-  "audio.show": "$audio.style.display=''",
-  "audio.hide": "$audio.style.display='none'",
   "audio.toggle": "audio.muted=!audio.muted",
   "audio.volume": "audio.volume=parseFloat(el.value)",
   "lightbox.aria": "new Lightbox().open()",

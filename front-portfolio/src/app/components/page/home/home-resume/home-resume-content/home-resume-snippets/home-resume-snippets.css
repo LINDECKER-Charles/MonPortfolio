@@ -8,7 +8,11 @@
   position: relative;
   border: var(--border-ash);
   border-radius: 22px;
-  background: linear-gradient(180deg, rgb(var(--color-stone-raised-rgb) / 0.18), rgb(var(--color-stone-rgb) / 0.52));
+  background: linear-gradient(
+    180deg,
+    rgb(var(--color-stone-raised-rgb) / 0.18),
+    rgb(var(--color-stone-rgb) / 0.52)
+  );
   box-shadow:
     0 16px 36px rgb(0 0 0 / 0.18),
     inset 0 1px 0 rgb(var(--color-white-rgb) / 0.02);
@@ -66,15 +70,6 @@
     transform var(--duration-slow) ease,
     opacity var(--duration-slow) ease,
     filter var(--duration-slow) ease;
-}
-
-.about-snippet__icon-media app-responsive-picture,
-.about-snippet__icon-media picture,
-.about-snippet__icon-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .about-snippet__mark {
@@ -152,11 +147,22 @@
 }
 
 @media (max-width: 640px) {
-  .about-snippet { border-radius: 18px; }
-  .about-snippet__trigger { padding: 1rem; }
-  .about-snippet__content { padding: 0 1rem 1rem; }
-  .about-snippet h3 { font-size: 0.92rem; }
-  .about-snippet__icon-media { width: 20px; height: 20px; }
+  .about-snippet {
+    border-radius: 18px;
+  }
+  .about-snippet__trigger {
+    padding: 1rem;
+  }
+  .about-snippet__content {
+    padding: 0 1rem 1rem;
+  }
+  .about-snippet h3 {
+    font-size: 0.92rem;
+  }
+  .about-snippet__icon-media {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

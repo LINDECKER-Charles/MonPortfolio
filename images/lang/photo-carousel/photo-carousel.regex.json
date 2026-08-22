@@ -1,9 +1,0 @@
-{
-  "label": "carousel=/portraits?/i",
-  "previous": "/prev/g",
-  "next": "/next/g",
-  "pause": "/\\bpause\\b/",
-  "play": "/\\bplay\\b/",
-  "go_to": "/goto(?=slide)/ {index}",
-  "slide_alt": "portrait_{index}\\.(webp|jpg)"
-}

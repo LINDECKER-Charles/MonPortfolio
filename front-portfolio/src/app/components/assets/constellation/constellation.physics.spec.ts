@@ -24,7 +24,7 @@ describe('constellation.physics', () => {
 
   it('converges back to rest after repeated steps', () => {
     const homes = [at('a', 10, 10)];
-    let displaced: Map<string, Sim> = new Map([['a', sim(20, 10)]]);
+    let displaced = new Map<string, Sim>([['a', sim(20, 10)]]);
     let settled = false;
 
     for (let i = 0; i < 500 && !settled; i++) {

@@ -1,6 +1,29 @@
 import { DOCUMENT, inject, Injectable } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 
+import { RouteMeta } from '../seo/route-meta';
+
+/** Clés de RouteMeta rendues en `<meta>` — canonical/structuredData ont leur propre canal. */
+type MetaTagKey = Exclude<keyof RouteMeta, 'canonical' | 'structuredData' | 'showFooter'>;
+
+/**
+ * Table déclarative clé RouteMeta → balise `<meta>`. Le `Record<MetaTagKey, …>`
+ * garantit à la compilation qu'aucune clé du contrat n'est oubliée.
+ */
+const TAG_MAP: Record<MetaTagKey, { attr: 'name' | 'property'; tag: string }> = {
+  description: { attr: 'name', tag: 'description' },
+  robots: { attr: 'name', tag: 'robots' },
+  ogTitle: { attr: 'property', tag: 'og:title' },
+  ogDescription: { attr: 'property', tag: 'og:description' },
+  ogImage: { attr: 'property', tag: 'og:image' },
+  ogUrl: { attr: 'property', tag: 'og:url' },
+  ogType: { attr: 'property', tag: 'og:type' },
+  twitterCard: { attr: 'name', tag: 'twitter:card' },
+  twitterTitle: { attr: 'name', tag: 'twitter:title' },
+  twitterDescription: { attr: 'name', tag: 'twitter:description' },
+  twitterImage: { attr: 'name', tag: 'twitter:image' },
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -9,14 +32,19 @@ export class MetaService {
   private readonly document = inject(DOCUMENT);
   private readonly structuredDataId = 'app-structured-data';
 
-  updateDescription(desc: string) {
-    this.meta.updateTag({ name: 'description', content: desc });
+  /** Applique d'un bloc l'intégralité des métas d'une route (balises `<meta>`, canonical, JSON-LD). */
+  applyRouteMeta(meta: RouteMeta): void {
+    for (const key of Object.keys(TAG_MAP) as MetaTagKey[]) {
+      const { attr, tag } = TAG_MAP[key];
+      this.meta.updateTag({ [attr]: tag, content: meta[key] });
+    }
+
+    this.updateCanonical(meta.canonical);
+    this.updateStructuredData(meta.structuredData);
   }
 
   updateCanonical(url: string) {
-    let link = this.document.querySelector<HTMLLinkElement>(
-      "link[rel='canonical']"
-    );
+    let link = this.document.querySelector<HTMLLinkElement>("link[rel='canonical']");
 
     if (!link) {
       link = this.document.createElement('link');
@@ -25,46 +53,6 @@ export class MetaService {
     }
 
     link.setAttribute('href', url);
-  }
-
-  updateRobots(robots: string) {
-    this.meta.updateTag({ name: 'robots', content: robots });
-  }
-
-  updateOgTitle(title: string) {
-    this.meta.updateTag({ property: 'og:title', content: title });
-  }
-
-  updateOgDescription(desc: string) {
-    this.meta.updateTag({ property: 'og:description', content: desc });
-  }
-
-  updateOgUrl(url: string) {
-    this.meta.updateTag({ property: 'og:url', content: url });
-  }
-
-  updateOgImage(image: string) {
-    this.meta.updateTag({ property: 'og:image', content: image });
-  }
-
-  updateOgType(type: string) {
-    this.meta.updateTag({ property: 'og:type', content: type });
-  }
-
-  updateTwitterTitle(title: string) {
-    this.meta.updateTag({ name: 'twitter:title', content: title });
-  }
-
-  updateTwitterDescription(desc: string) {
-    this.meta.updateTag({ name: 'twitter:description', content: desc });
-  }
-
-  updateTwitterCard(card: string) {
-    this.meta.updateTag({ name: 'twitter:card', content: card });
-  }
-
-  updateTwitterImage(image: string) {
-    this.meta.updateTag({ name: 'twitter:image', content: image });
   }
 
   updateStructuredData(schema: Record<string, unknown> | Record<string, unknown>[] | undefined) {

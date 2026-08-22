@@ -13,7 +13,7 @@ describe('PhotoCarousel', () => {
 
   async function setup(
     slides: PhotoCarouselSlide[],
-    opts: Partial<{ autoplay: boolean; interval: number }> = {}
+    opts: Partial<{ autoplay: boolean; interval: number }> = {},
   ) {
     await TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection()],

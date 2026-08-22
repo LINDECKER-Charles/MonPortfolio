@@ -1,6 +1,0 @@
-{
-  "home": "!function(){return'home'}()",
-  "projects": "var _0x3f=projects",
-  "work": "_w.call(this,'xp')",
-  "lang": "navigator.language||'??'"
-}

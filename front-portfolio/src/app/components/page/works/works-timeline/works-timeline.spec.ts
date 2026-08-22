@@ -66,7 +66,7 @@ describe('WorksTimeline', () => {
       expect(api(component).hasLogo('pvzf')).toBeFalse();
     });
 
-    it('logoSources / logoFallback gèrent l\'absence', () => {
+    it("logoSources / logoFallback gèrent l'absence", () => {
       expect(api(component).logoSources('pvzf')).toEqual([]);
       expect(api(component).logoFallback('pvzf')).toBe('');
       expect(api(component).logoSources('microsoft').length).toBeGreaterThan(0);
@@ -79,7 +79,7 @@ describe('WorksTimeline', () => {
     it('monogram retombe sur les 2 premières lettres du nom sinon', () => {
       // microsoft n'a pas de monogramme dédié
       expect(api(component).monogram('microsoft')).toBe(
-        ORGANISM_NAMES['microsoft'].slice(0, 2).toUpperCase()
+        ORGANISM_NAMES['microsoft'].slice(0, 2).toUpperCase(),
       );
     });
 
@@ -91,28 +91,22 @@ describe('WorksTimeline', () => {
   describe('expérience — i18n & labels', () => {
     it('xpTitle / xpDescription délèguent aux clés', () => {
       expect(api(component).xpTitle(remoteExp)).toBe(`works.xp.${remoteExp.id}.title`);
-      expect(api(component).xpDescription(remoteExp)).toBe(
-        `works.xp.${remoteExp.id}.description`
-      );
+      expect(api(component).xpDescription(remoteExp)).toBe(`works.xp.${remoteExp.id}.description`);
     });
 
     it('employmentLabel / workModeLabel délèguent aux clés', () => {
       expect(api(component).employmentLabel(remoteExp)).toBe(
-        `works.employment.${remoteExp.employment}`
+        `works.employment.${remoteExp.employment}`,
       );
-      expect(api(component).workModeLabel(remoteExp)).toBe(
-        `works.workMode.${remoteExp.workMode}`
-      );
+      expect(api(component).workModeLabel(remoteExp)).toBe(`works.workMode.${remoteExp.workMode}`);
     });
 
     it('sectorLabel renvoie la clé quand sector est défini', () => {
       const withSector = EXPERIENCES.find((e) => e.sector)!;
-      expect(api(component).sectorLabel(withSector)).toBe(
-        `works.sector.${withSector.sector}`
-      );
+      expect(api(component).sectorLabel(withSector)).toBe(`works.sector.${withSector.sector}`);
     });
 
-    it('sectorLabel renvoie \'\' quand sector est absent', () => {
+    it("sectorLabel renvoie '' quand sector est absent", () => {
       expect(api(component).sectorLabel(noSectorExp)).toBe('');
     });
 
@@ -120,7 +114,7 @@ describe('WorksTimeline', () => {
       expect(api(component).locationLabel(remoteExp)).toBe('works.workMode.remote');
     });
 
-    it('locationLabel renvoie l\'adresse littérale sinon', () => {
+    it("locationLabel renvoie l'adresse littérale sinon", () => {
       expect(api(component).locationLabel(onsiteExp)).toBe(onsiteExp.location);
     });
 

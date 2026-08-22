@@ -79,7 +79,7 @@ function normalizedTokens(item: ConstellationItem): Set<string> {
  * automatiquement sur une ellipse autour du centre du cœur.
  */
 export function resolveSeeds(
-  categories: readonly ConstellationCategory[]
+  categories: readonly ConstellationCategory[],
 ): Map<string, ConstellationSeed> {
   const count = categories.length;
   const cx0 = VIEWBOX.w / 2;
@@ -111,7 +111,7 @@ export function resolveSeeds(
 
 export function buildNodes(
   items: readonly ConstellationItem[],
-  categories: readonly ConstellationCategory[]
+  categories: readonly ConstellationCategory[],
 ): ConstellationNode[] {
   const seeds = resolveSeeds(categories);
   const nodes: ConstellationNode[] = [];
@@ -158,7 +158,7 @@ export function buildNodes(
 
 export function buildClusters(
   items: readonly ConstellationItem[],
-  categories: readonly ConstellationCategory[]
+  categories: readonly ConstellationCategory[],
 ): ConstellationClusterRing[] {
   const seeds = resolveSeeds(categories);
   return categories
@@ -216,7 +216,7 @@ export function buildEdges(items: readonly ConstellationItem[]): ConstellationEd
 
 export function connectedIds(
   selectedId: string | null,
-  edges: readonly ConstellationEdge[]
+  edges: readonly ConstellationEdge[],
 ): Set<string> {
   const result = new Set<string>();
   if (!selectedId) return result;

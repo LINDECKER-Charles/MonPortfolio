@@ -1,9 +1,0 @@
-{
-  "label": "Carrusel de retratos",
-  "previous": "Retrato anterior",
-  "next": "Retrato siguiente",
-  "pause": "Pausar el carrusel",
-  "play": "Reanudar el carrusel",
-  "go_to": "Ir al retrato {index}",
-  "slide_alt": "Retrato de Charles Lindecker — {index}"
-}

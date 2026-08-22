@@ -6,8 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    radial-gradient(circle at center, rgb(12 10 8 / 0.92) 0%, rgb(0 0 0 / 0.98) 100%);
+  background: radial-gradient(circle at center, rgb(12 10 8 / 0.92) 0%, rgb(0 0 0 / 0.98) 100%);
   will-change: opacity;
 }
 

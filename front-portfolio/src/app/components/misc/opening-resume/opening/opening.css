@@ -24,14 +24,22 @@
 
 .audio-gate,
 .opening-trigger,
-.opening-figure { pointer-events: none; }
+.opening-figure {
+  pointer-events: none;
+}
 
 .sound-trigger,
 .opening-btn,
-.skip-btn { pointer-events: auto; }
+.skip-btn {
+  pointer-events: auto;
+}
 
-.audio-state { z-index: 2; }
-.opening-state { z-index: 3; }
+.audio-state {
+  z-index: 2;
+}
+.opening-state {
+  z-index: 3;
+}
 
 .audio-gate,
 .opening-trigger {
@@ -105,7 +113,9 @@
   text-transform: uppercase;
   color: #888c96;
   opacity: 0.72;
-  transition: opacity var(--duration-base) ease, color var(--duration-base) ease;
+  transition:
+    opacity var(--duration-base) ease,
+    color var(--duration-base) ease;
 }
 
 .skip-btn:hover {
@@ -139,7 +149,9 @@
 }
 
 @media (max-width: 768px) {
-  .opening-btn { width: min(82vw, 420px); }
+  .opening-btn {
+    width: min(82vw, 420px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

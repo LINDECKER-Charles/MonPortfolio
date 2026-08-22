@@ -35,7 +35,7 @@ describe('PolitiqueConfidentialite', () => {
   it('cross-links point to mentions and cookies', () => {
     const fixture = TestBed.createComponent(PolitiqueConfidentialite);
     const paths = (
-      fixture.componentInstance as unknown as { crossLinks: Array<{ path: string }> }
+      fixture.componentInstance as unknown as { crossLinks: { path: string }[] }
     ).crossLinks.map((c) => c.path);
     expect(paths).toContain(LEGAL_PATHS.mentions);
     expect(paths).toContain(LEGAL_PATHS.cookies);

@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 // All LoDB captures are 16:10 hero shots (matching the modal carousel), so the
@@ -16,11 +16,36 @@ const LODB_SIZES = [
   { width: 1536, height: 960 },
 ];
 
-export const LODB_HOME_IMAGE = buildProjectImage('lodb', 'home', 'League of Data Base home', LODB_SIZES);
-export const LODB_CHAMP_IMAGE = buildProjectImage('lodb', 'champ', 'League of Data Base champions', LODB_SIZES);
-export const LODB_ITEMS_IMAGE = buildProjectImage('lodb', 'items', 'League of Data Base items', LODB_SIZES);
-export const LODB_RUNE_IMAGE = buildProjectImage('lodb', 'rune', 'League of Data Base runes', LODB_SIZES);
-export const LODB_SUMM_IMAGE = buildProjectImage('lodb', 'summ', 'League of Data Base summoner spells', LODB_SIZES);
+export const LODB_HOME_IMAGE = buildProjectImage(
+  'lodb',
+  'home',
+  'League of Data Base home',
+  LODB_SIZES,
+);
+export const LODB_CHAMP_IMAGE = buildProjectImage(
+  'lodb',
+  'champ',
+  'League of Data Base champions',
+  LODB_SIZES,
+);
+export const LODB_ITEMS_IMAGE = buildProjectImage(
+  'lodb',
+  'items',
+  'League of Data Base items',
+  LODB_SIZES,
+);
+export const LODB_RUNE_IMAGE = buildProjectImage(
+  'lodb',
+  'rune',
+  'League of Data Base runes',
+  LODB_SIZES,
+);
+export const LODB_SUMM_IMAGE = buildProjectImage(
+  'lodb',
+  'summ',
+  'League of Data Base summoner spells',
+  LODB_SIZES,
+);
 
 export const LODB_IMAGES: ProjectMediaImage[] = [
   LODB_HOME_IMAGE,

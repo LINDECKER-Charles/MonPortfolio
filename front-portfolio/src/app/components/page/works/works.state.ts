@@ -55,9 +55,7 @@ export function buildTimeline(order: TimelineOrder, scope: TimelineScope = 'all'
   // entre plusieurs postes en cours).
   nodes.sort((a, b) => {
     const primary =
-      order === 'recent'
-        ? b.sortKey.localeCompare(a.sortKey)
-        : a.sortKey.localeCompare(b.sortKey);
+      order === 'recent' ? b.sortKey.localeCompare(a.sortKey) : a.sortKey.localeCompare(b.sortKey);
     if (primary !== 0) return primary;
     return order === 'recent' ? b.start.localeCompare(a.start) : a.start.localeCompare(b.start);
   });

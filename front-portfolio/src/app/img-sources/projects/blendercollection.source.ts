@@ -1,4 +1,4 @@
-import { ProjectMediaImage } from '../../components/page/projects/projects.state';
+import type { ProjectMediaImage } from '../../components/page/projects/projects.types';
 import { buildProjectImage } from './project-image.builder';
 
 export const BLENDER_COLLECTION_HOME_IMAGE = buildProjectImage(
@@ -16,7 +16,7 @@ export const BLENDER_COLLECTION_HOME_IMAGE = buildProjectImage(
     { width: 1024, height: 1142 },
     { width: 1280, height: 1428 },
     { width: 1536, height: 1714 },
-  ]
+  ],
 );
 
 export const BLENDER_COLLECTION_COLLECTION_IMAGE = buildProjectImage(
@@ -33,7 +33,7 @@ export const BLENDER_COLLECTION_COLLECTION_IMAGE = buildProjectImage(
     { width: 768, height: 935 },
     { width: 1024, height: 1246 },
     { width: 1280, height: 1558 },
-  ]
+  ],
 );
 
 export const BLENDER_COLLECTION_CONTACT_IMAGE = buildProjectImage(
@@ -51,7 +51,7 @@ export const BLENDER_COLLECTION_CONTACT_IMAGE = buildProjectImage(
     { width: 1024, height: 1095 },
     { width: 1280, height: 1369 },
     { width: 1536, height: 1642 },
-  ]
+  ],
 );
 
 export const BLENDER_COLLECTION_DETAIL_IMAGE = buildProjectImage(
@@ -68,7 +68,7 @@ export const BLENDER_COLLECTION_DETAIL_IMAGE = buildProjectImage(
     { width: 768, height: 830 },
     { width: 1024, height: 1106 },
     { width: 1280, height: 1383 },
-  ]
+  ],
 );
 
 export const BLENDER_COLLECTION_EXPLAIN_IMAGE = buildProjectImage(
@@ -86,7 +86,7 @@ export const BLENDER_COLLECTION_EXPLAIN_IMAGE = buildProjectImage(
     { width: 1024, height: 838 },
     { width: 1280, height: 1048 },
     { width: 1536, height: 1257 },
-  ]
+  ],
 );
 
 export const BLENDER_COLLECTION_PROFILE_IMAGE = buildProjectImage(
@@ -104,7 +104,7 @@ export const BLENDER_COLLECTION_PROFILE_IMAGE = buildProjectImage(
     { width: 1024, height: 1028 },
     { width: 1280, height: 1285 },
     { width: 1536, height: 1542 },
-  ]
+  ],
 );
 
 export const BLENDER_COLLECTION_IMAGES: ProjectMediaImage[] = [

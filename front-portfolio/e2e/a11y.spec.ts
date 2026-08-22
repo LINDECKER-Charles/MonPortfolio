@@ -1,6 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { PUBLIC_ROUTES } from './routes';
+import { stubImageServer } from './image-server-stub';
 
 /**
  * Scan axe-core (WCAG 2.1 AA) sur chaque route publique.
@@ -11,6 +12,7 @@ const BLOCKING_IMPACTS = new Set(['serious', 'critical']);
 
 for (const route of PUBLIC_ROUTES) {
   test(`a11y ${route.path}`, async ({ page }, testInfo) => {
+    await stubImageServer(page);
     await page.goto(route.path);
     await page.locator('main').first().waitFor();
 
@@ -25,15 +27,13 @@ for (const route of PUBLIC_ROUTES) {
       });
     }
 
-    const blocking = results.violations.filter(
-      (v) => v.impact && BLOCKING_IMPACTS.has(v.impact)
-    );
+    const blocking = results.violations.filter((v) => v.impact && BLOCKING_IMPACTS.has(v.impact));
     expect(
       blocking.map((v) => ({
         id: v.id,
         impact: v.impact,
         nodes: v.nodes.map((n) => n.target.join(' ')),
-      }))
+      })),
     ).toEqual([]);
   });
 }

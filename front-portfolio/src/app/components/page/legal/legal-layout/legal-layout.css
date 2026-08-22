@@ -22,7 +22,12 @@
   right: 0;
   bottom: -1px;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-blood) 0%, var(--color-blood-dim) 20%, transparent 60%);
+  background: linear-gradient(
+    90deg,
+    var(--color-blood) 0%,
+    var(--color-blood-dim) 20%,
+    transparent 60%
+  );
 }
 
 .legal-hero__kicker {

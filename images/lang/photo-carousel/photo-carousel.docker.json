@@ -1,9 +1,0 @@
-{
-  "label": "service: carousel",
-  "previous": "docker exec carousel prev",
-  "next": "docker exec carousel next",
-  "pause": "docker pause carousel",
-  "play": "docker unpause carousel",
-  "go_to": "docker exec carousel goto --frame {index}",
-  "slide_alt": "charles/lindecker:portrait-{index}"
-}

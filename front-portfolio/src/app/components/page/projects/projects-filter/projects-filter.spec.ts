@@ -2,7 +2,8 @@ import { PLATFORM_ID, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProjectsFilter } from './projects-filter';
-import { PROJECT_FILTERS, ProjectFiltersState } from '../projects.state';
+import { PROJECT_FILTERS } from '../projects.data';
+import type { ProjectFiltersState } from '../projects.types';
 
 function api(component: ProjectsFilter): any {
   return component as any;
@@ -10,14 +11,11 @@ function api(component: ProjectsFilter): any {
 
 async function createFixture(
   filtersState: ProjectFiltersState,
-  platformId: unknown = 'browser'
+  platformId: unknown = 'browser',
 ): Promise<ComponentFixture<ProjectsFilter>> {
   TestBed.resetTestingModule();
   await TestBed.configureTestingModule({
-    providers: [
-      provideZonelessChangeDetection(),
-      { provide: PLATFORM_ID, useValue: platformId },
-    ],
+    providers: [provideZonelessChangeDetection(), { provide: PLATFORM_ID, useValue: platformId }],
     imports: [ProjectsFilter],
   }).compileComponents();
 
@@ -134,7 +132,7 @@ describe('ProjectsFilter', () => {
   });
 
   describe('isTagSelected / isStackSelected', () => {
-    it('reflètent l\'état des filtres', async () => {
+    it("reflètent l'état des filtres", async () => {
       const f = await createFixture({ category: 'all', tags: ['Angular'], stack: ['C#'] });
       const c = f.componentInstance;
       expect(api(c).isTagSelected('Angular')).toBeTrue();
@@ -145,18 +143,15 @@ describe('ProjectsFilter', () => {
   });
 
   describe('trackByFilterId', () => {
-    it('renvoie l\'id du filtre', () => {
+    it("renvoie l'id du filtre", () => {
       expect(api(component).trackByFilterId(0, PROJECT_FILTERS[0])).toBe(PROJECT_FILTERS[0].id);
     });
   });
 });
 
 describe('ProjectsFilter (serveur / non-browser)', () => {
-  it('rend la barre avec la classe d\'entrance côté serveur (aucun JS requis)', async () => {
-    const fixture = await createFixture(
-      { category: 'all', tags: [], stack: [] },
-      'server'
-    );
+  it("rend la barre avec la classe d'entrance côté serveur (aucun JS requis)", async () => {
+    const fixture = await createFixture({ category: 'all', tags: [], stack: [] }, 'server');
     fixture.detectChanges();
     expect((fixture.nativeElement as HTMLElement).classList).toContain('emerge-ritual');
   });

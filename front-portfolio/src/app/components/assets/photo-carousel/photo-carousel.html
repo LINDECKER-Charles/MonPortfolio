@@ -11,7 +11,8 @@
     (mouseleave)="onMouseLeave()"
     (focusin)="onMouseEnter()"
     (focusout)="onMouseLeave()"
-    (keydown)="onKeydown($event)">
+    (keydown)="onKeydown($event)"
+  >
     <div class="photo-carousel__viewport">
       @for (slide of slides; track slide.fallbackSrc; let i = $index) {
         <div
@@ -20,7 +21,8 @@
           role="group"
           [attr.aria-roledescription]="'slide'"
           [attr.aria-label]="goToSlideLabel(i)"
-          [attr.aria-hidden]="isActive(i) ? null : true">
+          [attr.aria-hidden]="isActive(i) ? null : true"
+        >
           <app-responsive-picture
             [sources]="slide.sources"
             [fallbackSrc]="slide.fallbackSrc"
@@ -29,7 +31,8 @@
             [fetchPriority]="i === 0 ? 'high' : 'auto'"
             decoding="async"
             objectFit="cover"
-            [sizes]="sizes">
+            [sizes]="sizes"
+          >
           </app-responsive-picture>
         </div>
       }
@@ -39,7 +42,8 @@
           type="button"
           class="photo-carousel__nav photo-carousel__nav--prev transition-ritual"
           (click)="previous()"
-          [attr.aria-label]="previousLabel()">
+          [attr.aria-label]="previousLabel()"
+        >
           <span aria-hidden="true">&#8249;</span>
         </button>
 
@@ -47,7 +51,8 @@
           type="button"
           class="photo-carousel__nav photo-carousel__nav--next transition-ritual"
           (click)="next()"
-          [attr.aria-label]="nextLabel()">
+          [attr.aria-label]="nextLabel()"
+        >
           <span aria-hidden="true">&#8250;</span>
         </button>
       }
@@ -57,8 +62,8 @@
           @for (k of progressKey(); track k) {
             <div
               class="photo-carousel__progress-fill"
-              [style.--progress-duration.ms]="interval">
-            </div>
+              [style.--progress-duration.ms]="interval"
+            ></div>
           }
         </div>
       }
@@ -66,10 +71,7 @@
 
     @if (slides.length > 1) {
       <div class="photo-carousel__controls">
-        <div
-          class="photo-carousel__dots"
-          role="tablist"
-          [attr.aria-label]="label()">
+        <div class="photo-carousel__dots" role="tablist" [attr.aria-label]="label()">
           @for (slide of slides; track slide.fallbackSrc; let i = $index) {
             <button
               type="button"
@@ -78,8 +80,8 @@
               [class.photo-carousel__dot--active]="isActive(i)"
               [attr.aria-selected]="isActive(i)"
               [attr.aria-label]="goToSlideLabel(i)"
-              (click)="goTo(i)">
-            </button>
+              (click)="goTo(i)"
+            ></button>
           }
         </div>
 
@@ -88,7 +90,8 @@
             type="button"
             class="photo-carousel__toggle transition-ritual"
             (click)="togglePause()"
-            [attr.aria-label]="isPaused() ? playLabel() : pauseLabel()">
+            [attr.aria-label]="isPaused() ? playLabel() : pauseLabel()"
+          >
             @if (isPaused()) {
               <svg viewBox="0 0 12 14" aria-hidden="true" focusable="false">
                 <path d="M1 1 L11 7 L1 13 Z" fill="currentColor" />

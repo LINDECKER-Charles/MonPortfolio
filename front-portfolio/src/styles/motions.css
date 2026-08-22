@@ -6,13 +6,32 @@
 
 /* Pulsation lente — halos d'ambiance (glow de fond, auréoles) */
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.5; }
-  50%      { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Apparition / disparition simples */
-@keyframes ritualFadeIn  { from { opacity: 0; } to { opacity: 1; } }
-@keyframes ritualFadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes ritualFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ritualFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 /* Émergence rituelle d'un hero — fondu + remontée + déflou. Jouée au premier
    paint via CSS : un tween JS posé à l'hydratation re-masquerait le rendu SSR
@@ -21,19 +40,39 @@
    transition étant compositée, ne ré-émettrait le candidat LCP qu'à la fin
    de l'animation. */
 @keyframes ritualEmerge {
-  from { opacity: 0.01; transform: translateY(24px); filter: blur(10px); }
-  to   { opacity: 1;    transform: translateY(0);    filter: blur(0);    }
+  from {
+    opacity: 0.01;
+    transform: translateY(24px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 /* Émergence d'un panel (modals, lightbox) */
 @keyframes panelEmerge {
-  from { opacity: 0; transform: scale(0.95) translateY(8px); }
-  to   { opacity: 1; transform: scale(1)    translateY(0);   }
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 @keyframes panelVanish {
-  from { opacity: 1; transform: scale(1)    translateY(0);   }
-  to   { opacity: 0; transform: scale(0.95) translateY(8px); }
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
 }
 
 /* ── VIE ET FEU ────────────────────────────────────────────────────────────
@@ -43,19 +82,44 @@
 
 /* Flicker de bougie — irrégulier, asymétrique, pour CTA ember / dots ember */
 @keyframes candleFlicker {
-  0%, 100% { opacity: 1;    filter: brightness(1); }
-  12%      { opacity: 0.92; filter: brightness(0.96); }
-  24%      { opacity: 1;    filter: brightness(1.04); }
-  37%      { opacity: 0.96; filter: brightness(0.98); }
-  53%      { opacity: 1;    filter: brightness(1.02); }
-  68%      { opacity: 0.94; filter: brightness(0.97); }
-  82%      { opacity: 1;    filter: brightness(1.03); }
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  12% {
+    opacity: 0.92;
+    filter: brightness(0.96);
+  }
+  24% {
+    opacity: 1;
+    filter: brightness(1.04);
+  }
+  37% {
+    opacity: 0.96;
+    filter: brightness(0.98);
+  }
+  53% {
+    opacity: 1;
+    filter: brightness(1.02);
+  }
+  68% {
+    opacity: 0.94;
+    filter: brightness(0.97);
+  }
+  82% {
+    opacity: 1;
+    filter: brightness(1.03);
+  }
 }
 
 /* Respiration lente de l'or — inspire/expire ≈ 6 s */
 @keyframes goldBreath {
-  0%, 100% { box-shadow: var(--shadow-gilded); }
-  50%      {
+  0%,
+  100% {
+    box-shadow: var(--shadow-gilded);
+  }
+  50% {
     box-shadow:
       0 14px 26px rgb(0 0 0 / 0.22),
       0 0 0 1px rgb(164 148 118 / 0.08),
@@ -66,8 +130,20 @@
 
 /* Dérive de brume — blob qui flotte en 40 s */
 @keyframes mistDrift {
-  0%   { transform: translate3d(-6%, -4%, 0) scale(1);    opacity: 0.35; }
-  33%  { transform: translate3d(4%, -8%, 0)  scale(1.08); opacity: 0.5;  }
-  66%  { transform: translate3d(8%, 6%, 0)   scale(1.12); opacity: 0.4;  }
-  100% { transform: translate3d(-6%, -4%, 0) scale(1);    opacity: 0.35; }
+  0% {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+    opacity: 0.35;
+  }
+  33% {
+    transform: translate3d(4%, -8%, 0) scale(1.08);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translate3d(8%, 6%, 0) scale(1.12);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+    opacity: 0.35;
+  }
 }

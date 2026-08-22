@@ -25,7 +25,7 @@ describe('formatMonthYear', () => {
 });
 
 describe('formatPeriod', () => {
-  it('utilise le label « aujourd\'hui » quand end est null', () => {
+  it("utilise le label « aujourd'hui » quand end est null", () => {
     expect(formatPeriod('2025-04', null, 'fr', 'aujourd’hui')).toBe('avr. 2025 — aujourd’hui');
   });
 
@@ -75,7 +75,7 @@ describe('formatDuration', () => {
     expect(formatDuration('2025-01', '2025-05', 'en')).toBe('5 mo');
   });
 
-  it('calcule la durée jusqu\'au mois courant quand end est null', () => {
+  it("calcule la durée jusqu'au mois courant quand end est null", () => {
     const now = new Date();
     const start = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
     // start == mois courant ⇒ 1 mois inclus

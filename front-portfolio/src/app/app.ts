@@ -1,138 +1,60 @@
-import {Component, inject, signal} from '@angular/core';
-import {Loading} from './components/assets/loading/loading';
-import {AudioService} from './services/audio-service';
-import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import {MetaService} from './services/meta-service';
-import {filter, map, mergeMap} from 'rxjs';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {Footer} from './components/misc/footer/footer';
-import {NavBarre} from './components/misc/nav-barre/nav-barre';
-import {LangModal} from './components/assets/lang-modal/lang-modal';
-import {EmberParticles} from './components/assets/ember-particles/ember-particles';
-import {PageTransition} from './components/assets/page-transition/page-transition';
-import {TranslationService} from './services/translation.service';
-import {NavigationContextService} from './services/navigation-context.service';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Data, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Observable, filter, map, mergeMap, share } from 'rxjs';
+
+import { Loading } from './components/assets/loading/loading';
+import { MetaService } from './services/meta-service';
+import { RouteMeta } from './seo/route-meta';
+import { Footer } from './components/misc/footer/footer';
+import { NavBarre } from './components/misc/nav-barre/nav-barre';
+import { LangModal } from './components/assets/lang-modal/lang-modal';
+import { EmberParticles } from './components/assets/ember-particles/ember-particles';
+import { PageTransition } from './components/assets/page-transition/page-transition';
+import { TranslationService } from './services/translation.service';
 
 @Component({
   selector: 'app-root',
   imports: [Loading, RouterOutlet, Footer, NavBarre, LangModal, EmberParticles, PageTransition],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  changeDetection: ChangeDetectionStrategy.Eager,
+  styleUrl: './app.css',
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('front-portfolio');
 
-  public audio = inject(AudioService);
   protected readonly ts = inject(TranslationService);
-  // Construit avant la navigation initiale pour un comptage fiable (cf. service).
-  private readonly navigationContext = inject(NavigationContextService);
-  constructor() {
-    this.audio.registerMany({
-      bgMusic: {
-        src: './song/hunters_dream.mp3',
-        loop: true,
-        volume: 0.7,
-        preload: 'auto'
-      },
-      pouperVoice: {
-        src: './song/pouper_welcome.mp3',
-        loop: false,
-        volume: 0.9,
-        preload: 'auto'
-      },
-      getItem: {
-        src: './song/get_item.mp3',
-        loop: false,
-        volume: 0.4,
-        preload: 'auto'
-      },
-      bloodVial: {
-        src: './song/blood_vial.mp3',
-        loop: false,
-        volume: 0.15,
-        preload: 'auto'
-      },
-      getEcho: {
-        src: './song/get_echo.mp3',
-        loop: false,
-        volume: 0.15,
-        preload: 'auto'
-      },
-      getbackEcho: {
-        src: './song/getback_echo.mp3',
-        loop: false,
-        volume: 0.15,
-        preload: 'auto'
-      },
-      messagerLaught: {
-        src: './song/messager_laught.mp3',
-        loop: false,
-        volume: 0.15,
-        preload: 'auto'
-      },
-      smallBell: {
-        src: './song/small_bell.mp3',
-        loop: false,
-        volume: 0.15,
-        preload: 'auto'
-      },
-      newLocation: {
-        src: './song/new_location.mp3',
-        loop: false,
-        volume: 0.3,
-        preload: 'auto'
-      }
-    });
-  }
-
   private readonly metaService = inject(MetaService);
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
 
-  protected readonly showFooter = toSignal(
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      map(() => {
-        let route = this.activatedRoute.firstChild;
+  /** État d'ouverture du modal de langue — UI propre au shell, hors TranslationService. */
+  protected readonly langModalOpen = signal(false);
 
-        while (route?.firstChild) {
-          route = route.firstChild;
-        }
-
-        return route?.snapshot.data['showFooter'] ?? true;
-      })
-    ),
-    { initialValue: true }
+  /**
+   * `data` de la route la plus profonde à chaque fin de navigation.
+   * Flux unique partagé entre l'affichage du footer et l'application des
+   * métas (contrat `RouteMeta`) : l'arbre de routes n'est parcouru qu'une fois.
+   */
+  private readonly deepestRouteData$ = this.router.events.pipe(
+    filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+    map(() => {
+      let route = this.activatedRoute;
+      while (route.firstChild) route = route.firstChild;
+      return route;
+    }),
+    filter((route) => route.outlet === 'primary'),
+    mergeMap((route) => route.data as Observable<Data & RouteMeta>),
+    share(),
   );
 
-  async ngOnInit() {
-    this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map(() => this.activatedRoute),
-      map((route) => {
-        while (route.firstChild) route = route.firstChild;
-        return route;
-      }),
-      filter((route) => route.outlet === 'primary'),
-      mergeMap((route) => route.data)
-    )
-      .subscribe((event) => {
-        this.metaService.updateDescription(event['description']);
-        this.metaService.updateCanonical(event['canonical']);
-        this.metaService.updateRobots(event['robots']);
+  protected readonly showFooter = toSignal(
+    this.deepestRouteData$.pipe(map((data) => data['showFooter'] ?? true)),
+    { initialValue: true },
+  );
 
-        this.metaService.updateOgTitle(event['ogTitle']);
-        this.metaService.updateOgDescription(event['ogDescription']);
-        this.metaService.updateOgImage(event['ogImage']);
-        this.metaService.updateOgUrl(event['ogUrl']);
-        this.metaService.updateOgType(event['ogType']);
-
-        this.metaService.updateTwitterTitle(event['twitterTitle']);
-        this.metaService.updateTwitterDescription(event['twitterDescription']);
-        this.metaService.updateTwitterCard(event['twitterCard']);
-        this.metaService.updateTwitterImage(event['twitterImage']);
-        this.metaService.updateStructuredData(event['structuredData']);
-      });
-
+  ngOnInit(): void {
+    // Chaque route porte un bloc `data` complet construit par buildRouteMeta.
+    this.deepestRouteData$.subscribe((data) => this.metaService.applyRouteMeta(data));
   }
 }

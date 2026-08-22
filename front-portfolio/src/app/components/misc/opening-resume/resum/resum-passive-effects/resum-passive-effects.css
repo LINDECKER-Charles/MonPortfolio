@@ -1,4 +1,6 @@
-:host { display: contents; }
+:host {
+  display: contents;
+}
 
 .section-title {
   margin: 0 0 0.85rem;
@@ -25,7 +27,9 @@
 }
 
 @media (max-width: 768px) {
-  .section-title { font-size: 1.05rem; }
+  .section-title {
+    font-size: 1.05rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -35,14 +39,24 @@
     margin-bottom: 0.65rem;
   }
 
-  .passives li { min-height: 34px; font-size: 0.88rem; }
+  .passives li {
+    min-height: 34px;
+    font-size: 0.88rem;
+  }
 }
 
 @media (max-width: 360px) {
-  .section-title { font-size: 0.92rem; }
-  .passives li { min-height: 32px; font-size: 0.8rem; }
+  .section-title {
+    font-size: 0.92rem;
+  }
+  .passives li {
+    min-height: 32px;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 320px) {
-  .section-title { font-size: 0.88rem; }
+  .section-title {
+    font-size: 0.88rem;
+  }
 }

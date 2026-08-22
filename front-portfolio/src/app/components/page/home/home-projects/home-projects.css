@@ -14,13 +14,27 @@
 }
 
 /* Stagger de l'entrance rituelle (.emerge-ritual, cf. ornaments.css) */
-.home-projects__intro { --emerge-delay: 0s; }
-.home-projects__actions { --emerge-delay: 0.08s; }
-.home-projects__stack-item:nth-child(1) { --emerge-delay: 0.16s; }
-.home-projects__stack-item:nth-child(2) { --emerge-delay: 0.24s; }
-.home-projects__stack-item:nth-child(3) { --emerge-delay: 0.32s; }
-.home-projects__stack-item:nth-child(4) { --emerge-delay: 0.4s; }
-.home-projects__stack-item:nth-child(5) { --emerge-delay: 0.48s; }
+.home-projects__intro {
+  --emerge-delay: 0s;
+}
+.home-projects__actions {
+  --emerge-delay: 0.08s;
+}
+.home-projects__stack-item:nth-child(1) {
+  --emerge-delay: 0.16s;
+}
+.home-projects__stack-item:nth-child(2) {
+  --emerge-delay: 0.24s;
+}
+.home-projects__stack-item:nth-child(3) {
+  --emerge-delay: 0.32s;
+}
+.home-projects__stack-item:nth-child(4) {
+  --emerge-delay: 0.4s;
+}
+.home-projects__stack-item:nth-child(5) {
+  --emerge-delay: 0.48s;
+}
 
 .home-projects__intro {
   display: flex;
@@ -80,15 +94,6 @@
   box-shadow: var(--shadow-blood-halo);
 }
 
-.home-projects__stack-item app-responsive-picture,
-.home-projects__stack-item picture,
-.home-projects__stack-item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .home-projects__actions {
   display: flex;
   flex-direction: column;
@@ -99,7 +104,9 @@
 }
 
 @media (max-width: 980px) {
-  .home-projects { grid-template-columns: 1fr; }
+  .home-projects {
+    grid-template-columns: 1fr;
+  }
 
   .home-projects__actions {
     padding-left: 0;
@@ -116,7 +123,9 @@
     gap: 1.2rem;
   }
 
-  .home-projects__actions .cta-tome { width: 100%; }
+  .home-projects__actions .cta-tome {
+    width: 100%;
+  }
 
   .home-projects__stack-item {
     width: 34px;

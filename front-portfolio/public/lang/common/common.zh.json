@@ -2,8 +2,6 @@
   "lang_modal.aria": "语言选择",
   "lang_modal.close": "关闭",
   "lang_modal.title": "— 语言 —",
-  "audio.show": "显示音频控制",
-  "audio.hide": "隐藏音频控制",
   "audio.toggle": "静音或取消静音",
   "audio.volume": "调节音量",
   "lightbox.aria": "全屏预览",

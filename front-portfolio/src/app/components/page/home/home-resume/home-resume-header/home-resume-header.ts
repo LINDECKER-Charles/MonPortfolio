@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslationService } from '../../../../../services/translation.service';
 import {
@@ -10,6 +10,7 @@ import {
   selector: 'app-home-resume-header',
   imports: [RouterLink, ResponsivePicture],
   templateUrl: './home-resume-header.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home-resume-header.css',
 })
 export class HomeResumeHeader {

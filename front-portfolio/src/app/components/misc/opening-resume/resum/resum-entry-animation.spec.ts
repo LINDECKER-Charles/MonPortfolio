@@ -1,16 +1,29 @@
-import { Component, provideZonelessChangeDetection, signal } from '@angular/core';
+import {
+  Component,
+  provideZonelessChangeDetection,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import gsap from 'gsap';
 
 import { NavigationContextService } from '../../../../services/navigation-context.service';
 import { ResumEntryAnimation } from './resum-entry-animation';
 
-@Component({ selector: 'app-entry-host', template: '<span class="anim">a</span><span class="anim">b</span>' })
+@Component({
+  selector: 'app-entry-host',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  template: '<span class="anim">a</span><span class="anim">b</span>',
+})
 class EntryHost extends ResumEntryAnimation {
   protected readonly animationSelectors = '.anim';
 }
 
-@Component({ selector: 'app-entry-empty-host', template: '<span>nothing</span>' })
+@Component({
+  selector: 'app-entry-empty-host',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  template: '<span>nothing</span>',
+})
 class EntryEmptyHost extends ResumEntryAnimation {
   protected readonly animationSelectors = '.missing';
 }
@@ -31,7 +44,7 @@ describe('ResumEntryAnimation', () => {
 
   function build<T extends ResumEntryAnimation>(
     type: any,
-    hasNavigated = true
+    hasNavigated = true,
   ): ComponentFixture<T> {
     TestBed.configureTestingModule({
       providers: [

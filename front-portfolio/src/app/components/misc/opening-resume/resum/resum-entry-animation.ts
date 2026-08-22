@@ -1,5 +1,12 @@
 import { isPlatformBrowser } from '@angular/common';
-import { AfterViewInit, Directive, ElementRef, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  OnDestroy,
+  PLATFORM_ID,
+  inject,
+} from '@angular/core';
 import gsap from 'gsap';
 import { NavigationContextService } from '../../../../services/navigation-context.service';
 import { prefersReducedMotion } from '../../../../utils/motion';

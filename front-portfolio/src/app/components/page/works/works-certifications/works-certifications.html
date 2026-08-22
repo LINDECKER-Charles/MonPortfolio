@@ -4,19 +4,23 @@
       <span class="works-cert__num" aria-hidden="true">II</span>
       <span>{{ ts.translate('works.certifications.title') }}</span>
     </h2>
-    <span class="works-cert__meta text-tag">{{ total }} {{ ts.translate('works.certifications.unit') }}</span>
+    <span class="works-cert__meta text-tag"
+      >{{ total }} {{ ts.translate('works.certifications.unit') }}</span
+    >
   </header>
 
   <div
     class="works-cert__filters"
     role="group"
-    [attr.aria-label]="ts.translate('works.certifications.filterLabel')">
+    [attr.aria-label]="ts.translate('works.certifications.filterLabel')"
+  >
     <button
       type="button"
       class="works-cert__filter text-tag transition-ritual"
       [class.is-active]="activeFilter() === 'all'"
       [attr.aria-pressed]="activeFilter() === 'all'"
-      (click)="setFilter('all')">
+      (click)="setFilter('all')"
+    >
       {{ ts.translate('works.certifications.filterAll') }} · {{ count('all') }}
     </button>
     @for (cat of categories; track cat) {
@@ -25,7 +29,8 @@
         class="works-cert__filter text-tag transition-ritual"
         [class.is-active]="activeFilter() === cat"
         [attr.aria-pressed]="activeFilter() === cat"
-        (click)="setFilter(cat)">
+        (click)="setFilter(cat)"
+      >
         <span class="works-cert__filter-glyph" aria-hidden="true">{{ glyph(cat) }}</span>
         {{ categoryLabel(cat) }} · {{ count(cat) }}
       </button>
@@ -39,24 +44,28 @@
         appRevealOnScroll
         [revealDelay]="i * 0.03"
         [revealY]="14"
-        [revealBlur]="6">
+        [revealBlur]="6"
+      >
         @if (cert.url) {
           <a
             class="works-cert__row works-cert__row--link transition-ritual"
             [href]="cert.url"
             target="_blank"
             rel="noreferrer noopener"
-            [attr.aria-label]="cert.title + ' — ' + organismName(cert.organism)">
+            [attr.aria-label]="cert.title + ' — ' + organismName(cert.organism)"
+          >
             <ng-container
               [ngTemplateOutlet]="rowBody"
-              [ngTemplateOutletContext]="{ $implicit: cert }">
+              [ngTemplateOutletContext]="{ $implicit: cert }"
+            >
             </ng-container>
           </a>
         } @else {
           <div class="works-cert__row">
             <ng-container
               [ngTemplateOutlet]="rowBody"
-              [ngTemplateOutletContext]="{ $implicit: cert }">
+              [ngTemplateOutletContext]="{ $implicit: cert }"
+            >
             </ng-container>
           </div>
         }
@@ -73,7 +82,8 @@
       [alt]="organismName(cert.organism)"
       loading="lazy"
       decoding="async"
-      objectFit="contain">
+      objectFit="contain"
+    >
     </app-responsive-picture>
   </span>
 

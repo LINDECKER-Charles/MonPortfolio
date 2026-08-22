@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { TranslationService } from '../../../../services/translation.service';
 import { LegalLayout, LegalTocItem } from '../legal-layout/legal-layout';
 import { LEGAL_UPDATED, otherLegalLinks } from '../legal.constants';
@@ -8,6 +8,7 @@ import { LEGAL_UPDATED, otherLegalLinks } from '../legal.constants';
   standalone: true,
   imports: [LegalLayout],
   templateUrl: './mentions-legales.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['../legal-content.css'],
 })
 export class MentionsLegales {

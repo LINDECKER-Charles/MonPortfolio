@@ -1,7 +1,6 @@
 import {
   Component,
   DestroyRef,
-  Inject,
   Input,
   OnDestroy,
   OnInit,
@@ -9,25 +8,22 @@ import {
   computed,
   inject,
   signal,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import {
-  ResponsivePicture,
-  ResponsiveSource,
-} from '../responsive-picture/responsive-picture';
+import { ResponsivePicture } from '../responsive-picture/responsive-picture';
+import type { LabeledImageSet } from '../../../img-sources/shared.sources';
 import { TranslationService } from '../../../services/translation.service';
 import { wrapIndex } from '../../../utils/math';
 
-export interface PhotoCarouselSlide {
-  sources: ResponsiveSource[];
-  fallbackSrc: string;
-  alt: string;
-}
+/** Alias sémantique : une diapositive est un set responsive étiqueté. */
+export type PhotoCarouselSlide = LabeledImageSet;
 
 @Component({
   selector: 'app-photo-carousel',
   imports: [ResponsivePicture],
   templateUrl: './photo-carousel.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './photo-carousel.css',
 })
 export class PhotoCarousel implements OnInit, OnDestroy {
@@ -53,17 +49,15 @@ export class PhotoCarousel implements OnInit, OnDestroy {
   protected readonly progressKey = computed(() => [this.currentIndex()]);
 
   protected readonly label = computed(() => this.ts.translate('photo-carousel.label'));
-  protected readonly previousLabel = computed(() =>
-    this.ts.translate('photo-carousel.previous')
-  );
+  protected readonly previousLabel = computed(() => this.ts.translate('photo-carousel.previous'));
   protected readonly nextLabel = computed(() => this.ts.translate('photo-carousel.next'));
   protected readonly pauseLabel = computed(() => this.ts.translate('photo-carousel.pause'));
   protected readonly playLabel = computed(() => this.ts.translate('photo-carousel.play'));
-  protected readonly goToTemplate = computed(() =>
-    this.ts.translate('photo-carousel.go_to')
-  );
+  protected readonly goToTemplate = computed(() => this.ts.translate('photo-carousel.go_to'));
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
+
     this.isBrowser = isPlatformBrowser(platformId);
     inject(DestroyRef).onDestroy(() => this.stop());
   }

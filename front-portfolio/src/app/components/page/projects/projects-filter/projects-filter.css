@@ -9,8 +9,14 @@
   padding: 1rem;
   border: var(--border-ash);
   border-radius: 20px;
-  background: linear-gradient(180deg, rgb(var(--color-stone-raised-rgb) / 0.14), rgb(var(--color-stone-rgb) / 0.46));
-  box-shadow: 0 14px 30px rgb(0 0 0 / 0.16), inset 0 1px 0 rgb(var(--color-white-rgb) / 0.02);
+  background: linear-gradient(
+    180deg,
+    rgb(var(--color-stone-raised-rgb) / 0.14),
+    rgb(var(--color-stone-rgb) / 0.46)
+  );
+  box-shadow:
+    0 14px 30px rgb(0 0 0 / 0.16),
+    inset 0 1px 0 rgb(var(--color-white-rgb) / 0.02);
 }
 
 .projects-filters__group {
@@ -19,7 +25,9 @@
   gap: 0.45rem;
 }
 
-.projects-filters__group--picker { position: relative; }
+.projects-filters__group--picker {
+  position: relative;
+}
 
 .projects-filters__label {
   font-size: 0.72rem;
@@ -66,7 +74,9 @@
 .projects-filters__option:hover {
   transform: translateY(-1px);
   border-color: rgb(var(--color-blood-rgb) / 0.14);
-  box-shadow: 0 8px 14px rgb(0 0 0 / 0.14), 0 0 0 1px rgb(var(--color-blood-rgb) / 0.04);
+  box-shadow:
+    0 8px 14px rgb(0 0 0 / 0.14),
+    0 0 0 1px rgb(var(--color-blood-rgb) / 0.04);
 }
 
 .projects-filters__chip:active,
@@ -125,7 +135,9 @@
   border: var(--border-ash);
   border-radius: 18px;
   background: linear-gradient(180deg, rgb(38 42 47 / 0.98), rgb(20 22 25 / 0.98));
-  box-shadow: 0 18px 36px rgb(0 0 0 / 0.32), 0 0 0 1px rgb(var(--color-blood-rgb) / 0.03);
+  box-shadow:
+    0 18px 36px rgb(0 0 0 / 0.32),
+    0 0 0 1px rgb(var(--color-blood-rgb) / 0.03);
 }
 
 .projects-filters__search {
@@ -138,7 +150,9 @@
   outline: none;
 }
 
-.projects-filters__search::placeholder { color: var(--color-ash-dim); }
+.projects-filters__search::placeholder {
+  color: var(--color-ash-dim);
+}
 
 .projects-filters__search:focus {
   border-color: rgb(var(--color-blood-rgb) / 0.18);
@@ -177,7 +191,9 @@
   font-size: 0.82rem;
 }
 
-.projects-filters__actions { padding-top: 0.1rem; }
+.projects-filters__actions {
+  padding-top: 0.1rem;
+}
 
 @media (max-width: 640px) {
   .projects-filters {
@@ -191,7 +207,9 @@
     font-size: 0.72rem;
   }
 
-  .projects-filters__panel { width: 100%; }
+  .projects-filters__panel {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

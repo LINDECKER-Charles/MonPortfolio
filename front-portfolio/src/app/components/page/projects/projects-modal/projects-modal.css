@@ -95,12 +95,6 @@
   border-color: rgb(var(--color-bone-rgb) / 0.2);
 }
 
-.projects-modal__carousel-image app-responsive-picture {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .projects-modal__carousel-controls {
   display: flex;
   align-items: center;
@@ -223,21 +217,25 @@
   display: inline-flex;
 }
 
-.projects-modal__link-icon app-responsive-picture {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 @media (max-width: 980px) {
-  .projects-modal__layout { grid-template-columns: 1fr; }
-  .projects-modal__media-column { order: 1; }
-  .projects-modal__content { order: 2; }
+  .projects-modal__layout {
+    grid-template-columns: 1fr;
+  }
+  .projects-modal__media-column {
+    order: 1;
+  }
+  .projects-modal__content {
+    order: 2;
+  }
 }
 
 @media (max-width: 640px) {
-  .projects-modal { padding: 0.75rem; }
-  .projects-modal__dialog { border-radius: 22px; }
+  .projects-modal {
+    padding: 0.75rem;
+  }
+  .projects-modal__dialog {
+    border-radius: 22px;
+  }
 
   .projects-modal__layout {
     padding: 0.9rem;
@@ -258,5 +256,7 @@
     border-radius: 16px;
   }
 
-  .projects-modal__header h2 { padding-right: 2.5rem; }
+  .projects-modal__header h2 {
+    padding-right: 2.5rem;
+  }
 }
