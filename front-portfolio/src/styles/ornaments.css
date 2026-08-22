@@ -55,6 +55,46 @@
     background-repeat: no-repeat;
   }
 
+  /* ── LUMIÈRE DE LANTERNE ──────────────────────────────────────────────────
+     Halo chaud qui suit le curseur sur une surface (directive appLanternLight :
+     pose --lantern-x/--lantern-y en px depuis le coin haut-gauche de l'hôte et
+     --lantern-on sur l'hôte). La couche est un enfant direct de la surface
+     (position: relative; overflow: hidden — c'est elle qui clippe le halo),
+     sous le contenu (z-index ≥ 1 côté contenu). Inerte sans pointeur fin.
+
+     Déplacement compositor-only : le gradient est peint une fois dans une
+     boîte carrée fixe (--lantern-size, surchargeable sur l'hôte) et seul le
+     transform bouge — aucun repaint de la plaque au pointermove. Les stops
+     sont exprimés en % du demi-côté (closest-side) : halo principal ≈ 300 px
+     de rayon, cœur blanc ≈ 70 px pour --lantern-size: 720px.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  .lantern-light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--lantern-size, 720px);
+    height: var(--lantern-size, 720px);
+    transform: translate3d(calc(var(--lantern-x, 0px) - 50%), calc(var(--lantern-y, 0px) - 50%), 0);
+    will-change: transform;
+    pointer-events: none;
+    z-index: 0;
+    opacity: var(--lantern-on, 0);
+    background:
+      radial-gradient(
+        circle closest-side at center,
+        rgb(var(--color-ember-soft-rgb) / 0.1),
+        rgb(var(--color-gold-dim-rgb) / 0.08) 30%,
+        transparent 82%
+      ),
+      radial-gradient(
+        circle closest-side at center,
+        rgb(var(--color-white-rgb) / 0.04),
+        transparent 20%
+      );
+    transition: opacity var(--duration-slow) var(--ease-ritual);
+  }
+
   /* ── TEXTURE MATIÈRE ──────────────────────────────────────────────────────
      À combiner avec une surface. Le grain fin + vignette donne la
      sensation d'une plaque de pierre éclairée au centre, pas d'un

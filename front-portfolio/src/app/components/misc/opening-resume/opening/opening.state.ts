@@ -1,5 +1,14 @@
 export type OpeningState = 'sound-gate' | 'intro-ready' | 'intro-leaving' | 'finished';
 
+/** Clé localStorage : une séquence d'ouverture a déjà été vue ou passée. */
+export const OPENING_SEEN_KEY = 'opening.seen';
+
+/** Query param : rejouer explicitement la séquence, même déjà vue (CTA de la home). */
+export const OPENING_REPLAY_PARAM = 'replay';
+
+/** Query param : passer la séquence (liens partagés, candidatures). */
+export const OPENING_SKIP_PARAM = 'skip-opening';
+
 export function canEnableSound(state: OpeningState): boolean {
   return state === 'sound-gate';
 }

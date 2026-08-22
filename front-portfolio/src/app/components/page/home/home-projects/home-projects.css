@@ -3,14 +3,28 @@
   width: 100%;
 }
 
-/* Look via .surface-altar — juste le layout propre à home-projects ici. */
+/* Look via .surface-altar — juste le layout propre à home-projects ici.
+   position/overflow : la lumière de lanterne (.lantern-light) est une couche
+   absolue sous le contenu, rognée aux bords arrondis de la plaque. */
 .home-projects {
+  position: relative;
   display: grid;
+  grid-template-areas:
+    'intro actions'
+    'relics relics';
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 360px);
-  gap: 1.5rem;
+  gap: 0 1.5rem;
   align-items: stretch;
   padding: 1.6rem;
   border-radius: 28px;
+  overflow: hidden;
+}
+
+.home-projects__intro,
+.home-projects__actions,
+.home-projects__relics {
+  position: relative;
+  z-index: 1;
 }
 
 /* Stagger de l'entrance rituelle (.emerge-ritual, cf. ornaments.css) */
@@ -37,6 +51,7 @@
 }
 
 .home-projects__intro {
+  grid-area: intro;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,6 +110,7 @@
 }
 
 .home-projects__actions {
+  grid-area: actions;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,12 +119,27 @@
   border-left: var(--border-ash);
 }
 
+.home-projects__relics {
+  grid-area: relics;
+  min-width: 0;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: var(--border-ash);
+}
+
 @media (max-width: 980px) {
+  /* Ordre DOM = ordre visuel (intro → CTA → reliquaire) : le CTA principal
+     reste collé au texte qu'il prolonge, la rangée scrollable ferme la plaque. */
   .home-projects {
+    grid-template-areas:
+      'intro'
+      'actions'
+      'relics';
     grid-template-columns: 1fr;
   }
 
   .home-projects__actions {
+    margin-top: 1.2rem;
     padding-left: 0;
     padding-top: 1rem;
     border-left: 0;
@@ -120,11 +151,15 @@
   .home-projects {
     padding: 1.2rem 1rem;
     border-radius: 22px;
-    gap: 1.2rem;
   }
 
   .home-projects__actions .cta-tome {
     width: 100%;
+  }
+
+  .home-projects__relics {
+    margin-top: 1rem;
+    padding-top: 1rem;
   }
 
   .home-projects__stack-item {

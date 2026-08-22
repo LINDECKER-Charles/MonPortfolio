@@ -1,4 +1,29 @@
-<section class="home-work surface-altar">
+<section class="home-work surface-altar" appLanternLight>
+  <span class="lantern-light" aria-hidden="true"></span>
+
+  <div class="home-work__intro emerge-ritual">
+    <span class="home-work__eyebrow text-rune">{{ ts.translate('home-work.eyebrow') }}</span>
+
+    <h2 class="text-engraved text-engraved--deep">{{ ts.translate('home-work.title') }}</h2>
+
+    <p class="text-tome">{{ ts.translate('home-work.description') }}</p>
+
+    <div class="home-work__rail" [attr.aria-label]="ts.translate('home-work.aria.landmarks')">
+      @for (icon of railIcons; track icon.fallbackSrc) {
+        <span class="home-work__rail-item transition-ritual emerge-ritual" [attr.title]="icon.alt">
+          <app-responsive-picture
+            [sources]="icon.sources"
+            [fallbackSrc]="icon.fallbackSrc"
+            [alt]="icon.alt"
+            loading="lazy"
+            decoding="async"
+          >
+          </app-responsive-picture>
+        </span>
+      }
+    </div>
+  </div>
+
   <div class="home-work__actions emerge-ritual">
     <a
       class="cta-tome cta-tome--gilded transition-ritual breath-gold"
@@ -46,26 +71,5 @@
     </a>
   </div>
 
-  <div class="home-work__intro emerge-ritual">
-    <span class="home-work__eyebrow text-rune">{{ ts.translate('home-work.eyebrow') }}</span>
-
-    <h2 class="text-engraved text-engraved--deep">{{ ts.translate('home-work.title') }}</h2>
-
-    <p class="text-tome">{{ ts.translate('home-work.description') }}</p>
-
-    <div class="home-work__rail" [attr.aria-label]="ts.translate('home-work.aria.landmarks')">
-      @for (icon of railIcons; track icon.fallbackSrc) {
-        <span class="home-work__rail-item transition-ritual emerge-ritual" [attr.title]="icon.alt">
-          <app-responsive-picture
-            [sources]="icon.sources"
-            [fallbackSrc]="icon.fallbackSrc"
-            [alt]="icon.alt"
-            loading="lazy"
-            decoding="async"
-          >
-          </app-responsive-picture>
-        </span>
-      }
-    </div>
-  </div>
+  <app-home-work-chronicle class="home-work__chronicle" />
 </section>

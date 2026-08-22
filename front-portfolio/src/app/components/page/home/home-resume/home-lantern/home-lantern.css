@@ -1,0 +1,473 @@
+/* Enregistrée pour être interpolable (hover / ignition) ; `inherits: true` car
+   la valeur de base est posée sur `.lantern` et consommée par le halo. */
+@property --lantern-halo {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0.45;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── PORTAIL ──────────────────────────────────────────────────────────────── */
+
+.lantern {
+  --emerge-delay: 0.12s;
+  --lantern-halo: 0.45;
+  /* Tuile étroite : halo de lanterne plus serré que sur les grandes plaques. */
+  --lantern-size: 520px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 300px;
+  height: 100%;
+  border-radius: var(--radius-panel);
+
+  /* Bordure et ombres viennent de .surface-crypt / .surface-vignetted--deep ;
+     seul le haze est remplacé (sanglant au lieu de doré). */
+  background: var(--gradient-crypt), var(--glow-blood-haze);
+}
+
+/* Liseré doré du hover : le tilt pose une transition inline sur l'hôte, le
+   liseré vit donc dans un pseudo-élément pour garder sa propre transition. */
+.lantern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  border: 1px solid rgb(var(--color-gold-rgb) / 0.4);
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-ritual);
+}
+
+.lantern__haze {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 28% 52%,
+    rgb(var(--color-blood-rgb) / 0.22),
+    rgb(var(--color-blood-rgb) / 0.06) 38%,
+    transparent 62%
+  );
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+/* ── BRAISES ──────────────────────────────────────────────────────────────── */
+
+.lantern__embers {
+  --lantern-rise: -360px;
+
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lantern__ember {
+  position: absolute;
+  bottom: -4%;
+  width: 3px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(
+    circle,
+    rgb(var(--color-ember-rgb) / 0.85) 0%,
+    rgb(var(--color-ember-rgb) / 0.2) 60%,
+    transparent 100%
+  );
+  box-shadow: 0 0 6px rgb(var(--color-ember-rgb) / 0.5);
+  opacity: 0;
+  animation: lanternEmberRise 9s linear infinite;
+}
+
+.lantern__ember:nth-child(1) {
+  left: 12%;
+  animation-duration: 10s;
+  animation-delay: 0s;
+}
+.lantern__ember:nth-child(2) {
+  left: 24%;
+  animation-duration: 12s;
+  animation-delay: 2.6s;
+  transform: scale(1.2);
+}
+.lantern__ember:nth-child(3) {
+  left: 38%;
+  animation-duration: 8s;
+  animation-delay: 5.1s;
+  transform: scale(0.7);
+}
+.lantern__ember:nth-child(4) {
+  left: 57%;
+  animation-duration: 11s;
+  animation-delay: 1.4s;
+}
+.lantern__ember:nth-child(5) {
+  left: 73%;
+  animation-duration: 9s;
+  animation-delay: 3.8s;
+  transform: scale(0.85);
+}
+.lantern__ember:nth-child(6) {
+  left: 88%;
+  animation-duration: 13s;
+  animation-delay: 6.7s;
+  transform: scale(1.1);
+}
+
+@keyframes lanternEmberRise {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  55% {
+    transform: translate3d(-6px, calc(var(--lantern-rise) * 0.5), 0);
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate3d(10px, var(--lantern-rise), 0);
+    opacity: 0;
+  }
+}
+
+/* ── LIEN (toute la tuile) ────────────────────────────────────────────────── */
+
+.lantern__trigger {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+  min-height: inherit;
+  height: 100%;
+  padding: 1.5rem 1.6rem;
+  border-radius: inherit;
+  color: var(--color-bone);
+  text-decoration: none;
+  transform-origin: center;
+}
+
+/* Pile dorée partagée (bouton play, CTA) — ni .chip--gilded ni .cta-tome--gilded :
+   leurs paddings / min-height / états hover ne conviennent pas ici. */
+.lantern__gilt {
+  border: var(--border-gilded-strong);
+  background: var(--gradient-gold-chip), var(--glow-gold-side);
+  box-shadow: var(--shadow-gilded);
+}
+
+/* ── RUNE ─────────────────────────────────────────────────────────────────── */
+
+.lantern__rune-frame {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.lantern__rune-halo {
+  position: absolute;
+  inset: -18%;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(
+    circle,
+    rgb(var(--color-blood-rgb) / var(--lantern-halo)),
+    rgb(var(--color-ember-deep-rgb) / 0.16) 46%,
+    transparent 70%
+  );
+  filter: blur(6px);
+  animation: glowPulse 5s ease-in-out infinite;
+  transition: --lantern-halo var(--duration-slow) var(--ease-ritual);
+}
+
+.lantern__rune {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 12px rgb(var(--color-blood-rgb) / 0.35));
+  animation: lanternFloat 4s ease-in-out infinite;
+  transition: filter var(--duration-slow) var(--ease-ritual);
+}
+
+@keyframes lanternFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.lantern__play {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+}
+
+.lantern__play::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 0.16rem;
+  border-top: 0.4rem solid transparent;
+  border-bottom: 0.4rem solid transparent;
+  border-left: 0.62rem solid var(--color-bone-bright);
+}
+
+/* ── COPY ─────────────────────────────────────────────────────────────────── */
+
+.lantern__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+/* Tracking sigil (pas rune) : la colonne est étroite, l'eyebrow doit tenir sur
+   une ou deux lignes sans casser mot à mot. */
+.lantern__eyebrow {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: var(--tracking-sigil);
+  line-height: 1.35;
+}
+
+/* Le swap seen/unseen post-hydratation ne doit pas changer le nombre de lignes
+   (colonne ≈ 193 px : unseen = 2 lignes, seen = 1 ligne). */
+@media (min-width: 981px) {
+  .lantern__eyebrow {
+    min-height: calc(2 * 1.35 * 0.68rem); /* fallback */
+    min-height: 2lh;
+  }
+}
+
+.lantern__spark {
+  flex: 0 0 auto;
+  margin-top: 0.2em;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: var(--color-ember);
+  box-shadow: var(--glow-ember);
+}
+
+.lantern__title {
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lantern__lead {
+  max-width: 40ch;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.lantern__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.lantern__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-pill);
+  border: var(--border-gilded);
+  background: rgb(var(--color-stone-abyss-rgb) / 0.55);
+  font-family: var(--font-ui);
+  font-size: 0.66rem;
+  letter-spacing: var(--tracking-tag);
+  text-transform: uppercase;
+  color: var(--color-parchment-dim);
+  white-space: nowrap;
+}
+
+.lantern__chip-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  color: var(--color-ember-soft);
+}
+
+/* ── CTA double-label ─────────────────────────────────────────────────────── */
+
+.lantern__cta {
+  margin-top: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: fit-content;
+  padding: 0.5rem 0.95rem 0.5rem 0.85rem;
+  border-radius: var(--radius-pill);
+  transition: border-color var(--duration-base) var(--ease-ritual);
+}
+
+/* Label porté par .cta-tome__label/top/bottom ; seules police et taille diffèrent. */
+.lantern__cta-top {
+  font-family: var(--font-ui);
+  font-size: 0.64rem;
+}
+
+.lantern__cta-bottom {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.lantern__cta-arrow {
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--color-ember-soft);
+  transition: transform var(--duration-base) var(--ease-ritual);
+}
+
+/* ── VOILE D'IGNITION ─────────────────────────────────────────────────────── */
+
+.lantern__veil {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loading);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  background: radial-gradient(
+    circle at center,
+    rgb(var(--color-blood-rgb) / 0.35),
+    var(--color-stone-abyss) 70%
+  );
+}
+
+/* ── ÉTATS ────────────────────────────────────────────────────────────────── */
+
+/* Focus : le lien remplit l'aside (overflow: hidden) — un anneau sur le lien
+   serait clippé. L'hôte porte l'anneau, le lien neutralise celui de theatrical. */
+.lantern:has(> .lantern__trigger:focus-visible) {
+  outline: 2px solid rgb(var(--color-gold-rgb) / 0.7);
+  outline-offset: 3px;
+}
+
+.lantern:has(> .lantern__trigger:focus-visible)::after {
+  opacity: 1;
+}
+
+.lantern__trigger:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.lantern__trigger:focus-visible .lantern__cta-arrow {
+  transform: translateX(4px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lantern:hover::after {
+    opacity: 1;
+  }
+
+  .lantern:hover .lantern__rune-halo {
+    --lantern-halo: 0.7;
+  }
+
+  .lantern:hover .lantern__rune {
+    filter: drop-shadow(0 0 16px rgb(var(--color-ember-rgb) / 0.55));
+  }
+
+  .lantern:hover .lantern__cta {
+    border-color: rgb(var(--color-gold-rgb) / 0.4);
+  }
+
+  .lantern:hover .lantern__cta-arrow {
+    transform: translateX(4px);
+  }
+}
+
+.lantern.is-igniting::after {
+  opacity: 1;
+}
+
+.lantern.is-igniting .lantern__rune-halo {
+  --lantern-halo: 0.85;
+
+  opacity: 1;
+  animation: none;
+}
+
+.lantern.is-igniting .lantern__rune {
+  filter: drop-shadow(0 0 22px rgb(var(--color-ember-rgb) / 0.7));
+  animation: none;
+}
+
+.lantern.is-igniting .lantern__trigger {
+  transform: scale(0.985);
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .lantern {
+    min-height: 0;
+    border-radius: 22px;
+  }
+
+  .lantern__trigger {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 1.1rem;
+    padding: 1.25rem 1.1rem;
+  }
+
+  .lantern__rune-frame {
+    width: 110px;
+    height: 110px;
+    justify-self: center;
+  }
+
+  .lantern__play {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lantern__haze,
+  .lantern__rune-halo,
+  .lantern__rune {
+    animation: none;
+  }
+
+  .lantern__ember {
+    display: none;
+    animation: none;
+  }
+
+  .lantern::after,
+  .lantern__rune,
+  .lantern__rune-halo,
+  .lantern__cta,
+  .lantern__cta-arrow {
+    transition: none;
+  }
+}

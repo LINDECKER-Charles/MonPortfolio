@@ -7,5 +7,10 @@
   "cta.secondary.top": "Professional",
   "cta.secondary.bottom": "See LinkedIn",
   "aria.landmarks": "Landmarks",
-  "cta.primary.icon_alt": "Professional journey"
+  "cta.primary.icon_alt": "Professional journey",
+  "chronicle.eyebrow": "Chronicle",
+  "chronicle.hint": "Latest milestones",
+  "chronicle.aria": "Latest career milestones",
+  "chronicle.now": "Today",
+  "chronicle.more": "See the whole journey"
 }

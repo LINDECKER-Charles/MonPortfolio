@@ -2,11 +2,13 @@ import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import gsap from 'gsap';
 
+import { AudioService } from '../../../../../../services/audio-service';
 import { HomeResumeSnippets } from './home-resume-snippets';
 
 describe('HomeResumeSnippets', () => {
   let component: HomeResumeSnippets;
   let fixture: ComponentFixture<HomeResumeSnippets>;
+  let audio: jasmine.SpyObj<AudioService>;
   let originalMatchMedia: typeof window.matchMedia;
 
   // GSAP is fully spied so no real DOM animation runs in headless.
@@ -39,9 +41,10 @@ describe('HomeResumeSnippets', () => {
   async function setup(simpleMotion: boolean): Promise<void> {
     spyGsap();
     setReducedMotion(simpleMotion);
+    audio = jasmine.createSpyObj<AudioService>('AudioService', ['playOnce']);
 
     await TestBed.configureTestingModule({
-      providers: [provideZonelessChangeDetection()],
+      providers: [provideZonelessChangeDetection(), { provide: AudioService, useValue: audio }],
       imports: [HomeResumeSnippets],
     }).compileComponents();
 
@@ -119,5 +122,34 @@ describe('HomeResumeSnippets', () => {
 
     api().toggleSnippet(id);
     expect(api().openId()).toBeNull();
+  });
+
+  it('plays the echo sound when a snippet opens', async () => {
+    await setup(false);
+
+    api().toggleSnippet(component.snippets[0].id);
+
+    expect(audio.playOnce).toHaveBeenCalledOnceWith('getEcho');
+  });
+
+  it('plays the returning echo when the open snippet closes', async () => {
+    await setup(false);
+    const id = component.snippets[0].id;
+
+    api().toggleSnippet(id);
+    audio.playOnce.calls.reset();
+    api().toggleSnippet(id);
+
+    expect(audio.playOnce).toHaveBeenCalledOnceWith('getbackEcho');
+  });
+
+  it('plays the echo when switching directly from one snippet to another', async () => {
+    await setup(true);
+    const [first, second] = component.snippets;
+
+    api().toggleSnippet(first.id);
+    api().toggleSnippet(second.id);
+
+    expect(audio.playOnce.calls.allArgs()).toEqual([['getEcho'], ['getEcho']]);
   });
 });

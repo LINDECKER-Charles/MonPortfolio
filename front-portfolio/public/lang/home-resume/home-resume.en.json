@@ -8,8 +8,6 @@
   "header.subtitle": "Developer / Trainer ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "View",
   "header.cta.resume.bottom": "My resume",
-  "header.cta.replay.top": "Replay",
-  "header.cta.replay.bottom": "The animation",
   "snippets.transmission.title": "Teaching & Knowledge Transfer",
   "snippets.transmission.content": "There is no better exercise than sharing knowledge: it tests our reasoning, clarifies our understanding of things and raises our level of excellence. A developer for 9 years, I place great importance on passing knowledge on to future developers.",
   "snippets.stack.title": "Stack & Technical Excellence",
@@ -29,5 +27,15 @@
   "header.cta.linktree.aria": "Linktree — all my links",
   "header.cta.linktree.bottom": "Linktree",
   "header.cta.veille.top": "Browse",
-  "header.cta.veille.bottom": "My tech watch"
+  "header.cta.veille.bottom": "My tech watch",
+  "lantern.eyebrow": "Opening sequence",
+  "lantern.eyebrow_unseen": "Opening sequence · never seen",
+  "lantern.title": "Enter the Dream",
+  "lantern.lead": "A cinematic, sound-driven opening — title-screen style — before reaching the home page.",
+  "lantern.meta.sound": "Sound recommended",
+  "lantern.meta.duration": "≈ 30 s",
+  "lantern.meta.skippable": "Skippable at any time",
+  "lantern.cta.top": "Play",
+  "lantern.cta.bottom": "The cinematic",
+  "lantern.rune_alt": "Hunter's rune"
 }

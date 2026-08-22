@@ -7,5 +7,9 @@
   "cta.secondary.top": "Open Source",
   "cta.secondary.bottom": "Vedi GitHub",
   "stack.aria": "Tecnologie principali",
-  "cta.primary.icon_alt": "Esplora i progetti"
+  "cta.primary.icon_alt": "Esplora i progetti",
+  "relics.eyebrow": "Reliquiario",
+  "relics.hint": "Pezzi scelti",
+  "relics.aria": "Progetti in evidenza",
+  "relics.open": "Apri la scheda"
 }

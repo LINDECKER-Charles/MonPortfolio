@@ -8,8 +8,6 @@
   "header.subtitle": "MOV role, DEV_TRAINER ; ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "CALL read",
   "header.cta.resume.bottom": "LEA AX, my_resume",
-  "header.cta.replay.top": "CALL restart",
-  "header.cta.replay.bottom": "JMP anim_start",
   "snippets.transmission.title": "PROC transmission_and_teaching",
   "snippets.transmission.content": "PUSH knowledge; CALL share; TEST reasoning, CLEAR; JNZ level_up; MOV exp_years, 9; CMP commitment, MAX; JGE train_next_gen ; THE BEST EXERCISE IS SHARING",
   "snippets.stack.title": "PROC stack_excellence",

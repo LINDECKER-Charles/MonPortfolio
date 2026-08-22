@@ -1,0 +1,70 @@
+<div class="chronicle-head">
+  <span class="chronicle-head__eyebrow text-rune">{{
+    ts.translate('home-work.chronicle.eyebrow')
+  }}</span>
+  <span class="chronicle-head__hint">{{ ts.translate('home-work.chronicle.hint') }}</span>
+</div>
+
+<div class="chronicle-scroll">
+  <!-- role="list" explicite : list-style: none retire la sémantique de liste sous Safari/VoiceOver. -->
+  <ol
+    class="chronicle"
+    role="list"
+    [attr.aria-label]="ts.translate('home-work.chronicle.aria')"
+    [style.--chronicle-count]="milestones.length"
+    [style.--chronicle-fill]="fill()"
+    (mouseleave)="rest()"
+    (focusout)="onFocusOut($event)"
+  >
+    @for (m of milestones; track m.id; let i = $index; let last = $last) {
+      <li
+        class="chronicle__milestone transition-ritual emerge-ritual"
+        [class.is-active]="activeIndex() === i"
+        [class.is-current]="m.isCurrent"
+        (mouseenter)="activate(i)"
+        (focusin)="activate(i)"
+      >
+        <a class="chronicle__node transition-ritual" routerLink="/works" href="/works">
+          <span class="chronicle__seal transition-ritual">
+            @if (m.logo) {
+              <app-responsive-picture
+                [sources]="m.logo.sources"
+                [fallbackSrc]="m.logo.fallbackSrc"
+                [alt]="m.organismName"
+                loading="lazy"
+                decoding="async"
+                objectFit="contain"
+              >
+              </app-responsive-picture>
+            } @else {
+              <span class="chronicle__monogram text-sigil" aria-hidden="true">{{
+                m.monogram
+              }}</span>
+            }
+          </span>
+
+          <span class="chronicle__year text-rune">
+            {{ m.year }}
+            <!-- Plusieurs jalons peuvent être en cours : la braise les marque tous,
+                 le libellé « Aujourd'hui » n'est affiché que sur le plus récent
+                 (les autres le gardent pour les lecteurs d'écran). -->
+            @if (m.isCurrent) {
+              <span class="chronicle__now">
+                <span class="chronicle__ember flicker-candle" aria-hidden="true"></span>
+                <span [class.sr-only]="!last">{{ ts.translate('home-work.chronicle.now') }}</span>
+              </span>
+            }
+          </span>
+
+          <span class="chronicle__title">{{ title(m) }}</span>
+          <span class="chronicle__kind text-tag">{{ kind(m) }}</span>
+          <span class="chronicle__detail">{{ m.organismName }} · {{ location(m) }}</span>
+        </a>
+      </li>
+    }
+  </ol>
+</div>
+
+<a class="chronicle__more chip chip--ghost transition-ritual" routerLink="/works" href="/works">
+  {{ ts.translate('home-work.chronicle.more') }}
+</a>

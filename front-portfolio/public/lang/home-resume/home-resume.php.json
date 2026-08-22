@@ -8,8 +8,6 @@
   "header.subtitle": "$dev = new Developer(); $dev->role = 'Formateur'; $dev->stack = array('ASP.NET', 'Angular', 'Symfony'); echo implode(' & ', $dev->stack); // look ma, no type hints",
   "header.cta.resume.top": "include('consulter.php'); // the file is empty but removing it breaks everything",
   "header.cta.resume.bottom": "$_GET['resume'] // user can request any resume via URL. security? never heard of her.",
-  "header.cta.replay.top": "header('Refresh: 0'); // replay = refresh the page. revolutionary.",
-  "header.cta.replay.bottom": "ob_start(); // buffering the animation... in PHP... on the server",
   "snippets.transmission.title": "class Transmission { var $title; } // PHP 4 class: var keyword, no visibility, no types, pure chaos",
   "snippets.transmission.content": "<?php /* Teaching others is how I realized my own code was garbage. 9 years of development, and the best lesson was explaining to a student why mysql_query is bad while my entire app uses it. The irony is not lost on me. include('knowledge.php'); // knowledge.php includes wisdom.php which includes knowledge.php. Infinite recursion is just deep learning. */ ?>",
   "snippets.stack.title": "phpversion(); // returns '4.4.9'. we don't talk about it.",

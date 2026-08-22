@@ -99,6 +99,10 @@
     text-shadow var(--duration-slow) ease;
 }
 
+.about-snippet.is-open .about-snippet__trigger h3 {
+  text-shadow: 0 0 12px rgb(var(--color-blood-rgb) / 0.18);
+}
+
 .about-snippet__icon {
   width: 28px;
   height: 28px;

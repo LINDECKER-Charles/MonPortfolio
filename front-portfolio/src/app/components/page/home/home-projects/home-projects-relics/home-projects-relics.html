@@ -1,0 +1,86 @@
+<div class="relics">
+  <div class="relics__head emerge-ritual">
+    <span class="relics__eyebrow text-rune">{{
+      ts.translate('home-projects.relics.eyebrow')
+    }}</span>
+    <span class="relics__hint">{{ ts.translate('home-projects.relics.hint') }}</span>
+  </div>
+
+  <!-- role="list" explicite : list-style: none retire la sémantique de liste sous Safari/VoiceOver. -->
+  <ul
+    class="relics__track"
+    role="list"
+    [attr.aria-label]="ts.translate('home-projects.relics.aria')"
+  >
+    @for (relic of relics; track relic.id) {
+      <li class="relics__item emerge-ritual">
+        <a
+          class="relic transition-ritual"
+          routerLink="/projects"
+          href="/projects"
+          appTilt
+          [tiltMax]="3"
+        >
+          <div class="relic__frame transition-ritual">
+            <div class="relic__media">
+              @if (relic.image; as image) {
+                <app-responsive-picture
+                  [sources]="image.sources"
+                  [fallbackSrc]="image.fallbackSrc"
+                  [alt]="image.alt"
+                  loading="lazy"
+                  decoding="async"
+                  objectFit="cover"
+                  sizes="(max-width: 640px) 80vw, 280px"
+                >
+                </app-responsive-picture>
+              }
+              <span class="relic__shade" aria-hidden="true"></span>
+            </div>
+
+            <svg class="relic__seal" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="1" />
+              <circle
+                cx="20"
+                cy="20"
+                r="10"
+                stroke="currentColor"
+                stroke-width="0.6"
+                opacity="0.6"
+              />
+              <circle cx="20" cy="20" r="2.2" fill="currentColor" />
+            </svg>
+
+            <div class="relic__body">
+              <span class="relic__meta">
+                <span class="relic__category text-tag">{{
+                  ts.translate('projects.filter.' + relic.category)
+                }}</span>
+                <span class="relic__status text-tag" [class.relic__status--live]="relic.live">
+                  @if (relic.live) {
+                    <span class="relic__pip flicker-candle" aria-hidden="true"></span>
+                  }
+                  {{ ts.translate('projects.status.' + relic.status) }}
+                </span>
+                <span class="relic__year">{{ relic.year }}</span>
+              </span>
+
+              <h3 class="relic__title text-engraved text-engraved--carved">{{ relic.title }}</h3>
+
+              <span class="relic__stack">
+                @for (tool of relic.stack; track tool) {
+                  <span class="relic__tool text-tag">{{ tool }}</span>
+                }
+              </span>
+
+              <span class="relic__open">
+                {{ ts.translate('home-projects.relics.open') }}
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </div>
+        </a>
+      </li>
+    }
+  </ul>
+</div>

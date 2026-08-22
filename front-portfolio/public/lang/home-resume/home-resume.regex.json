@@ -8,8 +8,6 @@
   "header.subtitle": "/d[eé]v(?:elop+[eè]ur)?\\s*\\/\\s*form(?:ateur|er)\\s+ASP\\.NET/i",
   "header.cta.resume.top": "/^consult(?:er|are)?$/i",
   "header.cta.resume.bottom": "/m[o0]n\\s+r[eé]sum[eé]?/i",
-  "header.cta.replay.top": "/^re(?:lanc|play|start)(?:er)?$/i",
-  "header.cta.replay.bottom": "/l'?anim(?:ation)?/i",
   "snippets.transmission.title": "/transmiss(?:ion)?\\s*[&+]\\s*(?:enseign(?:ement)?|teach(?:ing)?)/i",
   "snippets.transmission.content": "(?:no|il\\s+n'existe\\s+pas\\s+de)\\s+(?:better|meilleur)\\s+(?:exercise|exercice)\\s+(?:than|que)\\s+(?:sharing|partage)\\s+(?:of\\s+)?knowledge.*(?:dev(?:elop)?|d[eé]v)(?:elop+[eè]ur)?\\s+(?:since|depuis)\\s+\\d+\\s+(?:ans|years)",
   "snippets.stack.title": "/stack\\s*[&+]\\s*excell(?:ence)?\\s+tech(?:nique|nical)?/i",
