@@ -22,7 +22,7 @@ module.exports = {
       numberOfRuns: 3,
       settings: {
         preset: 'desktop',
-        // Les assets lourds viennent d'images.charles-lindecker.com : la perf
+        // Les assets lourds (images/ sous /img) pèsent sur la perf : la perf
         // mesurée en CI dépend du réseau, d'où le seuil en warn plus bas.
         skipAudits: ['uses-http2'],
       },

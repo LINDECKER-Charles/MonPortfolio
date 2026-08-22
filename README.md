@@ -1,15 +1,16 @@
 # MonPortfolio
 
-Portfolio personnel de Charles Lindecker — application Angular 20 SSR/SSG à thème Bloodborne, en ligne sur [charles-lindecker.com](https://charles-lindecker.com).
+Portfolio personnel de Charles Lindecker — application Angular 22 SSR/SSG à thème Bloodborne, en ligne sur [charles-lindecker.com](https://charles-lindecker.com).
 
 ## Structure du monorepo
 
 | Dossier | Rôle |
 |---|---|
 | [`front-portfolio/`](front-portfolio/) | Application Angular (SSR + prerender, serveur Express) |
-| [`images/`](images/) | Source de vérité du serveur d'images statique (`images.charles-lindecker.com`), rsync vers le VPS par la CI |
-| [`config/`](config/) | Templates de vhosts Apache (`*.conf.template`), rendus par `envsubst` au déploiement |
-| [`.github/workflows/`](.github/workflows/) | Pipelines CI/CD : test (push `dev`) et prod (push `main`) |
+| [`images/`](images/) | Images statiques servies sous `/img`, embarquées dans l'image Docker du front |
+| [`docker/`](docker/) | `front/Dockerfile` (image de production, multi-stage) + nginx images de dev |
+| [`infra/edge/`](infra/edge/) | Edge proxy Caddy partagé du VPS (TLS automatique, routage par labels) |
+| [`.github/workflows/`](.github/workflows/) | Pipeline CI/CD *build-once* : tests → image GHCR → staging (push `dev`) → promotion prod (merge `test → main`) |
 | [`docs/`](docs/) | Documentation technique (architecture, investigations, refactos, légal) |
 | [`design/`](design/) | Maquettes HTML et wireframes archivés |
 
@@ -17,7 +18,7 @@ Portfolio personnel de Charles Lindecker — application Angular 20 SSR/SSG à t
 
 ### Stack
 
-- **Angular 20** — composants standalone exclusivement, change detection zoneless (signals)
+- **Angular 22** — composants standalone exclusivement, change detection zoneless (signals)
 - **SSR** — `@angular/ssr` + Express (`src/server.ts`), compression activée
 - **Tailwind CSS 4** + design tokens Bloodborne (`src/styles/tokens.css`)
 - **GSAP** — séquences d'ouverture, reveals, micro-interactions
@@ -61,10 +62,14 @@ npm run lint:css                       # Stylelint sur src/**/*.css
 
 ## Déploiement
 
-- CI GitHub Actions : lint + tests + build sur le runner, artefact `dist/` déployé sur le VPS via SSH, service SSR Node redémarré.
-- Push sur `dev` → environnement de test (+ e2e Playwright, + rsync de `images/` vers le serveur d'images) ; push sur `main` → production.
-- Apache fait reverse-proxy vers le serveur SSR Node ; le vhost images sert `images/` en statique.
-- Les vhosts sont rendus depuis [`config/*.conf.template`](config/) par le workflow réutilisable [`deploy-apache.yml`](.github/workflows/deploy-apache.yml) — détail dans [`config/README.md`](config/README.md).
+- Application **dockerisée** : une image `front` (Node 24, bundle SSR autonome + `images/` sous `/img`),
+  construite une seule fois par la CI et publiée sur GHCR (`ghcr.io/lindecker-charles/monportfolio/front`).
+- Push sur `dev` → tests (lint, unitaires, e2e) → merge `dev → test` → build `:staging` → déploiement **staging**
+  (`test.charles-lindecker.com`) ; merge manuel `test → main` → retag `:prod` (sans rebuild) → déploiement **prod**.
+- Sur le VPS : `docker compose` par environnement (`monportfolio-staging` / `monportfolio-prod`) derrière un
+  edge proxy Caddy partagé ([`infra/edge/`](infra/edge/)) qui gère TLS et routage par labels.
+- Détails : [`docs/deploiement.md`](docs/deploiement.md) (architecture, migration de serveur, exploitation) et
+  [`docs/DEVOPS-SECRETS.md`](docs/DEVOPS-SECRETS.md) (secrets GitHub).
 
 ## Documentation
 
@@ -73,4 +78,3 @@ npm run lint:css                       # Stylelint sur src/**/*.css
 - [Refactos](docs/refacto/) — chantiers de maintenabilité
 - [Audit UI/UX](docs/audit-ui-ux.md)
 - [Légal](docs/legal/) — sources des pages mentions légales / confidentialité / cookies
-- Conventions et direction artistique : [`front-portfolio/CLAUDE.md`](front-portfolio/CLAUDE.md)

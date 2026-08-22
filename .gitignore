@@ -16,6 +16,9 @@ karma.log
 .env
 .env.*
 !.env.example
+!.env.*.example
+/scripts/secrets.local.env
+/docs/DEVOPS-SECRETS.local.md
 
 # --- IDE / OS ---
 .idea/
@@ -29,11 +32,8 @@ Thumbs.db
 ~$*
 *~
 
-# --- Config Apache rendue (générée depuis config/*.conf.template) ---
-config/*.conf
-config/staging/
-# Valeurs d'environnement réelles (repo public : topologie non exposée)
-config/README.md
+# --- Legacy Apache (dossier config/ retiré du repo ; valeurs locales conservées) ---
+config/
 
 # --- Docs & outils locaux non versionnés ---
 FUNCTIONAL_SPEC.md

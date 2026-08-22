@@ -1,0 +1,84 @@
+name: _tests
+
+# Reusable: the project's quality gate. Single responsibility = "is the code green?".
+# Called by ci.yml on dev pushes and on PRs into dev. No deploy, no registry access.
+#
+# Un seul runtime (Node, version = .nvmrc) : audit des deps prod, lint (ESLint +
+# Stylelint), format (Prettier), tests unitaires + coverage (seuils karma.conf.js),
+# build SSR, e2e + a11y Playwright contre ce build. Aucun secret requis : la config
+# build-time (gen-env.mjs) retombe sur ses défauts de production.
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+env:
+  FRONT_DIR: front-portfolio
+
+jobs:
+  front:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: front-portfolio
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: front-portfolio/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Lint (ESLint + Stylelint)
+        run: npm run lint
+
+      - name: Check formatting (Prettier)
+        run: npm run format:check
+
+      # shell: bash => pipefail : l'échec de ng test fait échouer le step malgré le tee
+      - name: Run unit tests + coverage
+        shell: bash
+        run: npx ng test --no-watch --code-coverage --browsers=ChromeHeadless 2>&1 | tee karma.log
+
+      - name: Publish test & coverage summary
+        if: always()
+        run: node "$GITHUB_WORKSPACE/.github/scripts/test-summary.mjs" karma.log >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-report
+          path: ${{ env.FRONT_DIR }}/coverage
+          if-no-files-found: ignore
+
+      # Build de contrôle (même commande que dans l'image Docker) : les e2e tournent
+      # contre ce dist/ — l'artefact déployé est l'image construite par _build.yml.
+      - name: Build Angular app
+        run: npm run build
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      # Les images sont servies par Express sous /img depuis ../images (défaut
+      # IMAGES_DIR) ; les specs navigateur les stubbent quand même (hermétiques).
+      - name: Run e2e + a11y tests (Playwright)
+        run: npm run e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: ${{ env.FRONT_DIR }}/playwright-report
+          if-no-files-found: ignore

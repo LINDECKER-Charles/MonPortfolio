@@ -1,0 +1,164 @@
+name: _deploy
+
+# Reusable: deploy the stack to ONE host over SSH. Same logic for staging and prod —
+# the environment is fully parameterized by inputs + secrets (DRY / open-closed).
+# No environment-specific value is hardcoded here; everything sensitive comes from
+# the caller's secrets, and the host config (domains, tags, app secrets) lives in
+# ENV_FILE, pushed to the host as .env.
+#
+# Après `up` : contrôle de santé du conteneur, puis contrat PUBLIC (TLS + prérendu
+# SSG + /health) sur chaque domaine de CADDY_DOMAINS, avec self-heal du certificat
+# edge — un domaine ne doit jamais rester silencieusement sans cert ou en fallback CSR
+# (incidents allowedHosts / câblage croisé, cf. docs/investigations).
+on:
+  workflow_call:
+    inputs:
+      branch:
+        description: Branch the target host tracks and pulls (test | main).
+        required: true
+        type: string
+    secrets:
+      SSH_KEY:
+        description: SSH private key (PEM) for the target host.
+        required: true
+      SSH_HOST:
+        description: Target host (IP or FQDN).
+        required: true
+      DEPLOY_PATH:
+        description: Absolute project path on the host (dir holding compose.*.yaml).
+        required: true
+      SSH_USER:
+        description: SSH user (defaults to root when unset).
+        required: false
+      ENV_FILE:
+        description: Full dotenv for this host, written to ${DEPLOY_PATH}/.env.
+        required: true
+      ACME_EMAIL:
+        description: Let's Encrypt contact for the VPS-global edge proxy (infra/edge).
+        required: true
+      REPO_URL:
+        description: HTTPS clone URL used to init the repo on a fresh host (optional; falls back to the built-in default).
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.10.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Known hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Push env to host (from ENV_FILE secret)
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: |
+          ssh ${{ secrets.SSH_USER || 'root' }}@${{ secrets.SSH_HOST }} "mkdir -p ${{ secrets.DEPLOY_PATH }}"
+          printf '%s\n' "$ENV_FILE" \
+            | ssh ${{ secrets.SSH_USER || 'root' }}@${{ secrets.SSH_HOST }} "cat > ${{ secrets.DEPLOY_PATH }}/.env"
+
+      - name: Deploy (compose pull + up)
+        run: |
+          ssh ${{ secrets.SSH_USER || 'root' }}@${{ secrets.SSH_HOST }} <<'EOSSH'
+            set -e
+            mkdir -p ${{ secrets.DEPLOY_PATH }}
+            cd ${{ secrets.DEPLOY_PATH }}
+            # Idempotent init: `git clone .` refuses a non-empty dir (the .env was pushed
+            # here in the previous step). `git init` + remote tolerates that, and
+            # `reset --hard` never touches the untracked .env.
+            if [ ! -d .git ]; then
+              git init -q
+              git remote add origin ${{ secrets.REPO_URL || 'https://github.com/LINDECKER-Charles/MonPortfolio.git' }}
+            fi
+            # Deploy overlay (edge labels + external network), WITHOUT
+            # compose.override.yaml (dev conveniences).
+            export COMPOSE_FILE=compose.yaml:compose.deploy.yaml
+            git fetch origin ${{ inputs.branch }}
+            git checkout -B ${{ inputs.branch }} origin/${{ inputs.branch }}
+            git reset --hard origin/${{ inputs.branch }}
+            # ── Edge proxy (VPS-global, idempotent self-heal) ────────────────────
+            # Single public TLS entrypoint shared by every project on the host.
+            # Ensured on each deploy so a fresh/rebuilt box needs zero manual step:
+            # the network, the stack files (from the repo, pinned to a stable path
+            # so the bind-mount source never flaps between staging/prod deploys) and
+            # the proxy itself are (re)converged before the app comes up.
+            docker network inspect edge >/dev/null 2>&1 || docker network create edge
+            mkdir -p /opt/edge
+            cp infra/edge/compose.yaml infra/edge/Caddyfile /opt/edge/
+            printf 'ACME_EMAIL=%s\n' '${{ secrets.ACME_EMAIL }}' > /opt/edge/.env
+            docker compose -f /opt/edge/compose.yaml --env-file /opt/edge/.env up -d
+            # Resilient pull: the registry sometimes breaks a layer mid-copy
+            # (connection reset by peer). Retry with backoff before giving up, else
+            # `up` would fall back to a heavy local build of the `build:` services.
+            for attempt in 1 2 3 4 5; do
+              if docker compose pull; then break; fi
+              [ "$attempt" = 5 ] && { echo "docker compose pull: failed after 5 attempts" >&2; exit 1; }
+              echo "pull failed (attempt $attempt), retry in $((attempt * 10))s…" >&2
+              sleep $((attempt * 10))
+            done
+            docker compose up -d --remove-orphans
+            docker image prune -f
+            # ── Santé du conteneur (avant de juger l'edge) ──────────────────────
+            # Même sonde que le HEALTHCHECK de l'image ; 30 × 2 s couvre le démarrage.
+            healthy=0
+            for _ in $(seq 1 30); do
+              if docker compose exec -T front wget -qO- http://127.0.0.1:4000/health >/dev/null 2>&1; then healthy=1; break; fi
+              sleep 2
+            done
+            if [ "$healthy" != 1 ]; then
+              echo "::error::front ne répond pas sur /health — logs :" >&2
+              docker compose logs --tail 50 front >&2 || true
+              exit 1
+            fi
+            # ── Contrat public (TLS + /health + SSG) + self-heal du cert edge ──────
+            # Deux contrats distincts :
+            #  · transport (DNS/TLS/cert) : curl SANS -f — un code HTTP n'est jamais un
+            #    échec ici (exit 35/60/7/28 uniquement). Seul ce cas justifie de relancer
+            #    l'edge PARTAGÉ (coupure de quelques secondes pour tous les tenants) ;
+            #  · applicatif (HTTP ≥ 400 sur /health, shell CSR au lieu du prérendu) :
+            #    quelques tentatives (caddy-docker-proxy reconverge ses upstreams par
+            #    polling), puis échec SANS toucher à l'edge.
+            # If issuance failed earlier (e.g. DNS not yet pointing here on the first
+            # attempt), the cert stays stuck in back-off and a plain `up -d` never
+            # retries it: one forced edge reload re-attempts issuance.
+            assert_transport() {
+              for domain in $(grep -E '^CADDY_DOMAINS=' .env | cut -d= -f2- | tr -d '"' | tr ',' ' '); do
+                curl -sS --max-time 10 -o /dev/null "https://${domain}/health" || return 1
+              done
+            }
+            assert_app() {
+              for domain in $(grep -E '^CADDY_DOMAINS=' .env | cut -d= -f2- | tr -d '"' | tr ',' ' '); do
+                ok=0
+                for _ in $(seq 1 6); do
+                  if curl -fsS --max-time 10 "https://${domain}/health" >/dev/null 2>&1; then ok=1; break; fi
+                  sleep 5
+                done
+                [ "$ok" = 1 ] || { echo "::error::https://${domain}/health ne répond pas 2xx derrière l'edge" >&2; return 1; }
+                html="$(curl -fsS --max-time 10 "https://${domain}/")" || { echo "::error::https://${domain}/ injoignable" >&2; return 1; }
+                printf '%s' "$html" | grep -q 'ng-server-context="ssg' || { echo "::error::https://${domain}/ ne sert pas le prérendu SSG (vérifier NG_ALLOWED_HOSTS)" >&2; return 1; }
+              done
+            }
+            if ! assert_transport; then
+              echo "TLS check failed — forcing edge to re-attempt certificate issuance…" >&2
+              docker compose -f /opt/edge/compose.yaml --env-file /opt/edge/.env restart caddy
+              recovered=0
+              for _ in $(seq 1 18); do   # up to ~90s: challenge solve is usually a few seconds
+                sleep 5
+                if assert_transport; then recovered=1; break; fi
+              done
+              if [ "$recovered" != 1 ]; then
+                echo "TLS still failing after edge reload. Check DNS (A -> this host), CAA, LE rate-limits:" >&2
+                docker compose -f /opt/edge/compose.yaml --env-file /opt/edge/.env logs --since 3m caddy 2>&1                   | grep -iE 'challenge failed|could not get certificate|rateLimited|unauthorized' >&2 || true
+                exit 1
+              fi
+              echo "TLS recovered after edge reload."
+            fi
+            assert_app
+            echo "Public OK (TLS + /health + SSG) for all CADDY_DOMAINS."
+          EOSSH
