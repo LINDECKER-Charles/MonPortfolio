@@ -3,14 +3,45 @@
   width: 100%;
 }
 
-/* Look via .surface-altar — on garde que le layout propre à home-work. */
+/* Look via .surface-altar — on garde que le layout propre à home-work.
+   position/overflow : la lumière de lanterne (.lantern-light) est une couche
+   absolue sous le contenu, clipée par l'arrondi de la plaque.
+   Ordre DOM = intro → actions → chronique ; les areas placent les zones
+   indépendamment de cet ordre (CTA à gauche du texte en desktop). */
 .home-work {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(280px, 360px) minmax(0, 1.35fr);
-  gap: 1.5rem;
+  grid-template-areas:
+    'actions intro'
+    'chronicle chronicle';
+  gap: 0 1.5rem;
   align-items: stretch;
   padding: 1.6rem;
   border-radius: 28px;
+}
+
+.home-work__actions,
+.home-work__intro,
+.home-work__chronicle {
+  position: relative;
+  z-index: 1;
+}
+
+.home-work__actions {
+  grid-area: actions;
+}
+
+.home-work__intro {
+  grid-area: intro;
+}
+
+.home-work__chronicle {
+  grid-area: chronicle;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: var(--border-ash);
 }
 
 /* Stagger de l'entrance rituelle (.emerge-ritual, cf. ornaments.css) */
@@ -101,20 +132,27 @@
 }
 
 @media (max-width: 980px) {
+  /* Ordre DOM = ordre visuel (intro → CTA → chronique) : le CTA principal
+     reste collé au texte qu'il prolonge, la frise scrollable ferme la plaque. */
   .home-work {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      'intro'
+      'actions'
+      'chronicle';
   }
 
   .home-work__actions {
-    order: 2;
+    margin-top: 1.2rem;
     padding-right: 0;
     padding-top: 1rem;
     border-right: 0;
     border-top: var(--border-ash);
   }
 
-  .home-work__intro {
-    order: 1;
+  .home-work__chronicle {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
   }
 }
 
@@ -122,11 +160,15 @@
   .home-work {
     padding: 1.2rem 1rem;
     border-radius: 22px;
-    gap: 1.2rem;
   }
 
   .home-work__actions .cta-tome {
     width: 100%;
+  }
+
+  .home-work__chronicle {
+    margin-top: 1rem;
+    padding-top: 1rem;
   }
 
   .home-work__rail-item {

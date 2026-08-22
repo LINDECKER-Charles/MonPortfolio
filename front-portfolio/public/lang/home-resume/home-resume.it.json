@@ -8,8 +8,6 @@
   "header.subtitle": "Sviluppatore / Formatore ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "Consultare",
   "header.cta.resume.bottom": "Il mio CV",
-  "header.cta.replay.top": "Ripetere",
-  "header.cta.replay.bottom": "L'animazione",
   "snippets.transmission.title": "Insegnamento & Trasmissione del Sapere",
   "snippets.transmission.content": "Non esiste esercizio migliore della condivisione della conoscenza: mette alla prova il nostro ragionamento, chiarisce la nostra comprensione delle cose e alza il nostro livello di esigenza. Sviluppatore da 9 anni, attribuisco grande importanza alla trasmissione ai futuri sviluppatori.",
   "snippets.stack.title": "Stack & Eccellenza Tecnica",
@@ -29,5 +27,15 @@
   "header.cta.linktree.aria": "Linktree — tutti i link",
   "header.cta.linktree.bottom": "Linktree",
   "header.cta.veille.top": "Consultare",
-  "header.cta.veille.bottom": "La mia tech watch"
+  "header.cta.veille.bottom": "La mia tech watch",
+  "lantern.eyebrow": "Sequenza d'apertura",
+  "lantern.eyebrow_unseen": "Sequenza d'apertura · mai vista",
+  "lantern.title": "Entrare nel Sogno",
+  "lantern.lead": "Un'apertura cinematografica e sonora, in stile schermata del titolo, prima di raggiungere la home.",
+  "lantern.meta.sound": "Audio consigliato",
+  "lantern.meta.duration": "≈ 30 s",
+  "lantern.meta.skippable": "Saltabile in qualsiasi momento",
+  "lantern.cta.top": "Avviare",
+  "lantern.cta.bottom": "La cinematica",
+  "lantern.rune_alt": "Runa del Cacciatore"
 }

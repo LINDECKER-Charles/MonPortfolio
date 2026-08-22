@@ -1,0 +1,99 @@
+<aside
+  class="lantern surface-crypt surface-vignetted--deep emerge-ritual"
+  [class.is-igniting]="igniting()"
+  appLanternLight
+  appTilt
+  [tiltMax]="2"
+  [tiltPerspective]="1200"
+>
+  <span class="lantern-light" aria-hidden="true"></span>
+  <span class="lantern__haze" aria-hidden="true"></span>
+  <span class="lantern__embers" aria-hidden="true">
+    <span class="lantern__ember"></span>
+    <span class="lantern__ember"></span>
+    <span class="lantern__ember"></span>
+    <span class="lantern__ember"></span>
+    <span class="lantern__ember"></span>
+    <span class="lantern__ember"></span>
+  </span>
+
+  <!-- Nom accessible = titre + CTA visibles (WCAG 2.5.3 label-in-name), pas d'aria-label.
+       Pas de routerLink : il naviguerait avant l'ignition (cf. ignite). -->
+  <a
+    class="lantern__trigger transition-ritual"
+    href="/opening-home?replay=1"
+    (click)="ignite($event)"
+    aria-labelledby="lantern-title lantern-cta"
+  >
+    <span class="lantern__rune-frame" #runeFrame>
+      <span class="lantern__rune-halo" #halo aria-hidden="true"></span>
+      <span class="lantern__rune">
+        <app-responsive-picture
+          [sources]="runeSources"
+          [fallbackSrc]="runeFallback"
+          [alt]="ts.translate('home-resume.lantern.rune_alt')"
+          sizes="(max-width: 640px) 110px, 150px"
+          loading="eager"
+          decoding="async"
+          objectFit="contain"
+        >
+        </app-responsive-picture>
+      </span>
+      <span class="lantern__play lantern__gilt" aria-hidden="true"></span>
+    </span>
+
+    <span class="lantern__copy">
+      <span class="lantern__eyebrow text-rune">
+        @if (seen()) {
+          {{ ts.translate('home-resume.lantern.eyebrow') }}
+        } @else {
+          <span class="lantern__spark flicker-candle" aria-hidden="true"></span>
+          {{ ts.translate('home-resume.lantern.eyebrow_unseen') }}
+        }
+      </span>
+
+      <span id="lantern-title" class="lantern__title text-engraved text-engraved--deep">{{
+        ts.translate('home-resume.lantern.title')
+      }}</span>
+
+      <span class="lantern__lead text-tome">{{ ts.translate('home-resume.lantern.lead') }}</span>
+
+      <span class="lantern__meta">
+        <span class="lantern__chip">
+          <svg
+            class="lantern__chip-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 9v6h4l5 4V5L8 9H4z" />
+            <path d="M16 9a4 4 0 010 6" />
+            <path d="M18.5 6.5a8 8 0 010 11" />
+          </svg>
+          {{ ts.translate('home-resume.lantern.meta.sound') }}
+        </span>
+        <span class="lantern__chip">{{ ts.translate('home-resume.lantern.meta.duration') }}</span>
+        <span class="lantern__chip">{{ ts.translate('home-resume.lantern.meta.skippable') }}</span>
+      </span>
+
+      <span class="lantern__cta lantern__gilt">
+        <span id="lantern-cta" class="lantern__cta-label cta-tome__label">
+          <span class="lantern__cta-top cta-tome__top">{{
+            ts.translate('home-resume.lantern.cta.top')
+          }}</span>
+          <span class="lantern__cta-bottom cta-tome__bottom">{{
+            ts.translate('home-resume.lantern.cta.bottom')
+          }}</span>
+        </span>
+        <span class="lantern__cta-arrow" aria-hidden="true">&rarr;</span>
+      </span>
+    </span>
+  </a>
+</aside>
+
+<!-- Voile d'ignition : déplacé vers <body> côté navigateur (cf. detachVeil). -->
+<div class="lantern__veil" aria-hidden="true" #veil></div>

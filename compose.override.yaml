@@ -16,6 +16,9 @@ services:
     environment:
       NODE_ENV: development
       IMAGES_DIR: /images
+      # Surcharge le PORT=4000 de compose.yaml : `ng serve` privilégie la variable
+      # d'env PORT sur `--port`, sinon le dev-server écoute 4000 et le mapping 4200 tombe à vide.
+      PORT: "4200"
     ports:
       - "${DEV_PORT:-4200}:4200"
     volumes:

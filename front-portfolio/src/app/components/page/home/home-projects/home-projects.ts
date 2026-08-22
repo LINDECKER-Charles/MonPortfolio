@@ -1,12 +1,14 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ResponsivePicture } from '../../../assets/responsive-picture/responsive-picture';
+import { LanternLightDirective } from '../../../../directives/lantern-light.directive';
 import { labeled, LabeledImageSet, SHARED_IMAGES } from '../../../../img-sources/shared.sources';
 import { TranslationService } from '../../../../services/translation.service';
+import { HomeProjectsRelics } from './home-projects-relics/home-projects-relics';
 
 @Component({
   selector: 'app-home-projects',
-  imports: [RouterLink, ResponsivePicture],
+  imports: [RouterLink, ResponsivePicture, LanternLightDirective, HomeProjectsRelics],
   templateUrl: './home-projects.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home-projects.css',

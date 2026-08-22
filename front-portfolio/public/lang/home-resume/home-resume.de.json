@@ -8,8 +8,6 @@
   "header.subtitle": "Entwickler / Trainer ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "Ansehen",
   "header.cta.resume.bottom": "Mein Lebenslauf",
-  "header.cta.replay.top": "Wiederholen",
-  "header.cta.replay.bottom": "Die Animation",
   "snippets.transmission.title": "Lehre & Wissensweitergabe",
   "snippets.transmission.content": "Es gibt keine bessere Übung als Wissen zu teilen: Es prüft unser Denken, klärt unser Verständnis und hebt unser Anspruchsniveau. Seit 9 Jahren Entwickler, lege ich großen Wert auf die Weitergabe an zukünftige Entwickler.",
   "snippets.stack.title": "Stack & Technische Exzellenz",
@@ -29,5 +27,15 @@
   "header.cta.linktree.aria": "Linktree — alle meine Links",
   "header.cta.linktree.bottom": "Linktree",
   "header.cta.veille.top": "Ansehen",
-  "header.cta.veille.bottom": "Mein Tech-Radar"
+  "header.cta.veille.bottom": "Mein Tech-Radar",
+  "lantern.eyebrow": "Eröffnungssequenz",
+  "lantern.eyebrow_unseen": "Eröffnungssequenz · noch nie gesehen",
+  "lantern.title": "Den Traum betreten",
+  "lantern.lead": "Eine filmische, vertonte Eröffnung im Stil eines Titelbildschirms, bevor es zur Startseite geht.",
+  "lantern.meta.sound": "Ton empfohlen",
+  "lantern.meta.duration": "≈ 30 s",
+  "lantern.meta.skippable": "Jederzeit überspringbar",
+  "lantern.cta.top": "Starten",
+  "lantern.cta.bottom": "Das Intro",
+  "lantern.rune_alt": "Rune des Jägers"
 }

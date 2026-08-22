@@ -8,8 +8,6 @@
   "header.subtitle": "const _r=()=>'Dev/Trainer';_r()+' ASP.NET&Angular&Symfony'",
   "header.cta.resume.top": "()=>fetch('/resume')",
   "header.cta.resume.bottom": "this._resume",
-  "header.cta.replay.top": "()=>replay()",
-  "header.cta.replay.bottom": "gsap.timeline().restart()",
   "snippets.transmission.title": "const teach=()=>'Transmission&Teaching'",
   "snippets.transmission.content": "const best=()=>{share(knowledge);verify(reasoning);raise(standards)};for(let y=0;y<9;y++){exp++}//train next gen devs",
   "snippets.stack.title": "const stack=()=>'Excellence'",

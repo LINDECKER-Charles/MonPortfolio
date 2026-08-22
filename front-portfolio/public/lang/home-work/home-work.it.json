@@ -7,5 +7,10 @@
   "cta.secondary.top": "Professionale",
   "cta.secondary.bottom": "Vedi LinkedIn",
   "aria.landmarks": "Punti di riferimento",
-  "cta.primary.icon_alt": "Percorso professionale"
+  "cta.primary.icon_alt": "Percorso professionale",
+  "chronicle.eyebrow": "Cronaca",
+  "chronicle.hint": "Ultime tappe",
+  "chronicle.aria": "Ultime tappe del percorso",
+  "chronicle.now": "Oggi",
+  "chronicle.more": "Vedi tutto il percorso"
 }

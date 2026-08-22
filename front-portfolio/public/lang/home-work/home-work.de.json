@@ -7,5 +7,10 @@
   "cta.secondary.top": "Professionell",
   "cta.secondary.bottom": "LinkedIn ansehen",
   "aria.landmarks": "Meilensteine",
-  "cta.primary.icon_alt": "Beruflicher Werdegang"
+  "cta.primary.icon_alt": "Beruflicher Werdegang",
+  "chronicle.eyebrow": "Chronik",
+  "chronicle.hint": "Letzte Meilensteine",
+  "chronicle.aria": "Letzte Meilensteine des Werdegangs",
+  "chronicle.now": "Heute",
+  "chronicle.more": "Den ganzen Werdegang ansehen"
 }

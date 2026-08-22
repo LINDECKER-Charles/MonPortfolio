@@ -1,4 +1,6 @@
-<section class="home-projects surface-altar">
+<section class="home-projects surface-altar" appLanternLight>
+  <span class="lantern-light" aria-hidden="true"></span>
+
   <div class="home-projects__intro emerge-ritual">
     <span class="home-projects__eyebrow text-rune">{{
       ts.translate('home-projects.eyebrow')
@@ -75,4 +77,6 @@
       </span>
     </a>
   </div>
+
+  <app-home-projects-relics class="home-projects__relics"></app-home-projects-relics>
 </section>

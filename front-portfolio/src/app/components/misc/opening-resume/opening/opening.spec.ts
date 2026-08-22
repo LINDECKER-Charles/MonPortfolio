@@ -1,5 +1,6 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
 
 import { Opening } from './opening';
 import { OpeningAnimationService } from './opening-animation.service';
@@ -12,8 +13,13 @@ describe('Opening', () => {
   let anim: jasmine.SpyObj<OpeningAnimationService>;
   let originalMatchMedia: typeof window.matchMedia;
 
+  /** Stub minimal d'ActivatedRoute : seuls les query params sont lus par Opening. */
+  function routeWithQuery(params: Record<string, string>): Partial<ActivatedRoute> {
+    return { snapshot: { queryParamMap: convertToParamMap(params) } } as Partial<ActivatedRoute>;
+  }
+
   /** Configure le TestBed après avoir préparé l'environnement (localStorage/URL/matchMedia). */
-  async function setup(): Promise<void> {
+  async function setup(queryParams?: Record<string, string>): Promise<void> {
     audio = jasmine.createSpyObj<AudioService>('AudioService', ['play']);
     anim = jasmine.createSpyObj<OpeningAnimationService>('OpeningAnimationService', [
       'prepareInitialState',
@@ -38,6 +44,9 @@ describe('Opening', () => {
         provideZonelessChangeDetection(),
         { provide: AudioService, useValue: audio },
         { provide: OpeningAnimationService, useValue: anim },
+        ...(queryParams
+          ? [{ provide: ActivatedRoute, useValue: routeWithQuery(queryParams) }]
+          : []),
       ],
       imports: [Opening],
     }).compileComponents();
@@ -168,6 +177,30 @@ describe('Opening', () => {
       component.ngAfterViewInit();
       expect(component.state).toBe('finished');
       expect(finished).toHaveBeenCalled();
+    });
+  });
+
+  describe('query params (ActivatedRoute)', () => {
+    it('bypasses when ?skip-opening is present', async () => {
+      await setup({ 'skip-opening': '' });
+      // Le bypass n'utilise aucun @ViewChild : on invoque le hook sans detectChanges
+      // (muter `state` pendant la première CD lèverait ExpressionChanged en test).
+      const finished = spyOn(component.finished, 'emit');
+      component.ngAfterViewInit();
+      expect(component.state).toBe('finished');
+      expect(finished).toHaveBeenCalled();
+    });
+
+    it('?replay wins over opening.seen and reduced-motion (explicit replay from home)', async () => {
+      localStorage.setItem('opening.seen', '1');
+      window.matchMedia = ((q: string) => ({ matches: true, media: q }) as MediaQueryList) as any;
+      await setup({ replay: '1' });
+      const finished = spyOn(component.finished, 'emit');
+      fixture.detectChanges(); // ngAfterViewInit
+      expect(component.state).toBe('sound-gate');
+      expect(finished).not.toHaveBeenCalled();
+      expect(anim.prepareInitialState).toHaveBeenCalled();
+      expect(anim.enterSoundState).toHaveBeenCalled();
     });
   });
 });

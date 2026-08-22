@@ -8,8 +8,6 @@
   "header.subtitle": "Développeur / Formateur ASP.NET & Angular & Symfony",
   "header.cta.resume.top": "Consulter",
   "header.cta.resume.bottom": "Mon resume",
-  "header.cta.replay.top": "Relancer",
-  "header.cta.replay.bottom": "L'animation",
   "snippets.transmission.title": "Transmission & Enseignement",
   "snippets.transmission.content": "Il n'existe pas de meilleur exercice que le partage de connaissance : il permet d'éprouver nos raisonnements, de clarifier notre conception des choses et d'élever notre niveau d'exigence. Développeur depuis 9 ans, j'accorde une grande importance à la transmission auprès des futurs développeurs.",
   "snippets.stack.title": "Stack & Excellence Technique",
@@ -29,5 +27,15 @@
   "header.cta.linktree.aria": "Linktree — tous mes liens",
   "header.cta.linktree.bottom": "Linktree",
   "header.cta.veille.top": "Consulter",
-  "header.cta.veille.bottom": "Ma veille"
+  "header.cta.veille.bottom": "Ma veille",
+  "lantern.eyebrow": "Séquence d'ouverture",
+  "lantern.eyebrow_unseen": "Séquence d'ouverture · jamais vue",
+  "lantern.title": "Entrer dans le Rêve",
+  "lantern.lead": "Une ouverture cinématique et sonore, façon écran-titre, avant de rejoindre l'accueil.",
+  "lantern.meta.sound": "Son recommandé",
+  "lantern.meta.duration": "≈ 30 s",
+  "lantern.meta.skippable": "Passable à tout moment",
+  "lantern.cta.top": "Lancer",
+  "lantern.cta.bottom": "La cinématique",
+  "lantern.rune_alt": "Rune du Chasseur"
 }

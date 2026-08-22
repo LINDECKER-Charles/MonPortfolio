@@ -1,0 +1,285 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+/* ── EN-TÊTE ─────────────────────────────────────────────────────────────── */
+
+.relics__head {
+  --emerge-delay: 0.16s;
+
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.relics__eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+}
+
+.relics__hint {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--color-ash-dim);
+}
+
+/* ── RANGÉE (scroll-snap) ────────────────────────────────────────────────── */
+
+/* Le padding interne laisse passer l'anneau de focus (outline + offset) sans
+   être rogné par overflow-x ; la marge négative le neutralise dans le layout. */
+.relics__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 1fr);
+  gap: 1rem;
+  margin: -0.4rem -0.4rem 0;
+  padding: 0.4rem 0.4rem 0.75rem;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0.4rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--color-gold-rgb) / 0.3) transparent;
+}
+
+.relics__item {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.relics__item:nth-child(1) {
+  --emerge-delay: 0.22s;
+}
+.relics__item:nth-child(2) {
+  --emerge-delay: 0.28s;
+}
+.relics__item:nth-child(3) {
+  --emerge-delay: 0.34s;
+}
+.relics__item:nth-child(4) {
+  --emerge-delay: 0.4s;
+}
+
+/* ── RELIQUE ─────────────────────────────────────────────────────────────── */
+
+.relic {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-card);
+  color: inherit;
+  text-decoration: none;
+}
+
+.relic__frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: var(--border-ash);
+  border-radius: var(--radius-card);
+  background: var(--gradient-stone-chip);
+  box-shadow: var(--shadow-chip);
+}
+
+.relic__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgb(var(--color-stone-abyss-rgb) / 0.6);
+}
+
+.relic__media app-responsive-picture {
+  filter: saturate(0.7) brightness(0.85);
+  transition:
+    transform var(--duration-slow) var(--ease-ritual),
+    filter var(--duration-slow) var(--ease-ritual);
+}
+
+.relic__shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 45%, rgb(var(--color-stone-rgb) / 0.92) 100%);
+}
+
+.relic__seal {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  color: var(--color-gold);
+  opacity: 0.45;
+  transition:
+    opacity var(--duration-slow) var(--ease-ritual),
+    filter var(--duration-slow) var(--ease-ritual);
+}
+
+.relic__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.8rem 0.9rem 0.95rem;
+}
+
+.relic__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+}
+
+.relic__category {
+  padding: 0.22rem 0.5rem;
+  border: 1px solid rgb(var(--color-ash-rgb) / 0.12);
+  border-radius: var(--radius-pill);
+  background: rgb(var(--color-white-rgb) / 0.03);
+  color: var(--color-ash);
+}
+
+.relic__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-ash-dim);
+}
+
+.relic__status--live {
+  color: var(--color-ember-soft);
+}
+
+.relic__pip {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-ember);
+  box-shadow: var(--glow-ember);
+}
+
+.relic__year {
+  margin-left: auto;
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-tag);
+  color: var(--color-gold-faint);
+}
+
+.relic__title {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.25;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.relic__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+}
+
+.relic__tool {
+  padding: 0.18rem 0.45rem;
+  border: 1px solid rgb(var(--color-gold-rgb) / 0.14);
+  border-radius: var(--radius-chip);
+  background: rgb(var(--color-gold-dim-rgb) / 0.12);
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  color: var(--color-parchment-dim);
+}
+
+.relic__open {
+  display: inline-flex;
+  gap: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: var(--tracking-sigil);
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--duration-slow) var(--ease-ritual),
+    transform var(--duration-slow) var(--ease-ritual);
+}
+
+/* ── ÉTATS ───────────────────────────────────────────────────────────────── */
+
+.relic:focus-visible .relic__frame {
+  border-color: rgb(var(--color-gold-rgb) / 0.45);
+}
+
+.relic:focus-visible .relic__seal,
+.relic:focus-visible .relic__open {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .relic:hover .relic__frame {
+    transform: translateY(-3px);
+    border-color: rgb(var(--color-ember-deep-rgb) / 0.35);
+    /* Pas de halo large : le scroller du reliquaire (overflow-x) rognerait l'ink
+       overflow au-delà du bleed de 0.4rem ; la braise est portée par le sceau. */
+    box-shadow:
+      var(--shadow-chip),
+      0 0 0 1px rgb(var(--color-ember-deep-rgb) / 0.12);
+  }
+
+  .relic:hover .relic__media app-responsive-picture {
+    transform: scale(1.04);
+    filter: saturate(1) brightness(1);
+  }
+
+  .relic:hover .relic__seal {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgb(var(--color-ember-rgb) / 0.55));
+  }
+
+  .relic:hover .relic__open {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Sans survol possible (tactile), l'invitation reste lisible en permanence. */
+@media (hover: none) {
+  .relic__open {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .relics__track {
+    gap: 0.75rem;
+  }
+
+  .relic__body {
+    padding: 0.7rem 0.8rem 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .relic__media app-responsive-picture,
+  .relic__seal,
+  .relic__open {
+    transition: none;
+  }
+
+  .relic:hover .relic__frame,
+  .relic:hover .relic__media app-responsive-picture {
+    transform: none;
+  }
+}

@@ -11,6 +11,8 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { TranslationService } from '../../../../../../services/translation.service';
+import { AudioService } from '../../../../../../services/audio-service';
+import { SoundKey } from '../../../../../../audio/sound-catalog';
 import gsap from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import { ResponsivePicture } from '../../../../../assets/responsive-picture/responsive-picture';
@@ -22,6 +24,12 @@ interface HomeResumeSnippet {
   icon: ResponsiveImageSet;
 }
 
+/** Même grammaire sonore que l'accordéon du CV : écho à l'ouverture, retour à la fermeture. */
+const SNIPPET_SOUNDS = { open: 'getEcho', close: 'getbackEcho' } as const satisfies Record<
+  'open' | 'close',
+  SoundKey
+>;
+
 @Component({
   selector: 'app-home-resume-snippets',
   imports: [ResponsivePicture],
@@ -31,6 +39,7 @@ interface HomeResumeSnippet {
 })
 export class HomeResumeSnippets implements AfterViewInit {
   protected readonly ts = inject(TranslationService);
+  private readonly audio = inject(AudioService);
 
   readonly snippets: HomeResumeSnippet[] = [
     { id: 'transmission', icon: SHARED_IMAGES.icon.pousseRes },
@@ -74,6 +83,7 @@ export class HomeResumeSnippets implements AfterViewInit {
     const previousId = this.openId();
     const nextId = previousId === id ? null : id;
     this.openId.set(nextId);
+    this.audio.playOnce(nextId ? SNIPPET_SOUNDS.open : SNIPPET_SOUNDS.close);
 
     this.snippets.forEach((snippet, index) => {
       const contentEl = this.snippetContentRefs.get(index)?.nativeElement;

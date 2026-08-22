@@ -11,6 +11,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { prefersReducedMotion } from '../../../../utils/motion';
 import { safeGet, safeSet } from '../../../../utils/storage';
 import {
@@ -20,6 +21,9 @@ import {
   moveToFinished,
   moveToIntroLeaving,
   moveToIntroReady,
+  OPENING_REPLAY_PARAM,
+  OPENING_SEEN_KEY,
+  OPENING_SKIP_PARAM,
   OpeningState,
 } from './opening.state';
 import { OpeningAnimationRefs, OpeningAnimationService } from './opening-animation.service';
@@ -41,9 +45,8 @@ export class Opening implements AfterViewInit, OnDestroy {
   protected readonly ts = inject(TranslationService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly isBrowser = isPlatformBrowser(this.platformId);
-
-  /** Mémorise qu'une séquence d'ouverture a déjà été vue/skippée. */
-  private static readonly SEEN_KEY = 'opening.seen';
+  /** Optionnel : hors contexte routé (TestBed minimal), repli sur window.location. */
+  private readonly route = inject(ActivatedRoute, { optional: true });
 
   @Output() finished = new EventEmitter<void>();
 
@@ -88,7 +91,7 @@ export class Opening implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (!this.isBrowser) return;
-    this.animationService.stopAllTweens(this.refs);
+    this.animationService.stopAllTweens(this.collectRefs());
   }
 
   public launchBgMusic(): void {
@@ -126,20 +129,32 @@ export class Opening implements AfterViewInit, OnDestroy {
   private finishOpening(): void {
     this.state = moveToFinished();
     // Best-effort : stockage indisponible (mode privé) = simplement non persisté.
-    safeSet(Opening.SEEN_KEY, '1');
+    safeSet(OPENING_SEEN_KEY, '1');
     this.finished.emit();
   }
 
-  /** Bypass si la séquence a déjà été vue, si `?skip-opening` est présent, ou en reduced-motion. */
+  /**
+   * Bypass si la séquence a déjà été vue, si `?skip-opening` est présent, ou en
+   * reduced-motion. Un `?replay` explicite (CTA de la home) l'emporte sur tout :
+   * l'utilisateur demande la séquence, l'OpeningAnimationService dégrade seul
+   * les tweens en reduced-motion.
+   */
   private shouldBypass(): boolean {
-    if (safeGet(Opening.SEEN_KEY) === '1') return true;
+    if (this.hasQueryParam(OPENING_REPLAY_PARAM)) return false;
+    if (safeGet(OPENING_SEEN_KEY) === '1') return true;
+    if (this.hasQueryParam(OPENING_SKIP_PARAM)) return true;
+    return prefersReducedMotion();
+  }
+
+  private hasQueryParam(name: string): boolean {
+    const snapshot = this.route?.snapshot;
+    if (snapshot) return snapshot.queryParamMap.has(name);
     try {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('skip-opening')) return true;
+      return new URLSearchParams(window.location.search).has(name);
     } catch {
       /* environnement contraint : on joue la séquence par défaut. */
+      return false;
     }
-    return prefersReducedMotion();
   }
 
   public onSoundHoverEnter(): void {
@@ -173,14 +188,20 @@ export class Opening implements AfterViewInit, OnDestroy {
   }
 
   private get refs(): OpeningAnimationRefs {
+    return this.collectRefs() as OpeningAnimationRefs;
+  }
+
+  /** Partiel : les @ViewChild ne sont pas résolus si le composant est détruit avant
+      son premier rendu (bypass immédiat) — stopAllTweens tolère les absents. */
+  private collectRefs(): Partial<OpeningAnimationRefs> {
     return {
-      audioState: this.audioStateRef.nativeElement,
-      openingState: this.openingStateRef.nativeElement,
-      soundButton: this.soundButtonRef.nativeElement,
-      soundIcon: this.soundIconRef.nativeElement,
-      soundLabel: this.soundLabelRef.nativeElement,
-      openingButton: this.openingButtonRef.nativeElement,
-      openingFigure: this.openingFigureRef.nativeElement,
+      audioState: this.audioStateRef?.nativeElement,
+      openingState: this.openingStateRef?.nativeElement,
+      soundButton: this.soundButtonRef?.nativeElement,
+      soundIcon: this.soundIconRef?.nativeElement,
+      soundLabel: this.soundLabelRef?.nativeElement,
+      openingButton: this.openingButtonRef?.nativeElement,
+      openingFigure: this.openingFigureRef?.nativeElement,
     };
   }
 }

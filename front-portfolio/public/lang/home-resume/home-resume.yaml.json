@@ -8,8 +8,6 @@
   "header.subtitle": "role: dev/formateur\nstack:\n  - ASP.NET\n  - Angular\n  - Symfony  # the holy trinity",
   "header.cta.resume.top": "action: consult",
   "header.cta.resume.bottom": "target: resume  # scroll down pls",
-  "header.cta.replay.top": "action: replay",
-  "header.cta.replay.bottom": "target: animation  # worth watching twice",
   "snippets.transmission.title": "transmission:\n  teaching: true  # knowledge is power",
   "snippets.transmission.content": "# Best practice: share knowledge\nsharing:\n  exercises: true\n  reasoning: clarified\n  standards: elevated\n  experience_years: 9  # and counting",
   "snippets.stack.title": "stack:\n  excellence: technical  # not accidental",

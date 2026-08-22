@@ -30,15 +30,15 @@ Définies dans [`app.routes.ts`](front-portfolio/src/app/app.routes.ts), métado
 
 | Route | Contenu |
 |---|---|
-| `/` | Accueil (hero, resume, projets, parcours) |
+| `/` | Accueil (hero + autel de la cinématique, resume, projets + reliquaire, parcours + chronique) |
 | `/projects` | Projets avec filtres, modal de détail, lightbox |
-| `/works` | Parcours — en construction (`noindex`) |
+| `/works` | Parcours — timeline des expériences, formations et certifications |
 | `/resume` | CV interactif, fiche de personnage |
 | `/linktree` | Liens (LinkedIn, GitHub, contact…) |
 | `/mentions-legales` | Mentions légales |
 | `/politique-confidentialite` | Politique de confidentialité |
 | `/politique-cookies` | Politique de cookies |
-| `/opening-home`, `/opening-resume` | Séquences d'ouverture (`noindex`) |
+| `/opening-home`, `/opening-resume` | Séquences d'ouverture (`noindex`) — `?replay` force le rejeu, `?skip-opening` la passe |
 | `**` | 404 thémée |
 
 Toutes les routes connues sont **prérendues au build** (SSG, cf. [`app.routes.server.ts`](front-portfolio/src/app/app.routes.server.ts)) ; seul le wildcard `**` reste en SSR à la volée pour servir la 404 thémée.

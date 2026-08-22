@@ -1,5 +1,9 @@
-<header class="hero surface-altar surface-altar--ornate surface-textured emerge-ritual">
+<header
+  class="hero surface-altar surface-altar--ornate surface-textured emerge-ritual"
+  appLanternLight
+>
   <div class="hero__veil"></div>
+  <span class="lantern-light" aria-hidden="true"></span>
 
   <div class="hero__content">
     <div class="hero__identity">
@@ -25,6 +29,10 @@
       </div>
     </div>
 
+    <app-home-lantern></app-home-lantern>
+
+    <!-- Pas d'aria-label sur les CTA : le nom accessible doit contenir le texte
+         visible (WCAG 2.5.3) — les spans label-top/bottom suffisent. -->
     <div class="hero__actions">
       <a class="hero__cta transition-ritual breath-gold" routerLink="/resume" href="/resume">
         <span class="hero__cta-icon-frame">
@@ -50,23 +58,33 @@
         </span>
       </a>
 
-      <!-- Pas d'aria-label : le nom accessible doit contenir le texte visible
-           (WCAG 2.5.3) — les spans label-top/bottom suffisent. -->
       <a
-        class="hero__cta hero__cta--secondary transition-ritual"
-        routerLink="/opening-home"
-        href="/opening-home"
+        class="hero__cta hero__cta--quaternary transition-ritual"
+        href="/CV-FR-FR-DESIGN.pdf"
+        download
       >
-        <span class="hero__cta-icon-frame hero__cta-icon-frame--play">
-          <span class="hero__cta-icon hero__cta-icon--play" aria-hidden="true"></span>
+        <span class="hero__cta-icon-frame hero__cta-icon-frame--scroll">
+          <span class="hero__cta-icon hero__cta-icon--scroll" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" />
+              <path d="M14 3v5h5" />
+              <path d="M12 12v6" />
+              <path d="M9 15l3 3 3-3" />
+            </svg>
+          </span>
         </span>
 
         <span class="hero__cta-label">
-          <span class="hero__cta-label-top">{{
-            ts.translate('home-resume.header.cta.replay.top')
-          }}</span>
+          <span class="hero__cta-label-top">{{ ts.translate('common.cv.download.top') }}</span>
           <span class="hero__cta-label-bottom">{{
-            ts.translate('home-resume.header.cta.replay.bottom')
+            ts.translate('common.cv.download.bottom')
           }}</span>
         </span>
       </a>
@@ -132,37 +150,6 @@
           }}</span>
           <span class="hero__cta-label-bottom">{{
             ts.translate('home-resume.header.cta.veille.bottom')
-          }}</span>
-        </span>
-      </a>
-
-      <a
-        class="hero__cta hero__cta--quaternary transition-ritual"
-        href="/CV-FR-FR-DESIGN.pdf"
-        download
-      >
-        <span class="hero__cta-icon-frame hero__cta-icon-frame--scroll">
-          <span class="hero__cta-icon hero__cta-icon--scroll" aria-hidden="true">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" />
-              <path d="M14 3v5h5" />
-              <path d="M12 12v6" />
-              <path d="M9 15l3 3 3-3" />
-            </svg>
-          </span>
-        </span>
-
-        <span class="hero__cta-label">
-          <span class="hero__cta-label-top">{{ ts.translate('common.cv.download.top') }}</span>
-          <span class="hero__cta-label-bottom">{{
-            ts.translate('common.cv.download.bottom')
           }}</span>
         </span>
       </a>

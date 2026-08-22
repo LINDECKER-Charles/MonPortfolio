@@ -16,10 +16,24 @@ describe('HomeProjects', () => {
 
     fixture = TestBed.createComponent(HomeProjects);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('lays the lantern light as first child of the altar', () => {
+    const section: HTMLElement = fixture.nativeElement.querySelector('section.home-projects');
+
+    expect(section.firstElementChild?.classList).toContain('lantern-light');
+    expect(section.firstElementChild?.getAttribute('aria-hidden')).toBe('true');
+  });
+
+  it('embeds the reliquary row below the intro and actions', () => {
+    const relics = fixture.nativeElement.querySelector('app-home-projects-relics');
+
+    expect(relics).toBeTruthy();
+    expect(relics.querySelectorAll('a.relic').length).toBe(4);
   });
 });
