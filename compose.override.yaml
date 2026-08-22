@@ -1,0 +1,31 @@
+# Commodités de DEV — auto-mergé par `docker compose` en local, jamais sur un hôte servi.
+#
+#   docker compose up   → front (dev-server Angular, hot-reload) : http://localhost:${DEV_PORT}
+#
+# Le dev-server Angular passe par le même serveur Express que la prod (reqHandler de
+# src/server.ts) : /img (images/ monté en lecture seule) et les headers de sécurité
+# sont servis à l'identique — aucun serveur d'images annexe.
+# Image prod-like en local : `docker compose -f compose.yaml up --build` (sans override).
+
+services:
+  front:
+    image: monportfolio/front-dev
+    build:
+      context: ./front-portfolio
+      dockerfile: Dockerfile.dev
+    environment:
+      NODE_ENV: development
+      IMAGES_DIR: /images
+    ports:
+      - "${DEV_PORT:-4200}:4200"
+    volumes:
+      - ./front-portfolio:/app
+      # node_modules du conteneur isolés du host (binaires linux ≠ windows).
+      - front_node_modules:/app/node_modules
+      - ./images:/images:ro
+    healthcheck:
+      disable: true
+    restart: "no"
+
+volumes:
+  front_node_modules:
