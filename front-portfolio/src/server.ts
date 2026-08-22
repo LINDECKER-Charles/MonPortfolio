@@ -6,18 +6,33 @@ import {
 } from '@angular/ssr/node';
 import compression from 'compression';
 import express from 'express';
-import { join, relative } from 'node:path';
+import { existsSync } from 'node:fs';
+import { join, relative, resolve } from 'node:path';
 
-import { cacheControlFor } from './server/static-cache';
+import { securityHeaders } from './server/security-headers';
+import { CACHE_DEFAULT, cacheControlFor } from './server/static-cache';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-// Derrière Apache (X-Forwarded-For posé par le vhost) : req.ip = client réel.
+// Derrière l'edge Caddy (X-Forwarded-For / X-Forwarded-Proto posés par reverse_proxy) :
+// req.ip = client réel, req.secure ← X-Forwarded-Proto.
 app.set('trust proxy', true);
 app.disable('x-powered-by');
+
+/**
+ * Headers de sécurité (CSP stricte, HSTS, anti-framing…) — portés par l'application,
+ * donc identiques derrière n'importe quel reverse-proxy (ex-vhost Apache). HSTS et
+ * upgrade-insecure-requests ne sont émis qu'en HTTPS (req.secure ← X-Forwarded-Proto).
+ * ROBOTS_NOINDEX=1 (staging) ajoute X-Robots-Tag sur toutes les réponses.
+ */
+const ROBOTS_NOINDEX = process.env['ROBOTS_NOINDEX'] === '1';
+app.use((req, res, next) => {
+  res.set(securityHeaders({ secure: req.secure, noindex: ROBOTS_NOINDEX }));
+  next();
+});
 
 // Compression gzip de toutes les réponses texte (HTML SSR, JS, CSS, JSON i18n).
 // Sans elle, ~680 KiB transitent non compressés et plombent FCP/LCP.
@@ -31,6 +46,38 @@ app.get('/health', (_req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   res.json({ status: 'ok', uptime: process.uptime() });
 });
+
+/**
+ * Images statiques du dossier racine `images/`, servies sous /img (préfixe compilé
+ * IMAGE_SERVER_URL). IMAGES_DIR explicite (image Docker : /app/images, dev docker :
+ * /images) ; sinon le dossier `images/` du repo, depuis le bundle (dist/…/server)
+ * ou le cwd (dev-server, `node dist/…/server.mjs` lancé depuis front-portfolio).
+ * Non hashées → cache par défaut (1 j + SWR). Un fichier absent tombe dans la
+ * garde d'extension ci-dessous (404 text/plain).
+ */
+function resolveImagesDir(): string {
+  const explicit = process.env['IMAGES_DIR'];
+  if (explicit) {
+    return explicit;
+  }
+  const candidates = [
+    join(import.meta.dirname, '../../../../images'),
+    resolve(process.cwd(), '../images'),
+    resolve(process.cwd(), 'images'),
+  ];
+  return candidates.find((dir) => existsSync(dir)) ?? candidates[0];
+}
+const imagesDir = resolveImagesDir();
+app.use(
+  '/img',
+  express.static(imagesDir, {
+    index: false,
+    redirect: false,
+    setHeaders: (res) => {
+      res.setHeader('Cache-Control', CACHE_DEFAULT);
+    },
+  }),
+);
 
 /**
  * Assets statiques de /browser. Cache-Control par type d'asset (immutable pour
@@ -110,7 +157,7 @@ if (isMainModule(import.meta.url)) {
   };
   const server = host ? app.listen(port, host, onListening) : app.listen(port, onListening);
 
-  // Arrêt gracieux : finir les requêtes en cours (deploy = systemctl restart),
+  // Arrêt gracieux : finir les requêtes en cours (deploy = recréation du conteneur, SIGTERM),
   // avec un délai de grâce avant arrêt forcé.
   const shutdown = (signal: string) => {
     console.log(`[ssr] ${signal} reçu — arrêt gracieux`);

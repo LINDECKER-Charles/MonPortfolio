@@ -1,0 +1,38 @@
+name: monportfolio
+
+# Deployment overlay — applied ON TOP of compose.yaml for ANY served environment
+# (staging AND prod), explicitly and WITHOUT compose.override.yaml (dev conveniences).
+# The deploy jobs select the files via COMPOSE_FILE (see .github/workflows/_deploy.yml):
+#
+#   COMPOSE_FILE=compose.yaml:compose.deploy.yaml docker compose up -d
+#
+# This host is multi-tenant: the public TLS entrypoint is a SINGLE shared edge
+# proxy (infra/edge — caddy-docker-proxy) that owns 80/443 for every project on
+# the VPS. This stack therefore publishes NO host port; it just declares its
+# domains as labels on the public container and joins the external `edge` network.
+# Caddy reads the labels, provisions Let's Encrypt certs and reverse-proxies to it.
+#
+# staging vs prod differ ONLY by the host .env:
+#   COMPOSE_PROJECT_NAME  monportfolio-staging | monportfolio-prod  (distinct
+#                         Compose projects → no cross-env clobber on the same host)
+#   CADDY_DOMAINS         staging domain(s) | prod domain(s)
+#   IMAGE_TAG             staging | prod  (+ NG_ALLOWED_HOSTS / ROBOTS_NOINDEX)
+
+services:
+  front:
+    # Reachable by the shared edge proxy over `edge`; still on `default` for the
+    # intra-stack links. `{{upstreams 4000}}` resolves this container's IP
+    # on the edge network (CADDY_INGRESS_NETWORKS=edge in the edge stack).
+    networks:
+      - default
+      - edge
+    labels:
+      caddy: ${CADDY_DOMAINS:?CADDY_DOMAINS is required (e.g. "example.fr, example.com")}
+      caddy.reverse_proxy: "{{upstreams 4000}}"
+
+networks:
+  # Shared ingress fabric, created once on the host (`docker network create edge`,
+  # also ensured idempotently by the deploy job). Owned by no single stack.
+  edge:
+    external: true
+    name: edge

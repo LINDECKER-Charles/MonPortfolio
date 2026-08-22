@@ -51,6 +51,36 @@ test.describe('serveur SSR', () => {
     expect(response.headers()['cache-control']).toContain('max-age=300');
   });
 
+  test('les images statiques sont servies sous /img avec le cache par défaut', async ({
+    request,
+  }) => {
+    const response = await request.get('/img/photos/640x960_me-1.webp');
+    expect(response.status()).toBe(200);
+    expect(response.headers()['content-type']).toContain('image/webp');
+    expect(response.headers()['cache-control']).toContain('max-age=86400');
+  });
+
+  test('une image absente renvoie 404 text/plain, jamais du HTML', async ({ request }) => {
+    const response = await request.get('/img/photos/inexistante.webp');
+    expect(response.status()).toBe(404);
+    expect(response.headers()['content-type']).toContain('text/plain');
+  });
+
+  test('les headers de sécurité (ex-vhost Apache) sont émis par le serveur', async ({
+    request,
+  }) => {
+    const headers = (await request.get('/')).headers();
+    expect(headers['content-security-policy']).toContain("script-src 'self'");
+    expect(headers['content-security-policy']).toContain("frame-ancestors 'none'");
+    expect(headers['x-frame-options']).toBe('DENY');
+    expect(headers['x-content-type-options']).toBe('nosniff');
+    expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
+    // HTTP pur (aucun proxy TLS devant) : ni HSTS ni upgrade-insecure-requests, ni noindex.
+    expect(headers['strict-transport-security']).toBeUndefined();
+    expect(headers['content-security-policy']).not.toContain('upgrade-insecure-requests');
+    expect(headers['x-robots-tag']).toBeUndefined();
+  });
+
   test('robots.txt et sitemap.xml sont servis et cohérents avec l’origine', async ({ request }) => {
     const robots = await request.get('/robots.txt');
     expect(robots.status()).toBe(200);

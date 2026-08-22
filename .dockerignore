@@ -1,0 +1,42 @@
+# Contexte de build = racine du repo (docker/front/Dockerfile). Léger et sans secret.
+
+# VCS / outillage local (récursif : front-portfolio/.claude, .idea, CLAUDE.md…)
+.git
+.github
+**/.claude
+**/.idea
+**/.vscode
+**/.angular
+**/CLAUDE.md
+graphify-out
+test.cmd
+test.ps1
+
+# Hors image : docs, maquettes, assets de travail, infra, config
+docs
+design
+config
+infra
+scripts
+docker
+compose*.yaml
+old-icon
+bloodborne-assets
+*.md
+images/README.md
+
+# Env & secrets — jamais dans une image
+.env
+.env.*
+
+# front-portfolio : artefacts régénérés dans le build, tests hors image
+front-portfolio/node_modules
+front-portfolio/dist
+front-portfolio/.angular
+front-portfolio/coverage
+front-portfolio/playwright-report
+front-portfolio/test-results
+front-portfolio/.lighthouseci
+front-portfolio/karma.log
+front-portfolio/e2e
+front-portfolio/Dockerfile.dev

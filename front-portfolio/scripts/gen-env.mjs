@@ -20,7 +20,8 @@ const rootEnvPath = join(frontDir, '..', '.env');
 /** Défauts = valeurs de production actuelles (bascule .env non-breaking). */
 const DEFAULTS = {
   SITE_URL: 'https://charles-lindecker.com',
-  IMAGE_SERVER_URL: 'https://images.charles-lindecker.com',
+  // Relatif : images embarquées dans l'image Docker, servies par le serveur SSR (cf. server.ts).
+  IMAGE_SERVER_URL: '/img',
 };
 
 /** Parseur .env minimaliste (KEY=VALUE, commentaires #, quotes optionnelles). */
@@ -55,24 +56,38 @@ function resolve(key) {
   return value;
 }
 
-function assertHttpOrigin(key, value) {
+function isHttpOrigin(value) {
   let url;
   try {
     url = new URL(value);
   } catch {
-    console.error(`[gen-env] ${key} n'est pas une URL valide : ${value}`);
-    process.exit(1);
+    return false;
   }
-  if (!/^https?:$/.test(url.protocol) || url.pathname !== '/' || value.endsWith('/')) {
+  return /^https?:$/.test(url.protocol) && url.pathname === '/' && !value.endsWith('/');
+}
+
+function assertHttpOrigin(key, value) {
+  if (!isHttpOrigin(value)) {
     console.error(`[gen-env] ${key} doit être une origine http(s) sans slash final : ${value}`);
     process.exit(1);
   }
 }
 
+/** Origine http(s) (dev docker) OU chemin absolu sans slash final (`/img`, production). */
+function assertHttpOriginOrAbsolutePath(key, value) {
+  if (isHttpOrigin(value) || /^\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*$/.test(value)) {
+    return;
+  }
+  console.error(
+    `[gen-env] ${key} doit être une origine http(s) ou un chemin absolu, sans slash final : ${value}`,
+  );
+  process.exit(1);
+}
+
 const siteUrl = resolve('SITE_URL');
 const imageServerUrl = resolve('IMAGE_SERVER_URL');
 assertHttpOrigin('SITE_URL', siteUrl);
-assertHttpOrigin('IMAGE_SERVER_URL', imageServerUrl);
+assertHttpOriginOrAbsolutePath('IMAGE_SERVER_URL', imageServerUrl);
 
 // ── src/environments/env.generated.ts ────────────────────────────────────────
 const generated = `// Généré par scripts/gen-env.mjs — NE PAS ÉDITER (gitignoré).
