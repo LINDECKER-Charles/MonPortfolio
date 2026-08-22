@@ -1,16 +1,18 @@
-# images/ — source du serveur d'images statique
+# images/ — images statiques du site
 
-Ce dossier est la **source de vérité** du vhost `images.<domaine>` (variable
-`IMAGE_SERVER_URL` du `.env` racine). Il est synchronisé vers le docroot du VPS
-par la pipeline **dev** (`ci-cd-test.yml`, job `push-images-test`) via
-`rsync --delete`.
+Ce dossier est la **source de vérité** des images servies sous `/img` (préfixe
+`IMAGE_SERVER_URL` du `.env` racine, relatif en production). Elles sont
+**embarquées dans l'image Docker** du front (`docker/front/Dockerfile`,
+`COPY images ./images`) et servies par le serveur SSR Express
+(`front-portfolio/src/server.ts`, `IMAGES_DIR`) avec la politique de cache par
+défaut (1 jour + stale-while-revalidate).
 
-## ⚠️ Docroot partagé test/prod
+## Versionnées avec le code
 
-Le serveur d'images est **unique** pour les deux environnements : un renommage
-ou une suppression ici casse les URLs référencées par la **prod** dès le push
-sur `dev` (la prod référence les noms de fichiers de `main`). Ne supprimer ou
-renommer un asset qu'une fois la prod alignée.
+Chaque environnement sert **ses** images : staging celles de la branche `test`,
+prod celles de l'image promue. Un renommage ou une suppression ici n'impacte la
+prod qu'à la promotion `test → main` — fin du docroot partagé de l'ancien vhost
+`images.<domaine>` (rsync).
 
 ## Contenu attendu
 
@@ -30,10 +32,10 @@ Angular depuis `front-portfolio/public/` — ne pas le dupliquer ici.
 
 Les dimensions font partie du nom de fichier : `<w>x<h>_<name>.webp`.
 Les tailles attendues par le front sont déclarées dans les `*.source(s).ts` —
-un fichier manquant = 404 silencieux côté client.
+un fichier manquant = 404 `text/plain` (garde d'extension du serveur).
 
 ## Dev local
 
-`docker compose up` sert ce dossier via nginx sur
-`http://localhost:${IMAGE_SERVER_PORT}` (cf. `.env.example`) — le front dev
-pointe dessus en réglant `IMAGE_SERVER_URL`.
+Le dev-server Angular (`npm start` ou `docker compose up`) passe par le même serveur
+Express que la prod : `/img` est servi depuis ce dossier (`IMAGES_DIR`, sinon `../images`
+du repo) — aucun serveur d'images annexe, même préfixe `/img` partout.
