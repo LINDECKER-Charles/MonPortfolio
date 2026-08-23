@@ -19,6 +19,7 @@ karma.log
 !.env.*.example
 /scripts/secrets.local.env
 /docs/DEVOPS-SECRETS.local.md
+/docs/MIGRATION-INFRA-VPS.local.md
 
 # --- IDE / OS ---
 .idea/
@@ -43,3 +44,6 @@ graphify-out
 devops-omnicard
 old-icon/
 bloodborne-assets/
+# --- Source DA Bloodborne (extraction dl-bb-web, jamais versionne) ---
+design-source-bb/
+.bb-staging/

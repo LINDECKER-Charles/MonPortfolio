@@ -9,7 +9,6 @@ Portfolio personnel de Charles Lindecker — application Angular 22 SSR/SSG à t
 | [`front-portfolio/`](front-portfolio/) | Application Angular (SSR + prerender, serveur Express) |
 | [`images/`](images/) | Images statiques servies sous `/img`, embarquées dans l'image Docker du front |
 | [`docker/`](docker/) | `front/Dockerfile` (image de production, multi-stage) + nginx images de dev |
-| [`infra/edge/`](infra/edge/) | Edge proxy Caddy partagé du VPS (TLS automatique, routage par labels) |
 | [`.github/workflows/`](.github/workflows/) | Pipeline CI/CD *build-once* : tests → image GHCR → staging (push `dev`) → promotion prod (merge `test → main`) |
 | [`docs/`](docs/) | Documentation technique (architecture, investigations, refactos, légal) |
 | [`design/`](design/) | Maquettes HTML et wireframes archivés |
@@ -67,7 +66,8 @@ npm run lint:css                       # Stylelint sur src/**/*.css
 - Push sur `dev` → tests (lint, unitaires, e2e) → merge `dev → test` → build `:staging` → déploiement **staging**
   (`test.charles-lindecker.com`) ; merge manuel `test → main` → retag `:prod` (sans rebuild) → déploiement **prod**.
 - Sur le VPS : `docker compose` par environnement (`monportfolio-staging` / `monportfolio-prod`) derrière un
-  edge proxy Caddy partagé ([`infra/edge/`](infra/edge/)) qui gère TLS et routage par labels.
+  edge proxy Caddy partagé qui gère TLS et routage par labels — fourni par le dépôt d'infrastructure
+  `infra-vps` (privé), déployé avant tout projet applicatif ; ce repo ne porte que ses labels `caddy`.
 - Détails : [`docs/deploiement.md`](docs/deploiement.md) (architecture, migration de serveur, exploitation) et
   [`docs/DEVOPS-SECRETS.md`](docs/DEVOPS-SECRETS.md) (secrets GitHub).
 

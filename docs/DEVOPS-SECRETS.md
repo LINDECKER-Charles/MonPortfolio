@@ -42,15 +42,15 @@ Son `.env` doit fixer `COMPOSE_PROJECT_NAME=monportfolio-staging`, `IMAGE_TAG=st
 `CADDY_DOMAINS=test.charles-lindecker.com`, `NG_ALLOWED_HOSTS=test.charles-lindecker.com`
 et `ROBOTS_NOINDEX=1`. Le VPS est mutualisé avec la prod (et d'autres projets) :
 l'isolation vient du `COMPOSE_PROJECT_NAME` distinct, le TLS d'un **edge proxy partagé**
-(cf. `infra/edge`).
+(fourni par le dépôt d'infrastructure `infra-vps`, privé).
 
 | Secret | Requis | Description |
 |---|:---:|---|
 | `STAGING_SSH_KEY` | ✅ | Clé privée SSH (PEM complet) chargée dans `ssh-agent`. Clé publique dans les `authorized_keys` du serveur. |
 | `STAGING_HOST` | ✅ | Hôte staging (IP ou FQDN). `ssh-keyscan` + connexions SSH. |
 | `STAGING_PATH` | ✅ | Chemin absolu du projet sur le serveur (dossier des `compose.*.yaml`), ex. `/opt/monportfolio-staging`. |
-| `STAGING_SSH_USER` | ➖ | Utilisateur SSH. **Optionnel**, défaut `root`. Doit pouvoir lancer `docker` et écrire `/opt/edge`. |
-| `ENV_STAGING` | ✅ | Dotenv staging **complet** (source : `.env.staging`, modèle `.env.staging.example`) poussé dans `${STAGING_PATH}/.env`. `ACME_EMAIL` n'y est **pas** (il vit dans le stack edge). |
+| `STAGING_SSH_USER` | ➖ | Utilisateur SSH. **Optionnel**, défaut `root`. Doit pouvoir lancer `docker` et écrire `${STAGING_PATH}`. |
+| `ENV_STAGING` | ✅ | Dotenv staging **complet** (source : `.env.staging`, modèle `.env.staging.example`) poussé dans `${STAGING_PATH}/.env`. Le contact Let's Encrypt de l'edge n'y est **pas** (il vit dans `infra-vps`). |
 
 ---
 
@@ -71,19 +71,19 @@ Cohabite avec staging sur le même VPS (projets Compose distincts + edge partag�
 
 ---
 
-## 🔒 TLS / reverse-proxy — edge partagé (caddy-docker-proxy)
+## 🔒 TLS / reverse-proxy — edge partagé (caddy-docker-proxy, porté par `infra-vps`)
 
 Le stack app **ne publie aucun port** et n'embarque pas de proxy. Le point d'entrée TLS
-est un **edge proxy unique et global** au VPS (`infra/edge`), partagé par staging, prod et
-tout futur projet (même définition que LeagueOfDataBase — garder les copies identiques).
-Il détecte les domaines via les **labels** du conteneur `front` et émet/renouvelle seul
-les certificats Let's Encrypt. **L'edge est auto-bootstrappé par la pipeline**
-(`_deploy.yml`, idempotent) : un VPS neuf ne demande aucune étape manuelle edge —
-seulement fournir `ACME_EMAIL` et pointer le DNS.
+est un **edge proxy unique et global** au VPS, partagé par staging, prod et tout futur
+projet. Il détecte les domaines via les **labels** du conteneur `front` et émet/renouvelle
+seul les certificats Let's Encrypt. **L'edge et les réseaux Docker `edge` / `observability`
+sont déployés par le dépôt d'infrastructure `infra-vps` (privé), avant tout projet
+applicatif** : ce repo n'en converge rien, et `_deploy.yml` échoue explicitement si le
+réseau `edge` est absent. Le secret GitHub du contact Let's Encrypt n'est **plus requis
+ici** : il vit dans `infra-vps`.
 
 | Secret | Requis | Description |
 |---|:---:|---|
-| `ACME_EMAIL` | ✅ | Contact Let's Encrypt du proxy edge. Partagé staging **et** prod (même VPS). Écrit par le job dans `/opt/edge/.env`. |
 | `REPO_URL` | ➖ | URL de clone HTTPS, utilisée pour initialiser le dépôt sur un hôte neuf. Optionnel : le défaut intégré (`https://github.com/LINDECKER-Charles/MonPortfolio.git`) convient. |
 
 | Variable | Où | Staging | Prod |
@@ -98,12 +98,14 @@ seulement fournir `ACME_EMAIL` et pointer le DNS.
 ### 🖥️ Prérequis serveur (one-shot)
 
 1. Docker Engine + plugin `docker compose` installés ; `git` et `curl` présents.
-2. Ports **80/443** ouverts et DNS des domaines pointé (cf. ci-dessus).
-3. Packages GHCR **publics** (repo public : `ghcr.io/lindecker-charles/monportfolio/front`),
+2. **`infra-vps` déployé d'abord** (edge + réseaux `edge` / `observability`) : sans le
+   réseau `edge`, le job de déploiement s'arrête avant de toucher à l'application.
+3. Ports **80/443** ouverts et DNS des domaines pointé (cf. ci-dessus).
+4. Packages GHCR **publics** (repo public : `ghcr.io/lindecker-charles/monportfolio/front`),
    sinon `docker login ghcr.io` persistant avec un PAT `read:packages` — sans ça
    `docker compose pull` échoue.
-4. Le `*_PATH` peut être vide : le job initialise le dépôt (`git init` + `reset`), pousse le
-   `.env`, bootstrappe l'edge, puis déploie. staging suit `test`, prod suit `main`.
+5. Le `*_PATH` peut être vide : le job initialise le dépôt (`git init` + `reset`), pousse le
+   `.env`, vérifie le réseau `edge`, puis déploie. staging suit `test`, prod suit `main`.
 
 ---
 
@@ -119,6 +121,10 @@ seulement fournir `ACME_EMAIL` et pointer le DNS.
 `APACHE_TEST_DOMAIN`, `APACHE_TEST_SSR_PORT`, `APACHE_TEST_REDIRECT_TARGET`,
 `APACHE_IMAGES_DOMAIN`, `APACHE_IMAGES_DOCROOT`. Plus aucun workflow ne les lit ; valeurs
 historiques conservées localement (`config/README.md`, `~/.ssh/gh-actions-deploy`).
+
+Depuis le 2026-08-23, le secret du contact Let's Encrypt de l'edge n'est plus lu non plus
+(edge porté par `infra-vps`) : à supprimer une fois que **toutes** les branches déployées
+(`main` inclus) portent le `ci.yml` migré.
 
 ---
 
@@ -138,7 +144,7 @@ bash scripts/setup-secrets.sh # pose tous les secrets (idempotent)
   - `.env.prod` → **`ENV_PROD`** (déploiement prod)
 - **`ENV_*`** contiennent le fichier dotenv **intégral** (une variable par ligne), pas une valeur unique — dont
   `COMPOSE_FILE=compose.yaml:compose.deploy.yaml`, qui protège les commandes manuelles sur l'hôte.
-- **`CADDY_DOMAINS`** est une **ligne** de ces dotenv, jamais dans les workflows. **`ACME_EMAIL`** est dans le `.env` du stack edge.
+- **`CADDY_DOMAINS`** est une **ligne** de ces dotenv, jamais dans les workflows. Le contact Let's Encrypt de l'edge n'est pas un secret de ce repo (`infra-vps`).
 - **Staging et prod ne diffèrent que par leur `.env`** : mêmes fichiers compose, même image.
 - **`*_SSH_KEY`** : copier l'intégralité du fichier clé, en-têtes `-----BEGIN … PRIVATE KEY-----` inclus.
 - Les secrets ne sont **jamais** affichés dans les logs (masqués par GitHub) ; leur mise à jour ne s'applique qu'aux exécutions suivantes.

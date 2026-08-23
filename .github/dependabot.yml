@@ -47,11 +47,10 @@ updates:
     commit-message:
       prefix: "build(ci)"
 
-  # Images des stacks compose (racine). infra/edge est délibérément NON suivi : l'edge
-  # partagé est convergé vers /opt/edge par chaque projet du VPS, son tag d'image est
-  # figé et monté à la main dans toutes les copies à la fois (LoDB, kit, ici).
-  # docker/front/Dockerfile n'est pas suivi non plus : `FROM node:${NODE_VERSION}` n'est
-  # pas résolu par Dependabot ; la version de Node suit .nvmrc, montée à la main.
+  # Images des stacks compose (racine). L'edge partagé (caddy-docker-proxy) ne vit plus
+  # dans ce repo : il est porté par le dépôt d'infrastructure infra-vps, qui suit ses
+  # propres images. docker/front/Dockerfile n'est pas suivi : `FROM node:${NODE_VERSION}`
+  # n'est pas résolu par Dependabot ; la version de Node suit .nvmrc, montée à la main.
   - package-ecosystem: docker-compose
     directory: /
     target-branch: dev

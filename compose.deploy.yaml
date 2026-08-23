@@ -7,8 +7,9 @@ name: monportfolio
 #   COMPOSE_FILE=compose.yaml:compose.deploy.yaml docker compose up -d
 #
 # This host is multi-tenant: the public TLS entrypoint is a SINGLE shared edge
-# proxy (infra/edge — caddy-docker-proxy) that owns 80/443 for every project on
-# the VPS. This stack therefore publishes NO host port; it just declares its
+# proxy (caddy-docker-proxy) that owns 80/443 for every project on the VPS. It is
+# provided by the 'infra-vps' infrastructure repo, deployed once per host — nothing
+# about it lives here. This stack therefore publishes NO host port; it just declares its
 # domains as labels on the public container and joins the external `edge` network.
 # Caddy reads the labels, provisions Let's Encrypt certs and reverse-proxies to it.
 #
@@ -31,8 +32,9 @@ services:
       caddy.reverse_proxy: "{{upstreams 4000}}"
 
 networks:
-  # Shared ingress fabric, created once on the host (`docker network create edge`,
-  # also ensured idempotently by the deploy job). Owned by no single stack.
+  # Shared ingress fabric, created once per host by the 'infra-vps' infrastructure
+  # repo. Owned by no application stack: the deploy job only asserts it exists and
+  # fails otherwise — it never creates or rewrites it.
   edge:
     external: true
     name: edge
