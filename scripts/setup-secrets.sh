@@ -22,8 +22,6 @@ DEPLOY_TARGETS="${DEPLOY_TARGETS:-staging prod}"
 # Target repo (owner/name). Empty → gh infers it from the current git remote.
 REPO="${REPO:-}"
 
-# Shared edge proxy (Let's Encrypt contact) — same for staging & prod on one VPS.
-ACME_EMAIL="${ACME_EMAIL:-you@example.com}"
 # Optional HTTPS clone URL for fresh-host init. Empty → skip (workflow default is used).
 REPO_URL="${REPO_URL:-}"
 
@@ -49,7 +47,6 @@ gh auth status >/dev/null 2>&1 || { echo "✖ run 'gh auth login' first"; exit 1
 fail() { echo "✖ $*" >&2; exit 1; }
 is_placeholder() { case "$1" in ''|__*|*example.com|*example.org|*example.net) return 0;; esac; return 1; }
 
-is_placeholder "$ACME_EMAIL" && fail "ACME_EMAIL non renseigné (scripts/secrets.local.env)"
 for env in $DEPLOY_TARGETS; do
   up=$(printf '%s' "$env" | tr '[:lower:]' '[:upper:]')
   eval "host=\${${up}_HOST}; path=\${${up}_PATH}; keyfile=\${${up}_SSH_KEY_FILE}"
@@ -74,9 +71,8 @@ set_value() {     # NAME VALUE → set secret from a literal (skips empty = opti
 
 echo "→ Setting secrets for: ${DEPLOY_TARGETS}"
 
-# Shared.
-set_value ACME_EMAIL "$ACME_EMAIL"
-set_value REPO_URL   "$REPO_URL"
+# Shared. The edge (Let's Encrypt contact) is owned by the infra-vps repo: nothing here.
+set_value REPO_URL "$REPO_URL"
 
 for env in $DEPLOY_TARGETS; do
   up=$(printf '%s' "$env" | tr '[:lower:]' '[:upper:]')
